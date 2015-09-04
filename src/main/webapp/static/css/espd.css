@@ -1,0 +1,161 @@
+.noborder {
+	outline: none;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+option:disabled {
+	background: #ccc;
+	padding: 5px;
+}
+
+#header {
+	position: relative;
+	min-height: 145px;
+	background-color: #fff;
+	line-height: 1.4;
+}
+
+#top-lang-selector {
+	position: absolute;
+	z-index: 10;
+	right: 10px;
+	top: 10px;
+}
+
+#top-lang-selector li {display:inline;padding:3px 0;}
+
+#banner-flag {
+	position: absolute;
+	left: 40px;
+	top: 15px;
+	color: #000;
+	width: 172px;
+	height: 119px;
+	z-index: 7;
+}
+
+#banner-title-text {
+	position: absolute;
+	top: 50px;
+	left: 248px;
+	z-index: 7;
+	color: #0466A4;
+	font-weight: normal;
+	font-size: 200%;
+	margin: 0;
+	border: none;
+}
+
+#banner-env-text {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 7;
+	color: #FFF;
+	font-weight: normal;
+	font-size: 170%;
+	margin: 0;
+	border: none;
+}
+
+#banner-sub-title-text {
+	position: absolute;
+	top: 100px;
+	left: 248px;
+	z-index: 7;
+	color: #FFF;
+	font-weight: normal;
+	font-size: 170%;
+	margin: 0;
+	border: none;
+}
+
+#banner-image-title-fill {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	min-height: 145px;
+	z-index: 5;
+	background: url("/espd/static/img/banner-fill.png");
+	background-repeat: round;
+}
+
+#banner-image-title {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 145px;
+	z-index: 6;
+}
+
+#environment {
+	font-size: 20px;
+	color: black;
+	background-color: white;
+	padding: 3px;
+	border: 3px solid crimson;
+}
+
+#footer {
+	text-align: center;
+	padding: 20px;
+	text-align: center;
+	background: #4d4d4a;
+	color: #FFF;
+}
+
+#footer a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.breadcrumElement {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.breadcrumElement a:visited {
+	text-decoration: none !important;
+	color: white !important;
+}
+
+.breadcrumElement a:hover {
+	text-decoration: none !important;
+	color: white !important;
+	border-bottom: 1px solid #FFFFFF !important;
+}
+
+.breadcrumElement a:focus {
+	text-decoration: none !important;
+	color: white !important;
+}
+
+.breadcrumElement a:hover,a:active {
+	text-decoration: none !important;
+	color: white !important;
+}
+
+#breadbar .breadcrumbs {
+	background-color: #074A8B;
+	height: 1.42em;
+	list-style: none;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.breadcrumbs li+li:before {
+	content: ">  ";
+}
+
+.breadcrumbs li {
+	color: white;
+	padding-left: 10px;
+	display: inline-block;
+}
+
