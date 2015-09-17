@@ -1,20 +1,82 @@
 package eu.grow.espd.controller;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import eu.grow.espd.config.Locales;
+import eu.grow.espd.domain.EspdDocument;
+import grow.names.specification.ubl.schema.xsd.e_certiscriteria_1.CriteriaType;
 
 @Controller
+@SessionAttributes("espd")
 public class WelcomeController {
-	
+
+	@ModelAttribute("espd")
+    public EspdDocument newDocument() {
+		return new EspdDocument();
+	}
+
 	@RequestMapping({ "/", "/welcome" })
 	public String showWelcomePage(Map<String, Object> model) {
 		return "welcome";
 	}
+	
+	@RequestMapping("/splash")
+	public String showSplashPage(Map<String, Object> model) {
+		return "splash";
+	}
+	
+	@RequestMapping("/filter")
+	public String showFilterPage(Map<String, Object> model) {
+		
+		return "filter";
+	}
+	
+	@RequestMapping("/createca")
+	public String showProcessCAPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "createca";
+	}
+	
+	@RequestMapping("/createcaexcl")
+	public String showProcessCAExcludePage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "createcaexcl";
+	}
+	
+	@RequestMapping("/createcasel")
+	public String showProcessCASelectionPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "createcasel";
+	}
+	
+	@RequestMapping("/createcafinish")
+	public String showProcessCAFinishPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "createcafinish";
+	}
+	
+	@RequestMapping("/test")
+	public String test() throws JAXBException {
+		
+		InputStream file = this.getClass().getClassLoader().getResourceAsStream("criteria.xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(CriteriaType.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		CriteriaType criteriaType = (CriteriaType) jaxbUnmarshaller.unmarshal(file);
+
+		System.out.println(criteriaType);
+
+		return null;
+	}
+
 
 }

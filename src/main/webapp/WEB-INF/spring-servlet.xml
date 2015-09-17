@@ -30,7 +30,8 @@
 
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" p:defaultLocale="en"/>
 	
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" p:jndiName="java:comp/env/espdds"/>
+     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" p:jndiName="java:comp/env/espdmaindatasource"/>  
+<!--    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" p:jndiName="espdmaindatasource"/>-->
     
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
