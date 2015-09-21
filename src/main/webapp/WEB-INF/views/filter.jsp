@@ -3,6 +3,7 @@
 
 <div class="container espd-container">
 	<div class="panel-default">
+
 		<ul class="nav nav-pills nav-wizard nav-justified">
 		    <li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span>Start</span></a><div class="nav-arrow"></div></li>
 		    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-university"></i>&nbsp;<span>Procedure</span></a><div class="nav-arrow"></div></li>
@@ -11,40 +12,44 @@
 		    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-download"></i>&nbsp;<span>Finish</span></a></li>
 		</ul>
 	
-		<h2>Selection of entity</h2>
+		<div class="paragraph">
+			<h2>Selection of entity</h2>
+		</div>
 
 		<div class="alert alert-espd-info">
 			<ul class="fa-ul">
 			<li>
-				<i class="fa fa-info-circle fa-lg fa-li"></i>
+				<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
 				<p>Standard form for the European Single Procurement Document (ESPD).
 				<p>The ESPD is a self-declaration provided by economic operators which are asked for a preliminary evidence in a procurement procedure. It replaces the certificates issued by public authorities or third parties. It aims to reduce the administrative burden arising from the requirement to produce a substantial number of certificates or other types of evidence related to exclusion and selection criteria.
 			</li>
 			</ul>
 		</div>
 		
-		<h2>Who are you?</h2>
-		
-		<div class="radio">
-			<label><input type="radio" name="whoareyou">I am a contracting authority </label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="whoareyou">I am an economic operator </label>
-		</div>
-		
-		<h2>What would you like to do?</h2>
-		
-		<div class="radio">
-			<label><input type="radio" name="action">Create a new ESPD</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="action">Reuse an existing ESPD</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="action">Overview of the received ESPDs</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="action">Review ESPD</label>
+		<div class="paragraph">
+			<h3>Who are you?</h3>
+			
+			<div class="radio">
+				<label><input type="radio" name="whoareyou">I am a contracting authority </label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="whoareyou">I am an economic operator </label>
+			</div>
+
+			<h3>What would you like to do?</h3>
+			
+			<div class="radio">
+				<label><input type="radio" name="action">Create a new ESPD</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="action">Reuse an existing ESPD</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="action">Overview of the received ESPDs</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="action">Review ESPD</label>
+			</div>
 		</div>
 	</div>
 

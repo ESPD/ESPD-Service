@@ -1,7 +1,7 @@
 package eu.grow.espd.controller;
 
-import java.io.File;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -11,6 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import eu.grow.espd.domain.EspdDocument;
@@ -41,10 +42,16 @@ public class WelcomeController {
 		return "filter";
 	}
 	
-	@RequestMapping("/createca")
+	@RequestMapping(value="/createca")
 	public String showProcessCAPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
 
 		return "createca";
+	}
+	
+	@RequestMapping(value="/createca", method=RequestMethod.POST)
+	public String postProcessCAPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "redirect:/createcaexcl";
 	}
 	
 	@RequestMapping("/createcaexcl")

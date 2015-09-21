@@ -5,19 +5,17 @@
 	<script>
 		$(function() { $('#language').on('change', function() { language( this.value ); });});
 	</script>
-	
+
 	<div id="header">
-		<img id="banner-flag" src="/espd/static/img/logo.png" alt="European Commission logo"/>
-		<!-- 
+
 		<c:if test="${not empty applicationScope.deploymentEnvironment}">
 			<span id="banner-env-text">
 				<span id="environment">${applicationScope.deploymentEnvironment}</span>
 			</span>
 		</c:if>
-		 --> 
-		<span id="banner-sub-title-text" class="label_APP_SUBTITLE"><s:message code="APP_SUBTITLE"/></span>
 		<span id="banner-title-text" class="label_APP_TITLE"><s:message code="APP_TITLE"/></span>
 		<span id="banner-image-title-fill"></span>
+		<span id="banner-sub-title-text" class="label_APP_SUBTITLE"><s:message code="APP_SUBTITLE"/></span>
 		<span id="top-lang-selector">
 			<ul class="reset-list">
 				<li><a href="#" class="label_LEGAL_NOTICE"><s:message code="LEGAL_NOTICE"/></a></li>

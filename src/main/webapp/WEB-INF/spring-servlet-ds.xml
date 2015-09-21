@@ -13,31 +13,7 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-                           
-	<context:component-scan base-package="eu.grow.espd"/>
-	
-	<mvc:annotation-driven/>
-	<mvc:default-servlet-handler/>
 
-	<mvc:resources mapping="/static/**" location="/static/" />
-	
-	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang" />
-		</bean>
-	</mvc:interceptors>
-
-
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" p:defaultLocale="en"/>
-
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<bean id="tx.manager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<tx:annotation-driven transaction-manager="tx.manager" proxy-target-class="false" />
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" p:jndiName="java:comp/env/espdmaindatasource"/>         
 	
 </beans>

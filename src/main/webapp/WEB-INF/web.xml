@@ -3,8 +3,7 @@
 
     <context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>
-		</param-value>
+		<param-value></param-value>
 	</context-param>
 
    <context-param>
@@ -45,7 +44,10 @@
 	</servlet-class>
 	<init-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-servlet.xml</param-value>
+		<param-value>
+			/WEB-INF/spring-servlet.xml
+	        /WEB-INF/spring-servlet-ds.xml
+		</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
    </servlet>

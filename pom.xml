@@ -158,7 +158,7 @@
 					</webResources>
 					<warName>${project.artifactId}</warName>
 					<!-- <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory> -->
-					<webXml>environments/${environment}/WEB-INF/web.xml</webXml>
+					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
 					<warSourceExcludes>**/*web.digit.xml,**/*web.local.xml</warSourceExcludes>
 				</configuration>
 			</plugin>

@@ -11,12 +11,6 @@
   <meta name="author" content="">
   
   <title>Espd</title>
-
-	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">  
-	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
-	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
-	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
-
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
@@ -44,6 +38,12 @@
 	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
+	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">  
+	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
+	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
+	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
+
+
 	<script>
 		<%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
 		window.console = window.console || (function(){
@@ -54,10 +54,33 @@
 		$(function() {
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
+		    validatorSetup("[" + "${pageContext.response.locale}" + "]");
 		});
 
 		var pageLanguageCode = '${pageContext.response.locale}';
 		//var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
+		
+		function validatorSetup(code) {
+			jQuery.extend(jQuery.validator.messages, {
+			    required: "<span class=\"required_code\">This field is required.</span>" + code,
+			    remote: "Please fix this field." + code,
+			    email: "Please enter a valid email address." + code,
+			    url: "Please enter a valid URL." + code,
+			    date: "Please enter a valid date." + code,
+			    dateISO: "Please enter a valid date (ISO)." + code,
+			    number: "Please enter a valid number." + code,
+			    digits: "Please enter only digits." + code,
+			    creditcard: "Please enter a valid credit card number." + code,
+			    equalTo: "Please enter the same value again." + code,
+			    accept: "Please enter a value with a valid extension." + code,
+			    maxlength: jQuery.validator.format("Please enter no more than {0} characters." + code),
+			    minlength: jQuery.validator.format("Please enter at least {0} characters." + code),
+			    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long." + code),
+			    range: jQuery.validator.format("Please enter a value between {0} and {1}." + code),
+			    max: jQuery.validator.format("Please enter a value less than or equal to {0}." + code),
+			    min: jQuery.validator.format("Please enter a value greater than or equal to {0}." + code)
+			});
+		}
 
 		function language(code) {
 			var flags = [];
@@ -86,6 +109,8 @@
 						//});
 						pageLanguageCode = code;
 						//pageDateFormat = array.datefmt;
+						
+						validatorSetup("[" + code + "]");
 					}
 				});
 		}

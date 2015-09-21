@@ -7,6 +7,63 @@
 	padding-bottom: 15px;
 }
 
+h2 {
+  font-size: 1.2em;
+  font-family: Verdana, Arial, Helvetica, "DejaVu Sans", sans-serif;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.fa-li {
+	top: 0px;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.info-label
+{
+  font-size: 2.3em;
+  color: white;
+  margin-left: 0.15em;
+}
+
+.alert {
+	border-radius: 0;
+}
+ 
+.form-control {
+	border-color: #396ea2 !important;
+	border-radius: 0;
+}
+
+.form-horizontal .control-label {
+	font-weight: normal;
+}
+
+.panel-default {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.no-border {
+	border: 0
+}
+
+.nav-wizard {
+	margin-top: 15px;
+}
+
+.paragraph {
+	margin-left: 2em;
+}
+
+.btn-default {
+  color: #074A8B !important;
+  border-color: #336699 !important;
+}
+
 .espd-panel {
   margin-top: 30px;
   top: -10px;
@@ -23,7 +80,7 @@
   padding: 10px 20px;
   font-size: 0.9em;
   font-weight: bold;
-  width: 50%;
+  width: 55%;
   top: -20px;
   left: 20px;
 }
@@ -66,20 +123,10 @@ option:disabled {
 
 #top-lang-selector li {display:inline;padding:3px 0;}
 
-#banner-flag {
-	position: absolute;
-	left: 40px;
-	top: 15px;
-	color: #000;
-	width: 172px;
-	height: 119px;
-	z-index: 7;
-}
-
 #banner-title-text {
 	position: absolute;
 	top: 50px;
-	left: 248px;
+	right: 10px;
 	z-index: 7;
 	color: #0466A4;
 	font-weight: normal;
@@ -91,7 +138,7 @@ option:disabled {
 #banner-env-text {
 	position: absolute;
 	top: 0px;
-	left: 0px;
+	right: 10px;
 	z-index: 7;
 	color: #FFF;
 	font-weight: normal;
@@ -103,7 +150,7 @@ option:disabled {
 #banner-sub-title-text {
 	position: absolute;
 	top: 100px;
-	left: 248px;
+	right: 10px;
 	z-index: 7;
 	color: #FFF;
 	font-weight: normal;
@@ -203,7 +250,7 @@ option:disabled {
 }
 
 .splashLangDiv {white-space:normal;margin:10px;clear:both; width:15em;}
-.splashLangDiv a {white-space:normal;color:#0065a2;font-size:16px;text-decoration:none;}
+.splashLangDiv a {white-space:normal;color:#0065a2;font-size:18px;text-decoration:none;vertical-align: middle;}
 .splashLangDiv a:hover {white-space:normal;color:#074A8B;font-weight: bold;}
 
 a.splashLangBox {
@@ -214,11 +261,12 @@ a.splashLangBox {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
 	font-weight: bold;
-	width: 25px;
-	height: 25px;
+	width: 35px;
+	height: 35px;
 	text-decoration: none;
 	vertical-align: middle;
 	text-align: center;
+	padding: 5px 5px 0 5px;
 }
 
 .splashLangBox:hover {
@@ -229,10 +277,11 @@ a.splashLangBox {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
 	font-weight: bold;
-	width: 25px;
-	height: 25px;
+	width: 35px;
+	height: 35px;
 	text-decoration: none;
 	vertical-align: middle;
 	text-align: center;
+	padding: 5px 5px 0 5px;
 } 
 

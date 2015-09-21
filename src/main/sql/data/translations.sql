@@ -1,6 +1,6 @@
 DROP TABLE LABEL;
 DROP TABLE LABEL_TRANSLATION;
-DROP TABLE LANGUAGE
+DROP TABLE LANGUAGE;
 
 CREATE TABLE LANGUAGE (
 language_id NUMBER(10),
@@ -19,7 +19,7 @@ CREATE TABLE LABEL_TRANSLATION (
 label_translation_id NUMBER(10),
 label_id NUMBER(10),
 language_id NUMBER(10),
-label_translation_text VARCHAR(700),
+label_translation_text VARCHAR(1000),
 date_modified DATE,
 date_added DATE);
 
@@ -131,9 +131,9 @@ INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION
 VALUES (201, 200, 'Disclaimer [FR]', 8, SYSDATE, SYSDATE);
 
 INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION_TEXT, LANGUAGE_ID, DATE_MODIFIED, DATE_ADDED) 
-VALUES (202, 201, '<p>The present ESPD prototype is not an officially deployed ESPD solution yet but serves only as a tool to demonstrate the possibilities of the ESPD service in conjunction with e-Certis. The ESPD service is planned to be ready by the end of this year. Until then it will undergo many implementation cycles. If you have any feedback on the prototype of the ESPD service, please share it by sending an e-mail to grow-espd@ec.europa.eu. <p>We recommend you to follow the guidance provided below on the different use cases. For the ease of use, we have added several  in the ESPD prototype. As soon as you move your mouse over it, a tooltip will display additional explanatory information.', 6, SYSDATE, SYSDATE);
+VALUES (202, 201, '<p>The present ESPD prototype is not an officially deployed ESPD solution yet but serves only as a tool to demonstrate the possibilities of the ESPD service in conjunction with e-Certis. The ESPD service is planned to be ready by the end of this year. Until then it will undergo many implementation cycles. If you have any feedback on the prototype of the ESPD service, please share it by sending an e-mail to <a href="mailto:grow-espd@ec.europa.eu" target="_top">grow-espd@ec.europa.eu</a>. <p>We recommend you to follow the guidance provided below on the different use cases. For the ease of use, we have added several  in the ESPD prototype. As soon as you move your mouse over it, a tooltip will display additional explanatory information.', 6, SYSDATE, SYSDATE);
 INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION_TEXT, LANGUAGE_ID, DATE_MODIFIED, DATE_ADDED) 
-VALUES (203, 201, '<p>The present ESPD prototype is not an officially deployed ESPD solution yet but serves only as a tool to demonstrate the possibilities of the ESPD service in conjunction with e-Certis. The ESPD service is planned to be ready by the end of this year. Until then it will undergo many implementation cycles. If you have any feedback on the prototype of the ESPD service, please share it by sending an e-mail to grow-espd@ec.europa.eu. <p>We recommend you to follow the guidance provided below on the different use cases. For the ease of use, we have added several  in the ESPD prototype. As soon as you move your mouse over it, a tooltip will display additional explanatory information. [FR]', 8, SYSDATE, SYSDATE);
+VALUES (203, 201, '<p>The present ESPD prototype is not an officially deployed ESPD solution yet but serves only as a tool to demonstrate the possibilities of the ESPD service in conjunction with e-Certis. The ESPD service is planned to be ready by the end of this year. Until then it will undergo many implementation cycles. If you have any feedback on the prototype of the ESPD service, please share it by sending an e-mail to <a href="mailto:grow-espd@ec.europa.eu" target="_top">grow-espd@ec.europa.eu</a>. <p>We recommend you to follow the guidance provided below on the different use cases. For the ease of use, we have added several  in the ESPD prototype. As soon as you move your mouse over it, a tooltip will display additional explanatory information. [FR]', 8, SYSDATE, SYSDATE);
 
 INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION_TEXT, LANGUAGE_ID, DATE_MODIFIED, DATE_ADDED) 
 VALUES (204, 202, 'Use cases', 6, SYSDATE, SYSDATE);
@@ -141,6 +141,6 @@ INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION
 VALUES (205, 202, 'Use cases [FR]', 8, SYSDATE, SYSDATE);
 
 INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION_TEXT, LANGUAGE_ID, DATE_MODIFIED, DATE_ADDED) 
-VALUES (206, 203, '<p>To show you some scenarios on how the ESPD service could be used, we provide you some use cases. <p><b>Use case 1:</b> How an authority can create an ESPD with the ESPD service you can find here', 6, SYSDATE, SYSDATE);
+VALUES (206, 203, '<p>To show you some scenarios on how the ESPD service could be used, we provide you some use cases. <p><b>Use case 1:</b> How an authority can create an ESPD with the ESPD service you can find <a href="">here</a>', 6, SYSDATE, SYSDATE);
 INSERT INTO LABEL_TRANSLATION (LABEL_TRANSLATION_ID, LABEL_ID, LABEL_TRANSLATION_TEXT, LANGUAGE_ID, DATE_MODIFIED, DATE_ADDED) 
-VALUES (207, 203, '<p>To show you some scenarios on how the ESPD service could be used, we provide you some use cases. <p><b>Use case 1:</b> How an authority can create an ESPD with the ESPD service you can find here [FR]', 8, SYSDATE, SYSDATE);
+VALUES (207, 203, '<p>To show you some scenarios on how the ESPD service could be used, we provide you some use cases. <p><b>Use case 1:</b> How an authority can create an ESPD with the ESPD service you can find <a href="">here</a> [FR]', 8, SYSDATE, SYSDATE);
