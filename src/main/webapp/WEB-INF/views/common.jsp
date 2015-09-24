@@ -50,37 +50,37 @@
 		    var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function(){};
 		    return c;
 		})();
+		
+		function validator(validators,name,text) {validators[name] = jQuery.validator.format("<span class=\"label_validator_"+name+"\">"+text+"</span>");}
+		
+		var defaultValidators={};
+		validator(defaultValidators, "required", "<s:message code='validator_required'/>")
+		validator(defaultValidators, "remote", "<s:message code='validator_remote'/>")
+		validator(defaultValidators, "email", "<s:message code='validator_email'/>")
+		validator(defaultValidators, "url", "<s:message code='validator_url'/>")
+		validator(defaultValidators, "date", "<s:message code='validator_date'/>")
+		validator(defaultValidators, "dateISO", "<s:message code='validator_dateISO'/>")
+		validator(defaultValidators, "number", "<s:message code='validator_number'/>")
+		validator(defaultValidators, "digits", "<s:message code='validator_digits'/>")
+		validator(defaultValidators, "creditcard", "<s:message code='validator_creditcard'/>")
+		validator(defaultValidators, "equalTo", "<s:message code='validator_equalTo'/>")
+		validator(defaultValidators, "accept", "<s:message code='validator_accept'/>")
+		validator(defaultValidators, "maxlength", "<s:message code='validator_maxlength'/>")
+		validator(defaultValidators, "minlength", "<s:message code='validator_minlength'/>")
+		validator(defaultValidators, "rangelength", "<s:message code='validator_rangelength'/>")
+		validator(defaultValidators, "range", "<s:message code='validator_range'/>")
+		validator(defaultValidators, "max", "<s:message code='validator_max'/>")
+		validator(defaultValidators, "min", "<s:message code='validator_min'/>")
+		
 
 		$(function() {
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
-		    validatorSetup("[" + "${pageContext.response.locale}" + "]");
+		    jQuery.extend(jQuery.validator.messages, defaultValidators);
 		});
 
 		var pageLanguageCode = '${pageContext.response.locale}';
 		//var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
-		
-		function validatorSetup(code) {
-			jQuery.extend(jQuery.validator.messages, {
-			    required: "<span class=\"label_validator_required\"><s:message code='validator_required'/></span>",
-			    remote: "<span class=\"label_validator_remote\"><s:message code='validator_remote'/>.</span>",
-			    email: "<span class=\"label_validator_email\"><s:message code='validator_email'/></span>",
-			    url: "<span class=\"label_validator_url\"><s:message code='validator_url'/></span>",
-			    date: "<span class=\"label_validator_date\"><s:message code='validator_date'/></span>",
-			    dateISO: "<span class=\"label_validator_dateISO\"><s:message code='validator_dateISO'/></span>",
-			    number: "<span class=\"label_validator_number\"><s:message code='validator_number'/></span>",
-			    digits: "<span class=\"label_validator_digits\"><s:message code='validator_digits'/></span>",
-			    creditcard: "<span class=\"label_validator_creditcard\"><s:message code='validator_creditcard'/></span>",
-			    equalTo: "<span class=\"label_validator_equalTo\"><s:message code='validator_equalTo'/></span>",
-			    accept: "<span class=\"label_validator_accept\"><s:message code='validator_accept'/></span>",
-			    maxlength: jQuery.validator.format("<span class=\"label_validator_maxlength\"><s:message code='validator_maxlength'/></span>"),
-			    minlength: jQuery.validator.format("<span class=\"label_validator_minlength\"><s:message code='validator_minlength'/></span>"),
-			    rangelength: jQuery.validator.format("<span class=\"label_validator_rangelength\"><s:message code='validator_rangelength'/></span>"),
-			    range: jQuery.validator.format("<span class=\"label_validator_range\"><s:message code='validator_range'/></span>"),
-			    max: jQuery.validator.format("<span class=\"label_validator_max\"><s:message code='validator_max'/></span>"),
-			    min: jQuery.validator.format("<span class=\"label_validator_min\"><s:message code='validator_min'/></span>")
-			});
-		}
 
 		function language(code) {
 			var flags = [];
@@ -92,6 +92,11 @@
 					codes.push(className)
 				}
 			});
+			for(name in defaultValidators) {
+				if(flags["validator_"+name] != true) {
+					codes.push("validator_"+name);
+				}
+			}
 
 			$.ajax({
 					type : "POST",
@@ -101,16 +106,20 @@
 					},
 					success : function(data) {
 						var array = JSON.parse(data)
+						var validators = {};
 						for (var i = 0 ; i < codes.length ;i++) {
+							if(codes[i].indexOf("validator_") == 0) {
+								validator(validators, codes[i].substring("validator_".length), array[i]);
+							}
 							$(".label_" + codes[i]).html(array[i]);
 						}
+						pageLanguageCode = code;
+						jQuery.extend(jQuery.validator.messages, validators);
+						
 						//$(".datefmt").each(function() {
 						//	$(this).html(Date.parse($(this).html()).toLocaleDateString(code))
 						//});
-						pageLanguageCode = code;
 						//pageDateFormat = array.datefmt;
-						
-						//validatorSetup("[" + code + "]");
 					}
 				});
 		}
