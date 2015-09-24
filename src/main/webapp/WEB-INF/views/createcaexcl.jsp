@@ -9,21 +9,21 @@
 	
 		<div class="panel panel-default no-border">	
 			<ul class="nav nav-pills nav-wizard nav-justified">
-			    <li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span>Start</span></a><div class="nav-arrow"></div></li>
-			    <li class="active"><div class="nav-wedge"></div><a href="#"><i class="fa fa-university"></i>&nbsp;<span>Procedure</span></a><div class="nav-arrow"></div></li>
-			    <li class="active"><div class="nav-wedge"></div><a href="#"><i class="fa fa-exclamation"></i>&nbsp;<span>Exclusion</span></a><div class="nav-arrow"></div></li>
-			    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-check-circle"></i>&nbsp;<span>Selection</span></a><div class="nav-arrow"></div></li>
-			    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-download"></i>&nbsp;<span>Finish</span></a></li>
+			    <li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span class="label_progress_start"><s:message code='progress_start'/></span></a><div class="nav-arrow"></div></li>
+			    <li class="active"><div class="nav-wedge"></div><a href="#"><i class="fa fa-university"></i>&nbsp;<span class="label_progress_procedure"><s:message code='progress_procedure'/></span></a><div class="nav-arrow"></div></li>
+			    <li class="active"><div class="nav-wedge"></div><a href="#"><i class="fa fa-exclamation"></i>&nbsp;<span class="label_progress_exclusion"><s:message code='progress_exclusion'/></span></a><div class="nav-arrow"></div></li>
+			    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-check-circle"></i>&nbsp;<span class="label_progress_selection"><s:message code='progress_selection'/></span></a><div class="nav-arrow"></div></li>
+			    <li><div class="nav-wedge"></div><a href="#"><i class="fa fa-download"></i>&nbsp;<span class="label_progress_finish"><s:message code='progress_finish'/></span></a></li>
 			</ul>
 		</div>
 
 		<div class="paragraph">
-			<h2>Exclusion grounds</h2>
+			<h2 class="label_createcaexcl_header"><s:message code="createcaexcl_header"/></h2>
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading">
-				Grounds Relating to Criminal Convictions
+			<div class="espd-panel-heading label_createcaexcl_grounds_criminal_conv">
+				<s:message code="createcaexcl_grounds_criminal_conv"/>
 			</div>
 			<div class="panel-body">
 				...
@@ -31,8 +31,8 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading">
-				Grounds relating to the payment of taxes or social security contributions
+			<div class="espd-panel-heading label_createcaexcl_grounds_payment_taxes">
+				<s:message code="createcaexcl_grounds_payment_taxes"/>
 			</div>
 			<div class="panel-body">
 				...
@@ -40,25 +40,28 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading">
-				Grounds relating to insolvency, conflicts of interests or professional misconduct
+			<div class="espd-panel-heading label_createcaexcl_insolvency_conflicts">
+				<s:message code="createcaexcl_insolvency_conflicts"/>
 			</div>
 			<div class="panel-body">
 				...
 			</div>
 		</div>
 	
-		<div class="col-md-8">&nbsp;</div>
-		<div class="col-md-4">
+		<div class="col-md-7">&nbsp;</div>
+		<div class="col-md-5">
 			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="/espd/createca?lang=en&languageCode=en">
-					<i class="fa fa-arrow-circle-o-left"></i> Previous
+				<a class="btn btn-default btn-lg" href="/espd/createca">
+				<i class="fa fa-arrow-circle-o-left"></i>
+				<span class="label_PREV"><s:message code="PREV"/></span>
 				</a>
 				<a class="btn btn-default btn-lg" href="/espd/welcome">
-					<i class="fa fa-times-circle"></i> Cancel
+				<i class="fa fa-times-circle"></i>
+				<span class="label_CANCEL"><s:message code="CANCEL"/></span>
 				</a>
-				<a class="btn btn-default btn-lg" href="/espd/createcasel?lang=en&languageCode=en">
-					<i class="fa fa-arrow-circle-o-right"></i> Next
+				<a class="btn btn-default btn-lg" href="/espd/createcasel">
+				<i class="fa fa-arrow-circle-o-right"></i>
+				<span class="label_NEXT"><s:message code="NEXT"/></span>
 				</a>
 			</div>
 		</div>    

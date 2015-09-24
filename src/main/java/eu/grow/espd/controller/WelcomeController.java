@@ -76,12 +76,12 @@ public class WelcomeController {
 	public String test() throws JAXBException {
 		
 		InputStream file = this.getClass().getClassLoader().getResourceAsStream("criteria.xml");
-		JAXBContext jaxbContext = JAXBContext.newInstance(CriteriaType.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(grow.names.specification.ubl.schema.xsd.e_certiscriteria_1.CriteriaType.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		CriteriaType criteriaType = (CriteriaType) jaxbUnmarshaller.unmarshal(file);
 
 		System.out.println(criteriaType);
-
+		
 		return null;
 	}
 

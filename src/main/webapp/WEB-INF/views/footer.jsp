@@ -2,13 +2,15 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-     <footer>
-        <div class="row">
-            <div class="col-lg-12">
-              Last Update:  <span class="datefmt"> <fmt:formatDate value="<%= new java.util.Date() %>"/> </span> | Report an Information Security Incident
-             </div>
-        </div>
-     </footer>
+ <footer>
+	<div class="row">
+		<div class="col-lg-12">
+			<span class="label_FOOTER_LAST_UPDATE"><s:message code='FOOTER_LAST_UPDATE'/></span>
+			<span class="datefmt"> <fmt:formatDate value="<%= new java.util.Date() %>"/> </span> | 
+			<span class="label_FOOTER_REPORT_SECURITY_INCIDENT"><s:message code='FOOTER_REPORT_SECURITY_INCIDENT'/></span>
+		</div>
+	</div>
+</footer>
 
 </body>
 </html> 
