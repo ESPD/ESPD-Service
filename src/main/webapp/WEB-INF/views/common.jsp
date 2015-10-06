@@ -78,6 +78,7 @@
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
 		    jQuery.extend(jQuery.validator.messages, defaultValidators);
+		    $('[data-toggle="tooltip"]').tooltip({placement:"right"});
 		});
 
 		var pageLanguageCode = '${pageContext.response.locale}';
@@ -112,7 +113,15 @@
 							if(codes[i].indexOf("validator_") == 0) {
 								validator(validators, codes[i].substring("validator_".length), array[i]);
 							}
-							$(".label_" + codes[i]).html(array[i]);
+
+							if (codes[i].match("^tooltip_")) {
+								$(".label_" + codes[i]).attr("title", array[i])
+								$(".label_" + codes[i]).attr("data-original-title", array[i])
+							}
+							else {
+								$(".label_" + codes[i]).html(array[i]);
+							}	
+								
 						}
 						pageLanguageCode = code;
 						jQuery.extend(jQuery.validator.messages, validators);

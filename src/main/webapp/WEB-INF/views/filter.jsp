@@ -26,29 +26,27 @@
 		</div>
 		
 		<div class="paragraph">
-			<h3 class="label_filter_who_are_you aligned"><s:message code='filter_who_are_you'/></h3>
-			<div id="toolTipProfile1" class="aligned" class="tooltip tooltipinfoa">
-				<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
-			</div>
+		
 			
+			<h3>
+				<span class="label_filter_who_are_you"><s:message code='filter_who_are_you'/></span>
+				<label class="label_tooltip_espd_used_both_ca_eo fa fa-info-circle tooltiper" data-toggle="tooltip" title="<s:message code='tooltip_espd_used_both_ca_eo'/>"/>
+			</h3>
+
 			<div id="which-entity">
 				<div>
 					<div class="radio aligned">
 						<input type="radio" name="whoareyou" id="look1" class="which-entity-radio" value="information">
 						<label for="look1"><span class="label_filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
 					</div>
-					<div id="toolTipProfile8"  class="aligned" class="tooltip tooltipinfoa">
-						<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
-					</div>
+					<label class="label_tooltip_ca_ref_buyer fa fa-info-circle tooltiper" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"/>
 				</div>
 				<div>	
 					<div class="radio aligned">
 						<input type="radio" name="whoareyou" id="look2" class="which-entity-radio" value="help">
 						<label for="look2"><span class="label_filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
 					</div>
-					<div id="toolTipProfile9" class="aligned" class="tooltip tooltipinfoa">
-						<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
-					</div>
+					<label class="label_tooltip_eo_ref_suppl fa fa-info-circle tooltiper" data-toggle="tooltip" title="<s:message code='tooltip_eo_ref_suppl'/>"/>
 				</div>	
 			</div>
 			
@@ -78,17 +76,11 @@
 						</div>
 
 						<div class="aligned">
-							<label for="court1" class="labelTextItem PAGE1_Q3_1">Import ESPD</label>
-						</div>
-						<div id="toolTipProfile6" class="aligned"
-							class="tooltip tooltipinfoa">
-							<span class="should-have-tooltip"><label
-								class="fa fa-info-circle tooltiper"></label></span>
+							<label for="court1" class="labelTextItem label_filter_import_espd"><s:message code='filter_import_espd'/></label>
+							<label class="label_tooltip_filter_eo_can_import_espd fa fa-info-circle tooltiper" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
 						</div>
 
-						<input style="display: none" type="file" name="importESPD"
-							id="importESPD"> <input style="display: none" type="file"
-							name="openExcel" id="openExcel" multiple>
+						<input style="display: none" type="file" name="importESPD" id="importESPD"> <input style="display: none" type="file" name="openExcel" id="openExcel" multiple>
 
 						<div style="display: none" id="importPart1"></div>
 
@@ -104,11 +96,7 @@
 								<s:message code='filter_reuse_espd'/>
 							</label>
 						</div>
-						<div id="toolTipProfile7" class="aligned"
-							class="tooltip tooltipinfoa">
-							<span class="should-have-tooltip"><label
-								class="fa fa-info-circle tooltiper"></label></span>
-						</div>
+						<label class="label_tooltip_eo_can_reuse_espd fa fa-info-circle tooltiper" data-toggle="tooltip" title="<s:message code='tooltip_eo_can_reuse_espd'/>"/>
 
 						<input style="display: none" type="file" name="reuseESPD"
 							id="reuseESPD">
@@ -223,73 +211,11 @@ function restartHomepage() {
 	question.hide();
 }
 
+
+
+
 function initPageHandlers(){
 
-	$('#toolTipProfile1').tooltipster({
-		content: "The ESPD service can be used by both contracting authorities and economic operators. Please select the option which corresponds to your profile in this public procurement procedure.",
-		contentAsHTML: true,
-		animation: 'fade',
-		delay: 200,
-		touchDevices: true,
-		trigger: 'hover',
-		theme: 'tooltipster-shadow',
-		interactive: true,
-		interactiveTolerance: 350,   
-		maxWidth: 600  
-	});
-
-	$('#toolTipProfile6').tooltipster({
-		content: "The economic operator can import the ESPD file, which was pre-filled by the contracting authority for this public procurement procedure and published with the tender notice.",
-		contentAsHTML: true,
-		animation: 'fade',
-		delay: 200,
-		touchDevices: true,
-		trigger: 'hover',
-		theme: 'tooltipster-shadow',
-		interactive: true,
-		interactiveTolerance: 350,   
-		maxWidth: 600  
-	});
-	
-	$('#toolTipProfile7').tooltipster({
-		content: "The economic operator can reuse the information, which was provided via an ESPD in a previous procurement procedure ('old' ESPD). The ESPD service will merge the 'old' ESPD with the new form prepared by the contracting authority for this procurement procedure.",
-		contentAsHTML: true,
-		animation: 'fade',
-		delay: 200,
-		touchDevices: true,
-		trigger: 'hover',
-		theme: 'tooltipster-shadow',
-		interactive: true,
-		interactiveTolerance: 350,   
-		maxWidth: 600  
-	});
-	
-	$('#toolTipProfile8').tooltipster({
-		content: "The term contracting authority refers to the buyer / tenderer.",
-		contentAsHTML: true,
-		animation: 'fade',
-		delay: 200,
-		touchDevices: true,
-		trigger: 'hover',
-		theme: 'tooltipster-shadow',
-		interactive: true,
-		interactiveTolerance: 350,   
-		maxWidth: 600  
-	});
-	
-	$('#toolTipProfile9').tooltipster({
-		content: "The term economic operator refers to the supplier / bidder.",
-		contentAsHTML: true,
-		animation: 'fade',
-		delay: 200,
-		touchDevices: true,
-		trigger: 'hover',
-		theme: 'tooltipster-shadow',
-		interactive: true,
-		interactiveTolerance: 350,   
-		maxWidth: 600  
-	});	
-	
 	whichEntityRadio.click(function() {
 		cancel.show();
 
