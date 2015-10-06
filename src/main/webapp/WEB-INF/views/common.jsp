@@ -36,6 +36,7 @@
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/additional-methods.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/tooltipster/jquery.tooltipster.min.js"></script>
 	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
@@ -43,6 +44,7 @@
 	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/static/css/tooltipster.css" rel="stylesheet">
 
 	<script>
 		<%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>

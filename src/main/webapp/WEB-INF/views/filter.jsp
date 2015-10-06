@@ -26,17 +26,30 @@
 		</div>
 		
 		<div class="paragraph">
-			<h3 class="label_filter_who_are_you"><s:message code='filter_who_are_you'/></h3>
+			<h3 class="label_filter_who_are_you aligned"><s:message code='filter_who_are_you'/></h3>
+			<div id="toolTipProfile1" class="aligned" class="tooltip tooltipinfoa">
+				<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
+			</div>
 			
 			<div id="which-entity">
-				<div class="radio">
-					<input type="radio" name="whoareyou" id="look1" class="which-entity-radio" value="information">
-					<label for="look1"><span class="label_filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
+				<div>
+					<div class="radio aligned">
+						<input type="radio" name="whoareyou" id="look1" class="which-entity-radio" value="information">
+						<label for="look1"><span class="label_filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
+					</div>
+					<div id="toolTipProfile8"  class="aligned" class="tooltip tooltipinfoa">
+						<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
+					</div>
 				</div>
-				<div class="radio">
-					<input type="radio" name="whoareyou" id="look2" class="which-entity-radio" value="help">
-					<label for="look2"><span class="label_filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
-				</div>
+				<div>	
+					<div class="radio aligned">
+						<input type="radio" name="whoareyou" id="look2" class="which-entity-radio" value="help">
+						<label for="look2"><span class="label_filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
+					</div>
+					<div id="toolTipProfile9" class="aligned" class="tooltip tooltipinfoa">
+						<span class="should-have-tooltip"><label class="fa fa-info-circle tooltiper"></label></span>
+					</div>
+				</div>	
 			</div>
 			
 			<h3 id="question" class="label_filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
@@ -212,6 +225,71 @@ function restartHomepage() {
 
 function initPageHandlers(){
 
+	$('#toolTipProfile1').tooltipster({
+		content: "The ESPD service can be used by both contracting authorities and economic operators. Please select the option which corresponds to your profile in this public procurement procedure.",
+		contentAsHTML: true,
+		animation: 'fade',
+		delay: 200,
+		touchDevices: true,
+		trigger: 'hover',
+		theme: 'tooltipster-shadow',
+		interactive: true,
+		interactiveTolerance: 350,   
+		maxWidth: 600  
+	});
+
+	$('#toolTipProfile6').tooltipster({
+		content: "The economic operator can import the ESPD file, which was pre-filled by the contracting authority for this public procurement procedure and published with the tender notice.",
+		contentAsHTML: true,
+		animation: 'fade',
+		delay: 200,
+		touchDevices: true,
+		trigger: 'hover',
+		theme: 'tooltipster-shadow',
+		interactive: true,
+		interactiveTolerance: 350,   
+		maxWidth: 600  
+	});
+	
+	$('#toolTipProfile7').tooltipster({
+		content: "The economic operator can reuse the information, which was provided via an ESPD in a previous procurement procedure ('old' ESPD). The ESPD service will merge the 'old' ESPD with the new form prepared by the contracting authority for this procurement procedure.",
+		contentAsHTML: true,
+		animation: 'fade',
+		delay: 200,
+		touchDevices: true,
+		trigger: 'hover',
+		theme: 'tooltipster-shadow',
+		interactive: true,
+		interactiveTolerance: 350,   
+		maxWidth: 600  
+	});
+	
+	$('#toolTipProfile8').tooltipster({
+		content: "The term contracting authority refers to the buyer / tenderer.",
+		contentAsHTML: true,
+		animation: 'fade',
+		delay: 200,
+		touchDevices: true,
+		trigger: 'hover',
+		theme: 'tooltipster-shadow',
+		interactive: true,
+		interactiveTolerance: 350,   
+		maxWidth: 600  
+	});
+	
+	$('#toolTipProfile9').tooltipster({
+		content: "The term economic operator refers to the supplier / bidder.",
+		contentAsHTML: true,
+		animation: 'fade',
+		delay: 200,
+		touchDevices: true,
+		trigger: 'hover',
+		theme: 'tooltipster-shadow',
+		interactive: true,
+		interactiveTolerance: 350,   
+		maxWidth: 600  
+	});	
+	
 	whichEntityRadio.click(function() {
 		cancel.show();
 

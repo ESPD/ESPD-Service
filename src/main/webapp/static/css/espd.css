@@ -300,3 +300,15 @@ a.splashLangBox {
 .aligned {
 	display: inline-block;
 }
+
+.labelIndent {
+	padding-left: 20px;
+}
+
+.should-have-tooltip {
+	font-size: 1.1em;
+}
+
+.tooltiper:hover{
+	color: #0f0;
+}
