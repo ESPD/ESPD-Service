@@ -88,8 +88,9 @@
 						</div>
 
 						<div class="aligned">
-							<label for="court2" class="labelTextItem PAGE1_Q3_2">Reuse
-								ESPD</label>
+							<label for="court2" class="labelTextItem label_filter_reuse_espd">
+								<s:message code='filter_reuse_espd'/>
+							</label>
 						</div>
 						<div id="toolTipProfile7" class="aligned"
 							class="tooltip tooltipinfoa">
