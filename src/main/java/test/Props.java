@@ -66,7 +66,7 @@ public class Props {
 			BufferedReader br = new BufferedReader(new FileReader(in));
 			{
 			    for(String line; (line = br.readLine()) != null; ) {
-			    	if(StringUtils.hasText(line)) {
+			    	if(StringUtils.hasText(line) && (!line.startsWith("#"))) {
 			    		labels.add(line.split("=", 2)[0]);
 			    		values.add(line.split("=", 2)[1]);
 			    	}
