@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import eu.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.e_certiscriteria_1.CriteriaType;
@@ -44,7 +45,7 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/createca")
 	public String showProcessCAPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
-
+		
 		return "createca";
 	}
 	

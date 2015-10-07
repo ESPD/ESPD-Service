@@ -16,8 +16,8 @@
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}//static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-plugins/select2/css/select2.ajax.min.css"/>
@@ -36,15 +36,13 @@
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/additional-methods.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/tooltipster/jquery.tooltipster.min.js"></script>
 	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
-	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">  
+	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/static/css/tooltipster.css" rel="stylesheet">
 
 	<script>
 		<%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
@@ -78,9 +76,15 @@
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
 		    jQuery.extend(jQuery.validator.messages, defaultValidators);
-		    $('[data-toggle="tooltip"]').tooltip({placement:"right"});
+		    $('[data-toggle="tooltip"]').tooltip({placement:"top", html: true});
+		    $('[data-toggle="tooltip"]').addClass( "fa" ).addClass( "fa-info-circle" );
+		    
+		    $('.radiotab').click(function () {
+		        $(this).tab('show');
+		    });
+		   
 		});
-
+ 
 		var pageLanguageCode = '${pageContext.response.locale}';
 		//var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
 

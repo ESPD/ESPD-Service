@@ -307,8 +307,10 @@ a.splashLangBox {
 
 .should-have-tooltip {
 	font-size: 1.1em;
-}
+} 
 
-.tooltiper:hover{
-	color: #0f0;
-}
+.tooltip > .tooltip-inner {
+	border: 2px solid #000;
+	background: white;
+	color: black;
+  }
