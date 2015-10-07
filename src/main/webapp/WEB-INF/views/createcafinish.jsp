@@ -40,10 +40,10 @@
 				<i class="fa fa-times-circle"></i>
 				<span class="label_CANCEL"><s:message code="CANCEL"/></span>
 				</a>
-				<a class="btn btn-default btn-lg" href="#">
+				<a class="btn btn-default btn-lg" href="/espd/download" target="_blank">
 					<i class="fa fa-download"></i>
 				<span class="label_EXPORT"><s:message code="EXPORT"/></span>
-				</a>
+				</a>								
 			</div>
 		</div>    
 	</div>
