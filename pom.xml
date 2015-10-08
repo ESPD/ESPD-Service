@@ -443,6 +443,14 @@
 			<version>2.1.8</version>
 		</dependency>
 
+					<dependency>
+						<groupId>dgmarkt.ecertis</groupId>
+						<artifactId>ecertisExchangeCoreModel</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+						<scope>system</scope>
+						<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ecertisExchangeModel.jar</systemPath>
+					</dependency>
+			
 	</dependencies>
 
 </project>
