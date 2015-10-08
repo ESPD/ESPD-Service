@@ -36,6 +36,10 @@
 	</organization>
 
 	<repositories>
+	    <repository>
+	        <id>project-repo</id>
+	        <url>file://${project.basedir}/lib/</url>
+	    </repository>
 		<repository>
 			 <id>Libs-releases</id>
 	  		<url>http://jenkins.entr.cec.eu.int:9081/artifactory/libs-release</url>
@@ -44,6 +48,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -433,8 +438,6 @@
 			<groupId>dgmarkt.ecertis</groupId>
 			<artifactId>ecertisExchangeCoreModel</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/ecertisExchangeCoreModel-0.0.1-SNAPSHOT.jar</systemPath>
 		</dependency>
 		 
 	<dependency>

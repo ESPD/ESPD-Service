@@ -36,7 +36,7 @@ CREATE TABLE ESPDMETA
 meta_id NUMBER(10),
 identifier VARCHAR(100 CHAR),
 title_code VARCHAR(100 CHAR),
-tooltiop_code VARCHAR(100 CHAR),
+tooltip_code VARCHAR(100 CHAR),
 date_modified DATE,
 date_added DATE
 );
