@@ -19,6 +19,10 @@ import eu.grow.espd.domain.EspdDocument;
 @Controller
 @SessionAttributes("espd")
 public class DownloadController {
+/*
+	fails in jenkins
+	see comment https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-16
+
 
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public String download(@ModelAttribute("espd") EspdDocument espd,
@@ -41,4 +45,5 @@ public class DownloadController {
 
 		return null;
 	}
+	*/
 }
