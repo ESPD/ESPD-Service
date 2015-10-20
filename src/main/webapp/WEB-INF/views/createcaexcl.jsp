@@ -28,7 +28,7 @@
 			<div class="espd-panel-heading label_createcaexcl_grounds_criminal_conv">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
-			<div class="panel-body">
+			<div class="espd-panel-body panel-body">
 			
 					<span class="label_crit_eu_main_title_grounds_criminal_conv">
 						<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
@@ -95,12 +95,11 @@
 			<div class="espd-panel-heading label_createcaexcl_grounds_payment_taxes">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
-			<div class="panel-body">
+			<div class="espd-panel-body panel-body">
 			
-			<span class="label_crit_eu_main_title_payment_taxes">
-				<s:message code='crit_eu_main_title_payment_taxes'/>
-			</span>
-			
+				<span class="label_crit_eu_main_title_payment_taxes">
+					<s:message code='crit_eu_main_title_payment_taxes'/>
+				</span>
 			
 				<div class="checkbox">	
 					<label>
@@ -125,7 +124,7 @@
 			<div class="espd-panel-heading label_createcaexcl_insolvency_conflicts">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
-			<div class="panel-body">
+			<div class="espd-panel-body panel-body">
 
 				<span class="label_crit_eu_main_breaching_obligations">
 					<s:message code='crit_eu_main_breaching_obligations'/>
