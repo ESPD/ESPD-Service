@@ -1,27 +1,16 @@
 package eu.grow.espd.controller;
 
-import java.io.InputStream;
-import java.lang.reflect.Method;
-
-
-
-
-
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
 import eu.grow.espd.domain.EspdDocument;
-import grow.names.specification.ubl.schema.xsd.e_certiscriteria_1.CriteriaType;
 
 @Controller
 @SessionAttributes("espd")
