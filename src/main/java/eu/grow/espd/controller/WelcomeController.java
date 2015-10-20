@@ -1,8 +1,14 @@
 package eu.grow.espd.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,11 +54,22 @@ public class WelcomeController {
 
 		return "redirect:/createcaexcl";
 	}
-	
+
 	@RequestMapping("/createcaexcl")
 	public String showProcessCAExcludePage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
 
 		return "createcaexcl";
+	}
+	
+	@RequestMapping(value="/createcaexcl", method=RequestMethod.POST, params="prev")
+	public String postPrevProcessCAExcludePage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "redirect:/createca";
+	}
+	@RequestMapping(value="/createcaexcl", method=RequestMethod.POST, params="next")
+	public String postNextProcessCAExcludePage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
+
+		return "redirect:/createcasel";
 	}
 	
 	@RequestMapping("/createcasel")
@@ -65,6 +82,27 @@ public class WelcomeController {
 	public String showProcessCAFinishPage(@ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) {
 
 		return "createcafinish";
+	}
+	
+	@RequestMapping(value="/createcafinish", method=RequestMethod.POST)
+	public String postProcessCAFinishPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd, Map<String, Object> model) throws JAXBException, IOException {
+
+		JAXBContext jaxbContext = JAXBContext.newInstance(EspdDocument.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		
+		response.setHeader("Content-Disposition",
+				"attachment;filename=espd.xml");
+		response.setContentType("application/octet-stream");
+
+		ServletOutputStream out = response.getOutputStream();
+
+		jaxbMarshaller.marshal(espd, out);
+		
+		out.flush();
+		out.close();
+
+		return null;
 	}
 	
 	@RequestMapping("/test")

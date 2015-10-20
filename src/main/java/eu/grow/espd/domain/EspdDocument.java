@@ -1,47 +1,54 @@
 package eu.grow.espd.domain;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import lombok.Data;
 
 @Data
+@XmlRootElement(name="xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EspdDocument {
 
-	private String languageCode;
-	private String name;
-	private String natRegNumber;
-	private String streetAndNumber;
-	private String postcode;
-	private String city;
-	private String country;
-	private String contactPerson;
-	private String email;
-	private String telephone;
-	private String website;
+	 @XmlElement private String languageCode;
+	 @XmlElement private String name;
+	 @XmlElement  private String natRegNumber;
+	 @XmlElement private String streetAndNumber;
+	 @XmlElement private String postcode;
+	 @XmlElement private String city;
+	 @XmlElement private String country;
+	 @XmlElement private String contactPerson;
+	 @XmlElement private String email;
+	 @XmlElement private String telephone;
+	 @XmlElement private String website;
 
-	private String procedureDesc;
-	private String lotConcerned;
-	private String fileRefByCA;
-	private String websiteProcDocs;
+	 @XmlElement private String procedureDesc;
+	 @XmlElement private String lotConcerned;
+	 @XmlElement private String fileRefByCA;
+	 @XmlElement private String websiteProcDocs;
 	
 	//Exclusions
 	
-	private Boolean criminal_convictions;
-	private Boolean corruption;
-	private Boolean fraud;
-	private Boolean terrorist_offences;
-	private Boolean money_laundering;
-	private Boolean child_labour;
+	 @XmlElement private Boolean criminalConvictions;
+	 @XmlElement private Boolean corruption;
+	 @XmlElement private Boolean fraud;
+	 @XmlElement private Boolean terroristOffences;
+	 @XmlElement private Boolean moneyLaundering;
+	 @XmlElement private Boolean childLabour;
 	
-	private Boolean payment_taxes;
-	private Boolean payment_socsec;
+	 @XmlElement private Boolean paymentTaxes;
+	 @XmlElement private Boolean paymentSocsec;
 	
-	private Boolean breaching_obligations;
-	private Boolean bankrupt_subject;
-	private Boolean guilty_grave;
-	private Boolean agreements_eo;
-	private Boolean conflict_interest;
-	private Boolean involvement_preparation;
-	private Boolean early_termination;
-	private Boolean guilty_misinterpretation;
+	 @XmlElement private Boolean breachingObligations;
+	 @XmlElement private Boolean bankruptSubject;
+	 @XmlElement private Boolean guiltyGrave;
+	 @XmlElement private Boolean agreementsEo;
+	 @XmlElement private Boolean conflictInterest;
+	 @XmlElement private Boolean involvementPreparation;
+	 @XmlElement private Boolean earlyTermination;
+	 @XmlElement private Boolean guiltyMisinterpretation;
 	
 	
 	

@@ -31,7 +31,7 @@
 			<div class="panel-body">
 					<div class="checkbox">
 						<label>
-							<form:checkbox path="criminal_convictions"/>
+							<form:checkbox path="criminalConvictions"/>
 							<span class="label_crit_eu_title_grounds_criminal_conv">
 								<s:message code='crit_eu_title_grounds_criminal_conv'/>
 							</span>
@@ -55,7 +55,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="terrorist_offences"/>
+							<form:checkbox path="terroristOffences"/>
 							<span class="label_crit_eu_title_terrorist">
 								<s:message code='crit_eu_title_terrorist'/>
 							</span>
@@ -63,7 +63,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="money_laundering"/>
+							<form:checkbox path="moneyLaundering"/>
 							<span class="label_crit_eu_title_money_laundering">
 								<s:message code='crit_eu_title_money_laundering'/>
 							</span>
@@ -71,7 +71,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="money_laundering"/>
+							<form:checkbox path="moneyLaundering"/>
 							<span class="label_crit_eu_title_child_labour">
 								<s:message code='crit_eu_title_child_labour'/>
 							</span>
@@ -87,7 +87,7 @@
 			<div class="panel-body">
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="payment_taxes"/>
+						<form:checkbox path="paymentTaxes"/>
 						<span class="label_crit_eu_title_payment_taxes">
 							<s:message code='crit_eu_title_payment_taxes'/>
 						</span>
@@ -95,7 +95,7 @@
 				</div>			
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="payment_socsec"/>
+						<form:checkbox path="paymentSocsec"/>
 						<span class="label_crit_eu_title_payment_social_security">
 							<s:message code='crit_eu_title_payment_social_security'/>
 						</span>
@@ -112,7 +112,7 @@
 
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="breaching_obligations"/>
+						<form:checkbox path="breachingObligations"/>
 						<span class="label_crit_eu_title_breaching_obligations">
 							<s:message code='crit_eu_title_breaching_obligations'/>
 						</span>
@@ -120,7 +120,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="bankrupt_subject"/>
+						<form:checkbox path="bankruptSubject"/>
 						<span class="label_crit_eu_title_bankrupt">
 							<s:message code='crit_eu_title_bankrupt'/>
 						</span>
@@ -128,7 +128,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="guilty_grave"/>
+						<form:checkbox path="guiltyGrave"/>
 						<span class="label_crit_eu_title_guilty_misconduct">
 							<s:message code='crit_eu_title_guilty_misconduct'/>
 						</span>
@@ -136,7 +136,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="agreements_eo"/>
+						<form:checkbox path="agreementsEo"/>
 						<span class="label_crit_eu_title_agreement_economic">
 							<s:message code='crit_eu_title_agreement_economic'/>
 						</span>
@@ -144,7 +144,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="conflict_interest"/>
+						<form:checkbox path="conflictInterest"/>
 						<span class="label_crit_eu_title_conflict_interest">
 							<s:message code='crit_eu_title_conflict_interest'/>
 						</span>
@@ -152,7 +152,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="involvement_preparation"/>
+						<form:checkbox path="involvementPreparation"/>
 						<span class="label_crit_eu_title_involvment">
 							<s:message code='crit_eu_title_involvment'/>
 						</span>
@@ -160,7 +160,7 @@
 				</div>
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="early_termination"/>
+						<form:checkbox path="earlyTermination"/>
 						<span class="label_crit_eu_title_early_termination">
 							<s:message code='crit_eu_title_early_termination'/>
 						</span>
@@ -168,7 +168,7 @@
 				</div>
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="guilty_misinterpretation"/>
+						<form:checkbox path="guiltyMisinterpretation"/>
 						<span class="label_crit_eu_title_guilty_misinterpretation">
 							<s:message code='crit_eu_title_guilty_misinterpretation'/>
 						</span>
@@ -181,18 +181,19 @@
 		<div class="col-md-7">&nbsp;</div>
 		<div class="col-md-5">
 			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="/espd/createca">
-				<i class="fa fa-arrow-circle-o-left"></i>
-				<span class="label_PREV"><s:message code="PREV"/></span>
-				</a>
+				<button type="submit" name="prev" class="btn btn-default btn-lg">
+					<i class="fa fa-arrow-circle-o-right"></i>
+					<span class="label_PREV"><s:message code="PREV"/></span>
+				</button>
 				<a class="btn btn-default btn-lg" href="/espd/welcome">
 				<i class="fa fa-times-circle"></i>
 				<span class="label_CANCEL"><s:message code="CANCEL"/></span>
 				</a>
-				<a class="btn btn-default btn-lg" href="/espd/createcasel">
-				<i class="fa fa-arrow-circle-o-right"></i>
-				<span class="label_NEXT"><s:message code="NEXT"/></span>
-				</a>
+
+				<button type="submit" name="next" class="btn btn-default btn-lg">
+					<i class="fa fa-arrow-circle-o-right"></i>
+					<span class="label_NEXT"><s:message code="NEXT"/></span>
+				</button>
 			</div>
 		</div>    
 	</div>

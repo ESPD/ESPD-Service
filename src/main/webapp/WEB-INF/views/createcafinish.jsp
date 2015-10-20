@@ -2,8 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="container espd-container">
+
+	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+	
 	<div class="panel-default">
 	
 		<div class="panel panel-default no-border">	
@@ -40,11 +44,12 @@
 				<i class="fa fa-times-circle"></i>
 				<span class="label_CANCEL"><s:message code="CANCEL"/></span>
 				</a>
-				<a class="btn btn-default btn-lg" href="/espd/download" target="_blank">
+				<button type="submit" name="next" class="btn btn-default btn-lg">
 					<i class="fa fa-download"></i>
-				<span class="label_EXPORT"><s:message code="EXPORT"/></span>
-				</a>								
+					<span class="label_EXPORT"><s:message code="EXPORT"/></span>
+				</button>							
 			</div>
 		</div>    
 	</div>
+	</form:form>
 </div>
