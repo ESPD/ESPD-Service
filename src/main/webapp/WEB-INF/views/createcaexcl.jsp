@@ -2,9 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="container espd-container">
 
+	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+	
 	<div class="panel-default">
 	
 		<div class="panel panel-default no-border">	
@@ -26,56 +29,54 @@
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
 			<div class="panel-body">
-				<div>
-					<div class="text-element">
-						<div class="aligned">
-							<input id="PT3_A_1_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_1_C" checked="checked" disabled="disabled">
+					<div class="checkbox">
+						<label>
+							<form:checkbox path="criminal_convictions"/>
 							<span class="label_crit_eu_title_grounds_criminal_conv">
 								<s:message code='crit_eu_title_grounds_criminal_conv'/>
 							</span>
-						</div>
+						</label>
 					</div>
-					<div class="text-element">	
-						<div class="aligned">
-							<input id="PT3_A_2_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_2_C" checked="checked" disabled="disabled">
+					<div class="checkbox">
+						<label>
+							<form:checkbox path="corruption"/>
 							<span class="label_crit_eu_title_corruption">
 								<s:message code='crit_eu_title_corruption'/>
 							</span>
-						</div>
+						</label>
 					</div>
-					<div class="text-element">	
-						<div class="aligned">
-							<input id="PT3_A_3_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_3_C" checked="checked" disabled="disabled">
+					<div class="checkbox">	
+						<label>
+							<form:checkbox path="fraud"/>
 							<span class="label_crit_eu_title_fraud">
 								<s:message code='crit_eu_title_fraud'/>
 							</span>
-						</div>
+						</label>
 					</div>
-					<div class="text-element">	
-						<div class="aligned">
-							<input id="PT3_A_4_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_4_C" checked="checked" disabled="disabled">
+					<div class="checkbox">	
+						<label>
+							<form:checkbox path="terrorist_offences"/>
 							<span class="label_crit_eu_title_terrorist">
 								<s:message code='crit_eu_title_terrorist'/>
 							</span>
-						</div>
+						</label>
 					</div>
-					<div class="text-element">	
-						<div class="aligned">
-							<input id="PT3_A_5_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_5_C" checked="checked" disabled="disabled">
+					<div class="checkbox">	
+						<label>
+							<form:checkbox path="money_laundering"/>
 							<span class="label_crit_eu_title_money_laundering">
 								<s:message code='crit_eu_title_money_laundering'/>
 							</span>
-						</div>
+						</label>
 					</div>
-					<div class="text-element">
-						<div class="aligned">
-							<input id="PT3_A_6_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_A_6_C" checked="checked" disabled="disabled">
+					<div class="checkbox">	
+						<label>
+							<form:checkbox path="money_laundering"/>
 							<span class="label_crit_eu_title_child_labour">
 								<s:message code='crit_eu_title_child_labour'/>
 							</span>
-						</div>
-					</div>						
-				</div>
+						</label>
+					</div>			
 			</div>
 		</div>
 	
@@ -84,21 +85,21 @@
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
 			<div class="panel-body">
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_B_1_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_B_1_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_payment_taxes">
-								<s:message code='crit_eu_title_payment_taxes'/>
-							</span>
-					</div>		
-				</div>
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_B_2_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_B_2_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_payment_social_security">
-								<s:message code='crit_eu_title_payment_social_security'/>
-							</span>
-					</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="payment_taxes"/>
+						<span class="label_crit_eu_title_payment_taxes">
+							<s:message code='crit_eu_title_payment_taxes'/>
+						</span>
+					</label>
+				</div>			
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="payment_socsec"/>
+						<span class="label_crit_eu_title_payment_social_security">
+							<s:message code='crit_eu_title_payment_social_security'/>
+						</span>
+					</label>
 				</div>
 			</div>
 		</div>
@@ -108,76 +109,70 @@
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
 			<div class="panel-body">
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_1_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_1_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_breaching_obligations">
-								<s:message code='crit_eu_title_breaching_obligations'/>
-							</span>
-					</div>		
+
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="breaching_obligations"/>
+						<span class="label_crit_eu_title_breaching_obligations">
+							<s:message code='crit_eu_title_breaching_obligations'/>
+						</span>
+					</label>
+				</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="bankrupt_subject"/>
+						<span class="label_crit_eu_title_bankrupt">
+							<s:message code='crit_eu_title_bankrupt'/>
+						</span>
+					</label>
+				</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="guilty_grave"/>
+						<span class="label_crit_eu_title_guilty_misconduct">
+							<s:message code='crit_eu_title_guilty_misconduct'/>
+						</span>
+					</label>
+				</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="agreements_eo"/>
+						<span class="label_crit_eu_title_agreement_economic">
+							<s:message code='crit_eu_title_agreement_economic'/>
+						</span>
+					</label>
+				</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="conflict_interest"/>
+						<span class="label_crit_eu_title_conflict_interest">
+							<s:message code='crit_eu_title_conflict_interest'/>
+						</span>
+					</label>
+				</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="involvement_preparation"/>
+						<span class="label_crit_eu_title_involvment">
+							<s:message code='crit_eu_title_involvment'/>
+						</span>
+					</label>
 				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_2_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_2_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_bankrupt">
-								<s:message code='crit_eu_title_bankrupt'/>
-							</span>
-					</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="early_termination"/>
+						<span class="label_crit_eu_title_early_termination">
+							<s:message code='crit_eu_title_early_termination'/>
+						</span>
+					</label>
 				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_3_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_3_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_guilty_misconduct">
-								<s:message code='crit_eu_title_guilty_misconduct'/>
-							</span>
-					</div>		
-				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_4_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_4_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_agreement_economic">
-								<s:message code='crit_eu_title_agreement_economic'/>
-							</span>
-					</div>		
-				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_5_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_5_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_conflict_interest">
-								<s:message code='crit_eu_title_conflict_interest'/>
-							</span>
-					</div>		
-				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_6_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_6_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_involvment">
-								<s:message code='crit_eu_title_involvment'/>
-							</span>
-					</div>		
-				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_7_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_7_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_early_termination">
-								<s:message code='crit_eu_title_early_termination'/>
-							</span>
-					</div>		
-				</div>
-				
-				<div class="text-element">
-					<div class="aligned">
-						<input id="PT3_C_8_C" class="ce-ec-radio checkboxer k-state-disabled" type="checkbox" name="PT3_C_8_C" checked="checked" disabled="disabled">
-							<span class="label_crit_eu_title_guilty_misinterpretation">
-								<s:message code='crit_eu_title_guilty_misinterpretation'/>
-							</span>
-					</div>		
+				<div class="checkbox">	
+					<label>
+						<form:checkbox path="guilty_misinterpretation"/>
+						<span class="label_crit_eu_title_guilty_misinterpretation">
+							<s:message code='crit_eu_title_guilty_misinterpretation'/>
+						</span>
+					</label>
 				</div>
 				
 			</div>
@@ -201,4 +196,7 @@
 			</div>
 		</div>    
 	</div>
+	
+	</form:form>
+	
 </div>
