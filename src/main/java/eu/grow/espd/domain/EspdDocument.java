@@ -14,7 +14,7 @@ public class EspdDocument {
 
 	 @XmlElement private String languageCode;
 	 @XmlElement private String name;
-	 @XmlElement  private String natRegNumber;
+	 @XmlElement private String natRegNumber;
 	 @XmlElement private String streetAndNumber;
 	 @XmlElement private String postcode;
 	 @XmlElement private String city;
