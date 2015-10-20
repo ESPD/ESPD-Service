@@ -29,6 +29,11 @@
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
 			<div class="panel-body">
+			
+					<span class="label_crit_eu_main_title_grounds_criminal_conv">
+						<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
+					</span>
+			
 					<div class="checkbox">
 						<label>
 							<form:checkbox path="criminalConvictions"/>
@@ -85,6 +90,12 @@
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
 			<div class="panel-body">
+			
+			<span class="label_crit_eu_main_title_payment_taxes">
+				<s:message code='crit_eu_main_title_payment_taxes'/>
+			</span>
+			
+			
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="paymentTaxes"/>
@@ -109,6 +120,10 @@
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
 			<div class="panel-body">
+
+				<span class="label_crit_eu_main_breaching_obligations">
+					<s:message code='crit_eu_main_breaching_obligations'/>
+				</span>
 
 				<div class="checkbox">	
 					<label>

@@ -91,8 +91,7 @@ public class WelcomeController {
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		
-		response.setHeader("Content-Disposition",
-				"attachment;filename=espd.xml");
+		response.setHeader("Content-Disposition", "attachment;filename=espd.xml");
 		response.setContentType("application/octet-stream");
 
 		ServletOutputStream out = response.getOutputStream();
