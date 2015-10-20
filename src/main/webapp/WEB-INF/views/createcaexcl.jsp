@@ -41,6 +41,7 @@
 								<s:message code='crit_eu_title_grounds_criminal_conv'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_grounds_criminal_conv'/>"></span>
 					</div>
 					<div class="checkbox">
 						<label>
@@ -49,6 +50,7 @@
 								<s:message code='crit_eu_title_corruption'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_corruption" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_corruption'/>"></span>
 					</div>
 					<div class="checkbox">	
 						<label>
@@ -57,6 +59,7 @@
 								<s:message code='crit_eu_title_fraud'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_fraud" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_fraud'/>"></span>
 					</div>
 					<div class="checkbox">	
 						<label>
@@ -65,6 +68,7 @@
 								<s:message code='crit_eu_title_terrorist'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_terrorist" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_terrorist'/>"></span>
 					</div>
 					<div class="checkbox">	
 						<label>
@@ -73,6 +77,7 @@
 								<s:message code='crit_eu_title_money_laundering'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_money_laundering" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_money_laundering'/>"></span>
 					</div>
 					<div class="checkbox">	
 						<label>
@@ -81,6 +86,7 @@
 								<s:message code='crit_eu_title_child_labour'/>
 							</span>
 						</label>
+						<span class="label_crit_eu_tooltip_child_labour" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_child_labour'/>"></span>
 					</div>			
 			</div>
 		</div>
@@ -132,6 +138,7 @@
 							<s:message code='crit_eu_title_breaching_obligations'/>
 						</span>
 					</label>
+					<span class="label_crit_eu_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_breaching_obligations'/>"></span>
 				</div>		
 				<div class="checkbox">	
 					<label>
