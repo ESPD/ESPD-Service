@@ -5,9 +5,9 @@
 
 <div id="breadbar">
 	<ul class="breadcrumbs">
-		<li><a href="#" class="breadcrumElement label_EUROPA"><s:message code="EUROPA"/></a></li>
-		<li><a href="#" class="breadcrumElement label_EC"><s:message code="EC"/></a></li>
-		<li><a href="#" class="breadcrumElement label_GROW"><s:message code="GROW"/></a></li>
-		<li><a href="#" class="breadcrumElement label_ESPD"><s:message code="ESPD"/></a></li>
+		<li><a href="#" data-i18n="EUROPA" class="breadcrumElement"><s:message code="EUROPA"/></a></li>
+		<li><a href="#" data-i18n="EC" class="breadcrumElement"><s:message code="EC"/></a></li>
+		<li><a href="#" data-i18n="GROW" class="breadcrumElement"><s:message code="GROW"/></a></li>
+		<li><a href="#" data-i18n="ESPD" class="breadcrumElement"><s:message code="ESPD"/></a></li>
 	</ul>
 </div>

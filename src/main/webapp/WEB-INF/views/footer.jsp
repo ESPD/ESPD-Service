@@ -5,9 +5,9 @@
  <footer>
 	<div class="row">
 		<div class="col-lg-12">
-			<span class="label_FOOTER_LAST_UPDATE"><s:message code='FOOTER_LAST_UPDATE'/></span>
+			<span data-i18n="FOOTER_LAST_UPDATE"><s:message code='FOOTER_LAST_UPDATE'/></span>
 			<span class="datefmt"> <fmt:formatDate value="<%= new java.util.Date() %>"/> </span> | 
-			<span class="label_FOOTER_REPORT_SECURITY_INCIDENT"><s:message code='FOOTER_REPORT_SECURITY_INCIDENT'/></span>
+			<span data-i18n="FOOTER_REPORT_SECURITY_INCIDENT"><s:message code='FOOTER_REPORT_SECURITY_INCIDENT'/></span>
 		</div>
 	</div>
 </footer>

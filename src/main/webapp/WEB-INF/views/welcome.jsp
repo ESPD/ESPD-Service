@@ -6,10 +6,10 @@
 <div class="container espd-container">
 
 	<div class="panel-default">
-		<h2 class="label_WELCOME_DISCLAMER_TITLE"><s:message code="WELCOME_DISCLAMER_TITLE"/></h2>
-		<div class="label_WELCOME_DISCLAMER_CONTENT"><s:message code="WELCOME_DISCLAMER_CONTENT"/></div>
-		<h2 class="label_WELCOME_USECASES_TITLE"><s:message code="WELCOME_USECASES_TITLE"/></h2>
-		<div class="label_WELCOME_USECASES_CONTENT"><s:message code="WELCOME_USECASES_CONTENT"/></div>
+		<h2 data-i18n="WELCOME_DISCLAMER_TITLE"><s:message code="WELCOME_DISCLAMER_TITLE"/></h2>
+		<div data-i18n="WELCOME_DISCLAMER_CONTENT"><s:message code="WELCOME_DISCLAMER_CONTENT"/></div>
+		<h2 data-i18n="WELCOME_USECASES_TITLE"><s:message code="WELCOME_USECASES_TITLE"/></h2>
+		<div data-i18n="WELCOME_USECASES_CONTENT"><s:message code="WELCOME_USECASES_CONTENT"/></div>
 	</div>
 	
 	<div class="col-md-9">&nbsp;</div>
@@ -17,7 +17,7 @@
 		<div class="btn-group">
 			<a href="/espd/splash" class="btn btn-default btn-lg">
 				<i class="fa fa-arrow-circle-o-right"></i>
-				<span class="label_NEXT"><s:message code="NEXT"/></span>
+				<span data-i18n="NEXT"><s:message code="NEXT"/></span>
 			</a>
 		</div>
 	</div>

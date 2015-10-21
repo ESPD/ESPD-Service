@@ -51,7 +51,7 @@
 		    return c;
 		})();
 		
-		function validator(validators,name,text) {validators[name] = jQuery.validator.format("<span class=\"label_validator_"+name+"\">"+text+"</span>");}
+		function validator(validators,name,text) {validators[name] = jQuery.validator.format("<span data-i18n=\"validator_"+name+"\">"+text+"</span>");}
 		
 		var defaultValidators={};
 		validator(defaultValidators, "required", "<s:message code='validator_required'/>")
@@ -91,8 +91,9 @@
 		function language(code) {
 			var flags = [];
 			var codes = [];
-			$("[class*='label_']").each(function( index ) {
-				var className = $(this).attr("class").match(/label[\w_]*\b/)[0].slice(6);
+
+			$( "*[data-i18n]" ).each(function( index ) {
+				var className = $(this).attr("data-i18n");
 				if(flags[className] != true) {
 					flags[className] = true;
 					codes.push(className)
@@ -117,14 +118,14 @@
 							if(codes[i].indexOf("validator_") == 0) {
 								validator(validators, codes[i].substring("validator_".length), array[i]);
 							}
-
-							if (codes[i].match("^tooltip_")) {
-								$(".label_" + codes[i]).attr("title", array[i])
-								$(".label_" + codes[i]).attr("data-original-title", array[i])
+							var elem = $( "*[data-i18n='"+codes[i]+"']" );
+							if (elem.attr("data-toggle") == "tooltip") {
+								elem.attr("title", array[i])
+								elem.attr("data-original-title", array[i])
 							}
 							else {
-								$(".label_" + codes[i]).html(array[i]);
-							}	
+								elem.html(array[i]);
+							}
 								
 						}
 						pageLanguageCode = code;
