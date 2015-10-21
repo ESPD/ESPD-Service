@@ -76,8 +76,7 @@
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
 		    jQuery.extend(jQuery.validator.messages, defaultValidators);
-		    $('[data-toggle="tooltip"]').tooltip({placement:"top", html: true, trigger: "hover"});
-		    $('[data-toggle="tooltip"]').addClass( "fa" ).addClass( "fa-info-circle" );
+		    $('[data-toggle="tooltip"]').tooltip({placement:"top", html: true, trigger: "hover"}).addClass( "fa" ).addClass( "fa-info-circle" );
 		    
 		    $('.radiotab').click(function () {
 		        $(this).tab('show');
