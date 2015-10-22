@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>grow.espd</groupId>
+    <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>war</packaging>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>ESPD web application</name>
     <url>http://.../espd</url>
     <parent>
@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.7</java.version>
         <main.basedir>${basedir}/../..</main.basedir>
-        <start-class>eu.grow.espd.config.EspdApplication</start-class>
+        <start-class>eu.europa.ec.grow.espd.config.EspdApplication</start-class>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <espd.build.timestamp>${maven.build.timestamp}</espd.build.timestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -205,15 +205,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>environments/${environment}</directory>
-                        </resource>
-                        <resource>
-                            <directory>${basedir}/environments/${environment}/</directory>
-                            <filtering>false</filtering>
-                        </resource>
-                    </webResources>
                     <warName>${project.artifactId}</warName>
                     <webappDirectory>${basedir}/out/${project.build.finalName}_exploded_${project.packaging}
                     </webappDirectory>
@@ -248,7 +239,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -269,7 +260,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
