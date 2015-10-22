@@ -209,6 +209,11 @@
                     <warName>${project.artifactId}</warName>
                     <webappDirectory>${basedir}/out/${project.build.finalName}_exploded_${project.packaging}
                     </webappDirectory>
+                    <archive>
+                        <manifestEntries>
+                            <Weblogic-Application-Version>${project.version}</Weblogic-Application-Version>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
@@ -271,51 +276,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <profiles>
-        <profile>
-            <id>m2e</id>
-            <activation>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <properties>
-                <maven.build.timestamp>local time</maven.build.timestamp>
-            </properties>
-        </profile>
-        <profile>
-            <id>dev-digit</id>
-            <properties>
-                <environment>dev-digit</environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>test-digit</id>
-            <properties>
-                <environment>test-digit</environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod-digit</id>
-            <properties>
-                <environment>prod-digit</environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>acc-digit</id>
-            <properties>
-                <environment>prod-digit</environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>dev-local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <environment>dev-local</environment>
-            </properties>
-        </profile>
-    </profiles>
 </project>
