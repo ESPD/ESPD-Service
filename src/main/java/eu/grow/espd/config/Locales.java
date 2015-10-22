@@ -1,5 +1,13 @@
 package eu.grow.espd.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,19 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.stereotype.Component;
-
+@Slf4j
 @Component("locales")
 public class Locales {
-	
-	private static final Logger LOG = Logger.getLogger(Locales.class);
 	
 	private Languages languages;
 	
@@ -31,7 +29,7 @@ public class Locales {
 
 		String langsQuery = "select language_id id, language_code code, language_name name from LANGUAGE";
 
-		LOG.info("Initializing locales with query " + langsQuery);
+		log.info("Initializing locales with query '{}'.", langsQuery);
 
 		this.languages = jdbcTemplate.query(langsQuery,
 				new ResultSetExtractor<Languages>() {
@@ -57,10 +55,10 @@ public class Locales {
 		
 		public Languages() {}
 
-		private Map<String, String> nameByCode = new HashMap<String, String>();
+		private Map<String, String> nameByCode = new HashMap<>();
 
-		private List<String> langNames = new ArrayList<String>();
-		private List<String> langCodes = new ArrayList<String>();
+		private List<String> langNames = new ArrayList<>();
+		private List<String> langCodes = new ArrayList<>();
 
 		public void addLocale(Integer id, String code, String name) {
 			if(!nameByCode.containsKey(code)) {

@@ -1,454 +1,329 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>grow.espd</groupId>
-	<artifactId>espd</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ESPD web application</name>
-	<url>http://.../espd</url>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>grow.espd</groupId>
+    <artifactId>espd</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.2-SNAPSHOT</version>
+    <name>ESPD web application</name>
+    <url>http://.../espd</url>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.2.7.RELEASE</version>
+    </parent>
 
-	<properties>
-		<maven.test.skip>false</maven.test.skip>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>4.10</junit.version>
-		<maven.build.timestamp.format>EEEE, MMMM dd yyyy 'at' HH:mm</maven.build.timestamp.format>
-		<buildTimestamp>${maven.build.timestamp}</buildTimestamp>
-		<environment>dev-local</environment>
-		<spring.version>4.2.0.RELEASE</spring.version>
-		<lombok.version>1.12.2</lombok.version>
-	</properties>
+    <properties>
+        <java.version>1.7</java.version>
+        <main.basedir>${basedir}/../..</main.basedir>
+        <start-class>eu.grow.espd.config.EspdApplication</start-class>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <espd.build.timestamp>${maven.build.timestamp}</espd.build.timestamp>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>EEEE, MMMM dd yyyy 'at' HH:mm</maven.build.timestamp.format>
+        <buildTimestamp>${maven.build.timestamp}</buildTimestamp>
+        <environment>dev-local</environment>
+        <lombok.version>1.16.6</lombok.version>
+        <tiles.version>3.0.4</tiles.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+    </properties>
 
-	<scm>
-		<connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp</connection>
-		<developerConnection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp</developerConnection>
-	</scm>
+    <scm>
+        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp
+        </connection>
+        <developerConnection>
+            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp
+        </developerConnection>
+    </scm>
 
-	<ciManagement>
-		<system>Continnuum</system>
-		<url>http://jenkins.entr.cec.eu.int:8080/</url>
-	</ciManagement>
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>http://jenkins.entr.cec.eu.int:8080/</url>
+    </ciManagement>
 
-	<organization>
-		<name>DG GROW</name>
-		<url>http://ec.europa.eu/dgs/internal_market/index_en.htm</url>
-	</organization>
+    <organization>
+        <name>DG GROW</name>
+        <url>http://ec.europa.eu/dgs/internal_market/index_en.htm</url>
+    </organization>
 
-	<repositories>
-		<repository>
-			 <id>Libs-ext-releases</id>
-	  		<url>http://jenkins.entr.cec.eu.int:9081/artifactory/ext-release-local/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			 <id>Libs-releases</id>
-	  		<url>http://jenkins.entr.cec.eu.int:9081/artifactory/libs-release</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	
+    <repositories>
+        <repository>
+            <id>Libs-ext-releases</id>
+            <url>http://jenkins.entr.cec.eu.int:9081/artifactory/ext-release-local/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>Libs-releases</id>
+            <url>http://jenkins.entr.cec.eu.int:9081/artifactory/libs-release</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<releases>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>Maven Plugin Repository</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</pluginRepository>
-	</pluginRepositories>
-	
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.16</version>
-			</dependency>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-				<scope>provided</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Maven Plugin Repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>${tiles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.1.8</version>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <!-- Use the following to develop on your local machine or on the CI server -->
+        <finalName>${project.artifactId}</finalName>
 
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-banned-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <exclude>javassist:javassist</exclude>
+                                        <exclude>commons-logging</exclude>
+                                        <exclude>aspectj:aspectj*</exclude>
+                                        <exclude>hsqldb:hsqldb</exclude>
+                                        <exclude>log4j:log4j</exclude>
+                                        <exclude>org.slf4j:1.5*</exclude>
+                                        <exclude>org.springframework:2.*</exclude>
+                                        <exclude>org.springframework:3.0.*</exclude>
+                                        <exclude>org.springframework:3.1.*</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <!-- These libs are needed by the Geb functional tests -->
+                                        <include>commons-logging:*:*:*:test:*</include>
+                                        <include>xml-apis:xml-apis:*:*:test:*</include>
+                                    </includes>
+                                </bannedDependencies>
+                                <requireMavenVersion>
+                                    <version>[3.0.3,3.5.0)</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>${java.version}</version>
+                                </requireJavaVersion>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>environments/${environment}</directory>
+                        </resource>
+                        <resource>
+                            <directory>${basedir}/environments/${environment}/</directory>
+                            <filtering>false</filtering>
+                        </resource>
+                    </webResources>
+                    <warName>${project.artifactId}</warName>
+                    <webappDirectory>${basedir}/out/${project.build.finalName}_exploded_${project.packaging}
+                    </webappDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
 
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings
+                    only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.codehaus.gmaven
+                                        </groupId>
+                                        <artifactId>
+                                            gmaven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.0,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>execute</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-compiler-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.3.2,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>execute</goal>
+                                            <goal>compile</goal>
+                                            <goal>testCompile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-
-
-
-	<build>
-		<!-- Use the following to develop on your local machine or on the CI server -->
-		<finalName>${project.artifactId}-${environment}</finalName>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-					<compilerId>groovy-eclipse-compiler</compilerId>
-					<fork>true</fork>
-					<compilerArguments>
-						<javaAgentClass>lombok.core.Agent</javaAgentClass>
-					</compilerArguments>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-eclipse-compiler</artifactId>
-						<version>2.7.0-01</version>
-					</dependency>
-					<dependency>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok</artifactId>
-						<version>${lombok.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-eclipse-batch</artifactId>
-						<version>2.1.5-03</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>1.0.1</version>
-				<executions>
-					<execution>
-						<id>enforce-java</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireJavaVersion>
-									<version>1.6</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<webResources>
-						<resource>
-							<directory>environments/${environment}</directory>
-						</resource>
-						<resource>
-							<directory>${basedir}/environments/${environment}/</directory>
-							<filtering>false</filtering>
-						</resource>
-					</webResources>
-					<warName>${project.artifactId}</warName>
-					<!-- <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory> -->
-					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-					<warSourceExcludes>**/*web.digit.xml,**/*web.local.xml</warSourceExcludes>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<version>1.7</version>
-				<configuration>
-					<username>username</username>
-					<password>password</password>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.2.2</version>
-				<configuration>
-					<tagBase>scm:jazz:j62b009;fbngmt6@https://s-cc-rwp01.net1.cec.eu.int:9443/jazz:ESPD
-						Development Stream Workspace Jenkins
-					</tagBase>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-jazz</artifactId>
-						<version>1.7</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-api</artifactId>
-						<version>1.7</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<!-- Workaround momentarily to overcome Jenkins bug of not setting the 
-				buildTimestamp property correctly -->
-			<plugin>
-				<groupId>org.codehaus.gmaven</groupId>
-				<artifactId>gmaven-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<source>
-								import java.util.Date
-								import java.text.MessageFormat
-
-								Locale.setDefault(Locale.US)
-								def vartimestamp = MessageFormat.format("{0,date,EEEE, MMMM dd yyyy 'at' HH:mm}", new Date())
-								project.properties['buildTimestamp'] = vartimestamp
-							</source>
-							<providerSelection>2.0</providerSelection>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.gmaven.runtime</groupId>
-						<artifactId>gmaven-runtime-2.0</artifactId>
-						<version>1.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
-		</plugins>
-
-		<resources>
-			<!-- Do not filter files with binary content like images, xls templates! 
-				This will most likely result in corrupt output. -->
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-				<excludes>
-					<exclude>**/*.xls</exclude>
-				</excludes>
-			</resource>
-		</resources>
-
-		<!-- To help unitils find its datasets xmls -->
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-			</testResource>
-			<testResource>
-				<directory>src/test/java</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</testResource>
-		</testResources>
-
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.gmaven
-										</groupId>
-										<artifactId>
-											gmaven-plugin
-										</artifactId>
-										<versionRange>
-											[1.0,)
-										</versionRange>
-										<goals>
-											<goal>execute</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-compiler-plugin
-										</artifactId>
-										<versionRange>
-											[2.3.2,)
-										</versionRange>
-										<goals>
-											<goal>execute</goal>
-											<goal>compile</goal>
-											<goal>testCompile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-
-
-
-
-
-
-
-
-
-
-	<profiles>
-		<profile>
-			<id>m2e</id>
-			<activation>
-				<property>
-					<name>m2e.version</name>
-				</property>
-			</activation>
-			<properties>
-				<maven.build.timestamp>local time</maven.build.timestamp>
-			</properties>
-		</profile>
-		<profile>
-			<id>dev-digit</id>
-			<properties>
-				<environment>dev-digit</environment>
-			</properties>
-		</profile>
-		<profile>
-			<id>test-digit</id>
-			<properties>
-				<environment>test-digit</environment>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod-digit</id>
-			<properties>
-				<environment>prod-digit</environment>
-			</properties>
-		</profile>
-		<profile>
-			<id>acc-digit</id>
-			<properties>
-				<environment>prod-digit</environment>
-			</properties>
-		</profile>
-		<profile>
-			<id>dev-local</id>
-			<properties>
-				<environment>dev-local</environment>
-			</properties>
-		</profile>
-	</profiles>
-
-
-	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-extras</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<dependency>
-		   <groupId>commons-fileupload</groupId>
-		   <artifactId>commons-fileupload</artifactId>
-		   <version>1.2.2</version>
-		</dependency>
-				
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.1.8</version>
-		</dependency>
-			
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
-		</dependency>
-
-	</dependencies>
-
+    <profiles>
+        <profile>
+            <id>m2e</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <properties>
+                <maven.build.timestamp>local time</maven.build.timestamp>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev-digit</id>
+            <properties>
+                <environment>dev-digit</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>test-digit</id>
+            <properties>
+                <environment>test-digit</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod-digit</id>
+            <properties>
+                <environment>prod-digit</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>acc-digit</id>
+            <properties>
+                <environment>prod-digit</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev-local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>dev-local</environment>
+            </properties>
+        </profile>
+    </profiles>
 </project>

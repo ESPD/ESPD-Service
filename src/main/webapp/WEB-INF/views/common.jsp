@@ -54,23 +54,23 @@
 		function validator(validators,name,text) {validators[name] = jQuery.validator.format("<span data-i18n=\"validator_"+name+"\">"+text+"</span>");}
 		
 		var defaultValidators={};
-		validator(defaultValidators, "required", "<s:message code='validator_required'/>")
-		validator(defaultValidators, "remote", "<s:message code='validator_remote'/>")
-		validator(defaultValidators, "email", "<s:message code='validator_email'/>")
-		validator(defaultValidators, "url", "<s:message code='validator_url'/>")
-		validator(defaultValidators, "date", "<s:message code='validator_date'/>")
-		validator(defaultValidators, "dateISO", "<s:message code='validator_dateISO'/>")
-		validator(defaultValidators, "number", "<s:message code='validator_number'/>")
-		validator(defaultValidators, "digits", "<s:message code='validator_digits'/>")
-		validator(defaultValidators, "creditcard", "<s:message code='validator_creditcard'/>")
-		validator(defaultValidators, "equalTo", "<s:message code='validator_equalTo'/>")
-		validator(defaultValidators, "accept", "<s:message code='validator_accept'/>")
-		validator(defaultValidators, "maxlength", "<s:message code='validator_maxlength'/>")
-		validator(defaultValidators, "minlength", "<s:message code='validator_minlength'/>")
-		validator(defaultValidators, "rangelength", "<s:message code='validator_rangelength'/>")
-		validator(defaultValidators, "range", "<s:message code='validator_range'/>")
-		validator(defaultValidators, "max", "<s:message code='validator_max'/>")
-		validator(defaultValidators, "min", "<s:message code='validator_min'/>")
+		validator(defaultValidators, "required", "<s:message code='validator_required'/>");
+		validator(defaultValidators, "remote", "<s:message code='validator_remote'/>");
+		validator(defaultValidators, "email", "<s:message code='validator_email'/>");
+		validator(defaultValidators, "url", "<s:message code='validator_url'/>");
+		validator(defaultValidators, "date", "<s:message code='validator_date'/>");
+		validator(defaultValidators, "dateISO", "<s:message code='validator_dateISO'/>");
+		validator(defaultValidators, "number", "<s:message code='validator_number'/>");
+		validator(defaultValidators, "digits", "<s:message code='validator_digits'/>");
+		validator(defaultValidators, "creditcard", "<s:message code='validator_creditcard'/>");
+		validator(defaultValidators, "equalTo", "<s:message code='validator_equalTo'/>");
+		validator(defaultValidators, "accept", "<s:message code='validator_accept'/>");
+		validator(defaultValidators, "maxlength", "<s:message code='validator_maxlength'/>");
+		validator(defaultValidators, "minlength", "<s:message code='validator_minlength'/>");
+		validator(defaultValidators, "rangelength", "<s:message code='validator_rangelength'/>");
+		validator(defaultValidators, "range", "<s:message code='validator_range'/>");
+		validator(defaultValidators, "max", "<s:message code='validator_max'/>");
+		validator(defaultValidators, "min", "<s:message code='validator_min'/>");
 
 		$(function() {
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
@@ -98,7 +98,7 @@
 					codes.push(className)
 				}
 			});
-			for(name in defaultValidators) {
+			for(var name in defaultValidators) {
 				if(flags["validator_"+name] != true) {
 					codes.push("validator_"+name);
 				}
@@ -111,7 +111,7 @@
 						labels : codes
 					},
 					success : function(data) {
-						var array = JSON.parse(data)
+						var array = JSON.parse(data);
 						var validators = {};
 						for (var i = 0 ; i < codes.length ;i++) {
 							if(codes[i].indexOf("validator_") == 0) {
@@ -119,7 +119,7 @@
 							}
 							var elem = $( "*[data-i18n='"+codes[i]+"']" );
 							if (elem.attr("data-toggle") == "tooltip") {
-								elem.attr("title", array[i])
+								elem.attr("title", array[i]);
 								elem.attr("data-original-title", array[i])
 							}
 							else {

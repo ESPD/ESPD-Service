@@ -38,4 +38,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/createcafinish.jsp" />
     </definition>
 
+    <definition name="about" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/about.jsp" />
+    </definition>
+
 </tiles-definitions>

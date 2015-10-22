@@ -1,23 +1,17 @@
 package test;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import org.springframework.util.StringUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.util.StringUtils;
 
 public class Props {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		File in = new File("C:\\Users\\lukasal.NET1\\AppData\\LocalLow\\Home\\workspace.ecertis\\espd\\src\\main\\java\\test\\messages.properties");
-		File out = new File("C:\\Users\\lukasal.NET1\\AppData\\LocalLow\\Home\\workspace.ecertis\\espd\\src\\main\\java\\test\\sql.txt");
+		System.out.println(new File(".").getAbsolutePath());
+		File in = new File("./src/main/java/test/messages.properties");
+		File out = new File("./src/main/java/test/sql.txt");
 
 		FileOutputStream fos = new FileOutputStream(out);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
