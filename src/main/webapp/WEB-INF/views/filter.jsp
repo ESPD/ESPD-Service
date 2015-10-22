@@ -82,7 +82,7 @@ $(function() {
 					
 					<div class=" radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<span class="labelTextItem label_filter_import_espd"><s:message code='filter_import_espd'/></span>
+						<span data-i18n="filter_import_espd" class="labelTextItem"><s:message code='filter_import_espd'/></span>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
 					</div>
 					<div class="radio">

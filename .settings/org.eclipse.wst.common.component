@@ -7,6 +7,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="context-root" value="espd"/>
         <property name="java-output-path" value="/espd/target/classes"/>
-        <property name="component.exclusion.patterns" value="**/*web.digit.xml,**/*web.local.xml"/>
+        <property name="component.exclusion.patterns"/>
     </wb-module>
 </project-modules>

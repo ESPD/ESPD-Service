@@ -25,10 +25,10 @@
 		</div>
 
 		<div class="espd-panel panel panel-default">
-			<div class="espd-panel-heading label_createcafinish_export">
+			<div data-i18n="createcafinish_export" class="espd-panel-heading">
 				 <s:message code='createcafinish_export'/>
 			</div>
-			<div class="panel-body label_createcafinish_export_content">
+			<div data-i18n="createcafinish_export_content" class="panel-body">
 				<s:message code='createcafinish_export_content'/>
 			</div>
 		</div>

@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wls:weblogic-web-app xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd  http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.5/weblogic-web-app.xsd">
-    <wls:context-root>espd</wls:context-root>
- 	<wls:session-descriptor>
-		<wls:cookie-path>/espd</wls:cookie-path>
-	</wls:session-descriptor>
-   <wls:container-descriptor>
-     <wls:prefer-web-inf-classes>false</wls:prefer-web-inf-classes>
-      <wls:allow-all-roles>true</wls:allow-all-roles>
-        <wls:prefer-application-packages>
-            
-            <wls:package-name>org.slf4j.*</wls:package-name>
-          
-        </wls:prefer-application-packages>
-    </wls:container-descriptor>
+<weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd  http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.5/weblogic-web-app.xsd">
+    <context-root>espd</context-root>
+ 	<session-descriptor>
+		<cookie-path>/espd</cookie-path>
+	</session-descriptor>
+   <container-descriptor>
+     <prefer-web-inf-classes>false</prefer-web-inf-classes>
+      <allow-all-roles>true</allow-all-roles>
+		<prefer-application-packages>
+		   <package-name>com.google.common.*</package-name>
+		   <package-name>com.sun.istack.*</package-name>
+		   <package-name>com.sun.xml.*</package-name>
+		   <package-name>javassist.*</package-name>
+		   <package-name>javassist.bytecode.*</package-name>
+		   <package-name>javassist.bytecode.annotation.*</package-name>
+		   <package-name>javassist.bytecode.stackmap.*</package-name>
+		   <package-name>javassist.compiler.*</package-name>
+		   <package-name>javassist.compiler.ast.*</package-name>
+		   <package-name>javassist.convert.*</package-name>
+		   <package-name>javassist.expr.*</package-name>
+		   <package-name>javassist.runtime.*</package-name>
+		   <package-name>javassist.scopedpool.*</package-name>
+		   <package-name>javassist.tools.*</package-name>
+		   <package-name>javassist.tools.reflect.*</package-name>
+		   <package-name>javassist.tools.rmi.*</package-name>
+		   <package-name>javassist.tools.web.*</package-name>
+		   <package-name>javassist.util.*</package-name>
+		   <package-name>javassist.util.proxy.*</package-name>
+		   <package-name>javax.xml.bind.*</package-name>
+		   <package-name>javax.xml.stream.*</package-name>
+		   <package-name>org.apache.commons.*</package-name>
+		   <package-name>org.apache.oro.*</package-name>
+		   <package-name>org.apache.taglibs.*</package-name>
+		   <package-name>org.codehaus.jackson.*</package-name>
+		</prefer-application-packages>
+    </container-descriptor>
   
-</wls:weblogic-web-app>
+</weblogic-web-app>

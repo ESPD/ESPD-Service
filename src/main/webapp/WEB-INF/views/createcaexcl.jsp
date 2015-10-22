@@ -25,7 +25,7 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcaexcl_grounds_criminal_conv">
+			<div data-i18n="createcaexcl_grounds_criminal_conv" class="espd-panel-heading">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
 			<div class="espd-panel-body panel-body">
@@ -92,7 +92,7 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcaexcl_grounds_payment_taxes">
+			<div data-i18n="createcaexcl_grounds_payment_taxes" class="espd-panel-heading">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
 			<div class="espd-panel-body panel-body">
@@ -121,7 +121,7 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcaexcl_insolvency_conflicts">
+			<div data-i18n="createcaexcl_insolvency_conflicts" class="espd-panel-heading">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
 			<div class="espd-panel-body panel-body">

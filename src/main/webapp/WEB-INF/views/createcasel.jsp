@@ -31,7 +31,7 @@
 		</div>
 				
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcasel_SUITABILITY">
+			<div data-i18n="createcasel_SUITABILITY" class="espd-panel-heading">
 				<s:message code='createcasel_SUITABILITY'/>
 			</div>
 			<div class="panel-body">
@@ -40,7 +40,7 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcasel_ECONOMIC_AND_FINSTADING">
+			<div data-i18n="createcasel_ECONOMIC_AND_FINSTADING" class="espd-panel-heading">
 				<s:message code='createcasel_ECONOMIC_AND_FINSTADING'/>
 			</div>
 			<div class="panel-body">
@@ -49,7 +49,7 @@
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div class="espd-panel-heading label_createcasel_grounds_insolvency">
+			<div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading">
 				<s:message code='createcasel_grounds_insolvency'/>
 			</div>
 			<div class="panel-body">
