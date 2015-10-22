@@ -143,6 +143,12 @@
     <build>
         <!-- Use the following to develop on your local machine or on the CI server -->
         <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
