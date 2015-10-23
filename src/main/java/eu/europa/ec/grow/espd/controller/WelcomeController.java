@@ -27,7 +27,7 @@ public class WelcomeController {
 
 	@RequestMapping({ "/", "/welcome" })
 	public String showWelcomePage(Map<String, Object> model) {
-		return "welcome";
+        return "welcome";
 	}
 	
 	@RequestMapping("/splash")
