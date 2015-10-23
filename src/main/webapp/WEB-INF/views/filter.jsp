@@ -6,15 +6,18 @@
 $(function() { 
 
     $("*[name='whoareyou']").click(function () {
-    	//$('#nextBtn').prop('disabled', true);
+    	$('#nextBtn').prop('disabled', true);
     	$('#tab-from').removeClass('active')
     	$('#tab-upload').removeClass('active')
     	$('.radioCa').removeAttr('checked');
     	$('[value="empty"]').prop('selected', true);
     });
     $("*[name='country']").change(function() {
-    	//$('#nextBtn').prop('disabled', $(this).val() === '---');
+    	$('#nextBtn').prop('disabled', $(this).val() === '---');
     });
+	$("input:file").change(function (){
+		$('#nextBtn').prop('disabled', $(this).val() === '');
+	});
 });
 </script>
 

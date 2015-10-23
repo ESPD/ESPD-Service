@@ -98,30 +98,29 @@ public class WelcomeController {
 	}
 
 	// Selection : page 3
-	
+
 	@RequestMapping("/selection")
 	public String showSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "selection";
 	}
-	
-	
+
 	@RequestMapping(value="/selection", method=RequestMethod.POST, params="next")
 	public String postNextSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "redirect:/finish";
 	}
-	
+
 	@RequestMapping(value="/createcasel", method=RequestMethod.POST, params="prev")
 	public String postPrevSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "redirect:/exclusion";
 	}
-	
+
 	// Finish : Page 4
-	
+
 	@RequestMapping("/finish")
 	public String showFinishCAPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "finish";
 	}
-	
+
 	@RequestMapping(value="/finish", method=RequestMethod.POST)
 	public String postProcessCAFinishPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd, SessionStatus status) throws JAXBException, IOException {
 

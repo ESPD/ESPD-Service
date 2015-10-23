@@ -60,18 +60,18 @@
 		<div class="col-md-7">&nbsp;</div>
 		<div class="col-md-5">
 			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/exclusion">
-				<i class="fa fa-arrow-circle-o-left"></i>
-				<span data-i18n="PREV"><s:message code="PREV"/></span>
-				</a>
+				<button type="submit" class="btn btn-default btn-lg" name="prev">
+					<i class="fa fa-arrow-circle-o-left"></i>
+					<span data-i18n="PREV"><s:message code="PREV"/></span>
+				</button>
 				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
-				<i class="fa fa-times-circle"></i>
-				<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
+					<i class="fa fa-times-circle"></i>
+					<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
 				</a>
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/finish">
-				<i class="fa fa-arrow-circle-o-right"></i>
-				<span data-i18n="NEXT"><s:message code="NEXT"/></span>
-				</a>
+				<button type="submit" class="btn btn-default btn-lg" name="next">
+					<i class="fa fa-arrow-circle-o-right"></i>
+					<span data-i18n="NEXT"><s:message code="NEXT"/></span>
+				</button>
 			</div>
 		</div>
 	</div>
