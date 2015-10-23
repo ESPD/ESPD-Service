@@ -15,7 +15,7 @@
 	<div class="col-md-9">&nbsp;</div>
 	<div class="col-md-3">
 		<div class="btn-group">
-			<a href="/espd/splash" class="btn btn-default btn-lg">
+			<a href="${pageContext.request.contextPath}/splash" class="btn btn-default btn-lg">
 				<i class="fa fa-arrow-circle-o-right"></i>
 				<span data-i18n="NEXT"><s:message code="NEXT"/></span>
 			</a>

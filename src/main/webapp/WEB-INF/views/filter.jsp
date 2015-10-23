@@ -4,8 +4,8 @@
 <script>
 $(function() { 
     $('#whoareyou_eo').click(function () {
-    	$('#nextCreateCa').removeClass('active')
-    	$('#nextNull').addClass('active')
+    	$('#nextCreateCa').removeClass('active');
+    	$('#nextNull').addClass('active');
     	$('.radioCa').removeAttr('checked');
     });
 });
@@ -102,23 +102,23 @@ $(function() {
 		<div class="btn-group">
 			<div class="tab-content" >
 				<div class="tab-pane" id="nextCreateCa">
-					<a id="cancel" class="btn btn-default btn-lg" href="/espd/welcome">
+					<a id="cancel" class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
 						<i class="fa fa-times-circle"></i>
 						<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
 					</a>
 			
-					<a class="btn btn-default btn-lg" href="/espd/createca">
+					<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/createca">
 						<i class="fa fa-arrow-circle-o-right"></i>
 						<span data-i18n="NEXT"><s:message code="NEXT"/></span>
 					</a>
 				</div>
 				<div class="tab-pane active" id="nextNull">
-					<a id="cancel" class="btn btn-default btn-lg" href="/espd/welcome">
+					<a id="cancelDisable" class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
 						<i class="fa fa-times-circle"></i>
 						<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
 					</a>
 			
-					<a class="btn btn-default btn-lg" disabled="true" href="/espd/createca">
+					<a class="btn btn-default btn-lg" disabled="true" href="${pageContext.request.contextPath}/createca">
 						<i class="fa fa-arrow-circle-o-right"></i>
 						<span data-i18n="NEXT"><s:message code="NEXT"/></span>
 					</a>

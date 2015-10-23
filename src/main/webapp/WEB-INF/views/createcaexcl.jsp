@@ -206,7 +206,7 @@
 					<i class="fa fa-arrow-circle-o-right"></i>
 					<span data-i18n="PREV"><s:message code="PREV"/></span>
 				</button>
-				<a class="btn btn-default btn-lg" href="/espd/welcome">
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
 				<i class="fa fa-times-circle"></i>
 				<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
 				</a>
