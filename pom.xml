@@ -5,9 +5,9 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>war</packaging>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>ESPD web application</name>
-    <url>http://.../espd</url>
+    <url>https://www.ec.europa.eu/growth/tools-databases/espd</url>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,8 +18,9 @@
         <java.version>1.7</java.version>
         <main.basedir>${basedir}/../..</main.basedir>
         <start-class>eu.europa.ec.grow.espd.config.EspdApplication</start-class>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <espd.build.timestamp>${maven.build.timestamp}</espd.build.timestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <environment>dev-local</environment>
         <lombok.version>1.16.6</lombok.version>
         <tiles.version>3.0.4</tiles.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
@@ -27,10 +28,10 @@
     </properties>
 
     <scm>
-        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp
+        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/espd/
         </connection>
         <developerConnection>
-            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/ecertis2/JavaPrototype/ecertisWebApp
+            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/espd/
         </developerConnection>
     </scm>
 
@@ -150,8 +151,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
