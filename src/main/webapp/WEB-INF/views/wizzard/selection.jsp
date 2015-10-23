@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 <div class="container espd-container">
 
 	<div class="panel-default">
@@ -76,3 +78,4 @@
 		</div>
 	</div>
 </div>
+</form:form>

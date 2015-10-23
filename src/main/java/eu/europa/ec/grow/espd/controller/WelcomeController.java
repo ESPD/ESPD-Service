@@ -109,7 +109,7 @@ public class WelcomeController {
 		return "redirect:/finish";
 	}
 
-	@RequestMapping(value="/createcasel", method=RequestMethod.POST, params="prev")
+	@RequestMapping(value="/selection", method=RequestMethod.POST, params="prev")
 	public String postPrevSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "redirect:/exclusion";
 	}
