@@ -13,8 +13,8 @@
 		<c:forEach var="code" items="${locales.codes}" varStatus="i">
 			${((i.index % colLen) == 0 && !i.first && !i.last) ? "</div><div class='col-lg-3 col-sm-6 langBoxBorder'>" : ""}
 			<div class="splashLangDiv">
-				<a href="${pageContext.request.contextPath}/filter?lang=${code}&languageCode=${code}" class="splashLangBox" >${code}</a>
-				<a href="${pageContext.request.contextPath}/filter?lang=${code}&languageCode=${code}">${locales.nameByCode[code]}</a>
+				<a href="${pageContext.request.contextPath}/filter?lang=${code}" class="splashLangBox" >${code}</a>
+				<a href="${pageContext.request.contextPath}/filter?lang=${code}">${locales.nameByCode[code]}</a>
 			</div>
 		</c:forEach>
 		</div>

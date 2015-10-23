@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="paragraph">
-			<h2 data-i18n="createca_header"><s:message code="createca_header"/></h2>
+			<h2><span data-i18n="createca_header"><s:message code="createca_header"/></span></h2>
 		</div>
 		
 		<div class="errorContainer alert alert-danger" style="display: none">
@@ -92,7 +92,37 @@
 						<div class="form-group ">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_country"><s:message code="createca_country"/></span></label>
 							<div class="col-md-8">
-								<form:input cssClass="form-control" path="country" placeholder="Enter Country"/>
+								<form:select path="country" cssClass="form-control">
+									<form:option value="empty" label="---"/>
+									<form:option data-i18n="country_austria" value='austria'><s:message code="country_austria"/></form:option>
+									<form:option data-i18n="country_belgium" value='belgium'><s:message code="country_belgium"/></form:option>
+									<form:option data-i18n="country_bulgaria" value='bulgaria'><s:message code="country_bulgaria"/></form:option>
+									<form:option data-i18n="country_cyprus" value='cyprus'><s:message code="country_cyprus"/></form:option>
+									<form:option data-i18n="country_croatia" value='croatia'><s:message code="country_croatia"/></form:option>
+									<form:option data-i18n="country_czech_republic" value='czech_republic'><s:message code="country_czech_republic"/></form:option>
+									<form:option data-i18n="country_denmark" value='denmark'><s:message code="country_denmark"/></form:option>
+									<form:option data-i18n="country_estonia" value='estonia'><s:message code="country_estonia"/></form:option>
+									<form:option data-i18n="country_finland" value='finland'><s:message code="country_finland"/></form:option>
+									<form:option data-i18n="country_france" value='france'><s:message code="country_france"/></form:option>
+									<form:option data-i18n="country_germany" value='germany'><s:message code="country_germany"/></form:option>
+									<form:option data-i18n="country_greece" value='greece'><s:message code="country_greece"/></form:option>
+									<form:option data-i18n="country_hungary" value='hungary'><s:message code="country_hungary"/></form:option>
+									<form:option data-i18n="country_ireland" value='ireland'><s:message code="country_ireland"/></form:option>
+									<form:option data-i18n="country_italy" value='italy'><s:message code="country_italy"/></form:option>
+									<form:option data-i18n="country_latvia" value='latvia'><s:message code="country_latvia"/></form:option>
+									<form:option data-i18n="country_lithuania" value='lithuania'><s:message code="country_lithuania"/></form:option>
+									<form:option data-i18n="country_luxembourg" value='luxembourg'><s:message code="country_luxembourg"/></form:option>
+									<form:option data-i18n="country_malta" value='malta'><s:message code="country_malta"/></form:option>
+									<form:option data-i18n="country_netherlands" value='netherlands'><s:message code="country_netherlands"/></form:option>
+									<form:option data-i18n="country_poland" value='poland'><s:message code="country_poland"/></form:option>
+									<form:option data-i18n="country_portugal" value='portugal'><s:message code="country_portugal"/></form:option>
+									<form:option data-i18n="country_romania" value='romania'><s:message code="country_romania"/></form:option>
+									<form:option data-i18n="country_slovakia" value='slovakia'><s:message code="country_slovakia"/></form:option>
+									<form:option data-i18n="country_slovenia" value='slovenia'><s:message code="country_slovenia"/></form:option>
+									<form:option data-i18n="country_spain" value='spain'><s:message code="country_spain"/></form:option>
+									<form:option data-i18n="country_sweden" value='sweden'><s:message code="country_sweden"/></form:option>
+									<form:option data-i18n="country_united_kingdom" value='united_kingdom'><s:message code="country_united_kingdom"/></form:option>
+								</form:select>
 							</div>
 						</div>
 					</div>

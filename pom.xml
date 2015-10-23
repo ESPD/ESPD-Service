@@ -15,15 +15,10 @@
     </parent>
 
     <properties>
-    	<servlet-api.version>3.0.0</servlet-api.version>
         <java.version>1.7</java.version>
         <main.basedir>${basedir}/../..</main.basedir>
         <start-class>eu.europa.ec.grow.espd.config.EspdApplication</start-class>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-        <espd.build.timestamp>${maven.build.timestamp}</espd.build.timestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.build.timestamp.format>EEEE, MMMM dd yyyy 'at' HH:mm</maven.build.timestamp.format>
-        <buildTimestamp>${maven.build.timestamp}</buildTimestamp>
         <environment>dev-local</environment>
         <lombok.version>1.16.6</lombok.version>
         <tiles.version>3.0.4</tiles.version>
@@ -122,10 +117,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

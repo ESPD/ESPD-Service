@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  
   <title>Espd</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery/jquery.min.js"></script>
 
@@ -18,11 +18,11 @@
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap-theme.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-3.2.0/css/bootstrap.css">
-	<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}//static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-plugins/select2/css/select2.ajax.min.css"/>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap-plugins/select2/js/select2.full.ajax.min.js"></script>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}//static/bootstrap-plugins/select2/js/select2.full.ajax.min.js"></script>
+	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css"/>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap-plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
 
@@ -33,15 +33,15 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap-plugins/fileupload/js/fileinput.url.min.js"></script>
 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap-plugins/confirmation/bootstrap-confirmation.min.js"></script>
-
+	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/additional-methods.min.js"></script>
-
+	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
 	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
+	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
 
 	<script>
@@ -50,9 +50,9 @@
 		    var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function(){};
 		    return c;
 		})();
-
+		
 		function validator(validators,name,text) {validators[name] = jQuery.validator.format("<span data-i18n=\"validator_"+name+"\">"+text+"</span>");}
-
+		
 		var defaultValidators={};
 		validator(defaultValidators, "required", "<s:message code='validator_required'/>");
 		validator(defaultValidators, "remote", "<s:message code='validator_remote'/>");
@@ -73,17 +73,20 @@
 		validator(defaultValidators, "min", "<s:message code='validator_min'/>");
 
 		$(function() {
+			$(".filecontrol").fileinput();
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
+			
 		    jQuery.extend(jQuery.validator.messages, defaultValidators);
 		    $('[data-toggle="tooltip"]').tooltip({placement:"top", html: true, trigger: "hover"}).addClass( "fa" ).addClass( "fa-info-circle" );
-
+		    
 		    $('.radiotab').click(function () {
 		        $(this).tab('show');
 		    });
+		   
 
 		});
-
+ 
 		var pageLanguageCode = '${pageContext.response.locale}';
 		//var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
 
@@ -125,11 +128,11 @@
 							else {
 								elem.html(array[i]);
 							}
-
+								
 						}
 						pageLanguageCode = code;
 						jQuery.extend(jQuery.validator.messages, validators);
-
+						
 						//$(".datefmt").each(function() {
 						//	$(this).html(Date.parse($(this).html()).toLocaleDateString(code))
 						//});

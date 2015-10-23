@@ -1,18 +1,26 @@
 package eu.europa.ec.grow.espd.domain;
 
-import lombok.Data;
+import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import lombok.Data;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @XmlRootElement(name="xml")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EspdDocument {
 
-	 @XmlElement private String languageCode;
+	@XmlTransient
+	private String action;
+
 	 @XmlElement private String name;
 	 @XmlElement private String natRegNumber;
 	 @XmlElement private String streetAndNumber;
@@ -49,7 +57,8 @@ public class EspdDocument {
 	 @XmlElement private Boolean involvementPreparation;
 	 @XmlElement private Boolean earlyTermination;
 	 @XmlElement private Boolean guiltyMisinterpretation;
-	
-	
-	
+
+	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
+	public MultipartFile getAttachment() {return null;}
+
 }

@@ -22,20 +22,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/filter.jsp" />
     </definition>
 
-    <definition name="createca" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/createca.jsp" />
+    <definition name="procedure" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/procedure.jsp" />
     </definition>
 
-    <definition name="createcaexcl" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/createcaexcl.jsp" />
+    <definition name="exclusion" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/exclusion.jsp" />
     </definition>
 
-    <definition name="createcasel" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/createcasel.jsp" />
+    <definition name="selection" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/selection.jsp" />
     </definition>
 
-    <definition name="createcafinish" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/createcafinish.jsp" />
+    <definition name="finish" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/finish.jsp" />
     </definition>
 
     <definition name="about" extends="defaultTemplate">

@@ -1,7 +1,10 @@
 package eu.europa.ec.grow.espd.controller;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import eu.europa.ec.grow.espd.util.EspdMessageSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +21,21 @@ import java.util.Locale;
 class MessageSourceController {
 
     private final EspdMessageSource ms;
+    private final ObjectMapper mapper;
 
     @Autowired
     public MessageSourceController(final EspdMessageSource ms) {
         this.ms = ms;
+        this.mapper = new ObjectMapper();
     }
 
     @RequestMapping(value = "/translate", method = RequestMethod.POST)
     @ResponseBody
-    public String translate(@RequestParam(value = "labels[]") String[] labels, @RequestParam String lang) {
+    public String translate(@RequestParam(value = "labels[]") String[] labels, @RequestParam String lang) throws JsonProcessingException {
         Locale locale = Locale.forLanguageTag(lang);
         for (int i = 0; i < labels.length; i++) {
             labels[i] = ms.getMessage(labels[i], null, locale);
         }
-        return new Gson().toJson(labels);
+        return mapper.writeValueAsString(labels);
     }
 }
