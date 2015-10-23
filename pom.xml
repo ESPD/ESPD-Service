@@ -207,11 +207,6 @@
                     <warName>${project.artifactId}</warName>
                     <webappDirectory>${basedir}/out/${project.build.finalName}_exploded_${project.packaging}
                     </webappDirectory>
-                    <archive>
-                        <manifestEntries>
-                            <Weblogic-Application-Version>${project.version}</Weblogic-Application-Version>
-                        </manifestEntries>
-                    </archive>
                 </configuration>
             </plugin>
         </plugins>
