@@ -30,7 +30,12 @@
 		</div>
 
 		<div class="paragraph">
-			<h2><span data-i18n="createca_header"><s:message code="createca_header"/></span></h2>
+			<h2><span data-i18n="createca_header"><s:message code="createca_header"/></span>
+			<button type="submit" class="btn btn-default btn-sm">
+				<span>switch</span>
+			</button>
+			
+			</h2>
 		</div>
 		
 		<div class="errorContainer alert alert-danger" style="display: none">
@@ -42,14 +47,6 @@
 			</li>
 			</ul>
 		</div>
-		
-		
-		
-		<div class="row">
-			
-		</div>
-		
-
 
 		<div class="espd-panel panel panel-default">
 			<div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
@@ -140,24 +137,28 @@
 								<form:input cssClass="form-control" path="email" placeholder="Enter E-mail"/>
 							</div>
 						</div>
+						<%--
 						<div class="form-group">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_confirm_email"><s:message code="createca_confirm_email"/></span></label>
 							<div class="col-md-8">
 								<input class="form-control" placeholder="Confirm E-mail">
 							</div>
 						</div>
+						 --%>
 						<div class="form-group ">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_telephone"><s:message code="createca_telephone"/></span></label>
 							<div class="col-md-8">
 								<form:input cssClass="form-control" path="telephone" placeholder="Enter Telephone"/>
 							</div>
 						</div>
+						<%--
 						<div class="form-group ">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_confirm_telephone"><s:message code="createca_confirm_telephone"/></span></label>
 							<div class="col-md-8">
 								<input type="text" class="form-control" placeholder="Confirm Telephone">
 							</div>
 						</div>
+						 --%>
 						<div class="form-group ">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_website"><s:message code="createca_website"/></span></label>
 							<div class="col-md-8">

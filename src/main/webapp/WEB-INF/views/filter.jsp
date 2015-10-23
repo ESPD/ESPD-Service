@@ -4,9 +4,7 @@
 
 <script>
 $(function() { 
-    $('#whoareyou_eo').click(function () {
-    	$('#nextCreateCa').removeClass('active')
-    	$('#nextNull').addClass('active')
+
     $("*[name='whoareyou']").click(function () {
     	//$('#nextBtn').prop('disabled', true);
     	$('#tab-from').removeClass('active')
@@ -93,14 +91,12 @@ $(function() {
 					
 					<div class=" radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<span data-i18n="filter_import_espd" class="labelTextItem"><s:message code='filter_import_espd'/></span>
 						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_import_espd"><s:message code='filter_import_espd'/></span></label>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
 						
 					</div>
 					<div class="radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<span data-i18n="filter_reuse_espd"><s:message code='filter_reuse_espd'/></span>
 						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_reuse_espd"><s:message code='filter_reuse_espd'/></span></label>
 						<span data-i18n="tooltip_eo_can_reuse_espd" data-toggle="tooltip" title="<s:message code='tooltip_eo_can_reuse_espd'/>"/>
 					</div>
