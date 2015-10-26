@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,5 +35,10 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
     @Bean
     JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource);
+    }
+
+    @Bean
+    ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }
