@@ -22,7 +22,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
-				(${espd.isCA?"CA":""}${espd.isEO?"EO":""})			
+				(${espd.isCA?"I am CA":""}${espd.isEO?"I am EO":""})
 			</h2>
 		</div>
 		
