@@ -26,12 +26,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/wizzard/procedure.jsp" />
     </definition>
 
-    <definition name="exclusion" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/wizzard/exclusion.jsp" />
+    <definition name="exclusionCA" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/exclusionCA.jsp" />
     </definition>
 
-    <definition name="selection" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/wizzard/selection.jsp" />
+    <definition name="exclusionEO" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/exclusionEO.jsp" />
+    </definition>
+
+    <definition name="selectionCA" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/selectionCA.jsp" />
+    </definition>
+
+    <definition name="selectionEO" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/wizzard/selectionEO.jsp" />
     </definition>
 
     <definition name="finish" extends="defaultTemplate">

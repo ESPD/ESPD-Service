@@ -78,41 +78,41 @@ public class WelcomeController {
 	@RequestMapping(value="/procedure", method=RequestMethod.POST)
 	public String postCreatePage(@ModelAttribute("espd") EspdDocument espd) {
 
-		return "redirect:/exclusion";
+		return espd.getIsEO() ? "redirect:/exclusionEO" : "redirect:/exclusionCA";
 	}
 	
 	// Exclusion : page 2
 	
-	@RequestMapping("/exclusion")
-	public String showExcludePage(@ModelAttribute("espd") EspdDocument espd) {
-		return "exclusion";
+	@RequestMapping({"/exclusionCA","/exclusionEO"})
+	public String showExcludeCAPage(@ModelAttribute("espd") EspdDocument espd) {
+		return espd.getIsEO() ? "exclusionEO" : "exclusionCA";
 	}
 
-	@RequestMapping(value="/exclusion", method=RequestMethod.POST, params="next")
+	@RequestMapping(value={"/exclusionCA","/exclusionEO"}, method=RequestMethod.POST, params="next")
 	public String postNextExcludePage(@ModelAttribute("espd") EspdDocument espd) {
-		return "redirect:/selection";
+		return espd.getIsEO() ? "redirect:/selectionEO" : "redirect:/selectionCA";
 	}
 	
-	@RequestMapping(value="/exclusion", method=RequestMethod.POST, params="prev")
+	@RequestMapping(value={"/exclusionCA","/exclusionEO"}, method=RequestMethod.POST, params="prev")
 	public String postPrevExcludePage(@ModelAttribute("espd") EspdDocument espd) {
 		return "redirect:/procedure";
 	}
 
 	// Selection : page 3
-
-	@RequestMapping("/selection")
-	public String showSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
-		return "selection";
+	
+	@RequestMapping({"/selectionCA","/selectionEO"})
+	public String showSelectCAPage(@ModelAttribute("espd") EspdDocument espd) {
+		return espd.getIsEO() ? "selectionEO" : "selectionCA";
 	}
 
-	@RequestMapping(value="/selection", method=RequestMethod.POST, params="next")
-	public String postNextSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
+	@RequestMapping(value={"/selectionCA","/selectionEO"}, method=RequestMethod.POST, params="next")
+	public String postNextSelectPage(@ModelAttribute("espd") EspdDocument espd) {
 		return "redirect:/finish";
 	}
-
-	@RequestMapping(value="/selection", method=RequestMethod.POST, params="prev")
-	public String postPrevSelectionCAPage(@ModelAttribute("espd") EspdDocument espd) {
-		return "redirect:/exclusion";
+	
+	@RequestMapping(value={"/selectionCA","/selectionEO"}, method=RequestMethod.POST, params="prev")
+	public String postPrevSelectPage(@ModelAttribute("espd") EspdDocument espd) {
+		return espd.getIsEO() ? "redirect:/exclusionEO" : "redirect:/exclusionCA";
 	}
 
 	// Finish : Page 4
