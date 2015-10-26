@@ -39,7 +39,7 @@
 		<div class="col-md-7">&nbsp;</div>
 		<div class="col-md-5">
 			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/selection">
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/selection${espd.isEO?'EO':'CA'}">
 				<i class="fa fa-arrow-circle-o-left"></i>
 				<span data-i18n="PREV"><s:message code="PREV"/></span>
 				</a>
