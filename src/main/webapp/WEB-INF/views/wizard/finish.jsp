@@ -23,7 +23,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
-				(${espd.isCA?"I am CA":""}${espd.isEO?"I am EO":""})
+				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
 			</h2>
 		</div>
 
@@ -39,7 +39,7 @@
 		<div class="col-md-7">&nbsp;</div>
 		<div class="col-md-5">
 			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/selection${espd.isEO?'EO':'CA'}">
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/selection?agent=${param['agent']}">
 				<i class="fa fa-arrow-circle-o-left"></i>
 				<span data-i18n="previous"><s:message code="previous"/></span>
 				</a>

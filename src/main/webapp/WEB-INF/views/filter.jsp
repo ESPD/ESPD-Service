@@ -5,19 +5,22 @@
 <script>
 $(function() { 
 
-    $("*[name='whoareyou']").click(function () {
+    $("*[name='agent']").click(function () {
     	$('#nextBtn').prop('disabled', true);
     	$('#tab-from').removeClass('active')
     	$('#tab-upload').removeClass('active')
     	$('.radioCa').removeAttr('checked');
     	$('[value="empty"]').prop('selected', true);
+    	$("input:file").val('');
     });
+	$("input:file").change(function (){
+		if($(this).val() != '') {
+			$('#tab-from').addClass('active');
+		}
+	});
     $("*[name='country']").change(function() {
     	$('#nextBtn').prop('disabled', $(this).val() === '---');
     });
-	$("input:file").change(function (){
-		$('#nextBtn').prop('disabled', $(this).val() === '');
-	});
 });
 </script>
 
@@ -55,12 +58,12 @@ $(function() {
 			</h3>
 			
 			<div class="radio" >
-				<label><input id="whoareyou_ca" name="whoareyou" value="ca" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
+				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
 			
 			<div class="radio">
-				<label><input id="whoareyou_eo" name="whoareyou" value="eo" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
+				<label><input id="whoareyou_eo" name="agent" value="eo" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
 				<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip" title="<s:message code='tooltip_eo_ref_suppl'/>"></span>
 			</div>
 
@@ -107,11 +110,17 @@ $(function() {
 				</div>
 			</div>
 			<div class="tab-content" >
+
+				<div class="tab-pane" id="tab-upload">
+					<h3 data-i18n="">Upload document</h3>
+					<form:input type="file" path="attachment"/>
+				</div> 
+				
 				<div class="tab-pane" id="tab-from">
 					<h3 data-i18n="filter_where_are_you_from"><s:message code='filter_where_are_you_from'/></h3>
 					
 					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
-					
+
 					<form:select path="country">
 						<form:option value="empty" label="---"/>
 						<form:option data-i18n="country_austria" value='austria'><s:message code="country_austria"/></form:option>
@@ -144,11 +153,6 @@ $(function() {
 						<form:option data-i18n="country_united_kingdom" value='united_kingdom'><s:message code="country_united_kingdom"/></form:option>
 					</form:select>
 				</div>
-				
-				<div class="tab-pane" id="tab-upload">
-					<h3 data-i18n="">Upload document</h3>
-					<form:input type="file" path="attachment"/>
-				</div> 
 
 			</div>
 		</div>

@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class EspdDocument {
 
 	@XmlTransient private String action;// "ca_create_espd" or "eo_import_espd"
-	@XmlTransient private String agent;// "ca" or "eo"
 
 	@XmlElement private String name;
 	@XmlElement private String natRegNumber;
@@ -56,14 +55,6 @@ public class EspdDocument {
 	@XmlElement private Boolean involvementPreparation;
 	@XmlElement private Boolean earlyTermination;
 	@XmlElement private Boolean guiltyMisinterpretation;
-
-	public Boolean getIsCA() {
-		return "ca".equals(agent);
-	}
-	
-	public Boolean getIsEO() {
-		return "eo".equals(agent);
-	}
 
 	//trick to use MultipartFile as @RequestParam
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}

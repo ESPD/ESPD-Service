@@ -32,7 +32,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createca_header"><s:message code="createca_header"/></span>
-				(${espd.isCA?"I am CA":""}${espd.isEO?"I am EO":""})
+				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
 			</h2>
 		</div>
 		

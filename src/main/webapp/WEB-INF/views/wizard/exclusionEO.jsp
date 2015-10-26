@@ -23,7 +23,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-				(${espd.isCA?"I am CA":""}${espd.isEO?"I am EO":""})
+				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
 			</h2>
 		</div>
 		
@@ -33,8 +33,8 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 			
-					<span data-i18n="crit_eu_main_title_grounds_criminal_conv">
-						<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
+					<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
+						<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
 					</span>
 			
 					<div class="checkbox">
@@ -100,8 +100,8 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 			
-				<span data-i18n="crit_eu_main_title_payment_taxes">
-					<s:message code='crit_eu_main_title_payment_taxes'/>
+				<span data-i18n="crit_eu_main_title_payment_taxes_eo">
+					<s:message code='crit_eu_main_title_payment_taxes_eo'/>
 				</span>
 			
 				<div class="checkbox">	
@@ -129,15 +129,15 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 
-				<span data-i18n="crit_eu_main_breaching_obligations">
-					<s:message code='crit_eu_main_breaching_obligations'/>
+				<span data-i18n="crit_eu_main_breaching_obligations_eo">
+					<s:message code='crit_eu_main_breaching_obligations_eo'/>
 				</span>
 
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="breachingObligations"/>
-						<span data-i18n="crit_eu_title_breaching_obligations">
-							<s:message code='crit_eu_title_breaching_obligations'/>
+						<span data-i18n="crit_eu_title_breaching_obligations_eo">
+							<s:message code='crit_eu_title_breaching_obligations_eo'/>
 						</span>
 					</label>
 					<span data-i18n="crit_eu_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_breaching_obligations'/>"></span>
@@ -145,56 +145,57 @@
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="bankruptSubject"/>
-						<span data-i18n="crit_eu_title_bankrupt">
-							<s:message code='crit_eu_title_bankrupt'/>
+						<span data-i18n="crit_eu_title_bankrupt_eo">
+							<s:message code='crit_eu_title_bankrupt_eo'/>
 						</span>
 					</label>
 				</div>		
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="guiltyGrave"/>
-						<span data-i18n="crit_eu_title_guilty_misconduct">
-							<s:message code='crit_eu_title_guilty_misconduct'/>
+						<span data-i18n="crit_eu_title_guilty_misconduct_eo">
+							<s:message code='crit_eu_title_guilty_misconduct_eo'/>
 						</span>
 					</label>
+					<span data-i18n="crit_eu_tooltip_guilty_misconduct_eo" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_guilty_misconduct_eo'/>"></span>
 				</div>		
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="agreementsEo"/>
-						<span data-i18n="crit_eu_title_agreement_economic">
-							<s:message code='crit_eu_title_agreement_economic'/>
+						<span data-i18n="crit_eu_title_agreement_economic_eo">
+							<s:message code='crit_eu_title_agreement_economic_eo'/>
 						</span>
 					</label>
 				</div>		
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="conflictInterest"/>
-						<span data-i18n="crit_eu_title_conflict_interest">
-							<s:message code='crit_eu_title_conflict_interest'/>
+						<span data-i18n="crit_eu_title_conflict_interest_eo">
+							<s:message code='crit_eu_title_conflict_interest_eo'/>
 						</span>
 					</label>
 				</div>		
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="involvementPreparation"/>
-						<span data-i18n="crit_eu_title_involvment">
-							<s:message code='crit_eu_title_involvment'/>
+						<span data-i18n="crit_eu_title_involvment_eo">
+							<s:message code='crit_eu_title_involvment_eo'/>
 						</span>
 					</label>
 				</div>
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="earlyTermination"/>
-						<span data-i18n="crit_eu_title_early_termination">
-							<s:message code='crit_eu_title_early_termination'/>
+						<span data-i18n="crit_eu_title_early_termination_eo">
+							<s:message code='crit_eu_title_early_termination_eo'/>
 						</span>
 					</label>
 				</div>
 				<div class="checkbox">	
 					<label>
 						<form:checkbox path="guiltyMisinterpretation"/>
-						<span data-i18n="crit_eu_title_guilty_misinterpretation">
-							<s:message code='crit_eu_title_guilty_misinterpretation'/>
+						<span data-i18n="crit_eu_title_guilty_misinterpretation_eo">
+							<s:message code='crit_eu_title_guilty_misinterpretation_eo'/>
 						</span>
 					</label>
 				</div>

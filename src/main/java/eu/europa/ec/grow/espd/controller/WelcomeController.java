@@ -48,20 +48,20 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/filter", method=RequestMethod.POST)
-	public String postEOFilterPage(@RequestParam String action, @RequestParam String whoareyou, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required=false) MultipartFile attachment, Map<String, Object> model) throws JAXBException, IOException {
+	public String postEOFilterPage(@RequestParam String action, @RequestParam String agent, @RequestParam String country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required=false) MultipartFile attachment, Map<String, Object> model) throws JAXBException, IOException {
 		if("eo_import_espd".equals(action)) {
 			JAXBContext jaxbContext = JAXBContext.newInstance(EspdDocument.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			espd = (EspdDocument)jaxbUnmarshaller.unmarshal(attachment.getInputStream());
 			espd.setAction(action);
-			espd.setAgent(whoareyou);
+			
+			espd.setCountry(country);
 			model.put("espd", espd);
 
-			return "redirect:/procedure";
+			return "redirect:/procedure?agent="+agent;
 		}
 		else if("ca_create_espd".equals(action)) {
-			espd.setAgent(whoareyou);
-			return "redirect:/procedure";
+			return "redirect:/procedure?agent="+agent;
 		}
 		
 		return null;
@@ -76,45 +76,44 @@ public class WelcomeController {
 
 	
 	@RequestMapping(value="/procedure", method=RequestMethod.POST)
-	public String postCreatePage(@ModelAttribute("espd") EspdDocument espd) {
-
-		return espd.getIsEO() ? "redirect:/exclusionEO" : "redirect:/exclusionCA";
+	public String postCreatePage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return "redirect:/exclusion?agent="+agent;
 	}
 	
 	// Exclusion : page 2
 	
-	@RequestMapping({"/exclusionCA","/exclusionEO"})
-	public String showExcludeCAPage(@ModelAttribute("espd") EspdDocument espd) {
-		return espd.getIsEO() ? "exclusionEO" : "exclusionCA";
+	@RequestMapping("/exclusion")
+	public String showExcludeCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return ("eo".equals(agent)) ? "exclusionEO" : "exclusionCA";
 	}
 
-	@RequestMapping(value={"/exclusionCA","/exclusionEO"}, method=RequestMethod.POST, params="next")
-	public String postNextExcludePage(@ModelAttribute("espd") EspdDocument espd) {
-		return espd.getIsEO() ? "redirect:/selectionEO" : "redirect:/selectionCA";
+	@RequestMapping(value="/exclusion", method=RequestMethod.POST, params="next")
+	public String postNextExcludePage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return "redirect:/selection?agent="+agent;
 	}
 	
-	@RequestMapping(value={"/exclusionCA","/exclusionEO"}, method=RequestMethod.POST, params="prev")
-	public String postPrevExcludePage(@ModelAttribute("espd") EspdDocument espd) {
-		return "redirect:/procedure";
+	@RequestMapping(value="/exclusion", method=RequestMethod.POST, params="prev")
+	public String postPrevExcludePage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return "redirect:/procedure?agent="+agent;
 	}
 
 	// Selection : page 3
 	
-	@RequestMapping({"/selectionCA","/selectionEO"})
-	public String showSelectCAPage(@ModelAttribute("espd") EspdDocument espd) {
-		return espd.getIsEO() ? "selectionEO" : "selectionCA";
+	@RequestMapping("/selection")
+	public String showSelectCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return ("eo".equals(agent)) ? "selectionEO" : "selectionCA";
 	}
 
-	@RequestMapping(value={"/selectionCA","/selectionEO"}, method=RequestMethod.POST, params="next")
-	public String postNextSelectPage(@ModelAttribute("espd") EspdDocument espd) {
-		return "redirect:/finish";
+	@RequestMapping(value="/selection", method=RequestMethod.POST, params="next")
+	public String postNextSelectPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return "redirect:/finish?agent="+agent;
 	}
 	
-	@RequestMapping(value={"/selectionCA","/selectionEO"}, method=RequestMethod.POST, params="prev")
-	public String postPrevSelectPage(@ModelAttribute("espd") EspdDocument espd) {
-		return espd.getIsEO() ? "redirect:/exclusionEO" : "redirect:/exclusionCA";
+	@RequestMapping(value="/selection", method=RequestMethod.POST, params="prev")
+	public String postPrevSelectPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+		return "redirect:/exclusion?agent="+agent;
 	}
-
+	
 	// Finish : Page 4
 
 	@RequestMapping("/finish")
