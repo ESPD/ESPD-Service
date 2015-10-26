@@ -21,7 +21,10 @@
 		</div>
 
 		<div class="paragraph">
-			<h2 data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></h2>
+			<h2>
+				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
+				(${espd.isCA?"CA":""}${espd.isEO?"EO":""})			
+			</h2>
 		</div>
 		
 		<div class="panel panel-default espd-panel">

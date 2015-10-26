@@ -18,8 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EspdDocument {
 
-	@XmlTransient
-	private String action;
+	@XmlTransient private String action;
+	@XmlTransient private String agent;// "ca" or "eo"
 
 	 @XmlElement private String name;
 	 @XmlElement private String natRegNumber;
@@ -60,5 +60,13 @@ public class EspdDocument {
 
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
 	public MultipartFile getAttachment() {return null;}
+
+	public Boolean getIsCA() {
+		return "ca".equals(agent);
+	}
+	
+	public Boolean getIsEO() {
+		return "eo".equals(agent);
+	}
 
 }

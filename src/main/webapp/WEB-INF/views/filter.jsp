@@ -55,12 +55,12 @@ $(function() {
 			</h3>
 			
 			<div class="radio" >
-				<label><input id="whoareyou_ca" name="whoareyou" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
+				<label><input id="whoareyou_ca" name="whoareyou" value="ca" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
 			
 			<div class="radio">
-				<label><input id="whoareyou_eo" name="whoareyou" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
+				<label><input id="whoareyou_eo" name="whoareyou" value="eo" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
 				<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip" title="<s:message code='tooltip_eo_ref_suppl'/>"></span>
 			</div>
 

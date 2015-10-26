@@ -30,11 +30,9 @@
 		</div>
 
 		<div class="paragraph">
-			<h2><span data-i18n="createca_header"><s:message code="createca_header"/></span>
-			<button type="submit" class="btn btn-default btn-sm">
-				<span>switch</span>
-			</button>
-			
+			<h2>
+				<span data-i18n="createca_header"><s:message code="createca_header"/></span>
+				(${espd.isCA?"CA":""}${espd.isEO?"EO":""})			
 			</h2>
 		</div>
 		

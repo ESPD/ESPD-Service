@@ -48,18 +48,19 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/filter", method=RequestMethod.POST)
-	public String postEOFilterPage(@RequestParam String action, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required=false) MultipartFile attachment, Map<String, Object> model) throws JAXBException, IOException {
+	public String postEOFilterPage(@RequestParam String action, @RequestParam String whoareyou, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required=false) MultipartFile attachment, Map<String, Object> model) throws JAXBException, IOException {
 		if("eo_import_espd".equals(action)) {
 			JAXBContext jaxbContext = JAXBContext.newInstance(EspdDocument.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			espd = (EspdDocument)jaxbUnmarshaller.unmarshal(attachment.getInputStream());
 			espd.setAction(action);
+			espd.setAgent(whoareyou);
 			model.put("espd", espd);
 
 			return "redirect:/procedure";
 		}
 		else if("ca_create_espd".equals(action)) {
-
+			espd.setAgent(whoareyou);
 			return "redirect:/procedure";
 		}
 		

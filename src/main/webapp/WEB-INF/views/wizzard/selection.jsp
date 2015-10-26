@@ -20,7 +20,10 @@
 		</div>
 
 		<div class="paragraph">
-			<h2 data-i18n="createcasel_header"><s:message code='createcasel_header'/></h2>
+			<h2>
+				<span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
+				(${espd.isCA?"CA":""}${espd.isEO?"EO":""})			
+			</h2>
 		</div>
 		
 		<div class="alert alert-espd-info">
