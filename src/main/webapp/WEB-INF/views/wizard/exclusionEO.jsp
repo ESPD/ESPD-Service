@@ -207,16 +207,16 @@
 			<div class="btn-group">
 				<button type="submit" name="prev" class="btn btn-default btn-lg">
 					<i class="fa fa-arrow-circle-o-right"></i>
-					<span data-i18n="PREV"><s:message code="PREV"/></span>
+					<span data-i18n="previous"><s:message code="previous"/></span>
 				</button>
 				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
 				<i class="fa fa-times-circle"></i>
-				<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
+				<span data-i18n="cancel"><s:message code="cancel"/></span>
 				</a>
 
 				<button type="submit" name="next" class="btn btn-default btn-lg">
 					<i class="fa fa-arrow-circle-o-right"></i>
-					<span data-i18n="NEXT"><s:message code="NEXT"/></span>
+					<span data-i18n="next"><s:message code="next"/></span>
 				</button>
 			</div>
 		</div>    

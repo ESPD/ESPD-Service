@@ -13,14 +13,14 @@
 				<span id="environment">${applicationScope.deploymentEnvironment}</span>
 			</span>
 		</c:if>
-		<span id="banner-title-text" data-i18n="APP_TITLE"><s:message code="APP_TITLE"/></span>
+		<span id="banner-title-text" data-i18n="app_title"><s:message code="app_title"/></span>
 		<span id="banner-image-title-fill"></span>
-		<span id="banner-sub-title-text" data-i18n="APP_SUBTITLE"><s:message code="APP_SUBTITLE"/></span>
+		<span id="banner-sub-title-text" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
 		<div id="top-lang-selector">
 			<ul class="reset-list">
-				<li><a href="#" data-i18n="LEGAL_NOTICE"><s:message code="LEGAL_NOTICE"/></a></li>
-				<li><a href="#" data-i18n="COOKIES"><s:message code="COOKIES"/></a></li>
-				<li><a href="#" data-i18n="SEARCH"><s:message code="SEARCH"/></a></li>
+				<li><a href="#" data-i18n="legal_notice"><s:message code="legal_notice"/></a></li>
+				<li><a href="#" data-i18n="cookies"><s:message code="cookies"/></a></li>
+				<li><a href="#" data-i18n="search"><s:message code="search"/></a></li>
 				<li>
 					<label for="language"></label><select id="language">
 						<c:forEach var="code" items="${locales.codes}">

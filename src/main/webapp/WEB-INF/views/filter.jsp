@@ -161,11 +161,11 @@ $(function() {
 			<div class="tab-content" >
 				<a id="cancelBtn" class="btn btn-default btn-lg" href="/espd/welcome">
 					<i class="fa fa-times-circle"></i>
-					<span data-i18n="CANCEL"><s:message code="CANCEL"/></span>
+					<span data-i18n="cancel"><s:message code="cancel"/></span>
 				</a>
 				<button id="nextBtn" type="submit" class="btn btn-default btn-lg">
 					<i class="fa fa-arrow-circle-o-right"></i>
-					<span data-i18n="NEXT"><s:message code="NEXT"/></span>
+					<span data-i18n="next"><s:message code="next"/></span>
 				</button>
 			</div>
 		</div>
