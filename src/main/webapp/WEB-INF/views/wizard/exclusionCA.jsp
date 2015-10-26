@@ -84,7 +84,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="moneyLaundering"/>
+							<form:checkbox path="childLabour"/>
 							<span data-i18n="crit_eu_title_child_labour">
 								<s:message code='crit_eu_title_child_labour'/>
 							</span>
