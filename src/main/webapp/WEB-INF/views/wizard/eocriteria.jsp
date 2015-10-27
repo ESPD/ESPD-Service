@@ -2,8 +2,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-					<div class="panel panel-default" style="border: 0;" >
-						<div class="panel-body">
+					<div class="panel panel-default" style="border: 0;  margin-bottom: 5px;" >
+						<div class="panel-body" style="padding: 5px;">
 							<div class="form-group" style="margin-bottom: 0px">
 								<div class="col-md-10">
 									<span data-i18n="${title_code}">

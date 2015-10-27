@@ -33,9 +33,12 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 			
-					<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
-						<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
-					</span>
+					<div class="panel">
+						<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
+							<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
+						</span>
+					</div>
+					
 
 					<c:set var="field" value="criminalConvictions" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
@@ -76,10 +79,12 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 			
-				<span data-i18n="crit_eu_main_title_payment_taxes_eo">
-					<s:message code='crit_eu_main_title_payment_taxes_eo'/>
-				</span>
-				<br><br>
+				<div class="panel">
+					<span data-i18n="crit_eu_main_title_payment_taxes_eo">
+						<s:message code='crit_eu_main_title_payment_taxes_eo'/>
+					</span>
+				</div>
+				
 				<div class="row">
 					<div class="col-md-10">
 						<span data-i18n="crit_eu_title_payment_taxes">
@@ -109,10 +114,11 @@
 			</div>
 			<div class="espd-panel-body panel-body">
 
-				<span data-i18n="crit_eu_main_breaching_obligations_eo">
-					<s:message code='crit_eu_main_breaching_obligations_eo'/>
-				</span>
-				<br><br>
+				<div class="panel">
+					<span data-i18n="crit_eu_main_breaching_obligations_eo">
+						<s:message code='crit_eu_main_breaching_obligations_eo'/>
+					</span>
+				</div>
 
 				<div class="row">
 					<div class="col-md-10">
