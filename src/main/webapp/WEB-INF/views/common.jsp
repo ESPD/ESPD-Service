@@ -36,6 +36,9 @@
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-plugins/validate/additional-methods.min.js"></script>
+		
+	<link href="${pageContext.request.contextPath}/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
 	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
@@ -83,7 +86,16 @@
 		    $('.radiotab').click(function () {
 		        $(this).tab('show');
 		    });
-		   
+		    $('.checktoggle').change(function () {
+		        if($(this).prop('checked')) {
+		        	$($(this).attr("data-target")).fadeIn();
+		        }
+		        else {
+		        	$($(this).attr("data-target")).fadeOut();
+		        }
+		    });
+
+		    $('.radioslide').bootstrapToggle({style:"ios", width:"50", size:"small", on:"Yes", off:"No"});
 
 		});
  

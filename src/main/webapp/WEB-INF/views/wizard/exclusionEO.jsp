@@ -36,80 +36,37 @@
 					<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
 						<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
 					</span>
-					<br><br>
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_grounds_criminal_conv">
-								<s:message code='crit_eu_title_grounds_criminal_conv'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_grounds_criminal_conv'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="criminalConvictions" value="true"/>Yes 
-							<form:radiobutton path="criminalConvictions" value="false"/>No 
-						</div>
-					</div> 
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_corruption">
-								<s:message code='crit_eu_title_corruption'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_grounds_criminal_conv'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="corruption" value="true"/>Yes 
-							<form:radiobutton path="corruption" value="false"/>No 
-						</div>
-					</div> 
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_fraud">
-								<s:message code='crit_eu_title_fraud'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_fraud" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_fraud'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="fraud" value="true"/>Yes 
-							<form:radiobutton path="fraud" value="false"/>No 
-						</div>
-					</div> 
 
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_terrorist">
-								<s:message code='crit_eu_title_terrorist'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_terrorist" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_terrorist'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="terroristOffences" value="true"/>Yes 
-							<form:radiobutton path="terroristOffences" value="false"/>No 
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_money_laundering">
-								<s:message code='crit_eu_title_money_laundering'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_money_laundering" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_money_laundering'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="moneyLaundering" value="true"/>Yes 
-							<form:radiobutton path="moneyLaundering" value="false"/>No 
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-10">
-							<span data-i18n="crit_eu_title_child_labour">
-								<s:message code='crit_eu_title_child_labour'/>
-							</span>
-							<span data-i18n="crit_eu_tooltip_child_labour" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_child_labour'/>"></span>
-						</div>
-						<div class="col-md-2">
-							<form:radiobutton path="childLabour" value="true"/>Yes 
-							<form:radiobutton path="childLabour" value="false"/>No 
-						</div>
-					</div> 
+					<c:set var="field" value="criminalConvictions" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
+					<c:set var="field" value="corruption" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
+					<c:set var="field" value="fraud" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
+					<c:set var="field" value="terroristOffences" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
+					<c:set var="field" value="moneyLaundering" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_title_money_laundering" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
+					<c:set var="field" value="childLabour" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
+					<jsp:include page="eocriteria.jsp"/>
+					
 			</div>
 		</div>
 	
@@ -130,8 +87,7 @@
 						</span>
 					</div>
 					<div class="col-md-2">
-						<form:radiobutton path="paymentTaxes" value="true"/>Yes 
-						<form:radiobutton path="paymentTaxes" value="false"/>No 
+							<form:checkbox path="paymentTaxes" class="radioslide"/>
 					</div>
 				</div> 
 				<div class="row">
@@ -141,8 +97,7 @@
 						</span>
 					</div>
 					<div class="col-md-2">
-						<form:radiobutton path="paymentSocsec" value="true"/>Yes 
-						<form:radiobutton path="paymentSocsec" value="false"/>No 
+							<form:checkbox path="paymentSocsec" class="radioslide"/>
 					</div>
 				</div>
 			</div>
