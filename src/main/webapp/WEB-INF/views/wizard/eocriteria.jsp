@@ -12,7 +12,7 @@
 									<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="<s:message code='${tooltip_code}'/>"></span>
 								</div>
 								<div class="col-md-2">
-									<form:checkbox path="${field}" data-target="#${field}-footer" class="radioslide checktoggle"/>
+									<form:checkbox path="${field}" data-target="${'#'}${field}-footer" class="radioslide checktoggle"/>
 								</div>
 							</div>
 						</div> 
@@ -48,7 +48,7 @@
 							<div class="form-group">
 							    <div class="col-md-12">
 							       <label class="control-label small" for="${field}-field5">Have you taken measures to demonstrate your reliability ("Self-Cleaning")</label> 
-							      <input type="checkbox" id="${field}-field5" data-toggle="collapse" data-target="#${field}-reliability" class="radioslide checktoggle" />
+							      <input type="checkbox" id="${field}-field5" data-toggle="collapse" data-target="${'#'}${field}-reliability" class="radioslide checktoggle" />
 							    </div>
 							</div>
 							<div class="tab-pane" id="${field}-reliability" style="display:none">
