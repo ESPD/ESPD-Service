@@ -95,10 +95,10 @@
 		        }
 		    });
 
-		    $('.radioslide').bootstrapToggle({style:"ios", width:"50", size:"small", on:"Yes", off:"No"});
+		    $('.radioslide').bootstrapToggle({style:"ios", width:"50", size:"mini", on:"Yes", off:"No"});
 
 		});
- 
+  
 		var pageLanguageCode = '${pageContext.response.locale}';
 		//var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
 
