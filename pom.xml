@@ -28,10 +28,10 @@
     </properties>
 
     <scm>
-        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/espd/
+        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ESPD/
         </connection>
         <developerConnection>
-            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ECERTIS/espd/
+            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ESPD/
         </developerConnection>
     </scm>
 
@@ -121,11 +121,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.1.8</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -174,8 +169,8 @@
                                         <exclude>log4j:log4j</exclude>
                                         <exclude>org.slf4j:1.5*</exclude>
                                         <exclude>org.springframework:2.*</exclude>
-                                        <exclude>org.springframework:3.0.*</exclude>
-                                        <exclude>org.springframework:3.1.*</exclude>
+                                        <exclude>org.springframework:3.*</exclude>
+                                        <exclude>com.sun.xml.bind:jaxb-impl</exclude>
                                     </excludes>
                                     <includes>
                                         <!-- These libs are needed by the Geb functional tests -->

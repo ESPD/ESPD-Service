@@ -32,8 +32,6 @@
             <package-name>javassist.tools.web.*</package-name>
             <package-name>javassist.util.*</package-name>
             <package-name>javassist.util.proxy.*</package-name>
-            <package-name>javax.xml.bind.*</package-name>
-            <package-name>javax.xml.stream.*</package-name>
             <package-name>org.apache.commons.*</package-name>
             <package-name>org.apache.oro.*</package-name>
             <package-name>org.apache.taglibs.*</package-name>
