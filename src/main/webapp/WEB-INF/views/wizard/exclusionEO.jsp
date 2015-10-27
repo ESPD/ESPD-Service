@@ -43,31 +43,37 @@
 					<c:set var="field" value="criminalConvictions" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
+					<c:set var="number" value="1" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="corruption" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
+					<c:set var="number" value="2" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="fraud" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
+					<c:set var="number" value="3" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="terroristOffences" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
+					<c:set var="number" value="4" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="moneyLaundering" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_title_money_laundering" scope="session"/>
+					<c:set var="number" value="5" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="childLabour" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
+					<c:set var="number" value="6" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 			</div>

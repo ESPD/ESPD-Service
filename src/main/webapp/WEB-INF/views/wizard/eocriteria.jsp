@@ -2,21 +2,25 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<div class="panel panel-default">
-	<div class="panel-body">
-		<div class="col-md-5">
+<div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
+		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
 			<div class="col-md-12">
-				<span style="text-weight: bold" data-i18n="${title_code}"> 
-					<s:message code='${title_code}'/>
-				</span>
-				<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="<s:message code='${tooltip_code}'/>"></span>
+				<div class="form-group">
+					<strong>${number}. </strong>
+					<strong data-i18n="${title_code}">  
+						<s:message code='${title_code}'/> 
+					</strong>
+					<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="<s:message code='${tooltip_code}'/>"></span>
+				</div>
 			</div>
-			<div class="col-md-12">
-				<label class="control-label small" for="${field}-field6">Information is available electronically?</label> 
-				<input type="checkbox" id="${field}-field6" data-toggle="collapse" data-target="#${field}-electronically" class="radioslide checktoggle form-control" />
+			<div class="col-md-12"> 
+				<div class="form-group">
+					<label class="control-label small" for="${field}-field6">Information is available electronically?</label> 
+					<input type="checkbox" id="${field}-field6" data-toggle="collapse" data-target="#${field}-electronically" class="radioslide checktoggle form-control" />
+				</div>
 			</div>
 			<div class="col-md-12" id="${field}-electronically" style="display:none">
-				<div class="form-group" style="margin-bottom: 0px">
+				<div class="form-group" style="">
 					<label class="control-label col-md-2 small" for="${field}-field6">Evidence:</label>
 					<div class="col-md-5"> 
 					<select  class="form-control input-sm" id="${field}-field6">
@@ -25,7 +29,7 @@
 						<option>evidence 3</option>
 					</select>  
 					</div> 
-												 	
+											 	
 					 <label class="control-label col-md-1 small" for="${field}-field7">Code:</label>
 													
 					<div class="col-md-4"> 
@@ -33,8 +37,8 @@
 					 </div>
 				</div>
 			 </div>
-		</div> 
-		<div class="col-md-7">
+		</div>  
+		<div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;">
 			<div class="col-md-12">
 				<form:checkbox path="${field}" data-target="${'#'}${field}-footer" class="radioslide checktoggle"/>
 			</div>
@@ -82,7 +86,7 @@
 							</div>
 			</div>
 		</div>
-	</div>
+
 </div>
 
 
