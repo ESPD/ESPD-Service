@@ -29,7 +29,7 @@
 <c:set target="${languages}" property="fi" value="Suomi"/>
 <c:set target="${languages}" property="sv" value="Svenska"/>
 
-<div class="container espd-container">
+<div class="container-fluid espd-container">
 	<div class="row" style="padding:50px">
 	
 		<fmt:formatNumber var="colLen" value="6"  maxFractionDigits="0" />

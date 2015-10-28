@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
-<div class="container espd-container">
+<div class="container-fluid espd-container">
 
 	<div class="panel-default">
 	
