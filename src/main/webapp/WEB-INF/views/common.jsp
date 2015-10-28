@@ -12,6 +12,9 @@
   <meta name="author" content="">
   
   <title>Espd</title>
+  
+	<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
@@ -46,6 +49,7 @@
 	<link href="${pageContext.request.contextPath}/static/css/espd.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/simple-sidebar.css" rel="stylesheet">  
 	<link href="${pageContext.request.contextPath}/static/css/scrolling-nav.css" rel="stylesheet">
+	
 
 	<script>
 		<%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
