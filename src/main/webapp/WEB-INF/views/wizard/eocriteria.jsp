@@ -19,7 +19,7 @@
 			<div class="col-md-12"> 
 				<div class="form-group">
 					<label class="control-label small" for="${field}-field6">Do you confirm it?</label> 
-					<form:checkbox path="${field}" id="${field}-field6" data-toggle="collapse" data-target="#${field}-form" class="radioslide checktoggle form-control" />
+					<form:checkbox path="${field}" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
 				</div>
 			</div>
 			
