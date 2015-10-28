@@ -90,10 +90,10 @@
 		    });
 		    $('.checktoggle').change(function () {
 		        if($(this).prop('checked')) {
-		        	$($(this).attr("data-target")).fadeIn();
+		        	$($(this).attr("data-target")).slideDown();
 		        }
 		        else {
-		        	$($(this).attr("data-target")).fadeOut();
+		        	$($(this).attr("data-target")).slideUp();
 		        }
 		    });
 

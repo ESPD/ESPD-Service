@@ -1,5 +1,5 @@
 .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
-.toggle.ios .toggle-handle { border-radius: 20px; }
+.toggle.ios .toggle-handle {   border-radius: 20px; padding: 1px 20px; }
   
 input.error {
 	border: 1px solid #A52A2A !important;
