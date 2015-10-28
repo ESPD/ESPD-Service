@@ -27,9 +27,10 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_criminal_conv" class="espd-panel-heading">
+			<div data-i18n="createcaexcl_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
+			<div id="criminal_conv" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			
 					<div class="panel">
@@ -37,7 +38,6 @@
 							<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
 						</span>
 					</div>
-					
 
 					<c:set var="field" value="criminalConvictions" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
@@ -77,11 +77,13 @@
 					
 			</div>
 		</div>
+		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_payment_taxes" class="espd-panel-heading">
+			<div data-i18n="createcaexcl_grounds_payment_taxes" class="espd-panel-heading" data-toggle="collapse" data-target="#payment_taxes">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
+			<div id="payment_taxes" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			
 				<div class="panel">
@@ -103,12 +105,14 @@
 				<jsp:include page="eocriteria.jsp"/>
 					
 			</div>
+			</div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_insolvency_conflicts" class="espd-panel-heading">
+			<div data-i18n="createcaexcl_insolvency_conflicts" class="espd-panel-heading" data-toggle="collapse" data-target="#insolvency_conflicts">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
+			<div id="insolvency_conflicts" class="collapse in">
 			<div class="espd-panel-body panel-body">
 
 				<div class="panel">
@@ -165,6 +169,7 @@
 				<c:set var="number" value="8" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
+			</div>
 			</div>
 		</div>
 	
