@@ -40,6 +40,8 @@
 	<link href="${pageContext.request.contextPath}/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
 	
+	<link href="css/titatoggle-dist.css" rel="stylesheet">
+	
 	<link href="${pageContext.request.contextPath}/static/css/nav-wizard.bootstrap.css" rel="stylesheet">
 
 	<link href="${pageContext.request.contextPath}/static/css/ec.css" rel="stylesheet">
@@ -95,7 +97,7 @@
 		        }
 		    });
 
-		    $('.radioslide').bootstrapToggle({style:"ios", width:"50", size:"mini", on:"Yes", off:"No"});
+		    $('.radioslide').bootstrapToggle({style:"ios", width:"60", size:"mini", on:"Yes", off:"No"});
 
 		});
   
