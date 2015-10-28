@@ -4,7 +4,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<div class="container-fluid espd-container">
 
 	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 	
@@ -91,26 +90,18 @@
 					</span>
 				</div>
 				
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_payment_taxes">
-							<s:message code='crit_eu_title_payment_taxes'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-							<form:checkbox path="paymentTaxes" class="radioslide"/>
-					</div>
-				</div> 
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_payment_social_security">
-							<s:message code='crit_eu_title_payment_social_security'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-							<form:checkbox path="paymentSocsec" class="radioslide"/>
-					</div>
-				</div>
+				<c:set var="field" value="paymentTaxes" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_payment_taxes" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="1" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+				
+				<c:set var="field" value="paymentSocsec" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_payment_social_security" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="2" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+					
 			</div>
 		</div>
 	
@@ -125,97 +116,55 @@
 						<s:message code='crit_eu_main_breaching_obligations_eo'/>
 					</span>
 				</div>
+				
+				<c:set var="field" value="breachingObligations" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_breaching_obligations_eo" scope="session"/>
+				<c:set var="tooltip_code" value="crit_eu_tooltip_breaching_obligations" scope="session"/>
+				<c:set var="number" value="1" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
 
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_breaching_obligations_eo">
-							<s:message code='crit_eu_title_breaching_obligations_eo'/>
-						</span>
-						<span data-i18n="crit_eu_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_breaching_obligations'/>"></span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="breachingObligations" value="true"/>Yes 
-						<form:radiobutton path="breachingObligations" value="false"/>No 
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_bankrupt_eo">
-							<s:message code='crit_eu_title_bankrupt_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="bankruptSubject" value="true"/>Yes 
-						<form:radiobutton path="bankruptSubject" value="false"/>No 
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_guilty_misconduct_eo">
-							<s:message code='crit_eu_title_guilty_misconduct_eo'/>
-						</span>
-						<span data-i18n="crit_eu_tooltip_guilty_misconduct_eo" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_guilty_misconduct_eo'/>"></span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="guiltyGrave" value="true"/>Yes 
-						<form:radiobutton path="guiltyGrave" value="false"/>No 
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_agreement_economic_eo">
-							<s:message code='crit_eu_title_agreement_economic_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="agreementsEo" value="true"/>Yes 
-						<form:radiobutton path="agreementsEo" value="false"/>No 
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_conflict_interest_eo">
-							<s:message code='crit_eu_title_conflict_interest_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="conflictInterest" value="true"/>Yes 
-						<form:radiobutton path="conflictInterest" value="false"/>No 
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_involvment_eo">
-							<s:message code='crit_eu_title_involvment_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="involvementPreparation" value="true"/>Yes 
-						<form:radiobutton path="involvementPreparation" value="false"/>No 
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_early_termination_eo">
-							<s:message code='crit_eu_title_early_termination_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="earlyTermination" value="true"/>Yes 
-						<form:radiobutton path="earlyTermination" value="false"/>No 
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-10">
-						<span data-i18n="crit_eu_title_guilty_misinterpretation_eo">
-							<s:message code='crit_eu_title_guilty_misinterpretation_eo'/>
-						</span>
-					</div>
-					<div class="col-md-2">
-						<form:radiobutton path="guiltyMisinterpretation" value="true"/>Yes 
-						<form:radiobutton path="guiltyMisinterpretation" value="false"/>No 
-					</div>
-				</div>
+				<c:set var="field" value="bankruptSubject" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_bankrupt_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="2" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+				
+				<c:set var="field" value="guiltyGrave" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misconduct_eo" scope="session"/>
+				<c:set var="tooltip_code" value="crit_eu_tooltip_guilty_misconduct_eo" scope="session"/>
+				<c:set var="number" value="3" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+				
+				<c:set var="field" value="agreementsEo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_agreement_economic_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="4" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+
+				<c:set var="field" value="conflictInterest" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_conflict_interest_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="5" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+
+				<c:set var="field" value="involvementPreparation" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_involvment_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="6" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+
+				<c:set var="field" value="earlyTermination" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_early_termination_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="7" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+
+				<c:set var="field" value="guiltyMisinterpretation" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation_eo" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<c:set var="number" value="8" scope="session"/>
+				<jsp:include page="eocriteria.jsp"/>
+
 			</div>
 		</div>
 	
@@ -241,4 +190,3 @@
 	
 	</form:form>
 	
-</div>

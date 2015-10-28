@@ -26,7 +26,6 @@ $(function() {
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post"  commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 
-<div class="container-fluid espd-container">
 	<div class="panel-default">
 
 		<ul class="nav nav-pills nav-wizard nav-justified">
@@ -175,5 +174,4 @@ $(function() {
 		</div>
 	</div>
 	
-</div>
 </form:form>

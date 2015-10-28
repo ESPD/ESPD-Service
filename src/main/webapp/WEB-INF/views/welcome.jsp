@@ -3,8 +3,6 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
         
-<div class="container-fluid espd-container">
-
 	<div class="panel-default">
 		<h2 data-i18n="welcome_disclaimer_title"><s:message code="welcome_disclaimer_title"/></h2>
 		<div data-i18n="welcome_disclaimer_content"><s:message code="welcome_disclaimer_content"/></div>
@@ -22,5 +20,4 @@
 		</div>
 	</div>
 	
-</div>
  

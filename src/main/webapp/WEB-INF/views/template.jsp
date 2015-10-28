@@ -7,12 +7,12 @@
         <tiles:insertAttribute name="common" />
     </head>
     <body>
-    	<div class="container-fluid panel" style="padding:0; border-color: #396ea2 !important;">
+    	<div class="container-fluid" style="padding:0; border-color: #396ea2 !important;">
 	        <div id="header">
 	            <tiles:insertAttribute name="header"/>
 	            <tiles:insertAttribute name="breadcrumb"/>
 	        </div>
-	        <div id="body">
+	        <div id="body" class="container-fluid espd-container">
 	            <tiles:insertAttribute name="body"/>
 	        </div>
 		</div>

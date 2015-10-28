@@ -2,8 +2,10 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="now" value="<%=new java.util.Date()%>" scope="request"/>
-<footer>
+
+<footer  style="border-top: 1px solid #396ea2; padding-top: 10px;">
 	<div class="row">
 		<div class="col-lg-12">
 			<span data-i18n="footer_last_update"><s:message code='footer_last_update'/></span>

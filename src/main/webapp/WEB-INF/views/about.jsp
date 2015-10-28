@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="breadCrumb" scope="request" value="<li>Version</li>"/>
+
 <div class="row-fluid">
     <div class="span9">
         <div class="panel alert-info">
@@ -14,3 +16,4 @@
         </div>
     </div>
 </div>
+ 

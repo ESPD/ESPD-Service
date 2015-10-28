@@ -14,8 +14,6 @@
 	});
 </script>
 
-<div class="container-fluid espd-container">
-
 	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
 	<div class="panel-default">
@@ -231,6 +229,6 @@
 	</div>    
 	
 	</form:form>
-</div>
+
 
 

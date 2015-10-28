@@ -4,7 +4,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<div class="container-fluid espd-container">
 
 	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 	
@@ -224,4 +223,3 @@
 	
 	</form:form>
 	
-</div>
