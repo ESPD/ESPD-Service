@@ -162,7 +162,7 @@ $(function() {
 	<div class="col-md-5">
 		<div class="btn-group">
 			<div class="tab-content" >
-				<a id="cancelBtn" class="btn btn-default btn-lg" href="/espd/welcome">
+				<a id="cancelBtn" class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/espd/welcome">
 					<i class="fa fa-times-circle"></i>
 					<span data-i18n="cancel"><s:message code="cancel"/></span>
 				</a>
