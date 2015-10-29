@@ -32,7 +32,7 @@
 					</c:if>
 					</label>
 					
-					<form:checkbox path="${field}" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
+					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
 				</div>
 			</div>
 			
@@ -41,27 +41,26 @@
 							<div class="form-group">
 							    <label class="control-label col-md-4 small" for="${field}-field1">Date of conviction</label>
 							    <div class="col-md-8"> 
-							      <input type="text" name="" class="form-control" id="${field}-field1" placeholder="Enter date">
+							      <form:input path="${field}.dateOfConviction" cssClass="form-control" id="${field}-field1" placeholder="Enter date"/>
 							    </div>
 							</div> 
 							<div class="form-group"> 
 							    <label class="control-label col-md-4 small" for="${field}-field2">Reason</label>
 							    <div class="col-md-8"> 
-							      <textarea class="form-control" id="${field}-field2" placeholder="Enter reason">
-							      </textarea>
+							      <form:textarea path="${field}.reason" cssClass="form-control" id="${field}-field2" placeholder="Enter reason"/>
 							    </div>
 							</div>
 							<div class="form-group">
 							    <label class="control-label col-md-4 small" for="${field}-field3">Who has been convicted</label>
 							    <div class="col-md-8"> 
-							      <textarea class="form-control" id="${field}-field3" placeholder="Enter Who has been convicted">
-							      </textarea>
+							       <form:textarea path="${field}.convicted" cssClass="form-control" id="${field}-field3" placeholder="Enter Who has been convicted"/>
+							      
 							    </div>
 							</div>
 							<div class="form-group">
 							    <label class="control-label col-md-4 small" for="${field}-field4">Length of the period of exclusion</label>
 							    <div class="col-md-8"> 
-							      <input type="text" class="form-control" id="${field}-field4" placeholder="Enter Length of the period of exclusion"/>
+							      <form:input path="${field}.periodLength" class="form-control" id="${field}-field4" placeholder="Enter Length of the period of exclusion"/>
 							    </div>
 							</div>
 							

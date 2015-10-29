@@ -37,24 +37,25 @@ public class EspdDocument {
 	@XmlElement private String websiteProcDocs;
 	
 	//Exclusions
-	@XmlElement private Boolean criminalConvictions;
-	@XmlElement private Boolean corruption;
-	@XmlElement private Boolean fraud;
-	@XmlElement private Boolean terroristOffences;
-	@XmlElement private Boolean moneyLaundering;
-	@XmlElement private Boolean childLabour;
 	
-	@XmlElement private Boolean paymentTaxes;
-	@XmlElement private Boolean paymentSocsec;
+	@XmlElement private Criterion criminalConvictions;
+	@XmlElement private Criterion corruption;
+	@XmlElement private Criterion fraud;
+	@XmlElement private Criterion terroristOffences;
+	@XmlElement private Criterion moneyLaundering;
+	@XmlElement private Criterion childLabour;
 	
-	@XmlElement private Boolean breachingObligations;
-	@XmlElement private Boolean bankruptSubject;
-	@XmlElement private Boolean guiltyGrave;
-	@XmlElement private Boolean agreementsEo;
-	@XmlElement private Boolean conflictInterest;
-	@XmlElement private Boolean involvementPreparation;
-	@XmlElement private Boolean earlyTermination;
-	@XmlElement private Boolean guiltyMisinterpretation;
+	@XmlElement private Criterion paymentTaxes;
+	@XmlElement private Criterion paymentSocsec;
+	
+	@XmlElement private Criterion breachingObligations;
+	@XmlElement private Criterion bankruptSubject;
+	@XmlElement private Criterion guiltyGrave;
+	@XmlElement private Criterion agreementsEo;
+	@XmlElement private Criterion conflictInterest;
+	@XmlElement private Criterion involvementPreparation;
+	@XmlElement private Criterion earlyTermination;
+	@XmlElement private Criterion guiltyMisinterpretation;
 
 	//trick to use MultipartFile as @RequestParam
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
