@@ -22,7 +22,16 @@
 		
 			<div class="col-md-12"> 
 				<div class="form-group">
-					<label class="control-label small" for="${field}-field6">Do you confirm it?</label> 
+					 
+					<label class="control-label small" style="padding-top: 0px;" for="${field}-field6">
+					<c:if test="${question}">
+						Your answer?
+					</c:if>
+					<c:if test="${!question}">
+						Have you taken?
+					</c:if>
+					</label>
+					
 					<form:checkbox path="${field}" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
 				</div>
 			</div>
@@ -75,7 +84,7 @@
 			
 			<div class="col-md-12"> 
 				<div class="form-group">
-					<label class="control-label small" for="${field}-field6">Information is available electronically?</label> 
+					<label class="control-label small" for="${field}-field6">Is this information available electronically?</label> 
 					<input type="checkbox" id="${field}-field6" data-toggle="collapse" data-target="#${field}-electronically" class="radioslide checktoggle form-control" />
 				</div>
 			</div>

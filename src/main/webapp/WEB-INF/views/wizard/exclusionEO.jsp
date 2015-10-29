@@ -43,36 +43,42 @@
 					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
 					<c:set var="number" value="1" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="corruption" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
 					<c:set var="number" value="2" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="fraud" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
 					<c:set var="number" value="3" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="terroristOffences" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
 					<c:set var="number" value="4" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="moneyLaundering" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_title_money_laundering" scope="session"/>
 					<c:set var="number" value="5" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 					<c:set var="field" value="childLabour" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
 					<c:set var="number" value="6" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 					<jsp:include page="eocriteria.jsp"/>
 					
 			</div>
@@ -96,12 +102,14 @@
 				<c:set var="title_code" value="crit_eu_title_payment_taxes" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="1" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 				
 				<c:set var="field" value="paymentSocsec" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_payment_social_security" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="2" scope="session"/>
+					<c:set var="question" value="false" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 					
 			</div>
@@ -125,48 +133,56 @@
 				<c:set var="title_code" value="crit_eu_title_breaching_obligations_eo" scope="session"/>
 				<c:set var="tooltip_code" value="crit_eu_tooltip_breaching_obligations" scope="session"/>
 				<c:set var="number" value="1" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 				<c:set var="field" value="bankruptSubject" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_bankrupt_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="2" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 				
 				<c:set var="field" value="guiltyGrave" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_guilty_misconduct_eo" scope="session"/>
 				<c:set var="tooltip_code" value="crit_eu_tooltip_guilty_misconduct_eo" scope="session"/>
 				<c:set var="number" value="3" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 				
 				<c:set var="field" value="agreementsEo" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_agreement_economic_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="4" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 				<c:set var="field" value="conflictInterest" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_conflict_interest_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="5" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 				<c:set var="field" value="involvementPreparation" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_involvment_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="6" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 				<c:set var="field" value="earlyTermination" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_early_termination_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="7" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 				<c:set var="field" value="guiltyMisinterpretation" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation_eo" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="8" scope="session"/>
+					<c:set var="question" value="true" scope="session"/>
 				<jsp:include page="eocriteria.jsp"/>
 
 			</div>
