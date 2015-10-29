@@ -28,7 +28,7 @@
 						Your answer?
 					</c:if>
 					<c:if test="${!question}">
-						Have you taken?
+						Your answer?
 					</c:if>
 					</label>
 					
