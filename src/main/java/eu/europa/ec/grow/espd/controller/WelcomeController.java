@@ -54,7 +54,7 @@ class WelcomeController {
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
             @RequestParam String country, @RequestParam(required = false) MultipartFile attachment,
-            Map<String, Object> model) throws JAXBException, IOException {
+            Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {
                 EspdDocument espd = (EspdDocument) jaxb2Marshaller.unmarshal(new StreamSource(is));

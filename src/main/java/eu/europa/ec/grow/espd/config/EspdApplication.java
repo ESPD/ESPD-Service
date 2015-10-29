@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.europa.ec.grow.espd.domain.EspdDocument;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -38,7 +39,7 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
     @Bean
     Jaxb2Marshaller jaxb2Marshaller() {
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setPackagesToScan("eu.europa.ec.grow.espd");
+        jaxb2Marshaller.setPackagesToScan(EspdDocument.class.getPackage().getName());
         Map<String,Object> map = new HashMap<>(2);
         map.put(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxb2Marshaller.setMarshallerProperties(map);
