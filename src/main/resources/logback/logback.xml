@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.springframework.web" level="INFO"/>
-    <logger name="org.apache.jasper" level="INFO"/>
+
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>smtpmail.cec.eu.int</smtpHost>
+        <from>automated-notifications@nomail.ec.europa.eu</from>
+        <to>Virgiliu.RATOI@ext.ec.europa.eu</to>
+        <subject>ESPD DEV-LOCAL Monitoring Alert: An error occurred</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <logger name="org.springframework" level="INFO"/>
+
+    <root level="ERROR">
+        <appender-ref ref="EMAIL" />
+    </root>
+
 </configuration>
