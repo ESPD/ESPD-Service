@@ -1,7 +1,6 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -9,16 +8,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -84,7 +84,11 @@ class WelcomeController {
     }
 
     @RequestMapping(value = "/procedure", method = RequestMethod.POST)
-    public String postCreatePage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+    public String postCreatePage(@RequestParam String agent, @ModelAttribute("espd") @Valid EspdDocument espd,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "procedure";
+        }
         return "redirect:/exclusion?agent=" + agent;
     }
 
@@ -130,8 +134,12 @@ class WelcomeController {
     }
 
     @RequestMapping(value = "/finish", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE)
-    String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd,
-            SessionStatus status) throws JAXBException, IOException {
+    String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") @Valid EspdDocument espd,
+            SessionStatus status, BindingResult bindingResult) throws JAXBException, IOException {
+        if (bindingResult.hasErrors()) {
+            return "/finish";
+        }
+
         try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
             response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=espd.xml");
             response.setContentType(MediaType.APPLICATION_XML_VALUE);

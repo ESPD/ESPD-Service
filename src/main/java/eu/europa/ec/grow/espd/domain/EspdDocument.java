@@ -1,19 +1,13 @@
 package eu.europa.ec.grow.espd.domain;
 
-import java.io.IOException;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
+import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
 import lombok.Data;
-
 import org.springframework.web.multipart.MultipartFile;
 
-import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.*;
+import java.io.IOException;
 
 @Data
 @XmlRootElement(name="xml")
@@ -22,7 +16,10 @@ public class EspdDocument {
 
 	@XmlTransient private String action;// "ca_create_espd" or "eo_import_espd"
 
-	@XmlElement private String name;
+	@XmlElement
+    @NotNull(message = "Name is mandatory.")
+	private String name;
+
 	@XmlElement private String natRegNumber;
 	@XmlElement private String streetAndNumber;
 	@XmlElement private String postcode;

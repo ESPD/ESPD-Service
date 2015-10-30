@@ -52,19 +52,24 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-6">
-						<div class="form-group ">
+						<div class="form-group">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_name"><s:message code="createca_name"/></span></label>
 							<div class="col-md-8">
 								<form:input cssClass="form-control" path="name" placeholder="Enter name" required="true"/>
 							</div>
 						</div>
-						<div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-4">
+                                <form:errors path="name" cssClass="alert-danger"/>
+                            </div>
+                        </div>
+						<div class="form-group">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_nat_regnum"><s:message code="createca_nat_regnum"/></span></label>
 							<div class="col-md-8">
 								<form:input cssClass="form-control" path="streetAndNumber" placeholder="Enter registration number"/>
 							</div>
 						</div>
-						<div class="form-group ">
+						<div class="form-group">
 							<label class="control-label col-md-4 " for="name"><span data-i18n="createca_street_and_num"><s:message code="createca_street_and_num"/></span></label>
 							<div class="col-md-8">
 								<form:input cssClass="form-control" path="natRegNumber" placeholder="Enter street and number"/>
