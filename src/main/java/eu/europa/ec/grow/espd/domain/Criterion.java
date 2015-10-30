@@ -13,9 +13,5 @@ import lombok.Data;
 public class Criterion {
 
 	@XmlElement private Boolean exists;
-	@XmlElement private String dateOfConviction;
-	@XmlElement private String reason;
-	@XmlElement private String convicted;
-	@XmlElement private String periodLength;
 	
 }

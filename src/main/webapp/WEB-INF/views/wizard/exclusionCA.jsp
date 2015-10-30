@@ -38,7 +38,7 @@
 			
 					<div class="checkbox">
 						<label>
-							<form:checkbox path="criminalConvictions"/>
+							<form:checkbox path="criminalConvictions.exists"/>
 							<span data-i18n="crit_eu_title_grounds_criminal_conv">
 								<s:message code='crit_eu_title_grounds_criminal_conv'/>
 							</span>
@@ -47,7 +47,7 @@
 					</div>
 					<div class="checkbox">
 						<label>
-							<form:checkbox path="corruption"/>
+							<form:checkbox path="corruption.exists"/>
 							<span data-i18n="crit_eu_title_corruption">
 								<s:message code='crit_eu_title_corruption'/>
 							</span>
@@ -56,7 +56,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="fraud"/>
+							<form:checkbox path="fraud.exists"/>
 							<span data-i18n="crit_eu_title_fraud">
 								<s:message code='crit_eu_title_fraud'/>
 							</span>
@@ -65,7 +65,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="terroristOffences"/>
+							<form:checkbox path="terroristOffences.exists"/>
 							<span data-i18n="crit_eu_title_terrorist">
 								<s:message code='crit_eu_title_terrorist'/>
 							</span>
@@ -74,7 +74,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="moneyLaundering"/>
+							<form:checkbox path="moneyLaundering.exists"/>
 							<span data-i18n="crit_eu_title_money_laundering">
 								<s:message code='crit_eu_title_money_laundering'/>
 							</span>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="checkbox">	
 						<label>
-							<form:checkbox path="childLabour"/>
+							<form:checkbox path="childLabour.exists"/>
 							<span data-i18n="crit_eu_title_child_labour">
 								<s:message code='crit_eu_title_child_labour'/>
 							</span>
@@ -105,7 +105,7 @@
 			
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="paymentTaxes"/>
+						<form:checkbox path="paymentTaxes.exists"/>
 						<span data-i18n="crit_eu_title_payment_taxes">
 							<s:message code='crit_eu_title_payment_taxes'/>
 						</span>
@@ -113,7 +113,7 @@
 				</div>			
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="paymentSocsec"/>
+						<form:checkbox path="paymentSocsec.exists"/>
 						<span data-i18n="crit_eu_title_payment_social_security">
 							<s:message code='crit_eu_title_payment_social_security'/>
 						</span>
@@ -134,7 +134,7 @@
 
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="breachingObligations"/>
+						<form:checkbox path="breachingObligations.exists"/>
 						<span data-i18n="crit_eu_title_breaching_obligations">
 							<s:message code='crit_eu_title_breaching_obligations'/>
 						</span>
@@ -143,7 +143,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="bankruptSubject"/>
+						<form:checkbox path="bankruptSubject.exists"/>
 						<span data-i18n="crit_eu_title_bankrupt">
 							<s:message code='crit_eu_title_bankrupt'/>
 						</span>
@@ -151,7 +151,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="guiltyGrave"/>
+						<form:checkbox path="guiltyGrave.exists"/>
 						<span data-i18n="crit_eu_title_guilty_misconduct">
 							<s:message code='crit_eu_title_guilty_misconduct'/>
 						</span>
@@ -159,7 +159,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="agreementsEo"/>
+						<form:checkbox path="agreementsEo.exists"/>
 						<span data-i18n="crit_eu_title_agreement_economic">
 							<s:message code='crit_eu_title_agreement_economic'/>
 						</span>
@@ -167,7 +167,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="conflictInterest"/>
+						<form:checkbox path="conflictInterest.exists"/>
 						<span data-i18n="crit_eu_title_conflict_interest">
 							<s:message code='crit_eu_title_conflict_interest'/>
 						</span>
@@ -175,7 +175,7 @@
 				</div>		
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="involvementPreparation"/>
+						<form:checkbox path="involvementPreparation.exists"/>
 						<span data-i18n="crit_eu_title_involvment">
 							<s:message code='crit_eu_title_involvment'/>
 						</span>
@@ -183,7 +183,7 @@
 				</div>
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="earlyTermination"/>
+						<form:checkbox path="earlyTermination.exists"/>
 						<span data-i18n="crit_eu_title_early_termination">
 							<s:message code='crit_eu_title_early_termination'/>
 						</span>
@@ -191,7 +191,7 @@
 				</div>
 				<div class="checkbox">	
 					<label>
-						<form:checkbox path="guiltyMisinterpretation"/>
+						<form:checkbox path="guiltyMisinterpretation.exists"/>
 						<span data-i18n="crit_eu_title_guilty_misinterpretation">
 							<s:message code='crit_eu_title_guilty_misinterpretation'/>
 						</span>
@@ -205,7 +205,7 @@
 		<div class="col-md-5">
 			<div class="btn-group">
 				<button type="submit" name="prev" class="btn btn-default btn-lg">
-					<i class="fa fa-arrow-circle-o-right"></i>
+					<i class="fa fa-arrow-circle-o-left"></i>
 					<span data-i18n="previous"><s:message code="previous"/></span>
 				</button>
 				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">

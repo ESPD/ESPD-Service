@@ -193,7 +193,7 @@
 		<div class="col-md-5">
 			<div class="btn-group">
 				<button type="submit" name="prev" class="btn btn-default btn-lg">
-					<i class="fa fa-arrow-circle-o-right"></i>
+					<i class="fa fa-arrow-circle-o-left"></i>
 					<span data-i18n="previous"><s:message code="previous"/></span>
 				</button>
 				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">

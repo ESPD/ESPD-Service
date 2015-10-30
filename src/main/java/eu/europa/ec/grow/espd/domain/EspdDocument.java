@@ -13,6 +13,8 @@ import lombok.Data;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
+
 @Data
 @XmlRootElement(name="xml")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -38,24 +40,24 @@ public class EspdDocument {
 	
 	//Exclusions
 	
-	@XmlElement private Criterion criminalConvictions;
-	@XmlElement private Criterion corruption;
-	@XmlElement private Criterion fraud;
-	@XmlElement private Criterion terroristOffences;
-	@XmlElement private Criterion moneyLaundering;
-	@XmlElement private Criterion childLabour;
+	@XmlElement private CriminalConvictions criminalConvictions;
+	@XmlElement private CriminalConvictions corruption;
+	@XmlElement private CriminalConvictions fraud;
+	@XmlElement private CriminalConvictions terroristOffences;
+	@XmlElement private CriminalConvictions moneyLaundering;
+	@XmlElement private CriminalConvictions childLabour;
 	
-	@XmlElement private Criterion paymentTaxes;
-	@XmlElement private Criterion paymentSocsec;
+	@XmlElement private CriminalConvictions paymentTaxes;
+	@XmlElement private CriminalConvictions paymentSocsec;
 	
-	@XmlElement private Criterion breachingObligations;
-	@XmlElement private Criterion bankruptSubject;
-	@XmlElement private Criterion guiltyGrave;
-	@XmlElement private Criterion agreementsEo;
-	@XmlElement private Criterion conflictInterest;
-	@XmlElement private Criterion involvementPreparation;
-	@XmlElement private Criterion earlyTermination;
-	@XmlElement private Criterion guiltyMisinterpretation;
+	@XmlElement private CriminalConvictions breachingObligations;
+	@XmlElement private CriminalConvictions bankruptSubject;
+	@XmlElement private CriminalConvictions guiltyGrave;
+	@XmlElement private CriminalConvictions agreementsEo;
+	@XmlElement private CriminalConvictions conflictInterest;
+	@XmlElement private CriminalConvictions involvementPreparation;
+	@XmlElement private CriminalConvictions earlyTermination;
+	@XmlElement private CriminalConvictions guiltyMisinterpretation;
 
 	//trick to use MultipartFile as @RequestParam
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}

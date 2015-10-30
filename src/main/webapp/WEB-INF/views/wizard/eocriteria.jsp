@@ -41,7 +41,7 @@
 							<div class="form-group">
 							    <label class="control-label col-md-4 small" for="${field}-field1">Date of conviction</label>
 							    <div class="col-md-8"> 
-							      <form:input path="${field}.dateOfConviction" cssClass="form-control" id="${field}-field1" placeholder="Enter date"/>
+							      <form:input path="${field}.dateOfConviction" cssClass="form-control datepicker" id="${field}-field1" placeholder="Enter date"/>
 							    </div>
 							</div> 
 							<div class="form-group"> 
@@ -89,13 +89,9 @@
 			</div>
 			<div class="col-md-12" id="${field}-electronically" style="display:none">
 				<div class="form-group" style="">
-					<label class="control-label col-md-2 small" for="${field}-field6">Evidence</label>
+					<label class="control-label col-md-2 small" for="${field}-field6">Url</label>
 					<div class="col-md-5"> 
-					<select  class="form-control input-sm" id="${field}-field6">
-						<option>Please select evidence</option>
-						<option>evidence 2</option> 
-						<option>evidence 3</option>
-					</select>  
+						<input type="text"  class="form-control input-sm" id="${field}-field6"/> 
 					</div> 
 											 	
 					 <label class="control-label col-md-1 small" for="${field}-field7">Code</label>

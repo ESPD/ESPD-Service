@@ -1,12 +1,15 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @Controller
@@ -140,5 +146,11 @@ class WelcomeController {
             status.setComplete();
         }
     }
-
+    
+    @InitBinder
+    private void dateBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        binder.registerCustomEditor(Date.class, editor);
+    }
 }
