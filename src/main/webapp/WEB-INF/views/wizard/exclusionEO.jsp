@@ -27,163 +27,153 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
+		
+			<div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
+						
+			
 			<div id="criminal_conv" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			
-					<div class="panel">
+					<div class="">
 						<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
 							<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
 						</span>
+						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv_eo'/>"></span>
 					</div>
-
+					
 					<c:set var="field" value="criminalConvictions" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
 					<c:set var="number" value="1" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 					<c:set var="field" value="corruption" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
 					<c:set var="number" value="2" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 					<c:set var="field" value="fraud" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
 					<c:set var="number" value="3" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 					<c:set var="field" value="terroristOffences" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
 					<c:set var="number" value="4" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 					<c:set var="field" value="moneyLaundering" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_title_money_laundering" scope="session"/>
 					<c:set var="number" value="5" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 					<c:set var="field" value="childLabour" scope="session"/>
 					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
 					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
 					<c:set var="number" value="6" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-					<jsp:include page="eocriteria.jsp"/>
+					<jsp:include page="editors/criminalConvictions.jsp"/>
 					
 			</div>
 		</div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_payment_taxes" class="espd-panel-heading" data-toggle="collapse" data-target="#payment_taxes">
+			<div data-i18n="crit_top_title_grounds_payment_taxes" class="espd-panel-heading" data-toggle="collapse" data-target="#payment_taxes">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</div>
 			<div id="payment_taxes" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			
-				<div class="panel">
+				<div class="">
 					<span data-i18n="crit_eu_main_title_payment_taxes_eo">
 						<s:message code='crit_eu_main_title_payment_taxes_eo'/>
 					</span>
+					<span data-i18n="crit_eu_main_tooltip_payment_taxes_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes_eo'/>"></span>
 				</div>
 				
 				<c:set var="field" value="paymentTaxes" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_payment_taxes" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="1" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/paymentOfTaxes.jsp"/>
 				
 				<c:set var="field" value="paymentSocsec" scope="session"/>
 				<c:set var="title_code" value="crit_eu_title_payment_social_security" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="2" scope="session"/>
-					<c:set var="question" value="false" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/paymentOfTaxes.jsp"/>
 					
 			</div>
 			</div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_insolvency_conflicts" class="espd-panel-heading" data-toggle="collapse" data-target="#insolvency_conflicts">
+			<div data-i18n="crit_top_title_insolvency_conflicts" class="espd-panel-heading" data-toggle="collapse" data-target="#insolvency_conflicts">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
 			<div id="insolvency_conflicts" class="collapse in">
 			<div class="espd-panel-body panel-body">
 
-				<div class="panel">
+				<div class="">
 					<span data-i18n="crit_eu_main_breaching_obligations_eo">
 						<s:message code='crit_eu_main_breaching_obligations_eo'/>
 					</span>
+					<span data-i18n="crit_eu_main_tooltip_breaching_obligations_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations_eo'/>"></span>
 				</div>
-				
+					
 				<c:set var="field" value="breachingObligations" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_breaching_obligations_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_breaching_obligations" scope="session"/>
 				<c:set var="tooltip_code" value="crit_eu_tooltip_breaching_obligations" scope="session"/>
 				<c:set var="number" value="1" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 				<c:set var="field" value="bankruptSubject" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_bankrupt_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_bankrupt" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="2" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 				
 				<c:set var="field" value="guiltyGrave" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_guilty_misconduct_eo" scope="session"/>
-				<c:set var="tooltip_code" value="crit_eu_tooltip_guilty_misconduct_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misconduct" scope="session"/>
+				<c:set var="tooltip_code" value="crit_eu_tooltip_guilty_misconduct" scope="session"/>
 				<c:set var="number" value="3" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 				
 				<c:set var="field" value="agreementsEo" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_agreement_economic_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_agreement_economic" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="4" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 				<c:set var="field" value="conflictInterest" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_conflict_interest_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_conflict_interest" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="5" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 				<c:set var="field" value="involvementPreparation" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_involvment_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_involvment" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="6" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 				<c:set var="field" value="earlyTermination" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_early_termination_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_early_termination" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="7" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 				<c:set var="field" value="guiltyMisinterpretation" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation_eo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation" scope="session"/>
 				<c:set var="tooltip_code" value="" scope="session"/>
 				<c:set var="number" value="8" scope="session"/>
-					<c:set var="question" value="true" scope="session"/>
-				<jsp:include page="eocriteria.jsp"/>
+				<jsp:include page="editors/professionalMisconduct.jsp"/>
 
 			</div>
 			</div>

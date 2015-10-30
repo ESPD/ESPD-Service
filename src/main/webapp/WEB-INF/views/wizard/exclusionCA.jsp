@@ -27,176 +27,132 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_criminal_conv" class="espd-panel-heading">
+			<div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
 			<div class="espd-panel-body panel-body">
 			
-					<span data-i18n="crit_eu_main_title_grounds_criminal_conv">
-						<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
-					</span>
-			
-					<div class="checkbox">
-						<label>
-							<form:checkbox path="criminalConvictions.exists"/>
-							<span data-i18n="crit_eu_title_grounds_criminal_conv">
-								<s:message code='crit_eu_title_grounds_criminal_conv'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_grounds_criminal_conv'/>"></span>
+					<div class="">
+						<span data-i18n="crit_eu_main_title_grounds_criminal_conv">
+							<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
+						</span>
+						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
 					</div>
-					<div class="checkbox">
-						<label>
-							<form:checkbox path="corruption.exists"/>
-							<span data-i18n="crit_eu_title_corruption">
-								<s:message code='crit_eu_title_corruption'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_corruption" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_corruption'/>"></span>
-					</div>
-					<div class="checkbox">	
-						<label>
-							<form:checkbox path="fraud.exists"/>
-							<span data-i18n="crit_eu_title_fraud">
-								<s:message code='crit_eu_title_fraud'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_fraud" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_fraud'/>"></span>
-					</div>
-					<div class="checkbox">	
-						<label>
-							<form:checkbox path="terroristOffences.exists"/>
-							<span data-i18n="crit_eu_title_terrorist">
-								<s:message code='crit_eu_title_terrorist'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_terrorist" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_terrorist'/>"></span>
-					</div>
-					<div class="checkbox">	
-						<label>
-							<form:checkbox path="moneyLaundering.exists"/>
-							<span data-i18n="crit_eu_title_money_laundering">
-								<s:message code='crit_eu_title_money_laundering'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_money_laundering" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_money_laundering'/>"></span>
-					</div>
-					<div class="checkbox">	
-						<label>
-							<form:checkbox path="childLabour.exists"/>
-							<span data-i18n="crit_eu_title_child_labour">
-								<s:message code='crit_eu_title_child_labour'/>
-							</span>
-						</label>
-						<span data-i18n="crit_eu_tooltip_child_labour" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_child_labour'/>"></span>
-					</div>			
+						
+					<c:set var="field" value="criminalConvictions" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+					
+					<c:set var="field" value="corruption" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_corruption" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+					
+					<c:set var="field" value="fraud" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+					
+					<c:set var="field" value="terroristOffences" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+					
+					<c:set var="field" value="moneyLaundering" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_money_laundering" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+					
+					<c:set var="field" value="childLabour" scope="session"/>
+					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
+					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
+					<jsp:include page="editors/criteria.jsp"/>
+
 			</div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_grounds_payment_taxes" class="espd-panel-heading">
+		
+			<span data-i18n="crit_top_title_grounds_payment_taxes" class="espd-panel-heading">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
-			</div>
+			</span>
+					
 			<div class="espd-panel-body panel-body">
 			
-				<span data-i18n="crit_eu_main_title_payment_taxes">
-					<s:message code='crit_eu_main_title_payment_taxes'/>
-				</span>
-			
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="paymentTaxes.exists"/>
-						<span data-i18n="crit_eu_title_payment_taxes">
-							<s:message code='crit_eu_title_payment_taxes'/>
-						</span>
-					</label>
-				</div>			
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="paymentSocsec.exists"/>
-						<span data-i18n="crit_eu_title_payment_social_security">
-							<s:message code='crit_eu_title_payment_social_security'/>
-						</span>
-					</label>
+				<div class="">
+					<span data-i18n="crit_eu_main_title_payment_taxes">
+						<s:message code='crit_eu_main_title_payment_taxes'/>
+					</span>
+					<span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
 				</div>
+					
+				<c:set var="field" value="paymentTaxes" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_payment_taxes" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="paymentSocsec" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_payment_social_security" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+				
 			</div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcaexcl_insolvency_conflicts" class="espd-panel-heading">
+			<div data-i18n="crit_top_title_insolvency_conflicts" class="espd-panel-heading">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
 			<div class="espd-panel-body panel-body">
 
-				<span data-i18n="crit_eu_main_breaching_obligations">
-					<s:message code='crit_eu_main_breaching_obligations'/>
-				</span>
+				<div class="">
+					<span data-i18n="crit_eu_main_breaching_obligations">
+						<s:message code='crit_eu_main_breaching_obligations'/>
+					</span>
+					<span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
+				</div> 
 
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="breachingObligations.exists"/>
-						<span data-i18n="crit_eu_title_breaching_obligations">
-							<s:message code='crit_eu_title_breaching_obligations'/>
-						</span>
-					</label>
-					<span data-i18n="crit_eu_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_tooltip_breaching_obligations'/>"></span>
-				</div>		
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="bankruptSubject.exists"/>
-						<span data-i18n="crit_eu_title_bankrupt">
-							<s:message code='crit_eu_title_bankrupt'/>
-						</span>
-					</label>
-				</div>		
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="guiltyGrave.exists"/>
-						<span data-i18n="crit_eu_title_guilty_misconduct">
-							<s:message code='crit_eu_title_guilty_misconduct'/>
-						</span>
-					</label>
-				</div>		
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="agreementsEo.exists"/>
-						<span data-i18n="crit_eu_title_agreement_economic">
-							<s:message code='crit_eu_title_agreement_economic'/>
-						</span>
-					</label>
-				</div>		
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="conflictInterest.exists"/>
-						<span data-i18n="crit_eu_title_conflict_interest">
-							<s:message code='crit_eu_title_conflict_interest'/>
-						</span>
-					</label>
-				</div>		
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="involvementPreparation.exists"/>
-						<span data-i18n="crit_eu_title_involvment">
-							<s:message code='crit_eu_title_involvment'/>
-						</span>
-					</label>
-				</div>
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="earlyTermination.exists"/>
-						<span data-i18n="crit_eu_title_early_termination">
-							<s:message code='crit_eu_title_early_termination'/>
-						</span>
-					</label>
-				</div>
-				<div class="checkbox">	
-					<label>
-						<form:checkbox path="guiltyMisinterpretation.exists"/>
-						<span data-i18n="crit_eu_title_guilty_misinterpretation">
-							<s:message code='crit_eu_title_guilty_misinterpretation'/>
-						</span>
-					</label>
-				</div>
+					
+				<c:set var="field" value="breachingObligations" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_breaching_obligations" scope="session"/>
+				<c:set var="tooltip_code" value="crit_eu_tooltip_breaching_obligations" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="bankruptSubject" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_bankrupt" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="guiltyGrave" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misconduct" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="agreementsEo" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_agreement_economic" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="conflictInterest" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_conflict_interest" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="involvementPreparation" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_involvment" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="earlyTermination" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_early_termination" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
+					
+				<c:set var="field" value="guiltyMisinterpretation" scope="session"/>
+				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation" scope="session"/>
+				<c:set var="tooltip_code" value="" scope="session"/>
+				<jsp:include page="editors/criteria.jsp"/>
 				
 			</div>
 		</div>

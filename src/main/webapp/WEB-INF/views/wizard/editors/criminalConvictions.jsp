@@ -24,12 +24,7 @@
 				<div class="form-group">
 					 
 					<label class="control-label small" style="padding-top: 0px;" for="${field}-field6">
-					<c:if test="${question}">
 						Your answer?
-					</c:if>
-					<c:if test="${!question}">
-						Your answer?
-					</c:if>
 					</label>
 					
 					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
