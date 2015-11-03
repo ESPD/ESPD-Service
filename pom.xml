@@ -200,8 +200,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <warName>${project.artifactId}</warName>
-                    <webappDirectory>${basedir}/out/${project.build.finalName}_exploded_${project.packaging}
-                    </webappDirectory>
                 </configuration>
             </plugin>
         </plugins>
