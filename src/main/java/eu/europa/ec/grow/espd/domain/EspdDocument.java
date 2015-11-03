@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.domain;
 
 import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
+import eu.europa.ec.grow.espd.domain.selection.SelectionCriteria;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,6 +56,9 @@ public class EspdDocument {
 	@XmlElement private CriminalConvictions involvementPreparation;
 	@XmlElement private CriminalConvictions earlyTermination;
 	@XmlElement private CriminalConvictions guiltyMisinterpretation;
+
+    @XmlElement
+    private SelectionCriteria selectionCriteria;
 
 	//trick to use MultipartFile as @RequestParam
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
