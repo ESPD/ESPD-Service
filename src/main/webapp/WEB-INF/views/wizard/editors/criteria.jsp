@@ -10,12 +10,12 @@
 			<s:message code='${title_code}'/> 
 		</span>
 	</label>
-	<c:if test="${tooltip_code != ''}">
+	<c:if test="${not empty tooltip_code}">
 		<s:message var="tooltip_text" code='${tooltip_code}'/>
 		<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${tooltip_text}"></span>
 	</c:if>
 </div>
-<c:if test="${description_code != ''}">
+<c:if test="${not empty description_code}">
     <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
 </c:if>
 <c:set var="description_code" value="" scope="session"/>
