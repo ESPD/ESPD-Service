@@ -11,7 +11,7 @@
 		<label data-i18n="crit_information_available_electronically" class="control-label small" for="${field}-field-avaliable-electronically-exist">
 			<s:message code='crit_information_available_electronically'/>
 		</label> 
-		<form:checkbox path="${field}.avaliableElectronically.exists" id="${field}-field-avaliable-electronically-exists" data-toggle="collapse" data-target="#${field}-electronically" class="radioslide checktoggle form-control"  />
+		<form:checkbox path="${field}.avaliableElectronically.exists" id="${field}-field-avaliable-electronically-exists" data-toggle="collapse" data-target="${'#'}${field}-electronically" class="radioslide checktoggle form-control"  />
 	</div>
 	
 	<div id="${field}-electronically" class="form-group" style="display:none">
@@ -19,7 +19,7 @@
 		<div class="col-md-5"> 
 			<input type="text"  class="form-control input-sm" id="${field}-field6"/> 
 		</div> 
-													 	
+													 
 		<label class="control-label col-md-1 small" for="${field}-field7">Code</label>
 		<div class="col-md-4"> 
 			<input type="text" class="form-control input-sm" id="${field}-field7" placeholder="Provide code if applicable"/>
