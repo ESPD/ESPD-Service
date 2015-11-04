@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.europa.ec.grow.espd.domain.exclusion.BreachOfObligations;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,4 +17,5 @@ public class ExclusionCriterion extends Criterion {
 	
 	@XmlElement private AvaliableElectronically avaliableElectronically;
 	@XmlElement private SelfCleaning selfCleaning;
+	@XmlElement private BreachOfObligations breachOfObligations;
 }

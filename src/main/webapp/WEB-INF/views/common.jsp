@@ -103,7 +103,7 @@
 		        }
 		    });
 
-			$('.radioslide').bootstrapToggle({style:"ios", width:"60", size:"mini", on:"Yes", off:"No"});
+			$('.radioslide').bootstrapToggle({style:"ios", width:"57", size:"mini", on:"Yes", off:"No", onstyle:"primary ios-toggle-on", offstyle:"default ios-toggle-off"});
 
 		    $('.radioslide:checked').each(function( index ) {
 		    	$($(this).attr("data-target")).show();

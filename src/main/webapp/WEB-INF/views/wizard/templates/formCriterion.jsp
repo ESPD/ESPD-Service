@@ -10,9 +10,10 @@
 <tiles:importAttribute name="description_code"/>
 
 <tiles:importAttribute name="selfCleaning"/>
+<tiles:importAttribute name="breachOfObligations"/>
 <tiles:importAttribute name="avaliableElectronically"/>
 
-<div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
+<div class="row" style="border: 1px solid lightgray; margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
 		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
 				<div class="form-group">
 					<div class="col-md-12"> 
@@ -38,15 +39,14 @@
 		</div> 
 		<div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;">
 		
-			<div class="col-md-12"> 
+			<div class="col-md-12">
 				<div class="form-group">
-					 
+						 
 					<label class="control-label small" style="padding-top: 0px;" for="${field}-field6">
 						Your answer?
 					</label>
-					
+						
 					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" cssClass="${yesByDefault?'radioslide-yesByDefault':''} radioslide checktoggle form-control" />
-
 				</div>
 			</div>
 
@@ -55,20 +55,28 @@
 				<tiles:insertAttribute name="form">
 					<tiles:putAttribute name="field" value="${field}"/>
 				</tiles:insertAttribute>
-
+				
+				<c:if test="${breachOfObligations}">
+					<tiles:insertDefinition name="breachOfObligations">
+						<tiles:putAttribute name="field" value="${field}"/>
+					</tiles:insertDefinition>
+				</c:if>
+				
 				<c:if test="${selfCleaning}">
 					<tiles:insertDefinition name="selfCleaning">
 						<tiles:putAttribute name="field" value="${field}"/>
 					</tiles:insertDefinition>
 				</c:if>
+			
 			</div>
 
-			<c:if test="${avaliableElectronically}">
-				<tiles:insertDefinition name="avaliableElectronically">
-					<tiles:putAttribute name="field" value="${field}"/>
-				</tiles:insertDefinition>
-			</c:if>
-
+			<div class="col-md-12">
+				<c:if test="${avaliableElectronically}">
+					<tiles:insertDefinition name="avaliableElectronically">
+						<tiles:putAttribute name="field" value="${field}"/>
+					</tiles:insertDefinition>
+				</c:if>
+			</div>
 		</div>
 		
 		

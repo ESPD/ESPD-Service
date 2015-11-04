@@ -7,10 +7,8 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-	<div class="col-md-12">
 		<label class="control-label small" for="${field}-field5">Have you taken measures to demonstrate your reliability ("Self-Cleaning")</label> 
 		<input type="checkbox" id="${field}-field5" data-toggle="collapse" data-target="${'#'}${field}-reliability" class="radioslide checktoggle" />
-	</div>
 </div>
 <div class="tab-pane" id="${field}-reliability" style="display:none">
 	<div class="form-group">
@@ -19,4 +17,4 @@
 			<textarea class="form-control" id="${field}-field6" placeholder="describe">  </textarea>
 		</div>
 	</div>
-</div> 
+</div>

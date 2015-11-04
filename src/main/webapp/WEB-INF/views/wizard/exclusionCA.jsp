@@ -133,12 +133,14 @@
 				<tiles:insertDefinition name="checkCriterion">
 					<tiles:putAttribute name="field" value="bankruptSubject"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
+					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_bankrupt"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>
 				</tiles:insertDefinition>
 
 				<tiles:insertDefinition name="checkCriterion">
 					<tiles:putAttribute name="field" value="guiltyGrave"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
+					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_guilty_misconduct"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
 				</tiles:insertDefinition>
 					
@@ -151,6 +153,7 @@
 				<tiles:insertDefinition name="checkCriterion">
 					<tiles:putAttribute name="field" value="conflictInterest"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
+					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_conflict_interest"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>
 				</tiles:insertDefinition>
 

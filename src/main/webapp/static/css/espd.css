@@ -1,16 +1,21 @@
-.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+.toggle.ios {
     border-radius: 20px;
 }
-
+.ios-toggle-on {
+	padding-right: 20px !important;
+}
+.ios-toggle-off {
+	padding-left: 16px !important;
+}
 .toggle.ios .toggle-handle {
     border-radius: 20px;
-    padding: 1px 20px;
+    padding: 5px 20px;
 }
 
 input.error {
     border: 1px solid #A52A2A !important;
 }
-
+ 
 textarea.error {
     border: 1px solid #A52A2A !important;
 }
