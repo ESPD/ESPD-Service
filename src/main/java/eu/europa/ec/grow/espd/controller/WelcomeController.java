@@ -89,6 +89,7 @@ class WelcomeController {
         if (bindingResult.hasErrors()) {
             return "procedure";
         }
+
         return "redirect:/exclusion?agent=" + agent;
     }
 
@@ -113,7 +114,25 @@ class WelcomeController {
 
     @RequestMapping("/selection")
     public String showSelectCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
+        preselectEconomicOperatorSelectionCriteria(agent, espd);
         return ("eo".equals(agent)) ? "selectionEO" : "selectionCA";
+    }
+
+    private void preselectEconomicOperatorSelectionCriteria(final String agent, final EspdDocument espd) {
+        if ("eo".equals(agent)) {
+            if (espd.getSuitabilityEnrolment().getExists() == null) {
+                espd.getSuitabilityEnrolment().setExists(true);
+            }
+            if (espd.getSuitabilityServiceContracts().getExists() == null) {
+                espd.getSuitabilityServiceContracts().setExists(true);
+            }
+            if (espd.getEconomicEnrolment().getExists() == null) {
+                espd.getEconomicEnrolment().setExists(true);
+            }
+            if (espd.getEconomicServiceContracts().getExists() == null) {
+                espd.getEconomicServiceContracts().setExists(true);
+            }
+        }
     }
 
     @RequestMapping(value = "/selection", method = RequestMethod.POST, params = "next")
@@ -154,7 +173,7 @@ class WelcomeController {
             status.setComplete();
         }
     }
-    
+
     @InitBinder
     private void dateBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");

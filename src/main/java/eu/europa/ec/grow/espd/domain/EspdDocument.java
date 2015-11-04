@@ -60,9 +60,6 @@ public class EspdDocument {
 	@XmlElement private BreachOfObligations guiltyMisinterpretation;
 
     @XmlElement
-    private SelectionCriterion satisfiesAll;
-
-    @XmlElement
     private SelectionCriterion suitabilityEnrolment;
 
     @XmlElement
