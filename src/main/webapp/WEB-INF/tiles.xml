@@ -61,6 +61,9 @@
     <definition name="selfCleaning" template="/WEB-INF/views/wizard/templates/selfCleaning.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
+    <definition name="breachOfObligations" template="/WEB-INF/views/wizard/templates/breachOfObligations.jsp">
+    	<put-attribute name="field" value=""/>
+    </definition>
 
     <definition name="checkCriterion" template="/WEB-INF/views/wizard/templates/checkCriterion.jsp">
         <put-attribute name="field" value=""/>
@@ -75,22 +78,29 @@
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="description_code" value=""/>
     	<put-attribute name="form" value=""/>
+    	<put-attribute name="selfCleaning" value="false"/>
+    	<put-attribute name="breachOfObligations" value="false"/>
+    	<put-attribute name="avaliableElectronically" value="false"/>
+    </definition>
+    
+    <definition name="exclusionFormCriterion" extends="formCriterion">
     	<put-attribute name="selfCleaning" value="true"/>
     	<put-attribute name="avaliableElectronically" value="true"/>
     </definition>
 
-    <definition name="simpleFormCriterion" extends="formCriterion">
+    <definition name="simpleFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleForm.jsp"/>
     </definition>
 
-    <definition name="criminalFormCriterion" extends="formCriterion">
+    <definition name="criminalFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/criminalForm.jsp"/>
     </definition>
 
-    <definition name="taxFormCriterion" extends="formCriterion">
+    <definition name="taxFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/taxForm.jsp"/>
+    	<put-attribute name="breachOfObligations" value="true"/>
     </definition>
-
+    
     <definition name="selectionCriterionEO" template="/WEB-INF/views/wizard/templates/selectionCriterionEO.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="number" value=""/>
@@ -98,5 +108,15 @@
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
     </definition>
+
+    <!-- test for selection-->
+    <definition name="selectionFormCriterion" extends="formCriterion">
+    	<put-attribute name="avaliableElectronically" value="true"/>
+    </definition>
+    
+    <definition name="simpleSelectionFormCriterion" extends="selectionFormCriterion">
+    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleSelectionFormCriterion.jsp"/>
+    </definition>
+    <!-- ~test for selection -->
 
 </tiles-definitions>

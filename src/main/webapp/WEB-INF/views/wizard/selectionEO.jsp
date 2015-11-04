@@ -4,6 +4,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
     <div class="panel-default">
         <div class="panel panel-default no-border">
@@ -89,6 +90,30 @@
                 </div>
             </div>
         </div>
+        
+        <%-- test panel with tiles--%>
+        <div class="panel panel-default espd-panel">
+        	<div class="espd-panel-heading">test for selection</div>
+        	<div class="espd-panel-body panel-body">
+        		
+				<strong data-i18n="crit_selection_eo_suitability_article">Test test test ololo trololo.</strong>
+				
+				<tiles:insertDefinition name="simpleSelectionFormCriterion">
+					<tiles:putAttribute name="field" value="suitabilityEnrolment"/>
+					<tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_enrolment_main"/>
+					<tiles:putAttribute name="description_code" value="crit_selection_eo_suitability_enrolment_description"/>
+				</tiles:insertDefinition>
+				
+				<tiles:insertDefinition name="simpleSelectionFormCriterion">
+					<tiles:putAttribute name="field" value="suitabilityServiceContracts"/>
+					<tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_service_contracts_main"/>
+					<tiles:putAttribute name="description_code" value="crit_selection_eo_suitability_service_contracts_description"/>
+					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+				</tiles:insertDefinition>
+        	</div>
+        </div>
+		<%-- ~ test panel with tiles--%>
+		
         <div class="panel panel-default espd-panel">
             <div data-i18n="createcasel_suitability" class="espd-panel-heading">
                 <s:message code='createcasel_suitability'/>
