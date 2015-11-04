@@ -34,44 +34,72 @@
 			</ul>
 		</div>
 
-        <div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
-            <div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
+        <div id="selectionDeclares" class="">
+			<span data-i18n="crit_selection_eo_declares_that">
+				<s:message code='crit_selection_eo_declares_that'/>
+			</span>
+            <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_eo_declares_that_tooltip'/>"></span>
+        </div>
+        <div class="row criteria-row">
+            <div class="col-md-5 criteria-cell-left">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <strong>hodor </strong>
-                        <strong data-i18n="crit_selection_eo_declares_that">
-                            <s:message code='crit_selection_eo_declares_that'/>
+                        <strong>1. </strong>
+                        <strong data-i18n="crit_selection_eo_satisfies_all_criteria">
+                            <s:message code='crit_selection_eo_satisfies_all_criteria'/>
                         </strong>
-                            <s:message var="tooltip_text" code='crit_selection_eo_declares_that_tooltip'/>
-                            <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="crit_selection_eo_declares_that_tooltip"></span>
-                        <br>
-                        <br>
-
                     </div>
                 </div>
             </div>
-            <div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;">
-                TODO: for prof. misconduct
-            </div>
+            <div class="col-md-7 criteria-cell-right">
 
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        <label class="control-label small" style="padding-top: 0px;" for="eo-satisfies-all">
+                            <s:message code='crit_your_answer'/>
+                        </label>
+                        <form:checkbox path="selectionCriteria.satisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
+                    </div>
+                </div>
+            </div>
         </div>
-				
+
 		<div class="panel panel-default espd-panel">
 			<div data-i18n="createcasel_suitability" class="espd-panel-heading">
 				<s:message code='createcasel_suitability'/>
 			</div>
-			<div class="panel-body">
-				...
-			</div>
+
+            <c:set var="field" value="selectionCriteria.suitabilityEnrolment" scope="session"/>
+            <c:set var="title_code" value="crit_selection_eo_suitability_enrolment_main" scope="session"/>
+            <c:set var="tooltip_code" value="crit_selection_eo_suitability_enrolment_description" scope="session"/>
+            <c:set var="number" value="1" scope="session"/>
+            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+
+            <c:set var="field" value="selectionCriteria.suitabilityServiceContracts" scope="session"/>
+            <c:set var="title_code" value="crit_selection_eo_suitability_service_contracts_main" scope="session"/>
+            <c:set var="tooltip_code" value="crit_selection_eo_suitability_service_contracts_description" scope="session"/>
+            <c:set var="number" value="2" scope="session"/>
+            <jsp:include page="editors/selectionCriterionEO.jsp"/>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
 			<div data-i18n="createcasel_economic_and_financial_standing" class="espd-panel-heading">
 				<s:message code='createcasel_economic_and_financial_standing'/>
 			</div>
-			<div class="panel-body">
-				...
-			</div>
+
+            <c:set var="field" value="selectionCriteria.economicEnrolment" scope="session"/>
+            <%--<c:set target="selectionCriteria.economicEnrolment" property="exists" value="true"/>--%>
+            <c:set var="title_code" value="crit_selection_eo_economic_enrolment_main" scope="session"/>
+            <c:set var="tooltip_code" value="crit_selection_eo_economic_enrolment_description" scope="session"/>
+            <c:set var="number" value="1" scope="session"/>
+            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+
+            <c:set var="field" value="selectionCriteria.economicServiceContracts" scope="session"/>
+            <c:set var="title_code" value="crit_selection_eo_economic_service_contracts_main" scope="session"/>
+            <c:set var="tooltip_code" value="crit_selection_eo_economic_service_contracts_description" scope="session"/>
+            <c:set var="number" value="2" scope="session"/>
+            <jsp:include page="editors/selectionCriterionEO.jsp"/>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
