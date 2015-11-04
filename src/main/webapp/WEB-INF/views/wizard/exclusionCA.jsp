@@ -3,6 +3,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 
 	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
@@ -38,36 +39,42 @@
 						</span>
 						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
 					</div>
-						
-					<c:set var="field" value="criminalConvictions" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_grounds_criminal_conv" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
 					
-					<c:set var="field" value="corruption" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_corruption" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_corruption" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
-					
-					<c:set var="field" value="fraud" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_fraud" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_fraud" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
-					
-					<c:set var="field" value="terroristOffences" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_terrorist" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_terrorist" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
-					
-					<c:set var="field" value="moneyLaundering" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_money_laundering" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_money_laundering" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
-					
-					<c:set var="field" value="childLabour" scope="session"/>
-					<c:set var="title_code" value="crit_eu_title_child_labour" scope="session"/>
-					<c:set var="tooltip_code" value="crit_eu_tooltip_child_labour" scope="session"/>
-					<jsp:include page="editors/criteria.jsp"/>
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field"  value="criminalConvictions"/>
+						<tiles:putAttribute name="title_code"  value="crit_eu_title_grounds_criminal_conv"/>
+						<tiles:putAttribute name="tooltip_code"  value="crit_eu_tooltip_grounds_criminal_conv"/>
+					</tiles:insertDefinition>
+
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field" value="corruption"/>
+						<tiles:putAttribute name="title_code" value="crit_eu_title_corruption"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_corruption"/>
+					</tiles:insertDefinition>
+
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field" value="fraud"/>
+						<tiles:putAttribute name="title_code" value="crit_eu_title_fraud"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_fraud"/>
+					</tiles:insertDefinition>
+
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field" value="terroristOffences"/>
+						<tiles:putAttribute name="title_code" value="crit_eu_title_terrorist"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_terrorist"/>
+					</tiles:insertDefinition>
+
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field" value="moneyLaundering"/>
+						<tiles:putAttribute name="title_code" value="crit_eu_title_money_laundering"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_money_laundering"/>
+					</tiles:insertDefinition>
+
+					<tiles:insertDefinition name="checkCriterion">
+						<tiles:putAttribute name="field" value="childLabour"/>
+						<tiles:putAttribute name="title_code" value="crit_eu_title_child_labour"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_child_labour"/>
+					</tiles:insertDefinition>
 
 			</div>
 		</div>
@@ -86,16 +93,16 @@
 					</span>
 					<span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
 				</div>
-					
-				<c:set var="field" value="paymentTaxes" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_payment_taxes" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="paymentSocsec" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_payment_social_security" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="paymentTaxes"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
+				</tiles:insertDefinition>
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="paymentSocsec"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
+				</tiles:insertDefinition>
 				
 			</div>
 		</div>
@@ -113,46 +120,56 @@
 					<span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
 				</div> 
 
+
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="breachingObligations"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
+					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_breaching_obligations"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
+				</tiles:insertDefinition>
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="bankruptSubject"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>
+				</tiles:insertDefinition>
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="guiltyGrave"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
+				</tiles:insertDefinition>
 					
-				<c:set var="field" value="breachingObligations" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_breaching_obligations" scope="session"/>
-				<c:set var="tooltip_code" value="crit_eu_tooltip_breaching_obligations" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="agreementsEo"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
+				</tiles:insertDefinition>
 					
-				<c:set var="field" value="bankruptSubject" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_bankrupt" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="conflictInterest"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>
+				</tiles:insertDefinition>
+
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="involvementPreparation"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
+				</tiles:insertDefinition>
+				
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="earlyTermination"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_early_termination"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_early_termination"/>
+				</tiles:insertDefinition>
 					
-				<c:set var="field" value="guiltyGrave" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_guilty_misconduct" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="agreementsEo" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_agreement_economic" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="conflictInterest" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_conflict_interest" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="involvementPreparation" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_involvment" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="earlyTermination" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_early_termination" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
-					
-				<c:set var="field" value="guiltyMisinterpretation" scope="session"/>
-				<c:set var="title_code" value="crit_eu_title_guilty_misinterpretation" scope="session"/>
-				<c:set var="tooltip_code" value="" scope="session"/>
-				<jsp:include page="editors/criteria.jsp"/>
+				<tiles:insertDefinition name="checkCriterion">
+					<tiles:putAttribute name="field" value="guiltyMisinterpretation"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misinterpretation"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misinterpretation"/>
+				</tiles:insertDefinition>
 				
 			</div>
 		</div>
