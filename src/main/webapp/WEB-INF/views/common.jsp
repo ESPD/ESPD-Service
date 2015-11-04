@@ -52,6 +52,9 @@
 	
 
 	<script>
+
+    
+    
 		<%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
 		window.console = window.console || (function() {
 		    var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function(){};
@@ -80,6 +83,7 @@
 		validator(defaultValidators, "min", "<s:message code='validator_min'/>");
 
 		$(function() {
+			
 			$(".filecontrol").fileinput();
 			$(".datepicker").datepicker({ format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true });
 		    $(".selectfilter").select2();
@@ -92,18 +96,19 @@
 		    });
 		    $('.checktoggle').change(function () {
 		        if($(this).prop('checked')) {
-		        	$($(this).attr("data-target")).slideDown();
+		        	$($(this).attr("data-target")).show();
 		        }
 		        else {
-		        	$($(this).attr("data-target")).slideUp();
+		        	$($(this).attr("data-target")).hide();
 		        }
 		    });
 
-		    $('.radioslide').bootstrapToggle({style:"ios", width:"60", size:"mini", on:"Yes", off:"No"});
+			$('.radioslide').bootstrapToggle({style:"ios", width:"60", size:"mini", on:"Yes", off:"No"});
 
 		    $('.radioslide:checked').each(function( index ) {
 		    	$($(this).attr("data-target")).show();
 		    });
+
 
 		});
   
