@@ -34,32 +34,38 @@
 			</ul>
 		</div>
 
-        <div id="selectionDeclares" class="">
-			<span data-i18n="crit_selection_eo_declares_that">
-				<s:message code='crit_selection_eo_declares_that'/>
-			</span>
-            <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_eo_declares_that_tooltip'/>"></span>
-        </div>
-        <div class="row criteria-row">
-            <div class="col-md-5 criteria-cell-left">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <strong>1. </strong>
-                        <strong data-i18n="crit_selection_eo_satisfies_all_criteria">
-                            <s:message code='crit_selection_eo_satisfies_all_criteria'/>
-                        </strong>
-                    </div>
+        <div class="panel panel-default espd-panel">
+            <div class="espd-panel-heading">
+            </div>
+            <div class="espd-panel-body panel-body">
+                <div id="selectionDeclares" class="">
+                    <strong data-i18n="crit_selection_eo_declares_that">
+                        <s:message code='crit_selection_eo_declares_that'/>
+                    </strong>
+                    <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_eo_declares_that_tooltip'/>"></span>
                 </div>
             </div>
-            <div class="col-md-7 criteria-cell-right">
-
-                <div class="col-md-12">
+            <div class="row criteria-row">
+                <div class="col-md-5 criteria-cell-left">
                     <div class="form-group">
+                        <div class="col-md-12">
+                            <strong>1. </strong>
+                            <strong data-i18n="crit_selection_eo_satisfies_all_criteria">
+                                <s:message code='crit_selection_eo_satisfies_all_criteria'/>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 criteria-cell-right">
 
-                        <label class="control-label small" style="padding-top: 0px;" for="eo-satisfies-all">
-                            <s:message code='crit_your_answer'/>
-                        </label>
-                        <form:checkbox path="selectionCriteria.satisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <label class="control-label small" style="padding-top: 0px;" for="eo-satisfies-all">
+                                <s:message code='crit_your_answer'/>
+                            </label>
+                            <form:checkbox path="selectionCriteria.satisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,6 +75,14 @@
 			<div data-i18n="createcasel_suitability" class="espd-panel-heading">
 				<s:message code='createcasel_suitability'/>
 			</div>
+            <div class="espd-panel-body panel-body">
+                <div class="">
+                    <strong data-i18n="crit_selection_eo_suitability_article">
+                        <s:message code='crit_selection_eo_suitability_article'/>
+                    </strong>
+                    <span data-i18n="crit_selection_eo_suitability_article_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_eo_suitability_article_tooltip'/>"></span>
+                </div>
+            </div>
 
             <c:set var="field" value="selectionCriteria.suitabilityEnrolment" scope="session"/>
             <c:set var="title_code" value="crit_selection_eo_suitability_enrolment_main" scope="session"/>
@@ -87,6 +101,14 @@
 			<div data-i18n="createcasel_economic_and_financial_standing" class="espd-panel-heading">
 				<s:message code='createcasel_economic_and_financial_standing'/>
 			</div>
+            <div class="espd-panel-body panel-body">
+                <div class="">
+                    <strong data-i18n="crit_selection_eo_economic_article">
+                        <s:message code='crit_selection_eo_economic_article'/>
+                    </strong>
+                    <span data-i18n="crit_selection_eo_economic_article_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_eo_economic_article_tooltip'/>"></span>
+                </div>
+            </div>
 
             <c:set var="field" value="selectionCriteria.economicEnrolment" scope="session"/>
             <%--<c:set target="selectionCriteria.economicEnrolment" property="exists" value="true"/>--%>

@@ -59,19 +59,25 @@
             </ul>
         </div>
 
-        <div id="selectionDeclares" class="">
-			<span data-i18n="crit_selection_ca_declares_that">
-				<s:message code='crit_selection_ca_declares_that'/>
-			</span>
-            <span data-i18n="crit_selection_ca_declares_that_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_ca_declares_that_tooltip'/>"></span>
-        </div>
-        <div class="checkbox">
-            <label>
-                <form:checkbox path="selectionCriteria.satisfiesAll.exists" data-toggle="collapse" data-target="#bbb" class="checktoggle" value="true"/>
-		        <span data-i18n="crit_selection_ca_satisfies_all_criteria">
-			    <s:message code='crit_selection_ca_satisfies_all_criteria'/>
-		        </span>
-            </label>
+        <div class="panel panel-default espd-panel">
+            <div class="espd-panel-heading">
+            </div>
+            <div class="espd-panel-body panel-body">
+                <div id="selectionDeclares" class="">
+                    <strong data-i18n="crit_selection_ca_declares_that">
+                        <s:message code='crit_selection_ca_declares_that'/>
+                    </strong>
+                    <span data-i18n="crit_selection_ca_declares_that_tooltip" data-toggle="tooltip" title="<s:message code='crit_selection_ca_declares_that_tooltip'/>"></span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <form:checkbox path="selectionCriteria.satisfiesAll.exists" data-toggle="collapse" data-target="#bbb" class="checktoggle" value="true"/>
+                        <span data-i18n="crit_selection_ca_satisfies_all_criteria">
+                        <s:message code='crit_selection_ca_satisfies_all_criteria'/>
+                        </span>
+                    </label>
+                </div>
+            </div>
         </div>
 
         <div id="ccc" class="tab-content">
@@ -85,9 +91,9 @@
                     </div>
                     <div class="espd-panel-body panel-body">
                         <div class="">
-                                <span data-i18n="crit_selection_ca_suitability_article">
+                            <strong data-i18n="crit_selection_ca_suitability_article">
                                     <s:message code='crit_selection_ca_suitability_article'/>
-                                </span>
+                            </strong>
                             <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
                                   title="<s:message code='crit_selection_ca_suitability_article_tooltip'/>"></span>
                         </div>
@@ -111,9 +117,9 @@
                     </div>
                     <div class="espd-panel-body panel-body">
                         <div class="">
-                                <span data-i18n="crit_selection_ca_economic_article">
-                                    <s:message code='crit_selection_ca_economic_article'/>
-                                </span>
+                            <strong data-i18n="crit_selection_ca_economic_article">
+                                <s:message code='crit_selection_ca_economic_article'/>
+                            </strong>
                             <span data-i18n="crit_selection_ca_economic_article_tooltip" data-toggle="tooltip"
                                   title="<s:message code='crit_selection_ca_economic_article_tooltip'/>"></span>
                         </div>
