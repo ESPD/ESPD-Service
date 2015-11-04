@@ -153,7 +153,7 @@ class WelcomeController {
     }
 
     @RequestMapping(value = "/finish", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE)
-    String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") @Valid EspdDocument espd,
+    String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd,
             SessionStatus status, BindingResult bindingResult) throws JAXBException, IOException {
         if (bindingResult.hasErrors()) {
             return "/finish";
