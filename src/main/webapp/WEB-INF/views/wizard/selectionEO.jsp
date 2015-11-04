@@ -64,7 +64,7 @@
                             <label class="control-label small" style="padding-top: 0px;" for="eo-satisfies-all">
                                 <s:message code='crit_your_answer'/>
                             </label>
-                            <form:checkbox path="selectionCriteria.satisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
+                            <form:checkbox path="selectionSatisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
                         </div>
                     </div>
                 </div>
@@ -84,13 +84,13 @@
                 </div>
             </div>
 
-            <c:set var="field" value="selectionCriteria.suitabilityEnrolment" scope="session"/>
+            <c:set var="field" value="suitabilityEnrolment" scope="session"/>
             <c:set var="title_code" value="crit_selection_eo_suitability_enrolment_main" scope="session"/>
             <c:set var="tooltip_code" value="crit_selection_eo_suitability_enrolment_description" scope="session"/>
             <c:set var="number" value="1" scope="session"/>
             <jsp:include page="editors/selectionCriterionEO.jsp"/>
 
-            <c:set var="field" value="selectionCriteria.suitabilityServiceContracts" scope="session"/>
+            <c:set var="field" value="suitabilityServiceContracts" scope="session"/>
             <c:set var="title_code" value="crit_selection_eo_suitability_service_contracts_main" scope="session"/>
             <c:set var="tooltip_code" value="crit_selection_eo_suitability_service_contracts_description" scope="session"/>
             <c:set var="number" value="2" scope="session"/>
@@ -110,14 +110,13 @@
                 </div>
             </div>
 
-            <c:set var="field" value="selectionCriteria.economicEnrolment" scope="session"/>
-            <%--<c:set target="selectionCriteria.economicEnrolment" property="exists" value="true"/>--%>
+            <c:set var="field" value="economicEnrolment" scope="session"/>
             <c:set var="title_code" value="crit_selection_eo_economic_enrolment_main" scope="session"/>
             <c:set var="tooltip_code" value="crit_selection_eo_economic_enrolment_description" scope="session"/>
             <c:set var="number" value="1" scope="session"/>
             <jsp:include page="editors/selectionCriterionEO.jsp"/>
 
-            <c:set var="field" value="selectionCriteria.economicServiceContracts" scope="session"/>
+            <c:set var="field" value="economicServiceContracts" scope="session"/>
             <c:set var="title_code" value="crit_selection_eo_economic_service_contracts_main" scope="session"/>
             <c:set var="tooltip_code" value="crit_selection_eo_economic_service_contracts_description" scope="session"/>
             <c:set var="number" value="2" scope="session"/>

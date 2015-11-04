@@ -3,15 +3,13 @@ package eu.europa.ec.grow.espd.domain;
 import eu.europa.ec.grow.espd.domain.exclusion.BreachOfObligations;
 import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
 import eu.europa.ec.grow.espd.domain.exclusion.Taxes;
-import eu.europa.ec.grow.espd.domain.selection.SelectionCriteria;
+import eu.europa.ec.grow.espd.domain.selection.SelectionCriterion;
 import lombok.Data;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.*;
-
 import java.io.IOException;
 
 @Data
@@ -62,7 +60,28 @@ public class EspdDocument {
 	@XmlElement private BreachOfObligations guiltyMisinterpretation;
 
     @XmlElement
-    private SelectionCriteria selectionCriteria;
+    private SelectionCriterion satisfiesAll;
+
+    @XmlElement
+    private SelectionCriterion suitabilityEnrolment;
+
+    @XmlElement
+    private SelectionCriterion suitabilityServiceContracts;
+
+    @XmlElement
+    private SelectionCriterion economicGeneralTurnover;
+
+    @XmlElement
+    private SelectionCriterion economicAverageTurnover;
+
+    @XmlElement
+    private SelectionCriterion economicEnrolment;
+
+    @XmlElement
+    private SelectionCriterion economicServiceContracts;
+
+    @XmlElement
+    private Criterion selectionSatisfiesAll;
 
 	//trick to use MultipartFile as @RequestParam
 	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
