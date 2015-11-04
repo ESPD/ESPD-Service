@@ -16,10 +16,6 @@
 	</c:if>
 </div>
 <c:if test="${description_code != ''}">
-    <div class="row">
-        <div class="col-md-11 col-md-offset-1">
-            <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
-        </div>
-    </div>
+    <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
 </c:if>
 <c:set var="description_code" value="" scope="session"/>

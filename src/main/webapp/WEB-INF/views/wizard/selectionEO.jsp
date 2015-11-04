@@ -33,6 +33,28 @@
 			</li>
 			</ul>
 		</div>
+
+        <div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
+            <div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <strong>hodor </strong>
+                        <strong data-i18n="crit_selection_eo_declares_that">
+                            <s:message code='crit_selection_eo_declares_that'/>
+                        </strong>
+                            <s:message var="tooltip_text" code='crit_selection_eo_declares_that_tooltip'/>
+                            <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="crit_selection_eo_declares_that_tooltip"></span>
+                        <br>
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;">
+                TODO: for prof. misconduct
+            </div>
+
+        </div>
 				
 		<div class="panel panel-default espd-panel">
 			<div data-i18n="createcasel_suitability" class="espd-panel-heading">
