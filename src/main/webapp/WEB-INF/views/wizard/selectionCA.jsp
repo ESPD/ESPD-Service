@@ -4,6 +4,13 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<script>
+    $(function() {
+        $("#ca-satisfies-all-criteria").click(function(){
+            $("#ca-selection-criteria").toggle();
+        });
+    });
+</script>
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
     <div class="panel-default">
@@ -72,7 +79,7 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                        <form:checkbox path="selectionSatisfiesAll.exists" data-toggle="collapse" data-target="#bbb" class="checktoggle" value="true"/>
+                        <form:checkbox id="ca-satisfies-all-criteria" path="selectionSatisfiesAll.exists" class="checktoggle" value="true"/>
                         <span data-i18n="crit_selection_ca_satisfies_all_criteria">
                         <s:message code='crit_selection_ca_satisfies_all_criteria'/>
                         </span>
@@ -81,11 +88,11 @@
             </div>
         </div>
 
-        <div id="ccc" class="tab-content">
+        <%--<div id="ccc" class="tab-content">--%>
             <div class="tab-pane" id="aaa">
                 <span></span>
             </div>
-            <div class="tab-pane active" id="bbb">
+            <div class="tab-pane active" id="ca-selection-criteria">
                 <div class="panel panel-default espd-panel">
                     <div data-i18n="createcasel_suitability" class="espd-panel-heading">
                         <s:message code='createcasel_suitability'/>
@@ -148,7 +155,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <%--</div>--%>
 
         <div class="col-md-7">&nbsp;</div>
         <div class="col-md-5">
