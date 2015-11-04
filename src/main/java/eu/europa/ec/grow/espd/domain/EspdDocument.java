@@ -1,13 +1,17 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.domain.exclusion.BreachOfObligations;
 import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
+import eu.europa.ec.grow.espd.domain.exclusion.Taxes;
 import eu.europa.ec.grow.espd.domain.selection.SelectionCriteria;
 import lombok.Data;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.*;
+
 import java.io.IOException;
 
 @Data
@@ -45,17 +49,17 @@ public class EspdDocument {
 	@XmlElement private CriminalConvictions moneyLaundering;
 	@XmlElement private CriminalConvictions childLabour;
 	
-	@XmlElement private CriminalConvictions paymentTaxes;
-	@XmlElement private CriminalConvictions paymentSocsec;
+	@XmlElement private Taxes paymentTaxes;
+	@XmlElement private Taxes paymentSocsec;
 	
-	@XmlElement private CriminalConvictions breachingObligations;
-	@XmlElement private CriminalConvictions bankruptSubject;
-	@XmlElement private CriminalConvictions guiltyGrave;
-	@XmlElement private CriminalConvictions agreementsEo;
-	@XmlElement private CriminalConvictions conflictInterest;
-	@XmlElement private CriminalConvictions involvementPreparation;
-	@XmlElement private CriminalConvictions earlyTermination;
-	@XmlElement private CriminalConvictions guiltyMisinterpretation;
+	@XmlElement private BreachOfObligations breachingObligations;
+	@XmlElement private BreachOfObligations bankruptSubject;
+	@XmlElement private BreachOfObligations guiltyGrave;
+	@XmlElement private BreachOfObligations agreementsEo;
+	@XmlElement private BreachOfObligations conflictInterest;
+	@XmlElement private BreachOfObligations involvementPreparation;
+	@XmlElement private BreachOfObligations earlyTermination;
+	@XmlElement private BreachOfObligations guiltyMisinterpretation;
 
     @XmlElement
     private SelectionCriteria selectionCriteria;

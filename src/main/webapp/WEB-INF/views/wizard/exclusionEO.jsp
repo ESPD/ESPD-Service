@@ -43,11 +43,12 @@
 						</span>
 						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv_eo'/>"></span>
 					</div>
-					
+					criminalFormCriterion.exists=${criminalFormCriterion.exists == null}
 					<tiles:insertDefinition name="criminalFormCriterion">
 						<tiles:putAttribute name="field" value="criminalConvictions"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
 						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv"/>
+						<tiles:putAttribute name="yesByDefault" value="${criminalFormCriterion.exists == null}"/>
 					</tiles:insertDefinition>
 					
 					<tiles:insertDefinition name="criminalFormCriterion">

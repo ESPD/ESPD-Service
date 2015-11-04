@@ -12,16 +12,15 @@ import lombok.EqualsAndHashCode;
 import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
 
 @Data
-@XmlType(name = "CriminalConvictions")
+@XmlType(name = "BreachOfObligations")
 @XmlAccessorType(XmlAccessType.FIELD)
 @EqualsAndHashCode(callSuper=false)
-public class CriminalConvictions extends ExclusionCriterion {
+public class BreachOfObligations extends ExclusionCriterion {
 
+	@XmlElement private Boolean isFinal;
 	@XmlElement private Date dateOfConviction;
-	@XmlElement private String reason;
-	@XmlElement private String convicted;
 	@XmlElement private String periodLength;
-	
+	@XmlElement private String otherMeans;
 	
 	
 }
