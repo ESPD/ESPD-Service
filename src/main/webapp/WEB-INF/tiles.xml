@@ -54,7 +54,7 @@
         <put-attribute name="body" value="/WEB-INF/views/error.jsp" />
     </definition>
     
-    <!-- creteria templates -->
+    <!-- criteria templates -->
     <definition name="avaliableElectronically" template="/WEB-INF/views/wizard/templates/avaliableElectronically.jsp">
     	<put-attribute name="field" value=""/>
     </definition>

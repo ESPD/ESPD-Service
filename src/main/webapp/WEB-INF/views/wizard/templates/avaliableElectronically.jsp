@@ -8,7 +8,7 @@
 
 <div class="col-md-12">
 	<div class="form-group">
-		<label class="control-label small" for="${field}-field6">Is this information available electronically?</label> 
+		<label class="control-label small" for="${field}-field6"><s:message code='crit_information_available_electronically'/></label>
 		<input type="checkbox" id="${field}-field6" data-toggle="collapse" data-target="#${field}-electronically" class="radioslide checktoggle form-control" />
 	</div>
 
