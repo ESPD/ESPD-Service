@@ -23,8 +23,9 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
+				(${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
 			</h2>
+			<a href="${pageContext.request.contextPath}/exclusion?agent=eo">View as EO</a>
 		</div>
 		
 		<div class="panel panel-default espd-panel">

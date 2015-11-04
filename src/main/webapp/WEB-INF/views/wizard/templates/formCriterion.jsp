@@ -12,8 +12,6 @@
 <tiles:importAttribute name="selfCleaning"/>
 <tiles:importAttribute name="avaliableElectronically"/>
 
-<tiles:importAttribute name="yesByDefault"/>
-
 <div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
 		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
 				<div class="form-group">
@@ -47,13 +45,8 @@
 						Your answer?
 					</label>
 					
-					<c:if test="${yesByDefault}">
-						<form:checkbox checked="true" path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
-					</c:if>
-					<c:if test="${!yesByDefault}">
-						<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
-					</c:if>
-					
+					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" cssClass="${yesByDefault?'radioslide-yesByDefault':''} radioslide checktoggle form-control" />
+
 				</div>
 			</div>
 

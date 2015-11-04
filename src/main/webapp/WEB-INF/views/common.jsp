@@ -100,7 +100,7 @@
 		    });
 
 		    $('.radioslide').bootstrapToggle({style:"ios", width:"60", size:"mini", on:"Yes", off:"No"});
-		    
+
 		    $('.radioslide:checked').each(function( index ) {
 		    	$($(this).attr("data-target")).show();
 		    });

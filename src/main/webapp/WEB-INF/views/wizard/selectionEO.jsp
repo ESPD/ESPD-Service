@@ -21,8 +21,9 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
-				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
+				(${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
 			</h2>
+			<a href="${pageContext.request.contextPath}/selection?agent=ca">View as CA</a>
 		</div>
 		
 		<div class="alert alert-espd-info">

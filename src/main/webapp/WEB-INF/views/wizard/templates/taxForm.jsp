@@ -42,3 +42,17 @@
 					</form:select>
 	</div>
 </div> 
+
+<div class="form-group">
+	<label class="control-label col-md-4 small" for="${field}-field-amount">Amount concerned</label>
+	<div class="col-md-5">
+		<form:input path="${field}.amount" cssClass="form-control" id="${field}-field-amount" placeholder="Enter amount"/>
+	</div>
+	<div class="col-md-3">
+		<form:select id="${field}-field-country" path="${field}.currency" cssClass="form-control">
+			<form:option value='euro'>EUR</form:option>
+			<form:option value='dollar'>USD</form:option>
+		</form:select>
+	</div>
+</div>
+

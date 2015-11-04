@@ -1,6 +1,8 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.selection.SelectionCriterion;
+
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -19,6 +21,7 @@ import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -120,6 +123,12 @@ class WelcomeController {
 
     private void preselectEconomicOperatorSelectionCriteria(final String agent, final EspdDocument espd) {
         if ("eo".equals(agent)) {
+
+        	espd.setSuitabilityEnrolment(new SelectionCriterion());
+        	espd.setSuitabilityServiceContracts(new SelectionCriterion());
+        	espd.setEconomicEnrolment(new SelectionCriterion());
+        	espd.setEconomicServiceContracts(new SelectionCriterion());
+
             if (espd.getSuitabilityEnrolment().getExists() == null) {
                 espd.getSuitabilityEnrolment().setExists(true);
             }

@@ -23,8 +23,9 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
+				(${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
 			</h2>
+			<a href="${pageContext.request.contextPath}/exclusion?agent=ca">View as CA</a>
 		</div>
 		
 		<div class="panel panel-default espd-panel">
@@ -43,14 +44,13 @@
 						</span>
 						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv_eo'/>"></span>
 					</div>
-					criminalFormCriterion.exists=${criminalFormCriterion.exists == null}
+					
 					<tiles:insertDefinition name="criminalFormCriterion">
 						<tiles:putAttribute name="field" value="criminalConvictions"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
 						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv"/>
-						<tiles:putAttribute name="yesByDefault" value="${criminalFormCriterion.exists == null}"/>
 					</tiles:insertDefinition>
-					
+
 					<tiles:insertDefinition name="criminalFormCriterion">
 						<tiles:putAttribute name="field" value="corruption"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_corruption"/>
