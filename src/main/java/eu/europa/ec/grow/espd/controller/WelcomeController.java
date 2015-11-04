@@ -124,10 +124,18 @@ class WelcomeController {
     private void preselectEconomicOperatorSelectionCriteria(final String agent, final EspdDocument espd) {
         if ("eo".equals(agent)) {
 
-        	espd.setSuitabilityEnrolment(new SelectionCriterion());
-        	espd.setSuitabilityServiceContracts(new SelectionCriterion());
-        	espd.setEconomicEnrolment(new SelectionCriterion());
-        	espd.setEconomicServiceContracts(new SelectionCriterion());
+        	if (espd.getSuitabilityEnrolment() == null) {
+        		espd.setSuitabilityEnrolment(new SelectionCriterion());
+        	}
+        	if (espd.getSuitabilityServiceContracts() == null) {
+        		espd.setSuitabilityServiceContracts(new SelectionCriterion());
+        	}
+        	if (espd.getEconomicEnrolment() == null) {
+        		espd.setEconomicEnrolment(new SelectionCriterion());
+        	}
+        	if (espd.getEconomicServiceContracts() == null) {
+        		espd.setEconomicServiceContracts(new SelectionCriterion());
+        	}
 
             if (espd.getSuitabilityEnrolment().getExists() == null) {
                 espd.getSuitabilityEnrolment().setExists(true);
