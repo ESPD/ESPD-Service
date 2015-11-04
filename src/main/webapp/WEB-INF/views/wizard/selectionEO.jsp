@@ -3,6 +3,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
@@ -62,7 +63,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
 
-                            <label class="control-label small" style="padding-top: 0px;" for="eo-satisfies-all">
+                            <label class="control-label small" style="padding-top: 0;" for="eo-satisfies-all">
                                 <s:message code='crit_your_answer'/>
                             </label>
                             <form:checkbox path="selectionSatisfiesAll.exists" id="eo-satisfies-all" data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control" />
@@ -85,17 +86,19 @@
                 </div>
             </div>
 
-            <c:set var="field" value="suitabilityEnrolment" scope="session"/>
-            <c:set var="title_code" value="crit_selection_eo_suitability_enrolment_main" scope="session"/>
-            <c:set var="tooltip_code" value="crit_selection_eo_suitability_enrolment_description" scope="session"/>
-            <c:set var="number" value="1" scope="session"/>
-            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+            <tiles:insertDefinition name="selectionCriterionEO">
+                <tiles:putAttribute name="field" value="suitabilityEnrolment"/>
+                <tiles:putAttribute name="number" value="1"/>
+                <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_enrolment_main"/>
+                <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_suitability_enrolment_description"/>
+            </tiles:insertDefinition>
 
-            <c:set var="field" value="suitabilityServiceContracts" scope="session"/>
-            <c:set var="title_code" value="crit_selection_eo_suitability_service_contracts_main" scope="session"/>
-            <c:set var="tooltip_code" value="crit_selection_eo_suitability_service_contracts_description" scope="session"/>
-            <c:set var="number" value="2" scope="session"/>
-            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+            <tiles:insertDefinition name="selectionCriterionEO">
+                <tiles:putAttribute name="field" value="suitabilityServiceContracts"/>
+                <tiles:putAttribute name="number" value="2"/>
+                <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_service_contracts_main"/>
+                <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_suitability_service_contracts_description"/>
+            </tiles:insertDefinition>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
@@ -111,17 +114,19 @@
                 </div>
             </div>
 
-            <c:set var="field" value="economicEnrolment" scope="session"/>
-            <c:set var="title_code" value="crit_selection_eo_economic_enrolment_main" scope="session"/>
-            <c:set var="tooltip_code" value="crit_selection_eo_economic_enrolment_description" scope="session"/>
-            <c:set var="number" value="1" scope="session"/>
-            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+            <tiles:insertDefinition name="selectionCriterionEO">
+                <tiles:putAttribute name="field" value="economicEnrolment"/>
+                <tiles:putAttribute name="number" value="1"/>
+                <tiles:putAttribute name="title_code" value="crit_selection_eo_economic_enrolment_main"/>
+                <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_economic_enrolment_description"/>
+            </tiles:insertDefinition>
 
-            <c:set var="field" value="economicServiceContracts" scope="session"/>
-            <c:set var="title_code" value="crit_selection_eo_economic_service_contracts_main" scope="session"/>
-            <c:set var="tooltip_code" value="crit_selection_eo_economic_service_contracts_description" scope="session"/>
-            <c:set var="number" value="2" scope="session"/>
-            <jsp:include page="editors/selectionCriterionEO.jsp"/>
+            <tiles:insertDefinition name="selectionCriterionEO">
+                <tiles:putAttribute name="field" value="economicServiceContracts"/>
+                <tiles:putAttribute name="number" value="2"/>
+                <tiles:putAttribute name="title_code" value="crit_selection_eo_economic_service_contracts_main"/>
+                <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_economic_service_contracts_description"/>
+            </tiles:insertDefinition>
 		</div>
 	
 		<div class="panel panel-default espd-panel">

@@ -91,4 +91,12 @@
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/taxForm.jsp"/>
     </definition>
 
+    <definition name="selectionCriterionEO" template="/WEB-INF/views/wizard/templates/selectionCriterionEO.jsp">
+        <put-attribute name="field" value=""/>
+        <put-attribute name="number" value=""/>
+        <put-attribute name="title_code" value=""/>
+        <put-attribute name="tooltip_code" value=""/>
+        <put-attribute name="tooltip_text" value=""/>
+    </definition>
+
 </tiles-definitions>

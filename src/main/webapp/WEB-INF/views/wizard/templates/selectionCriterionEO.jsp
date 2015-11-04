@@ -4,6 +4,12 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<tiles:importAttribute name="field"/>
+<tiles:importAttribute name="number"/>
+<tiles:importAttribute name="title_code"/>
+<tiles:importAttribute name="tooltip_text"/>
+<tiles:importAttribute name="tooltip_code"/>
+
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
