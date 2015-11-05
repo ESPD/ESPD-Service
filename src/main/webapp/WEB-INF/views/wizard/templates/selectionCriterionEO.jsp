@@ -3,13 +3,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="number"/>
 <tiles:importAttribute name="title_code"/>
 <tiles:importAttribute name="tooltip_text"/>
 <tiles:importAttribute name="tooltip_code"/>
-
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
@@ -28,7 +26,6 @@
         </div>
     </div>
     <div class="col-md-7 criteria-cell-right">
-
         <div class="col-md-12">
             <div class="form-group">
 
@@ -38,7 +35,6 @@
                 <form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
             </div>
         </div>
-
         <div class="col-md-12" id="${field}-form">
             <div class="form-group">
                 <div class="tab-pane" id="${field}-reliability">
@@ -51,11 +47,8 @@
                 </div>
             </div>
         </div>
-
         <tiles:insertDefinition name="avaliableElectronically">
             <tiles:putAttribute name="field" value="${field}"/>
         </tiles:insertDefinition>
     </div>
-
 </div>
-

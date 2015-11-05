@@ -58,87 +58,95 @@
             </ul>
         </div>
         <div class="panel panel-default espd-panel">
-            <div class="espd-panel-heading">
+            <div class="espd-panel-heading" data-toggle="collapse" data-target="#ca-satisfies-all-section">
             </div>
-            <div class="espd-panel-body panel-body">
-                <div id="selectionDeclares" class="">
-                    <strong data-i18n="crit_selection_ca_declares_that">
-                        <s:message code='crit_selection_ca_declares_that'/>
-                    </strong>
-                    <span data-i18n="crit_selection_ca_declares_that_tooltip" data-toggle="tooltip"
-                          title="<s:message code='crit_selection_ca_declares_that_tooltip'/>"></span>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <form:checkbox id="ca-satisfies-all-criteria" path="selectionSatisfiesAll.exists"
-                                       class="checktoggle" value="true"/>
-                        <span data-i18n="crit_selection_ca_satisfies_all_criteria">
-                        <s:message code='crit_selection_ca_satisfies_all_criteria'/>
-                        </span>
-                    </label>
+            <div id="ca-satisfies-all-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <div id="selectionDeclares" class="">
+                        <strong data-i18n="crit_selection_ca_declares_that">
+                            <s:message code='crit_selection_ca_declares_that'/>
+                        </strong>
+                        <span data-i18n="crit_selection_ca_declares_that_tooltip" data-toggle="tooltip"
+                              title="<s:message code='crit_selection_ca_declares_that_tooltip'/>"></span>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <form:checkbox id="ca-satisfies-all-criteria" path="selectionSatisfiesAll.exists"
+                                           class="checktoggle" value="true"/>
+                            <span data-i18n="crit_selection_ca_satisfies_all_criteria">
+                            <s:message code='crit_selection_ca_satisfies_all_criteria'/>
+                            </span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane active" id="ca-selection-criteria">
             <div class="panel panel-default espd-panel">
-                <div data-i18n="createcasel_suitability" class="espd-panel-heading">
+                <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-suitability-section">
                     <s:message code='createcasel_suitability'/>
                 </div>
-                <div class="espd-panel-body panel-body">
-                    <div class="">
-                        <strong data-i18n="crit_selection_ca_suitability_article">
-                            <s:message code='crit_selection_ca_suitability_article'/>
-                        </strong>
-                            <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
-                                  title="<s:message code='crit_selection_ca_suitability_article_tooltip'/>"></span>
+                <div id="ca-suitability-section" class="collapse in">
+                    <div class="espd-panel-body panel-body">
+                        <div class="">
+                            <strong data-i18n="crit_selection_ca_suitability_article">
+                                <s:message code='crit_selection_ca_suitability_article'/>
+                            </strong>
+                                <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
+                                      title="<s:message code='crit_selection_ca_suitability_article_tooltip'/>"></span>
+                        </div>
+                        <c:set var="field" value="suitabilityEnrolment" scope="session"/>
+                        <c:set var="title_code" value="crit_selection_ca_suitability_enrolment_main" scope="session"/>
+                        <c:set var="tooltip_code" value="" scope="session"/>
+                        <c:set var="description_code" value="crit_selection_ca_suitability_enrolment_description"
+                               scope="session"/>
+                        <jsp:include page="editors/criteria.jsp"/>
+                        <c:set var="field" value="suitabilityServiceContracts" scope="session"/>
+                        <c:set var="title_code" value="crit_selection_ca_suitability_service_contracts_main"
+                               scope="session"/>
+                        <c:set var="tooltip_code" value="" scope="session"/>
+                        <c:set var="description_code" value="crit_selection_ca_suitability_service_contracts_description"
+                               scope="session"/>
+                        <jsp:include page="editors/criteria.jsp"/>
                     </div>
-                    <c:set var="field" value="suitabilityEnrolment" scope="session"/>
-                    <c:set var="title_code" value="crit_selection_ca_suitability_enrolment_main" scope="session"/>
-                    <c:set var="tooltip_code" value="" scope="session"/>
-                    <c:set var="description_code" value="crit_selection_ca_suitability_enrolment_description"
-                           scope="session"/>
-                    <jsp:include page="editors/criteria.jsp"/>
-                    <c:set var="field" value="suitabilityServiceContracts" scope="session"/>
-                    <c:set var="title_code" value="crit_selection_ca_suitability_service_contracts_main"
-                           scope="session"/>
-                    <c:set var="tooltip_code" value="" scope="session"/>
-                    <c:set var="description_code" value="crit_selection_ca_suitability_service_contracts_description"
-                           scope="session"/>
-                    <jsp:include page="editors/criteria.jsp"/>
                 </div>
             </div>
             <div class="panel panel-default espd-panel">
-                <div data-i18n="createcasel_economic_and_financial_standing" class="espd-panel-heading">
+                <div data-i18n="createcasel_economic_and_financial_standing" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-economic-financial-section">
                     <s:message code='createcasel_economic_and_financial_standing'/>
                 </div>
-                <div class="espd-panel-body panel-body">
-                    <div class="">
-                        <strong data-i18n="crit_selection_ca_economic_article">
-                            <s:message code='crit_selection_ca_economic_article'/>
-                        </strong>
-                            <span data-i18n="crit_selection_ca_economic_article_tooltip" data-toggle="tooltip"
-                                  title="<s:message code='crit_selection_ca_economic_article_tooltip'/>"></span>
+                <div id="ca-economic-financial-section" class="collapse in">
+                    <div class="espd-panel-body panel-body">
+                        <div class="">
+                            <strong data-i18n="crit_selection_ca_economic_article">
+                                <s:message code='crit_selection_ca_economic_article'/>
+                            </strong>
+                                <span data-i18n="crit_selection_ca_economic_article_tooltip" data-toggle="tooltip"
+                                      title="<s:message code='crit_selection_ca_economic_article_tooltip'/>"></span>
+                        </div>
+                        <c:set var="field" value="economicGeneralTurnover" scope="session"/>
+                        <c:set var="title_code" value="crit_selection_ca_economic_general_yearly_main" scope="session"/>
+                        <c:set var="tooltip_code" value="" scope="session"/>
+                        <c:set var="description_code" value="crit_selection_ca_economic_general_yearly_description"
+                               scope="session"/>
+                        <jsp:include page="editors/criteria.jsp"/>
+                        <c:set var="field" value="economicAverageTurnover" scope="session"/>
+                        <c:set var="title_code" value="crit_selection_ca_economic_average_yearly_main" scope="session"/>
+                        <c:set var="tooltip_code" value="" scope="session"/>
+                        <c:set var="description_code" value="crit_selection_ca_economic_average_yearly_description"
+                               scope="session"/>
+                        <jsp:include page="editors/criteria.jsp"/>
                     </div>
-                    <c:set var="field" value="economicGeneralTurnover" scope="session"/>
-                    <c:set var="title_code" value="crit_selection_ca_economic_general_yearly_main" scope="session"/>
-                    <c:set var="tooltip_code" value="" scope="session"/>
-                    <c:set var="description_code" value="crit_selection_ca_economic_general_yearly_description"
-                           scope="session"/>
-                    <jsp:include page="editors/criteria.jsp"/>
-                    <c:set var="field" value="economicAverageTurnover" scope="session"/>
-                    <c:set var="title_code" value="crit_selection_ca_economic_average_yearly_main" scope="session"/>
-                    <c:set var="tooltip_code" value="" scope="session"/>
-                    <c:set var="description_code" value="crit_selection_ca_economic_average_yearly_description"
-                           scope="session"/>
-                    <jsp:include page="editors/criteria.jsp"/>
                 </div>
             </div>
             <div class="panel panel-default espd-panel">
-                <div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading">
+                <div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-grounds-insolvency-section">
                     <s:message code='createcasel_grounds_insolvency'/>
                 </div>
-                <div class="panel-body">
-                    ...
+                <div id="ca-grounds-insolvency-section" class="collapse in">
+                    <div class="panel-body">
+                        ...
+                    </div>
                 </div>
             </div>
         </div>
