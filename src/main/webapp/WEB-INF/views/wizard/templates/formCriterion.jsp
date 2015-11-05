@@ -25,17 +25,14 @@
 							<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${tooltip_text}"></span>
 						</c:if>
 					</div> 
+					<c:if test="${not empty description_code}">
+					   	<div class="col-md-12">
+					   		<s:message var="description_text" code='${description_code}'/>
+					   		<span class="small" data-i18n="${description_code}">${description_text}</span>
+					   	</div>
+					</c:if>
 				</div>
 				
-				<c:if test="${not empty description_code}">
-					<div class="row">
-						<div class="col-md-1"></div>
-				    	<div class="col-md-11">
-				    		<s:message var="description_text" code='${description_code}'/>
-				    		<span class="small" data-i18n="${description_code}">${description_text}</span>
-				    	</div>
-				    </div>
-				</c:if>
 		</div> 
 		<div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;">
 		
