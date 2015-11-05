@@ -29,153 +29,151 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading">
+			<div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-criminal-convictions-section">
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
-			<div class="espd-panel-body panel-body">
-			
-					<div class="">
-						<strong data-i18n="crit_eu_main_title_grounds_criminal_conv">
-							<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
-						</strong>
-						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
-					</div>
-					
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field"  value="criminalConvictions"/>
-						<tiles:putAttribute name="title_code"  value="crit_eu_title_grounds_criminal_conv"/>
-						<tiles:putAttribute name="tooltip_code"  value="crit_eu_tooltip_grounds_criminal_conv"/>
-					</tiles:insertDefinition>
+            <div id="ca-criminal-convictions-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                        <div class="">
+                            <strong data-i18n="crit_eu_main_title_grounds_criminal_conv">
+                                <s:message code='crit_eu_main_title_grounds_criminal_conv'/>
+                            </strong>
+                            <span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
+                        </div>
 
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field" value="corruption"/>
-						<tiles:putAttribute name="title_code" value="crit_eu_title_corruption"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_corruption"/>
-					</tiles:insertDefinition>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field"  value="criminalConvictions"/>
+                            <tiles:putAttribute name="title_code"  value="crit_eu_title_grounds_criminal_conv"/>
+                            <tiles:putAttribute name="tooltip_code"  value="crit_eu_tooltip_grounds_criminal_conv"/>
+                        </tiles:insertDefinition>
 
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field" value="fraud"/>
-						<tiles:putAttribute name="title_code" value="crit_eu_title_fraud"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_fraud"/>
-					</tiles:insertDefinition>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field" value="corruption"/>
+                            <tiles:putAttribute name="title_code" value="crit_eu_title_corruption"/>
+                            <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_corruption"/>
+                        </tiles:insertDefinition>
 
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field" value="terroristOffences"/>
-						<tiles:putAttribute name="title_code" value="crit_eu_title_terrorist"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_terrorist"/>
-					</tiles:insertDefinition>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field" value="fraud"/>
+                            <tiles:putAttribute name="title_code" value="crit_eu_title_fraud"/>
+                            <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_fraud"/>
+                        </tiles:insertDefinition>
 
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field" value="moneyLaundering"/>
-						<tiles:putAttribute name="title_code" value="crit_eu_title_money_laundering"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_money_laundering"/>
-					</tiles:insertDefinition>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field" value="terroristOffences"/>
+                            <tiles:putAttribute name="title_code" value="crit_eu_title_terrorist"/>
+                            <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_terrorist"/>
+                        </tiles:insertDefinition>
 
-					<tiles:insertDefinition name="checkCriterion">
-						<tiles:putAttribute name="field" value="childLabour"/>
-						<tiles:putAttribute name="title_code" value="crit_eu_title_child_labour"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_child_labour"/>
-					</tiles:insertDefinition>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field" value="moneyLaundering"/>
+                            <tiles:putAttribute name="title_code" value="crit_eu_title_money_laundering"/>
+                            <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_money_laundering"/>
+                        </tiles:insertDefinition>
 
-			</div>
+                        <tiles:insertDefinition name="checkCriterion">
+                            <tiles:putAttribute name="field" value="childLabour"/>
+                            <tiles:putAttribute name="title_code" value="crit_eu_title_child_labour"/>
+                            <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_child_labour"/>
+                        </tiles:insertDefinition>
+                </div>
+            </div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
 		
-			<span data-i18n="crit_top_title_grounds_payment_taxes" class="espd-panel-heading">
+			<span data-i18n="crit_top_title_grounds_payment_taxes" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-payment-of-taxes-section">
 				<s:message code="crit_top_title_grounds_payment_taxes"/>
 			</span>
-					
-			<div class="espd-panel-body panel-body">
-			
-				<div class="">
-					<strong data-i18n="crit_eu_main_title_payment_taxes">
-						<s:message code='crit_eu_main_title_payment_taxes'/>
-					</strong>
-					<span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
-				</div>
+			<div id="ca-payment-of-taxes-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <div class="">
+                        <strong data-i18n="crit_eu_main_title_payment_taxes">
+                            <s:message code='crit_eu_main_title_payment_taxes'/>
+                        </strong>
+                        <span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
+                    </div>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="paymentTaxes"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
-				</tiles:insertDefinition>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="paymentTaxes"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
+                    </tiles:insertDefinition>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="paymentSocsec"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
-				</tiles:insertDefinition>
-				
-			</div>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="paymentSocsec"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
+                    </tiles:insertDefinition>
+
+                </div>
+            </div>
 		</div>
 	
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="crit_top_title_insolvency_conflicts" class="espd-panel-heading">
+			<div data-i18n="crit_top_title_insolvency_conflicts" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
 				<s:message code="crit_top_title_insolvency_conflicts"/>
 			</div>
-			<div class="espd-panel-body panel-body">
+            <div id="ca-insolvency-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <div class="">
+                        <strong data-i18n="crit_eu_main_breaching_obligations">
+                            <s:message code='crit_eu_main_breaching_obligations'/>
+                        </strong>
+                        <span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
+                    </div>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="breachingObligations"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
+                        <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_breaching_obligations"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
+                    </tiles:insertDefinition>
 
-				<div class="">
-					<strong data-i18n="crit_eu_main_breaching_obligations">
-						<s:message code='crit_eu_main_breaching_obligations'/>
-					</strong>
-					<span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
-				</div> 
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="bankruptSubject"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
+                        <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_bankrupt"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>
+                    </tiles:insertDefinition>
 
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="guiltyGrave"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
+                        <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_guilty_misconduct"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
+                    </tiles:insertDefinition>
 
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="agreementsEo"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
+                    </tiles:insertDefinition>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="breachingObligations"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
-					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_breaching_obligations"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
-				</tiles:insertDefinition>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="conflictInterest"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
+                        <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_conflict_interest"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>
+                    </tiles:insertDefinition>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="bankruptSubject"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
-					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_bankrupt"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>
-				</tiles:insertDefinition>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="involvementPreparation"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
+                    </tiles:insertDefinition>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="guiltyGrave"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
-					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_guilty_misconduct"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
-				</tiles:insertDefinition>
-					
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="agreementsEo"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
-				</tiles:insertDefinition>
-					
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="conflictInterest"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
-					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_conflict_interest"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>
-				</tiles:insertDefinition>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="earlyTermination"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_early_termination"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_early_termination"/>
+                    </tiles:insertDefinition>
 
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="involvementPreparation"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
-				</tiles:insertDefinition>
-				
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="earlyTermination"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_early_termination"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_early_termination"/>
-				</tiles:insertDefinition>
-					
-				<tiles:insertDefinition name="checkCriterion">
-					<tiles:putAttribute name="field" value="guiltyMisinterpretation"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misinterpretation"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misinterpretation"/>
-				</tiles:insertDefinition>
-				
-			</div>
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="guiltyMisinterpretation"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misinterpretation"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misinterpretation"/>
+                    </tiles:insertDefinition>
+
+                </div>
+            </div>
 		</div>
 	
 		<div class="col-md-7">&nbsp;</div>
