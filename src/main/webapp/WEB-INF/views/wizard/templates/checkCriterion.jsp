@@ -23,12 +23,6 @@
 </div>
 
 <c:if test="${not empty description_code}">
-	<div class="row">
-		<div class="col-md-1"></div>
-    	<div class="col-md-11">
-    		<span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
-    	</div>
-    </div>
+    <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
 </c:if>
-
 
