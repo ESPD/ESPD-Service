@@ -1,9 +1,5 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.domain.exclusion.BreachOfObligations;
-import eu.europa.ec.grow.espd.domain.exclusion.CriminalConvictions;
-import eu.europa.ec.grow.espd.domain.exclusion.Taxes;
-import eu.europa.ec.grow.espd.domain.selection.SelectionCriterion;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 

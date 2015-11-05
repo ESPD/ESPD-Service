@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.selection.SelectionCriterion;
+import eu.europa.ec.grow.espd.domain.SelectionCriterion;
 
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;

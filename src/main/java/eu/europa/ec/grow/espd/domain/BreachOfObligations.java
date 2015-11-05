@@ -1,15 +1,13 @@
-package eu.europa.ec.grow.espd.domain.exclusion;
+package eu.europa.ec.grow.espd.domain;
 
-import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
+import java.util.Date;
 
 @Data
 @XmlType(name = "BreachOfObligations")

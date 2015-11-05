@@ -92,7 +92,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="panel panel-default espd-panel">
             <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse" data-target="#eo-suitability-section">
                 <s:message code='createcasel_suitability'/>

@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.domain.exclusion;
+package eu.europa.ec.grow.espd.domain;
 
 import java.util.Date;
 
@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
 
 @Data
 @XmlType(name = "CriminalConvictions")
