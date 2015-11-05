@@ -139,16 +139,16 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default espd-panel">
-                <div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-grounds-insolvency-section">
-                    <s:message code='createcasel_grounds_insolvency'/>
-                </div>
-                <div id="ca-grounds-insolvency-section" class="collapse in">
-                    <div class="panel-body">
-                        ...
-                    </div>
-                </div>
-            </div>
+            <%--<div class="panel panel-default espd-panel">--%>
+                <%--<div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-grounds-insolvency-section">--%>
+                    <%--<s:message code='createcasel_grounds_insolvency'/>--%>
+                <%--</div>--%>
+                <%--<div id="ca-grounds-insolvency-section" class="collapse in">--%>
+                    <%--<div class="panel-body">--%>
+                        <%--...--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </div>
         <div class="col-md-7">&nbsp;</div>
         <div class="col-md-5">

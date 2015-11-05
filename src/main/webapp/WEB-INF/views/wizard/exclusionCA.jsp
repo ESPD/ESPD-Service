@@ -35,9 +35,9 @@
 			<div class="espd-panel-body panel-body">
 			
 					<div class="">
-						<span data-i18n="crit_eu_main_title_grounds_criminal_conv">
+						<strong data-i18n="crit_eu_main_title_grounds_criminal_conv">
 							<s:message code='crit_eu_main_title_grounds_criminal_conv'/>
-						</span>
+						</strong>
 						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
 					</div>
 					
@@ -89,9 +89,9 @@
 			<div class="espd-panel-body panel-body">
 			
 				<div class="">
-					<span data-i18n="crit_eu_main_title_payment_taxes">
+					<strong data-i18n="crit_eu_main_title_payment_taxes">
 						<s:message code='crit_eu_main_title_payment_taxes'/>
-					</span>
+					</strong>
 					<span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
 				</div>
 
@@ -115,9 +115,9 @@
 			<div class="espd-panel-body panel-body">
 
 				<div class="">
-					<span data-i18n="crit_eu_main_breaching_obligations">
+					<strong data-i18n="crit_eu_main_breaching_obligations">
 						<s:message code='crit_eu_main_breaching_obligations'/>
-					</span>
+					</strong>
 					<span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
 				</div> 
 

@@ -72,7 +72,7 @@
 					<tiles:insertDefinition name="criminalFormCriterion">
 						<tiles:putAttribute name="field" value="moneyLaundering"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_money_laundering"/>
-						<tiles:putAttribute name="tooltip_code" value="crit_eu_title_money_laundering"/>
+						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_money_laundering"/>
 					</tiles:insertDefinition>
 					
 					<tiles:insertDefinition name="criminalFormCriterion">

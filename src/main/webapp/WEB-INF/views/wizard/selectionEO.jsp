@@ -152,16 +152,16 @@
                 </tiles:insertDefinition>
             </div>
         </div>
-        <div class="panel panel-default espd-panel">
-            <div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading" data-toggle="collapse" data-target="#eo-grounds-insolvency-section">
-                <s:message code='createcasel_grounds_insolvency'/>
-            </div>
-            <div id="eo-grounds-insolvency-section" class="collapse in">
-                <div class="panel-body">
-                    ...
-                </div>
-            </div>
-        </div>
+        <%--<div class="panel panel-default espd-panel">--%>
+            <%--<div data-i18n="createcasel_grounds_insolvency" class="espd-panel-heading" data-toggle="collapse" data-target="#eo-grounds-insolvency-section">--%>
+                <%--<s:message code='createcasel_grounds_insolvency'/>--%>
+            <%--</div>--%>
+            <%--<div id="eo-grounds-insolvency-section" class="collapse in">--%>
+                <%--<div class="panel-body">--%>
+                    <%--...--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <div class="col-md-7">&nbsp;</div>
         <div class="col-md-5">
             <div class="btn-group">
