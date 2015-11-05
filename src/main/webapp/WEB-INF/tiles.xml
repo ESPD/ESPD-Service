@@ -107,6 +107,7 @@
         <put-attribute name="title_code" value=""/>
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
+        <put-attribute name="has_please_describe_them" value="false"/>
     </definition>
 
     <!-- test for selection-->

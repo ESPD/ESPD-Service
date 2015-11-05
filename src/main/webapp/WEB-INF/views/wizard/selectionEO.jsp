@@ -118,6 +118,7 @@
                     <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_service_contracts_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_eo_suitability_service_contracts_description"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                 </tiles:insertDefinition>
             </div>
         </div>
@@ -147,6 +148,7 @@
                     <tiles:putAttribute name="title_code" value="crit_selection_eo_economic_service_contracts_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_eo_economic_service_contracts_description"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                 </tiles:insertDefinition>
             </div>
         </div>
