@@ -135,7 +135,7 @@
 					<tiles:putAttribute name="avaliableElectronically" value="false"/>
 				</tiles:insertDefinition>
 				
-				<tiles:insertDefinition name="simpleFormCriterion">
+				<tiles:insertDefinition name="reasonsNeverlessPerformForm">
 					<tiles:putAttribute name="field" value="bankruptSubject"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
 					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_bankrupt"/>

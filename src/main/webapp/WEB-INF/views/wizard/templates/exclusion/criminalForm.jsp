@@ -16,7 +16,7 @@
 	<label class="control-label col-md-4 small" for="${field}-field2">Reason</label>
 	<div class="col-md-8"> 
 		<form:textarea path="${field}.reason" cssClass="form-control" id="${field}-field2" placeholder="Enter reason"/>
-		</div>
+	</div>
 </div>
 <div class="form-group">
 	<label class="control-label col-md-4 small" for="${field}-field3">Who has been convicted</label>

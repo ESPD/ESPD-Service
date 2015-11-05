@@ -58,10 +58,10 @@
     <definition name="avaliableElectronically" template="/WEB-INF/views/wizard/templates/avaliableElectronically.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
-    <definition name="selfCleaning" template="/WEB-INF/views/wizard/templates/selfCleaning.jsp">
+    <definition name="selfCleaning" template="/WEB-INF/views/wizard/templates/exclusion/selfCleaning.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
-    <definition name="breachOfObligations" template="/WEB-INF/views/wizard/templates/breachOfObligations.jsp">
+    <definition name="breachOfObligations" template="/WEB-INF/views/wizard/templates/exclusion/breachOfObligations.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
 
@@ -92,12 +92,16 @@
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleForm.jsp"/>
     </definition>
 
+    <definition name="reasonsNeverlessPerformForm" extends="exclusionFormCriterion">
+    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/reasonsNeverlessPerform.jsp"/>
+    </definition>
+
     <definition name="criminalFormCriterion" extends="exclusionFormCriterion">
-    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/criminalForm.jsp"/>
+    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/criminalForm.jsp"/>
     </definition>
 
     <definition name="taxFormCriterion" extends="exclusionFormCriterion">
-    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/taxForm.jsp"/>
+    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/taxForm.jsp"/>
     	<put-attribute name="breachOfObligations" value="true"/>
     </definition>
     

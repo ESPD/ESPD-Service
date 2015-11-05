@@ -14,7 +14,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-4 small" for="${field}-field6">Please describe them</label>
 		<div class="col-md-8"> 
-			<textarea class="form-control" id="${field}-field6" placeholder="describe">  </textarea>
+			<textarea class="form-control" id="${field}-field6" placeholder="describe"></textarea>
 		</div>
 	</div>
 </div>

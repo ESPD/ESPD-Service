@@ -6,9 +6,13 @@
 
 <tiles:importAttribute name="field"/>
 
+<tiles:insertTemplate template="/WEB-INF/views/wizard/templates/simpleForm.jsp" flush="true">
+	<tiles:putAttribute name="field" value="${field}" />
+</tiles:insertTemplate>
+
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-describe">Please describe them </label>
+	<label class="control-label col-md-4 small" for="${field}-field-nevertheless">Indicate reasons for being nevertheless to perfom the contract </label>
 	<div class="col-md-8"> 
-		<textarea if="${field}-field-describe" class="form-control" placeholder="Enter text"></textarea>
+		<textarea if="${field}-field-nevertheless" class="form-control" placeholder="Enter text"></textarea>
 	</div>
 </div> 
