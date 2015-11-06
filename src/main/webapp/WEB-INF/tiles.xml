@@ -119,6 +119,7 @@
     </definition>
 
     <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/footerButtons.jsp">
+        <put-attribute name="lastStep" value="false"/>
     </definition>
 
     <!-- test for selection-->

@@ -35,6 +35,7 @@
 		</div>
 
         <tiles:insertDefinition name="footerButtons">
+            <tiles:putAttribute name="lastStep"  value="true"/>
         </tiles:insertDefinition>
 	</div>
 	</form:form>
