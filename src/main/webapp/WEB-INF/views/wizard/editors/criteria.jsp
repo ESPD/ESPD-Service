@@ -14,8 +14,9 @@
 		<s:message var="tooltip_text" code='${tooltip_code}'/>
 		<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${tooltip_text}"></span>
 	</c:if>
-	
+
 	<c:if test="${not empty description_code}">
+		<br>
 	    <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
 	</c:if>
 </div>
