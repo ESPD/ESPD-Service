@@ -5,8 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-
-	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+    <tiles:insertDefinition name="viewChangeRole">
+        <tiles:putAttribute name="currentPage" value="exclusion"/>
+    </tiles:insertDefinition>
 	
 	<div class="panel-default">
 	
@@ -23,9 +25,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-				(${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
 			</h2>
-			<a href="${pageContext.request.contextPath}/exclusion?agent=eo">View as EO</a>
 		</div>
 		
 		<div class="panel panel-default espd-panel">

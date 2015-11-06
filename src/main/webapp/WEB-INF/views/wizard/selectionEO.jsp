@@ -6,6 +6,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+    <tiles:insertDefinition name="viewChangeRole">
+        <tiles:putAttribute name="currentPage" value="selection"/>
+    </tiles:insertDefinition>
     <div class="panel-default">
         <div class="panel panel-default no-border">
             <ul class="nav nav-pills nav-wizard nav-justified">
@@ -40,9 +43,7 @@
         <div class="paragraph">
             <h2>
                 <span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
-                (${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
             </h2>
-            <a href="${pageContext.request.contextPath}/selection?agent=ca">View as CA</a>
         </div>
         <div class="alert alert-espd-info">
             <ul class="fa-ul">

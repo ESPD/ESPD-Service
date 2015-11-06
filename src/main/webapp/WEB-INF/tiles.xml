@@ -114,6 +114,10 @@
         <put-attribute name="has_please_describe_them" value="false"/>
     </definition>
 
+    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp">
+        <put-attribute name="currentPage" value=""/>
+    </definition>
+
     <!-- test for selection-->
     <definition name="selectionFormCriterion" extends="formCriterion">
     	<put-attribute name="avaliableElectronically" value="true"/>

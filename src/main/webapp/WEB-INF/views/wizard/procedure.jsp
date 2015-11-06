@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <script>
 	$(function() {
 		$("#espdform").validate({
@@ -15,6 +15,9 @@
 </script>
 
 	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+        <tiles:insertDefinition name="viewChangeRole">
+            <tiles:putAttribute name="currentPage" value="procedure"/>
+        </tiles:insertDefinition>
 
 	<div class="panel-default">
 		<div class="panel panel-default no-border">	
@@ -30,7 +33,6 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createca_header"><s:message code="createca_header"/></span>
-				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
 			</h2>
 		</div>
 		

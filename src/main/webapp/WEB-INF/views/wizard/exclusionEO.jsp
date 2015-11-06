@@ -5,8 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-
-	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+    <tiles:insertDefinition name="viewChangeRole">
+        <tiles:putAttribute name="currentPage" value="exclusion"/>
+    </tiles:insertDefinition>
 	
 	<div class="panel-default">
 	
@@ -23,9 +25,7 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-				(${(param['agent'] == "eo")?"I am an Economic Operator":"I am a Contracting Authority"})
 			</h2>
-			<a href="${pageContext.request.contextPath}/exclusion?agent=ca">View as CA</a>
 		</div>
 		
 		<div class="panel panel-default espd-panel">
@@ -34,7 +34,6 @@
 				<s:message code="crit_top_title_grounds_criminal_conv"/>
 			</div>
 						
-			
 			<div id="criminal_conv" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			
@@ -80,7 +79,6 @@
 						<tiles:putAttribute name="title_code" value="crit_eu_title_child_labour"/>
 						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_child_labour"/>
 					</tiles:insertDefinition>
-					
 			</div>
 		</div>
 		</div>
