@@ -118,6 +118,9 @@
         <put-attribute name="currentPage" value=""/>
     </definition>
 
+    <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/footerButtons.jsp">
+    </definition>
+
     <!-- test for selection-->
     <definition name="selectionFormCriterion" extends="formCriterion">
     	<put-attribute name="avaliableElectronically" value="true"/>

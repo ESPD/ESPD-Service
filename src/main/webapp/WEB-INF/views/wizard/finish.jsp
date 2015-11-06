@@ -3,8 +3,9 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-	<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 	
 	<div class="panel-default">
 	
@@ -21,7 +22,6 @@
 		<div class="paragraph">
 			<h2>
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
-				(${(param['agent'] == "eo")?"I am EO":"I am CA"})
 			</h2>
 		</div>
 
@@ -33,24 +33,9 @@
 				<s:message code='createcafinish_export_content'/>
 			</div>
 		</div>
-	
-		<div class="col-md-7">&nbsp;</div>
-		<div class="col-md-5">
-			<div class="btn-group">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/selection?agent=${param['agent']}">
-				<i class="fa fa-arrow-circle-o-left"></i>
-				<span data-i18n="previous"><s:message code="previous"/></span>
-				</a>
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/welcome">
-				<i class="fa fa-times-circle"></i>
-				<span data-i18n="cancel"><s:message code="cancel"/></span>
-				</a>
-				<button type="submit" name="next" class="btn btn-default btn-lg">
-					<i class="fa fa-download"></i>
-					<span data-i18n="export"><s:message code="export"/></span>
-				</button>							
-			</div>
-		</div>    
+
+        <tiles:insertDefinition name="footerButtons">
+        </tiles:insertDefinition>
 	</div>
 	</form:form>
 
