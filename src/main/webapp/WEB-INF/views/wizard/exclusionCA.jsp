@@ -34,12 +34,10 @@
 			</div>
             <div id="ca-criminal-convictions-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                        <div class="">
-                            <strong data-i18n="crit_eu_main_title_grounds_criminal_conv">
+                        <span data-i18n="crit_eu_main_title_grounds_criminal_conv">
                                 <s:message code='crit_eu_main_title_grounds_criminal_conv'/>
-                            </strong>
-                            <span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
-                        </div>
+                        </span>
+                        <span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
 
                         <tiles:insertDefinition name="checkCriterion">
                             <tiles:putAttribute name="field"  value="criminalConvictions"/>
@@ -87,12 +85,10 @@
 			</span>
 			<div id="ca-payment-of-taxes-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <div class="">
-                        <strong data-i18n="crit_eu_main_title_payment_taxes">
+                    <span data-i18n="crit_eu_main_title_payment_taxes" class="aligned">
                             <s:message code='crit_eu_main_title_payment_taxes'/>
-                        </strong>
-                        <span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
-                    </div>
+                    </span>
+                    <span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
 
                     <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="paymentTaxes"/>
@@ -114,12 +110,10 @@
 			</div>
             <div id="ca-insolvency-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <div class="">
-                        <strong data-i18n="crit_eu_main_breaching_obligations">
-                            <s:message code='crit_eu_main_breaching_obligations'/>
-                        </strong>
-                        <span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
-                    </div>
+                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned">
+                        <s:message code='crit_eu_main_breaching_obligations'/>
+                    </span>
+                    <span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
                     <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="breachingObligations"/>
                         <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
