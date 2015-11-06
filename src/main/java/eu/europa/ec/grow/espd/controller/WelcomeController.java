@@ -174,7 +174,7 @@ class WelcomeController {
         return "finish";
     }
 
-    @RequestMapping(value = "/finish", method = POST, produces = APPLICATION_XML_VALUE)
+    @RequestMapping(value = "/finish", method = RequestMethod.POST)
     public String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd,
             SessionStatus status, BindingResult bindingResult) throws JAXBException, IOException {
         if (bindingResult.hasErrors()) {
@@ -190,10 +190,10 @@ class WelcomeController {
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
 
             out.flush();
-            return null;
         } finally {
             status.setComplete();
         }
+        return null;
     }
 
     @RequestMapping(value = "/finish", method = POST, params = "prev")
