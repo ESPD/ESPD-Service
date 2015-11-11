@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Core Evidence Vocabulary - Syntax Binding based on OASIS UBL-2.1 
+	Version				:	1.1
+	Last update		: 	20151001Th
+	Author				:	Enric Staromiejski <enric.staromiejski.torregrosa@everis.com>
+	Project Owner	:	DG GROW, European Commission
+	-->
+<xsd:schema xmlns="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" schemaLocation="CEV-CommonBasicComponents-1.1.xsd"/>
+	<!-- Element declaration -->
+	<xsd:element name="Evidence" type="EvidenceType"/>
+	<xsd:element name="EvidenceDocumentReference" type="cac:DocumentReferenceType"/>
+	<xsd:element name="EvidenceIssuerParty" type="cac:PartyType"/>
+	<!-- Element definition -->
+	<xsd:complexType name="EvidenceType">
+		<xsd:sequence>
+			<xsd:element ref="cev-cbc:EvidenceID" minOccurs="0"/>
+			<xsd:element ref="cev-cbc:EvidenceTypeCode" minOccurs="0"/>
+			<xsd:element ref="cev-cbc:EvidenceName" minOccurs="0"/>
+			<xsd:element ref="cev-cbc:EmbeddedEvidenceIndicator" minOccurs="0"/>
+			<xsd:element ref="cev-cbc:EvidenceDescription" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="EvidenceIssuerParty" minOccurs="0"/>
+			<xsd:element ref="EvidenceDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
