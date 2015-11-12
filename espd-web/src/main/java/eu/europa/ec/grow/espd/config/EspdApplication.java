@@ -39,7 +39,7 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
     }
 
     @Bean
-    Jaxb2Marshaller jaxb2Marshaller() {
+    public Jaxb2Marshaller jaxb2Marshaller() {
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
         jaxb2Marshaller.setPackagesToScan(EspdDocument.class.getPackage().getName(),
                 ESPDRequestType.class.getPackage().getName(), ESPDResponseType.class.getPackage().getName());

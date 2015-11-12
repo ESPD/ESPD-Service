@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.controller;
 
+import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.SelectionCriterion;
 import org.apache.commons.io.output.CountingOutputStream;
@@ -17,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,9 +34,12 @@ class WelcomeController {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
 
+    private final EspdExchangeMarshaller exchangeMarshaller;
+
     @Autowired
-    WelcomeController(final Jaxb2Marshaller jaxb2Marshaller) {
+    WelcomeController(final Jaxb2Marshaller jaxb2Marshaller, final EspdExchangeMarshaller exchangeMarshaller) {
         this.jaxb2Marshaller = jaxb2Marshaller;
+        this.exchangeMarshaller = exchangeMarshaller;
     }
 
     @ModelAttribute("espd")
@@ -185,8 +188,9 @@ class WelcomeController {
             response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd.xml\"");
             response.setContentType(APPLICATION_XML_VALUE);
 
-            StreamResult result = new StreamResult(out);
-            jaxb2Marshaller.marshal(espd, result);
+//            StreamResult result = new StreamResult(out);
+//            jaxb2Marshaller.marshal(espd, result);
+            exchangeMarshaller.generateEspdRequest(espd, out);
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
 
             out.flush();

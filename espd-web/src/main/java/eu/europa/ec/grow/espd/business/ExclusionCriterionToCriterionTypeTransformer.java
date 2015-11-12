@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.business;
 
+import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
-import eu.europa.ec.grow.espd.util.Function;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import org.springframework.stereotype.Component;
 

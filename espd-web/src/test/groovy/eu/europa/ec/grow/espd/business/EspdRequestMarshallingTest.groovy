@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business
 
+import eu.europa.ec.grow.espd.config.EspdApplication
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
@@ -22,7 +23,7 @@ class EspdRequestMarshallingTest extends Specification {
     StringWriter out
 
     void setupSpec() {
-        jaxb2Marshaller = new JaxbTestFactory().buildJaxb2Marshaller()
+        jaxb2Marshaller = new EspdApplication().jaxb2Marshaller()
         toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer()
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
     }
@@ -39,16 +40,6 @@ class EspdRequestMarshallingTest extends Specification {
 
     void cleanup() {
         out = null
-    }
-
-    def "when there are no procurement project lots we should mark it with an id with value 0"() {
-        when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        println out.toString()
-        def result = new XmlSlurper().parseText(out.toString())
-
-        then:
-        result.ProcurementProjectLot.ID.text() == "0"
     }
 
     def "should contain mandatory UBL version information"() {
@@ -82,6 +73,19 @@ class EspdRequestMarshallingTest extends Specification {
         result.ID.text().startsWith("ESPDREQ")
         result.ID.@schemeAgencyID.text() == "COM-DG-CNNECT"
         result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General for Communications Networks, Content and Technology"
+    }
+
+    def "when there are no procurement project lots we should mark it with an id with value 0"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        println out.toString()
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
+        result.ProcurementProjectLot.size() == 1
+
+        then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
+        result.ProcurementProjectLot.ID.text() == "0"
     }
 
 }

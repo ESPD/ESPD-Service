@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.business;
 
+import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.util.Function;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.CustomizationIDType;
@@ -45,6 +45,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
 
     private void addIdInformation(final ESPDRequestType espdRequestType) {
         IDType idType = new IDType();
+        // TODO see how to calculate the id
         idType.setValue("ESPDREQ-1-20151010");
         idType.setSchemeAgencyID("COM-DG-CNNECT");
         idType.setSchemeAgencyName("European Commission, Directorate-General for Communications Networks, Content and Technology");
