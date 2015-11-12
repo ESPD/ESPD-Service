@@ -1,9 +1,0 @@
-/* RESET ANY ORDER LIST: language selector, additionnal tools ... */
-
-	.reset-list,
-	.reset-list ul,
-	.reset-list li{list-style-type:none;}
-	
-	.reset-list li + li:before {
-	    content: "|";
-	}
