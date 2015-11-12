@@ -6,11 +6,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Dummy abstract super class to show the use of a super-class in JAXB.
  *
  * @author vigi
  */
-public class JaxbConverter {
+public final class JaxbConverter {
+
+    private JaxbConverter() {
+
+    }
 
     /**
      * Converts a String representing a {@link XMLGregorianCalendar} to a

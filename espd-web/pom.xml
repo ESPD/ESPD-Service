@@ -9,7 +9,7 @@
     <artifactId>espd-web</artifactId>
     <packaging>war</packaging>
     <name>espd-web Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <url>https://www.ec.europa.eu/growth/tools-databases/espd</url>
 
     <dependencies>
         <dependency>

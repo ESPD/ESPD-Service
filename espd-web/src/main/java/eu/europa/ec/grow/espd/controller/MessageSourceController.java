@@ -24,7 +24,7 @@ class MessageSourceController {
     private final ObjectMapper mapper;
 
     @Autowired
-    public MessageSourceController(MessageSource ms, ObjectMapper mapper) {
+    MessageSourceController(MessageSource ms, ObjectMapper mapper) {
         this.ms = ms;
         this.mapper = mapper;
     }
