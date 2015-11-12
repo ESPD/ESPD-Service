@@ -4,10 +4,12 @@ import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.CustomizationIDType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.UBLVersionIDType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 /**
  * Transforms a {@link EspdDocument} into a {@link ESPDRequestType}.
@@ -23,6 +25,11 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addUBLVersionInformation(espdRequestType);
         addCustomizationInformation(espdRequestType);
         addIdInformation(espdRequestType);
+        addCopyIndicatorInformation(espdRequestType);
+        addUuidInformation(espdRequestType);
+        addVersionIdInformation(espdRequestType);
+        addIssueDateAndTimeInformation(espdRequestType);
+        addContractFolderIdInformation(espdRequestType);
         addProcurementProjectLots(espdRequestType);
         return espdRequestType;
     }
@@ -50,6 +57,43 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         idType.setSchemeAgencyID("COM-DG-CNNECT");
         idType.setSchemeAgencyName("European Commission, Directorate-General for Communications Networks, Content and Technology");
         espdRequestType.setID(idType);
+    }
+
+    private void addCopyIndicatorInformation(final ESPDRequestType espdRequestType) {
+        CopyIndicatorType copyIndicatorType = new CopyIndicatorType();
+        copyIndicatorType.setValue(false);
+        espdRequestType.setCopyIndicator(copyIndicatorType);
+    }
+
+    private void addUuidInformation(final ESPDRequestType espdRequestType) {
+        UUIDType uuidType = new UUIDType();
+        uuidType.setValue("b9d2a2d2-4108-11e5-a151-feff819cdc9f");
+        uuidType.setSchemeAgencyID("COM-DG-GROW");
+        espdRequestType.setUUID(uuidType);
+    }
+
+    private void addVersionIdInformation(final ESPDRequestType espdRequestType) {
+        VersionIDType versionIDType = new VersionIDType();
+        versionIDType.setValue("1");
+        versionIDType.setSchemeAgencyID("COM-DG-GROW");
+        espdRequestType.setVersionID(versionIDType);
+    }
+
+    private void addIssueDateAndTimeInformation(final ESPDRequestType espdRequestType) {
+        Date now = new Date();
+        IssueDateType issueDateType = new IssueDateType();
+        issueDateType.setValue(new LocalDate(now));
+        IssueTimeType issueTimeType = new IssueTimeType();
+        issueTimeType.setValue(new LocalTime(now));
+        espdRequestType.setIssueTime(issueTimeType);
+        espdRequestType.setIssueDate(issueDateType);
+    }
+
+    private void addContractFolderIdInformation(final ESPDRequestType espdRequestType) {
+        ContractFolderIDType contractFolderIDType = new ContractFolderIDType();
+        contractFolderIDType.setValue("SMART 2015/0065");
+        contractFolderIDType.setSchemeAgencyID("TeD");
+        espdRequestType.setContractFolderID(contractFolderIDType);
     }
 
     private void addProcurementProjectLots(final ESPDRequestType espdRequestType) {

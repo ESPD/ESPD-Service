@@ -32,6 +32,7 @@
         <groovy.version>2.4.1</groovy.version>
         <spock.version>1.0-groovy-2.4</spock.version>
         <guava.version>18.0</guava.version>
+        <joda-time.version>2.9</joda-time.version>
     </properties>
 
     <scm>
@@ -111,6 +112,12 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
             <!-- Testing dependencies -->
             <!-- Mandatory dependencies for using Spock -->
             <dependency>

@@ -1,11 +1,9 @@
 package eu.europa.ec.grow.espd.business
-
 import eu.europa.ec.grow.espd.config.EspdApplication
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
 import spock.lang.Specification
-
 /**
  * Created by vigi on 11/11/15:3:31 PM.
  */
@@ -42,7 +40,7 @@ class EspdRequestMarshallingTest extends Specification {
         out = null
     }
 
-    def "should contain mandatory UBL version information"() {
+    def "should contain UBLVersionID element information"() {
         when:
         marshaller.generateEspdRequest(new EspdDocument(), out)
         def result = new XmlSlurper().parseText(out.toString())
@@ -52,7 +50,7 @@ class EspdRequestMarshallingTest extends Specification {
         result.UBLVersionID.@schemeAgencyID.text() == "OASIS-UBL-TC"
     }
 
-    def "should contain mandatory customization information"() {
+    def "should contain CustomizationID element information"() {
         when:
         marshaller.generateEspdRequest(new EspdDocument(), out)
         def result = new XmlSlurper().parseText(out.toString())
@@ -64,7 +62,7 @@ class EspdRequestMarshallingTest extends Specification {
         result.CustomizationID.@schemeName.text() == "CustomizationID"
     }
 
-    def "should contain mandatory id information"() {
+    def "should contain ID element information"() {
         when:
         marshaller.generateEspdRequest(new EspdDocument(), out)
         def result = new XmlSlurper().parseText(out.toString())
@@ -75,7 +73,65 @@ class EspdRequestMarshallingTest extends Specification {
         result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General for Communications Networks, Content and Technology"
     }
 
-    def "when there are no procurement project lots we should mark it with an id with value 0"() {
+    def "should contain CopyIndicator element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then:
+        result.CopyIndicator.size() == 1
+        result.CopyIndicator.toBoolean() == false
+    }
+
+    def "should contain UUID element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then:
+        result.UUID.text() == "b9d2a2d2-4108-11e5-a151-feff819cdc9f"
+        result.UUID.@schemeAgencyID.text() == "COM-DG-GROW"
+    }
+
+    def "should contain VersionID element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then:
+        result.VersionID.text() == "1"
+        result.VersionID.@schemeAgencyID.text() == "COM-DG-GROW"
+    }
+
+    def "should contain IssueDate element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then: "issue date must match the date format YYYY-MM-dd"
+        (result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}") == true
+    }
+
+    def "should contain IssueTime element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then: "issue time must match the time format HH:mm:ss"
+        (result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}") == true
+    }
+
+    def "should contain ContractFolderID element information"() {
+        when:
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then:
+        result.ContractFolderID.text() == "SMART 2015/0065"
+        result.ContractFolderID.@schemeAgencyID.text() == "TeD"
+    }
+
+    def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
         marshaller.generateEspdRequest(new EspdDocument(), out)
         println out.toString()

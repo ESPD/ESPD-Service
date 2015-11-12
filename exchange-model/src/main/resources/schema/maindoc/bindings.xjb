@@ -4,9 +4,12 @@
               xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <jxb:globalBindings>
-        <jxb:javaType name="java.util.Date" xmlType="xs:date"
-                  parseMethod="eu.europa.ec.grow.espd.xml.JaxbConverter.parseDate"
-                  printMethod="eu.europa.ec.grow.espd.xml.JaxbConverter.printDate"/>
+        <jxb:javaType name="org.joda.time.LocalDate" xmlType="xs:date"
+                  parseMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal"
+                  printMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal"/>
+        <jxb:javaType name="org.joda.time.LocalTime" xmlType="xs:time"
+                      parseMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal"
+                      printMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal"/>
         <jxb:serializable uid="100"/>
     </jxb:globalBindings>
 

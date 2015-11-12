@@ -24,6 +24,10 @@
             <artifactId>jaxb2-basics-runtime</artifactId>
             <version>${jaxb2-basics-runtime.version}</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
