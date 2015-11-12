@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business
-import eu.europa.ec.grow.espd.config.EspdApplication
+
+import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
@@ -21,7 +22,7 @@ class EspdRequestMarshallingTest extends Specification {
     StringWriter out
 
     void setupSpec() {
-        jaxb2Marshaller = new EspdApplication().jaxb2Marshaller()
+        jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
         toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer()
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
     }
