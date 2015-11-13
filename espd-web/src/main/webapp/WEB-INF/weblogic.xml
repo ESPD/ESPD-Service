@@ -16,6 +16,7 @@
         <prefer-application-packages>
             <package-name>org.slf4j.*</package-name>
             <package-name>com.google.common.*</package-name>
+            <package-name>org.joda.*</package-name>
             <package-name>javassist.*</package-name>
             <package-name>javassist.bytecode.*</package-name>
             <package-name>javassist.bytecode.annotation.*</package-name>
