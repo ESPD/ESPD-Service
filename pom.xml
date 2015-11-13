@@ -33,6 +33,7 @@
         <spock.version>1.0-groovy-2.4</spock.version>
         <guava.version>18.0</guava.version>
         <joda-time.version>2.9</joda-time.version>
+        <jaxb.version>2.2.11</jaxb.version>
     </properties>
 
     <scm>
@@ -117,6 +118,12 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+
 
             <!-- Testing dependencies -->
             <!-- Mandatory dependencies for using Spock -->

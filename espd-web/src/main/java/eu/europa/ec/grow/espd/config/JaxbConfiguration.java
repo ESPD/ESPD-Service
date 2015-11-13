@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.config;
 
-import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
@@ -25,7 +25,7 @@ public class JaxbConfiguration {
                 ESPDRequestType.class.getPackage().getName(), ESPDResponseType.class.getPackage().getName());
         Map<String, Object> map = new HashMap<>(2);
         map.put(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        map.put("com.sun.xml.internal.bind.namespacePrefixMapper", new NamespacePrefixMapperImpl());
+        map.put("com.sun.xml.bind.namespacePrefixMapper", new NamespacePrefixMapperImpl());
         jaxb2Marshaller.setMarshallerProperties(map);
         return jaxb2Marshaller;
     }

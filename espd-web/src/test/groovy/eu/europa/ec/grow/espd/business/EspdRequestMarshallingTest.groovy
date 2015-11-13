@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.business
-
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
 import spock.lang.Specification
@@ -41,10 +41,20 @@ class EspdRequestMarshallingTest extends Specification {
         out = null
     }
 
+    def "should make sure that we use the correct XML namespaces"() {
+        when:
+        def result = parseXml()
+
+        then:
+        result.lookupNamespace('cbc') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'
+        result.lookupNamespace('cac') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2'
+        result.lookupNamespace('ccv') == 'urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1'
+//        result.list()[0].namespacePrefix.text() == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
+    }
+
     def "should contain UBLVersionID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.UBLVersionID.text() == "2.1"
@@ -53,8 +63,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain CustomizationID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.CustomizationID.text() == "urn:www.cenbii.eu:transaction:biitrns070:ver3.0"
@@ -65,8 +74,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain ID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.ID.text().startsWith("ESPDREQ")
@@ -76,8 +84,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain CopyIndicator element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.CopyIndicator.size() == 1
@@ -86,8 +93,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain UUID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.UUID.text() == "b9d2a2d2-4108-11e5-a151-feff819cdc9f"
@@ -96,8 +102,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain VersionID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.VersionID.text() == "1"
@@ -106,8 +111,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain IssueDate element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
         (result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}") == true
@@ -115,8 +119,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain IssueTime element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then: "issue time must match the time format HH:mm:ss"
         (result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}") == true
@@ -124,8 +127,7 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain ContractFolderID element information"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        def result = new XmlSlurper().parseText(out.toString())
+        def result = parseXml()
 
         then:
         result.ContractFolderID.text() == "SMART 2015/0065"
@@ -134,15 +136,19 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
-        marshaller.generateEspdRequest(new EspdDocument(), out)
+        def result = parseXml()
         println out.toString()
-        def result = new XmlSlurper().parseText(out.toString())
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
 
         then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
         result.ProcurementProjectLot.ID.text() == "0"
+    }
+
+    private GPathResult parseXml() {
+        marshaller.generateEspdRequest(new EspdDocument(), out)
+        new XmlSlurper().parseText(out.toString())
     }
 
 }
