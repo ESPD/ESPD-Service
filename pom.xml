@@ -118,6 +118,8 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
             </dependency>
+            <!-- Use the Glassfish Reference Implementation to provide the correct namespaces to the XML
+            elements and to be able to compile the project without using the com.sun.xml.internal package -->
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
