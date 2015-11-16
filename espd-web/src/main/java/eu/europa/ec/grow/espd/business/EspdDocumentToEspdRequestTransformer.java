@@ -10,6 +10,7 @@ import org.joda.time.LocalTime;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Transforms a {@link EspdDocument} into a {@link ESPDRequestType}.
@@ -26,7 +27,6 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addCustomizationInformation(espdRequestType);
         addIdInformation(espdRequestType);
         addCopyIndicatorInformation(espdRequestType);
-        addUuidInformation(espdRequestType);
         addVersionIdInformation(espdRequestType);
         addIssueDateAndTimeInformation(espdRequestType);
         addContractFolderIdInformation(espdRequestType);
@@ -52,10 +52,11 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
 
     private void addIdInformation(final ESPDRequestType espdRequestType) {
         IDType idType = new IDType();
-        // TODO see how to calculate the id
-        idType.setValue("ESPDREQ-1-20151010");
-        idType.setSchemeAgencyID("COM-DG-CNNECT");
-        idType.setSchemeAgencyName("European Commission, Directorate-General for Communications Networks, Content and Technology");
+        idType.setValue(UUID.randomUUID().toString());
+        idType.setSchemeAgencyID("COM-DG-GROW");
+        idType.setSchemeAgencyName("European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs");
+        idType.setSchemeVersionID("1.1");
+        idType.setSchemeID("ISO/IEC 9834-8:2008 - 4UUID");
         espdRequestType.setID(idType);
     }
 
@@ -63,13 +64,6 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         CopyIndicatorType copyIndicatorType = new CopyIndicatorType();
         copyIndicatorType.setValue(false);
         espdRequestType.setCopyIndicator(copyIndicatorType);
-    }
-
-    private void addUuidInformation(final ESPDRequestType espdRequestType) {
-        UUIDType uuidType = new UUIDType();
-        uuidType.setValue("b9d2a2d2-4108-11e5-a151-feff819cdc9f");
-        uuidType.setSchemeAgencyID("COM-DG-GROW");
-        espdRequestType.setUUID(uuidType);
     }
 
     private void addVersionIdInformation(final ESPDRequestType espdRequestType) {

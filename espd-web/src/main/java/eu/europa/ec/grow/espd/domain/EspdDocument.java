@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.constants.Country;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,14 +17,14 @@ public class EspdDocument {
 	@XmlTransient private String action;// "ca_create_espd" or "eo_import_espd"
 
 	@XmlElement
-    @NotNull(message = "Name is mandatory.")
-	private String name;
+    @NotNull(message = "Authority name is mandatory.")
+	private String authorityName;
 
 	@XmlElement private String natRegNumber;
 	@XmlElement private String streetAndNumber;
 	@XmlElement private String postcode;
 	@XmlElement private String city;
-	@XmlElement private String country;
+	@XmlElement private Country country;
 	@XmlElement private String contactPerson;
 	@XmlElement private String email;
 	@XmlElement private String telephone;

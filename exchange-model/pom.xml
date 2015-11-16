@@ -67,6 +67,7 @@
                     </execution>
                 </executions>
                 <dependencies>
+                    <!-- Allows us to customize the namespace names of the generated XML elements -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons</groupId>
                         <artifactId>jaxb2-namespace-prefix</artifactId>

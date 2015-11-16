@@ -47,7 +47,7 @@
 						</optgroup>
 						<optgroup label="EFTA">
 							<form:option data-i18n="country_iceland" value='iceland'><s:message code="country_iceland"/></form:option>
-							<form:option data-i18n="country_lichtenstein" value='lichtenstein'><s:message code="country_lichtenstein"/></form:option>
+							<form:option data-i18n="country_lichtenstein" value='lichtenstein'><s:message code="country_liechtenstein"/></form:option>
 							<form:option data-i18n="country_switzerland" value='switzerland'><s:message code="country_switzerland"/></form:option>
 							<form:option data-i18n="country_norway" value='norway'><s:message code="country_norway"/></form:option>
 						</optgroup>

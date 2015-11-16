@@ -76,10 +76,14 @@ class EspdRequestMarshallingTest extends Specification {
         when:
         def result = parseXml()
 
+        then: "id is an UUID"
+        result.ID.text().length() == 36
+
         then:
-        result.ID.text().startsWith("ESPDREQ")
-        result.ID.@schemeAgencyID.text() == "COM-DG-CNNECT"
-        result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General for Communications Networks, Content and Technology"
+        result.ID.@schemeAgencyID.text() == "COM-DG-GROW"
+        result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs"
+        result.ID.@schemeVersionID.text() == "1.1"
+        result.ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
     }
 
     def "should contain CopyIndicator element information"() {
@@ -89,15 +93,6 @@ class EspdRequestMarshallingTest extends Specification {
         then:
         result.CopyIndicator.size() == 1
         result.CopyIndicator.toBoolean() == false
-    }
-
-    def "should contain UUID element information"() {
-        when:
-        def result = parseXml()
-
-        then:
-        result.UUID.text() == "b9d2a2d2-4108-11e5-a151-feff819cdc9f"
-        result.UUID.@schemeAgencyID.text() == "COM-DG-GROW"
     }
 
     def "should contain VersionID element information"() {
@@ -114,7 +109,7 @@ class EspdRequestMarshallingTest extends Specification {
         def result = parseXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
-        (result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}") == true
+        result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}"
     }
 
     def "should contain IssueTime element information"() {
@@ -122,7 +117,7 @@ class EspdRequestMarshallingTest extends Specification {
         def result = parseXml()
 
         then: "issue time must match the time format HH:mm:ss"
-        (result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}") == true
+        result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}"
     }
 
     def "should contain ContractFolderID element information"() {

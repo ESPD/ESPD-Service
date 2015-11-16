@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
+import eu.europa.ec.grow.espd.constants.Country;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.SelectionCriterion;
 import org.apache.commons.io.output.CountingOutputStream;
@@ -65,7 +66,7 @@ class WelcomeController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @RequestParam String country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
+            @RequestParam Country country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
             Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {

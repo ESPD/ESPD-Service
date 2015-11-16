@@ -1,3 +1,4 @@
+<%@ page import="eu.europa.ec.grow.espd.constants.Country" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -83,194 +84,101 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="authorityName"><span
                                         data-i18n="createca_name"><s:message code="createca_name"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="name" placeholder="Enter name"
+                                    <form:input cssClass="form-control" path="authorityName" placeholder="Enter name"
                                                 required="true"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <form:errors path="name" cssClass="alert-danger"/>
+                                    <form:errors path="authorityName" cssClass="alert-danger"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 " for="name"><span data-i18n="createca_nat_regnum"><s:message
+                                <label class="control-label col-md-4 " for="natRegNumber"><span data-i18n="createca_nat_regnum"><s:message
                                         code="createca_nat_regnum"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="streetAndNumber"
+                                    <form:input cssClass="form-control" path="natRegNumber" id="natRegNumber"
                                                 placeholder="Enter registration number"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="streetAndNumber"><span
                                         data-i18n="createca_street_and_num"><s:message
                                         code="createca_street_and_num"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="natRegNumber"
+                                    <form:input cssClass="form-control" path="streetAndNumber" id="streetAndNumber"
                                                 placeholder="Enter street and number"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="postcode"><span
                                         data-i18n="createca_postcode"><s:message
                                         code="createca_postcode"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="postcode" placeholder="Enter Postcode"/>
+                                    <form:input cssClass="form-control" path="postcode" id="postcode" placeholder="Enter Postcode"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="city"><span
                                         data-i18n="createca_city"><s:message code="createca_city"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="city" placeholder="Enter City"/>
+                                    <form:input cssClass="form-control" path="city" id="city" placeholder="Enter City"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="country"><span
                                         data-i18n="createca_country"><s:message code="createca_country"/></span></label>
-
                                 <div class="col-md-8">
-
-                                    <form:select path="country" cssClass="form-control">
-                                        <form:option value="empty" label="---"/>
-                                        <optgroup label="EU">
-                                            <form:option data-i18n="country_austria" value='austria'><s:message
-                                                    code="country_austria"/></form:option>
-                                            <form:option data-i18n="country_belgium" value='belgium'><s:message
-                                                    code="country_belgium"/></form:option>
-                                            <form:option data-i18n="country_bulgaria" value='bulgaria'><s:message
-                                                    code="country_bulgaria"/></form:option>
-                                            <form:option data-i18n="country_cyprus" value='cyprus'><s:message
-                                                    code="country_cyprus"/></form:option>
-                                            <form:option data-i18n="country_croatia" value='croatia'><s:message
-                                                    code="country_croatia"/></form:option>
-                                            <form:option data-i18n="country_czech_republic"
-                                                         value='czech_republic'><s:message
-                                                    code="country_czech_republic"/></form:option>
-                                            <form:option data-i18n="country_denmark" value='denmark'><s:message
-                                                    code="country_denmark"/></form:option>
-                                            <form:option data-i18n="country_estonia" value='estonia'><s:message
-                                                    code="country_estonia"/></form:option>
-                                            <form:option data-i18n="country_finland" value='finland'><s:message
-                                                    code="country_finland"/></form:option>
-                                            <form:option data-i18n="country_france" value='france'><s:message
-                                                    code="country_france"/></form:option>
-                                            <form:option data-i18n="country_germany" value='germany'><s:message
-                                                    code="country_germany"/></form:option>
-                                            <form:option data-i18n="country_greece" value='greece'><s:message
-                                                    code="country_greece"/></form:option>
-                                            <form:option data-i18n="country_hungary" value='hungary'><s:message
-                                                    code="country_hungary"/></form:option>
-                                            <form:option data-i18n="country_ireland" value='ireland'><s:message
-                                                    code="country_ireland"/></form:option>
-                                            <form:option data-i18n="country_italy" value='italy'><s:message
-                                                    code="country_italy"/></form:option>
-                                            <form:option data-i18n="country_latvia" value='latvia'><s:message
-                                                    code="country_latvia"/></form:option>
-                                            <form:option data-i18n="country_lithuania" value='lithuania'><s:message
-                                                    code="country_lithuania"/></form:option>
-                                            <form:option data-i18n="country_luxembourg" value='luxembourg'><s:message
-                                                    code="country_luxembourg"/></form:option>
-                                            <form:option data-i18n="country_malta" value='malta'><s:message
-                                                    code="country_malta"/></form:option>
-                                            <form:option data-i18n="country_netherlands" value='netherlands'><s:message
-                                                    code="country_netherlands"/></form:option>
-                                            <form:option data-i18n="country_poland" value='poland'><s:message
-                                                    code="country_poland"/></form:option>
-                                            <form:option data-i18n="country_portugal" value='portugal'><s:message
-                                                    code="country_portugal"/></form:option>
-                                            <form:option data-i18n="country_romania" value='romania'><s:message
-                                                    code="country_romania"/></form:option>
-                                            <form:option data-i18n="country_slovakia" value='slovakia'><s:message
-                                                    code="country_slovakia"/></form:option>
-                                            <form:option data-i18n="country_slovenia" value='slovenia'><s:message
-                                                    code="country_slovenia"/></form:option>
-                                            <form:option data-i18n="country_spain" value='spain'><s:message
-                                                    code="country_spain"/></form:option>
-                                            <form:option data-i18n="country_sweden" value='sweden'><s:message
-                                                    code="country_sweden"/></form:option>
-                                            <form:option data-i18n="country_united_kingdom"
-                                                         value='united_kingdom'><s:message
-                                                    code="country_united_kingdom"/></form:option>
-                                        </optgroup>
-                                        <optgroup label="EU+">
-                                            <form:option data-i18n="country_turkey" value='turkey'><s:message
-                                                    code="country_turkey"/></form:option>
-                                        </optgroup>
-                                        <optgroup label="EFTA">
-                                            <form:option data-i18n="country_iceland" value='iceland'><s:message
-                                                    code="country_iceland"/></form:option>
-                                            <form:option data-i18n="country_lichtenstein"
-                                                         value='lichtenstein'><s:message
-                                                    code="country_lichtenstein"/></form:option>
-                                            <form:option data-i18n="country_switzerland" value='switzerland'><s:message
-                                                    code="country_switzerland"/></form:option>
-                                            <form:option data-i18n="country_norway" value='norway'><s:message
-                                                    code="country_norway"/></form:option>
-                                        </optgroup>
-                                    </form:select>
-
+                                    <tiles:insertDefinition name="countries">
+                                        <tiles:putAttribute name="countryField" value="country"/>
+                                        <tiles:putAttribute name="countryHtmlId" value="country"/>
+                                        <tiles:putAttribute name="countryCssClass" value="form-control"/>
+                                    </tiles:insertDefinition>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="contactPerson"><span
                                         data-i18n="createca_contact_person"><s:message
                                         code="createca_contact_person"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="contactPerson"
+                                    <form:input cssClass="form-control" path="contactPerson" id="contactPerson"
                                                 placeholder="Enter contact person"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="email"><span
                                         data-i18n="createca_email"><s:message code="createca_email"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="email" placeholder="Enter E-mail"/>
+                                    <form:input cssClass="form-control" path="email" id="email" placeholder="Enter E-mail"/>
                                 </div>
                             </div>
-                                <%--
-                                <div class="form-group">
-                                    <label class="control-label col-md-4 " for="name"><span data-i18n="createca_confirm_email"><s:message code="createca_confirm_email"/></span></label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" placeholder="Confirm E-mail">
-                                    </div>
-                                </div>
-                                 --%>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="telephone"><span
                                         data-i18n="createca_telephone"><s:message
                                         code="createca_telephone"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="telephone" placeholder="Enter Telephone"/>
+                                    <form:input cssClass="form-control" path="telephone" id="telephone" placeholder="Enter Telephone"/>
                                 </div>
                             </div>
-                                <%--
-                                <div class="form-group ">
-                                    <label class="control-label col-md-4 " for="name"><span data-i18n="createca_confirm_telephone"><s:message code="createca_confirm_telephone"/></span></label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" placeholder="Confirm Telephone">
-                                    </div>
-                                </div>
-                                 --%>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="name"><span
+                                <label class="control-label col-md-4 " for="website"><span
                                         data-i18n="createca_website"><s:message code="createca_website"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="website" placeholder="Enter Website"/>
+                                    <form:input cssClass="form-control" path="website" id="website" placeholder="Enter Website"/>
                                 </div>
                             </div>
                         </div>
@@ -294,36 +202,36 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class="control-label" for="name"><span data-i18n="createca_title_or_short_desc_"><s:message
+                                <label class="control-label" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message
                                         code="createca_title_or_short_desc_"/></span></label>
-                                <form:textarea path="procedureDesc" cssStyle="resize: none" rows="4" cols="20"
+                                <form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"
                                                cssClass="form-control"/>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="name"><span
+                                <label class="control-label col-md-8 " for="lotConcerned"><span
                                         data-i18n="createca_lots_concerned"><s:message
                                         code="createca_lots_concerned"/></span></label>
 
                                 <div class="col-md-4">
-                                    <form:input cssClass="form-control" path="lotConcerned" placeholder=""/>
+                                    <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="name"><span
+                                <label class="control-label col-md-8 " for="fileRefByCA"><span
                                         data-i18n="createca_file_ref_ca"><s:message code="createca_file_ref_ca"/></span></label>
 
                                 <div class="col-md-4">
-                                    <form:input cssClass="form-control" path="fileRefByCA" placeholder=""/>
+                                    <form:input cssClass="form-control" path="fileRefByCA" id="fileRefByCA" placeholder=""/>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="name"><span
+                                <label class="control-label col-md-8 " for="websiteProcDocs"><span
                                         data-i18n="createca_website_proc_doc"><s:message
                                         code="createca_website_proc_doc"/></span></label>
 
                                 <div class="col-md-4">
-                                    <form:input cssClass="form-control" path="websiteProcDocs" placeholder=""/>
+                                    <form:input cssClass="form-control" path="websiteProcDocs" id="websiteProcDocs" placeholder=""/>
                                 </div>
                             </div>
                         </div>

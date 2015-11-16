@@ -50,9 +50,9 @@
         <put-attribute name="body" value="/WEB-INF/views/about.jsp" />
     </definition>
 
-    <definition name="error" extends="defaultTemplate">
-        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />
-    </definition>
+    <!--<definition name="error1" extends="defaultTemplate">-->
+        <!--<put-attribute name="body" value="/WEB-INF/views/error.jsp" />-->
+    <!--</definition>-->
     
     <!-- criteria templates -->
     <definition name="avaliableElectronically" template="/WEB-INF/views/wizard/templates/avaliableElectronically.jsp">
@@ -131,5 +131,11 @@
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleSelectionFormCriterion.jsp"/>
     </definition>
     <!-- ~test for selection -->
+
+    <definition name="countries" template="/WEB-INF/views/wizard/templates/countries.jsp">
+        <put-attribute name="countryField" value=""/>
+        <put-attribute name="countryHtmlId" value=""/>
+        <put-attribute name="countryCssClass" value=""/>
+    </definition>
 
 </tiles-definitions>
