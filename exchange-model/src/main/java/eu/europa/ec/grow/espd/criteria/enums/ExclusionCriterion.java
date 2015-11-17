@@ -1,12 +1,13 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
+import eu.europa.ec.grow.espd.criteria.CcvCriterion;
 import lombok.Getter;
 
 /**
  * Created by vigi on 11/17/15:2:34 PM.
  */
 @Getter
-public enum ExclusionCriterion {
+public enum ExclusionCriterion implements CcvCriterion {
 
     /**
      *
@@ -142,5 +143,20 @@ public enum ExclusionCriterion {
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legalReference = legalReference;
+    }
+
+    @Override
+    public String getId() {
+        return getUuid();
+    }
+
+    @Override
+    public String getTypeCode() {
+        return CriterionType.EXCLUSION.name() + "." + getCriterionTypeCode().name();
+    }
+
+    @Override
+    public String getName() {
+        return getShortName();
     }
 }

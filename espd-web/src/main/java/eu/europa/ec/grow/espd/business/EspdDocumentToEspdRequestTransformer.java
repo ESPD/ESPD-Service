@@ -1,8 +1,12 @@
 package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import eu.europa.ec.grow.espd.constants.DirectorateGeneral;
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
+import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
 import org.joda.time.LocalDate;
@@ -10,7 +14,9 @@ import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -22,10 +28,13 @@ import java.util.UUID;
 class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESPDRequestType> {
 
     private final ToContractingPartyTransformer contractingPartyTransformer;
+    private final CcvCriterionTransformer ccvCriterionTransformer;
 
     @Autowired
-    EspdDocumentToEspdRequestTransformer(ToContractingPartyTransformer contractingPartyTransformer) {
+    EspdDocumentToEspdRequestTransformer(ToContractingPartyTransformer contractingPartyTransformer,
+            final CcvCriterionTransformer ccvCriterionTransformer) {
         this.contractingPartyTransformer = contractingPartyTransformer;
+        this.ccvCriterionTransformer = ccvCriterionTransformer;
     }
 
     @Override
@@ -40,6 +49,8 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addContractFolderIdInformation(espdRequestType);
         addContractingPartyInformation(espdDocument, espdRequestType);
         addProcurementProjectLots(espdRequestType);
+        addCriterionTypes(espdRequestType);
+
         return espdRequestType;
     }
 
@@ -62,7 +73,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     private void addIdInformation(ESPDRequestType espdRequestType) {
         IDType idType = new IDType();
         idType.setValue(UUID.randomUUID().toString());
-        idType.setSchemeAgencyID("COM-DG-GROW");
+        idType.setSchemeAgencyID(DirectorateGeneral.COM_DG_GROW.name());
         idType.setSchemeAgencyName(
                 "European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs");
         idType.setSchemeVersionID("1.1");
@@ -79,7 +90,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     private void addVersionIdInformation(ESPDRequestType espdRequestType) {
         VersionIDType versionIDType = new VersionIDType();
         versionIDType.setValue("1");
-        versionIDType.setSchemeAgencyID("COM-DG-GROW");
+        versionIDType.setSchemeAgencyID(DirectorateGeneral.COM_DG_GROW.name());
         espdRequestType.setVersionID(versionIDType);
     }
 
@@ -111,5 +122,11 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         idType.setValue("0");
         procurementProjectLotType.setID(idType);
         espdRequestType.getProcurementProjectLot().add(procurementProjectLotType);
+    }
+
+    private void addCriterionTypes(final ESPDRequestType espdRequestType) {
+        List<CriterionType> criterionTypes = Lists
+                .transform(Arrays.asList(ExclusionCriterion.values()), ccvCriterionTransformer);
+        espdRequestType.getCriterion().addAll(criterionTypes);
     }
 }

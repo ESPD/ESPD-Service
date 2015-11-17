@@ -25,7 +25,8 @@ class EspdRequestMarshallingTest extends Specification {
     void setupSpec() {
         jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
         def contractingPartyTransformer = new ToContractingPartyTransformer()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer)
+        def ccvCriterionTransformer = new CcvCriterionTransformer()
+        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer, ccvCriterionTransformer)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
     }
 
@@ -82,7 +83,7 @@ class EspdRequestMarshallingTest extends Specification {
         result.ID.text().length() == 36
 
         then:
-        result.ID.@schemeAgencyID.text() == "COM-DG-GROW"
+        result.ID.@schemeAgencyID.text() == "COM_DG_GROW"
         result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs"
         result.ID.@schemeVersionID.text() == "1.1"
         result.ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
@@ -103,7 +104,7 @@ class EspdRequestMarshallingTest extends Specification {
 
         then:
         result.VersionID.text() == "1"
-        result.VersionID.@schemeAgencyID.text() == "COM-DG-GROW"
+        result.VersionID.@schemeAgencyID.text() == "COM_DG_GROW"
     }
 
     def "should contain IssueDate element information"() {
@@ -154,13 +155,21 @@ class EspdRequestMarshallingTest extends Specification {
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
         def result = parseXml()
-        println out.toString()
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
 
         then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
         result.ProcurementProjectLot.ID.text() == "0"
+    }
+
+    def "should contain all exclusion Criterion elements information"() {
+        when:
+        def result = parseXml()
+        println out.toString()
+
+        then: "all the exclusion criteria should always be present"
+        result.Criterion.size() == 18
     }
 
     private GPathResult parseXml() {

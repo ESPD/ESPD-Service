@@ -187,6 +187,7 @@ public enum SelectionCriterion {
     REDUCTION_NO_OF_CANDIDATES("3f82bce6-00db-4dc2-a869-fb9d36f9f006", "Reduction of Number of Candidates",
             "Please specify in which way the economic operator meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, "");
+
     private final String uuid;
 
     private final String shortName;
