@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
+import eu.europa.ec.grow.espd.constants.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
@@ -23,7 +24,8 @@ class EspdRequestMarshallingTest extends Specification {
 
     void setupSpec() {
         jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer()
+        def contractingPartyTransformer = new ToContractingPartyTransformer()
+        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
     }
 
@@ -128,6 +130,26 @@ class EspdRequestMarshallingTest extends Specification {
         result.ContractFolderID.text() == "SMART 2015/0065"
         result.ContractFolderID.@schemeAgencyID.text() == "TeD"
     }
+
+    def "should transform ContractingParty element information"() {
+        given:
+        def espd = new EspdDocument(authorityName: "Hodor authority", natRegNumber: "Hodor national reg number",
+        streetAndNumber: "Hodor street", postcode: "Hodor postcode", city: "Hodor city", country: Country.ROMANIA,
+        contactPerson: "Hodor contact person", email: "hodor@hodor.com", telephone: "555-HODOR",
+        website: "www.hodor.com")
+
+        when:
+        marshaller.generateEspdRequest(espd, out)
+        def result = new XmlSlurper().parseText(out.toString())
+
+        then:
+        result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.text() == "RO"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "ISO"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-1"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
+    }
+
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:

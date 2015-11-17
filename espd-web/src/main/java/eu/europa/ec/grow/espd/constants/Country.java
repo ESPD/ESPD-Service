@@ -16,135 +16,135 @@ public enum Country {
     /**
      * Austria
      */
-    AUSTRIA("Austria", "country_austria", "at", EU),
+    AUSTRIA("Austria", "country_austria", "AT", EU),
     /**
      * Belgium
      */
-    BELGIUM("Belgium", "country_belgium", "be", EU),
+    BELGIUM("Belgium", "country_belgium", "BE", EU),
     /**
      * Bulgaria
      */
-    BULGARIA("Bulgaria", "country_bulgaria", "bg", EU),
+    BULGARIA("Bulgaria", "country_bulgaria", "BG", EU),
     /**
      * Croatia
      */
-    CROATIA("Croatia", "country_croatia", "hr", EU),
+    CROATIA("Croatia", "country_croatia", "HR", EU),
     /**
      * Cyprus
      */
-    CYPRUS("Cyprus", "country_cyprus", "cy", EU),
+    CYPRUS("Cyprus", "country_cyprus", "CY", EU),
     /**
      * Czech Republic
      */
-    CZECH_REPUBLIC("Czech_Republic", "country_czech_republic", "cz", EU),
+    CZECH_REPUBLIC("Czech_Republic", "country_czech_republic", "CZ", EU),
     /**
      * Denmark
      */
-    DENMARK("Denmark", "country_denmark", "dk", EU),
+    DENMARK("Denmark", "country_denmark", "DK", EU),
     /**
      * Estonia
      */
-    ESTONIA("Estonia", "country_estonia", "ee", EU),
+    ESTONIA("Estonia", "country_estonia", "EE", EU),
     /**
      * Finland
      */
-    FINLAND("Finland", "country_finland", "fi", EU),
+    FINLAND("Finland", "country_finland", "FI", EU),
     /**
      * France
      */
-    FRANCE("France", "country_france", "fr", EU),
+    FRANCE("France", "country_france", "FR", EU),
     /**
      * Germany
      */
-    GERMANY("Germany", "country_germany", "de", EU),
+    GERMANY("Germany", "country_germany", "DE", EU),
     /**
      * Greece
      */
-    GREECE("Greece", "country_greece", "gr", EU),
+    GREECE("Greece", "country_greece", "GR", EU),
     /**
      * Hungary
      */
-    HUNGARY("Hungary", "country_hungary", "hu", EU),
+    HUNGARY("Hungary", "country_hungary", "HU", EU),
     /**
      * Ireland
      */
-    IRELAND("Ireland", "country_ireland", "ie", EU),
+    IRELAND("Ireland", "country_ireland", "IE", EU),
     /**
      * Italy
      */
-    ITALY("Italy", "country_italy", "it", EU),
+    ITALY("Italy", "country_italy", "IT", EU),
     /**
      * Latvia
      */
-    LATVIA("Latvia", "country_latvia", "lv", EU),
+    LATVIA("Latvia", "country_latvia", "LV", EU),
     /**
      * Lithuania
      */
-    LITHUANIA("Lithuania", "country_lithuania", "lt", EU),
+    LITHUANIA("Lithuania", "country_lithuania", "LT", EU),
     /**
      * Luxembourg
      */
-    LUXEMBOURG("Luxembourg", "country_luxembourg", "lu", EU),
+    LUXEMBOURG("Luxembourg", "country_luxembourg", "LU", EU),
     /**
      * Malta
      */
-    MALTA("Malta", "country_malta", "mt", EU),
+    MALTA("Malta", "country_malta", "MT", EU),
     /**
      * Netherlands
      */
-    NETHERLANDS("Netherlands", "country_netherlands", "nl", EU),
+    NETHERLANDS("Netherlands", "country_netherlands", "NL", EU),
     /**
      * Poland
      */
-    POLAND("Poland", "country_poland", "pl", EU),
+    POLAND("Poland", "country_poland", "PL", EU),
     /**
      * Portugal
      */
-    PORTUGAL("Portugal", "country_portugal", "pt", EU),
+    PORTUGAL("Portugal", "country_portugal", "PT", EU),
     /**
      * Romania
      */
-    ROMANIA("Romania", "country_romania", "ro", EU),
+    ROMANIA("Romania", "country_romania", "RO", EU),
     /**
      * Slovakia
      */
-    SLOVAKIA("Slovakia", "country_slovakia", "sk", EU),
+    SLOVAKIA("Slovakia", "country_slovakia", "SK", EU),
     /**
      * Slovenia
      */
-    SLOVENIA("Slovenia", "country_slovenia", "si", EU),
+    SLOVENIA("Slovenia", "country_slovenia", "SI", EU),
     /**
      * Spain
      */
-    SPAIN("Spain", "country_spain", "es", EU),
+    SPAIN("Spain", "country_spain", "ES", EU),
     /**
      * Sweden
      */
-    SWEDEN("Sweden", "country_sweden", "se", EU),
+    SWEDEN("Sweden", "country_sweden", "SE", EU),
     /**
      * United Kingdom
      */
-    UNITED_KINGDOM("United_Kingdom", "country_united_kingdom", "gb", EU),
+    UNITED_KINGDOM("United_Kingdom", "country_united_kingdom", "GB", EU),
     /**
      * Turkey
      */
-    TURKEY("Turkey", "country_turkey", "tr", EU_PLUS),
+    TURKEY("Turkey", "country_turkey", "TR", EU_PLUS),
     /**
      * Iceland
      */
-    ICELAND("Iceland", "country_iceland", "is", EFTA),
+    ICELAND("Iceland", "country_iceland", "IS", EFTA),
     /**
      * Liechtenstein
      */
-    LIECHTENSTEIN("Liechtenstein", "country_liechtenstein", "li", EFTA),
+    LIECHTENSTEIN("Liechtenstein", "country_liechtenstein", "LI", EFTA),
     /**
      * Switzerland
      */
-    SWITZERLAND("Switzerland", "country_switzerland", "ch", EFTA),
+    SWITZERLAND("Switzerland", "country_switzerland", "CH", EFTA),
     /**
      * Norway
      */
-    NORWAY("Norway", "country_norway", "no", EFTA);
+    NORWAY("Norway", "country_norway", "NO", EFTA);
 
     private final String countryName;
 
