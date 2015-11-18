@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.constants.enums.DirectorateGeneral;
+import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.DescriptionType;
@@ -31,7 +31,7 @@ class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
     private void addCriterionID(final CcvCriterion input, final CriterionType criterionType) {
         IDType idType = new IDType();
         idType.setValue(input.getId());
-        idType.setSchemeAgencyID(DirectorateGeneral.COM_DG_GROW.name());
+        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setSchemeVersionID("1.0");
         idType.setSchemeID("CriteriaID");
         criterionType.setCriterionID(idType);
@@ -40,7 +40,7 @@ class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
     private void addTypeCode(final CcvCriterion input, final CriterionType criterionType) {
         TypeCodeType typeCodeType = new TypeCodeType();
         typeCodeType.setValue(input.getTypeCode());
-        typeCodeType.setListAgencyID(DirectorateGeneral.COM_DG_GROW.name());
+        typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         typeCodeType.setListID("CriteriaTypeCode");
         typeCodeType.setListVersionID("1.0");
         criterionType.setCriterionTypeCode(typeCodeType);

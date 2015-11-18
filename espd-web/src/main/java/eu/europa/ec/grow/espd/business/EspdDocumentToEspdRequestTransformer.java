@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import eu.europa.ec.grow.espd.constants.enums.DirectorateGeneral;
+import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
@@ -73,9 +73,8 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     private void addIdInformation(ESPDRequestType espdRequestType) {
         IDType idType = new IDType();
         idType.setValue(UUID.randomUUID().toString());
-        idType.setSchemeAgencyID(DirectorateGeneral.COM_DG_GROW.name());
-        idType.setSchemeAgencyName(
-                "European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs");
+        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
+        idType.setSchemeAgencyName(Agency.EU_COM_GROW.getLongName());
         idType.setSchemeVersionID("1.1");
         idType.setSchemeID("ISO/IEC 9834-8:2008 - 4UUID");
         espdRequestType.setID(idType);
@@ -90,7 +89,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     private void addVersionIdInformation(ESPDRequestType espdRequestType) {
         VersionIDType versionIDType = new VersionIDType();
         versionIDType.setValue("1");
-        versionIDType.setSchemeAgencyID(DirectorateGeneral.COM_DG_GROW.name());
+        versionIDType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         espdRequestType.setVersionID(versionIDType);
     }
 

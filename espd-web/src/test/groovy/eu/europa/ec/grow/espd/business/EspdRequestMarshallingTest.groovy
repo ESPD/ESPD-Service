@@ -83,8 +83,8 @@ class EspdRequestMarshallingTest extends Specification {
         result.ID.text().length() == 36
 
         then:
-        result.ID.@schemeAgencyID.text() == "COM_DG_GROW"
-        result.ID.@schemeAgencyName.text() == "European Commission, Directorate-General GROWTH, Internal Market, Industry, Entrepreneurship and SMEs"
+        result.ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
         result.ID.@schemeVersionID.text() == "1.1"
         result.ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
     }
@@ -104,7 +104,7 @@ class EspdRequestMarshallingTest extends Specification {
 
         then:
         result.VersionID.text() == "1"
-        result.VersionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.VersionID.@schemeAgencyID.text() == "EU-COM-GROW"
     }
 
     def "should contain IssueDate element information"() {

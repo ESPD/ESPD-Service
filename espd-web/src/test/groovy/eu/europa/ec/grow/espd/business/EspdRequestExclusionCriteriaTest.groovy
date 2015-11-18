@@ -54,13 +54,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -78,13 +78,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "c27b7c4e-c837-4529-b867-ed55ce639db5"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -102,13 +102,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "297d2323-3ede-424e-94bc-a91561e6f320"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -126,13 +126,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "d486fb70-86b3-4e75-97f2-0d71b5697c7d"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -150,13 +150,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "47112079-6fec-47a3-988f-e561668c3aef"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -174,13 +174,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "d789d01a-fe03-4ccd-9898-73f9cfa080d1"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -198,13 +198,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.PAYMENT_OF_TAXES"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -222,13 +222,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "0db387a4-d53a-4239-9ade-c1c57800826d"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.PAYMENT_OF_TAXES"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -246,13 +246,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "7d85e333-bbab-49c0-be8d-c36d71a72f5e"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.PAYMENT_OF_SOCIAL_SECURITY"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -270,13 +270,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "a80ddb62-d25b-4e4e-ae22-3968460dc0a9"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.ENVIRONMENTAL"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -294,13 +294,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "d3732c09-7d62-4edc-a172-241da6636e7c"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.INSOLVENCY"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -318,13 +318,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "396f288a-e267-4c20-851a-ed4f7498f137"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.MISCONDUCT"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -342,13 +342,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "68918c7a-f5bc-4a1a-a62f-ad8983600d48"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.MISCONDUCT"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -366,13 +366,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "b1b5ac18-f393-4280-9659-1367943c1a2e"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CONFLICT_OF_INTEREST"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -390,13 +390,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "61874050-5130-4f1c-a174-720939c7b483"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CONFLICT_OF_INTEREST"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -414,13 +414,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "3293e92b-7f3e-42f1-bee6-a7641bb04251"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CONFLICT_OF_INTEREST"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -438,13 +438,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "696a75b2-6107-428f-8b74-82affb67e184"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CONFLICT_OF_INTEREST"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
@@ -462,13 +462,13 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionID element"
         result.Criterion[idx].CriterionID.text() == "df81025e-6aa0-4665-8807-ee317e5f928e"
-        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         result.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
 
         then: "CriterionTypeCode element"
         result.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.OTHER"
-        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "COM_DG_GROW"
+        result.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         result.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
