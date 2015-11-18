@@ -30,7 +30,7 @@
 			<xsd:element ref="cbc:IssueDate"/>
 			<xsd:element ref="cbc:IssueTime" minOccurs="0"/>
 			<xsd:element ref="cbc:ContractFolderID"/>
-			<xsd:element ref="cac:ContractingParty" minOccurs="0"/>
+			<xsd:element ref="cac:ContractingParty" minOccurs="1"/>
 			<xsd:element ref="cac:ProcurementProjectLot" maxOccurs="unbounded"/>
 			<xsd:element ref="ccv:Criterion" maxOccurs="unbounded"/>
 			<xsd:element ref="cac:ServiceProviderParty" minOccurs="0"/>

@@ -18,7 +18,7 @@
 	<xsd:element name="CriterionFulfillmentAffectedParty" type="cac:PartyType"/>
 	<xsd:element name="CriterionFulfillmentPeriod" type="cac:PeriodType"/>
 	<xsd:element name="CriterionFulfillmentEventLocation" type="cac:LocationType"/>
-	<xsd:element name="CriterionRegulationReference" type="ccv:RegulationType"/>
+	<xsd:element name="CriterionLegislationReference" type="ccv:LegislationType"/>
 	<xsd:element name="CriterionRequirement" type="CriterionRequirementType"/>
 	<xsd:element name="CriterionResponse" type="CriterionResponseType"/>
 	<xsd:element name="EvidenceDocumentReference" type="cac:DocumentReferenceType"/>
@@ -39,10 +39,10 @@
 			<xsd:element ref="ccv-cbc:CriterionTypeCode" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionName" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionDescription" minOccurs="0"/>
-			<xsd:element ref="CriterionRegulationReference" minOccurs="0" maxOccurs="unbounded"/>
-			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="CriterionLegislationReference" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionRequirement" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="CriterionRequirementType">
@@ -68,23 +68,26 @@
 			<xsd:element ref="ccv-cbc:CriterionResponseDescription" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentIndicator"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentMotivation" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:CriterionFulfillmentDate" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentAmount" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentQuantity" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentPercent" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentDescription" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:CriterionFulfillmentEventTypeCode" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:CriterionFulfillmentEventTypeDescription" minOccurs="0"/>
 			<xsd:element ref="ProposedCriterionEvidence" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionFulfillmentPeriod" minOccurs="0"/>
 			<xsd:element ref="CriterionFulfillmentEventLocation" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionFulfillmentAffectedParty" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:complexType name="RegulationType">
+	<xsd:complexType name="LegislationType">
 		<xsd:sequence>
-			<xsd:element ref="ccv-cbc:RegulationTitle" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:RegulationDescription" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:RegulationJurisdictionLevel" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:RegulationArticle" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:RegulationURIID" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:LegislationTitle" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:LegislationDescription" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:JurisdictionLevelCode" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:LegislationArticle" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:LegislationURIID" minOccurs="0"/>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
