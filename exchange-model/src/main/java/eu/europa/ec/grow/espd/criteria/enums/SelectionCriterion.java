@@ -29,7 +29,7 @@ public enum SelectionCriterion {
     /**
      *
      */
-    SERVICE_CONTRACT_EO_PARTICULAR_AUTHORISAITON("bd1d08fa-ea30-49ab-96b2-a1c8e49e94b8",
+    SERVICE_CONTRACT_EO_PARTICULAR_AUTHORISATION("bd1d08fa-ea30-49ab-96b2-a1c8e49e94b8",
             "Service Contracts - Economic Operator Particular Authorisation",
             "For this service contract if there is a particular authorisation or membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator, does the economic operator have it?",
             SelectionCriterionTypeCode.SUITABILITY, ""),
@@ -121,7 +121,7 @@ public enum SelectionCriterion {
     /**
      *
      */
-    EDUCATION_AND_PROFESSIONAL_QUALIFICATIONS("7b127588-e232-44e5-82a8-f877a7ed426f",
+    EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS("7b127588-e232-44e5-82a8-f877a7ed426f",
             "Educational And Professional Qualifications",
             "Please specify which educational and professional qualifications are held by: a) The service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents), b) Its managerial staff.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, ""),
@@ -147,7 +147,7 @@ public enum SelectionCriterion {
      *
      */
     SUBCONTRACTED_PROPORTION("9bf349c7-deb7-4ddf-b1a2-b6be031ff918", "Subcontracted Proportion",
-            "Plese specify proportion (i.e. percentage) of the contract that the economic operator intends possibly to subcontract.",
+            "Please specify proportion (i.e. percentage) of the contract that the economic operator intends possibly to subcontract.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, ""),
     /**
      *

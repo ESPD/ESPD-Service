@@ -12,4 +12,6 @@ public interface CcvCriterion {
     String getName();
 
     String getDescription();
+
+    CcvLegislation getLegislation();
 }
