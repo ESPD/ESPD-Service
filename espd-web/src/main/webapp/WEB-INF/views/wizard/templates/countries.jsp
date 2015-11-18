@@ -12,19 +12,19 @@
 <form:select path="${countryField}" id="${countryHtmlId}" cssClass="${countryCssClass}">
     <form:option value="empty" label="---"/>
     <optgroup label="EU">
-        <c:forEach items="<%=Country.getEuCountries()%>" var="cty">
+        <c:forEach items="<%=Country.EU_COUNTRIES%>" var="cty">
             <form:option data-i18n="${cty.i18nCode}" value="${cty}"><s:message
                     code="${cty.i18nCode}"/></form:option>
         </c:forEach>
     </optgroup>
     <optgroup label="EU+">
-        <c:forEach items="<%=Country.getEuPlusCountries()%>" var="cty">
+        <c:forEach items="<%=Country.EU_PLUS_COUNTRIES%>" var="cty">
             <form:option data-i18n="${cty.i18nCode}" value="${cty}"><s:message
                     code="${cty.i18nCode}"/></form:option>
         </c:forEach>
     </optgroup>
     <optgroup label="EFTA">
-        <c:forEach items="<%=Country.getEftaCountries()%>" var="cty">
+        <c:forEach items="<%=Country.EFTA_COUNTRIES%>" var="cty">
             <form:option data-i18n="${cty.i18nCode}" value="${cty}"><s:message
                     code="${cty.i18nCode}"/></form:option>
         </c:forEach>
