@@ -17,5 +17,5 @@ import javax.xml.bind.annotation.XmlType;
 @EqualsAndHashCode(callSuper=false)
 public class SelectionCriterion extends Criterion {
 	
-	@XmlElement private AvaliableElectronically avaliableElectronically;
+	@XmlElement private AvailableElectronically availableElectronically;
 }

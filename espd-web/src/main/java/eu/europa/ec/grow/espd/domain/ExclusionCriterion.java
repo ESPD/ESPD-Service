@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 @EqualsAndHashCode(callSuper=false)
 public class ExclusionCriterion extends Criterion {
 	
-	@XmlElement private AvaliableElectronically avaliableElectronically;
+	@XmlElement private AvailableElectronically availableElectronically;
 	@XmlElement private SelfCleaning selfCleaning;
 	@XmlElement private BreachOfObligations breachOfObligations;
 }

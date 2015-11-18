@@ -50,7 +50,7 @@
                 </div>
             </div>
         </c:if>
-        <tiles:insertDefinition name="avaliableElectronically">
+        <tiles:insertDefinition name="availableElectronically">
             <tiles:putAttribute name="field" value="${field}"/>
         </tiles:insertDefinition>
     </div>

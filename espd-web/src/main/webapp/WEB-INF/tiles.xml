@@ -55,7 +55,7 @@
     <!--</definition>-->
     
     <!-- criteria templates -->
-    <definition name="avaliableElectronically" template="/WEB-INF/views/wizard/templates/avaliableElectronically.jsp">
+    <definition name="availableElectronically" template="/WEB-INF/views/wizard/templates/availableElectronically.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
     <definition name="selfCleaning" template="/WEB-INF/views/wizard/templates/exclusion/selfCleaning.jsp">
@@ -80,12 +80,12 @@
     	<put-attribute name="form" value=""/>
     	<put-attribute name="selfCleaning" value="false"/>
     	<put-attribute name="breachOfObligations" value="false"/>
-    	<put-attribute name="avaliableElectronically" value="false"/>
+    	<put-attribute name="availableElectronically" value="false"/>
     </definition>
     
     <definition name="exclusionFormCriterion" extends="formCriterion">
     	<put-attribute name="selfCleaning" value="true"/>
-    	<put-attribute name="avaliableElectronically" value="true"/>
+    	<put-attribute name="availableElectronically" value="true"/>
     </definition>
 
     <definition name="simpleFormCriterion" extends="exclusionFormCriterion">
@@ -124,7 +124,7 @@
 
     <!-- test for selection-->
     <definition name="selectionFormCriterion" extends="formCriterion">
-    	<put-attribute name="avaliableElectronically" value="true"/>
+    	<put-attribute name="availableElectronically" value="true"/>
     </definition>
     
     <definition name="simpleSelectionFormCriterion" extends="selectionFormCriterion">

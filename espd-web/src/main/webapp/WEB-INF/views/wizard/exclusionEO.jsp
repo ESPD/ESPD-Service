@@ -130,7 +130,7 @@
 					<tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
 					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_breaching_obligations"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
-					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="reasonsNeverlessPerformForm">
@@ -146,14 +146,14 @@
 					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
 					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_guilty_misconduct"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
-					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
 					<tiles:putAttribute name="field" value="agreementsEo"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
-					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
@@ -167,7 +167,7 @@
 					<tiles:putAttribute name="field" value="involvementPreparation"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
-					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+					<tiles:putAttribute name="availableElectronically" value="false"/>
 					<tiles:putAttribute name="selfCleaning" value="false"/>
 				</tiles:insertDefinition>
 				
@@ -175,7 +175,7 @@
 					<tiles:putAttribute name="field" value="earlyTermination"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_early_termination"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_early_termination"/>
-					<tiles:putAttribute name="avaliableElectronically" value="false"/>
+					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">

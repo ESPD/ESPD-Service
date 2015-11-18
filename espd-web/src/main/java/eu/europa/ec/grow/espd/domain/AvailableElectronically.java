@@ -9,10 +9,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @Data
-@XmlType(name = "AvaliableElectronically")
+@XmlType(name = "AvailableElectronically")
 @XmlAccessorType(XmlAccessType.FIELD)
 @EqualsAndHashCode(callSuper=false)
-public class AvaliableElectronically extends Criterion {
+public class AvailableElectronically extends Criterion {
 	
 	@XmlElement private String description;
 	

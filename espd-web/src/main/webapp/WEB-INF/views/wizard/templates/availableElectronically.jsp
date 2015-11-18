@@ -8,10 +8,10 @@
 
 
 	<div class="form-group">
-		<label data-i18n="crit_information_available_electronically" class="control-label small" for="${field}-field-avaliable-electronically-exist">
+		<label data-i18n="crit_information_available_electronically" class="control-label small" for="${field}-field-available-electronically-exist">
 			<s:message code='crit_information_available_electronically'/>
 		</label>
-		<form:checkbox path="${field}.avaliableElectronically.exists" id="${field}-field-avaliable-electronically-exists" data-toggle="collapse" data-target="${'#'}${field}-electronically" class="radioslide checktoggle form-control"  />
+		<form:checkbox path="${field}.availableElectronically.exists" id="${field}-field-available-electronically-exists" data-toggle="collapse" data-target="${'#'}${field}-electronically" class="radioslide checktoggle form-control"  />
 	</div>
 	
 	<div id="${field}-electronically" class="form-group" style="display:none">
