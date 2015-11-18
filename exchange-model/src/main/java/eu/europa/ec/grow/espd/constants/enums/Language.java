@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.constants;
+package eu.europa.ec.grow.espd.constants.enums;
 
 import lombok.Getter;
 

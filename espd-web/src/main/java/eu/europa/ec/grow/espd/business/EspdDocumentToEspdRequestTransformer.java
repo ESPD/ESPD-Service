@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import eu.europa.ec.grow.espd.constants.DirectorateGeneral;
+import eu.europa.ec.grow.espd.constants.enums.DirectorateGeneral;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;

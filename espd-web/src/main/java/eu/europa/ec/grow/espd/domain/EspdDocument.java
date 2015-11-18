@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.constants.Country;
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 

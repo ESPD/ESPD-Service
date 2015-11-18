@@ -1,4 +1,4 @@
-<%@ page import="eu.europa.ec.grow.espd.constants.Country" %>
+<%@ page import="eu.europa.ec.grow.espd.constants.enums.Country" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

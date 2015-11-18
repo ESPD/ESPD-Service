@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.business
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
-import eu.europa.ec.grow.espd.constants.Country
+import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller

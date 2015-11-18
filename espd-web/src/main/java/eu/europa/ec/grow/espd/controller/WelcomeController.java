@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
-import eu.europa.ec.grow.espd.constants.Country;
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.SelectionCriterion;
 import org.apache.commons.io.output.CountingOutputStream;
