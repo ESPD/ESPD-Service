@@ -134,23 +134,36 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should transform ContractingParty element information"() {
         given:
-        def espd = new EspdDocument(authorityName: "Hodor authority", natRegNumber: "Hodor national reg number",
-        streetAndNumber: "Hodor street", postcode: "Hodor postcode", city: "Hodor city", country: Country.ROMANIA,
-        contactPerson: "Hodor contact person", email: "hodor@hodor.com", telephone: "555-HODOR",
-        website: "www.hodor.com")
+        def espd = new EspdDocument(authorityName: "  Hodor authority  ", natRegNumber: "  Hodor national reg number  ",
+        streetAndNumber: "  Hodor street  ", postcode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
+        contactPerson: "  Hodor contact person  ", email: "  hodor@hodor.com  ", telephone: "  555-HODOR  ",
+        website: "  www.hodor.com  ")
 
         when:
         marshaller.generateEspdRequest(espd, out)
         def result = new XmlSlurper().parseText(out.toString())
 
-        then:
+        then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
+        result.ContractingParty.Party.WebsiteURI.text() == "www.hodor.com"
+
+        then: "party identification"
+        result.ContractingParty.Party.PartyIdentification.ID.text() == "Hodor national reg number"
+
+        then: "check address information"
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.text() == "RO"
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "ISO"
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-1"
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
-    }
+        result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
+        result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
+        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
 
+        then: "check contact information"
+        result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"
+        result.ContractingParty.Party.Contact.ElectronicMail.text() == "hodor@hodor.com"
+        result.ContractingParty.Party.Contact.Telephone.text() == "555-HODOR"
+    }
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
