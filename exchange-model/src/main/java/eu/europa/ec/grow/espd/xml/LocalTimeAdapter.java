@@ -1,21 +1,25 @@
 package eu.europa.ec.grow.espd.xml;
 
 import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Created by vigi on 11/12/15:3:08 PM.
  */
 public final class LocalTimeAdapter {
 
+    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormat.forPattern("HH:mm:ss");
+
     private LocalTimeAdapter() {
 
     }
 
     public static LocalTime unmarshal(String v) {
-        return new LocalTime(v);
+        return LocalTime.parse(v, TIME_FORMAT);
     }
 
     public static String marshal(LocalTime v) {
-        return v.toString("HH:mm:ss");
+        return v.toString(TIME_FORMAT);
     }
 }

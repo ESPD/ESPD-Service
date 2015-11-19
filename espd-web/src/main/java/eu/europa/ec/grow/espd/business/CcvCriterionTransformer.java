@@ -10,6 +10,8 @@ import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
 import org.springframework.stereotype.Component;
 
 /**
+ * Transforms the criterion information coming from ESPD into a {@link CriterionType} object.
+ * <p/>
  * Created by vigi on 11/16/15:3:38 PM.
  */
 @Component
@@ -30,10 +32,10 @@ class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
 
     private void addCriterionID(CcvCriterion input, CriterionType criterionType) {
         IDType idType = new IDType();
-        idType.setValue(input.getId());
+        idType.setValue(input.getUuid());
         idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-        idType.setSchemeVersionID("1.0");
-        idType.setSchemeID("CriteriaID");
+        idType.setSchemeVersionID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.SCHEME_VERSION_ID);
+        idType.setSchemeID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.SCHEME_ID);
         criterionType.setCriterionID(idType);
     }
 
@@ -41,8 +43,8 @@ class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
         TypeCodeType typeCodeType = new TypeCodeType();
         typeCodeType.setValue(input.getTypeCode());
         typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
-        typeCodeType.setListID("CriteriaTypeCode");
-        typeCodeType.setListVersionID("1.0");
+        typeCodeType.setListID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.LIST_ID);
+        typeCodeType.setListVersionID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.LIST_VERSION_ID);
         criterionType.setCriterionTypeCode(typeCodeType);
     }
 
@@ -74,10 +76,10 @@ class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
         legislationType.setLegislationDescription(description);
 
         TypeCodeType jurisdictionLevelCode = new TypeCodeType();
-        jurisdictionLevelCode.setValue(input.getLegislation().getJurisdictionLevelCode());
+        jurisdictionLevelCode.setValue(CriterionJurisdictionLevel.EU_DIRECTIVE.getCode());
         jurisdictionLevelCode.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         jurisdictionLevelCode.setListID(CriterionJurisdictionLevel.LIST_ID);
-        jurisdictionLevelCode.setListVersionID("1.0");
+        jurisdictionLevelCode.setListVersionID(CriterionJurisdictionLevel.LIST_VERSION_ID);
         legislationType.setJurisdictionLevelCode(jurisdictionLevelCode);
 
         TextType article = new TextType();

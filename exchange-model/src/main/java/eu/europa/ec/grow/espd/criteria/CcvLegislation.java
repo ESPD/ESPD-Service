@@ -13,5 +13,4 @@ public interface CcvLegislation {
 
     String getArticle();
 
-    String getJurisdictionLevelCode();
 }

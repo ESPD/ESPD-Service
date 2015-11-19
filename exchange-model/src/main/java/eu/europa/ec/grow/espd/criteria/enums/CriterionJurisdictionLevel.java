@@ -28,6 +28,8 @@ public enum CriterionJurisdictionLevel {
 
     public static final String LIST_ID = "CriterionJurisdictionLevelCode";
 
+    public static final String LIST_VERSION_ID = "1.0";
+
     private final String code;
 
     private final String value;

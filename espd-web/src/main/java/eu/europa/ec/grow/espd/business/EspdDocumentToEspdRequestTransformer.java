@@ -40,6 +40,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     @Override
     public ESPDRequestType apply(EspdDocument espdDocument) {
         ESPDRequestType espdRequestType = new ESPDRequestType();
+
         addUBLVersionInformation(espdRequestType);
         addCustomizationInformation(espdRequestType);
         addIdInformation(espdRequestType);
@@ -123,7 +124,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         espdRequestType.getProcurementProjectLot().add(procurementProjectLotType);
     }
 
-    private void addCriterionTypes(final ESPDRequestType espdRequestType) {
+    private void addCriterionTypes(ESPDRequestType espdRequestType) {
         List<CriterionType> criterionTypes = Lists
                 .transform(Arrays.asList(ExclusionCriterion.values()), ccvCriterionTransformer);
         espdRequestType.getCriterion().addAll(criterionTypes);

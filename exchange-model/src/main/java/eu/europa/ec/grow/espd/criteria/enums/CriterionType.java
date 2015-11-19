@@ -7,4 +7,12 @@ public enum CriterionType {
 
     EXCLUSION,
     SELECTION;
+
+    public static final String SCHEME_ID = "CriteriaID";
+
+    public static final String SCHEME_VERSION_ID = "1.0";
+
+    public static final String LIST_ID = "CriteriaTypeCode";
+
+    public static final String LIST_VERSION_ID = "1.0";
 }

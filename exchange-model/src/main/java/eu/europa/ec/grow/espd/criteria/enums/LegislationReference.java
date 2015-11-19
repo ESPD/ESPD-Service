@@ -50,8 +50,4 @@ public enum LegislationReference implements CcvLegislation {
         this.article = article;
     }
 
-    @Override
-    public String getJurisdictionLevelCode() {
-        return CriterionJurisdictionLevel.EU_DIRECTIVE.getCode();
-    }
 }

@@ -5,7 +5,7 @@ package eu.europa.ec.grow.espd.criteria;
  */
 public interface CcvCriterion {
 
-    String getId();
+    String getUuid();
 
     String getTypeCode();
 
