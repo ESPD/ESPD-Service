@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.constants.enums;
 
+import eu.europa.ec.grow.espd.entities.CacCountry;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by vigi on 11/16/15:11:32 AM.
  */
 @Getter
-public enum Country {
+public enum Country implements CacCountry {
 
     /**
      * Austria
@@ -158,6 +159,11 @@ public enum Country {
         this.i18nCode = i18nCode;
         this.iso2Code = iso2Code;
         this.countryType = countryType;
+    }
+
+    @Override
+    public String getName() {
+        return countryName;
     }
 
     public static final List<Country> EU_COUNTRIES = Collections.unmodifiableList(

@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.business
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.PartyImpl
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
@@ -134,10 +135,11 @@ class EspdRequestMarshallingTest extends Specification {
 
     def "should transform ContractingParty element information"() {
         given:
-        def espd = new EspdDocument(authorityName: "  Hodor authority  ", natRegNumber: "  Hodor national reg number  ",
-        streetAndNumber: "  Hodor street  ", postcode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
-        contactPerson: "  Hodor contact person  ", email: "  hodor@hodor.com  ", telephone: "  555-HODOR  ",
+        def authority = new PartyImpl(name: "  Hodor authority  ", nationalRegistrationNumber: "  Hodor national reg number  ",
+        street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
+        contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
         website: "  www.hodor.com  ")
+        def espd = new EspdDocument(authority: authority)
 
         when:
         marshaller.generateEspdRequest(espd, out)

@@ -120,7 +120,7 @@ $(function() {
 					<h3 data-i18n="filter_where_are_you_from"><s:message code='filter_where_are_you_from'/></h3>
 					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
                     <tiles:insertDefinition name="countries">
-                        <tiles:putAttribute name="countryField" value="country"/>
+                        <tiles:putAttribute name="countryField" value="authority.country"/>
                         <tiles:putAttribute name="countryHtmlId" value="country"/>
                     </tiles:insertDefinition>
 				</div>

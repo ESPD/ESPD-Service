@@ -66,13 +66,13 @@ class WelcomeController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @RequestParam Country country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
+            @RequestParam("authority.country") Country country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
             Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {
                 espd = (EspdDocument) jaxb2Marshaller.unmarshal(new StreamSource(is));
                 espd.setAction(action);
-                espd.setCountry(country);
+                espd.getAuthority().setCountry(country);
                 model.put("espd", espd); 
                 return "redirect:/procedure?agent=" + agent;
             }

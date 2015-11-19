@@ -74,7 +74,6 @@
                 </li>
             </ul>
         </div>
-
         <div class="espd-panel panel panel-default">
             <div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
                 <span data-i18n="createca_contact_details_ca"><s:message code="createca_contact_details_ca"/></span>
@@ -86,15 +85,14 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 " for="authorityName"><span
                                         data-i18n="createca_name"><s:message code="createca_name"/></span></label>
-
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authorityName" placeholder="Enter name"
+                                    <form:input cssClass="form-control" id="authorityName" path="authority.name" placeholder="Enter name"
                                                 required="true"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <form:errors path="authorityName" cssClass="alert-danger"/>
+                                    <form:errors path="authority.name" cssClass="alert-danger"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -102,7 +100,7 @@
                                         code="createca_nat_regnum"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="natRegNumber" id="natRegNumber"
+                                    <form:input cssClass="form-control" path="authority.nationalRegistrationNumber" id="natRegNumber"
                                                 placeholder="Enter registration number"/>
                                 </div>
                             </div>
@@ -112,7 +110,7 @@
                                         code="createca_street_and_num"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="streetAndNumber" id="streetAndNumber"
+                                    <form:input cssClass="form-control" path="authority.street" id="streetAndNumber"
                                                 placeholder="Enter street and number"/>
                                 </div>
                             </div>
@@ -122,7 +120,7 @@
                                         code="createca_postcode"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="postcode" id="postcode" placeholder="Enter Postcode"/>
+                                    <form:input cssClass="form-control" path="authority.postalCode" id="postcode" placeholder="Enter Postcode"/>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -130,7 +128,7 @@
                                         data-i18n="createca_city"><s:message code="createca_city"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="city" id="city" placeholder="Enter City"/>
+                                    <form:input cssClass="form-control" path="authority.city" id="city" placeholder="Enter City"/>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -138,7 +136,7 @@
                                         data-i18n="createca_country"><s:message code="createca_country"/></span></label>
                                 <div class="col-md-8">
                                     <tiles:insertDefinition name="countries">
-                                        <tiles:putAttribute name="countryField" value="country"/>
+                                        <tiles:putAttribute name="countryField" value="authority.country"/>
                                         <tiles:putAttribute name="countryHtmlId" value="country"/>
                                         <tiles:putAttribute name="countryCssClass" value="form-control"/>
                                     </tiles:insertDefinition>
@@ -147,30 +145,30 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="contactPerson"><span
+                                <label class="control-label col-md-4 " for="contactName"><span
                                         data-i18n="createca_contact_person"><s:message
                                         code="createca_contact_person"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="contactPerson" id="contactPerson"
+                                    <form:input cssClass="form-control" path="authority.contactName" id="contactName"
                                                 placeholder="Enter contact person"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="email"><span
+                                <label class="control-label col-md-4 " for="contactEmail"><span
                                         data-i18n="createca_email"><s:message code="createca_email"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="email" id="email" placeholder="Enter E-mail"/>
+                                    <form:input cssClass="form-control" path="authority.contactEmail" id="contactEmail" placeholder="Enter E-mail"/>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-md-4 " for="telephone"><span
+                                <label class="control-label col-md-4 " for="contactPhone"><span
                                         data-i18n="createca_telephone"><s:message
                                         code="createca_telephone"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="telephone" id="telephone" placeholder="Enter Telephone"/>
+                                    <form:input cssClass="form-control" path="authority.contactPhone" id="contactPhone" placeholder="Enter Telephone"/>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -178,7 +176,7 @@
                                         data-i18n="createca_website"><s:message code="createca_website"/></span></label>
 
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="website" id="website" placeholder="Enter Website"/>
+                                    <form:input cssClass="form-control" path="authority.website" id="website" placeholder="Enter Website"/>
                                 </div>
                             </div>
                         </div>

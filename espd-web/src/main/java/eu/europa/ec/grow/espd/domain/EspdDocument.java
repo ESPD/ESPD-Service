@@ -1,10 +1,8 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.constants.enums.Country;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.*;
 import java.io.IOException;
@@ -16,19 +14,7 @@ public class EspdDocument {
 
 	@XmlTransient private String action;// "ca_create_espd" or "eo_import_espd"
 
-	@XmlElement
-    @NotNull(message = "Authority name is mandatory.")
-	private String authorityName;
-
-	@XmlElement private String natRegNumber;
-	@XmlElement private String streetAndNumber;
-	@XmlElement private String postcode;
-	@XmlElement private String city;
-	@XmlElement private Country country;
-	@XmlElement private String contactPerson;
-	@XmlElement private String email;
-	@XmlElement private String telephone;
-	@XmlElement private String website;
+    private PartyImpl authority;
 
 	@XmlElement private String procedureDesc;
 	@XmlElement private String lotConcerned;

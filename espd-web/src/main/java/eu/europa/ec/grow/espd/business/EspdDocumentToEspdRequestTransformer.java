@@ -112,7 +112,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     }
 
     private void addContractingPartyInformation(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
-        ContractingPartyType contractingPartyType = contractingPartyTransformer.apply(espdDocument);
+        ContractingPartyType contractingPartyType = contractingPartyTransformer.apply(espdDocument.getAuthority());
         espdRequestType.setContractingParty(contractingPartyType);
     }
 
