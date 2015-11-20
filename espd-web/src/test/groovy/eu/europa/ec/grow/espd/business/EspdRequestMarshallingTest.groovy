@@ -1,59 +1,28 @@
 package eu.europa.ec.grow.espd.business
-import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
-import groovy.util.slurpersupport.GPathResult
-import org.springframework.oxm.jaxb.Jaxb2Marshaller
-import spock.lang.Shared
-import spock.lang.Specification
 /**
  * Created by vigi on 11/11/15:3:31 PM.
  */
-class EspdRequestMarshallingTest extends Specification {
-
-    @Shared
-    Jaxb2Marshaller jaxb2Marshaller
-
-    @Shared
-    EspdDocumentToEspdRequestTransformer toEspdRequestTransformer
-
-    @Shared
-    EspdExchangeMarshaller marshaller
-
-    StringWriter out
-
-    void setupSpec() {
-        jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
-        def contractingPartyTransformer = new ToContractingPartyTransformer()
-        def ccvCriterionTransformer = new CcvCriterionTransformer()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer, ccvCriterionTransformer)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
-    }
-
-    void cleanupSpec() {
-        marshaller = null
-        toEspdRequestTransformer = null
-        jaxb2Marshaller = null
-    }
-
-    void setup() {
-        out = new StringWriter()
-    }
-
-    void cleanup() {
-        out = null
-    }
+class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should make sure that we use the correct XML namespaces"() {
         when:
         def result = parseXml()
 
         then:
+        result.lookupNamespace('espd-req') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
+        result.lookupNamespace('espd-resp') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1'
+        result.lookupNamespace('espd') == 'urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1'
+        result.lookupNamespace('espd-cbc') == 'urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1'
         result.lookupNamespace('cbc') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'
         result.lookupNamespace('cac') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2'
         result.lookupNamespace('ccv') == 'urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1'
-//        result.list()[0].namespacePrefix.text() == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
+        result.lookupNamespace('ccv-cbc') == 'urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1'
+        result.lookupNamespace('cev-cbc') == 'urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1'
+        result.lookupNamespace('cev') == 'urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1'
+        result.lookupNamespace('ext') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2'
     }
 
     def "should contain UBLVersionID element information"() {
@@ -185,11 +154,6 @@ class EspdRequestMarshallingTest extends Specification {
 
         then: "all the exclusion criteria should always be present"
         result.Criterion.size() == 18
-    }
-
-    private GPathResult parseXml() {
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        new XmlSlurper().parseText(out.toString())
     }
 
 }

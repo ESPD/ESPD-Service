@@ -4,6 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
@@ -50,7 +51,8 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addContractFolderIdInformation(espdRequestType);
         addContractingPartyInformation(espdDocument, espdRequestType);
         addProcurementProjectLots(espdRequestType);
-        addCriterionTypes(espdRequestType);
+        addExclusionCriterionTypes(espdRequestType);
+        addSelectionCriterionTypes(espdDocument, espdRequestType);
 
         return espdRequestType;
     }
@@ -124,9 +126,20 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         espdRequestType.getProcurementProjectLot().add(procurementProjectLotType);
     }
 
-    private void addCriterionTypes(ESPDRequestType espdRequestType) {
+    private void addExclusionCriterionTypes(ESPDRequestType espdRequestType) {
         List<CriterionType> criterionTypes = Lists
                 .transform(Arrays.asList(ExclusionCriterion.values()), ccvCriterionTransformer);
         espdRequestType.getCriterion().addAll(criterionTypes);
+    }
+
+    private void addSelectionCriterionTypes(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
+        if (satisfiesAllCriteria(espdDocument)) {
+            espdRequestType.getCriterion()
+                    .add(ccvCriterionTransformer.apply(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED));
+        }
+    }
+
+    private boolean satisfiesAllCriteria(final EspdDocument espdDocument) {
+        return espdDocument.getSelectionSatisfiesAll() != null && espdDocument.getSelectionSatisfiesAll().getExists();
     }
 }

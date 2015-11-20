@@ -10,7 +10,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 
 /**
- * Transforms the contracting party (authority) information coming from ESPD into a {@link ContractingPartyType} object.
+ * Transforms the information coming from a {@link CacParty} into a {@link ContractingPartyType} object.
  * <p/>
  * Created by vigi on 11/16/15:3:29 PM.
  */

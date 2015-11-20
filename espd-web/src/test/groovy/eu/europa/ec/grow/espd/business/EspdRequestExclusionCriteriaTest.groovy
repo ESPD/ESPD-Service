@@ -1,50 +1,8 @@
 package eu.europa.ec.grow.espd.business
-
-import eu.europa.ec.grow.espd.config.JaxbConfiguration
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import groovy.util.slurpersupport.GPathResult
-import org.springframework.oxm.jaxb.Jaxb2Marshaller
-import spock.lang.Shared
-import spock.lang.Specification
-
-
 /**
  * Created by vigi on 11/17/15:3:54 PM.
  */
-class EspdRequestExclusionCriteriaTest extends Specification {
-
-    @Shared
-    Jaxb2Marshaller jaxb2Marshaller
-
-    @Shared
-    EspdDocumentToEspdRequestTransformer toEspdRequestTransformer
-
-    @Shared
-    EspdExchangeMarshaller marshaller
-
-    StringWriter out
-
-    void setupSpec() {
-        jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
-        def contractingPartyTransformer = new ToContractingPartyTransformer()
-        def ccvCriterionTransformer = new CcvCriterionTransformer()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer, ccvCriterionTransformer)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
-    }
-
-    void cleanupSpec() {
-        marshaller = null
-        toEspdRequestTransformer = null
-        jaxb2Marshaller = null
-    }
-
-    void setup() {
-        out = new StringWriter()
-    }
-
-    void cleanup() {
-        out = null
-    }
+class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
 
     private void checkCriterionId(def result, int idx, String expectedId) {
         assert result.Criterion[idx].CriterionID.text() == expectedId
@@ -446,12 +404,6 @@ class EspdRequestExclusionCriteriaTest extends Specification {
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(result, idx, "57(4)")
-    }
-
-
-    private GPathResult parseXml() {
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        new XmlSlurper().parseText(out.toString())
     }
 
 }
