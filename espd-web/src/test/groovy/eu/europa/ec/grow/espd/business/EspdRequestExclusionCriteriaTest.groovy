@@ -1,4 +1,10 @@
 package eu.europa.ec.grow.espd.business
+
+import eu.europa.ec.grow.espd.domain.BreachOfObligations
+import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.Taxes
+
 /**
  * Created by vigi on 11/17/15:3:54 PM.
  */
@@ -32,9 +38,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "00. should contain the 'Grounds relating to criminal convictions' criterion"() {
+        given:
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 0
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
@@ -75,9 +87,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "01. should contain the 'Corruption' criterion"() {
+        given:
+        def espd = new EspdDocument(corruption: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 1
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
@@ -108,9 +126,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "02. should contain the 'Fraud' criterion"() {
+        given:
+        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 2
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
@@ -141,9 +165,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "03. should contain the 'Terrorist offences or offences linked to terrorist activities' criterion"() {
+        given:
+        def espd = new EspdDocument(terroristOffences: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 3
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "d486fb70-86b3-4e75-97f2-0d71b5697c7d")
@@ -174,9 +204,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "04. should contain the 'Money laundering or terrorist financing' criterion"() {
+        given:
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 4
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
@@ -207,9 +243,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "05. should contain the 'Child labour and other forms of trafficking in human beings' criterion"() {
+        given:
+        def espd = new EspdDocument(childLabour: new CriminalConvictions(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 5
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "d789d01a-fe03-4ccd-9898-73f9cfa080d1")
@@ -240,9 +282,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "06. should contain the 'Payment of taxes' criterion"() {
+        given:
+        def espd = new EspdDocument(paymentTaxes: new Taxes(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 6
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
@@ -279,6 +327,10 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
         def request = parseXml()
         def idx = 7
 
+        then: "must be marked as selected"
+        // TODO what to do with this?
+//        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+
         then: "CriterionID element"
         checkCriterionId(request, idx, "0db387a4-d53a-4239-9ade-c1c57800826d")
 
@@ -293,9 +345,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "08. should contain the 'Payment of social security contributions' criterion"() {
+        given:
+        def espd = new EspdDocument(paymentSocsec: new Taxes(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 8
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
@@ -328,9 +386,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "09. should contain the 'Breaching of obligations in the fields of environmental, social and labour law' criterion"() {
+        given:
+        def espd = new EspdDocument(breachingObligations: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 9
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
@@ -360,9 +424,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "10. should contain the 'Bankrupt, the subject of insolvency or winding-up' criterion"() {
+        given:
+        def espd = new EspdDocument(bankruptSubject: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 10
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
@@ -393,9 +463,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "11. should contain the 'Guilty of grave professional misconduct' criterion"() {
+        given:
+        def espd = new EspdDocument(guiltyGrave: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 11
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "396f288a-e267-4c20-851a-ed4f7498f137")
@@ -423,9 +499,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "12. should contain the 'Agreements with other economic operators aimed at distorting competition' criterion"() {
+        given:
+        def espd = new EspdDocument(agreementsEo: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 12
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
@@ -453,9 +535,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "13. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 13
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "b1b5ac18-f393-4280-9659-1367943c1a2e")
@@ -486,9 +574,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "14. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
+        given:
+        def espd = new EspdDocument(involvementPreparation: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 14
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "61874050-5130-4f1c-a174-720939c7b483")
@@ -513,9 +607,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "15. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
+        given:
+        def espd = new EspdDocument(earlyTermination: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 15
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
@@ -543,9 +643,15 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "16. should contain the 'Guilty of misinterpretation, withheld information, [...]' criterion"() {
+        given:
+        def espd = new EspdDocument(guiltyMisinterpretation: new BreachOfObligations(exists: true))
+
         when:
-        def request = parseXml()
+        def request = parseXml(espd)
         def idx = 16
+
+        then: "must be marked as selected"
+        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "696a75b2-6107-428f-8b74-82affb67e184")
@@ -573,9 +679,16 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
     }
 
     def "17. should contain the 'Purely national exclusion grounds' criterion"() {
+//        given:
+//        def espd = new EspdDocument(breachingObligations: new CriminalConvictions(exists: true))
+
         when:
         def request = parseXml()
         def idx = 17
+
+        then: "must be marked as selected"
+        // TODO mark national exclusion grounds as selected
+//        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "df81025e-6aa0-4665-8807-ee317e5f928e")

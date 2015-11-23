@@ -5,10 +5,14 @@ import com.google.common.collect.Lists;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
+import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
+import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
+import isa.names.specification.ubl.schema.xsd.ccv_commonbasiccomponents_1.IndicatorType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -33,7 +37,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
 
     @Autowired
     EspdDocumentToEspdRequestTransformer(ToContractingPartyTransformer contractingPartyTransformer,
-            final CcvCriterionTransformer ccvCriterionTransformer) {
+            CcvCriterionTransformer ccvCriterionTransformer) {
         this.contractingPartyTransformer = contractingPartyTransformer;
         this.ccvCriterionTransformer = ccvCriterionTransformer;
     }
@@ -51,8 +55,8 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addContractFolderIdInformation(espdRequestType);
         addContractingPartyInformation(espdDocument, espdRequestType);
         addProcurementProjectLots(espdRequestType);
-        addExclusionCriterionTypes(espdRequestType);
-        addSelectionCriterionTypes(espdDocument, espdRequestType);
+        addExclusionCriteria(espdDocument, espdRequestType);
+        addSelectionCriteria(espdDocument, espdRequestType);
 
         return espdRequestType;
     }
@@ -126,13 +130,95 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         espdRequestType.getProcurementProjectLot().add(procurementProjectLotType);
     }
 
-    private void addExclusionCriterionTypes(ESPDRequestType espdRequestType) {
+    private void addExclusionCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         List<CriterionType> criterionTypes = Lists
                 .transform(Arrays.asList(ExclusionCriterion.values()), ccvCriterionTransformer);
         espdRequestType.getCriterion().addAll(criterionTypes);
+
+        markSelectedExclusionCriteria(espdDocument, espdRequestType);
     }
 
-    private void addSelectionCriterionTypes(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
+    private void markSelectedExclusionCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
+        // we need to do it in a hard coded way right now, unfortunately
+        if (isCriterionSelectedInEspd(espdDocument.getCriminalConvictions())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.GROUNDS_CRIMINAL_CONVICTIONS, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getCorruption())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.CORRUPTION, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getFraud())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.FRAUD, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getTerroristOffences())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.TERRORIST_OFFENCES, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getMoneyLaundering())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.MONEY_LAUNDERING, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getChildLabour())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.CHILD_LABOUR, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getPaymentTaxes())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.PAYMENT_OF_TAXES, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getPaymentSocsec())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getBreachingObligations())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getBankruptSubject())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.BANKRUPTCY_INSOLVENCY, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getGuiltyGrave())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getAgreementsEo())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getConflictInterest())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.CONFLICT_OF_INTEREST, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getInvolvementPreparation())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.INVOLVEMENT_PROCUREMENT_PROCEDURE, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getEarlyTermination())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.EARLY_TERMINATION, espdRequestType);
+        }
+        if (isCriterionSelectedInEspd(espdDocument.getGuiltyMisinterpretation())) {
+            tryToMarkCriterionAsSelected(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION, espdRequestType);
+        }
+    }
+
+    private boolean isCriterionSelectedInEspd(Criterion criterion) {
+        return criterion != null && criterion.getExists();
+    }
+
+    private void tryToMarkCriterionAsSelected(ExclusionCriterion exclusionCriterion, ESPDRequestType espdRequestType) {
+        for (CriterionType criterionType : espdRequestType.getCriterion()) {
+            if (criterionMatches(exclusionCriterion, criterionType)) {
+                markCriterionAsSelected(criterionType, true);
+            } else {
+                markCriterionAsSelected(criterionType, false);
+            }
+        }
+    }
+
+    private boolean criterionMatches(ExclusionCriterion exclusionCriterion, CriterionType criterionType) {
+        return criterionType.getCriterionID() != null && exclusionCriterion.getUuid()
+                .equals(criterionType.getCriterionID().getValue());
+    }
+
+    private void markCriterionAsSelected(CriterionType criterionType, boolean selected) {
+        CriterionResponseType responseType = new CriterionResponseType();
+        IndicatorType selectionIndicator = new IndicatorType();
+        selectionIndicator.setValue(selected);
+        responseType.setCriterionFulfillmentIndicator(selectionIndicator);
+        criterionType.getCriterionResponse().add(responseType);
+    }
+
+
+    private void addSelectionCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         if (satisfiesAllCriteria(espdDocument)) {
             espdRequestType.getCriterion()
                     .add(ccvCriterionTransformer.apply(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED));

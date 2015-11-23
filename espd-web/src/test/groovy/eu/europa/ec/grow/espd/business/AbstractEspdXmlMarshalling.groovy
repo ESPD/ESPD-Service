@@ -49,4 +49,9 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         marshaller.generateEspdRequest(new EspdDocument(), xmlOutput)
         new XmlSlurper().parseText(xmlOutput.toString())
     }
+
+    protected GPathResult parseXml(EspdDocument espdDocument) {
+        marshaller.generateEspdRequest(espdDocument, xmlOutput)
+        new XmlSlurper().parseText(xmlOutput.toString())
+    }
 }

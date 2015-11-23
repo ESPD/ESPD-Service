@@ -121,7 +121,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    DIRECT_OR_INDIRECT_INVOLVEMENT("61874050-5130-4f1c-a174-720939c7b483",
+    INVOLVEMENT_PROCUREMENT_PROCEDURE("61874050-5130-4f1c-a174-720939c7b483",
             "Direct or indirect involvement in the preparation of this procurement procedure",
             "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?",
             ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
