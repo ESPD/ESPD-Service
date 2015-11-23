@@ -37,6 +37,21 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
         assert ref.LegislationURIID.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
     }
 
+    def "criterion responses should appear only once"() {
+        given:
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true), corruption: new CriminalConvictions(exists: true))
+
+        when:
+        def request = parseXml(espd)
+
+        then: "only one criterion response per criterion"
+        request.Criterion[0].CriterionResponse.size() == 1
+        request.Criterion[0].CriterionResponse.CriterionFulfillmentIndicator == true
+
+        request.Criterion[1].CriterionResponse.size() == 1
+        request.Criterion[1].CriterionResponse.CriterionFulfillmentIndicator == true
+    }
+
     def "00. should contain the 'Grounds relating to criminal convictions' criterion"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))

@@ -7,6 +7,7 @@ import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
@@ -194,17 +195,15 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         return criterion != null && criterion.getExists();
     }
 
-    private void tryToMarkCriterionAsSelected(ExclusionCriterion exclusionCriterion, ESPDRequestType espdRequestType) {
+    private void tryToMarkCriterionAsSelected(CcvCriterion exclusionCriterion, ESPDRequestType espdRequestType) {
         for (CriterionType criterionType : espdRequestType.getCriterion()) {
             if (criterionMatches(exclusionCriterion, criterionType)) {
                 markCriterionAsSelected(criterionType, true);
-            } else {
-                markCriterionAsSelected(criterionType, false);
             }
         }
     }
 
-    private boolean criterionMatches(ExclusionCriterion exclusionCriterion, CriterionType criterionType) {
+    private boolean criterionMatches(CcvCriterion exclusionCriterion, CriterionType criterionType) {
         return criterionType.getCriterionID() != null && exclusionCriterion.getUuid()
                 .equals(criterionType.getCriterionID().getValue());
     }
@@ -217,11 +216,11 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         criterionType.getCriterionResponse().add(responseType);
     }
 
-
     private void addSelectionCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         if (satisfiesAllCriteria(espdDocument)) {
             espdRequestType.getCriterion()
                     .add(ccvCriterionTransformer.apply(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED));
+            tryToMarkCriterionAsSelected(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED, espdRequestType);
         }
     }
 
