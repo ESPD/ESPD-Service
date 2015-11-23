@@ -111,8 +111,8 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(authority: authority)
 
         when:
-        marshaller.generateEspdRequest(espd, out)
-        def result = new XmlSlurper().parseText(out.toString())
+        marshaller.generateEspdRequest(espd, xmlOutput)
+        def result = new XmlSlurper().parseText(xmlOutput.toString())
 
         then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
@@ -150,7 +150,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
     def "should contain all exclusion Criterion elements information"() {
         when:
         def result = parseXml()
-        println out.toString()
+        println xmlOutput.toString()
 
         then: "all the exclusion criteria should always be present"
         result.Criterion.size() == 18

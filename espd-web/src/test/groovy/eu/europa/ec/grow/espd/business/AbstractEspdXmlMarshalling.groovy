@@ -21,7 +21,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     @Shared
     protected EspdExchangeMarshaller marshaller
 
-    protected StringWriter out
+    protected StringWriter xmlOutput
 
     void setupSpec() {
         jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
@@ -38,15 +38,15 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     }
 
     void setup() {
-        out = new StringWriter()
+        xmlOutput = new StringWriter()
     }
 
     void cleanup() {
-        out = null
+        xmlOutput = null
     }
 
     protected GPathResult parseXml() {
-        marshaller.generateEspdRequest(new EspdDocument(), out)
-        new XmlSlurper().parseText(out.toString())
+        marshaller.generateEspdRequest(new EspdDocument(), xmlOutput)
+        new XmlSlurper().parseText(xmlOutput.toString())
     }
 }

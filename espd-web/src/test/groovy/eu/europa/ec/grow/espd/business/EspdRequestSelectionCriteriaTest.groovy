@@ -14,8 +14,8 @@ class EspdRequestSelectionCriteriaTest extends AbstractEspdXmlMarshalling {
         def idx = 18
 
         when:
-        marshaller.generateEspdRequest(espd, out)
-        def req = new XmlSlurper().parseText(out.toString())
+        marshaller.generateEspdRequest(espd, xmlOutput)
+        def req = new XmlSlurper().parseText(xmlOutput.toString())
 
         then: "check the CriterionID"
         req.Criterion[idx].CriterionID.text() == "7e7db838-eeac-46d9-ab39-42927486f22d"

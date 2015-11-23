@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
-import eu.europa.ec.grow.espd.criteria.CcvLegislation;
+import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
 /**
