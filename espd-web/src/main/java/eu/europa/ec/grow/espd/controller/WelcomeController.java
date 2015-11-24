@@ -3,7 +3,6 @@ package eu.europa.ec.grow.espd.controller;
 import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.SelectionCriterion;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -126,39 +125,7 @@ class WelcomeController {
 
     @RequestMapping("/selection")
     public String showSelectCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        preselectEconomicOperatorSelectionCriteria(agent, espd);
         return ("eo".equals(agent)) ? "selectionEO" : "selectionCA";
-    }
-
-    private void preselectEconomicOperatorSelectionCriteria(final String agent, final EspdDocument espd) {
-        if ("eo".equals(agent)) {
-
-        	if (espd.getSuitabilityEnrolment() == null) {
-        		espd.setSuitabilityEnrolment(new SelectionCriterion());
-        	}
-        	if (espd.getSuitabilityServiceContracts() == null) {
-        		espd.setSuitabilityServiceContracts(new SelectionCriterion());
-        	}
-        	if (espd.getEconomicEnrolment() == null) {
-        		espd.setEconomicEnrolment(new SelectionCriterion());
-        	}
-        	if (espd.getEconomicServiceContracts() == null) {
-        		espd.setEconomicServiceContracts(new SelectionCriterion());
-        	}
-
-            if (espd.getSuitabilityEnrolment().getExists() == null) {
-                espd.getSuitabilityEnrolment().setExists(true);
-            }
-            if (espd.getSuitabilityServiceContracts().getExists() == null) {
-                espd.getSuitabilityServiceContracts().setExists(true);
-            }
-            if (espd.getEconomicEnrolment().getExists() == null) {
-                espd.getEconomicEnrolment().setExists(true);
-            }
-            if (espd.getEconomicServiceContracts().getExists() == null) {
-                espd.getEconomicServiceContracts().setExists(true);
-            }
-        }
     }
 
     @RequestMapping(value = "/selection", method = POST, params = "next")
@@ -189,8 +156,6 @@ class WelcomeController {
             response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd.xml\"");
             response.setContentType(APPLICATION_XML_VALUE);
 
-//            StreamResult result = new StreamResult(out);
-//            jaxb2Marshaller.marshal(espd, result);
             exchangeMarshaller.generateEspdRequest(espd, out);
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
 

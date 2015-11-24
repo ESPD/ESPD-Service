@@ -4,67 +4,61 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.annotation.*;
 import java.io.IOException;
 
 @Data
-@XmlRootElement(name="xml")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class EspdDocument {
 
-	@XmlTransient private String action;// "ca_create_espd" or "eo_import_espd"
+    private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
 
-	@XmlElement private String procedureDesc;
-	@XmlElement private String lotConcerned;
-	@XmlElement private String fileRefByCA;
-	@XmlElement private String websiteProcDocs;
-	
-	//Exclusions
-	
-	@XmlElement private CriminalConvictions criminalConvictions;
-	@XmlElement private CriminalConvictions corruption;
-	@XmlElement private CriminalConvictions fraud;
-	@XmlElement private CriminalConvictions terroristOffences;
-	@XmlElement private CriminalConvictions moneyLaundering;
-	@XmlElement private CriminalConvictions childLabour;
-	
-	@XmlElement private Taxes paymentTaxes;
-	@XmlElement private Taxes paymentSocsec;
-	
-	@XmlElement private BreachOfObligations breachingObligations;
-	@XmlElement private BreachOfObligations bankruptSubject;
-	@XmlElement private BreachOfObligations guiltyGrave;
-	@XmlElement private BreachOfObligations agreementsEo;
-	@XmlElement private BreachOfObligations conflictInterest;
-	@XmlElement private BreachOfObligations involvementPreparation;
-	@XmlElement private BreachOfObligations earlyTermination;
-	@XmlElement private BreachOfObligations guiltyMisinterpretation;
+    private String procedureDesc;
+    private String lotConcerned;
+    private String fileRefByCA;
+    private String websiteProcDocs;
 
-    @XmlElement
+    //Exclusions
+
+    private CriminalConvictions criminalConvictions;
+    private CriminalConvictions corruption;
+    private CriminalConvictions fraud;
+    private CriminalConvictions terroristOffences;
+    private CriminalConvictions moneyLaundering;
+    private CriminalConvictions childLabour;
+
+    private Taxes paymentTaxes;
+    private Taxes paymentSocsec;
+
+    private BreachOfObligations breachingObligations;
+    private BreachOfObligations bankruptSubject;
+    private BreachOfObligations guiltyGrave;
+    private BreachOfObligations agreementsEo;
+    private BreachOfObligations conflictInterest;
+    private BreachOfObligations involvementPreparation;
+    private BreachOfObligations earlyTermination;
+    private BreachOfObligations guiltyMisinterpretation;
+
     private SelectionCriterion suitabilityEnrolment;
 
-    @XmlElement
     private SelectionCriterion suitabilityServiceContracts;
 
-    @XmlElement
     private SelectionCriterion economicGeneralTurnover;
 
-    @XmlElement
     private SelectionCriterion economicAverageTurnover;
 
-    @XmlElement
     private SelectionCriterion economicEnrolment;
 
-    @XmlElement
     private SelectionCriterion economicServiceContracts;
 
-    @XmlElement
     private Criterion selectionSatisfiesAll;
 
-	//trick to use MultipartFile as @RequestParam
-	public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {}
-	public MultipartFile getAttachment() {return null;}
+    //trick to use MultipartFile as @RequestParam
+    public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {
+    }
+
+    public MultipartFile getAttachment() {
+        return null;
+    }
 
 }

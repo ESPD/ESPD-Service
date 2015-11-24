@@ -328,7 +328,8 @@ class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d30637e4-f7ec-43da-962d-b1d48fd161e7"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please indicate the country or Member State concerned and the amount concerned."
 
-        // TODO test CriterionRequirement[1]
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "2d39df06-2c5b-40bd-b5d1-86d377384baa"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Has this breach of obligations been established through judicial or administrative decision?"
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "fe04e6fe-af83-4896-ad0c-7983e5138aea"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"

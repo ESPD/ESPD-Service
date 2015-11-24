@@ -94,8 +94,7 @@ public enum CriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    // TODO get this id
-    PAYMENT_TAXES_2("//TODO need id here", CriterionRequirementConstants.PAYMENT_BREACH_OBLIGATIONS_TEXT),
+    PAYMENT_TAXES_2("2d39df06-2c5b-40bd-b5d1-86d377384baa", CriterionRequirementConstants.PAYMENT_BREACH_OBLIGATIONS_TEXT),
     /**
      *
      */
@@ -259,7 +258,7 @@ public enum CriterionRequirement implements CcvCriterionRequirement {
         private static final String SELF_CLEANING_TEXT = "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?";
         private static final String INFO_ELECTRONICALLY_TEXT = "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation.";
         private static final String PAYMENT_YES_TEXT = "If yes, please indicate the country or Member State concerned and the amount concerned.";
-        private static final String PAYMENT_BREACH_OBLIGATIONS_TEXT = "Has this breach of obligations have been established though judicial or administrative decision?";
+        private static final String PAYMENT_BREACH_OBLIGATIONS_TEXT = "Has this breach of obligations been established through judicial or administrative decision?";
         private static final String REASONS_PERFORM_CONTRACT_TEXT = "If yes, indicate reasons for being nevertheless to perform the contract.";
         private static final String PLEASE_DESCRIBE_TEXT = "If yes, please describe them.";
 

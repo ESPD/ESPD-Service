@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.business;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
-import grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory;
+import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
@@ -22,14 +22,16 @@ public class EspdExchangeMarshaller {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
     private final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer;
-    private final ObjectFactory objectFactory;
+    private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
+    private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
 
     @Autowired
     EspdExchangeMarshaller(final Jaxb2Marshaller jaxb2Marshaller,
             final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
-        this.objectFactory = new ObjectFactory();
+        this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
+        this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
     }
 
     /**
@@ -42,7 +44,7 @@ public class EspdExchangeMarshaller {
     public void generateEspdRequest(EspdDocument espdDocument, OutputStream out) {
         ESPDRequestType espdRequestType = toEspdRequestTransformer.apply(espdDocument);
         StreamResult result = new StreamResult(out);
-        jaxb2Marshaller.marshal(objectFactory.createESPDRequest(espdRequestType), result);
+        jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
     }
 
     /**
@@ -56,6 +58,19 @@ public class EspdExchangeMarshaller {
         ESPDRequestType espdRequestType = toEspdRequestTransformer.apply(espdDocument);
         StreamResult result = new StreamResult(sw);
 
-        jaxb2Marshaller.marshal(objectFactory.createESPDRequest(espdRequestType), result);
+        jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
+    }
+
+    /**
+     * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
+     * to the output stream.
+     *
+     * @param espdDocument The ESPD document that will be written out
+     * @param out          The place where the XML representation will be written out
+     */
+    public void generateEspdResponse(EspdDocument espdDocument, OutputStream out) {
+        ESPDResponseType espdResponseType  = new ESPDResponseType();
+        StreamResult result = new StreamResult(out);
+        jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
     }
 }
