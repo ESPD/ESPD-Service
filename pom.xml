@@ -5,7 +5,7 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.0.10-SNAPSHOT</version>
     <modules>
         <module>exchange-model</module>
         <module>espd-web</module>
