@@ -64,15 +64,6 @@ public enum ExclusionCriterion implements CcvCriterion {
             ExclusionCriterionTypeCode.PAYMENT_OF_TAXES, LegislationReference.DIRECTIVE_2014_24_EU_57_2,
             CriterionRequirement.PAYMENT_TAXES_REQUIREMENTS),
 
-    // TODO should remove this criterion?
-    /**
-     *
-     */
-    BREACH_OF_JUDICIAL_DECISION("0db387a4-d53a-4239-9ade-c1c57800826d",
-            "Payment of taxes - Breach of Judicial or Administrative Decision",
-            "If it has been established that the economic operator is in breach of obligations related to the payment of tax or social security contributions, has this breach of obligations been established through a judicial or administrative decision?",
-            ExclusionCriterionTypeCode.PAYMENT_OF_TAXES, LegislationReference.DIRECTIVE_2014_24_EU_57_2,
-            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */

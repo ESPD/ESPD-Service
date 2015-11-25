@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 
@@ -11,7 +12,8 @@ class EspdRequestSelectionCriteriaTest extends AbstractEspdXmlMarshalling {
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true))
-        def idx = 18
+        // selection criteria come after exclusion criteria
+        def idx = ExclusionCriterion.values().length
 
         when:
         marshaller.generateEspdRequest(espd, xmlOutput)

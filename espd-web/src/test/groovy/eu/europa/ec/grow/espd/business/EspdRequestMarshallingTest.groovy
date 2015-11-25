@@ -152,8 +152,8 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = parseXml()
         println xmlOutput.toString()
 
-        then: "all the exclusion criteria should always be present"
-        result.Criterion.size() == 18
+        then: "all the exclusion criteria should always be present (plus selection criteria depending on user selection)"
+        result.Criterion.size() == 17
     }
 
 }
