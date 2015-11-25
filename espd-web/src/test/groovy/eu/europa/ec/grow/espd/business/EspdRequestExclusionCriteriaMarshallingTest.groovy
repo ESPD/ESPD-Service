@@ -6,25 +6,25 @@ import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
 
 /**
- * Created by vigi on 11/17/15:3:54 PM.
- */
-class EspdRequestExclusionCriteriaTest extends AbstractEspdXmlMarshalling {
+*  Created by vigi on 11/17/15:3:54 PM.
+*/
+class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshalling {
 
-    private void checkCriterionId(def request, int idx, String expectedId) {
+    private static void checkCriterionId(def request, int idx, String expectedId) {
         assert request.Criterion[idx].CriterionID.text() == expectedId
         assert request.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
         assert request.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
         assert request.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
     }
 
-    private void checkCriterionTypeCode(def request, int idx, String expectedTypeCode) {
+    private static void checkCriterionTypeCode(def request, int idx, String expectedTypeCode) {
         assert request.Criterion[idx].CriterionTypeCode.text() == expectedTypeCode
         assert request.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         assert request.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
         assert request.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
     }
 
-    private void checkLegislationReference(def request, int idx, String expectedArticle) {
+    private static void checkLegislationReference(def request, int idx, String expectedArticle) {
         def ref = request.Criterion[idx].CriterionLegislationReference
 
         assert ref.LegislationTitle.text() == "Directive 2014/24/EU"

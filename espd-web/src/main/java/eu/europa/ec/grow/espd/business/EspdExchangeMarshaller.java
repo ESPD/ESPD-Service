@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 
@@ -22,14 +25,17 @@ public class EspdExchangeMarshaller {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
     private final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer;
+    private final EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer;
     private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
     private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
 
     @Autowired
-    EspdExchangeMarshaller(final Jaxb2Marshaller jaxb2Marshaller,
-            final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer) {
+    EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
+            EspdDocumentToEspdRequestTransformer toEspdRequestTransformer,
+            EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
+        this.toEspdDocumentTransformer = toEspdDocumentTransformer;
         this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
         this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
     }
@@ -69,8 +75,23 @@ public class EspdExchangeMarshaller {
      * @param out          The place where the XML representation will be written out
      */
     public void generateEspdResponse(EspdDocument espdDocument, OutputStream out) {
-        ESPDResponseType espdResponseType  = new ESPDResponseType();
+        ESPDResponseType espdResponseType = new ESPDResponseType();
         StreamResult result = new StreamResult(out);
         jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
+    }
+
+    /**
+     * Convert a {@link ESPDRequestType} coming from an input stream into a {@link EspdDocument} object needed by
+     * the web application user interface.
+     *
+     * @param espdRequestStream An input stream containing the ESPD Request
+     *
+     * @return The ESPD Document object coming out from the ESPD Request
+     */
+    public EspdDocument importEspdRequest(InputStream espdRequestStream) {
+        JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
+                .unmarshal(new StreamSource(espdRequestStream));
+        ESPDRequestType requestType = element.getValue();
+        return toEspdDocumentTransformer.apply(requestType);
     }
 }

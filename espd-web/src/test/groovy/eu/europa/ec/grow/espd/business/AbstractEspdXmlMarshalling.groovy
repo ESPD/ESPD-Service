@@ -8,8 +8,8 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 /**
- * Created by vigi on 11/20/15:9:13 AM.
- */
+*  Created by vigi on 11/20/15:9:13 AM.
+*/
 abstract class AbstractEspdXmlMarshalling extends Specification {
 
     @Shared
@@ -17,6 +17,9 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
 
     @Shared
     protected EspdDocumentToEspdRequestTransformer toEspdRequestTransformer
+
+    @Shared
+    protected EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer
 
     @Shared
     protected EspdExchangeMarshaller marshaller
@@ -28,12 +31,15 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         def contractingPartyTransformer = new ToContractingPartyTransformer()
         def ccvCriterionTransformer = new CcvCriterionTransformer()
         toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer, ccvCriterionTransformer)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer)
+        def toPartyImplTransformer = new ToPartyImplTransformer()
+        toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
+        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer)
     }
 
     void cleanupSpec() {
         marshaller = null
         toEspdRequestTransformer = null
+        toEspdDocumentTransformer = null
         jaxb2Marshaller = null
     }
 

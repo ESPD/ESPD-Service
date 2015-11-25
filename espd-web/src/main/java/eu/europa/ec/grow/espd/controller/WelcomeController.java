@@ -1,13 +1,11 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
-import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
-import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -32,13 +29,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @SessionAttributes("espd")
 class WelcomeController {
 
-    private final Jaxb2Marshaller jaxb2Marshaller;
-
     private final EspdExchangeMarshaller exchangeMarshaller;
 
     @Autowired
-    WelcomeController(final Jaxb2Marshaller jaxb2Marshaller, final EspdExchangeMarshaller exchangeMarshaller) {
-        this.jaxb2Marshaller = jaxb2Marshaller;
+    WelcomeController(EspdExchangeMarshaller exchangeMarshaller) {
         this.exchangeMarshaller = exchangeMarshaller;
     }
 
@@ -65,14 +59,13 @@ class WelcomeController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @RequestParam("authority.country") Country country, @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
+            @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
             Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {
-                espd = (EspdDocument) jaxb2Marshaller.unmarshal(new StreamSource(is));
+                espd = exchangeMarshaller.importEspdRequest(is);
                 espd.setAction(action);
-                espd.getAuthority().setCountry(country);
-                model.put("espd", espd); 
+                model.put("espd", espd);
                 return "redirect:/procedure?agent=" + agent;
             }
         } else if ("ca_create_espd".equals(action)) {

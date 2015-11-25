@@ -1,9 +1,11 @@
 package eu.europa.ec.grow.espd.business
+
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
+
 /**
- * Created by vigi on 11/11/15:3:31 PM.
+ *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
  */
 class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
@@ -105,9 +107,9 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
     def "should transform ContractingParty element information"() {
         given:
         def authority = new PartyImpl(name: "  Hodor authority  ", nationalRegistrationNumber: "  Hodor national reg number  ",
-        street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
-        contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
-        website: "  www.hodor.com  ")
+                street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
+                contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
+                website: "  www.hodor.com  ")
         def espd = new EspdDocument(authority: authority)
 
         when:
