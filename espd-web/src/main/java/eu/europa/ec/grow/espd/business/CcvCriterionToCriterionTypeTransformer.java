@@ -21,7 +21,7 @@ import java.util.List;
  * Created by vigi on 11/16/15:3:38 PM.
  */
 @Component
-class CcvCriterionTransformer implements Function<CcvCriterion, CriterionType> {
+class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, CriterionType> {
 
     private static final RequirementTransformer REQUIREMENT_TRANSFORMER = new RequirementTransformer();
 

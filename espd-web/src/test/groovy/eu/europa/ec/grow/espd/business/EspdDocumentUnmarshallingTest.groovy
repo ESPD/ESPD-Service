@@ -8,35 +8,10 @@ import org.apache.commons.io.IOUtils
  */
 class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
-    def "should parse authority information"() {
+    def "should parse full authority information"() {
         given:
-        def espdRequestXml = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<espd-req:ESPDRequest xmlns:espd-resp="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1">
-    <cac:ContractingParty>
-        <cac:Party>
-            <cbc:WebsiteURI>www.hodor.com</cbc:WebsiteURI>
-            <cac:PartyIdentification>
-                <cbc:ID>43354d43323</cbc:ID>
-            </cac:PartyIdentification>
-            <cac:PartyName>
-                <cbc:Name>hodor</cbc:Name>
-            </cac:PartyName>
-            <cac:PostalAddress>
-                <cbc:StreetName>elm street</cbc:StreetName>
-                <cbc:CityName>drubetis</cbc:CityName>
-                <cbc:PostalZone>1500</cbc:PostalZone>
-                <cac:Country>
-                    <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">RO</cbc:IdentificationCode>
-                </cac:Country>
-            </cac:PostalAddress>
-            <cac:Contact>
-                <cbc:Name>gogu</cbc:Name>
-                <cbc:Telephone>+43435543</cbc:Telephone>
-                <cbc:ElectronicMail>gogu@gogu.com</cbc:ElectronicMail>
-            </cac:Contact>
-        </cac:Party>
-    </cac:ContractingParty>
-</espd-req:ESPDRequest>"""
+        def espdRequestXml = readXmlFile("party_authority_full.xml")
+
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
 
@@ -51,6 +26,90 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
         espd.authority.contactName == "gogu"
         espd.authority.contactPhone == "+43435543"
         espd.authority.contactEmail == "gogu@gogu.com"
+    }
+
+    def "should parse minimal authority information"() {
+        given:
+        def espdRequestXml = readXmlFile("party_authority_minimalistic.xml")
+
+        when:
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+
+        then:
+        espd.authority.name == "hodor"
+        espd.authority.website == null
+        espd.authority.nationalRegistrationNumber == null
+        espd.authority.street == null
+        espd.authority.postalCode == null
+        espd.authority.city == null
+        espd.authority.country == Country.ROMANIA
+        espd.authority.contactName == null
+        espd.authority.contactPhone == null
+        espd.authority.contactEmail == null
+    }
+
+    def "all exclusion criteria should be selected"() {
+        given:
+        def espdRequestXml = readXmlFile("all_exclusion_criteria_selected.xml")
+
+        when:
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+
+        then: "should have all criminal convictions"
+        espd.criminalConvictions.exists == true
+        espd.corruption.exists == true
+        espd.fraud.exists == true
+        espd.terroristOffences.exists == true
+        espd.moneyLaundering.exists == true
+        espd.childLabour.exists == true
+
+        then: "should have all tax convictions"
+        espd.paymentTaxes.exists == true
+        espd.paymentSocsec.exists == true
+
+        then: "should have all breach of obligations"
+        espd.breachingObligations.exists == true
+        espd.bankruptSubject.exists == true
+        espd.guiltyGrave.exists == true
+        espd.agreementsEo.exists == true
+        espd.conflictInterest.exists == true
+        espd.involvementPreparation.exists == true
+        espd.earlyTermination.exists == true
+        espd.guiltyMisinterpretation.exists == true
+    }
+
+    def "no exclusion criteria should appear as selected"() {
+        given:
+        def espdRequestXml = readXmlFile("no_exclusion_criteria_selected.xml")
+
+        when:
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+
+        then: "criminal convictions"
+        espd.criminalConvictions.exists == false
+        espd.corruption.exists == false
+        espd.fraud.exists == false
+        espd.terroristOffences.exists == false
+        espd.moneyLaundering.exists == false
+        espd.childLabour.exists == false
+
+        then: "tax convictions"
+        espd.paymentTaxes.exists == false
+        espd.paymentSocsec.exists == false
+
+        then: "breach of obligations"
+        espd.breachingObligations.exists == false
+        espd.bankruptSubject.exists == false
+        espd.guiltyGrave.exists == false
+        espd.agreementsEo.exists == false
+        espd.conflictInterest.exists == false
+        espd.involvementPreparation.exists == false
+        espd.earlyTermination.exists == false
+        espd.guiltyMisinterpretation.exists == false
+    }
+
+    private String readXmlFile(String fileName) {
+        return new File("./src/test/groovy/eu/europa/ec/grow/espd/business/xmls/${fileName}").getText('UTF-8')
     }
 
 }

@@ -13,4 +13,10 @@ public class Taxes extends ExclusionCriterion {
     private String currency;
     private String periodLength;
 
+    public static final Taxes buildWithExists(Boolean exists) {
+        Taxes taxes = new Taxes();
+        taxes.setExists(exists);
+        return taxes;
+    }
+
 }

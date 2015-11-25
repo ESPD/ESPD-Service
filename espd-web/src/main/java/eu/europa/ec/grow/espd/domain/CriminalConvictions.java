@@ -14,4 +14,10 @@ public class CriminalConvictions extends ExclusionCriterion {
     private String convicted;
     private String periodLength;
 
+    public static final CriminalConvictions buildWithExists(Boolean exists) {
+        CriminalConvictions criminalConvictions = new CriminalConvictions();
+        criminalConvictions.setExists(exists);
+        return criminalConvictions;
+    }
+
 }

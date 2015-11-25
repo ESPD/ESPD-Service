@@ -14,4 +14,10 @@ public class BreachOfObligations extends ExclusionCriterion {
     private String periodLength;
     private String otherMeans;
 
+    public static final BreachOfObligations buildWithExists(Boolean exists) {
+        BreachOfObligations breach = new BreachOfObligations();
+        breach.setExists(exists);
+        return breach;
+    }
+
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<espd-req:ESPDRequest xmlns:espd-resp="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns070:ver3.0</cbc:CustomizationID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">ce44cb78-c289-4b65-bf43-66e072f342b3</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
+    <cbc:IssueDate>2015-25-11</cbc:IssueDate>
+    <cbc:IssueTime>15:57:19</cbc:IssueTime>
+    <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
+    <cac:ContractingParty>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name>hodor</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact/>
+        </cac:Party>
+    </cac:ContractingParty>
+    <cac:ProcurementProjectLot>
+        <cbc:ID>0</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <ccv:Criterion>
+        <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</ccv-cbc:CriterionID>
+        <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EXCLUSION.CRIMINAL_CONVICTIONS</ccv-cbc:CriterionTypeCode>
+        <ccv-cbc:CriterionName>Grounds relating to criminal convictions</ccv-cbc:CriterionName>
+        <ccv-cbc:CriterionDescription>Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?</ccv-cbc:CriterionDescription>
+        <ccv:CriterionLegislationReference>
+            <ccv-cbc:LegislationTitle>Directive 2014/24/EU</ccv-cbc:LegislationTitle>
+            <ccv-cbc:LegislationDescription>On public procurement and repealing Directive 2004/18/EC</ccv-cbc:LegislationDescription>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:LegislationArticle>57(1)</ccv-cbc:LegislationArticle>
+            <ccv-cbc:LegislationURIID>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</ccv-cbc:LegislationURIID>
+        </ccv:CriterionLegislationReference>
+        <ccv:CriterionRequirement>
+            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">802f9b05-b463-4455-b92b-35ef2ac4af68</ccv-cbc:CriterionRequirementID>
+            <ccv-cbc:CriterionRequirementDescription>If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion.</ccv-cbc:CriterionRequirementDescription>
+        </ccv:CriterionRequirement>
+        <ccv:CriterionRequirement>
+            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">fba0982a-6d69-41aa-8494-8d46e2eb97ca</ccv-cbc:CriterionRequirementID>
+            <ccv-cbc:CriterionRequirementDescription>If yes, have you taken measures to demonstrate your reliability ("Self-Cleaning")?</ccv-cbc:CriterionRequirementDescription>
+        </ccv:CriterionRequirement>
+        <ccv:CriterionRequirement>
+            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4b435c95-3de7-43dc-ae8d-6e7028e95a38</ccv-cbc:CriterionRequirementID>
+            <ccv-cbc:CriterionRequirementDescription>If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation.</ccv-cbc:CriterionRequirementDescription>
+        </ccv:CriterionRequirement>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</ccv-cbc:CriterionID>
+        <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</ccv-cbc:CriterionTypeCode>
+        <ccv-cbc:CriterionName>All Selection Criteria Will Be Satisfied</ccv-cbc:CriterionName>
+        <ccv-cbc:CriterionDescription>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</ccv-cbc:CriterionDescription>
+        <ccv:CriterionResponse>
+            <ccv-cbc:CriterionFulfillmentIndicator>true</ccv-cbc:CriterionFulfillmentIndicator>
+        </ccv:CriterionResponse>
+    </ccv:Criterion>
+</espd-req:ESPDRequest>

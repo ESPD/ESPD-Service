@@ -34,11 +34,11 @@ import java.util.UUID;
 class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESPDRequestType> {
 
     private final ToContractingPartyTransformer contractingPartyTransformer;
-    private final CcvCriterionTransformer ccvCriterionTransformer;
+    private final CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer;
 
     @Autowired
     EspdDocumentToEspdRequestTransformer(ToContractingPartyTransformer contractingPartyTransformer,
-            CcvCriterionTransformer ccvCriterionTransformer) {
+            CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer) {
         this.contractingPartyTransformer = contractingPartyTransformer;
         this.ccvCriterionTransformer = ccvCriterionTransformer;
     }
