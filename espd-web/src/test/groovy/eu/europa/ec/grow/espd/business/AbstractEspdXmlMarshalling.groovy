@@ -16,31 +16,28 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     protected Jaxb2Marshaller jaxb2Marshaller
 
     @Shared
-    protected EspdDocumentToEspdRequestTransformer toEspdRequestTransformer
-
-    @Shared
-    protected EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer
-
-    @Shared
     protected EspdExchangeMarshaller marshaller
 
     protected StringWriter xmlOutput
 
     void setupSpec() {
         jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
+        initEspdMarshaller(jaxb2Marshaller)
+    }
+
+    private void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
         def commonUblFactory = new CommonUblFactory()
         def contractingPartyTransformer = new ToContractingPartyTransformer()
         def toCriterionTypeTransformer = new CcvCriterionToCriterionTypeTransformer()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(commonUblFactory, contractingPartyTransformer, toCriterionTypeTransformer)
+        def toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(commonUblFactory, contractingPartyTransformer, toCriterionTypeTransformer)
         def toPartyImplTransformer = new ToPartyImplTransformer()
-        toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
+        def toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
+        def toEspdResponseTransformer = new EspdDocumentToEspdResponseTransformer(commonUblFactory, contractingPartyTransformer, toCriterionTypeTransformer)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer, toEspdResponseTransformer)
     }
 
     void cleanupSpec() {
         marshaller = null
-        toEspdRequestTransformer = null
-        toEspdDocumentTransformer = null
         jaxb2Marshaller = null
     }
 
@@ -52,13 +49,21 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         xmlOutput = null
     }
 
-    protected GPathResult parseXml() {
-        marshaller.generateEspdRequest(new EspdDocument(), xmlOutput)
+    protected GPathResult parseRequestXml() {
+        parseRequestXml(new EspdDocument())
+    }
+
+    protected GPathResult parseRequestXml(EspdDocument espdDocument) {
+        marshaller.generateEspdRequest(espdDocument, xmlOutput)
         new XmlSlurper().parseText(xmlOutput.toString())
     }
 
-    protected GPathResult parseXml(EspdDocument espdDocument) {
-        marshaller.generateEspdRequest(espdDocument, xmlOutput)
+    protected GPathResult parseResponseXml() {
+        parseResponseXml(new EspdDocument())
+    }
+
+    protected GPathResult parseResponseXml(EspdDocument espdDocument) {
+        marshaller.generateEspdResponse(espdDocument, xmlOutput)
         new XmlSlurper().parseText(xmlOutput.toString())
     }
 }

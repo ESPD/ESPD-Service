@@ -11,11 +11,16 @@ import java.util.UUID;
 /**
  * Simple factory for creating simple UBL elements that are shared between a {@link ESPDRequestType}
  * and {@link ESPDResponseType}.
- *
+ * <p/>
  * Created by ratoico on 11/26/15.
  */
 @Component
 class CommonUblFactory {
+
+    static enum EspdType {
+        ESPD_REQUEST,
+        ESPD_RESPONSE
+    }
 
     /**
      * Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements
@@ -33,11 +38,17 @@ class CommonUblFactory {
     /**
      * Identifies a user-defined customization of UBL for a specific use.
      *
+     * @param espdType If it's about a ESPD Request or Response
+     *
      * @return The corresponding UBL element
      */
-    CustomizationIDType buildCustomizationIDType() {
+    CustomizationIDType buildCustomizationIDType(EspdType espdType) {
         CustomizationIDType customizationIDType = new CustomizationIDType();
-        customizationIDType.setValue("urn:www.cenbii.eu:transaction:biitrns070:ver3.0");
+        if (EspdType.ESPD_REQUEST.equals(espdType)) {
+            customizationIDType.setValue("urn:www.cenbii.eu:transaction:biitrns070:ver3.0");
+        } else if (EspdType.ESPD_RESPONSE.equals(espdType)) {
+            customizationIDType.setValue("urn:www.cenbii.eu:transaction:biitrns092:ver3.0");
+        }
         customizationIDType.setSchemeAgencyID("BII");
         customizationIDType.setSchemeVersionID("3.0");
         customizationIDType.setSchemeName("CustomizationID");

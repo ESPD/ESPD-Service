@@ -13,7 +13,10 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 import isa.names.specification.ubl.schema.xsd.ccv_commonbasiccomponents_1.IndicatorType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ContractFolderIDType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IssueDateType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IssueTimeType;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +71,8 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     }
 
     private void addCustomizationInformation(ESPDRequestType espdRequestType) {
-        espdRequestType.setCustomizationID(commonUblFactory.buildCustomizationIDType());
+        espdRequestType
+                .setCustomizationID(commonUblFactory.buildCustomizationIDType(CommonUblFactory.EspdType.ESPD_REQUEST));
     }
 
     private void addIdInformation(ESPDRequestType espdRequestType) {

@@ -42,7 +42,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true), corruption: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
 
         then: "only one criterion response per criterion"
         request.Criterion[0].CriterionResponse.size() == 1
@@ -57,7 +57,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 0
 
         then: "must be marked as selected"
@@ -106,7 +106,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(corruption: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 1
 
         then: "must be marked as selected"
@@ -145,7 +145,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 2
 
         then: "must be marked as selected"
@@ -184,7 +184,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(terroristOffences: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 3
 
         then: "must be marked as selected"
@@ -223,7 +223,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 4
 
         then: "must be marked as selected"
@@ -262,7 +262,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(childLabour: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 5
 
         then: "must be marked as selected"
@@ -301,7 +301,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(paymentTaxes: new Taxes(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 6
 
         then: "must be marked as selected"
@@ -343,7 +343,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(paymentSocsec: new Taxes(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 7
 
         then: "must be marked as selected"
@@ -384,7 +384,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(breachingObligations: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 8
 
         then: "must be marked as selected"
@@ -422,7 +422,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(bankruptSubject: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 9
 
         then: "must be marked as selected"
@@ -461,7 +461,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(guiltyGrave: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 10
 
         then: "must be marked as selected"
@@ -497,7 +497,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(agreementsEo: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 11
 
         then: "must be marked as selected"
@@ -533,7 +533,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(conflictInterest: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 12
 
         then: "must be marked as selected"
@@ -572,7 +572,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(involvementPreparation: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 13
 
         then: "must be marked as selected"
@@ -605,7 +605,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(earlyTermination: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 14
 
         then: "must be marked as selected"
@@ -641,7 +641,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def espd = new EspdDocument(guiltyMisinterpretation: new BreachOfObligations(exists: true))
 
         when:
-        def request = parseXml(espd)
+        def request = parseRequestXml(espd)
         def idx = 15
 
         then: "must be marked as selected"
@@ -677,7 +677,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 //        def espd = new EspdDocument(breachingObligations: new CriminalConvictions(exists: true))
 
         when:
-        def request = parseXml()
+        def request = parseRequestXml()
         def idx = 16
 
         then: "must be marked as selected"

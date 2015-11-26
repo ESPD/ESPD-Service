@@ -1,18 +1,17 @@
 package eu.europa.ec.grow.espd.business
 
 import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
 
 /**
- *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
+ * Created by ratoico on 11/26/15.
  */
-class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
+class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should make sure that we use the correct XML namespaces"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then:
         result.lookupNamespace('espd-req') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
@@ -30,7 +29,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain UBLVersionID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then:
         result.UBLVersionID.text() == "2.1"
@@ -39,10 +38,10 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain CustomizationID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then:
-        result.CustomizationID.text() == "urn:www.cenbii.eu:transaction:biitrns070:ver3.0"
+        result.CustomizationID.text() == "urn:www.cenbii.eu:transaction:biitrns092:ver3.0"
         result.CustomizationID.@schemeAgencyID.text() == "BII"
         result.CustomizationID.@schemeVersionID.text() == "3.0"
         result.CustomizationID.@schemeName.text() == "CustomizationID"
@@ -50,7 +49,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain ID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then: "id is an UUID"
         result.ID.text().length() == 36
@@ -64,7 +63,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain CopyIndicator element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then:
         result.CopyIndicator.size() == 1
@@ -73,7 +72,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain VersionID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then:
         result.VersionID.text() == "1"
@@ -82,7 +81,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain IssueDate element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}"
@@ -90,19 +89,10 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain IssueTime element information"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then: "issue time must match the time format HH:mm:ss"
         result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}"
-    }
-
-    def "should contain ContractFolderID element information"() {
-        when:
-        def result = parseRequestXml()
-
-        then:
-        result.ContractFolderID.text() == "SMART 2015/0065"
-        result.ContractFolderID.@schemeAgencyID.text() == "TeD"
     }
 
     def "should transform ContractingParty element information"() {
@@ -114,7 +104,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(authority: authority)
 
         when:
-        def result = parseRequestXml(espd)
+        def result = parseResponseXml(espd)
 
         then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
@@ -140,21 +130,13 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
-        def result = parseRequestXml()
+        def result = parseResponseXml()
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
 
         then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
         result.ProcurementProjectLot.ID.text() == "0"
-    }
-
-    def "should contain all exclusion Criterion elements information"() {
-        when:
-        def result = parseRequestXml()
-
-        then: "all the exclusion criteria should always be present (plus selection criteria depending on user selection)"
-        result.Criterion.size() == ExclusionCriterion.values().length
     }
 
 }
