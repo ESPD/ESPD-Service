@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -59,16 +58,17 @@ class WelcomeController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @ModelAttribute("espd") EspdDocument espd, @RequestParam(required = false) MultipartFile attachment,
+            @RequestParam(required = false) MultipartFile attachment,
             Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {
-                espd = exchangeMarshaller.importEspdRequest(is);
+                EspdDocument espd = exchangeMarshaller.importEspdRequest(is);
                 espd.setAction(action);
                 model.put("espd", espd);
                 return "redirect:/procedure?agent=" + agent;
             }
         } else if ("ca_create_espd".equals(action)) {
+            // TODO preselect the country
             return "redirect:/procedure?agent=" + agent;
         }
 
@@ -101,7 +101,7 @@ class WelcomeController {
 
     @RequestMapping("/exclusion")
     public String showExcludeCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return ("eo".equals(agent)) ? "exclusionEO" : "exclusionCA";
+        return (isEconomicOperator(agent)) ? "exclusionEO" : "exclusionCA";
     }
 
     @RequestMapping(value = "/exclusion", method = POST, params = "next")
@@ -118,7 +118,11 @@ class WelcomeController {
 
     @RequestMapping("/selection")
     public String showSelectCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return ("eo".equals(agent)) ? "selectionEO" : "selectionCA";
+        return isEconomicOperator(agent) ? "selectionEO" : "selectionCA";
+    }
+
+    private boolean isEconomicOperator(@RequestParam String agent) {
+        return "eo".equals(agent);
     }
 
     @RequestMapping(value = "/selection", method = POST, params = "next")
@@ -139,17 +143,23 @@ class WelcomeController {
     }
 
     @RequestMapping(value = "/finish", method = RequestMethod.POST)
-    public String exportXmlFile(HttpServletResponse response, @ModelAttribute("espd") EspdDocument espd,
-            SessionStatus status, BindingResult bindingResult) throws JAXBException, IOException {
+    public String exportXmlFile(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd,
+            HttpServletResponse response, SessionStatus status, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "/finish";
         }
 
         try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd.xml\"");
             response.setContentType(APPLICATION_XML_VALUE);
 
-            exchangeMarshaller.generateEspdRequest(espd, out);
+            if (isEconomicOperator(agent)) {
+                response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-response.xml\"");
+                exchangeMarshaller.generateEspdResponse(espd, out);
+            } else {
+                response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-request.xml\"");
+                exchangeMarshaller.generateEspdRequest(espd, out);
+            }
+
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
 
             out.flush();

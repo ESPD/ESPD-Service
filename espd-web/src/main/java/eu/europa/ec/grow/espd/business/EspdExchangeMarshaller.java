@@ -26,16 +26,19 @@ public class EspdExchangeMarshaller {
     private final Jaxb2Marshaller jaxb2Marshaller;
     private final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer;
     private final EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer;
+    private final EspdDocumentToEspdResponseTransformer toEspdResponseTransformer;
     private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
     private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
 
     @Autowired
     EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
             EspdDocumentToEspdRequestTransformer toEspdRequestTransformer,
-            EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer) {
+            EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer,
+            EspdDocumentToEspdResponseTransformer toEspdResponseTransformer) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
         this.toEspdDocumentTransformer = toEspdDocumentTransformer;
+        this.toEspdResponseTransformer = toEspdResponseTransformer;
         this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
         this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
     }
@@ -75,8 +78,21 @@ public class EspdExchangeMarshaller {
      * @param out          The place where the XML representation will be written out
      */
     public void generateEspdResponse(EspdDocument espdDocument, OutputStream out) {
-        ESPDResponseType espdResponseType = new ESPDResponseType();
+        ESPDResponseType espdResponseType = toEspdResponseTransformer.apply(espdDocument);
         StreamResult result = new StreamResult(out);
+        jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
+    }
+
+    /**
+     * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
+     * to the output stream.
+     *
+     * @param espdDocument The ESPD document that will be written out
+     * @param sw           The place where the XML representation will be written out
+     */
+    public void generateEspdResponse(EspdDocument espdDocument, StringWriter sw) {
+        ESPDResponseType espdResponseType = toEspdResponseTransformer.apply(espdDocument);
+        StreamResult result = new StreamResult(sw);
         jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
     }
 

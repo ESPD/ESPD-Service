@@ -34,7 +34,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(commonUblFactory, contractingPartyTransformer, toCriterionTypeTransformer)
         def toPartyImplTransformer = new ToPartyImplTransformer()
         toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer)
+        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer, toEspdResponseTransformer)
     }
 
     void cleanupSpec() {

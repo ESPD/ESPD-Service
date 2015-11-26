@@ -50,9 +50,9 @@
         <put-attribute name="body" value="/WEB-INF/views/about.jsp" />
     </definition>
 
-    <!--<definition name="error1" extends="defaultTemplate">-->
-        <!--<put-attribute name="body" value="/WEB-INF/views/error.jsp" />-->
-    <!--</definition>-->
+    <definition name="error" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />
+    </definition>
     
     <!-- criteria templates -->
     <definition name="availableElectronically" template="/WEB-INF/views/wizard/templates/availableElectronically.jsp">

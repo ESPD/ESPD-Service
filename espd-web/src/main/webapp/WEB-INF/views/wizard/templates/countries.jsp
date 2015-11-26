@@ -10,7 +10,7 @@
 <tiles:importAttribute name="countryCssClass"/>
 
 <form:select path="${countryField}" id="${countryHtmlId}" cssClass="${countryCssClass}">
-    <form:option value="empty" label="---"/>
+    <form:option value="${null}" label="---"/>
     <optgroup label="EU">
         <c:forEach items="<%=Country.EU_COUNTRIES%>" var="cty">
             <form:option data-i18n="${cty.i18nCode}" value="${cty}"><s:message
