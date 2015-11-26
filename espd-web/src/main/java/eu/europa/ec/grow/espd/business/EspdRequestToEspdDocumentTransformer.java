@@ -59,15 +59,6 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
 
     }
 
-    private boolean isCriterionSelected(ExclusionCriterion criterion, List<CriterionFulfillment> xmlCriteria) {
-        for (CriterionFulfillment cf : xmlCriteria) {
-            if (criterion.getUuid().equals(cf.uuid) && cf.fulfillmentIndicator) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void markSelectedExclusionCriteria(EspdDocument espdDocument, List<CriterionFulfillment> criteria) {
         // beware of the if-then-else statements
         markExclusionSelectedCriminalConvictions(espdDocument, criteria);
@@ -165,6 +156,15 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         }
     }
 
+    private boolean isCriterionSelected(ExclusionCriterion criterion, List<CriterionFulfillment> xmlCriteria) {
+        for (CriterionFulfillment cf : xmlCriteria) {
+            if (criterion.getUuid().equals(cf.uuid) && cf.fulfillmentIndicator) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Builder
     private static class CriterionFulfillment {
 
@@ -173,6 +173,10 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         private final boolean fulfillmentIndicator;
     }
 
+    /**
+     * Read a {@link CriterionType} definition from a {@link ESPDRequestType} and get its UUID
+     * and fulfillment indicator so that we know which criteria were selected by the Contracting Authority.
+     */
     private static class ToCriterionFulfillmentTransformer implements Function<CriterionType, CriterionFulfillment> {
 
         @Override

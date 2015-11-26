@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.business
 
 import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
 
@@ -113,8 +114,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(authority: authority)
 
         when:
-        marshaller.generateEspdRequest(espd, xmlOutput)
-        def result = new XmlSlurper().parseText(xmlOutput.toString())
+        def result = parseXml(espd)
 
         then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
@@ -152,10 +152,9 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
     def "should contain all exclusion Criterion elements information"() {
         when:
         def result = parseXml()
-        println xmlOutput.toString()
 
         then: "all the exclusion criteria should always be present (plus selection criteria depending on user selection)"
-        result.Criterion.size() == 17
+        result.Criterion.size() == ExclusionCriterion.values().length
     }
 
 }

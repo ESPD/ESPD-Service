@@ -141,6 +141,12 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
 
     private void markSelectedExclusionCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         // we need to do it in a hard coded way right now, unfortunately
+        markSelectedExclusionCriminalConvictions(espdDocument, espdRequestType);
+        markSelectedExclusionPaymentOfTaxes(espdDocument, espdRequestType);
+        markSelectedExclusionBreachOfObligations(espdDocument, espdRequestType);
+    }
+
+    private void markSelectedExclusionCriminalConvictions(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         if (isCriterionSelectedInEspd(espdDocument.getCriminalConvictions())) {
             tryToMarkCriterionAsSelected(ExclusionCriterion.GROUNDS_CRIMINAL_CONVICTIONS, espdRequestType);
         }
@@ -159,12 +165,18 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         if (isCriterionSelectedInEspd(espdDocument.getChildLabour())) {
             tryToMarkCriterionAsSelected(ExclusionCriterion.CHILD_LABOUR, espdRequestType);
         }
+    }
+
+    private void markSelectedExclusionPaymentOfTaxes(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         if (isCriterionSelectedInEspd(espdDocument.getPaymentTaxes())) {
             tryToMarkCriterionAsSelected(ExclusionCriterion.PAYMENT_OF_TAXES, espdRequestType);
         }
         if (isCriterionSelectedInEspd(espdDocument.getPaymentSocsec())) {
             tryToMarkCriterionAsSelected(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, espdRequestType);
         }
+    }
+
+    private void markSelectedExclusionBreachOfObligations(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         if (isCriterionSelectedInEspd(espdDocument.getBreachingObligations())) {
             tryToMarkCriterionAsSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS, espdRequestType);
         }
