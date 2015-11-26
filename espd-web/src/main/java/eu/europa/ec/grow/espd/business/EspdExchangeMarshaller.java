@@ -104,6 +104,7 @@ public class EspdExchangeMarshaller {
      *
      * @return The ESPD Document object coming out from the ESPD Request
      */
+    @SuppressWarnings("unchecked")
     public EspdDocument importEspdRequest(InputStream espdRequestStream) {
         JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
                 .unmarshal(new StreamSource(espdRequestStream));

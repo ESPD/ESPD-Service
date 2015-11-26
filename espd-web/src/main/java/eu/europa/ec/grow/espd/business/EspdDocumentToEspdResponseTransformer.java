@@ -7,10 +7,6 @@ import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.Cont
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ContractFolderIDType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IssueDateType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IssueTimeType;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -75,12 +71,8 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
 
     private void addIssueDateAndTimeInformation(ESPDResponseType responseType) {
         Date now = new Date();
-        IssueDateType issueDateType = new IssueDateType();
-        issueDateType.setValue(new LocalDate(now));
-        IssueTimeType issueTimeType = new IssueTimeType();
-        issueTimeType.setValue(new LocalTime(now));
-        responseType.setIssueTime(issueTimeType);
-        responseType.setIssueDate(issueDateType);
+        responseType.setIssueTime(commonUblFactory.buildIssueTimeType(now));
+        responseType.setIssueDate(commonUblFactory.buildIssueDateType(now));
     }
 
     private void addContractFolderIdInformation(ESPDResponseType responseType) {

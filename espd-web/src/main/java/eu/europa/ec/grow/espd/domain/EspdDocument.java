@@ -61,4 +61,7 @@ public class EspdDocument {
         return null;
     }
 
+    public final boolean satisfiesAllCriteria() {
+        return getSelectionSatisfiesAll() != null && getSelectionSatisfiesAll().getExists();
+    }
 }

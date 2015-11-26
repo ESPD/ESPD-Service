@@ -58,6 +58,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
+        println("+++++++++++++++++++++++++++++++++++++++++++++++++ " + xmlOutput)
         def idx = 0
 
         then: "must be marked as selected"

@@ -4,8 +4,11 @@ import eu.europa.ec.grow.espd.constants.enums.Agency;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -17,7 +20,7 @@ import java.util.UUID;
 @Component
 class CommonUblFactory {
 
-    static enum EspdType {
+    enum EspdType {
         ESPD_REQUEST,
         ESPD_RESPONSE
     }
@@ -95,5 +98,29 @@ class CommonUblFactory {
         versionIDType.setValue("1");
         versionIDType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         return versionIDType;
+    }
+
+    /**
+     * Date when the referred document was issued.
+     *
+     * @param when The desired date
+     * @return The corresponding UBL element
+     */
+    IssueDateType buildIssueDateType(Date when) {
+        IssueDateType issueDateType = new IssueDateType();
+        issueDateType.setValue(new LocalDate(when));
+        return issueDateType;
+    }
+
+    /**
+     * Time when the document was issued.
+     *
+     * @param when The desired time
+     * @return The corresponding UBL element
+     */
+    IssueTimeType buildIssueTimeType(Date when) {
+        IssueTimeType issueTimeType = new IssueTimeType();
+        issueTimeType.setValue(new LocalTime(when));
+        return issueTimeType;
     }
 }
