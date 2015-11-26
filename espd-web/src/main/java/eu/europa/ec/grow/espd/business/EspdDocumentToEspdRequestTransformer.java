@@ -2,7 +2,6 @@ package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.Criterion;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Transforms a {@link EspdDocument} into a {@link ESPDRequestType}.
@@ -33,12 +31,15 @@ import java.util.UUID;
 @Component
 class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESPDRequestType> {
 
+    private final CommonUblFactory commonUblFactory;
     private final ToContractingPartyTransformer contractingPartyTransformer;
     private final CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer;
 
     @Autowired
-    EspdDocumentToEspdRequestTransformer(ToContractingPartyTransformer contractingPartyTransformer,
+    EspdDocumentToEspdRequestTransformer(CommonUblFactory commonUblFactory,
+            ToContractingPartyTransformer contractingPartyTransformer,
             CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer) {
+        this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
         this.ccvCriterionTransformer = ccvCriterionTransformer;
     }
@@ -63,42 +64,23 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
     }
 
     private void addUBLVersionInformation(ESPDRequestType espdRequestType) {
-        UBLVersionIDType versionIDType = new UBLVersionIDType();
-        versionIDType.setValue("2.1");
-        versionIDType.setSchemeAgencyID("OASIS-UBL-TC");
-        espdRequestType.setUBLVersionID(versionIDType);
+        espdRequestType.setUBLVersionID(commonUblFactory.buildUblVersionIDType());
     }
 
     private void addCustomizationInformation(ESPDRequestType espdRequestType) {
-        CustomizationIDType customizationIDType = new CustomizationIDType();
-        customizationIDType.setValue("urn:www.cenbii.eu:transaction:biitrns070:ver3.0");
-        customizationIDType.setSchemeAgencyID("BII");
-        customizationIDType.setSchemeVersionID("3.0");
-        customizationIDType.setSchemeName("CustomizationID");
-        espdRequestType.setCustomizationID(customizationIDType);
+        espdRequestType.setCustomizationID(commonUblFactory.buildCustomizationIDType());
     }
 
     private void addIdInformation(ESPDRequestType espdRequestType) {
-        IDType idType = new IDType();
-        idType.setValue(UUID.randomUUID().toString());
-        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-        idType.setSchemeAgencyName(Agency.EU_COM_GROW.getLongName());
-        idType.setSchemeVersionID("1.1");
-        idType.setSchemeID("ISO/IEC 9834-8:2008 - 4UUID");
-        espdRequestType.setID(idType);
+        espdRequestType.setID(commonUblFactory.buildIdType());
     }
 
     private void addCopyIndicatorInformation(ESPDRequestType espdRequestType) {
-        CopyIndicatorType copyIndicatorType = new CopyIndicatorType();
-        copyIndicatorType.setValue(false);
-        espdRequestType.setCopyIndicator(copyIndicatorType);
+        espdRequestType.setCopyIndicator(commonUblFactory.buildCopyIndicatorType(false));
     }
 
     private void addVersionIdInformation(ESPDRequestType espdRequestType) {
-        VersionIDType versionIDType = new VersionIDType();
-        versionIDType.setValue("1");
-        versionIDType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-        espdRequestType.setVersionID(versionIDType);
+        espdRequestType.setVersionID(commonUblFactory.buildVersionIDType());
     }
 
     private void addIssueDateAndTimeInformation(ESPDRequestType espdRequestType) {
@@ -236,7 +218,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         }
     }
 
-    private boolean satisfiesAllCriteria(final EspdDocument espdDocument) {
+    private boolean satisfiesAllCriteria(EspdDocument espdDocument) {
         return espdDocument.getSelectionSatisfiesAll() != null && espdDocument.getSelectionSatisfiesAll().getExists();
     }
 }

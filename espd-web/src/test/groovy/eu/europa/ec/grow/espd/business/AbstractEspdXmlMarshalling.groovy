@@ -28,9 +28,10 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
 
     void setupSpec() {
         jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
+        def commonUblFactory = new CommonUblFactory()
         def contractingPartyTransformer = new ToContractingPartyTransformer()
         def toCriterionTypeTransformer = new CcvCriterionToCriterionTypeTransformer()
-        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(contractingPartyTransformer, toCriterionTypeTransformer)
+        toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(commonUblFactory, contractingPartyTransformer, toCriterionTypeTransformer)
         def toPartyImplTransformer = new ToPartyImplTransformer()
         toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer)
