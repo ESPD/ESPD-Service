@@ -47,8 +47,6 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
         addContractingPartyInformation(espdDocument, espdRequestType);
         addProcurementProjectLots(espdRequestType);
         addCriteria(espdDocument, espdRequestType);
-        //        addExclusionCriteria(espdDocument, espdRequestType);
-        //        addSelectionCriteria(espdDocument, espdRequestType);
 
         return espdRequestType;
     }

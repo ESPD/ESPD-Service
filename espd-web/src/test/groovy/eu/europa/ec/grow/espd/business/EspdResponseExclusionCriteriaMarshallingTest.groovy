@@ -1,14 +1,12 @@
 package eu.europa.ec.grow.espd.business
-
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
-
 /**
-*  Created by vigi on 11/17/15:3:54 PM.
-*/
-class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshalling {
+ * Created by ratoico on 11/27/15 at 10:42 AM.
+ */
+class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshalling {
 
     private static void checkCriterionId(def request, int idx, String expectedId) {
         assert request.Criterion[idx].CriterionID.text() == expectedId

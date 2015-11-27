@@ -32,29 +32,22 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
 
     @Override
     public List<CriterionType> apply(EspdDocument espdDocument) {
-        List<CriterionType> criterionTypes = addExclusionCriteria(espdDocument);
+        List<CriterionType> criterionTypes = new ArrayList<>(
+                ExclusionCriterion.values().length + SelectionCriterion.values().length + 1);
+        criterionTypes.addAll(addExclusionCriteria(espdDocument));
         criterionTypes.addAll(addSelectionCriteria(espdDocument));
         return Collections.unmodifiableList(criterionTypes);
     }
 
     private List<CriterionType> addExclusionCriteria(EspdDocument espdDocument) {
-        List<CriterionType> criterionTypes = new ArrayList<>(
-                ExclusionCriterion.values().length + SelectionCriterion.values().length + 1);
-
-        // don't use Guava Lists.transform because we want to add other values to the list
-        // and we want to be able to mutate the criterion types to mark them as selected
-
-        markSelectedExclusionCriteria(espdDocument, criterionTypes);
-        return criterionTypes;
-    }
-
-    private void markSelectedExclusionCriteria(EspdDocument espdDocument, List<CriterionType> criterionTypes) {
         // we need to do it in a hard coded way right now, unfortunately
         // THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS
+        List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
         markSelectedExclusionCriminalConvictions(espdDocument, criterionTypes);
         markSelectedExclusionPaymentOfTaxes(espdDocument, criterionTypes);
         markSelectedExclusionBreachOfObligations(espdDocument, criterionTypes);
         criterionTypes.add(ccvCriterionTransformer.apply(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS));
+        return criterionTypes;
     }
 
     private void markSelectedExclusionCriminalConvictions(EspdDocument espdDocument, List<CriterionType> criteria) {
