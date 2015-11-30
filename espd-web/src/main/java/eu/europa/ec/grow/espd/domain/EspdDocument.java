@@ -31,7 +31,11 @@ public class EspdDocument {
     private Taxes paymentSocsec;
 
     private BreachOfObligations breachingObligations;
-    private BreachOfObligations bankruptSubject;
+    private BreachOfObligations bankruptcy;
+    private BreachOfObligations insolvency;
+    private BreachOfObligations arrangementWithCreditors;
+    private BreachOfObligations analogousSituation;
+    private BreachOfObligations assetsAdministeredByLiquidator;
     private BreachOfObligations guiltyGrave;
     private BreachOfObligations agreementsEo;
     private BreachOfObligations conflictInterest;

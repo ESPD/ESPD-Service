@@ -61,7 +61,7 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
     }
 
     private void markExclusionSelectedCriminalConvictions(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.GROUNDS_CRIMINAL_CONVICTIONS, ublCriteria)) {
+        if (isCriterionSelected(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria)) {
             espdDocument.setCriminalConvictions(CriminalConvictions.buildWithExists(true));
         } else {
             espdDocument.setCriminalConvictions(CriminalConvictions.buildWithExists(false));
@@ -112,10 +112,10 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         } else {
             espdDocument.setBreachingObligations(BreachOfObligations.buildWithExists(false));
         }
-        if (isCriterionSelected(ExclusionCriterion.BANKRUPTCY_INSOLVENCY, ublCriteria)) {
-            espdDocument.setBankruptSubject(BreachOfObligations.buildWithExists(true));
+        if (isCriterionSelected(ExclusionCriterion.BANKRUPTCY, ublCriteria)) {
+            espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(true));
         } else {
-            espdDocument.setBankruptSubject(BreachOfObligations.buildWithExists(false));
+            espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, ublCriteria)) {
             espdDocument.setGuiltyGrave(BreachOfObligations.buildWithExists(true));

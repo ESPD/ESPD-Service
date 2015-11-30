@@ -134,7 +134,7 @@
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="reasonsNeverlessPerformForm">
-					<tiles:putAttribute name="field" value="bankruptSubject"/>
+					<tiles:putAttribute name="field" value="bankruptcy"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
 					<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_bankrupt"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>

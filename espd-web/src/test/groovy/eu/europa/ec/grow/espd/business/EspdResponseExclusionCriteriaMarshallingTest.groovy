@@ -391,7 +391,7 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //
 //    def "09. should contain the 'Bankrupt, the subject of insolvency or winding-up' criterion"() {
 //        given:
-//        def espd = new EspdDocument(bankruptSubject: new BreachOfObligations(exists: true))
+//        def espd = new EspdDocument(bankruptcy: new BreachOfObligations(exists: true))
 //
 //        when:
 //        def resp = parseRequestXml(espd)

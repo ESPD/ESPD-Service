@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.GROUNDS_CRIMINAL_CONVICTIONS;
+import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION;
 
 /**
  * Create the UBL {@link CriterionType} criteria for a ESPD Response, including both exclusion and selection
@@ -56,7 +56,7 @@ class EspdResponseCriteriaTransformer extends AbstractCriteriaTransformer {
     }
 
     private CriterionType buildCriminalConvictionsCriterion(EspdDocument espdDocument) {
-        CriterionType ublCriterion = buildUblCriterion(GROUNDS_CRIMINAL_CONVICTIONS,
+        CriterionType ublCriterion = buildUblCriterion(PARTICIPATION_CRIMINAL_ORGANISATION,
                 espdDocument.getCriminalConvictions());
         return ublCriterion;
     }

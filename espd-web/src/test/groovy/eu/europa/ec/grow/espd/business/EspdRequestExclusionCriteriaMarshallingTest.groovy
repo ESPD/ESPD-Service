@@ -28,8 +28,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
     private static void checkLegislationReference(def request, int idx, String expectedArticle) {
         def ref = request.Criterion[idx].CriterionLegislationReference
 
-        assert ref.LegislationTitle.text() == "Directive 2014/24/EU"
-        assert ref.LegislationDescription.text() == "On public procurement and repealing Directive 2004/18/EC"
+        assert ref.LegislationTitle.text() == "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC"
+        assert ref.LegislationDescription.text() == "Directive 2014/24/EU"
         assert ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
         assert ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
         assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevelCode"
@@ -53,7 +53,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, 2, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
     }
 
-    def "00. should contain the 'Grounds relating to criminal convictions' criterion"() {
+    def "00. should contain the 'Participation in a criminal organisation' criterion"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
 
@@ -69,10 +69,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Grounds relating to criminal convictions"
+        request.Criterion[idx].CriterionName.text() == "Participation in a criminal organisation"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for participation in a criminal orgnisation, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the fight against organised crime (OJ L 300, 11.11.2008, p. 42)."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -119,7 +119,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Corruption"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, as defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union and Article 2(1) of Council Framework Decision 2003/568/JHA, as well as corruption as defined in the national law of the contracting authority or the economic operator?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union, OJ C 195, 25.6.1997, p. 1, and in Article 2(1) of Council Framework Decision 2003/568/JHA of 22 July 2003 on combating corruption in the private sector (OJ L 192, 31.7.2003, p. 54). This exclusion ground also includes corruption as defined in the national law of the contracting authority (contracting entity) or the economic operator."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -156,7 +156,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Fraud"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud within the meaning of Article 1 of the Convention on the protection of the European Communities'' financial interests?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? Within the meaning of Article 1 of the Convention on the protection of the European Communities' financial interests (OJ C 316, 27.11.1995, p. 48)."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -193,7 +193,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Terrorist offences or offences linked to terrorist activities"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, as defined in Articles 1 and 3 of Council Framework Decision 2002/475/JHA respectively, or inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Articles 1 and 3 of Council Framework Decision of 13 June 2002 on combating terrorism (OJ L 164, 22.6.2002, p. 3). This exclusion ground also includes inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -230,7 +230,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Money laundering or terrorist financing"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for Money laundering or terrorist financing, as defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for money laundering or terrorist financing, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council of 26 October 2005 on the prevention of the use of the financial system for the purpose of money laundering and terrorist financing (OJ L 309, 25.11.2005, p. 15)."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -267,7 +267,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Child labour and other forms of trafficking in human beings"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings as defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council of 5 April 2011 on preventing and combating trafficking in human beings and protecting its victims, and replacing Council Framework Decision 2002/629/JHA (OJ L 101, 15.4.2011, p. 1)."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
@@ -304,7 +304,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Payment of taxes"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of tax contributions?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(2)")
@@ -344,7 +344,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Payment of social security contributions"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of social security contributions?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator breached its obligations relating to the payment social security contributions, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(2)")
@@ -383,7 +383,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionName.text() == "Breaching of obligations in the fields of environmental, social and labour law"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU?"
+        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
@@ -400,9 +400,9 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
     }
 
-    def "09. should contain the 'Bankrupt, the subject of insolvency or winding-up' criterion"() {
+    def "09. should contain the 'Bankruptcy' criterion"() {
         given:
-        def espd = new EspdDocument(bankruptSubject: new BreachOfObligations(exists: true))
+        def espd = new EspdDocument(bankruptcy: new BreachOfObligations(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -416,10 +416,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Bankrupt, the subject of insolvency or winding-up"
+        request.Criterion[idx].CriterionName.text() == "Bankruptcy"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator in any of the following situations: Bankrupt, or the subject of insolvency or winding-up proceedings, or in an arrangement with creditors, or in any analogous situation arising from a similar procedure under national laws and regulations. See national law, the relevant notice or the procurement documents, or that its assets are being administered by a liquidator or by the court, or that its business activities are suspended?"
+        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
@@ -437,7 +437,155 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
-    def "10. should contain the 'Guilty of grave professional misconduct' criterion"() {
+    def "10. should contain the 'Insolvency' criterion"() {
+        given:
+        def espd = new EspdDocument(insolvency: new BreachOfObligations(exists: true))
+
+        when:
+        def request = parseRequestXml(espd)
+        def idx = 0
+
+        then: "CriterionID element"
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "396f288a-e267-4c20-851a-ed4f7498f137")
+
+        then: "CriterionTypeCode element"
+        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+
+        then: "CriterionName element"
+        request.Criterion[idx].CriterionName.text() == "Insolvency"
+
+        then: "CriterionDescription element"
+        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator the subject of insolvency or winding-up? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+
+        then: "CriterionLegislationReference element"
+        checkLegislationReference(request, idx, "57(4)")
+
+        then: "CriterionRequirement"
+        request.Criterion[idx].CriterionRequirement.size() == 3
+
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
+
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+    }
+
+    def "11. should contain the 'Arrangement with creditors' criterion"() {
+        given:
+        def espd = new EspdDocument(arrangementWithCreditors: new BreachOfObligations(exists: true))
+
+        when:
+        def request = parseRequestXml(espd)
+        def idx = 0
+
+        then: "CriterionID element"
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
+
+        then: "CriterionTypeCode element"
+        checkCriterionTypeCode(request, idx, "EXCLUSION.MISCONDUCT")
+
+        then: "CriterionName element"
+        request.Criterion[idx].CriterionName.text() == "Arrangement with creditors"
+
+        then: "CriterionDescription element"
+        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator in arrangement with creditors? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+
+        then: "CriterionLegislationReference element"
+        checkLegislationReference(request, idx, "57(4)")
+
+        then: "CriterionRequirement"
+        request.Criterion[idx].CriterionRequirement.size() == 3
+
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
+
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+    }
+
+    def "12. should contain the 'Analogous situation like bankruptcy under national law"() {
+        given:
+        def espd = new EspdDocument(analogousSituation: new BreachOfObligations(exists: true))
+
+        when:
+        def request = parseRequestXml(espd)
+        def idx = 0
+
+        then: "CriterionID element"
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "daffa2a9-9f8f-4568-8be8-7b8bf306d096")
+
+        then: "CriterionTypeCode element"
+        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+
+        then: "CriterionName element"
+        request.Criterion[idx].CriterionName.text() == "Analogous situation like bankruptcy under national law"
+
+        then: "CriterionDescription element"
+        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator in in any analogous situation like bankruptcy arising from a similar procedure under national laws and regulations? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+
+        then: "CriterionLegislationReference element"
+        checkLegislationReference(request, idx, "57(4)")
+
+        then: "CriterionRequirement"
+        request.Criterion[idx].CriterionRequirement.size() == 3
+
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
+
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+    }
+
+    def "12. should contain the 'Assets being administered by liquidator"() {
+        given:
+        def espd = new EspdDocument(assetsAdministeredByLiquidator: new BreachOfObligations(exists: true))
+
+        when:
+        def request = parseRequestXml(espd)
+        def idx = 0
+
+        then: "CriterionID element"
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
+
+        then: "CriterionTypeCode element"
+        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+
+        then: "CriterionName element"
+        request.Criterion[idx].CriterionName.text() == "Assets being administered by liquidator"
+
+        then: "CriterionDescription element"
+        request.Criterion[idx].CriterionDescription.text() == "Are the assets of the economic operator being administered by a liquidator or by the court?  This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+
+        then: "CriterionLegislationReference element"
+        checkLegislationReference(request, idx, "57(4)")
+
+        then: "CriterionRequirement"
+        request.Criterion[idx].CriterionRequirement.size() == 3
+
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
+
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+    }
+
+    def "11. should contain the 'Guilty of grave professional misconduct' criterion"() {
         given:
         def espd = new EspdDocument(guiltyGrave: new BreachOfObligations(exists: true))
 
@@ -471,7 +619,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
     }
 
-    def "11. should contain the 'Agreements with other economic operators aimed at distorting competition' criterion"() {
+    def "12. should contain the 'Agreements with other economic operators aimed at distorting competition' criterion"() {
         given:
         def espd = new EspdDocument(agreementsEo: new BreachOfObligations(exists: true))
 
@@ -505,7 +653,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
     }
 
-    def "12. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
+    def "13. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
         given:
         def espd = new EspdDocument(conflictInterest: new BreachOfObligations(exists: true))
 
@@ -542,7 +690,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
-    def "13. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
+    def "14. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
         given:
         def espd = new EspdDocument(involvementPreparation: new BreachOfObligations(exists: true))
 
@@ -573,7 +721,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
     }
 
-    def "14. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
+    def "15. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
         given:
         def espd = new EspdDocument(earlyTermination: new BreachOfObligations(exists: true))
 
@@ -607,7 +755,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
     }
 
-    def "15. should contain the 'Guilty of misinterpretation, withheld information, [...]' criterion"() {
+    def "16. should contain the 'Guilty of misinterpretation, withheld information, [...]' criterion"() {
         given:
         def espd = new EspdDocument(guiltyMisinterpretation: new BreachOfObligations(exists: true))
 
@@ -641,7 +789,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
-    def "16. should contain the 'Purely national exclusion grounds' criterion"() {
+    def "17. should contain the 'Purely national exclusion grounds' criterion"() {
         given:
         def espd = new EspdDocument(purelyNationalGrounds: new Criterion(exists: true))
 

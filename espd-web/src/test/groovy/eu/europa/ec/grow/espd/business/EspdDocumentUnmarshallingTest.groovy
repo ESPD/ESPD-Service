@@ -69,7 +69,7 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "should have all breach of obligations"
         espd.breachingObligations.exists == true
-        espd.bankruptSubject.exists == true
+        espd.bankruptcy.exists == true
         espd.guiltyGrave.exists == true
         espd.agreementsEo.exists == true
         espd.conflictInterest.exists == true
@@ -102,7 +102,7 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "breach of obligations"
         espd.breachingObligations.exists == false
-        espd.bankruptSubject.exists == false
+        espd.bankruptcy.exists == false
         espd.guiltyGrave.exists == false
         espd.agreementsEo.exists == false
         espd.conflictInterest.exists == false

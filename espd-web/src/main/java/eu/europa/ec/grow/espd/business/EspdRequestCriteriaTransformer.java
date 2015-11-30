@@ -53,7 +53,7 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
     }
 
     private void markSelectedExclusionCriminalConvictions(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(GROUNDS_CRIMINAL_CONVICTIONS, espdDocument.getCriminalConvictions(), criteria);
+        addUblCriterionIfSelected(PARTICIPATION_CRIMINAL_ORGANISATION, espdDocument.getCriminalConvictions(), criteria);
         addUblCriterionIfSelected(CORRUPTION, espdDocument.getCorruption(), criteria);
         addUblCriterionIfSelected(FRAUD, espdDocument.getFraud(), criteria);
         addUblCriterionIfSelected(TERRORIST_OFFENCES, espdDocument.getTerroristOffences(), criteria);
@@ -68,7 +68,12 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
 
     private void markSelectedExclusionBreachOfObligations(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS, espdDocument.getBreachingObligations(), criteria);
-        addUblCriterionIfSelected(BANKRUPTCY_INSOLVENCY, espdDocument.getBankruptSubject(), criteria);
+        addUblCriterionIfSelected(BANKRUPTCY, espdDocument.getBankruptcy(), criteria);
+        addUblCriterionIfSelected(INSOLVENCY, espdDocument.getInsolvency(), criteria);
+        addUblCriterionIfSelected(ARRANGEMENT_WITH_CREDITORS, espdDocument.getArrangementWithCreditors(), criteria);
+        addUblCriterionIfSelected(ANALOGOUS_SITUATION, espdDocument.getAnalogousSituation(), criteria);
+        addUblCriterionIfSelected(ASSETS_ADMINISTERED_BY_LIQUIDATOR, espdDocument.getAssetsAdministeredByLiquidator(),
+                criteria);
         addUblCriterionIfSelected(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave(), criteria);
         addUblCriterionIfSelected(AGREEMENTS_WITH_OTHER_EO, espdDocument.getAgreementsEo(), criteria);
         addUblCriterionIfSelected(CONFLICT_OF_INTEREST, espdDocument.getConflictInterest(), criteria);

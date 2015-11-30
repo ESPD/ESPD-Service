@@ -16,22 +16,23 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    GROUNDS_CRIMINAL_CONVICTIONS("005eb9ed-1347-4ca3-bb29-9bc0db64e1ab", "Grounds relating to criminal convictions",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?",
+    PARTICIPATION_CRIMINAL_ORGANISATION("005eb9ed-1347-4ca3-bb29-9bc0db64e1ab",
+            "Participation in a criminal organisation",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for participation in a criminal orgnisation, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the fight against organised crime (OJ L 300, 11.11.2008, p. 42).",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference
             .DIRECTIVE_2014_24_EU_57_1, CriterionRequirement.CRIMINAL_CONVICTIONS_REQUIREMENTS),
     /**
      *
      */
     CORRUPTION("c27b7c4e-c837-4529-b867-ed55ce639db5", "Corruption",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, as defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union and Article 2(1) of Council Framework Decision 2003/568/JHA, as well as corruption as defined in the national law of the contracting authority or the economic operator?",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union, OJ C 195, 25.6.1997, p. 1, and in Article 2(1) of Council Framework Decision 2003/568/JHA of 22 July 2003 on combating corruption in the private sector (OJ L 192, 31.7.2003, p. 54). This exclusion ground also includes corruption as defined in the national law of the contracting authority (contracting entity) or the economic operator.",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference.DIRECTIVE_2014_24_EU_57_1,
             CriterionRequirement.CORRUPTION_REQUIREMENTS),
     /**
      *
      */
     FRAUD("297d2323-3ede-424e-94bc-a91561e6f320", "Fraud",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud within the meaning of Article 1 of the Convention on the protection of the European Communities'' financial interests?",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? Within the meaning of Article 1 of the Convention on the protection of the European Communities' financial interests (OJ C 316, 27.11.1995, p. 48).",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference.DIRECTIVE_2014_24_EU_57_1,
             CriterionRequirement.FRAUD_REQUIREMENTS),
     /**
@@ -39,28 +40,28 @@ public enum ExclusionCriterion implements CcvCriterion {
      */
     TERRORIST_OFFENCES("d486fb70-86b3-4e75-97f2-0d71b5697c7d",
             "Terrorist offences or offences linked to terrorist activities",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, as defined in Articles 1 and 3 of Council Framework Decision 2002/475/JHA respectively, or inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision?",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Articles 1 and 3 of Council Framework Decision of 13 June 2002 on combating terrorism (OJ L 164, 22.6.2002, p. 3). This exclusion ground also includes inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision.",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference.DIRECTIVE_2014_24_EU_57_1,
             CriterionRequirement.TERRORIST_OFFENCES_REQUIREMENTS),
     /**
      *
      */
     MONEY_LAUNDERING("47112079-6fec-47a3-988f-e561668c3aef", "Money laundering or terrorist financing",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for Money laundering or terrorist financing, as defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council?",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for money laundering or terrorist financing, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council of 26 October 2005 on the prevention of the use of the financial system for the purpose of money laundering and terrorist financing (OJ L 309, 25.11.2005, p. 15).",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference.DIRECTIVE_2014_24_EU_57_1,
             CriterionRequirement.MONEY_LAUNDERING_REQUIREMENTS),
     /**
      *
      */
     CHILD_LABOUR("d789d01a-fe03-4ccd-9898-73f9cfa080d1", "Child labour and other forms of trafficking in human beings",
-            "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings as defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council?",
+            "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council of 5 April 2011 on preventing and combating trafficking in human beings and protecting its victims, and replacing Council Framework Decision 2002/629/JHA (OJ L 101, 15.4.2011, p. 1).",
             ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS, LegislationReference.DIRECTIVE_2014_24_EU_57_1,
             CriterionRequirement.CHILD_LABOUR_REQUIREMENTS),
     /**
      *
      */
     PAYMENT_OF_TAXES("b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4", "Payment of taxes",
-            "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of tax contributions?",
+            "Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?",
             ExclusionCriterionTypeCode.PAYMENT_OF_TAXES, LegislationReference.DIRECTIVE_2014_24_EU_57_2,
             CriterionRequirement.PAYMENT_TAXES_REQUIREMENTS),
 
@@ -68,7 +69,7 @@ public enum ExclusionCriterion implements CcvCriterion {
      *
      */
     PAYMENT_OF_SOCIAL_SECURITY("7d85e333-bbab-49c0-be8d-c36d71a72f5e", "Payment of social security contributions",
-            "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of social security contributions?",
+            "Has the economic operator breached its obligations relating to the payment social security contributions, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?",
             ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY, LegislationReference.DIRECTIVE_2014_24_EU_57_2,
             CriterionRequirement.PAYMENT_SOCIAL_SECURITY_REQUIREMENTS),
     /**
@@ -76,14 +77,42 @@ public enum ExclusionCriterion implements CcvCriterion {
      */
     BREACHING_OF_OBLIGATIONS("a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
             "Breaching of obligations in the fields of environmental, social and labour law",
-            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU?",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
             ExclusionCriterionTypeCode.ENVIRONMENTAL, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.BREACH_OBLIGATIONS_ENV_REQUIREMENTS),
     /**
      *
      */
-    BANKRUPTCY_INSOLVENCY("d3732c09-7d62-4edc-a172-241da6636e7c", "Bankrupt, the subject of insolvency or winding-up",
-            "Is the economic operator in any of the following situations: Bankrupt, or the subject of insolvency or winding-up proceedings, or in an arrangement with creditors, or in any analogous situation arising from a similar procedure under national laws and regulations. See national law, the relevant notice or the procurement documents, or that its assets are being administered by a liquidator or by the court, or that its business activities are suspended?",
+    BANKRUPTCY("d3732c09-7d62-4edc-a172-241da6636e7c", "Bankruptcy",
+            "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
+            ExclusionCriterionTypeCode.INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
+    /**
+     *
+     */
+    INSOLVENCY("396f288a-e267-4c20-851a-ed4f7498f137", "Insolvency",
+            "Is the economic operator the subject of insolvency or winding-up? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
+            ExclusionCriterionTypeCode.INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
+    /**
+     *
+     */
+    ARRANGEMENT_WITH_CREDITORS("68918c7a-f5bc-4a1a-a62f-ad8983600d48", "Arrangement with creditors",
+            "Is the economic operator in arrangement with creditors? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
+            ExclusionCriterionTypeCode.MISCONDUCT, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
+    /**
+     *
+     */
+    ANALOGOUS_SITUATION("daffa2a9-9f8f-4568-8be8-7b8bf306d096", "Analogous situation like bankruptcy under national law",
+            "Is the economic operator in in any analogous situation like bankruptcy arising from a similar procedure under national laws and regulations? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
+            ExclusionCriterionTypeCode.INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
+    /**
+     *
+     */
+    ASSETS_ADMINISTERED_BY_LIQUIDATOR("8fda202a-0c37-41bb-9d7d-de3f49edbfcb", "Assets being administered by liquidator",
+            "Are the assets of the economic operator being administered by a liquidator or by the court?  This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
             ExclusionCriterionTypeCode.INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
     /**
