@@ -21,15 +21,15 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
 
     private final CommonUblFactory commonUblFactory;
     private final ToContractingPartyTransformer contractingPartyTransformer;
-    private final CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer;
+    private final EspdResponseCriteriaTransformer criteriaTransformer;
 
     @Autowired
     EspdDocumentToEspdResponseTransformer(CommonUblFactory commonUblFactory,
             ToContractingPartyTransformer contractingPartyTransformer,
-            CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer) {
+            EspdResponseCriteriaTransformer criteriaTransformer) {
         this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
-        this.ccvCriterionTransformer = ccvCriterionTransformer;
+        this.criteriaTransformer = criteriaTransformer;
     }
 
     @Override
@@ -44,6 +44,7 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
         addIssueDateAndTimeInformation(responseType);
         addContractingPartyInformation(input, responseType);
         addProcurementProjectLots(responseType);
+        addCriteria(input, responseType);
         
         return responseType;
     }
@@ -95,11 +96,9 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
         responseType.getProcurementProjectLot().add(procurementProjectLotType);
     }
 
-//    private void addExclusionCriteria(EspdDocument espdDocument, ESPDRequestType responseType) {
-//        List<CriterionType> criterionTypes = Lists
-//                .transform(Arrays.asList(ExclusionCriterion.values()), ccvCriterionTransformer);
-//        responseType.getCriterion().addAll(criterionTypes);
-//
-//        markSelectedExclusionCriteria(espdDocument, responseType);
-//    }
+    private void addCriteria(EspdDocument espdDocument, ESPDResponseType responseType) {
+        responseType.getCriterion().addAll(criteriaTransformer.apply(espdDocument));
+    }
+
+
 }

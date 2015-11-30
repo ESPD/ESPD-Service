@@ -10,7 +10,7 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should parse full authority information"() {
         given:
-        def espdRequestXml = readXmlFile("party_authority_full.xml")
+        def espdRequestXml = readXmlFile("economic_operator_authority_full.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -76,6 +76,9 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
         espd.involvementPreparation.exists == true
         espd.earlyTermination.exists == true
         espd.guiltyMisinterpretation.exists == true
+
+        then: "national"
+        espd.purelyNationalGrounds.exists == true
     }
 
     def "no exclusion criteria should appear as selected"() {
@@ -106,6 +109,9 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
         espd.involvementPreparation.exists == false
         espd.earlyTermination.exists == false
         espd.guiltyMisinterpretation.exists == false
+
+        then: "national"
+        espd.purelyNationalGrounds.exists == false
     }
 
     private String readXmlFile(String fileName) {

@@ -89,7 +89,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    GUILTY_OF_PROFESSIONAL_MISCONDUCT("396f288a-e267-4c20-851a-ed4f7498f137", "Guilty of grave professional misconduct",
+    GUILTY_OF_PROFESSIONAL_MISCONDUCT("514d3fde-1e3e-4dcd-b02a-9f984d5bbda3", "Guilty of grave professional misconduct",
             "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents.",
             ExclusionCriterionTypeCode.MISCONDUCT, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.PROFESSIONAL_MISCONDUCT_REQUIREMENTS),
@@ -136,7 +136,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    NATIONAL_EXCLUSION_GROUNDS("df81025e-6aa0-4665-8807-ee317e5f928e", "Purely national exclusion grounds",
+    NATIONAL_EXCLUSION_GROUNDS("63adb07d-db1b-4ef0-a14e-a99785cf8cf6", "Purely national exclusion grounds",
             "Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?",
             ExclusionCriterionTypeCode.OTHER, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             Collections.<CriterionRequirement>emptyList());

@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.business
 
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.Criterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
 
@@ -37,19 +38,19 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         assert ref.LegislationURIID.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
     }
 
-    def "criterion responses should appear only once"() {
+    def "criteria should appear only if they were selected in the ESPD UI"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true), corruption: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true),
+                paymentTaxes: new Taxes(exists: true),  corruption: new CriminalConvictions(exists: true))
 
         when:
         def request = parseRequestXml(espd)
 
         then: "only one criterion response per criterion"
-        request.Criterion[0].CriterionResponse.size() == 1
-        request.Criterion[0].CriterionResponse.CriterionFulfillmentIndicator == true
-
-        request.Criterion[1].CriterionResponse.size() == 1
-        request.Criterion[1].CriterionResponse.CriterionFulfillmentIndicator == true
+        request.Criterion.size() == 3
+        checkCriterionId(request, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
+        checkCriterionId(request, 1, "c27b7c4e-c837-4529-b867-ed55ce639db5")
+        checkCriterionId(request, 2, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
     }
 
     def "00. should contain the 'Grounds relating to criminal convictions' criterion"() {
@@ -60,10 +61,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         def request = parseRequestXml(espd)
         def idx = 0
 
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
-
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
 
         then: "CriterionTypeCode element"
@@ -107,12 +106,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 1
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
 
         then: "CriterionTypeCode element"
@@ -146,12 +143,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 2
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"
@@ -185,12 +180,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 3
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "d486fb70-86b3-4e75-97f2-0d71b5697c7d")
 
         then: "CriterionTypeCode element"
@@ -224,12 +217,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 4
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
 
         then: "CriterionTypeCode element"
@@ -263,12 +254,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 5
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "d789d01a-fe03-4ccd-9898-73f9cfa080d1")
 
         then: "CriterionTypeCode element"
@@ -302,12 +291,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 6
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
 
         then: "CriterionTypeCode element"
@@ -344,12 +331,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 7
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
 
         then: "CriterionTypeCode element"
@@ -385,12 +370,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 8
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"
@@ -423,12 +406,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 9
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 
         then: "CriterionTypeCode element"
@@ -462,13 +443,11 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 10
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "396f288a-e267-4c20-851a-ed4f7498f137")
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3")
 
         then: "CriterionTypeCode element"
         checkCriterionTypeCode(request, idx, "EXCLUSION.MISCONDUCT")
@@ -498,12 +477,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 11
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
 
         then: "CriterionTypeCode element"
@@ -534,12 +511,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 12
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "b1b5ac18-f393-4280-9659-1367943c1a2e")
 
         then: "CriterionTypeCode element"
@@ -573,12 +548,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 13
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "61874050-5130-4f1c-a174-720939c7b483")
 
         then: "CriterionTypeCode element"
@@ -606,12 +579,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 14
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
 
         then: "CriterionTypeCode element"
@@ -642,12 +613,10 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 15
-
-        then: "must be marked as selected"
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def idx = 0
 
         then: "CriterionID element"
+        request.Criterion.size() == 1
         checkCriterionId(request, idx, "696a75b2-6107-428f-8b74-82affb67e184")
 
         then: "CriterionTypeCode element"
@@ -673,19 +642,16 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
     }
 
     def "16. should contain the 'Purely national exclusion grounds' criterion"() {
-//        given:
-//        def espd = new EspdDocument(breachingObligations: new CriminalConvictions(exists: true))
+        given:
+        def espd = new EspdDocument(purelyNationalGrounds: new Criterion(exists: true))
 
         when:
-        def request = parseRequestXml()
-        def idx = 16
-
-        then: "must be marked as selected"
-        // TODO mark national exclusion grounds as selected
-//        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
+        def request = parseRequestXml(espd)
+        def idx = 0
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "df81025e-6aa0-4665-8807-ee317e5f928e")
+        request.Criterion.size() == 1
+        checkCriterionId(request, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"
         checkCriterionTypeCode(request, idx, "EXCLUSION.OTHER")

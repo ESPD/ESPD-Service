@@ -39,6 +39,8 @@ public class EspdDocument {
     private BreachOfObligations earlyTermination;
     private BreachOfObligations guiltyMisinterpretation;
 
+    private Criterion purelyNationalGrounds;
+
     private SelectionCriterion suitabilityEnrolment;
 
     private SelectionCriterion suitabilityServiceContracts;

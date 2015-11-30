@@ -40,8 +40,5 @@
         <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</ccv-cbc:CriterionTypeCode>
         <ccv-cbc:CriterionName>All Selection Criteria Will Be Satisfied</ccv-cbc:CriterionName>
         <ccv-cbc:CriterionDescription>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</ccv-cbc:CriterionDescription>
-        <ccv:CriterionResponse>
-            <ccv-cbc:CriterionFulfillmentIndicator>true</ccv-cbc:CriterionFulfillmentIndicator>
-        </ccv:CriterionResponse>
     </ccv:Criterion>
 </espd-req:ESPDRequest>

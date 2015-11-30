@@ -1,10 +1,7 @@
 package eu.europa.ec.grow.espd.business
-
 import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
-
 /**
  *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
  */
@@ -149,12 +146,12 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "0"
     }
 
-    def "should contain all exclusion Criterion elements information"() {
+    def "should contain no Criterion elements information"() {
         when:
         def result = parseRequestXml()
 
         then: "all the exclusion criteria should always be present (plus selection criteria depending on user selection)"
-        result.Criterion.size() == ExclusionCriterion.values().length
+        result.Criterion.size() == 0
     }
 
 }

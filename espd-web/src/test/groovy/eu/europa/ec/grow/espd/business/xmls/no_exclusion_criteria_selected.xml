@@ -24,66 +24,11 @@
     <cac:ProcurementProjectLot>
         <cbc:ID>0</cbc:ID>
     </cac:ProcurementProjectLot>
-    <ccv:Criterion>
-        <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</ccv-cbc:CriterionID>
-        <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EXCLUSION.CRIMINAL_CONVICTIONS</ccv-cbc:CriterionTypeCode>
-        <ccv-cbc:CriterionName>Grounds relating to criminal convictions</ccv-cbc:CriterionName>
-        <ccv-cbc:CriterionDescription>Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?</ccv-cbc:CriterionDescription>
-        <ccv:CriterionLegislationReference>
-            <ccv-cbc:LegislationTitle>Directive 2014/24/EU</ccv-cbc:LegislationTitle>
-            <ccv-cbc:LegislationDescription>On public procurement and repealing Directive 2004/18/EC</ccv-cbc:LegislationDescription>
-            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
-            <ccv-cbc:LegislationArticle>57(1)</ccv-cbc:LegislationArticle>
-            <ccv-cbc:LegislationURIID>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</ccv-cbc:LegislationURIID>
-        </ccv:CriterionLegislationReference>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">802f9b05-b463-4455-b92b-35ef2ac4af68</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion.</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">fba0982a-6d69-41aa-8494-8d46e2eb97ca</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If yes, have you taken measures to demonstrate your reliability ("Self-Cleaning")?</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4b435c95-3de7-43dc-ae8d-6e7028e95a38</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation.</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-    </ccv:Criterion>
-    <ccv:Criterion>
-        <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c27b7c4e-c837-4529-b867-ed55ce639db5</ccv-cbc:CriterionID>
-        <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EXCLUSION.CRIMINAL_CONVICTIONS</ccv-cbc:CriterionTypeCode>
-        <ccv-cbc:CriterionName>Corruption</ccv-cbc:CriterionName>
-        <ccv-cbc:CriterionDescription>Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, as defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union and Article 2(1) of Council Framework Decision 2003/568/JHA, as well as corruption as defined in the national law of the contracting authority or the economic operator?</ccv-cbc:CriterionDescription>
-        <ccv:CriterionLegislationReference>
-            <ccv-cbc:LegislationTitle>Directive 2014/24/EU</ccv-cbc:LegislationTitle>
-            <ccv-cbc:LegislationDescription>On public procurement and repealing Directive 2004/18/EC</ccv-cbc:LegislationDescription>
-            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
-            <ccv-cbc:LegislationArticle>57(1)</ccv-cbc:LegislationArticle>
-            <ccv-cbc:LegislationURIID>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</ccv-cbc:LegislationURIID>
-        </ccv:CriterionLegislationReference>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6daa0604-d8d3-451d-8e72-9a8743437629</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion.</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">21bc3c38-4797-41cf-a9da-f57275615cc9</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If yes, have you taken measures to demonstrate your reliability ("Self-Cleaning")?</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-        <ccv:CriterionRequirement>
-            <ccv-cbc:CriterionRequirementID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ae160e97-ef2b-4ac9-95cb-1c346890766b</ccv-cbc:CriterionRequirementID>
-            <ccv-cbc:CriterionRequirementDescription>If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation.</ccv-cbc:CriterionRequirementDescription>
-        </ccv:CriterionRequirement>
-        <ccv:CriterionResponse>
-            <ccv-cbc:CriterionFulfillmentIndicator>false</ccv-cbc:CriterionFulfillmentIndicator>
-        </ccv:CriterionResponse>
-    </ccv:Criterion>
+
     <ccv:Criterion>
         <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</ccv-cbc:CriterionID>
         <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</ccv-cbc:CriterionTypeCode>
         <ccv-cbc:CriterionName>All Selection Criteria Will Be Satisfied</ccv-cbc:CriterionName>
         <ccv-cbc:CriterionDescription>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</ccv-cbc:CriterionDescription>
-        <ccv:CriterionResponse>
-            <ccv-cbc:CriterionFulfillmentIndicator>true</ccv-cbc:CriterionFulfillmentIndicator>
-        </ccv:CriterionResponse>
     </ccv:Criterion>
 </espd-req:ESPDRequest>

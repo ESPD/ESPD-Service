@@ -1,9 +1,7 @@
 package eu.europa.ec.grow.espd.business
 
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
-
 /**
 *  Created by vigi on 11/19/15:3:32 PM.
 */
@@ -13,7 +11,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true))
         // selection criteria come after exclusion criteria
-        def idx = ExclusionCriterion.values().length
+        def idx = 0
 
         when:
         marshaller.generateEspdRequest(espd, xmlOutput)
@@ -34,13 +32,6 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "check name and description"
         request.Criterion[idx].CriterionName.text() == "All Selection Criteria Will Be Satisfied"
         request.Criterion[idx].CriterionDescription.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
-
-        then: "was marked as selected"
-        request.Criterion[idx].CriterionResponse.size() == 1
-        request.Criterion[idx].CriterionResponse.CriterionFulfillmentIndicator == true
-
-//        then: "check the CriterionRequirement"
-//        req.Criterion[idx].CriterionRequirement.CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
 }

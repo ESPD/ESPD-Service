@@ -41,9 +41,9 @@
 			<xsd:element ref="ccv-cbc:CriterionDescription" minOccurs="0"/>
 			<xsd:element ref="CriterionLegislationReference" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionRequirement" minOccurs="0" maxOccurs="unbounded"/>
-			<xsd:element ref="CriterionResponse" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
 	</xsd:complexType>
 	<xsd:complexType name="CriterionRequirementType">
 		<xsd:sequence>
@@ -59,15 +59,16 @@
 			<xsd:element ref="ccv-cbc:CriterionRequirementPeriodDescription" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionRequirementEventTypeCode" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionRequirementEventDescription" minOccurs="0"/>
-			<xsd:element ref="RequiredTypeOfEvidence" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="CriterionResponse" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
 	</xsd:complexType>
 	<xsd:complexType name="CriterionResponseType">
 		<xsd:sequence>
 			<xsd:element ref="ccv-cbc:CriterionResponseID" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionResponseDescription" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:CriterionFulfillmentIndicator"/>
-			<xsd:element ref="ccv-cbc:CriterionFulfillmentMotivation" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:CriterionFulfillmentIndicator" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentDate" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentAmount" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionFulfillmentQuantity" minOccurs="0"/>
@@ -79,7 +80,9 @@
 			<xsd:element ref="CriterionFulfillmentPeriod" minOccurs="0"/>
 			<xsd:element ref="CriterionFulfillmentEventLocation" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="CriterionFulfillmentAffectedParty" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
 	</xsd:complexType>
 	<xsd:complexType name="LegislationType">
 		<xsd:sequence>

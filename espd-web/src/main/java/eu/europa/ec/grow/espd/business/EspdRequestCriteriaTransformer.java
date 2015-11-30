@@ -5,9 +5,8 @@ import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionResponseType;
+import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
-import isa.names.specification.ubl.schema.xsd.ccv_commonbasiccomponents_1.IndicatorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +17,9 @@ import java.util.List;
 import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.*;
 
 /**
+ * Create the UBL {@link CriterionType} criteria for a ESPD Request, including both exclusion and selection
+ * criteria.
+ * <p/>
  * Created by ratoico on 11/26/15 at 5:19 PM.
  */
 @Component
@@ -46,63 +48,60 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
         markSelectedExclusionCriminalConvictions(espdDocument, criterionTypes);
         markSelectedExclusionPaymentOfTaxes(espdDocument, criterionTypes);
         markSelectedExclusionBreachOfObligations(espdDocument, criterionTypes);
-        criterionTypes.add(ccvCriterionTransformer.apply(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS));
+        markSelectedExclusionNationalGrounds(espdDocument, criterionTypes);
         return criterionTypes;
     }
 
     private void markSelectedExclusionCriminalConvictions(EspdDocument espdDocument, List<CriterionType> criteria) {
-        criteria.add(buildCriterionType(GROUNDS_CRIMINAL_CONVICTIONS, espdDocument.getCriminalConvictions()));
-        criteria.add(buildCriterionType(CORRUPTION, espdDocument.getCorruption()));
-        criteria.add(buildCriterionType(FRAUD, espdDocument.getFraud()));
-        criteria.add(buildCriterionType(TERRORIST_OFFENCES, espdDocument.getTerroristOffences()));
-        criteria.add(buildCriterionType(MONEY_LAUNDERING, espdDocument.getMoneyLaundering()));
-        criteria.add(buildCriterionType(CHILD_LABOUR, espdDocument.getChildLabour()));
+        addUblCriterionIfSelected(GROUNDS_CRIMINAL_CONVICTIONS, espdDocument.getCriminalConvictions(), criteria);
+        addUblCriterionIfSelected(CORRUPTION, espdDocument.getCorruption(), criteria);
+        addUblCriterionIfSelected(FRAUD, espdDocument.getFraud(), criteria);
+        addUblCriterionIfSelected(TERRORIST_OFFENCES, espdDocument.getTerroristOffences(), criteria);
+        addUblCriterionIfSelected(MONEY_LAUNDERING, espdDocument.getMoneyLaundering(), criteria);
+        addUblCriterionIfSelected(CHILD_LABOUR, espdDocument.getChildLabour(), criteria);
     }
 
     private void markSelectedExclusionPaymentOfTaxes(EspdDocument espdDocument, List<CriterionType> criteria) {
-        criteria.add(buildCriterionType(PAYMENT_OF_TAXES, espdDocument.getPaymentTaxes()));
-        criteria.add(buildCriterionType(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocsec()));
+        addUblCriterionIfSelected(PAYMENT_OF_TAXES, espdDocument.getPaymentTaxes(), criteria);
+        addUblCriterionIfSelected(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocsec(), criteria);
     }
 
     private void markSelectedExclusionBreachOfObligations(EspdDocument espdDocument, List<CriterionType> criteria) {
-        criteria.add(buildCriterionType(BREACHING_OF_OBLIGATIONS, espdDocument.getBreachingObligations()));
-        criteria.add(buildCriterionType(BANKRUPTCY_INSOLVENCY, espdDocument.getBankruptSubject()));
-        criteria.add(buildCriterionType(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave()));
-        criteria.add(buildCriterionType(AGREEMENTS_WITH_OTHER_EO, espdDocument.getAgreementsEo()));
-        criteria.add(buildCriterionType(CONFLICT_OF_INTEREST, espdDocument.getConflictInterest()));
-        criteria.add(buildCriterionType(INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparation()));
-        criteria.add(buildCriterionType(EARLY_TERMINATION, espdDocument.getEarlyTermination()));
-        criteria.add(buildCriterionType(GUILTY_OF_MISINTERPRETATION, espdDocument.getGuiltyMisinterpretation()));
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS, espdDocument.getBreachingObligations(), criteria);
+        addUblCriterionIfSelected(BANKRUPTCY_INSOLVENCY, espdDocument.getBankruptSubject(), criteria);
+        addUblCriterionIfSelected(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave(), criteria);
+        addUblCriterionIfSelected(AGREEMENTS_WITH_OTHER_EO, espdDocument.getAgreementsEo(), criteria);
+        addUblCriterionIfSelected(CONFLICT_OF_INTEREST, espdDocument.getConflictInterest(), criteria);
+        addUblCriterionIfSelected(INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparation(),
+                criteria);
+        addUblCriterionIfSelected(EARLY_TERMINATION, espdDocument.getEarlyTermination(), criteria);
+        addUblCriterionIfSelected(GUILTY_OF_MISINTERPRETATION, espdDocument.getGuiltyMisinterpretation(), criteria);
     }
 
-    private CriterionType buildCriterionType(ExclusionCriterion exclusionCriterion, Criterion espdCriterion) {
-        CriterionType ublCriterion = ccvCriterionTransformer.apply(exclusionCriterion);
-        if (isCriterionSelectedInEspd(espdCriterion)) {
-            markUblCriterionAsSelected(ublCriterion, true);
-        }
-        return ublCriterion;
-    }
-
-    private boolean isCriterionSelectedInEspd(Criterion criterion) {
-        return criterion != null && criterion.getExists();
-    }
-
-    private void markUblCriterionAsSelected(CriterionType ublCriterion, boolean selected) {
-        CriterionResponseType responseType = new CriterionResponseType();
-        IndicatorType selectionIndicator = new IndicatorType();
-        selectionIndicator.setValue(selected);
-        responseType.setCriterionFulfillmentIndicator(selectionIndicator);
-        ublCriterion.getCriterionResponse().add(responseType);
+    private void markSelectedExclusionNationalGrounds(EspdDocument espdDocument, List<CriterionType> criteria) {
+        addUblCriterionIfSelected(NATIONAL_EXCLUSION_GROUNDS, espdDocument.getPurelyNationalGrounds(), criteria);
     }
 
     private List<CriterionType> addSelectionCriteria(EspdDocument espdDocument) {
         if (espdDocument.satisfiesAllCriteria()) {
-            CriterionType satisfiesAllCriterion = ccvCriterionTransformer
-                    .apply(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED);
-            markUblCriterionAsSelected(satisfiesAllCriterion, true);
-            return Collections.singletonList(satisfiesAllCriterion);
+            List<CriterionType> all = new ArrayList<>(1);
+            addUblCriterionIfSelected(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED,
+                    espdDocument.getSelectionSatisfiesAll(), all);
+            return Collections.unmodifiableList(all);
         }
         // TODO add selection criteria
         return Collections.emptyList();
     }
+
+    private void addUblCriterionIfSelected(CcvCriterion ccvCriterion, Criterion espdCriterion,
+            List<CriterionType> ublCriteria) {
+        if (isCriterionSelectedInEspd(espdCriterion)) {
+            ublCriteria.add(ccvCriterionTransformer.apply(ccvCriterion));
+        }
+    }
+
+    private boolean isCriterionSelectedInEspd(Criterion espdCriterion) {
+        return espdCriterion != null && espdCriterion.getExists();
+    }
+
 }
