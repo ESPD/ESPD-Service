@@ -28,7 +28,7 @@ public class EspdDocument {
     private CriminalConvictions childLabour;
 
     private Taxes paymentTaxes;
-    private Taxes paymentSocsec;
+    private Taxes paymentSocialSecurity;
 
     private BreachOfObligations breachingObligations;
     private BreachOfObligations bankruptcy;
@@ -36,10 +36,12 @@ public class EspdDocument {
     private BreachOfObligations arrangementWithCreditors;
     private BreachOfObligations analogousSituation;
     private BreachOfObligations assetsAdministeredByLiquidator;
+    private BreachOfObligations businessActivitiesSuspended;
     private BreachOfObligations guiltyGrave;
+    // TODO should remove this field?
     private BreachOfObligations agreementsEo;
     private BreachOfObligations conflictInterest;
-    private BreachOfObligations involvementPreparation;
+    private BreachOfObligations involvementPreparationProcurement;
     private BreachOfObligations earlyTermination;
     private BreachOfObligations guiltyMisinterpretation;
 

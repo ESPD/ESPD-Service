@@ -65,15 +65,25 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "should have all tax convictions"
         espd.paymentTaxes.exists == true
-        espd.paymentSocsec.exists == true
+        espd.paymentSocialSecurity.exists == true
 
-        then: "should have all breach of obligations"
+        then: "should have all environmental"
         espd.breachingObligations.exists == true
+
+        then: "should have all insolvency"
         espd.bankruptcy.exists == true
+        espd.insolvency.exists == true
+        espd.analogousSituation.exists == true
+        espd.assetsAdministeredByLiquidator.exists == true
+        espd.businessActivitiesSuspended.exists == true
+
+        then: "should have all misconduct"
+        espd.arrangementWithCreditors.exists == true
         espd.guiltyGrave.exists == true
-        espd.agreementsEo.exists == true
+
+        then: "should have all conflict of interest"
         espd.conflictInterest.exists == true
-        espd.involvementPreparation.exists == true
+        espd.involvementPreparationProcurement.exists == true
         espd.earlyTermination.exists == true
         espd.guiltyMisinterpretation.exists == true
 
@@ -98,15 +108,25 @@ class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "tax convictions"
         espd.paymentTaxes.exists == false
-        espd.paymentSocsec.exists == false
+        espd.paymentSocialSecurity.exists == false
 
-        then: "breach of obligations"
+        then: "environmental"
         espd.breachingObligations.exists == false
+
+        then: "insolvency"
         espd.bankruptcy.exists == false
+        espd.insolvency.exists == false
+        espd.analogousSituation.exists == false
+        espd.assetsAdministeredByLiquidator.exists == false
+        espd.businessActivitiesSuspended.exists == false
+
+        then: "misconduct"
+        espd.arrangementWithCreditors.exists == false
         espd.guiltyGrave.exists == false
-        espd.agreementsEo.exists == false
+
+        then: "conflict of interest"
         espd.conflictInterest.exists == false
-        espd.involvementPreparation.exists == false
+        espd.involvementPreparationProcurement.exists == false
         espd.earlyTermination.exists == false
         espd.guiltyMisinterpretation.exists == false
 

@@ -318,7 +318,7 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //
 //    def "07. should contain the 'Payment of social security contributions' criterion"() {
 //        given:
-//        def espd = new EspdDocument(paymentSocsec: new Taxes(exists: true))
+//        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true))
 //
 //        when:
 //        def resp = parseRequestXml(espd)
@@ -529,7 +529,7 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //
 //    def "13. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
 //        given:
-//        def espd = new EspdDocument(involvementPreparation: new BreachOfObligations(exists: true))
+//        def espd = new EspdDocument(involvementPreparationProcurement: new BreachOfObligations(exists: true))
 //
 //        when:
 //        def resp = parseRequestXml(espd)

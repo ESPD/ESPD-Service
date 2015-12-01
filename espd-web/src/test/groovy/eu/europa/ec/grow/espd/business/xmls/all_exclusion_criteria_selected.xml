@@ -266,7 +266,7 @@
         </ccv:CriterionRequirement>
     </ccv:Criterion>
     <ccv:Criterion>
-        <ccv-cbc:CriterionID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0" schemeID="CriteriaID">d3732c09-7d62-4edc-a172-241da6636e7c</ccv-cbc:CriterionID>
+        <ccv-cbc:CriterionID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0" schemeID="CriteriaID">396f288a-e267-4c20-851a-ed4f7498f137</ccv-cbc:CriterionID>
         <ccv-cbc:CriterionTypeCode listAgencyID="EU-COM-GROW" listID="CriteriaTypeCode" listVersionID="1.0">EXCLUSION.INSOLVENCY</ccv-cbc:CriterionTypeCode>
         <ccv-cbc:CriterionName>Insolvency</ccv-cbc:CriterionName>
         <ccv-cbc:CriterionDescription>Is the economic operator the subject of insolvency or winding-up? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.</ccv-cbc:CriterionDescription>

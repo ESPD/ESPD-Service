@@ -75,7 +75,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    BREACHING_OF_OBLIGATIONS("a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
+    BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL("a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
             "Breaching of obligations in the fields of environmental, social and labour law",
             "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
             ExclusionCriterionTypeCode.ENVIRONMENTAL, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
@@ -118,22 +118,21 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
+    BUSINESS_ACTIVITIES_SUSPENDED("166536e2-77f7-455c-b018-70582474e4f6", "Business activities are suspended",
+            "Are the business activities of the economic operator suspended?  This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
+            ExclusionCriterionTypeCode.INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            CriterionRequirement.BANKRUPTCY_REQUIREMENTS),
+    /**
+     *
+     */
     GUILTY_OF_PROFESSIONAL_MISCONDUCT("514d3fde-1e3e-4dcd-b02a-9f984d5bbda3", "Guilty of grave professional misconduct",
-            "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents.",
+            "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents.",
             ExclusionCriterionTypeCode.MISCONDUCT, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.PROFESSIONAL_MISCONDUCT_REQUIREMENTS),
     /**
      *
      */
-    AGREEMENTS_WITH_OTHER_EO("68918c7a-f5bc-4a1a-a62f-ad8983600d48",
-            "Agreements with other economic operators aimed at distorting competition",
-            "Has the economic operator entered into agreements with other economic operators aimed at distorting competition?",
-            ExclusionCriterionTypeCode.MISCONDUCT, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
-            CriterionRequirement.AGREEMENT_WITH_EO_REQUIREMENTS),
-    /**
-     *
-     */
-    CONFLICT_OF_INTEREST("b1b5ac18-f393-4280-9659-1367943c1a2e",
+    CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE("b1b5ac18-f393-4280-9659-1367943c1a2e",
             "Conflict of interest due to its participation in the procurement procedure",
             "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?",
             ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
@@ -141,11 +140,12 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
-    INVOLVEMENT_PROCUREMENT_PROCEDURE("61874050-5130-4f1c-a174-720939c7b483",
+    DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE("61874050-5130-4f1c-a174-720939c7b483",
             "Direct or indirect involvement in the preparation of this procurement procedure",
             "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?",
             ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.INVOLVEMENT_PROCUREMENT_PROCEDURE_REQUIREMENTS),
+
     /**
      *
      */
@@ -158,15 +158,15 @@ public enum ExclusionCriterion implements CcvCriterion {
      *
      */
     GUILTY_OF_MISINTERPRETATION("696a75b2-6107-428f-8b74-82affb67e184",
-            "Guilty of misinterpretation, withheld information, [...]",
-            "Can the economic operator confirm that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?",
+            "Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure",
+            "Can the economic operator confirm the four exclusion grounds, that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, that it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?",
             ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             CriterionRequirement.GUILTY_OF_MISINTERPRETATION_REQUIREMENTS),
     /**
      *
      */
     NATIONAL_EXCLUSION_GROUNDS("63adb07d-db1b-4ef0-a14e-a99785cf8cf6", "Purely national exclusion grounds",
-            "Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?",
+            "Other exclusion grounds that may be foreseen in the national legislation of the contracting authority’s or contracting entity’s Member State. Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?",
             ExclusionCriterionTypeCode.OTHER, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             Collections.<CriterionRequirement>emptyList());
 

@@ -56,7 +56,10 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         // beware of the if-then-else statements
         markExclusionSelectedCriminalConvictions(espdDocument, ublCriteria);
         markExclusionSelectedTaxes(espdDocument, ublCriteria);
-        markExclusionBreachOfObligations(espdDocument, ublCriteria);
+        markExclusionEnvironmental(espdDocument, ublCriteria);
+        markExclusionInsolvency(espdDocument, ublCriteria);
+        markExclusionMisconduct(espdDocument, ublCriteria);
+        markExclusionConflictOfInterest(espdDocument, ublCriteria);
         markExclusionPurelyNational(espdDocument, ublCriteria);
     }
 
@@ -99,43 +102,74 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         } else {
             espdDocument.setPaymentTaxes(Taxes.buildWithExists(false));
         }
-        if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria)) {
-            espdDocument.setPaymentSocsec(Taxes.buildWithExists(true));
+        if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria)) {
+            espdDocument.setPaymentSocialSecurity(Taxes.buildWithExists(true));
         } else {
-            espdDocument.setPaymentSocsec(Taxes.buildWithExists(false));
+            espdDocument.setPaymentSocialSecurity(Taxes.buildWithExists(false));
         }
     }
 
-    private void markExclusionBreachOfObligations(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS, ublCriteria)) {
+    private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        if (isCriterionSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria)) {
             espdDocument.setBreachingObligations(BreachOfObligations.buildWithExists(true));
         } else {
             espdDocument.setBreachingObligations(BreachOfObligations.buildWithExists(false));
         }
+    }
+
+    private void markExclusionInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.BANKRUPTCY, ublCriteria)) {
             espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(true));
         } else {
             espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(false));
+        }
+        if (isCriterionSelected(ExclusionCriterion.INSOLVENCY, ublCriteria)) {
+            espdDocument.setInsolvency(BreachOfObligations.buildWithExists(true));
+        } else {
+            espdDocument.setInsolvency(BreachOfObligations.buildWithExists(false));
+        }
+        if (isCriterionSelected(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria)) {
+            espdDocument.setAnalogousSituation(BreachOfObligations.buildWithExists(true));
+        } else {
+            espdDocument.setAnalogousSituation(BreachOfObligations.buildWithExists(false));
+        }
+        if (isCriterionSelected(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria)) {
+            espdDocument.setAssetsAdministeredByLiquidator(BreachOfObligations.buildWithExists(true));
+        } else {
+            espdDocument.setAssetsAdministeredByLiquidator(BreachOfObligations.buildWithExists(false));
+        }
+        if (isCriterionSelected(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria)) {
+            espdDocument.setBusinessActivitiesSuspended(BreachOfObligations.buildWithExists(true));
+        } else {
+            espdDocument.setBusinessActivitiesSuspended(BreachOfObligations.buildWithExists(false));
+        }
+
+
+    }
+
+    private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        if (isCriterionSelected(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria)) {
+            espdDocument.setArrangementWithCreditors(BreachOfObligations.buildWithExists(true));
+        } else {
+            espdDocument.setArrangementWithCreditors(BreachOfObligations.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, ublCriteria)) {
             espdDocument.setGuiltyGrave(BreachOfObligations.buildWithExists(true));
         } else {
             espdDocument.setGuiltyGrave(BreachOfObligations.buildWithExists(false));
         }
-        if (isCriterionSelected(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO, ublCriteria)) {
-            espdDocument.setAgreementsEo(BreachOfObligations.buildWithExists(true));
-        } else {
-            espdDocument.setAgreementsEo(BreachOfObligations.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.CONFLICT_OF_INTEREST, ublCriteria)) {
+    }
+
+    private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        if (isCriterionSelected(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, ublCriteria)) {
             espdDocument.setConflictInterest(BreachOfObligations.buildWithExists(true));
         } else {
             espdDocument.setConflictInterest(BreachOfObligations.buildWithExists(false));
         }
-        if (isCriterionSelected(ExclusionCriterion.INVOLVEMENT_PROCUREMENT_PROCEDURE, ublCriteria)) {
-            espdDocument.setInvolvementPreparation(BreachOfObligations.buildWithExists(true));
+        if (isCriterionSelected(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, ublCriteria)) {
+            espdDocument.setInvolvementPreparationProcurement(BreachOfObligations.buildWithExists(true));
         } else {
-            espdDocument.setInvolvementPreparation(BreachOfObligations.buildWithExists(false));
+            espdDocument.setInvolvementPreparationProcurement(BreachOfObligations.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.EARLY_TERMINATION, ublCriteria)) {
             espdDocument.setEarlyTermination(BreachOfObligations.buildWithExists(true));

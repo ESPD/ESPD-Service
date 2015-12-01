@@ -103,7 +103,7 @@
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="taxFormCriterion">
-					<tiles:putAttribute name="field" value="paymentSocsec"/>
+					<tiles:putAttribute name="field" value="paymentSocialSecurity"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
 				</tiles:insertDefinition>
 					
@@ -164,7 +164,7 @@
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
-					<tiles:putAttribute name="field" value="involvementPreparation"/>
+					<tiles:putAttribute name="field" value="involvementPreparationProcurement"/>
 					<tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
 					<tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
 					<tiles:putAttribute name="availableElectronically" value="false"/>

@@ -63,21 +63,22 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
 
     private void markSelectedExclusionPaymentOfTaxes(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(PAYMENT_OF_TAXES, espdDocument.getPaymentTaxes(), criteria);
-        addUblCriterionIfSelected(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocsec(), criteria);
+        addUblCriterionIfSelected(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocialSecurity(), criteria);
     }
 
     private void markSelectedExclusionBreachOfObligations(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS, espdDocument.getBreachingObligations(), criteria);
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, espdDocument.getBreachingObligations(), criteria);
         addUblCriterionIfSelected(BANKRUPTCY, espdDocument.getBankruptcy(), criteria);
         addUblCriterionIfSelected(INSOLVENCY, espdDocument.getInsolvency(), criteria);
         addUblCriterionIfSelected(ARRANGEMENT_WITH_CREDITORS, espdDocument.getArrangementWithCreditors(), criteria);
         addUblCriterionIfSelected(ANALOGOUS_SITUATION, espdDocument.getAnalogousSituation(), criteria);
         addUblCriterionIfSelected(ASSETS_ADMINISTERED_BY_LIQUIDATOR, espdDocument.getAssetsAdministeredByLiquidator(),
                 criteria);
+        addUblCriterionIfSelected(BUSINESS_ACTIVITIES_SUSPENDED, espdDocument.getBusinessActivitiesSuspended(),
+                criteria);
         addUblCriterionIfSelected(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave(), criteria);
-        addUblCriterionIfSelected(AGREEMENTS_WITH_OTHER_EO, espdDocument.getAgreementsEo(), criteria);
-        addUblCriterionIfSelected(CONFLICT_OF_INTEREST, espdDocument.getConflictInterest(), criteria);
-        addUblCriterionIfSelected(INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparation(),
+        addUblCriterionIfSelected(CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, espdDocument.getConflictInterest(), criteria);
+        addUblCriterionIfSelected(DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparationProcurement(),
                 criteria);
         addUblCriterionIfSelected(EARLY_TERMINATION, espdDocument.getEarlyTermination(), criteria);
         addUblCriterionIfSelected(GUILTY_OF_MISINTERPRETATION, espdDocument.getGuiltyMisinterpretation(), criteria);
