@@ -43,7 +43,21 @@ public enum LegislationReference implements CcvLegislation {
     DIRECTIVE_2014_24_EU_58_3(
             "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
             "On public procurement and repealing Directive 2004/18/EC",
-            "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024", "58(3)");
+            "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024", "58(3)"),
+    /**
+     *
+     */
+    DIRECTIVE_2014_24_EU_58_4(
+            "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+            "On public procurement and repealing Directive 2004/18/EC",
+            "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024", "58(4)"),
+    /**
+     *
+     */
+    DIRECTIVE_2014_24_EU_62_2(
+            "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+                    "On public procurement and repealing Directive 2004/18/EC",
+                    "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024", "62(2)");
 
     private final String title;
 

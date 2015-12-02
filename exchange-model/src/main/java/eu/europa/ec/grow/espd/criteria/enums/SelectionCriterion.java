@@ -24,203 +24,236 @@ public enum SelectionCriterion implements CcvCriterion {
     /**
      *
      */
-    REGISTER_ENROLLMENT("6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f", "Register Enrollment",
-            "Is the economic operator enrolled in the relevant professional or trade registers kept in the Member State of its establishment?",
+    ENROLLMENT_PROFESSIONAL_REGISTER("6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f",
+            "Enrollment in a relevant professional register",
+            "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
             Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    SERVICE_CONTRACTS_AUTHORISATION("6d22237f-e37e-4e8c-b6e7-0b86c2a63fbb", "Service Contracts - Authorisation",
-//            "For this service contract, is a particular authorisation or membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
-//            SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-//            Collections.<CriterionRequirement>emptyList()),
+    ENROLLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrollment in a trade register",
+            "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
+            SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-    SERVICE_CONTRACT_EO_PARTICULAR_AUTHORISATION("bd1d08fa-ea30-49ab-96b2-a1c8e49e94b8",
-            "Service Contracts - Economic Operator Particular Authorisation",
-            "For this service contract if there is a particular authorisation or membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator, does the economic operator have it?",
+    SERVICE_CONTRACTS_AUTHORISATION("9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4",
+            "For service contracts: Authorisation of particular organisation needed",
+            "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
+            SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
+            Collections.<CriterionRequirement>emptyList()),
+    /**
+     *
+     */
+    SERVICE_CONTRACTS_MEMBERSHIP("73f10e36-ed7a-412e-995c-aa76463e3776",
+            "For service contracts: Membership of particular organisation needed ",
+            "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
             SelectionCriterionTypeCode.SUITABILITY, null, Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
     GENERAL_YEARLY_TURNOVER("499efc97-2ac1-4af2-9e84-323c2ca67747", "General Yearly Turnover",
-            "Please specify the economic operator (“general”) yearly turnover for the number of financial years required in the relevant notice or the procurement documents.",
-            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
+            "The economic operator's general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
             Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
     AVERAGE_YEARLY_TURNOVER("b16cb9fc-6cb7-4585-9302-9533b415cf48", "Average Yearly Turnover",
-            "Please specify the economic operator average yearly turnover for the number of years required in the relevant notice or the procurement documents.",
-            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
+            "The economic operator's average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
             Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    YEARLY_TURNOVER_BUSINESS_AREA("074f6031-55f9-4e99-b9a4-c4363e8bc315", "Yearly Specific Turnover  - Business Area",
-//            "Please specify the yearly specific turnover in the business area covered by the contract and specified in the relevant notice or the procurement documents for the number of financial years required.",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SPECIFIC_YEARLY_TURNOVER("074f6031-55f9-4e99-b9a4-c4363e8bc315", "Specific yearly turnover",
+            "The economic operator's specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    AVERAGE_TURNOVER_BUSINESS_AREA("d3dfb714-f558-4512-bbc5-e456fa2339de", "Average Yearly Turnover - Business Area",
-//            "Please specify the average yearly turnover in the area and for the number of years required in the relevant notice or the procurement documents.",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SPECIFIC_AVERAGE_TURNOVER("d3dfb714-f558-4512-bbc5-e456fa2339de", "Specific average turnover",
+            "The economic operator's specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    EO_SET_UP_DATE("a4e8a1e8-2017-444c-86c0-3e3bba81b171", "EO set up date",
-//            "In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    FINANCIAL_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Financial Ratio",
+            "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows..",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    FINANCIAL_RATIOS("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Financial Ratios",
-//            "Concerning the financial ratios specified in the relevant notice or the procurement documents, please specify the actual value(s) for the required ratio(s).",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    PROFESSIONAL_RISK_INSURANCE("7604bd40-4462-4086-8763-a50da51a869c", "Professional Risk Indemnity Insurance",
+            "The insured amount in its professional risk indemnity insurance is the following.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PROFESSIONAL_RISK_INSURANCE("7604bd40-4462-4086-8763-a50da51a869c", "Professional Risk Indemnity Insurance",
-//            "Please specify the insured amount in the economic operator's professional risk indemnity insurance.",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS("ab0e7f2e-6418-40e2-8870-6713123e41ad",
+            "Other Economic or Financial Requirements",
+            "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator.",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS("ab0e7f2e-6418-40e2-8870-6713123e41ad",
-//            "Other Economic or Financial Requirements",
-//            "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator.",
-//            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    WORK_CONTRACTS_PERFORMANCE_OF_WORKS("cdd3bb3e-34a5-43d5-b668-2aab86a73822",
+            "For works contracts: Performance of works of the specified type",
+            "During the reference period , the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_WORK_EXPERIENCE("cdd3bb3e-34a5-43d5-b668-2aab86a73822", "Public Work Experience",
-//            "For public works contracts only, during the reference period, please specify which works and types of works has the economic operator performed.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES("3a18a175-1863-4b1d-baef-588ce61960ca",
+            "For supply contracts: Performance of deliveries of the specified type",
+            "During the reference period , the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_SUPPLY_SERVICE_EXPERIENCE("3a18a175-1863-4b1d-baef-588ce61960ca", "Public Supply Public Service Experience",
-//            "For public supply and public service contracts only, during the reference period, please specify the principal deliveries of the type specified or the main services of the  type specified provided by the economic operator.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES("5e506c16-26ab-4e32-bb78-b27f87dc0565",
+            "For service contracts: Performance of services of the specified type",
+            "During the reference period , the economic operator has provided the following main services of the  type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    TECHNICIANS_OR_TECHNICAL_BODIES("f33eab5b-f95f-4066-9520-c84add5405d2", "Technicians or Technical Bodies",
-//            "Please specify which technicians or technical bodies can the economic operator call upon, especially those responsible for quality control.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    TECHNICIANS_OR_TECHNICAL_BODIES("3aaca389-4a7b-406b-a4b9-080845d127e7",
+            "Technicians or technical bodies for quality control",
+            "The economic operator can call upon the following technicians or technical bodies , especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    TECHNICAL_FACILITIES_AND_MEASURES("1b0c80fd-e532-412d-8907-c864626df59a", "Technical Facilities and Measures",
-//            "Please specify which technical facilities and measures for ensuring quality and its study and research facilities the economic operator uses.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES("c599c130-b29f-461e-a187-4e16c7d40db7",
+            "For works contracts: Technicians or technical bodies to carry out the work",
+            "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    SUPPLY_CHAIN_MANAGEMENT("b1f3bcff-ad84-4fcf-b0e5-c407c2a3ad3b", "Supply Chain Management",
-//            "Please specify which supply chain management and tracking systems when performing the contract will the economic operator be able to apply.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    TECHNICAL_FACILITIES_AND_MEASURES("4bf996d9-439c-40c6-9ab9-980a48cb55a1",
+            "Technical facilities and measures for ensuring quality",
+            "The economic operator uses the following technical facilities and measures for ensuring quality are as follows.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    CHECKS("63904f0f-a91a-4b3a-a252-002e5a9abd4f", "Checks",
-//            "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose. The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures?",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    STUDY_AND_RESEARCH_FACILITIES("90a2e100-44cc-45d3-9970-69d6714f1596", "Study and research facilities",
+            "The economic operator uses the following study and research facilities are as follows.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS("7b127588-e232-44e5-82a8-f877a7ed426f",
-//            "Educational And Professional Qualifications",
-//            "Please specify which educational and professional qualifications are held by: a) The service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents), b) Its managerial staff.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SUPPLY_CHAIN_MANAGEMENT("dc12a151-7fdf-4733-a8f0-30f667292e66", "Supply chain management",
+            "The economic operator will be able to apply the following supply chain management and tracking systems when performing the contract.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    ENVIRONMENTAL_MANAGEMENT_FEATURES("af4624dc-9012-4dc6-a019-9d0d2be00087", "Environmental Management Measures",
-//            "Please specify which environmental management measures when performing the contract will the economic be able to apply.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    ALLOWANCE_OF_CHECKS("c8809aa1-29b6-4f27-ae2f-27e612e394db", "Allowance of checks",
+            "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose:\n"
+                    + "The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    AVERAGE_ANNUAL_MANPOWER("3df61701-757c-4e9d-9170-e1eb56803b14", "Average Annual Manpower",
-//            "Please specify the economic operator's average annual manpower and the number of managerial staff for the last three years.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS("07301031-2270-41af-8e7e-66fe0c777107",
+            "Educational and professional qualifications",
+            "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    TOOLS_PLANT_TECHNICAL_EQUIPMENT("9e982224-af2c-45ae-bbb2-dfdb6d62c1bc", "Tools, Plant or Technical Equipment",
-//            "Please specify the tools, plant or technical equipment that will be available to the economic operator for performing the contract.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    ENVIRONMENTAL_MANAGEMENT_FEATURES("9460457e-b43d-48a9-acd1-615de6ddd33e", "Environmental management measures",
+            "The economic operator will be able to apply the following environmental management measures when performing the contract.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    SUBCONTRACTED_PROPORTION("9bf349c7-deb7-4ddf-b1a2-b6be031ff918", "Subcontracted Proportion",
-//            "Please specify proportion (i.e. percentage) of the contract that the economic operator intends possibly to subcontract.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    NUMBER_OF_MANAGERIAL_STAFF("6346959b-e097-4ea1-89cd-d1b4c131ea4d", "Number of managerial staff",
+            "The economic operator’s number of managerial staff for the last three years were as follows.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_SUPPLY_CONTRACTS("2fa995c4-fc67-4bdc-aa88-de8b105f1e26", "Public Supply Contracts",
-//            "For public supply contracts, will the economic operator supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity?",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    AVERAGE_ANNUAL_MANPOWER("1f49b3f0-d50f-43f6-8b30-4bafab108b9b", "Average annual manpower",
+            "The economic operator’s average annual manpower for the last three years were as follows.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_SUPPLY_CERTIFICATES("19f08370-3f3b-4f67-855d-e35c5d02277c", "Public Supply Contracts - Certificates",
-//            "For public supply contracts, will the economic operator furthermore declare that it will provide the required certificates of authenticity?",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    TOOLS_PLANT_TECHNICAL_EQUIPMENT("cc18c023-211d-484d-a32e-52f3f970285f", "Tools, plant or technical equipment",
+            "The following tools, plant or technical equipment will be available to it for performing the contract.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_SUPPLY_QA_CERTIFICATES("0c89b282-084d-47e0-9d13-6a6080ec6e50",
-//            "Public Supply Contracts - Quality Control Certificates",
-//            "For public supply contracts, can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SUBCONTRACTING_PROPORTION("612a1625-118d-4ea4-a6db-413184e7c0a8", "Subcontracting proportion",
+            "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above..",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    QA_STANDARDS("8fed8afb-14c9-4931-a95c-9c09883c26cd", "Quality Assurance Standards",
-//            "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
-//            SelectionCriterionTypeCode.QUALITY_ASSURANCE, null, Collections.<CriterionRequirement>emptyList()),
+    SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA("bdf0601d-2480-4250-b870-658d0ee95be6",
+            "For supply contracts: Samples, descriptions or photographs without certification of authenticity",
+            "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    PUBLIC_SUPPLY_ENVIRONMENT_CERTIFICATES("e99c958b-cb4f-428d-a09f-5e8d13e3347a",
-//            "Public Supply Contracts - Environment Certificates",
-//            "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList()),
+    SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA("7662b7a9-bcb8-4763-a0a7-7505d8e8470d",
+            "For supply contracts: Samples, descriptions or photographs with certification of authenticity",
+            "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable.",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
     /**
      *
      */
-//    REDUCTION_NO_OF_CANDIDATES("3f82bce6-00db-4dc2-a869-fb9d36f9f006", "Reduction of Number of Candidates",
-//            "Please specify in which way the economic operator meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates.",
-//            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, null,
-//            Collections.<CriterionRequirement>emptyList());
-            ;
+    SUPPLY_CONTRACTS_CERTIFICATES_QC("a7669d7d-9297-43e1-9d10-691a1660187c",
+            "For supply contracts: Certificates by quality control institutes",
+            "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
+            Collections.<CriterionRequirement>emptyList()),
+    /**
+     *
+     */
+    CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA("d726bac9-e153-4e75-bfca-c5385587766d",
+            "Certificates by independent bodies about quality assurance standards",
+            "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
+            Collections.<CriterionRequirement>emptyList()),
+    /**
+     *
+     */
+    CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL("8ed65e48-fd0d-444f-97bd-4f58da632999",
+            "Certificates by independent bodies about environmental management systems or standards",
+            "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
+            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
+            Collections.<CriterionRequirement>emptyList());
 
     private final String uuid;
 
