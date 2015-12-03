@@ -87,7 +87,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.@schemeAgencyID.text() == "EU-COM-GROW"
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.@schemeID.text() == "CriterionRelatedIDs"
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.@schemeVersionID.text() == "1.0"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "4b435c95-3de7-43dc-ae8d-6e7028e95a38"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.@schemeAgencyID.text() == "EU-COM-GROW"
@@ -127,7 +127,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "21bc3c38-4797-41cf-a9da-f57275615cc9"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "ae160e97-ef2b-4ac9-95cb-1c346890766b"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -164,7 +164,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "679be0c0-5ef7-4edb-b600-f4e751e9b238"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "f954cb48-fd3a-46b6-93b4-dbd98ddd8ab8"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -201,7 +201,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "1134da12-b3d2-45ad-80b1-37d635e1d6e0"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "02615e92-f733-4a62-a6ee-08c324abb8d1"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -238,7 +238,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "9f0d8862-02fe-45ae-9e39-ebb235cfbaf1"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "25f57c43-f472-4532-a99e-8950052f276a"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -275,7 +275,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes indicate: a) Date of conviction; b) Reason; c) Who has been convicted; d) Length of the period of exclusion."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "790374f1-9c94-4267-93bb-fcaba9ca6a7d"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "e8b2a4e1-38a0-494d-89c6-484c0f0dc983"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -311,11 +311,11 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d30637e4-f7ec-43da-962d-b1d48fd161e7"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please indicate the country or Member State concerned and the amount concerned."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "2d39df06-2c5b-40bd-b5d1-86d377384baa"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Has this breach of obligations been established through judicial or administrative decision?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "b789ef69-6136-4627-a8fd-2592d07e8e26"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If this breach of obligations has been established through a judicial or administrative decision, please answer whether the decision was final and binding (answer \"YES\" or \"NO\"); If yes, provide the date of the conviction or decision and the length of the period of exclusion; If no describe which other means were used to establish the breach, if any."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "fe04e6fe-af83-4896-ad0c-7983e5138aea"
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[3].CriterionRequirementID.text() == "2b7e912b-7343-493d-99e0-5483e944a7e0"
         request.Criterion[idx].CriterionRequirement[3].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -351,10 +351,11 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "82133444-f458-4100-878c-f43e02efb6a6"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please indicate the country or Member State concerned and the amount concerned."
 
-        // TODO test CriterionRequirement[1]
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "4674bd09-7ef1-43fc-aa1a-12ed274a305a"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If this breach of obligations has been established through a judicial or administrative decision, please answer whether the decision was final and binding (answer \"YES\" or \"NO\"); If yes, provide the date of the conviction or decision and the length of the period of exclusion; If no describe which other means were used to establish the breach, if any."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "1efc023b-0cd3-49d1-b646-0c9ba5b9b888"
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
         request.Criterion[idx].CriterionRequirement[3].CriterionRequirementID.text() == "ac9c530a-07b8-4a9d-b82b-c40ad5373eec"
         request.Criterion[idx].CriterionRequirement[3].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -390,9 +391,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "20000170-bc67-4536-9420-01ea0f90db7a"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        // TODO test CriterionRequirement[1] id
-//        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "1efc023b-0cd3-49d1-b646-0c9ba5b9b888"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "15c7eac6-ef84-4b93-8d39-a15022a54fb0"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "09. should contain the 'Bankruptcy' criterion"() {
@@ -426,7 +426,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, motivate the reasons for being nevertheless to perform the contract."
 
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
@@ -459,13 +459,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "CriterionRequirement"
         request.Criterion[idx].CriterionRequirement.size() == 3
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "b9dfe216-7c6d-4ca5-b1a4-793015399eb1"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "ff6f6761-2d7f-47f6-ade3-757639cb7a5d"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, motivate the reasons for being nevertheless to perform the contract."
 
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "297e9485-bb1c-4321-a927-a5681afe1d27"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
@@ -496,13 +496,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "CriterionRequirement"
         request.Criterion[idx].CriterionRequirement.size() == 3
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "139c0bc8-4341-4328-94c3-b5182e468b6e"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "05c4f8c9-2bed-43ef-847b-0e9bb67b66dd"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "86f20dd3-08d4-44ef-a8e6-c7b3c1302737"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
@@ -533,13 +533,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "CriterionRequirement"
         request.Criterion[idx].CriterionRequirement.size() == 3
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "e683f15e-1fc1-4179-aa71-acbe1860a266"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "1f0092c2-5d3f-4979-935f-8edaab9eed35"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "c6ba6251-7035-4e6e-9831-09d724f20101"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
@@ -570,13 +570,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "CriterionRequirement"
         request.Criterion[idx].CriterionRequirement.size() == 3
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "5c39ff37-4248-4516-9dd0-457000823fec"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "90785e17-82f3-44dd-8305-a4b87ae9efc4"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
 
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
+        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "5249d04c-a650-4aa2-a7f3-df0517f2f3c9"
         request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
@@ -605,16 +605,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkLegislationReference(request, idx, "57(4)")
 
         then: "CriterionRequirement"
-        request.Criterion[idx].CriterionRequirement.size() == 3
+        request.Criterion[idx].CriterionRequirement.size() == 2
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d2e52b5d-2e34-4166-9d40-21470af8eb7c"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "d9fac652-e2d9-43ca-9ee1-4b86e582a3b9"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "638e1e4b-863b-4768-b718-f6dde9601983"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, indicate reasons for being nevertheless to perform the contract."
-
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "44387dd3-5b75-43f6-8562-9615bb913cde"
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "9facfe9c-07d1-416f-bfe9-582c1a7776b3"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "14. should contain the 'Guilty of grave professional misconduct' criterion"() {
@@ -644,11 +641,11 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         then: "CriterionRequirement"
         request.Criterion[idx].CriterionRequirement.size() == 2
 
-        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "b9dfe216-7c6d-4ca5-b1a4-793015399eb1"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "458dd6b0-5d3c-4aea-ab29-25e4606baa5f"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "ff6f6761-2d7f-47f6-ade3-757639cb7a5d"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "fc23518c-a47c-4784-a119-0e2f4c0fc2ff"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "15. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
@@ -676,16 +673,13 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkLegislationReference(request, idx, "57(4)")
 
         then: "CriterionRequirement"
-        request.Criterion[idx].CriterionRequirement.size() == 3
+        request.Criterion[idx].CriterionRequirement.size() == 2
 
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "e1cc66aa-1406-4719-98e5-ab0ca08e5092"
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "e1f3c3a0-0b30-48ce-8a14-bb8e8ee78808"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
-
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementID.text() == "a7631f4e-fd36-4184-93dc-a5367f843ba5"
-        request.Criterion[idx].CriterionRequirement[2].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "16. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
@@ -750,7 +744,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "80d631f0-d6cd-47cc-874c-e8c4706d5cfb"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If yes, have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "18. should contain the 'Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure' criterion"() {
@@ -784,7 +778,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
 
         request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "d9502d1f-6447-47e0-9cc0-601b7cded065"
-        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?  Please describe them."
     }
 
     def "19. should contain the 'Purely national grounds of exclusion' criterion"() {
@@ -810,6 +804,15 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
+
+        then: "CriterionRequirement"
+        request.Criterion[idx].CriterionRequirement.size() == 2
+
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementID.text() == "b3d3e57f-8f62-4b36-8bf2-7377bbff5950"
+        request.Criterion[idx].CriterionRequirement[0].CriterionRequirementDescription.text() == "If yes, please describe them."
+
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementID.text() == "4601e2f3-bae5-4336-a94a-5e4f2d08b8a6"
+        request.Criterion[idx].CriterionRequirement[1].CriterionRequirementDescription.text() == "If the relevant documentation is available electronically, please indicate where to obtain the evidences: web address, issuing authority or body, precise reference of the documentation."
     }
 
     def "all exclusion criteria should be in the correct order"() {
