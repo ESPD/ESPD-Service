@@ -14,9 +14,9 @@ final class CriterionText {
     static final String REASON_TEXT = "Reason";
     static final String WHO_CONVICTED_TEXT = "Who has been convicted";
     static final String LENGTH_PERIOD_EXCLUSION_TEXT = "Length of the period of exclusion";
-    static final String MEASURES_SELF_CLEANING_TEXT = "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")";
+    static final String MEASURES_SELF_CLEANING_TEXT = "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?";
     static final String PLEASE_DESCRIBE_TEXT = "Please describe them";
-    static final String INFO_AVAILABLE_ELECTRONICALLY_TEXT = "Is this information available electronically? ";
+    static final String INFO_AVAILABLE_ELECTRONICALLY_TEXT = "Is this information available electronically?";
     static final String URL_TEXT = "URL";
     static final String URL_CODE_TEXT = "Code";
     static final String COUNTRY_MS_TEXT = "Country or Member State concerned";
