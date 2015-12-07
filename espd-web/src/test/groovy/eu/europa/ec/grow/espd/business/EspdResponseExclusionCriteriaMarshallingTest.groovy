@@ -401,7 +401,7 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionId(resp, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 //
 //        then: "CriterionTypeCode element"
-//        checkCriterionTypeCode(resp, idx, "EXCLUSION.INSOLVENCY")
+//        checkCriterionTypeCode(resp, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 //
 //        then: "CriterionName element"
 //        resp.Criterion[idx].CriterionName.text() == "Bankrupt, the subject of insolvency or winding-up"

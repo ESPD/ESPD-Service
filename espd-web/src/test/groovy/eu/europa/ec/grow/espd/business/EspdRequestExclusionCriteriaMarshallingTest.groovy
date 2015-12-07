@@ -408,7 +408,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Bankruptcy"
@@ -445,7 +445,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, idx, "396f288a-e267-4c20-851a-ed4f7498f137")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Insolvency"
@@ -519,7 +519,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, idx, "daffa2a9-9f8f-4568-8be8-7b8bf306d096")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Analogous situation like bankruptcy under national law"
@@ -556,7 +556,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, idx, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Assets being administered by liquidator"
@@ -593,7 +593,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, idx, "166536e2-77f7-455c-b018-70582474e4f6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Business activities are suspended"
