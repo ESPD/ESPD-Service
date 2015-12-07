@@ -1,7 +1,6 @@
 package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.CriterionJurisdictionLevel;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
@@ -10,10 +9,7 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.LegislationType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Transforms the criterion information coming from ESPD into a {@link CriterionType} object.
@@ -103,13 +99,14 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
     }
 
     private void addRequirements(CcvCriterion input, CriterionType criterionType) {
-        if (CollectionUtils.isEmpty(input.getRequirements())) {
-            return;
-        }
-
-        List<CriterionRequirementType> requirementTypes = Lists.transform(input.getRequirements(),
-                REQUIREMENT_TRANSFORMER);
-        criterionType.getCriterionRequirement().addAll(requirementTypes);
+        // TODO
+//        if (CollectionUtils.isEmpty(input.getRequirements())) {
+//            return;
+//        }
+//
+//        List<CriterionRequirementType> requirementTypes = Lists.transform(input.getRequirements(),
+//                REQUIREMENT_TRANSFORMER);
+//        criterionType.getCriterionRequirement().addAll(requirementTypes);
 
     }
 
@@ -122,8 +119,9 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
             IDType idType = new IDType();
             idType.setValue(input.getId());
             idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-            idType.setSchemeID(CcvCriterionRequirement.SCHEME_ID);
-            idType.setSchemeVersionID(CcvCriterionRequirement.VERSION_ID);
+            // TODO
+//            idType.setSchemeID(CcvCriterionRequirement.SCHEME_ID);
+//            idType.setSchemeVersionID(CcvCriterionRequirement.VERSION_ID);
             requirementType.setCriterionRequirementID(idType);
 
             DescriptionType descriptionType = new DescriptionType();

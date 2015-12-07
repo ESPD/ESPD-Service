@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
+import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -20,7 +21,7 @@ public enum SelectionCriterion implements CcvCriterion {
      */
     ALL_SELECTION_CRITERIA_SATISFIED("7e7db838-eeac-46d9-ab39-42927486f22d", "All Selection Criteria Will Be Satisfied",
             "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.",
-            SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED, null, Collections.<ExclusionCriterionRequirement>emptyList()),
+            SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED, null, Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -28,14 +29,14 @@ public enum SelectionCriterion implements CcvCriterion {
             "Enrollment in a relevant professional register",
             "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     ENROLLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrollment in a trade register",
             "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -43,56 +44,56 @@ public enum SelectionCriterion implements CcvCriterion {
             "For service contracts: Authorisation of particular organisation needed",
             "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     SERVICE_CONTRACTS_MEMBERSHIP("73f10e36-ed7a-412e-995c-aa76463e3776",
             "For service contracts: Membership of particular organisation needed ",
             "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
-            SelectionCriterionTypeCode.SUITABILITY, null, Collections.<ExclusionCriterionRequirement>emptyList()),
+            SelectionCriterionTypeCode.SUITABILITY, null, Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     GENERAL_YEARLY_TURNOVER("499efc97-2ac1-4af2-9e84-323c2ca67747", "General Yearly Turnover",
             "The economic operator's general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     AVERAGE_YEARLY_TURNOVER("b16cb9fc-6cb7-4585-9302-9533b415cf48", "Average Yearly Turnover",
             "The economic operator's average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     SPECIFIC_YEARLY_TURNOVER("074f6031-55f9-4e99-b9a4-c4363e8bc315", "Specific yearly turnover",
             "The economic operator's specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     SPECIFIC_AVERAGE_TURNOVER("d3dfb714-f558-4512-bbc5-e456fa2339de", "Specific average turnover",
             "The economic operator's specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     FINANCIAL_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Financial Ratio",
             "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows..",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     PROFESSIONAL_RISK_INSURANCE("7604bd40-4462-4086-8763-a50da51a869c", "Professional Risk Indemnity Insurance",
             "The insured amount in its professional risk indemnity insurance is the following.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -100,7 +101,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "Other Economic or Financial Requirements",
             "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -108,7 +109,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For works contracts: Performance of works of the specified type",
             "During the reference period , the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -116,7 +117,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For supply contracts: Performance of deliveries of the specified type",
             "During the reference period , the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -124,7 +125,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For service contracts: Performance of services of the specified type",
             "During the reference period , the economic operator has provided the following main services of the  type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -132,7 +133,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "Technicians or technical bodies for quality control",
             "The economic operator can call upon the following technicians or technical bodies , especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -140,7 +141,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For works contracts: Technicians or technical bodies to carry out the work",
             "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -148,21 +149,21 @@ public enum SelectionCriterion implements CcvCriterion {
             "Technical facilities and measures for ensuring quality",
             "The economic operator uses the following technical facilities and measures for ensuring quality are as follows.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     STUDY_AND_RESEARCH_FACILITIES("90a2e100-44cc-45d3-9970-69d6714f1596", "Study and research facilities",
             "The economic operator uses the following study and research facilities are as follows.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     SUPPLY_CHAIN_MANAGEMENT("dc12a151-7fdf-4733-a8f0-30f667292e66", "Supply chain management",
             "The economic operator will be able to apply the following supply chain management and tracking systems when performing the contract.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -170,7 +171,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose:\n"
                     + "The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -178,42 +179,42 @@ public enum SelectionCriterion implements CcvCriterion {
             "Educational and professional qualifications",
             "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     ENVIRONMENTAL_MANAGEMENT_FEATURES("9460457e-b43d-48a9-acd1-615de6ddd33e", "Environmental management measures",
             "The economic operator will be able to apply the following environmental management measures when performing the contract.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     NUMBER_OF_MANAGERIAL_STAFF("6346959b-e097-4ea1-89cd-d1b4c131ea4d", "Number of managerial staff",
             "The economic operator’s number of managerial staff for the last three years were as follows.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     AVERAGE_ANNUAL_MANPOWER("1f49b3f0-d50f-43f6-8b30-4bafab108b9b", "Average annual manpower",
             "The economic operator’s average annual manpower for the last three years were as follows.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     TOOLS_PLANT_TECHNICAL_EQUIPMENT("cc18c023-211d-484d-a32e-52f3f970285f", "Tools, plant or technical equipment",
             "The following tools, plant or technical equipment will be available to it for performing the contract.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
     SUBCONTRACTING_PROPORTION("612a1625-118d-4ea4-a6db-413184e7c0a8", "Subcontracting proportion",
             "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above..",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -221,7 +222,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For supply contracts: Samples, descriptions or photographs without certification of authenticity",
             "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -229,7 +230,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For supply contracts: Samples, descriptions or photographs with certification of authenticity",
             "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -237,7 +238,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "For supply contracts: Certificates by quality control institutes",
             "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -245,7 +246,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "Certificates by independent bodies about quality assurance standards",
             "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
-            Collections.<ExclusionCriterionRequirement>emptyList()),
+            Collections.<CcvCriterionGroup>emptyList()),
     /**
      *
      */
@@ -253,7 +254,7 @@ public enum SelectionCriterion implements CcvCriterion {
             "Certificates by independent bodies about environmental management systems or standards",
             "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
-            Collections.<ExclusionCriterionRequirement>emptyList());
+            Collections.<CcvCriterionGroup>emptyList());
 
     private final String uuid;
 
@@ -265,16 +266,16 @@ public enum SelectionCriterion implements CcvCriterion {
 
     private final LegislationReference legislationReference;
 
-    private final List<ExclusionCriterionRequirement> requirements;
+    private final List<? extends CcvCriterionGroup> groups;
 
     SelectionCriterion(String uuid, String shortName, String description, SelectionCriterionTypeCode criterionTypeCode,
-            LegislationReference legislationReference, List<ExclusionCriterionRequirement> requirements) {
+            LegislationReference legislationReference, List<? extends CcvCriterionGroup> groups) {
         this.uuid = uuid;
         this.shortName = shortName;
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legislationReference = legislationReference;
-        this.requirements = requirements;
+        this.groups = groups;
     }
 
     @Override
