@@ -10,49 +10,23 @@
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="UBL-CommonBasicComponents-2.1.xsd"/>
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" schemaLocation="UBL-UnqualifiedDataTypes-2.1.xsd"/>
 	<!-- Element declaration -->
-	<xsd:element name="CriterionFulfillmentIndicator" type="IndicatorType" default="false" nillable="true"/>
-	<xsd:element name="CriterionFulfillmentMotivation" type="cbc:TextType"/>
-	<xsd:element name="CriterionFulfillmentAmount" type="cbc:AmountType"/>
-	<xsd:element name="CriterionFulfillmentDate" type="cbc:DateType"/>
-	<xsd:element name="CriterionFulfillmentDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionFulfillmentEventTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="CriterionFulfillmentEventTypeDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionFulfillmentQuantity" type="cbc:QuantityType"/>
-	<xsd:element name="CriterionFulfillmentPercent" type="cbc:PercentType"/>
 	<xsd:element name="CriterionID" type="cbc:IDType"/>
 	<xsd:element name="CriterionName" type="cbc:NameType"/>
 	<xsd:element name="CriterionDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionRequirementAmountDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionRequirementAmountTypeCode" type="cbc:TypeCodeType"/>
 	<xsd:element name="CriterionRequirementDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionRequirementEventTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="CriterionRequirementEventDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="CriterionRequirementID" type="cbc:IDType"/>
-	<xsd:element name="CriterionRequirementPercentTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="CriterionRequirementPercentDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionRequirementPeriodTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="CriterionRequirementPeriodDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionRequirementQuantityTypeCode" type="cbc:QuantityType"/>
-	<xsd:element name="CriterionRequirementQuantityDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="CriterionResponseID" type="cbc:IDType"/>
-	<xsd:element name="CriterionResponseDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="CriterionTypeCode" type="cbc:TypeCodeType"/>
 	<xsd:element name="CriterionTypeDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="DateTime" type="udt:DateTimeType"/>
 	<xsd:element name="DependencyDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="DependencyTypeCode" type="cbc:TypeCodeType"/>
 	<xsd:element name="DependencyIdentifierReferenceID" type="cbc:IDType"/>
-	<xsd:element name="EventTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="EventTypeDescription" type="cbc:DescriptionType"/>
+	<xsd:element name="ExpectedResponseType" type="cbc:TypeCodeType"/>
 	<xsd:element name="LegislationArticle" type="cbc:TextType"/>
 	<xsd:element name="LegislationDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="JurisdictionLevelCode" type="cbc:TypeCodeType"/>
 	<xsd:element name="LegislationTitle" type="cbc:TextType"/>
 	<xsd:element name="LegislationURIID" type="cbc:IDType"/>
-	<xsd:element name="PeriodTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="PeriodTypeDescription" type="cbc:DescriptionType"/>
-	<xsd:element name="QuantityTypeCode" type="cbc:TypeCodeType"/>
-	<xsd:element name="QuantityTypeDescription" type="cbc:DescriptionType"/>
 	<!-- Elements definition -->
 	<xsd:complexType name="IndicatorType">
 		<xsd:simpleContent>

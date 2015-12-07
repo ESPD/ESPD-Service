@@ -16,11 +16,8 @@
 	<!-- Element definition -->
 	<xsd:complexType name="EvidenceType">
 		<xsd:sequence>
-			<xsd:element ref="cev-cbc:EvidenceID" minOccurs="0"/>
-			<xsd:element ref="cev-cbc:EvidenceTypeCode" minOccurs="0"/>
 			<xsd:element ref="cev-cbc:EvidenceName" minOccurs="0"/>
 			<xsd:element ref="cev-cbc:EmbeddedEvidenceIndicator" minOccurs="0"/>
-			<xsd:element ref="cev-cbc:EvidenceDescription" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="EvidenceIssuerParty" minOccurs="0"/>
 			<xsd:element ref="EvidenceDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>

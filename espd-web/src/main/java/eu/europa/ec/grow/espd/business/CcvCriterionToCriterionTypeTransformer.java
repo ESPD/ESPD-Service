@@ -1,15 +1,19 @@
 package eu.europa.ec.grow.espd.business;
 
 import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.CriterionJurisdictionLevel;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
-import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionRequirementType;
+import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionRequirementGroupType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.LegislationType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Transforms the criterion information coming from ESPD into a {@link CriterionType} object.
@@ -19,7 +23,12 @@ import org.springframework.stereotype.Component;
 @Component
 class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, CriterionType> {
 
-    private static final RequirementTransformer REQUIREMENT_TRANSFORMER = new RequirementTransformer();
+    private final ToCriterionGroupTransformer criterionGroupTransformer;
+
+    @Autowired
+    CcvCriterionToCriterionTypeTransformer(ToCriterionGroupTransformer criterionGroupTransformer) {
+        this.criterionGroupTransformer = criterionGroupTransformer;
+    }
 
     @Override
     public CriterionType apply(CcvCriterion input) {
@@ -30,7 +39,7 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         addName(input, criterionType);
         addDescription(input, criterionType);
         addLegislationReference(input, criterionType);
-        addRequirements(input, criterionType);
+        addGroups(input, criterionType);
 
         return criterionType;
     }
@@ -98,37 +107,14 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         criterionType.getCriterionLegislationReference().add(legislationType);
     }
 
-    private void addRequirements(CcvCriterion input, CriterionType criterionType) {
-        // TODO
-//        if (CollectionUtils.isEmpty(input.getRequirements())) {
-//            return;
-//        }
-//
-//        List<CriterionRequirementType> requirementTypes = Lists.transform(input.getRequirements(),
-//                REQUIREMENT_TRANSFORMER);
-//        criterionType.getCriterionRequirement().addAll(requirementTypes);
-
-    }
-
-    private static class RequirementTransformer implements Function<CcvCriterionRequirement, CriterionRequirementType> {
-
-        @Override
-        public CriterionRequirementType apply(final CcvCriterionRequirement input) {
-            CriterionRequirementType requirementType = new CriterionRequirementType();
-
-            IDType idType = new IDType();
-            idType.setValue(input.getId());
-            idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-            // TODO
-//            idType.setSchemeID(CcvCriterionRequirement.SCHEME_ID);
-//            idType.setSchemeVersionID(CcvCriterionRequirement.VERSION_ID);
-            requirementType.setCriterionRequirementID(idType);
-
-            DescriptionType descriptionType = new DescriptionType();
-            descriptionType.setValue(input.getDescription());
-            requirementType.setCriterionRequirementDescription(descriptionType);
-
-            return requirementType;
+    private void addGroups(CcvCriterion input, CriterionType criterionType) {
+        if (CollectionUtils.isEmpty(input.getGroups())) {
+            return;
         }
+
+        List<CriterionRequirementGroupType> groupTypes = Lists.transform(input.getGroups(), criterionGroupTransformer);
+        criterionType.getCriterionRequirementGroup().addAll(groupTypes);
+
     }
+
 }

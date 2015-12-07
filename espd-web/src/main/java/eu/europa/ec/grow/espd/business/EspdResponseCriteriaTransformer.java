@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business;
 
+import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
@@ -11,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION;
-
 /**
  * Create the UBL {@link CriterionType} criteria for a ESPD Response, including both exclusion and selection
  * criteria.
@@ -20,11 +19,13 @@ import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.PARTICIPA
  * Created by ratoico on 11/27/15 at 11:40 AM.
  */
 @Component
-class EspdResponseCriteriaTransformer extends AbstractCriteriaTransformer {
+class EspdResponseCriteriaTransformer implements Function<EspdDocument, List<CriterionType>> {
+
+    private final CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer;
 
     @Autowired
     EspdResponseCriteriaTransformer(CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer) {
-        super(ccvCriterionTransformer);
+        this.ccvCriterionTransformer = ccvCriterionTransformer;
     }
 
     @Override
@@ -47,7 +48,7 @@ class EspdResponseCriteriaTransformer extends AbstractCriteriaTransformer {
     }
 
     private void markSelectedExclusionCriminalConvictions(EspdDocument espdDocument, List<CriterionType> criteria) {
-        criteria.add(buildCriminalConvictionsCriterion(espdDocument));
+//        criteria.add(buildCriminalConvictionsCriterion(espdDocument));
 //        criteria.add(buildUblCriterion(CORRUPTION, espdDocument.getCorruption()));
 //        criteria.add(buildUblCriterion(FRAUD, espdDocument.getFraud()));
 //        criteria.add(buildUblCriterion(TERRORIST_OFFENCES, espdDocument.getTerroristOffences()));
@@ -55,9 +56,9 @@ class EspdResponseCriteriaTransformer extends AbstractCriteriaTransformer {
 //        criteria.add(buildUblCriterion(CHILD_LABOUR, espdDocument.getChildLabour()));
     }
 
-    private CriterionType buildCriminalConvictionsCriterion(EspdDocument espdDocument) {
-        CriterionType ublCriterion = buildUblCriterion(PARTICIPATION_CRIMINAL_ORGANISATION,
-                espdDocument.getCriminalConvictions());
-        return ublCriterion;
-    }
+//    private CriterionType buildCriminalConvictionsCriterion(EspdDocument espdDocument) {
+//        CriterionType ublCriterion = buildUblCriterion(PARTICIPATION_CRIMINAL_ORGANISATION,
+//                espdDocument.getCriminalConvictions());
+//        return ublCriterion;
+//    }
 }

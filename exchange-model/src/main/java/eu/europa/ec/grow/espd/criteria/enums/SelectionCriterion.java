@@ -5,8 +5,11 @@ import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionGroup.*;
 
 /**
  * Created by vigi on 11/17/15:3:11 PM.
@@ -19,9 +22,9 @@ public enum SelectionCriterion implements CcvCriterion {
     /**
      *
      */
-    ALL_SELECTION_CRITERIA_SATISFIED("7e7db838-eeac-46d9-ab39-42927486f22d", "All Selection Criteria Will Be Satisfied",
+    ALL_SELECTION_CRITERIA_SATISFIED("7e7db838-eeac-46d9-ab39-42927486f22d", "All selection criteria will be satisfied",
             "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.",
-            SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED, null, Collections.<CcvCriterionGroup>emptyList()),
+            SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED, null, list(ALL_CRITERIA_SATISFIED_GROUP)),
     /**
      *
      */
@@ -291,6 +294,10 @@ public enum SelectionCriterion implements CcvCriterion {
     @Override
     public CcvLegislation getLegislation() {
         return null;
+    }
+
+    private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {
+        return Collections.unmodifiableList(Arrays.asList(values));
     }
 
 }

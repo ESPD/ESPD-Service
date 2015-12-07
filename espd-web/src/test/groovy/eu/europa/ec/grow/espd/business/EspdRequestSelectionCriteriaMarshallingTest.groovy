@@ -30,7 +30,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         request.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
 
         then: "check name and description"
-        request.Criterion[idx].CriterionName.text() == "All Selection Criteria Will Be Satisfied"
+        request.Criterion[idx].CriterionName.text() == "All selection criteria will be satisfied"
         request.Criterion[idx].CriterionDescription.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
     }
 

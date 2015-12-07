@@ -24,7 +24,7 @@
 			<xsd:element ref="cbc:ProfileExecutionID" minOccurs="0"/>
 			<xsd:element ref="cbc:ID"/>
 			<xsd:element ref="cbc:CopyIndicator" minOccurs="0"/>
-			<xsd:element ref="cbc:UUID" minOccurs="0"/>
+			<xsd:element ref="cbc:UUID"/>
 			<xsd:element ref="cbc:VersionID" minOccurs="0"/>
 			<xsd:element ref="cbc:PreviousVersionID" minOccurs="0"/>
 			<xsd:element ref="cbc:IssueDate"/>
@@ -34,6 +34,7 @@
 			<xsd:element ref="cac:ProcurementProjectLot" maxOccurs="unbounded"/>
 			<xsd:element ref="ccv:Criterion" maxOccurs="unbounded"/>
 			<xsd:element ref="cac:ServiceProviderParty" minOccurs="0"/>
+			<xsd:element ref="cac:AdditionalDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="cac:Signature" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>

@@ -46,8 +46,11 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
         // THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS
         List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
         markSelectedExclusionCriminalConvictions(espdDocument, criterionTypes);
-        markSelectedExclusionPaymentOfTaxes(espdDocument, criterionTypes);
-        markSelectedExclusionBreachOfObligations(espdDocument, criterionTypes);
+        markSelectedExclusionPayment(espdDocument, criterionTypes);
+        markSelectedExclusionEnvironmental(espdDocument, criterionTypes);
+        markSelectedExclusionBankruptcyInsolvency(espdDocument, criterionTypes);
+        markSelectedExclusionMisconduct(espdDocument, criterionTypes);
+        markSelectedExclusionConflictOfInterest(espdDocument, criterionTypes);
         markSelectedExclusionNationalGrounds(espdDocument, criterionTypes);
         return criterionTypes;
     }
@@ -61,13 +64,16 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
         addUblCriterionIfSelected(CHILD_LABOUR, espdDocument.getChildLabour(), criteria);
     }
 
-    private void markSelectedExclusionPaymentOfTaxes(EspdDocument espdDocument, List<CriterionType> criteria) {
+    private void markSelectedExclusionPayment(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(PAYMENT_OF_TAXES, espdDocument.getPaymentTaxes(), criteria);
         addUblCriterionIfSelected(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocialSecurity(), criteria);
     }
 
-    private void markSelectedExclusionBreachOfObligations(EspdDocument espdDocument, List<CriterionType> criteria) {
+    private void markSelectedExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, espdDocument.getBreachingObligations(), criteria);
+    }
+
+    private void markSelectedExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(BANKRUPTCY, espdDocument.getBankruptcy(), criteria);
         addUblCriterionIfSelected(INSOLVENCY, espdDocument.getInsolvency(), criteria);
         addUblCriterionIfSelected(ARRANGEMENT_WITH_CREDITORS, espdDocument.getArrangementWithCreditors(), criteria);
@@ -76,7 +82,13 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
                 criteria);
         addUblCriterionIfSelected(BUSINESS_ACTIVITIES_SUSPENDED, espdDocument.getBusinessActivitiesSuspended(),
                 criteria);
+    }
+
+    private void markSelectedExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave(), criteria);
+    }
+
+    private void markSelectedExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, espdDocument.getConflictInterest(), criteria);
         addUblCriterionIfSelected(DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparationProcurement(),
                 criteria);
