@@ -38,8 +38,8 @@ public class EspdDocument {
     private BreachOfObligations assetsAdministeredByLiquidator;
     private BreachOfObligations businessActivitiesSuspended;
     private BreachOfObligations guiltyGrave;
-    // TODO should remove this field?
-    private BreachOfObligations agreementsEo;
+    // TODO should remove this field? Probably we should.
+    //private BreachOfObligations agreementsEo;
     private BreachOfObligations conflictInterest;
     private BreachOfObligations involvementPreparationProcurement;
     private BreachOfObligations earlyTermination;
