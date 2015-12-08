@@ -77,6 +77,7 @@ public class EspdDocument {
     private SelectionCriterion subcontractingProportion;
     private SelectionCriterion supplyContractsSamplesDescriptionsWithoutCa;
     private SelectionCriterion supplyContractsSamplesDescriptionsWithCa;
+    private SelectionCriterion supplyContractsCertificatesQc;
     private SelectionCriterion certificateIndependentBodiesAboutQa;
     private SelectionCriterion certificateIndependentBodiesAboutEnvironmental;
 

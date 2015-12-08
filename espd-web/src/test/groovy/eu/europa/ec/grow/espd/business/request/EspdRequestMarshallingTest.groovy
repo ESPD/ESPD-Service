@@ -2,8 +2,8 @@ package eu.europa.ec.grow.espd.business.request
 
 import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.PartyImpl
+import eu.europa.ec.grow.espd.domain.*
+
 /**
  *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
  */
@@ -152,8 +152,76 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         when:
         def result = parseRequestXml()
 
-        then: "all the exclusion criteria should always be present (plus selection criteria depending on user selection)"
+        then:
         result.Criterion.size() == 0
+    }
+
+    def "should contain all exclusion and selection criteria (without satisfies all)"() {
+        given:
+        def espd = new EspdDocument(
+                // exclusion
+                criminalConvictions: new CriminalConvictions(exists: true),
+                corruption: new CriminalConvictions(exists: true),
+                fraud: new CriminalConvictions(exists: true),
+                terroristOffences: new CriminalConvictions(exists: true),
+                moneyLaundering: new CriminalConvictions(exists: true),
+                childLabour: new CriminalConvictions(exists: true),
+                paymentTaxes: new Taxes(exists: true),
+                paymentSocialSecurity: new Taxes(exists: true),
+                breachingObligations: new BreachOfObligations(exists: true),
+                bankruptcy: new BreachOfObligations(exists: true),
+                insolvency: new BreachOfObligations(exists: true),
+                arrangementWithCreditors: new BreachOfObligations(exists: true),
+                analogousSituation: new BreachOfObligations(exists: true),
+                assetsAdministeredByLiquidator: new BreachOfObligations(exists: true),
+                businessActivitiesSuspended: new BreachOfObligations(exists: true),
+                guiltyGrave: new BreachOfObligations(exists: true),
+                conflictInterest: new BreachOfObligations(exists: true),
+                involvementPreparationProcurement: new BreachOfObligations(exists: true),
+                earlyTermination: new BreachOfObligations(exists: true),
+                guiltyMisinterpretation: new BreachOfObligations(exists: true),
+                purelyNationalGrounds: new Criterion(exists: true),
+                // selection
+                enrollmentProfessionalRegister: new SelectionCriterion(exists: true),
+                enrollmentTradeRegister: new SelectionCriterion(exists: true),
+                serviceContractsAuthorisation: new SelectionCriterion(exists: true),
+                serviceContractsMembership: new SelectionCriterion(exists: true),
+                generalYearlyTurnover: new SelectionCriterion(exists: true),
+                averageYearlyTurnover: new SelectionCriterion(exists: true),
+                specificYearlyTurnover: new SelectionCriterion(exists: true),
+                specificAverageTurnover: new SelectionCriterion(exists: true),
+                financialRatio: new SelectionCriterion(exists: true),
+                professionalRiskInsurance: new SelectionCriterion(exists: true),
+                otherEconomicFinancialRequirements: new SelectionCriterion(exists: true),
+                workContractsPerformanceOfWorks: new SelectionCriterion(exists: true),
+                supplyContractsPerformanceDeliveries: new SelectionCriterion(exists: true),
+                serviceContractsPerformanceServices: new SelectionCriterion(exists: true),
+                techniciansTechnicalBodies: new SelectionCriterion(exists: true),
+                workContractsTechnicians: new SelectionCriterion(exists: true),
+                technicalFacilitiesMeasures: new SelectionCriterion(exists: true),
+                studyResearchFacilities: new SelectionCriterion(exists: true),
+                supplyChainManagement: new SelectionCriterion(exists: true),
+                allowanceOfChecks: new SelectionCriterion(exists: true),
+                educationalProfessionalQualifications: new SelectionCriterion(exists: true),
+                environmentalManagementFeatures: new SelectionCriterion(exists: true),
+                numberManagerialStaff: new SelectionCriterion(exists: true),
+                averageAnnualManpower: new SelectionCriterion(exists: true),
+                toolsPlantTechnicalEquipment: new SelectionCriterion(exists: true),
+                subcontractingProportion: new SelectionCriterion(exists: true),
+                supplyContractsSamplesDescriptionsWithoutCa: new SelectionCriterion(exists: true),
+                supplyContractsSamplesDescriptionsWithCa: new SelectionCriterion(exists: true),
+                supplyContractsCertificatesQc: new SelectionCriterion(exists: true),
+                certificateIndependentBodiesAboutQa: new SelectionCriterion(exists: true),
+                certificateIndependentBodiesAboutEnvironmental: new SelectionCriterion(exists: true)
+        )
+
+        when:
+        def result = parseRequestXml(espd)
+        def file = new File("/home/ratoico/Downloads/espd-request.xml")
+        file.text = xmlOutput
+
+        then:
+        result.Criterion.size() == 52
     }
 
 }

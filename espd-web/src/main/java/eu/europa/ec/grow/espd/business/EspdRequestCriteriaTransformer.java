@@ -170,6 +170,8 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
                 espdDocument.getSupplyContractsSamplesDescriptionsWithoutCa(), criteria);
         addUblCriterionIfSelected(SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA,
                 espdDocument.getSupplyContractsSamplesDescriptionsWithCa(), criteria);
+        addUblCriterionIfSelected(SUPPLY_CONTRACTS_CERTIFICATES_QC,
+                espdDocument.getSupplyContractsCertificatesQc(), criteria);
         addUblCriterionIfSelected(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA,
                 espdDocument.getCertificateIndependentBodiesAboutQa(), criteria);
         addUblCriterionIfSelected(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL,

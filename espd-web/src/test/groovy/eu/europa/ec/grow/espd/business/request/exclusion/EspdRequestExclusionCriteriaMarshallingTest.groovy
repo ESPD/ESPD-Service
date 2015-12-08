@@ -772,25 +772,34 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
     def "all exclusion criteria should be in the correct order"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true),
-                corruption: new CriminalConvictions(exists: true), fraud: new CriminalConvictions(exists: true),
-                terroristOffences: new CriminalConvictions(exists: true), moneyLaundering: new CriminalConvictions(exists: true),
-                childLabour: new CriminalConvictions(exists: true), paymentTaxes: new Taxes(exists: true),
-                paymentSocialSecurity: new Taxes(exists: true), breachingObligations: new BreachOfObligations(exists: true),
-                bankruptcy: new BreachOfObligations(exists: true), insolvency: new BreachOfObligations(exists: true),
-                arrangementWithCreditors: new BreachOfObligations(exists: true), analogousSituation: new BreachOfObligations(exists: true),
-                assetsAdministeredByLiquidator: new BreachOfObligations(exists: true), businessActivitiesSuspended: new BreachOfObligations(exists: true),
-                guiltyGrave: new BreachOfObligations(exists: true), conflictInterest: new BreachOfObligations(exists: true),
-                involvementPreparationProcurement: new BreachOfObligations(exists: true), earlyTermination: new BreachOfObligations(exists: true),
-                guiltyMisinterpretation: new BreachOfObligations(exists: true), purelyNationalGrounds: new Criterion(exists: true),
-                selectionSatisfiesAll: new Criterion(exists: true))
+        def espd = new EspdDocument(
+                criminalConvictions: new CriminalConvictions(exists: true),
+                corruption: new CriminalConvictions(exists: true),
+                fraud: new CriminalConvictions(exists: true),
+                terroristOffences: new CriminalConvictions(exists: true),
+                moneyLaundering: new CriminalConvictions(exists: true),
+                childLabour: new CriminalConvictions(exists: true),
+                paymentTaxes: new Taxes(exists: true),
+                paymentSocialSecurity: new Taxes(exists: true),
+                breachingObligations: new BreachOfObligations(exists: true),
+                bankruptcy: new BreachOfObligations(exists: true),
+                insolvency: new BreachOfObligations(exists: true),
+                arrangementWithCreditors: new BreachOfObligations(exists: true),
+                analogousSituation: new BreachOfObligations(exists: true),
+                assetsAdministeredByLiquidator: new BreachOfObligations(exists: true),
+                businessActivitiesSuspended: new BreachOfObligations(exists: true),
+                guiltyGrave: new BreachOfObligations(exists: true),
+                conflictInterest: new BreachOfObligations(exists: true),
+                involvementPreparationProcurement: new BreachOfObligations(exists: true),
+                earlyTermination: new BreachOfObligations(exists: true),
+                guiltyMisinterpretation: new BreachOfObligations(exists: true),
+                purelyNationalGrounds: new Criterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
-        def file = new File("/home/ratoico/Downloads/espd-request.xml")
-        file.text = xmlOutput
 
         then:
+        request.Criterion.size() == 21
         checkCriterionId(request, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
         checkCriterionId(request, 1, "c27b7c4e-c837-4529-b867-ed55ce639db5")
         checkCriterionId(request, 2, "297d2323-3ede-424e-94bc-a91561e6f320")
