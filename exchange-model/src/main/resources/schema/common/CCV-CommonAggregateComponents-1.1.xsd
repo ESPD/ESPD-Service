@@ -33,6 +33,7 @@
 			<xsd:element ref="ccv-cbc:CriterionName" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionDescription" minOccurs="0"/>
 			<xsd:element ref="CriterionLegislationReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="CriterionRequirement" minOccurs="0"/>
 			<xsd:element ref="CriterionRequirementGroup" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
@@ -52,7 +53,7 @@
 		<xsd:sequence>
 			<xsd:element ref="ccv-cbc:CriterionRequirementID" minOccurs="0"/>
 			<xsd:element ref="ccv-cbc:CriterionRequirementDescription" minOccurs="0"/>
-			<xsd:element ref="ccv-cbc:ExpectedResponseType" minOccurs="0"/>			
+			<xsd:element ref="ccv-cbc:ExpectedResponseType" minOccurs="0"/>
 			<xsd:element ref="ContextualDependency" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>

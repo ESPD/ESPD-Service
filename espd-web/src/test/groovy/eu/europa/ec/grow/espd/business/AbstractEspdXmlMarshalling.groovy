@@ -13,19 +13,23 @@ import spock.lang.Specification
 abstract class AbstractEspdXmlMarshalling extends Specification {
 
     @Shared
-    protected Jaxb2Marshaller jaxb2Marshaller
+    protected static Jaxb2Marshaller jaxb2Marshaller= new JaxbConfiguration().jaxb2Marshaller()
+
+    static {
+        // init the marshaller only once because it's expensive to create
+        initEspdMarshaller(jaxb2Marshaller)
+    }
 
     @Shared
-    protected EspdExchangeMarshaller marshaller
+    protected static EspdExchangeMarshaller marshaller
 
     protected StringWriter xmlOutput
 
     void setupSpec() {
-        jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
-        initEspdMarshaller(jaxb2Marshaller)
+        // init objects run before the first feature method
     }
 
-    private void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
+    private static void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
         def commonUblFactory = new CommonUblFactory()
         def contractingPartyTransformer = new ToContractingPartyTransformer()
         def criterionGroupTransformer = new ToCriterionGroupTransformer(new ToCriterionRequirementTransformer())
@@ -40,8 +44,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     }
 
     void cleanupSpec() {
-        marshaller = null
-        jaxb2Marshaller = null
+        // cleanup run after the last feature method
     }
 
     void setup() {

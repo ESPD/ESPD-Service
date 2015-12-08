@@ -22,7 +22,7 @@
     </jxb:bindings>
     <jxb:bindings schemaLocation="ESPDResponse-1.1.xsd">
         <jxb:bindings>
-            <namespace:prefix name="espd-resp"/>
+            <namespace:prefix name="espd"/>
         </jxb:bindings>
     </jxb:bindings>
 
@@ -52,7 +52,7 @@
 
     <jxb:bindings schemaLocation="../common/ESPD-CommonAggregateComponents-1.1.xsd">
         <jxb:bindings>
-            <namespace:prefix name="espd"/>
+            <namespace:prefix name="espd-cac"/>
         </jxb:bindings>
     </jxb:bindings>
     <jxb:bindings schemaLocation="../common/ESPD-CommonBasicComponents-1.1.xsd">

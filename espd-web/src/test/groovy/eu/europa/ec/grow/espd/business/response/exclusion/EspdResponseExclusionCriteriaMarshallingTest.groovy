@@ -1,4 +1,7 @@
-package eu.europa.ec.grow.espd.business
+package eu.europa.ec.grow.espd.business.response.exclusion
+
+import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 /**
  * Created by ratoico on 11/27/15 at 10:42 AM.
  */

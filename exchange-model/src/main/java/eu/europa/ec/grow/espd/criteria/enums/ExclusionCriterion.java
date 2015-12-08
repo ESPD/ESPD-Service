@@ -17,6 +17,8 @@ import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionGroup.*;
 @Getter
 public enum ExclusionCriterion implements CcvCriterion {
 
+
+
     /**
      *
      */

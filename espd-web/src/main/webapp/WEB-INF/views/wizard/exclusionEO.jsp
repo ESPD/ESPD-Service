@@ -43,9 +43,19 @@
 						</span>
 						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv_eo'/>"></span>
 					</div>
+
+                <forEach items="">
+                    <tiles:insertDefinition name="criminalFormCriterion">
+                        <tiles:putAttribute name="field" value="${}"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
+                        <tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv"/>
+                    </tiles:insertDefinition>
+                </forEach>
+
+
 					
 					<tiles:insertDefinition name="criminalFormCriterion">
-						<tiles:putAttribute name="field" value="criminalConvictions"/>
+						<tiles:putAttribute name="field" value="${}"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
 						<tiles:putAttribute name="tooltip_code" value="crit_eu_tooltip_grounds_criminal_conv"/>
 					</tiles:insertDefinition>

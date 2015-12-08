@@ -1,5 +1,6 @@
-package eu.europa.ec.grow.espd.business
+package eu.europa.ec.grow.espd.business.response
 
+import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
@@ -15,8 +16,8 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
         then:
         result.lookupNamespace('espd-req') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
-        result.lookupNamespace('espd-resp') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1'
-        result.lookupNamespace('espd') == 'urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1'
+        result.lookupNamespace('espd') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1'
+        result.lookupNamespace('espd-cac') == 'urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1'
         result.lookupNamespace('espd-cbc') == 'urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1'
         result.lookupNamespace('cbc') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'
         result.lookupNamespace('cac') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2'

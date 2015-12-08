@@ -1,5 +1,6 @@
-package eu.europa.ec.grow.espd.business
+package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
