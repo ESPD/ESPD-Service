@@ -15,7 +15,9 @@ public enum ExpectedResponseType implements CcvResponseType{
     BOOLEAN,
     URL,
     AMOUNT,
-    COUNTRY
+    COUNTRY,
+    RATIO,
+    PERCENTAGE
     ;
 
     @Override

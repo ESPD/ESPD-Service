@@ -47,13 +47,38 @@ public class EspdDocument {
 
     private Criterion purelyNationalGrounds;
 
-    private SelectionCriterion suitabilityEnrolment;
+    private SelectionCriterion enrollmentProfessionalRegister;
+    private SelectionCriterion enrollmentTradeRegister;
+    private SelectionCriterion serviceContractsAuthorisation;
+    private SelectionCriterion serviceContractsMembership;
 
-    private SelectionCriterion suitabilityServiceContracts;
+    private SelectionCriterion generalYearlyTurnover;
+    private SelectionCriterion averageYearlyTurnover;
+    private SelectionCriterion specificYearlyTurnover;
+    private SelectionCriterion specificAverageTurnover;
+    private SelectionCriterion financialRatio;
+    private SelectionCriterion professionalRiskInsurance;
+    private SelectionCriterion otherEconomicFinancialRequirements;
 
-    private SelectionCriterion economicGeneralTurnover;
-
-    private SelectionCriterion economicAverageTurnover;
+    private SelectionCriterion workContractsPerformanceOfWorks;
+    private SelectionCriterion supplyContractsPerformanceDeliveries;
+    private SelectionCriterion serviceContractsPerformanceServices;
+    private SelectionCriterion techniciansTechnicalBodies;
+    private SelectionCriterion workContractsTechnicians;
+    private SelectionCriterion technicalFacilitiesMeasures;
+    private SelectionCriterion studyResearchFacilities;
+    private SelectionCriterion supplyChainManagement;
+    private SelectionCriterion allowanceOfChecks;
+    private SelectionCriterion educationalProfessionalQualifications;
+    private SelectionCriterion environmentalManagementFeatures;
+    private SelectionCriterion numberManagerialStaff;
+    private SelectionCriterion averageAnnualManpower;
+    private SelectionCriterion toolsPlantTechnicalEquipment;
+    private SelectionCriterion subcontractingProportion;
+    private SelectionCriterion supplyContractsSamplesDescriptionsWithoutCa;
+    private SelectionCriterion supplyContractsSamplesDescriptionsWithCa;
+    private SelectionCriterion certificateIndependentBodiesAboutQa;
+    private SelectionCriterion certificateIndependentBodiesAboutEnvironmental;
 
     private SelectionCriterion economicEnrolment;
 

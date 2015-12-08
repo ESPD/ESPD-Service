@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.*;
+import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.*;
 
 /**
  * Create the UBL {@link CriterionType} criteria for a ESPD Request, including both exclusion and selection
@@ -70,7 +71,8 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
     }
 
     private void markSelectedExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, espdDocument.getBreachingObligations(), criteria);
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, espdDocument.getBreachingObligations(),
+                criteria);
     }
 
     private void markSelectedExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> criteria) {
@@ -89,8 +91,10 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
     }
 
     private void markSelectedExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, espdDocument.getConflictInterest(), criteria);
-        addUblCriterionIfSelected(DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, espdDocument.getInvolvementPreparationProcurement(),
+        addUblCriterionIfSelected(CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, espdDocument.getConflictInterest(),
+                criteria);
+        addUblCriterionIfSelected(DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE,
+                espdDocument.getInvolvementPreparationProcurement(),
                 criteria);
         addUblCriterionIfSelected(EARLY_TERMINATION, espdDocument.getEarlyTermination(), criteria);
         addUblCriterionIfSelected(GUILTY_OF_MISINTERPRETATION, espdDocument.getGuiltyMisinterpretation(), criteria);
@@ -107,8 +111,69 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
                     espdDocument.getSelectionSatisfiesAll(), all);
             return Collections.unmodifiableList(all);
         }
-        // TODO add selection criteria
-        return Collections.emptyList();
+        List<CriterionType> criterionTypes = new ArrayList<>(SelectionCriterion.values().length + 1);
+        markSelectedSelectionSuitability(espdDocument, criterionTypes);
+        markSelectedSelectionEconomicFinancialStanding(espdDocument, criterionTypes);
+        markSelectedSelectionTechnicalProfessionalAbility(espdDocument, criterionTypes);
+        return criterionTypes;
+    }
+
+    private void markSelectedSelectionSuitability(EspdDocument espdDocument, List<CriterionType> criteria) {
+        addUblCriterionIfSelected(ENROLLMENT_PROFESSIONAL_REGISTER, espdDocument.getEnrollmentProfessionalRegister(),
+                criteria);
+        addUblCriterionIfSelected(ENROLLMENT_TRADE_REGISTER, espdDocument.getEnrollmentTradeRegister(), criteria);
+        addUblCriterionIfSelected(SERVICE_CONTRACTS_AUTHORISATION, espdDocument.getServiceContractsAuthorisation(),
+                criteria);
+        addUblCriterionIfSelected(SERVICE_CONTRACTS_MEMBERSHIP, espdDocument.getServiceContractsMembership(), criteria);
+    }
+
+    private void markSelectedSelectionEconomicFinancialStanding(EspdDocument espdDocument,
+            List<CriterionType> criteria) {
+        addUblCriterionIfSelected(GENERAL_YEARLY_TURNOVER, espdDocument.getGeneralYearlyTurnover(), criteria);
+        addUblCriterionIfSelected(AVERAGE_YEARLY_TURNOVER, espdDocument.getAverageYearlyTurnover(), criteria);
+        addUblCriterionIfSelected(SPECIFIC_YEARLY_TURNOVER, espdDocument.getSpecificYearlyTurnover(), criteria);
+        addUblCriterionIfSelected(SPECIFIC_AVERAGE_TURNOVER, espdDocument.getSpecificAverageTurnover(), criteria);
+        addUblCriterionIfSelected(FINANCIAL_RATIO, espdDocument.getFinancialRatio(), criteria);
+        addUblCriterionIfSelected(PROFESSIONAL_RISK_INSURANCE, espdDocument.getProfessionalRiskInsurance(), criteria);
+        addUblCriterionIfSelected(OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS,
+                espdDocument.getOtherEconomicFinancialRequirements(), criteria);
+    }
+
+    private void markSelectedSelectionTechnicalProfessionalAbility(EspdDocument espdDocument,
+            List<CriterionType> criteria) {
+        addUblCriterionIfSelected(WORK_CONTRACTS_PERFORMANCE_OF_WORKS,
+                espdDocument.getWorkContractsPerformanceOfWorks(), criteria);
+        addUblCriterionIfSelected(SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES,
+                espdDocument.getSupplyContractsPerformanceDeliveries(), criteria);
+        addUblCriterionIfSelected(SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES,
+                espdDocument.getServiceContractsPerformanceServices(), criteria);
+        addUblCriterionIfSelected(TECHNICIANS_OR_TECHNICAL_BODIES, espdDocument.getTechniciansTechnicalBodies(),
+                criteria);
+        addUblCriterionIfSelected(WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES,
+                espdDocument.getWorkContractsTechnicians(), criteria);
+        addUblCriterionIfSelected(TECHNICAL_FACILITIES_AND_MEASURES, espdDocument.getTechnicalFacilitiesMeasures(),
+                criteria);
+        addUblCriterionIfSelected(STUDY_AND_RESEARCH_FACILITIES,
+                espdDocument.getStudyResearchFacilities(), criteria);
+        addUblCriterionIfSelected(SUPPLY_CHAIN_MANAGEMENT, espdDocument.getSupplyChainManagement(), criteria);
+        addUblCriterionIfSelected(ALLOWANCE_OF_CHECKS, espdDocument.getAllowanceOfChecks(), criteria);
+        addUblCriterionIfSelected(EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS,
+                espdDocument.getEducationalProfessionalQualifications(), criteria);
+        addUblCriterionIfSelected(ENVIRONMENTAL_MANAGEMENT_FEATURES, espdDocument.getEnvironmentalManagementFeatures(),
+                criteria);
+        addUblCriterionIfSelected(NUMBER_OF_MANAGERIAL_STAFF, espdDocument.getNumberManagerialStaff(), criteria);
+        addUblCriterionIfSelected(AVERAGE_ANNUAL_MANPOWER, espdDocument.getAverageAnnualManpower(), criteria);
+        addUblCriterionIfSelected(TOOLS_PLANT_TECHNICAL_EQUIPMENT, espdDocument.getToolsPlantTechnicalEquipment(),
+                criteria);
+        addUblCriterionIfSelected(SUBCONTRACTING_PROPORTION, espdDocument.getSubcontractingProportion(), criteria);
+        addUblCriterionIfSelected(SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA,
+                espdDocument.getSupplyContractsSamplesDescriptionsWithoutCa(), criteria);
+        addUblCriterionIfSelected(SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA,
+                espdDocument.getSupplyContractsSamplesDescriptionsWithCa(), criteria);
+        addUblCriterionIfSelected(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA,
+                espdDocument.getCertificateIndependentBodiesAboutQa(), criteria);
+        addUblCriterionIfSelected(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL,
+                espdDocument.getCertificateIndependentBodiesAboutEnvironmental(), criteria);
     }
 
     private void addUblCriterionIfSelected(CcvCriterion ccvCriterion, Criterion espdCriterion,

@@ -100,13 +100,13 @@
                             </span>
                                 <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
                                       title="<s:message code='crit_selection_ca_suitability_article_tooltip'/>"></span>
-                        <c:set var="field" value="suitabilityEnrolment" scope="session"/>
+                        <c:set var="field" value="enrollmentProfessionalRegister" scope="session"/>
                         <c:set var="title_code" value="crit_selection_ca_suitability_enrolment_main" scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>
                         <c:set var="description_code" value="crit_selection_ca_suitability_enrolment_description"
                                scope="session"/>
                         <jsp:include page="editors/criteria.jsp"/>
-                        <c:set var="field" value="suitabilityServiceContracts" scope="session"/>
+                        <c:set var="field" value="serviceContractsAuthorisation" scope="session"/>
                         <c:set var="title_code" value="crit_selection_ca_suitability_service_contracts_main"
                                scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>
@@ -129,13 +129,13 @@
                             </span>
                                 <span data-i18n="crit_selection_ca_economic_article_tooltip" data-toggle="tooltip"
                                       title="<s:message code='crit_selection_ca_economic_article_tooltip'/>"></span>
-                        <c:set var="field" value="economicGeneralTurnover" scope="session"/>
+                        <c:set var="field" value="generalYearlyTurnover" scope="session"/>
                         <c:set var="title_code" value="crit_selection_ca_economic_general_yearly_main" scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>
                         <c:set var="description_code" value="crit_selection_ca_economic_general_yearly_description"
                                scope="session"/>
                         <jsp:include page="editors/criteria.jsp"/>
-                        <c:set var="field" value="economicAverageTurnover" scope="session"/>
+                        <c:set var="field" value="averageYearlyTurnover" scope="session"/>
                         <c:set var="title_code" value="crit_selection_ca_economic_average_yearly_main" scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>
                         <c:set var="description_code" value="crit_selection_ca_economic_average_yearly_description"

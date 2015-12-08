@@ -108,13 +108,13 @@
                     </div>
                 </div>
                 <tiles:insertDefinition name="selectionCriterionEO">
-                    <tiles:putAttribute name="field" value="suitabilityEnrolment"/>
+                    <tiles:putAttribute name="field" value="enrollmentProfessionalRegister"/>
                     <tiles:putAttribute name="number" value="1"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_enrolment_main"/>
                     <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_suitability_enrolment_description"/>
                 </tiles:insertDefinition>
                 <tiles:insertDefinition name="selectionCriterionEO">
-                    <tiles:putAttribute name="field" value="suitabilityServiceContracts"/>
+                    <tiles:putAttribute name="field" value="serviceContractsAuthorisation"/>
                     <tiles:putAttribute name="number" value="2"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_service_contracts_main"/>
                     <tiles:putAttribute name="tooltip_code"
