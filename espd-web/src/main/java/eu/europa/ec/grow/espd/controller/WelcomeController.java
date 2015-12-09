@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.controller;
 
 import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ class WelcomeController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @RequestParam(required = false) MultipartFile attachment,
+            @RequestParam("authority.country") Country country, @RequestParam(required = false) MultipartFile attachment,
             Map<String, Object> model) throws IOException {
         if ("eo_import_espd".equals(action)) {
             try (InputStream is = attachment.getInputStream()) {
@@ -68,7 +69,9 @@ class WelcomeController {
                 return "redirect:/procedure?agent=" + agent;
             }
         } else if ("ca_create_espd".equals(action)) {
-            // TODO preselect the country
+            // TODO improve this
+            EspdDocument espd = (EspdDocument) model.get("espd");
+            espd.getAuthority().setCountry(country);
             return "redirect:/procedure?agent=" + agent;
         }
 
