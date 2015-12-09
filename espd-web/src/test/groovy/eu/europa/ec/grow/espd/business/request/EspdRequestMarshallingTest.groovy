@@ -217,8 +217,8 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
         when:
         def result = parseRequestXml(espd)
-        def file = new File("/home/ratoico/Downloads/espd-request.xml")
-        file.text = xmlOutput
+//        def file = new File("/home/ratoico/Downloads/espd-request.xml")
+//        file.text = xmlOutput
 
         then:
         result.Criterion.size() == 52

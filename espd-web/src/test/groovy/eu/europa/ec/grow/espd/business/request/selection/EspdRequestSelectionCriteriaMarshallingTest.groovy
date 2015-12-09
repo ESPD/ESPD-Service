@@ -11,29 +11,30 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
 
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true))
-        // selection criteria come after exclusion criteria
-        def idx = 0
+        def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true),
+                enrollmentProfessionalRegister: new SelectionCriterion(exists: true),
+                enrollmentTradeRegister: new SelectionCriterion(exists: true),
+                serviceContractsAuthorisation: new SelectionCriterion(exists: true),
+                serviceContractsMembership: new SelectionCriterion(exists: true),)
 
         when:
-        marshaller.generateEspdRequest(espd, xmlOutput)
-        def request = new XmlSlurper().parseText(xmlOutput.toString())
+        def request = parseRequestXml(espd)
+
+        then: "one and only one selection criteria"
+        request.Criterion.size() == 1
 
         then: "check the CriterionID"
-        request.Criterion[idx].CriterionID.text() == "7e7db838-eeac-46d9-ab39-42927486f22d"
-        request.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
-        request.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
-        request.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
+        checkCriterionId(request, 0, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "check the CriterionTypeCode"
-        request.Criterion[idx].CriterionTypeCode.text() == "SELECTION.ALL_CRITERIA_SATISFIED"
-        request.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        request.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
-        request.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
+        request.Criterion[0].CriterionTypeCode.text() == "SELECTION.ALL_CRITERIA_SATISFIED"
+        request.Criterion[0].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        request.Criterion[0].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
+        request.Criterion[0].CriterionTypeCode.@listVersionID.text() == "1.0"
 
         then: "check name and description"
-        request.Criterion[idx].CriterionName.text() == "All selection criteria will be satisfied"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+        request.Criterion[0].CriterionName.text() == "All selection criteria will be satisfied"
+        request.Criterion[0].CriterionDescription.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
     }
 
     def "all selection criteria (except satisfies all) should be in the correct order"() {

@@ -27,14 +27,14 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     ENROLLMENT_PROFESSIONAL_REGISTER("6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f",
-            "Enrollment in a relevant professional register",
+            "Enrolment in a relevant professional register",
             "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
             list(ENROLLMENT_PROFESSIONAL_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
-    ENROLLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrollment in a trade register",
+    ENROLLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrolment in a trade register",
             "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
             list(ENROLLMENT_TRADE_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
@@ -42,7 +42,7 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     SERVICE_CONTRACTS_AUTHORISATION("9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4",
-            "For service contracts: Authorisation of particular organisation needed",
+            "For service contracts: authorisation of particular organisation needed",
             "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
             list(SERVICE_CONTRACTS_AUTHORISATION_GROUP, INFO_ELECTRONICALLY_GROUP)),
@@ -50,7 +50,7 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     SERVICE_CONTRACTS_MEMBERSHIP("73f10e36-ed7a-412e-995c-aa76463e3776",
-            "For service contracts: Membership of particular organisation needed ",
+            "For service contracts: membership of particular organisation needed",
             "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
             SelectionCriterionTypeCode.SUITABILITY, null, list(SERVICE_CONTRACTS_MEMBERSHIP_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
@@ -85,7 +85,7 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     FINANCIAL_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Financial ratio",
-            "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows..",
+            "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows.",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
             list(FINANCIAL_RATIO_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
@@ -108,7 +108,7 @@ public enum SelectionCriterion implements CcvCriterion {
      */
     WORK_CONTRACTS_PERFORMANCE_OF_WORKS("cdd3bb3e-34a5-43d5-b668-2aab86a73822",
             "For works contracts: performance of works of the specified type",
-            "During the reference period , the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
+            "During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(WORK_CONTRACTS_PERFORMANCE_OF_WORKS_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
@@ -116,15 +116,15 @@ public enum SelectionCriterion implements CcvCriterion {
      */
     SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES("3a18a175-1863-4b1d-baef-588ce61960ca",
             "For supply contracts: performance of deliveries of the specified type",
-            "During the reference period , the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+            "During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list()),
+            list(SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES_GROUP)),
     /**
      *
      */
     SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES("5e506c16-26ab-4e32-bb78-b27f87dc0565",
-            "For service contracts: Performance of services of the specified type",
-            "During the reference period , the economic operator has provided the following main services of the  type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+            "For service contracts: performance of services of the specified type",
+            "During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
@@ -213,14 +213,14 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     SUBCONTRACTING_PROPORTION("612a1625-118d-4ea4-a6db-413184e7c0a8", "Subcontracting proportion",
-            "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above..",
+            "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(SUBCONTRACTING_PROPORTION_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
     SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA("bdf0601d-2480-4250-b870-658d0ee95be6",
-            "For supply contracts: Samples, descriptions or photographs without certification of authenticity",
+            "For supply contracts: samples, descriptions or photographs without certification of authenticity",
             "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA_GROUP, INFO_ELECTRONICALLY_GROUP)),
@@ -228,7 +228,7 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA("7662b7a9-bcb8-4763-a0a7-7505d8e8470d",
-            "For supply contracts: Samples, descriptions or photographs with certification of authenticity",
+            "For supply contracts: samples, descriptions or photographs with certification of authenticity",
             "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA_GROUP, INFO_ELECTRONICALLY_GROUP)),
@@ -236,7 +236,7 @@ public enum SelectionCriterion implements CcvCriterion {
      *
      */
     SUPPLY_CONTRACTS_CERTIFICATES_QC("a7669d7d-9297-43e1-9d10-691a1660187c",
-            "For supply contracts: Certificates by quality control institutes",
+            "For supply contracts: certificates by quality control institutes",
             "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(SUPPLY_CONTRACTS_CERTIFICATES_QC_GROUP, INFO_ELECTRONICALLY_GROUP)),

@@ -57,17 +57,17 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    AMOUNT("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.DESCRIPTION,
+    AMOUNT("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT,
             ExpectedResponseType.AMOUNT),
     /**
      *
      */
-    DATE("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DESCRIPTION,
+    DATE("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DATE,
             ExpectedResponseType.DATE),
     /**
      *
      */
-    RECIPIENTS("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.DESCRIPTION,
+    RECIPIENTS("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS,
             ExpectedResponseType.TEXT),
     /**
      *
