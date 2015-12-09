@@ -12,8 +12,8 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true),
-                setEnrolmentProfessionalRegister: new SelectionCriterion(exists: true),
-                setEnrolmentTradeRegister: new SelectionCriterion(exists: true),
+                enrolmentProfessionalRegister: new SelectionCriterion(exists: true),
+                enrolmentTradeRegister: new SelectionCriterion(exists: true),
                 serviceContractsAuthorisation: new SelectionCriterion(exists: true),
                 serviceContractsMembership: new SelectionCriterion(exists: true),)
 
@@ -40,8 +40,8 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
     def "all selection criteria (except satisfies all) should be in the correct order"() {
         given:
         def espd = new EspdDocument(
-                setEnrolmentProfessionalRegister: new SelectionCriterion(exists: true),
-                setEnrolmentTradeRegister: new SelectionCriterion(exists: true),
+                enrolmentProfessionalRegister: new SelectionCriterion(exists: true),
+                enrolmentTradeRegister: new SelectionCriterion(exists: true),
                 serviceContractsAuthorisation: new SelectionCriterion(exists: true),
                 serviceContractsMembership: new SelectionCriterion(exists: true),
                 generalYearlyTurnover: new SelectionCriterion(exists: true),
