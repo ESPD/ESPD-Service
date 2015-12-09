@@ -29,7 +29,32 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    CRIMINAL_CONVICTION_MAIN_GROUP("7c637c0c-7703-4389-ba52-02997a055bd7", list(SELF_CLEANING_GROUP),
+    PARTICIPATION_CRIMINAL_ORGANISATION_GROUP("7c637c0c-7703-4389-ba52-02997a055bd7", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
+    /**
+     *
+     */
+    CORRUPTION_GROUP("fc0c436c-f10c-401b-9ac2-25247ce886c0", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
+    /**
+     *
+     */
+    FRAUD_GROUP("94ff6812-b9a6-40c7-9676-d9fb83b51d51", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
+    /**
+     *
+     */
+    TERRORIST_OFFENCES_GROUP("2380efc6-2c86-4aa6-8645-c56cb87ad5a1", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
+    /**
+     *
+     */
+    MONEY_LAUNDERING_GROUP("7a866000-53f4-47a9-a4b7-f9f4a81392bf", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
+    /**
+     *
+     */
+    CHILD_LABOUR_GROUP("602c69d2-b9db-4edf-bd64-412f476d7575", list(SELF_CLEANING_GROUP),
             list(YOUR_ANSWER, DATE_OF_CONVICTION, REASON, WHO_CONVICTED, LENGTH_PERIOD_EXCLUSION)),
     /**
      *
@@ -50,23 +75,54 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    PAYMENT_MAIN_GROUP("098fd3cc-466e-4233-af1a-affe09471bce",
+    PAYMENT_OF_TAXES_GROUP("098fd3cc-466e-4233-af1a-affe09471bce",
             list(PAYMENT_BREACH_OTHER_THAN_GROUP, PAYMENT_BREACH_FINAL_BINDING_GROUP, PAYMENT_EO_FULFILLED_GROUP),
             list(YOUR_ANSWER, COUNTRY_MS, AMOUNT)),
     /**
      *
      */
-    ENVIRONMENTAL_MAIN_GROUP("976b5acb-c00f-46ca-8f83-5ce6abfdfe43", list(SELF_CLEANING_GROUP),
+    PAYMENT_OF_SOCIAL_SECURITY_GROUP("e0b0dedc-19d7-4d12-9542-1ca656b6f4f8",
+            list(PAYMENT_BREACH_OTHER_THAN_GROUP, PAYMENT_BREACH_FINAL_BINDING_GROUP, PAYMENT_EO_FULFILLED_GROUP),
+            list(YOUR_ANSWER, COUNTRY_MS, AMOUNT)),
+    /**
+     *
+     */
+    BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL_GROUP("976b5acb-c00f-46ca-8f83-5ce6abfdfe43", list(SELF_CLEANING_GROUP),
             list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
-    INSOLVENCY_MAIN_GROUP("d91c11a1-f19e-4b83-8ade-c4be2bf00555", Collections.<CcvCriterionGroup>emptyList(),
+    BANKRUPTCY_GROUP("d91c11a1-f19e-4b83-8ade-c4be2bf00555", Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
-    MISCONDUCT_MAIN_GROUP("67362ec7-cec3-4cb8-a38e-5d7a2a31e6d8", list(SELF_CLEANING_GROUP),
+    INSOLVENCY_GROUP("0ef4758c-7edd-4c49-a572-8a68276e205f", Collections.<CcvCriterionGroup>emptyList(),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
+    /**
+     *
+     */
+    ARRANGEMENT_WITH_CREDITORS_GROUP("74594d42-a656-43e7-b79c-cb629f17acdc", Collections.<CcvCriterionGroup>emptyList(),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
+    /**
+     *
+     */
+    ANALOGOUS_SITUATION_GROUP("8dea9e4d-0e51-4851-8942-a26a83c19e02", Collections.<CcvCriterionGroup>emptyList(),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
+    /**
+     *
+     */
+    ASSETS_ADMINISTERED_BY_LIQUIDATOR_GROUP("7d1b880c-e2b5-433c-b721-f7afbfa728f9", Collections.<CcvCriterionGroup>emptyList(),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
+    /**
+     *
+     */
+    BUSINESS_ACTIVITIES_SUSPENDED_GROUP("d07214ba-53ff-4bb3-854d-e723ff420dac", Collections.<CcvCriterionGroup>emptyList(),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
+    /**
+     *
+     */
+    GUILTY_OF_PROFESSIONAL_MISCONDUCT_GROUP("67362ec7-cec3-4cb8-a38e-5d7a2a31e6d8", list(SELF_CLEANING_GROUP),
             list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
@@ -83,7 +139,7 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    EARLY_TERMINATION_MAIN_GROUP("72f29e01-d0be-4e33-90f3-954c26fd0899", list(SELF_CLEANING_GROUP),
+    EARLY_TERMINATION_GROUP("72f29e01-d0be-4e33-90f3-954c26fd0899", list(SELF_CLEANING_GROUP),
             list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
