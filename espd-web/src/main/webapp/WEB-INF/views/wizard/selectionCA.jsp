@@ -100,7 +100,7 @@
                             </span>
                                 <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
                                       title="<s:message code='crit_selection_ca_suitability_article_tooltip'/>"></span>
-                        <c:set var="field" value="enrollmentProfessionalRegister" scope="session"/>
+                        <c:set var="field" value="enrolmentProfessionalRegister" scope="session"/>
                         <c:set var="title_code" value="crit_selection_ca_suitability_enrolment_main" scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>
                         <c:set var="description_code" value="crit_selection_ca_suitability_enrolment_description"

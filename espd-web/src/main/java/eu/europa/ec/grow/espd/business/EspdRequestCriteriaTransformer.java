@@ -119,9 +119,9 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
     }
 
     private void markSelectedSelectionSuitability(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(ENROLLMENT_PROFESSIONAL_REGISTER, espdDocument.getEnrollmentProfessionalRegister(),
+        addUblCriterionIfSelected(ENROLMENT_PROFESSIONAL_REGISTER, espdDocument.getEnrolmentProfessionalRegister(),
                 criteria);
-        addUblCriterionIfSelected(ENROLLMENT_TRADE_REGISTER, espdDocument.getEnrollmentTradeRegister(), criteria);
+        addUblCriterionIfSelected(ENROLMENT_TRADE_REGISTER, espdDocument.getEnrolmentTradeRegister(), criteria);
         addUblCriterionIfSelected(SERVICE_CONTRACTS_AUTHORISATION, espdDocument.getServiceContractsAuthorisation(),
                 criteria);
         addUblCriterionIfSelected(SERVICE_CONTRACTS_MEMBERSHIP, espdDocument.getServiceContractsMembership(), criteria);

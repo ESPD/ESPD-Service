@@ -26,7 +26,7 @@ public enum SelectionCriterion implements CcvCriterion {
     /**
      *
      */
-    ENROLLMENT_PROFESSIONAL_REGISTER("6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f",
+    ENROLMENT_PROFESSIONAL_REGISTER("6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f",
             "Enrolment in a relevant professional register",
             "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
@@ -34,7 +34,7 @@ public enum SelectionCriterion implements CcvCriterion {
     /**
      *
      */
-    ENROLLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrolment in a trade register",
+    ENROLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrolment in a trade register",
             "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
             list(ENROLLMENT_TRADE_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
@@ -291,7 +291,7 @@ public enum SelectionCriterion implements CcvCriterion {
 
     @Override
     public CcvLegislation getLegislation() {
-        return null;
+        return legislationReference;
     }
 
     private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {

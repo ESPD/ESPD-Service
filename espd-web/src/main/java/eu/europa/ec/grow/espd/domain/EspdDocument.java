@@ -47,8 +47,8 @@ public class EspdDocument {
 
     private Criterion purelyNationalGrounds;
 
-    private SelectionCriterion enrollmentProfessionalRegister;
-    private SelectionCriterion enrollmentTradeRegister;
+    private SelectionCriterion enrolmentProfessionalRegister;
+    private SelectionCriterion enrolmentTradeRegister;
     private SelectionCriterion serviceContractsAuthorisation;
     private SelectionCriterion serviceContractsMembership;
 
