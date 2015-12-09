@@ -145,6 +145,11 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     GUILTY_OF_MISINTERPRETATION_GROUP("ddea7091-f238-4fcb-9d93-eacb13190243",
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+    /**
+     *
+     */
+    NATIONAL_EXCLUSION_GROUNDS_GROUP("cff842a7-c95d-4445-8c89-84fcd53aa181",
             Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE));
 
     private final String id;

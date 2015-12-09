@@ -174,7 +174,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     NATIONAL_EXCLUSION_GROUNDS("63adb07d-db1b-4ef0-a14e-a99785cf8cf6", "Purely national exclusion grounds",
             "Other exclusion grounds that may be foreseen in the national legislation of the contracting authority’s or contracting entity’s Member State. Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?",
             ExclusionCriterionTypeCode.OTHER, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
-            list());
+            list(NATIONAL_EXCLUSION_GROUNDS_GROUP, INFO_ELECTRONICALLY_GROUP));
 
     private final String uuid;
 
