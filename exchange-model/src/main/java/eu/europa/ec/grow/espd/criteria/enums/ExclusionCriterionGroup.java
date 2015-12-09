@@ -112,12 +112,14 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    ASSETS_ADMINISTERED_BY_LIQUIDATOR_GROUP("7d1b880c-e2b5-433c-b721-f7afbfa728f9", Collections.<CcvCriterionGroup>emptyList(),
+    ASSETS_ADMINISTERED_BY_LIQUIDATOR_GROUP("7d1b880c-e2b5-433c-b721-f7afbfa728f9",
+            Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
-    BUSINESS_ACTIVITIES_SUSPENDED_GROUP("d07214ba-53ff-4bb3-854d-e723ff420dac", Collections.<CcvCriterionGroup>emptyList(),
+    BUSINESS_ACTIVITIES_SUSPENDED_GROUP("d07214ba-53ff-4bb3-854d-e723ff420dac",
+            Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
@@ -128,14 +130,12 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE_GROUP("30450436-f559-4dfa-98ba-f0842ed9d2a0",
-            list(SELF_CLEANING_GROUP),
-            list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+            list(SELF_CLEANING_GROUP), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
     DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE_GROUP("77ae3f29-7c5f-4afa-af97-24afec48c5bf",
-            Collections.<CcvCriterionGroup>emptyList(),
-            list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
@@ -145,8 +145,7 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     GUILTY_OF_MISINTERPRETATION_GROUP("ddea7091-f238-4fcb-9d93-eacb13190243",
-            Collections.<CcvCriterionGroup>emptyList(),
-            list(YOUR_ANSWER, PLEASE_DESCRIBE)),;
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE));
 
     private final String id;
 

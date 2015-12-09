@@ -7,9 +7,9 @@ import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/8/15 at 10:20 AM.
  */
-class ParticipationInCriminalOrganisationTest extends AbstractEspdXmlMarshalling {
+class ParticipationInCriminalOrganisationRequestTest extends AbstractEspdXmlMarshalling {
 
-    def "should contain the 'Participation in a criminal organisation' criterion"() {
+    def "01. should contain the 'Participation in a criminal organisation' criterion"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
 
@@ -19,17 +19,11 @@ class ParticipationInCriminalOrganisationTest extends AbstractEspdXmlMarshalling
 
         then: "CriterionID element"
         request.Criterion.size() == 1
-        request.Criterion[idx].CriterionID.text() == "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab"
-        request.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
-        request.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
-        request.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
-        
+        checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
+
 
         then: "CriterionTypeCode element"
-        request.Criterion[idx].CriterionTypeCode.text() == "EXCLUSION.CRIMINAL_CONVICTIONS"
-        request.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        request.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
-        request.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
+        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 
         then: "CriterionName element"
         request.Criterion[idx].CriterionName.text() == "Participation in a criminal organisation"
@@ -38,15 +32,7 @@ class ParticipationInCriminalOrganisationTest extends AbstractEspdXmlMarshalling
         request.Criterion[idx].CriterionDescription.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for participation in a criminal orgnisation, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the fight against organised crime (OJ L 300, 11.11.2008, p. 42)."
 
         then: "CriterionLegislationReference element"
-        def ref = request.Criterion[idx].CriterionLegislationReference
-        ref.LegislationTitle.text() == "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC"
-        ref.LegislationDescription.text() == "Directive 2014/24/EU"
-        ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
-        ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
-        ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevelCode"
-        ref.JurisdictionLevelCode.@listVersionID.text() == "1.0"
-        ref.LegislationArticle.text() == "57(1)"
-        ref.LegislationURIID.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
+        checkLegislationReference(request, idx, "57(1)")
 
         then: "CriterionGroup"
         request.Criterion[idx].CriterionRequirementGroup.size() == 2

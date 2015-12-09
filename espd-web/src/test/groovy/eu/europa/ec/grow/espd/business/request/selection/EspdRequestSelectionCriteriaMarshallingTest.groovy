@@ -110,11 +110,4 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, 30, "8ed65e48-fd0d-444f-97bd-4f58da632999")
     }
 
-    private static void checkCriterionId(def request, int idx, String expectedId) {
-        assert request.Criterion[idx].CriterionID.text() == expectedId
-        assert request.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
-        assert request.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
-        assert request.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
-    }
-
 }

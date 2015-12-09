@@ -7,33 +7,6 @@ import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
  */
 class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshalling {
 
-    private static void checkCriterionId(def resp, int idx, String expectedId) {
-        assert resp.Criterion[idx].CriterionID.text() == expectedId
-        assert resp.Criterion[idx].CriterionID.@schemeAgencyID.text() == "EU-COM-GROW"
-        assert resp.Criterion[idx].CriterionID.@schemeVersionID.text() == "1.0"
-        assert resp.Criterion[idx].CriterionID.@schemeID.text() == "CriteriaID"
-    }
-
-    private static void checkCriterionTypeCode(def resp, int idx, String expectedTypeCode) {
-        assert resp.Criterion[idx].CriterionTypeCode.text() == expectedTypeCode
-        assert resp.Criterion[idx].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        assert resp.Criterion[idx].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
-        assert resp.Criterion[idx].CriterionTypeCode.@listVersionID.text() == "1.0"
-    }
-
-    private static void checkLegislationReference(def resp, int idx, String expectedArticle) {
-        def ref = resp.Criterion[idx].CriterionLegislationReference
-
-        assert ref.LegislationTitle.text() == "Directive 2014/24/EU"
-        assert ref.LegislationDescription.text() == "On public procurement and repealing Directive 2004/18/EC"
-        assert ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
-        assert ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
-        assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevelCode"
-        assert ref.JurisdictionLevelCode.@listVersionID.text() == "1.0"
-        assert ref.LegislationArticle.text() == expectedArticle
-        assert ref.LegislationURIID.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
-    }
-
     def "bogus"() {
         expect:
         1 == 1
