@@ -4,8 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="now" value="<%=new java.util.Date()%>" scope="request"/>
-
-<footer padding-top: 10px;">
+<footer style="padding-top: 10px;">
 	<div class="row">
 		<div class="col-lg-12">
 			<span data-i18n="footer_last_update"><s:message code='footer_last_update'/></span>
@@ -14,6 +13,3 @@
 		</div>
 	</div>
 </footer>
-
-</body>
-</html> 
