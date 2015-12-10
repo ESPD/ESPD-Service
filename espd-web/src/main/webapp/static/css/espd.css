@@ -198,7 +198,7 @@ option:disabled {
     width: 100%;
     min-height: 145px;
     z-index: 5;
-    background: url("/espd/static/img/banner-fill.png");
+    background: url("../img/banner-fill.png");
     background-repeat: round;
 }
 

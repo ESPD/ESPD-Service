@@ -13,6 +13,8 @@
         </filter>
     </appender>
 
+    <logger name="ro.isdc.wro" level="INFO" />
+
     <root level="INFO">
         <appender-ref ref="EMAIL" />
     </root>

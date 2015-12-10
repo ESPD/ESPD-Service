@@ -5,7 +5,7 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.12-SNAPSHOT</version>
+    <version>0.0.13-SNAPSHOT</version>
     <modules>
         <module>exchange-model</module>
         <module>espd-web</module>
@@ -34,6 +34,7 @@
         <guava.version>18.0</guava.version>
         <joda-time.version>2.9</joda-time.version>
         <jaxb.version>2.2.11</jaxb.version>
+        <wro4j.version>1.7.9</wro4j.version>
     </properties>
 
     <scm>
@@ -117,6 +118,11 @@
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-core</artifactId>
+                <version>${wro4j.version}</version>
             </dependency>
             <!-- Use the Glassfish Reference Implementation to provide the correct namespaces to the XML
             elements and to be able to compile the project without using the com.sun.xml.internal package -->
