@@ -1,7 +1,6 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -9,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionGroup.*;
+import static eu.europa.ec.grow.espd.criteria.enums.SelectionSubCriterion.*;
 
 /**
  * Created by vigi on 11/17/15:3:11 PM.
@@ -266,16 +265,16 @@ public enum SelectionCriterion implements CcvCriterion {
 
     private final LegislationReference legislationReference;
 
-    private final List<? extends CcvCriterionGroup> groups;
+    private final List<? extends CcvCriterion> subCriteria;
 
     SelectionCriterion(String uuid, String shortName, String description, SelectionCriterionTypeCode criterionTypeCode,
-            LegislationReference legislationReference, List<? extends CcvCriterionGroup> groups) {
+            LegislationReference legislationReference, List<? extends CcvCriterion> subCriteria) {
         this.uuid = uuid;
         this.shortName = shortName;
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legislationReference = legislationReference;
-        this.groups = groups;
+        this.subCriteria = subCriteria;
     }
 
     @Override
@@ -293,7 +292,7 @@ public enum SelectionCriterion implements CcvCriterion {
         return legislationReference;
     }
 
-    private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {
+    private static List<SelectionSubCriterion> list(SelectionSubCriterion... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
 

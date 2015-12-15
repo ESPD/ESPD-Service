@@ -23,10 +23,10 @@ class FinancialRatioRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Financial ratio"
+        request.Criterion[idx].Name.text() == "Financial ratio"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows."
+        request.Criterion[idx].Description.text() == "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

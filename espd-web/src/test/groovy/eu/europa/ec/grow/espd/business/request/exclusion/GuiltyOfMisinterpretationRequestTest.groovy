@@ -23,10 +23,10 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure"
+        request.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Can the economic operator confirm the four exclusion grounds, that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, that it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
+        request.Criterion[idx].Description.text() == "Can the economic operator confirm the four exclusion grounds, that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, that it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

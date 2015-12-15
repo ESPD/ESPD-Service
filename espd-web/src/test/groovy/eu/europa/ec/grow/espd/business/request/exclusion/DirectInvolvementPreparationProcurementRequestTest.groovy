@@ -24,10 +24,10 @@ class DirectInvolvementPreparationProcurementRequestTest extends AbstractEspdXml
         checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Direct or indirect involvement in the preparation of this procurement procedure"
+        request.Criterion[idx].Name.text() == "Direct or indirect involvement in the preparation of this procurement procedure"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?"
+        request.Criterion[idx].Description.text() == "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

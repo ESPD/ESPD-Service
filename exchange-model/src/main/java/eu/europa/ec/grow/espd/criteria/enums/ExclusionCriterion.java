@@ -1,7 +1,6 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -9,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionGroup.*;
+import static eu.europa.ec.grow.espd.criteria.enums.ExclusionSubCriterion.*;
 
 /**
  * Created by vigi on 11/17/15:2:34 PM.
@@ -186,17 +185,17 @@ public enum ExclusionCriterion implements CcvCriterion {
 
     private final LegislationReference legislationReference;
 
-    private final List<? extends CcvCriterionGroup> groups;
+    private final List<? extends CcvCriterion> subCriteria;
 
     ExclusionCriterion(String uuid, String shortName, String description,
             ExclusionCriterionTypeCode criterionTypeCode, LegislationReference legislationReference,
-            List<? extends CcvCriterionGroup> groups) {
+            List<? extends CcvCriterion> subCriteria) {
         this.uuid = uuid;
         this.shortName = shortName;
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legislationReference = legislationReference;
-        this.groups = groups;
+        this.subCriteria = subCriteria;
     }
 
     @Override
@@ -214,7 +213,7 @@ public enum ExclusionCriterion implements CcvCriterion {
         return getLegislationReference();
     }
 
-    private static List<ExclusionCriterionGroup> list(ExclusionCriterionGroup... values) {
+    private static List<ExclusionSubCriterion> list(ExclusionSubCriterion... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
 }

@@ -23,10 +23,10 @@ class OtherEconomicFinancialRequirementsRequestTest extends AbstractEspdXmlMarsh
         checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Other economic or financial requirements"
+        request.Criterion[idx].Name.text() == "Other economic or financial requirements"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator."
+        request.Criterion[idx].Description.text() == "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

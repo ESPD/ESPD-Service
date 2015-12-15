@@ -23,10 +23,10 @@ class NumberOfManagerialStaffRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Number of managerial staff"
+        request.Criterion[idx].Name.text() == "Number of managerial staff"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator’s number of managerial staff for the last three years were as follows."
+        request.Criterion[idx].Description.text() == "The economic operator’s number of managerial staff for the last three years were as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

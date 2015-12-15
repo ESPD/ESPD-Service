@@ -23,10 +23,10 @@ class EducationalProfessionalQualificationsRequestTest extends AbstractEspdXmlMa
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Educational and professional qualifications"
+        request.Criterion[idx].Name.text() == "Educational and professional qualifications"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff."
+        request.Criterion[idx].Description.text() == "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

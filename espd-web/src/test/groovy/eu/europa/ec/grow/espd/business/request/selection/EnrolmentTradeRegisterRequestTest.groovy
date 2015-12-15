@@ -23,10 +23,10 @@ class EnrolmentTradeRegisterRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Enrolment in a trade register"
+        request.Criterion[idx].Name.text() == "Enrolment in a trade register"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex."
+        request.Criterion[idx].Description.text() == "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(2)")

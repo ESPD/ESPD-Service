@@ -24,10 +24,10 @@ class GuiltyProfessionalMisconductRequestTest extends AbstractEspdXmlMarshalling
         checkCriterionTypeCode(request, idx, "EXCLUSION.MISCONDUCT")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Guilty of grave professional misconduct"
+        request.Criterion[idx].Name.text() == "Guilty of grave professional misconduct"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents."
+        request.Criterion[idx].Description.text() == "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

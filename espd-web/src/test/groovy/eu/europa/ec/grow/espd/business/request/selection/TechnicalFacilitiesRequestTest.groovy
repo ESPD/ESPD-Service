@@ -23,10 +23,10 @@ class TechnicalFacilitiesRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Technical facilities and measures for ensuring quality"
+        request.Criterion[idx].Name.text() == "Technical facilities and measures for ensuring quality"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator uses the following technical facilities and measures for ensuring quality are as follows."
+        request.Criterion[idx].Description.text() == "The economic operator uses the following technical facilities and measures for ensuring quality are as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

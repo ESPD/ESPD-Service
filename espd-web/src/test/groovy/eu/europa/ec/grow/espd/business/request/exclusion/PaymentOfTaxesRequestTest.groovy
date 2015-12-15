@@ -25,10 +25,10 @@ class PaymentOfTaxesRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "EXCLUSION.PAYMENT_OF_TAXES")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Payment of taxes"
+        request.Criterion[idx].Name.text() == "Payment of taxes"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
+        request.Criterion[idx].Description.text() == "Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(2)")

@@ -46,7 +46,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
                 involvementPreparationProcurement: new BreachOfObligations(exists: true),
                 earlyTermination: new BreachOfObligations(exists: true),
                 guiltyMisinterpretation: new BreachOfObligations(exists: true),
-                purelyNationalGrounds: new Criterion(exists: true))
+                purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 
         when:
         def request = parseRequestXml(espd)

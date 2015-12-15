@@ -23,10 +23,10 @@ class TechniciansTechnicalBodiesRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Technicians or technical bodies for quality control"
+        request.Criterion[idx].Name.text() == "Technicians or technical bodies for quality control"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator can call upon the following technicians or technical bodies , especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in."
+        request.Criterion[idx].Description.text() == "The economic operator can call upon the following technicians or technical bodies , especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

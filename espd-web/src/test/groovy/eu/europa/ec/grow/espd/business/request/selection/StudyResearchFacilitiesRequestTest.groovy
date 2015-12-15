@@ -23,10 +23,10 @@ class StudyResearchFacilitiesRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Study and research facilities"
+        request.Criterion[idx].Name.text() == "Study and research facilities"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator uses the following study and research facilities are as follows."
+        request.Criterion[idx].Description.text() == "The economic operator uses the following study and research facilities are as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

@@ -24,10 +24,10 @@ class EarlyTerminationRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Early termination, damages or other comparable sanctions"
+        request.Criterion[idx].Name.text() == "Early termination, damages or other comparable sanctions"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?"
+        request.Criterion[idx].Description.text() == "Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

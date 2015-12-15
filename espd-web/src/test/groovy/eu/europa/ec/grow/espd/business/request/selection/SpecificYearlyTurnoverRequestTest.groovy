@@ -23,10 +23,10 @@ class SpecificYearlyTurnoverRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Specific yearly turnover"
+        request.Criterion[idx].Name.text() == "Specific yearly turnover"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator's specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows."
+        request.Criterion[idx].Description.text() == "The economic operator's specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

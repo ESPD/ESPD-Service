@@ -23,10 +23,10 @@ class SupplyContractsCertificatesByQCRequestTest extends AbstractEspdXmlMarshall
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "For supply contracts: certificates by quality control institutes"
+        request.Criterion[idx].Name.text() == "For supply contracts: certificates by quality control institutes"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?"
+        request.Criterion[idx].Description.text() == "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

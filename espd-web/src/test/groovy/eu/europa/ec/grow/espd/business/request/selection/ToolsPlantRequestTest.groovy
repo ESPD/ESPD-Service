@@ -23,10 +23,10 @@ class ToolsPlantRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Tools, plant or technical equipment"
+        request.Criterion[idx].Name.text() == "Tools, plant or technical equipment"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The following tools, plant or technical equipment will be available to it for performing the contract."
+        request.Criterion[idx].Description.text() == "The following tools, plant or technical equipment will be available to it for performing the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

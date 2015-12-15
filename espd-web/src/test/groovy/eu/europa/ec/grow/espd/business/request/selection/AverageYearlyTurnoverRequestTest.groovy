@@ -23,10 +23,10 @@ class AverageYearlyTurnoverRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Average yearly turnover"
+        request.Criterion[idx].Name.text() == "Average yearly turnover"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator's average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows."
+        request.Criterion[idx].Description.text() == "The economic operator's average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

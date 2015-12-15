@@ -180,7 +180,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
                 involvementPreparationProcurement: new BreachOfObligations(exists: true),
                 earlyTermination: new BreachOfObligations(exists: true),
                 guiltyMisinterpretation: new BreachOfObligations(exists: true),
-                purelyNationalGrounds: new Criterion(exists: true),
+                purelyNationalGrounds: new PurelyNationalGrounds(exists: true),
                 // selection
                 enrolmentProfessionalRegister: new SelectionCriterion(exists: true),
                 enrolmentTradeRegister: new SelectionCriterion(exists: true),

@@ -42,10 +42,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Grounds relating to criminal convictions"
+//        resp.Criterion[idx].Name.text() == "Grounds relating to criminal convictions"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for criminal conviction, such as participation in a criminal organisation, as defined in Article 2 of Council Framework Decision 2008/841/JHA?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -88,10 +88,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Corruption"
+//        resp.Criterion[idx].Name.text() == "Corruption"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, as defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union and Article 2(1) of Council Framework Decision 2003/568/JHA, as well as corruption as defined in the national law of the contracting authority or the economic operator?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for corruption, as defined in Article 3 of the Convention on the fight against corruption involving officials of the European Communities or officials of Member States of the European Union and Article 2(1) of Council Framework Decision 2003/568/JHA, as well as corruption as defined in the national law of the contracting authority or the economic operator?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -124,10 +124,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Fraud"
+//        resp.Criterion[idx].Name.text() == "Fraud"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud within the meaning of Article 1 of the Convention on the protection of the European Communities'' financial interests?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud within the meaning of Article 1 of the Convention on the protection of the European Communities'' financial interests?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -160,10 +160,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Terrorist offences or offences linked to terrorist activities"
+//        resp.Criterion[idx].Name.text() == "Terrorist offences or offences linked to terrorist activities"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, as defined in Articles 1 and 3 of Council Framework Decision 2002/475/JHA respectively, or inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for terrorist offences or offences linked to terrorist activities, as defined in Articles 1 and 3 of Council Framework Decision 2002/475/JHA respectively, or inciting or aiding or abetting or attempting to commit an offence, as referred to in Article 4 of that Framework Decision?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -196,10 +196,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Money laundering or terrorist financing"
+//        resp.Criterion[idx].Name.text() == "Money laundering or terrorist financing"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for Money laundering or terrorist financing, as defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for Money laundering or terrorist financing, as defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -232,10 +232,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Child labour and other forms of trafficking in human beings"
+//        resp.Criterion[idx].Name.text() == "Child labour and other forms of trafficking in human beings"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings as defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council?"
+//        resp.Criterion[idx].Description.text() == "Within the past five years, has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for child labour and other forms of trafficking in human beings as defined in Article 2 of Directive 2011/36/EU of the European Parliament and of the Council?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(1)")
@@ -268,10 +268,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.PAYMENT_OF_TAXES")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Payment of taxes"
+//        resp.Criterion[idx].Name.text() == "Payment of taxes"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of tax contributions?"
+//        resp.Criterion[idx].Description.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of tax contributions?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(2)")
@@ -307,10 +307,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.PAYMENT_OF_SOCIAL_SECURITY")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Payment of social security contributions"
+//        resp.Criterion[idx].Name.text() == "Payment of social security contributions"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of social security contributions?"
+//        resp.Criterion[idx].Description.text() == "Has it been established by a judicial or administrative decision having final and binding effect in accordance with the legal provisions in the country in which you are established or in the Member State of the contracting authority, that your organisation is in breach of obligations related to the payment of social security contributions?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(2)")
@@ -345,10 +345,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.ENVIRONMENTAL")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Breaching of obligations in the fields of environmental, social and labour law"
+//        resp.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental, social and labour law"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU?"
+//        resp.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -380,10 +380,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Bankrupt, the subject of insolvency or winding-up"
+//        resp.Criterion[idx].Name.text() == "Bankrupt, the subject of insolvency or winding-up"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Is the economic operator in any of the following situations: Bankrupt, or the subject of insolvency or winding-up proceedings, or in an arrangement with creditors, or in any analogous situation arising from a similar procedure under national laws and regulations. See national law, the relevant notice or the procurement documents, or that its assets are being administered by a liquidator or by the court, or that its business activities are suspended?"
+//        resp.Criterion[idx].Description.text() == "Is the economic operator in any of the following situations: Bankrupt, or the subject of insolvency or winding-up proceedings, or in an arrangement with creditors, or in any analogous situation arising from a similar procedure under national laws and regulations. See national law, the relevant notice or the procurement documents, or that its assets are being administered by a liquidator or by the court, or that its business activities are suspended?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -416,10 +416,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.MISCONDUCT")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Guilty of grave professional misconduct"
+//        resp.Criterion[idx].Name.text() == "Guilty of grave professional misconduct"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents."
+//        resp.Criterion[idx].Description.text() == "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents."
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -449,10 +449,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.MISCONDUCT")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Agreements with other economic operators aimed at distorting competition"
+//        resp.Criterion[idx].Name.text() == "Agreements with other economic operators aimed at distorting competition"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has the economic operator entered into agreements with other economic operators aimed at distorting competition?"
+//        resp.Criterion[idx].Description.text() == "Has the economic operator entered into agreements with other economic operators aimed at distorting competition?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -482,10 +482,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Conflict of interest due to its participation in the procurement procedure"
+//        resp.Criterion[idx].Name.text() == "Conflict of interest due to its participation in the procurement procedure"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?"
+//        resp.Criterion[idx].Description.text() == "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -518,10 +518,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Direct or indirect involvement in the preparation of this procurement procedure"
+//        resp.Criterion[idx].Name.text() == "Direct or indirect involvement in the preparation of this procurement procedure"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?"
+//        resp.Criterion[idx].Description.text() == "Has the economic operator or an undertaking related to it advised the contracting authority or contracting entity or otherwise been involved in the preparation of the procurement procedure?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -548,10 +548,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Early termination, damages or other comparable sanctions"
+//        resp.Criterion[idx].Name.text() == "Early termination, damages or other comparable sanctions"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?"
+//        resp.Criterion[idx].Description.text() == "Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -581,10 +581,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Guilty of misinterpretation, withheld information, [...]"
+//        resp.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, [...]"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Can the economic operator confirm that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
+//        resp.Criterion[idx].Description.text() == "Can the economic operator confirm that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")
@@ -614,10 +614,10 @@ class EspdResponseExclusionCriteriaMarshallingTest extends AbstractEspdXmlMarsha
 //        checkCriterionTypeCode(resp, idx, "EXCLUSION.OTHER")
 //
 //        then: "CriterionName element"
-//        resp.Criterion[idx].CriterionName.text() == "Purely national exclusion grounds"
+//        resp.Criterion[idx].Name.text() == "Purely national exclusion grounds"
 //
 //        then: "CriterionDescription element"
-//        resp.Criterion[idx].CriterionDescription.text() == "Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?"
+//        resp.Criterion[idx].Description.text() == "Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?"
 //
 //        then: "CriterionLegislationReference element"
 //        checkLegislationReference(resp, idx, "57(4)")

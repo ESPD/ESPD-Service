@@ -24,10 +24,10 @@ class ConflictOfInterestParticipationProcurementProcedureRequestTest extends Abs
         checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Conflict of interest due to its participation in the procurement procedure"
+        request.Criterion[idx].Name.text() == "Conflict of interest due to its participation in the procurement procedure"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?"
+        request.Criterion[idx].Description.text() == "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

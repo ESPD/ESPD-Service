@@ -62,6 +62,7 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
         frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
                 "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
         frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
+        // TODO remove sampling
         frb.addInitParameter(Parameter.SAMPLING_SECONDS.getCode(), "0.2");
         frb.addInitParameter(Parameter.SAMPLING_INCLUDED_PACKAGES.getCode(),
                 "eu.europa,grow,com.google,org.springframework,javax.xml");

@@ -23,10 +23,10 @@ class ServiceContractsPerformanceWorksRequestTest extends AbstractEspdXmlMarshal
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "For works contracts: performance of works of the specified type"
+        request.Criterion[idx].Name.text() == "For works contracts: performance of works of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years."
+        request.Criterion[idx].Description.text() == "During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

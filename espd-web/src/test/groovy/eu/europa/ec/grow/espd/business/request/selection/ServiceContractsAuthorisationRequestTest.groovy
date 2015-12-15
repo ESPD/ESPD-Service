@@ -23,10 +23,10 @@ class ServiceContractsAuthorisationRequestTest extends AbstractEspdXmlMarshallin
         checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "For service contracts: authorisation of particular organisation needed"
+        request.Criterion[idx].Name.text() == "For service contracts: authorisation of particular organisation needed"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?"
+        request.Criterion[idx].Description.text() == "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(2)")

@@ -27,14 +27,14 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshal
         checkCriterionId(request, 0, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "check the CriterionTypeCode"
-        request.Criterion[0].CriterionTypeCode.text() == "SELECTION.ALL_CRITERIA_SATISFIED"
-        request.Criterion[0].CriterionTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        request.Criterion[0].CriterionTypeCode.@listID.text() == "CriteriaTypeCode"
-        request.Criterion[0].CriterionTypeCode.@listVersionID.text() == "1.0"
+        request.Criterion[0].TypeCode.text() == "SELECTION.ALL_CRITERIA_SATISFIED"
+        request.Criterion[0].TypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        request.Criterion[0].TypeCode.@listID.text() == "CriteriaTypeCode"
+        request.Criterion[0].TypeCode.@listVersionID.text() == "1.0"
 
         then: "check name and description"
-        request.Criterion[0].CriterionName.text() == "All selection criteria will be satisfied"
-        request.Criterion[0].CriterionDescription.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+        request.Criterion[0].Name.text() == "All selection criteria will be satisfied"
+        request.Criterion[0].Description.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
     }
 
     def "all selection criteria (except satisfies all) should be in the correct order"() {

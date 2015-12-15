@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.criteria.enums.CriterionJurisdictionLevel;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionRequirementGroupType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.LegislationType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
@@ -23,11 +22,11 @@ import java.util.List;
 @Component
 class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, CriterionType> {
 
-    private final ToCriterionGroupTransformer criterionGroupTransformer;
+    private final ToCriterionRequirementTransformer criterionRequirementTransformer;
 
     @Autowired
-    CcvCriterionToCriterionTypeTransformer(ToCriterionGroupTransformer criterionGroupTransformer) {
-        this.criterionGroupTransformer = criterionGroupTransformer;
+    CcvCriterionToCriterionTypeTransformer(ToCriterionRequirementTransformer criterionRequirementTransformer) {
+        this.criterionRequirementTransformer = criterionRequirementTransformer;
     }
 
     @Override
@@ -39,7 +38,7 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         addName(input, criterionType);
         addDescription(input, criterionType);
         addLegislationReference(input, criterionType);
-        addGroups(input, criterionType);
+        addSubcriteria(input, criterionType);
 
         return criterionType;
     }
@@ -50,7 +49,7 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setSchemeVersionID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.SCHEME_VERSION_ID);
         idType.setSchemeID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.SCHEME_ID);
-        criterionType.setCriterionID(idType);
+        criterionType.setID(idType);
     }
 
     private void addTypeCode(CcvCriterion input, CriterionType criterionType) {
@@ -59,19 +58,19 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         typeCodeType.setListID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.LIST_ID);
         typeCodeType.setListVersionID(eu.europa.ec.grow.espd.criteria.enums.CriterionType.LIST_VERSION_ID);
-        criterionType.setCriterionTypeCode(typeCodeType);
+        criterionType.setTypeCode(typeCodeType);
     }
 
     private void addName(CcvCriterion input, CriterionType criterionType) {
         NameType nameType = new NameType();
         nameType.setValue(input.getName());
-        criterionType.setCriterionName(nameType);
+        criterionType.setName(nameType);
     }
 
     private void addDescription(CcvCriterion input, CriterionType criterionType) {
         DescriptionType descriptionType = new DescriptionType();
         descriptionType.setValue(input.getDescription());
-        criterionType.setCriterionDescription(descriptionType);
+        criterionType.setDescription(descriptionType);
     }
 
     private void addLegislationReference(CcvCriterion input, CriterionType criterionType) {
@@ -83,11 +82,11 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
 
         TextType title = new TextType();
         title.setValue(input.getLegislation().getTitle());
-        legislationType.setLegislationTitle(title);
+        legislationType.setTitle(title);
 
         DescriptionType description = new DescriptionType();
         description.setValue(input.getLegislation().getDescription());
-        legislationType.setLegislationDescription(description);
+        legislationType.setDescription(description);
 
         TypeCodeType jurisdictionLevelCode = new TypeCodeType();
         jurisdictionLevelCode.setValue(CriterionJurisdictionLevel.EU_DIRECTIVE.getCode());
@@ -98,23 +97,22 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
 
         TextType article = new TextType();
         article.setValue(input.getLegislation().getArticle());
-        legislationType.setLegislationArticle(article);
+        legislationType.setArticle(article);
 
-        IDType uriid = new IDType();
+        URIType uriid = new URIType();
         uriid.setValue(input.getLegislation().getUrl());
-        legislationType.setLegislationURIID(uriid);
+        legislationType.setURI(uriid);
 
-        criterionType.getCriterionLegislationReference().add(legislationType);
+        criterionType.getLegislationReference().add(legislationType);
     }
 
-    private void addGroups(CcvCriterion input, CriterionType criterionType) {
-        if (CollectionUtils.isEmpty(input.getGroups())) {
+    private void addSubcriteria(CcvCriterion input, CriterionType criterionType) {
+        if (CollectionUtils.isEmpty(input.getSubCriteria())) {
             return;
         }
 
-        List<CriterionRequirementGroupType> groupTypes = Lists.transform(input.getGroups(), criterionGroupTransformer);
-        criterionType.getCriterionRequirementGroup().addAll(groupTypes);
-
+        List<CriterionType> groupTypes = Lists.transform(input.getSubCriteria(), this);
+        criterionType.getSubCriterion().addAll(groupTypes);
     }
 
 }

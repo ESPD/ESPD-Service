@@ -23,10 +23,10 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractEspd
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Certificates by independent bodies about environmental management systems or standards"
+        request.Criterion[idx].Name.text() == "Certificates by independent bodies about environmental management systems or standards"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?"
+        request.Criterion[idx].Description.text() == "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "62(2)")

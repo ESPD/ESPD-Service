@@ -23,10 +23,10 @@ class SupplyChainManagementRequestTest extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Supply chain management"
+        request.Criterion[idx].Name.text() == "Supply chain management"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator will be able to apply the following supply chain management and tracking systems when performing the contract."
+        request.Criterion[idx].Description.text() == "The economic operator will be able to apply the following supply chain management and tracking systems when performing the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

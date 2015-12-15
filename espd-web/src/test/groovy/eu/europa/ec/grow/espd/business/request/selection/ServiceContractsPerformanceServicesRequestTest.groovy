@@ -23,10 +23,10 @@ class ServiceContractsPerformanceServicesRequestTest extends AbstractEspdXmlMars
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "For service contracts: performance of services of the specified type"
+        request.Criterion[idx].Name.text() == "For service contracts: performance of services of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
+        request.Criterion[idx].Description.text() == "During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

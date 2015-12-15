@@ -23,10 +23,10 @@ class EnvironmentalManagementMeasuresRequestTest extends AbstractEspdXmlMarshall
         checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Environmental management measures"
+        request.Criterion[idx].Name.text() == "Environmental management measures"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract."
+        request.Criterion[idx].Description.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

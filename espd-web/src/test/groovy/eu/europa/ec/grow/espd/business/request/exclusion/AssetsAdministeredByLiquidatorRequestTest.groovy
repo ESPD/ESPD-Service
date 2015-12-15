@@ -24,10 +24,10 @@ class AssetsAdministeredByLiquidatorRequestTest extends AbstractEspdXmlMarshalli
         checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Assets being administered by liquidator"
+        request.Criterion[idx].Name.text() == "Assets being administered by liquidator"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Are the assets of the economic operator being administered by a liquidator or by the court?  This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+        request.Criterion[idx].Description.text() == "Are the assets of the economic operator being administered by a liquidator or by the court?  This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

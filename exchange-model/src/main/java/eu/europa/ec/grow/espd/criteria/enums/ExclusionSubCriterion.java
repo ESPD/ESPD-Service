@@ -1,7 +1,8 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
-import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
+import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -14,17 +15,17 @@ import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequiremen
  * Created by ratoico on 12/7/15 at 10:33 AM.
  */
 @Getter
-public enum ExclusionCriterionGroup implements CcvCriterionGroup {
+public enum ExclusionSubCriterion implements CcvCriterion {
 
     /**
      *
      */
-    SELF_CLEANING_GROUP("41dd2e9b-1bfd-44c7-93ee-56bd74a4334b", Collections.<CcvCriterionGroup>emptyList(),
+    SELF_CLEANING_GROUP("41dd2e9b-1bfd-44c7-93ee-56bd74a4334b", Collections.<CcvCriterion>emptyList(),
             list(MEASURES_SELF_CLEANING, PLEASE_DESCRIBE)),
     /**
      *
      */
-    INFO_ELECTRONICALLY_GROUP("7458d42a-e581-4640-9283-34ceb3ad4345", Collections.<CcvCriterionGroup>emptyList(),
+    INFO_ELECTRONICALLY_GROUP("7458d42a-e581-4640-9283-34ceb3ad4345", Collections.<CcvCriterion>emptyList(),
             list(INFO_AVAILABLE_ELECTRONICALLY, URL, URL_CODE)),
     /**
      *
@@ -59,18 +60,18 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    PAYMENT_BREACH_OTHER_THAN_GROUP("7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02", Collections.<CcvCriterionGroup>emptyList(),
+    PAYMENT_BREACH_OTHER_THAN_GROUP("7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02", Collections.<CcvCriterion>emptyList(),
             list(BREACH_OF_OBLIGATIONS_OTHER_THAN, DESCRIBE_MEANS)),
     /**
      *
      */
     PAYMENT_BREACH_FINAL_BINDING_GROUP("c882afa4-6971-4b00-8970-0c283eb122cc",
-            Collections.<CcvCriterionGroup>emptyList(),
+            Collections.<CcvCriterion>emptyList(),
             list(DECISION_FINAL_AND_BINDING, DATE_OF_CONVICTION, LENGTH_PERIOD_EXCLUSION)),
     /**
      *
      */
-    PAYMENT_EO_FULFILLED_GROUP("fc57e473-d63e-4a04-b589-dcf81cab8052", Collections.<CcvCriterionGroup>emptyList(),
+    PAYMENT_EO_FULFILLED_GROUP("fc57e473-d63e-4a04-b589-dcf81cab8052", Collections.<CcvCriterion>emptyList(),
             list(EO_FULFILLED_OBLIGATION, PLEASE_DESCRIBE)),
     /**
      *
@@ -92,34 +93,34 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    BANKRUPTCY_GROUP("d91c11a1-f19e-4b83-8ade-c4be2bf00555", Collections.<CcvCriterionGroup>emptyList(),
+    BANKRUPTCY_GROUP("d91c11a1-f19e-4b83-8ade-c4be2bf00555", Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
-    INSOLVENCY_GROUP("0ef4758c-7edd-4c49-a572-8a68276e205f", Collections.<CcvCriterionGroup>emptyList(),
+    INSOLVENCY_GROUP("0ef4758c-7edd-4c49-a572-8a68276e205f", Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
-    ARRANGEMENT_WITH_CREDITORS_GROUP("74594d42-a656-43e7-b79c-cb629f17acdc", Collections.<CcvCriterionGroup>emptyList(),
+    ARRANGEMENT_WITH_CREDITORS_GROUP("74594d42-a656-43e7-b79c-cb629f17acdc", Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
-    ANALOGOUS_SITUATION_GROUP("8dea9e4d-0e51-4851-8942-a26a83c19e02", Collections.<CcvCriterionGroup>emptyList(),
+    ANALOGOUS_SITUATION_GROUP("8dea9e4d-0e51-4851-8942-a26a83c19e02", Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
     ASSETS_ADMINISTERED_BY_LIQUIDATOR_GROUP("7d1b880c-e2b5-433c-b721-f7afbfa728f9",
-            Collections.<CcvCriterionGroup>emptyList(),
+            Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
      */
     BUSINESS_ACTIVITIES_SUSPENDED_GROUP("d07214ba-53ff-4bb3-854d-e723ff420dac",
-            Collections.<CcvCriterionGroup>emptyList(),
+            Collections.<CcvCriterion>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**
      *
@@ -135,7 +136,7 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE_GROUP("77ae3f29-7c5f-4afa-af97-24afec48c5bf",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+            Collections.<CcvCriterion>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
@@ -145,28 +146,48 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     GUILTY_OF_MISINTERPRETATION_GROUP("ddea7091-f238-4fcb-9d93-eacb13190243",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+            Collections.<CcvCriterion>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
     NATIONAL_EXCLUSION_GROUNDS_GROUP("cff842a7-c95d-4445-8c89-84fcd53aa181",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE));
+            Collections.<CcvCriterion>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE));
 
-    private final String id;
+    private final String uuid;
 
-    private final List<? extends CcvCriterionGroup> subgroups;
+    private final List<? extends CcvCriterion> subCriteria;
 
     private final List<? extends CcvCriterionRequirement> requirements;
 
-    ExclusionCriterionGroup(String id, List<? extends CcvCriterionGroup> subgroups,
+    ExclusionSubCriterion(String uuid, List<? extends CcvCriterion> subCriteria,
             List<? extends CcvCriterionRequirement> requirements) {
-        this.id = id;
-        this.subgroups = subgroups;
+        this.uuid = uuid;
+        this.subCriteria = subCriteria;
         this.requirements = requirements;
     }
 
     @SafeVarargs
     private static <T> List<T> list(T... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
+    }
+
+    @Override
+    public String getTypeCode() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public CcvLegislation getLegislation() {
+        return null;
     }
 }

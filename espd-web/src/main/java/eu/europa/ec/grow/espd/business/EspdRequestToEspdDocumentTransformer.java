@@ -143,8 +143,6 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
         } else {
             espdDocument.setBusinessActivitiesSuspended(BreachOfObligations.buildWithExists(false));
         }
-
-
     }
 
     private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
@@ -185,15 +183,15 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
 
     private void markExclusionPurelyNational(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS, ublCriteria)) {
-            espdDocument.setPurelyNationalGrounds(BreachOfObligations.buildWithExists(true));
+            espdDocument.setPurelyNationalGrounds(PurelyNationalGrounds.buildWithExists(true));
         } else {
-            espdDocument.setPurelyNationalGrounds(BreachOfObligations.buildWithExists(false));
+            espdDocument.setPurelyNationalGrounds(PurelyNationalGrounds.buildWithExists(false));
         }
     }
 
     private boolean isCriterionSelected(ExclusionCriterion criterion, List<CriterionType> ublCriteria) {
         for (CriterionType ubl : ublCriteria) {
-            if (ubl.getCriterionID() != null && criterion.getUuid().equals(ubl.getCriterionID().getValue())) {
+            if (ubl.getID() != null && criterion.getUuid().equals(ubl.getID().getValue())) {
                 return true;
             }
         }

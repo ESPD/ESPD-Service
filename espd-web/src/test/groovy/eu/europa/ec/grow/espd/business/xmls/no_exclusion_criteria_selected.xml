@@ -26,9 +26,10 @@
     </cac:ProcurementProjectLot>
 
     <ccv:Criterion>
-        <ccv-cbc:CriterionID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</ccv-cbc:CriterionID>
-        <ccv-cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</ccv-cbc:CriterionTypeCode>
-        <ccv-cbc:CriterionName>All Selection Criteria Will Be Satisfied</ccv-cbc:CriterionName>
-        <ccv-cbc:CriterionDescription>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</ccv-cbc:CriterionDescription>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</cbc:TypeCode>
+        <cbc:Name>All Selection Criteria Will Be Satisfied</cbc:Name>
+        <cbc:Description>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</cbc:Description>
+        <ccv:Requirement></ccv:Requirement>
     </ccv:Criterion>
 </espd-req:ESPDRequest>

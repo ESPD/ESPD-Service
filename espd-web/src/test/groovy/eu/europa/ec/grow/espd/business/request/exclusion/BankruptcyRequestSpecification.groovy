@@ -24,10 +24,10 @@ class BankruptcyRequestSpecification extends AbstractEspdXmlMarshalling {
         checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
-        request.Criterion[idx].CriterionName.text() == "Bankruptcy"
+        request.Criterion[idx].Name.text() == "Bankruptcy"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].CriterionDescription.text() == "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+        request.Criterion[idx].Description.text() == "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
