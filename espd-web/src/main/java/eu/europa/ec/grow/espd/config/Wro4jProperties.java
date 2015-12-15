@@ -16,7 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties("wro4j")
 @Data
-public class Wro4jProperties {
+class Wro4jProperties {
 
     private boolean disableCache;
 

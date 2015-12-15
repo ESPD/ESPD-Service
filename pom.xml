@@ -35,6 +35,7 @@
         <joda-time.version>2.9</joda-time.version>
         <jaxb.version>2.2.11</jaxb.version>
         <wro4j.version>1.7.9</wro4j.version>
+        <javamelody.version>1.58.0</javamelody.version>
     </properties>
 
     <scm>
@@ -123,6 +124,11 @@
                 <groupId>ro.isdc.wro4j</groupId>
                 <artifactId>wro4j-core</artifactId>
                 <version>${wro4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.bull.javamelody</groupId>
+                <artifactId>javamelody-core</artifactId>
+                <version>${javamelody.version}</version>
             </dependency>
             <!-- Use the Glassfish Reference Implementation to provide the correct namespaces to the XML
             elements and to be able to compile the project without using the com.sun.xml.internal package -->
