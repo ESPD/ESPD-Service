@@ -34,11 +34,10 @@
 			</div>
             <div id="ca-criminal-convictions-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                        <span data-i18n="crit_eu_main_title_grounds_criminal_conv">
+                        <span data-i18n="crit_eu_main_title_grounds_criminal_conv" style="font-weight: bold;">
                                 <s:message code='crit_eu_main_title_grounds_criminal_conv'/>
                         </span>
-                        <span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv'/>"></span>
-
+                        
                         <tiles:insertDefinition name="checkCriterion">
                             <tiles:putAttribute name="field"  value="criminalConvictions"/>
 							<tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
@@ -85,11 +84,10 @@
 			</span>
 			<div id="ca-payment-of-taxes-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_title_payment_taxes" class="aligned">
+                    <span data-i18n="crit_eu_main_title_payment_taxes" class="aligned" style="font-weight: bold;">
                             <s:message code='crit_eu_main_title_payment_taxes'/>
                     </span>
-                    <span data-i18n="crit_eu_main_tooltip_payment_taxes" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes'/>"></span>
-
+                    
                     <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="paymentTaxes"/>
 						<tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
@@ -112,10 +110,10 @@
 			</div>
             <div id="ca-insolvency-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned">
+                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
                         <s:message code='crit_eu_main_breaching_obligations'/>
                     </span>
-                    <span data-i18n="crit_eu_main_tooltip_breaching_obligations" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations'/>"></span>
+                    
                     <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="breachingObligations"/>
                         <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
@@ -191,10 +189,33 @@
                 </div>
             </div>
 		</div>
+		
+		<div class="panel panel-default espd-panel">
+			<div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
+				 <s:message code='crit_top_title_purely_national'/>
+			</div>
+            <div id="ca-insolvency-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
+                        <s:message code='crit_eu_main_purely_national'/>
+                    </span>
+
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
+                    </tiles:insertDefinition>
+                    
+                </div>
+            </div>
+		</div>
 
         <tiles:insertDefinition name="footerButtons">
         </tiles:insertDefinition>
 	</div>
+	
+
+
 	
 	</form:form>
 	

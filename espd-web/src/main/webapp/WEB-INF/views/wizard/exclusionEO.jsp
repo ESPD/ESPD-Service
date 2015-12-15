@@ -38,10 +38,9 @@
 			<div class="espd-panel-body panel-body">
 			
 					<div class="">
-						<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo">
+						<span data-i18n="crit_eu_main_title_grounds_criminal_conv_eo" style="font-weight: bold;">
 							<s:message code='crit_eu_main_title_grounds_criminal_conv_eo'/>
 						</span>
-						<span data-i18n="crit_eu_main_tooltip_grounds_criminal_conv_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_grounds_criminal_conv_eo'/>"></span>
 					</div>
 
 					<tiles:insertDefinition name="criminalFormCriterion">
@@ -91,10 +90,9 @@
 			<div class="espd-panel-body panel-body">
 			
 				<div class="">
-					<span data-i18n="crit_eu_main_title_payment_taxes_eo">
+					<span data-i18n="crit_eu_main_title_payment_taxes_eo" style="font-weight: bold;">
 						<s:message code='crit_eu_main_title_payment_taxes_eo'/>
 					</span>
-					<span data-i18n="crit_eu_main_tooltip_payment_taxes_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_payment_taxes_eo'/>"></span>
 				</div>
 
 				<tiles:insertDefinition name="taxFormCriterion">
@@ -121,10 +119,9 @@
 			<div class="espd-panel-body panel-body">
 
 				<div class="">
-					<span data-i18n="crit_eu_main_breaching_obligations_eo">
+					<span data-i18n="crit_eu_main_breaching_obligations_eo" style="font-weight: bold;">
 						<s:message code='crit_eu_main_breaching_obligations_eo'/>
 					</span>
-					<span data-i18n="crit_eu_main_tooltip_breaching_obligations_eo" data-toggle="tooltip" title="<s:message code='crit_eu_main_tooltip_breaching_obligations_eo'/>"></span>
 				</div>
 					
 				<tiles:insertDefinition name="simpleFormCriterion">
@@ -211,14 +208,30 @@
 					<tiles:putAttribute name="selfCleaning" value="false"/>
 				</tiles:insertDefinition>
 				
-				<tiles:insertDefinition name="formCriterion">
-					<tiles:putAttribute name="field" value="purelyNationalGrounds"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
-				</tiles:insertDefinition>
+			</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default espd-panel">
+			<div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
+				 <s:message code='crit_top_title_purely_national'/>
+			</div>
+            <div id="ca-insolvency-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
+                        <s:message code='crit_eu_main_purely_national'/>
+                    </span>
 
-			</div>
-			</div>
+                    <tiles:insertDefinition name="formCriterion">
+                        <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
+						<tiles:putAttribute name="availableElectronically" value="true"/>
+						<tiles:putAttribute name="selfCleaning" value="true"/>
+                    </tiles:insertDefinition>
+                    
+                </div>
+            </div>
 		</div>
 
         <tiles:insertDefinition name="footerButtons">

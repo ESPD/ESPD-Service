@@ -12,7 +12,7 @@
 <div class="checkbox" style="border: 1px solid lightgray;    margin-bottom: 5px;    padding-left: 5px;    padding-bottom: 5px;">
 	<label>
 		<form:checkbox path="${field}.exists"/>
-		<span data-i18n="${title_code}">  
+		<span style="font-weight: bold;" data-i18n="${title_code}">  
 			<s:message code='${title_code}'/> 
 		</span>
 		<%-- TOOLTIP (delete this)--%>

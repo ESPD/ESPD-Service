@@ -45,7 +45,7 @@ public class EspdDocument {
     private BreachOfObligations earlyTermination;
     private BreachOfObligations guiltyMisinterpretation;
 
-    private Criterion purelyNationalGrounds;
+    private PurelyNationalGrounds purelyNationalGrounds;
 
     private SelectionCriterion enrolmentProfessionalRegister;
     private SelectionCriterion enrolmentTradeRegister;
