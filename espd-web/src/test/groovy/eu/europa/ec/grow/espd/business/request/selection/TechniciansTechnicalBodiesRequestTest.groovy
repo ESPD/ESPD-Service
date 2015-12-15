@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class TechniciansTechnicalBodiesRequestTest extends AbstractEspdXmlMarshalling {
+class TechniciansTechnicalBodiesRequestTest extends AbstractRequestSelectionFixture {
 
     def "16. should contain the 'Technicians or technical bodies for quality control' criterion"() {
         given:

@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class StudyResearchFacilitiesRequestTest extends AbstractEspdXmlMarshalling {
+class StudyResearchFacilitiesRequestTest extends AbstractRequestSelectionFixture {
 
     def "19. should contain the 'Study and research facilities' criterion"() {
         given:

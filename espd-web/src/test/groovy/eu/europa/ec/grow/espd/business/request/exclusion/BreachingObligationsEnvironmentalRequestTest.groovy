@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 1:15 PM.
  */
-class BreachingObligationsEnvironmentalRequestTest extends AbstractEspdXmlMarshalling {
+class BreachingObligationsEnvironmentalRequestTest extends AbstractRequestExclusionFixture {
 
 
     def "09. should contain the 'Breaching of obligations in the fields of environmental, social and labour law' criterion"() {

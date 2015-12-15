@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class ServiceContractsAuthorisationRequestTest extends AbstractEspdXmlMarshalling {
+class ServiceContractsAuthorisationRequestTest extends AbstractRequestSelectionFixture {
 
     def "04. should contain the 'For service contracts: authorisation of particular organisation needed' criterion"() {
         given:

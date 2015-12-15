@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 1:17 PM.
  */
-class ArrangementWithCreditorsRequestTest extends AbstractEspdXmlMarshalling {
+class ArrangementWithCreditorsRequestTest extends AbstractRequestExclusionFixture {
 
     def "12. should contain the 'Arrangement with creditors' criterion"() {
         given:

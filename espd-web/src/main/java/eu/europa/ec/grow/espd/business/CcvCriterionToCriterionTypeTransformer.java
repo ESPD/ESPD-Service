@@ -7,12 +7,14 @@ import eu.europa.ec.grow.espd.criteria.enums.CriterionJurisdictionLevel;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.LegislationType;
+import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 /**
  * Transforms the criterion information coming from ESPD into a {@link CriterionType} object.
@@ -38,7 +40,8 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         addName(input, criterionType);
         addDescription(input, criterionType);
         addLegislationReference(input, criterionType);
-        addSubcriteria(input, criterionType);
+        addRequirements(input, criterionType);
+        addSubCriteria(input, criterionType);
 
         return criterionType;
     }
@@ -106,8 +109,17 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
         criterionType.getLegislationReference().add(legislationType);
     }
 
-    private void addSubcriteria(CcvCriterion input, CriterionType criterionType) {
-        if (CollectionUtils.isEmpty(input.getSubCriteria())) {
+    private void addRequirements(CcvCriterion input, CriterionType criterionType) {
+        if (isEmpty(input.getRequirements())) {
+            return;
+        }
+
+        List<RequirementType> requirements = Lists.transform(input.getRequirements(), criterionRequirementTransformer);
+        criterionType.getRequirement().addAll(requirements);
+    }
+
+    private void addSubCriteria(CcvCriterion input, CriterionType criterionType) {
+        if (isEmpty(input.getSubCriteria())) {
             return;
         }
 

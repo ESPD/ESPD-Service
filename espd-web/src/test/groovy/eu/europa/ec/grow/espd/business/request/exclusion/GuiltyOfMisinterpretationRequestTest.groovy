@@ -1,11 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:26 PM.
  */
-class GuiltyOfMisinterpretationRequestTest extends AbstractEspdXmlMarshalling {
+class GuiltyOfMisinterpretationRequestTest extends AbstractRequestExclusionFixture {
 
     def "20. should contain the 'Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure' criterion"() {
         given:

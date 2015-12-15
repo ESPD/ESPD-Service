@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
-
 /**
  * Created by ratoico on 12/9/15 at 1:13 PM.
  */
-class PaymentOfSocialSecurityRequestTest extends AbstractEspdXmlMarshalling {
+class PaymentOfSocialSecurityRequestTest extends AbstractRequestExclusionFixture {
 
 
     def "08. should contain the 'Payment of social security contributions' criterion"() {
@@ -32,6 +31,51 @@ class PaymentOfSocialSecurityRequestTest extends AbstractEspdXmlMarshalling {
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(2)")
+
+        then: "Your answer"
+        request.Criterion[idx].Requirement.size() == 1
+        checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
+
+        then: "check all the sub criteria"
+        request.Criterion[idx].SubCriterion.size() == 2
+
+        then: "main sub criterion"
+        request.Criterion[idx].SubCriterion[0].ID.text() == "e0b0dedc-19d7-4d12-9542-1ca656b6f4f8"
+        request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 3
+        request.Criterion[idx].SubCriterion[0].Requirement.size() == 2
+
+        then: "main sub criterion requirements"
+        def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
+        checkRequirement(r1_1, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "COUNTRY")
+
+        def r1_2 = request.Criterion[idx].SubCriterion[0].Requirement[1]
+        checkRequirement(r1_2, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
+
+        then: "check first sub criterion"
+        def sub1_1 = request.Criterion[idx].SubCriterion[0].SubCriterion[0]
+        sub1_1.ID.text() == "7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02"
+        sub1_1.Requirement.size() == 2
+        checkRequirement(sub1_1.Requirement[0], "9b4497e6-a166-46f9-8581-7fc39ff975c4", "Has this breach of obligations been established by means other than a judicial or administrative decision?", "INDICATOR")
+        checkRequirement(sub1_1.Requirement[1], "201f11c3-1fa2-4464-acc0-f021266fd881", "Please describe which means were used", "DESCRIPTION")
+
+        then: "check second sub criterion"
+        def sub1_2 = request.Criterion[idx].SubCriterion[0].SubCriterion[1]
+        sub1_2.ID.text() == "c882afa4-6971-4b00-8970-0c283eb122cc"
+        sub1_2.Requirement.size() == 3
+        checkRequirement(sub1_2.Requirement[0], "08b0c984-c5e6-4143-8493-868c39745637", "If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?", "INDICATOR")
+        checkRequirement(sub1_2.Requirement[1], "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
+        checkRequirement(sub1_2.Requirement[2], "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+
+        then: "check third sub criterion"
+        def sub1_3 = request.Criterion[idx].SubCriterion[0].SubCriterion[2]
+        sub1_3.ID.text() == "fc57e473-d63e-4a04-b589-dcf81cab8052"
+        sub1_3.Requirement.size() == 2
+        checkRequirement(sub1_3.Requirement[0], "70f8697b-8953-411a-a489-4ff62e5250d2",
+                "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?", "INDICATOR")
+        checkRequirement(sub1_3.Requirement[1], "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+
+        then: "info available electronically sub criterion"
+        checkInfoAvailableElectronicallySubCriterion(request.Criterion[idx].SubCriterion[1])
     }
 
 }

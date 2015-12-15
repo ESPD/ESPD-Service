@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class ProfessionalRiskIndemnityRequestTest extends AbstractEspdXmlMarshalling {
+class ProfessionalRiskIndemnityRequestTest extends AbstractRequestSelectionFixture {
 
     def "11. should contain the 'Professional risk indemnity insurance' criterion"() {
         given:

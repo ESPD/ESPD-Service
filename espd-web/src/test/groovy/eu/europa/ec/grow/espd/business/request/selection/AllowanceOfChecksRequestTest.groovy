@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class AllowanceOfChecksRequestTest extends AbstractEspdXmlMarshalling {
+class AllowanceOfChecksRequestTest extends AbstractRequestSelectionFixture {
 
     def "21. should contain the 'Allowance of checks' criterion"() {
         given:

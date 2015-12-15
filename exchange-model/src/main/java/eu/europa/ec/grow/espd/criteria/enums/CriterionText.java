@@ -19,7 +19,7 @@ final class CriterionText {
     static final String INFO_AVAILABLE_ELECTRONICALLY_TEXT = "Is this information available electronically?";
     static final String URL_TEXT = "URL";
     static final String URL_CODE_TEXT = "Code";
-    static final String COUNTRY_MS_TEXT = "Country or Member State concerned";
+    static final String COUNTRY_MS_TEXT = "Country or member state concerned";
     static final String AMOUNT_TEXT = "Amount concerned";
     static final String BREACH_OF_OBLIGATIONS_OTHER_THAN_TEXT = "Has this breach of obligations been established by means other than a judicial or administrative decision?";
     static final String DESCRIBE_MEANS_TEXT = "Please describe which means were used";

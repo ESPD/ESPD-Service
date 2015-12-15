@@ -1,19 +1,17 @@
 package eu.europa.ec.grow.espd.business
-
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
 import spock.lang.Specification
-
 /**
-*  Created by vigi on 11/20/15:9:13 AM.
-*/
+ *  Created by vigi on 11/20/15:9:13 AM.
+ */
 abstract class AbstractEspdXmlMarshalling extends Specification {
 
     @Shared
-    protected static Jaxb2Marshaller jaxb2Marshaller= new JaxbConfiguration().jaxb2Marshaller()
+    protected static Jaxb2Marshaller jaxb2Marshaller = new JaxbConfiguration().jaxb2Marshaller()
 
     static {
         // init the marshaller only once because it's expensive to create
@@ -73,30 +71,4 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         new XmlSlurper().parseText(xmlOutput.toString())
     }
 
-    protected static void checkCriterionId(def request, int idx, String expectedId) {
-        assert request.Criterion[idx].ID.text() == expectedId
-        assert request.Criterion[idx].ID.@schemeAgencyID.text() == "EU-COM-GROW"
-        assert request.Criterion[idx].ID.@schemeVersionID.text() == "1.0"
-        assert request.Criterion[idx].ID.@schemeID.text() == "CriteriaID"
-    }
-
-    protected static void checkCriterionTypeCode(def request, int idx, String expectedTypeCode) {
-        assert request.Criterion[idx].TypeCode.text() == expectedTypeCode
-        assert request.Criterion[idx].TypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        assert request.Criterion[idx].TypeCode.@listID.text() == "CriteriaTypeCode"
-        assert request.Criterion[idx].TypeCode.@listVersionID.text() == "1.0"
-    }
-
-    protected static void checkLegislationReference(def request, int idx, String expectedArticle) {
-        def ref = request.Criterion[idx].LegislationReference
-
-        assert ref.Title.text() == "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC"
-//        assert ref.Description.text() == "Directive 2014/24/EU"
-        assert ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
-        assert ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
-        assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevelCode"
-        assert ref.JurisdictionLevelCode.@listVersionID.text() == "1.0"
-        assert ref.Article.text() == expectedArticle
-        assert ref.URI.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
-    }
 }

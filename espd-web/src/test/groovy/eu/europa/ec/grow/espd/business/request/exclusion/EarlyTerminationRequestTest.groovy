@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 1:24 PM.
  */
-class EarlyTerminationRequestTest extends AbstractEspdXmlMarshalling {
+class EarlyTerminationRequestTest extends AbstractRequestExclusionFixture {
 
     def "19. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
         given:

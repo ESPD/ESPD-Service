@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 11:55 AM.
  */
-class TerroristOffencesRequestTest extends AbstractEspdXmlMarshalling {
+class TerroristOffencesRequestTest extends AbstractRequestExclusionFixture {
 
     def "04. should contain the 'Terrorist offences or offences linked to terrorist activities' criterion"() {
         given:
@@ -32,6 +31,36 @@ class TerroristOffencesRequestTest extends AbstractEspdXmlMarshalling {
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(1)")
 
+        then: "Your answer"
+        request.Criterion[idx].Requirement.size() == 1
+        checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
+
+        then: "check all the sub criteria"
+        request.Criterion[idx].SubCriterion.size() == 2
+
+        then: "main sub criterion"
+        request.Criterion[idx].SubCriterion[0].ID.text() == "2380efc6-2c86-4aa6-8645-c56cb87ad5a1"
+        request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 1
+        request.Criterion[idx].SubCriterion[0].Requirement.size() == 4
+
+        then: "main sub criterion requirements"
+        def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
+        checkRequirement(r1_1, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
+
+        def r1_2 = request.Criterion[idx].SubCriterion[0].Requirement[1]
+        checkRequirement(r1_2, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION")
+
+        def r1_3 = request.Criterion[idx].SubCriterion[0].Requirement[2]
+        checkRequirement(r1_3, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
+
+        def r1_4 = request.Criterion[idx].SubCriterion[0].Requirement[3]
+        checkRequirement(r1_4, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+
+        then: "check the self-cleaning sub criterion"
+        checkSelfCleaningSubCriterion(request.Criterion[idx].SubCriterion[0].SubCriterion[0])
+
+        then: "info available electronically sub criterion"
+        checkInfoAvailableElectronicallySubCriterion(request.Criterion[idx].SubCriterion[1])
     }
 
 }

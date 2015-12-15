@@ -13,7 +13,7 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     ANSWER_YES_NO("7e7db838-eeac-46d9-ab39-42927486f22d", CriterionText.ANSWER_YES_NO_TEXT,
-            ExpectedResponseType.REQUIREMENT_INDICATOR),
+            ExpectedResponseType.INDICATOR),
     /**
      *
      */
@@ -73,7 +73,7 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     INFO_AVAILABLE_ELECTRONICALLY("9dae5670-cb75-4c97-901b-96ddac5a633a",
-            CriterionText.INFO_AVAILABLE_ELECTRONICALLY_TEXT, ExpectedResponseType.REQUIREMENT_INDICATOR),
+            CriterionText.INFO_AVAILABLE_ELECTRONICALLY_TEXT, ExpectedResponseType.INDICATOR),
     /**
      *
      */

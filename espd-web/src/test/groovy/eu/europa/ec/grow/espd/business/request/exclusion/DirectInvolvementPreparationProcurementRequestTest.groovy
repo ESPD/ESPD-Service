@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 1:23 PM.
  */
-class DirectInvolvementPreparationProcurementRequestTest extends AbstractEspdXmlMarshalling {
+class DirectInvolvementPreparationProcurementRequestTest extends AbstractRequestExclusionFixture {
 
     def "18. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
         given:

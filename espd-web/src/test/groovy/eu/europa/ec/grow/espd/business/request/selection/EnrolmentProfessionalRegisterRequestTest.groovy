@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class EnrolmentProfessionalRegisterRequestTest extends AbstractEspdXmlMarshalling {
+class EnrolmentProfessionalRegisterRequestTest extends AbstractRequestSelectionFixture {
 
     def "02. should contain the 'Enrolment in a relevant professional register' criterion"() {
         given:

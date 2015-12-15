@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractEspdXmlMarshalling {
+class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractRequestSelectionFixture {
 
     def "32. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
         given:

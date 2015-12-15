@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class EnvironmentalManagementMeasuresRequestTest extends AbstractEspdXmlMarshalling {
+class EnvironmentalManagementMeasuresRequestTest extends AbstractRequestSelectionFixture {
 
     def "23. should contain the 'Environmental management measures' criterion"() {
         given:

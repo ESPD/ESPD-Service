@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
-
 /**
  * Created by ratoico on 12/9/15 at 1:22 PM.
  */
-class ConflictOfInterestParticipationProcurementProcedureRequestTest extends AbstractEspdXmlMarshalling {
+class ConflictOfInterestParticipationProcurementProcedureRequestTest extends AbstractRequestExclusionFixture {
 
     def "17. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
         given:

@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class CertificatesIndependentBodiesQARequestTest extends AbstractEspdXmlMarshalling {
+class CertificatesIndependentBodiesQARequestTest extends AbstractRequestSelectionFixture {
 
     def "31. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
         given:

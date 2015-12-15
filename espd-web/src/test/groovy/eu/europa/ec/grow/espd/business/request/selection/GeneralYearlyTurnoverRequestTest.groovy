@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class GeneralYearlyTurnoverRequestTest extends AbstractEspdXmlMarshalling {
+class GeneralYearlyTurnoverRequestTest extends AbstractRequestSelectionFixture {
 
     def "06. should contain the 'General yearly turnover' criterion"() {
         given:

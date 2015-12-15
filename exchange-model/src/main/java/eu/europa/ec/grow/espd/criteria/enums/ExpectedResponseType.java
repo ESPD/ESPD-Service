@@ -5,10 +5,10 @@ import eu.europa.ec.grow.espd.entities.CcvResponseType;
 /**
  * Created by ratoico on 12/4/15 at 1:58 PM.
  */
-public enum ExpectedResponseType implements CcvResponseType{
+public enum ExpectedResponseType implements CcvResponseType {
 
     CRITERION_INDICATOR,
-    REQUIREMENT_INDICATOR,
+    INDICATOR,
     DATE,
     TEXT,
     DESCRIPTION,
@@ -17,8 +17,7 @@ public enum ExpectedResponseType implements CcvResponseType{
     AMOUNT,
     COUNTRY,
     RATIO,
-    PERCENTAGE
-    ;
+    PERCENTAGE;
 
     @Override
     public String getCode() {

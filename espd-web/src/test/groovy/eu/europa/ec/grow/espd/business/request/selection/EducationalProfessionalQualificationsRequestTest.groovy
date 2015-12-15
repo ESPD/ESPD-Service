@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class EducationalProfessionalQualificationsRequestTest extends AbstractEspdXmlMarshalling {
+class EducationalProfessionalQualificationsRequestTest extends AbstractRequestSelectionFixture {
 
     def "22. should contain the 'Educational and professional qualifications' criterion"() {
         given:

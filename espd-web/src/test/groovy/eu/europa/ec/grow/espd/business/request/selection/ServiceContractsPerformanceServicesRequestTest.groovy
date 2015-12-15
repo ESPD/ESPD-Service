@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class ServiceContractsPerformanceServicesRequestTest extends AbstractEspdXmlMarshalling {
+class ServiceContractsPerformanceServicesRequestTest extends AbstractRequestSelectionFixture {
 
     def "15. should contain the 'For service contracts: performance of services of the specified type' criterion"() {
         given:

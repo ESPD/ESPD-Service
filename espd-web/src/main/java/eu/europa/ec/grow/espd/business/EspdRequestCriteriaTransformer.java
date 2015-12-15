@@ -186,7 +186,8 @@ class EspdRequestCriteriaTransformer implements Function<EspdDocument, List<Crit
     }
 
     private boolean isCriterionSelectedInEspd(Criterion espdCriterion) {
-        return espdCriterion != null && espdCriterion.getExists();
+        // TODO write test to cover the null pointer
+        return espdCriterion != null && Boolean.TRUE.equals(espdCriterion.getExists());
     }
 
 }

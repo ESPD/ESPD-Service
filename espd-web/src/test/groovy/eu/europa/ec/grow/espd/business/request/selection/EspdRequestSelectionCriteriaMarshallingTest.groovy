@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
-class EspdRequestSelectionCriteriaMarshallingTest extends AbstractEspdXmlMarshalling {
+class EspdRequestSelectionCriteriaMarshallingTest extends AbstractRequestSelectionFixture {
 
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:

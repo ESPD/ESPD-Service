@@ -20,5 +20,7 @@ public interface CcvCriterion {
 
     CcvLegislation getLegislation();
 
+    List<? extends CcvCriterionRequirement> getRequirements();
+
     List<? extends CcvCriterion> getSubCriteria();
 }

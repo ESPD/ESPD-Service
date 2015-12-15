@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class SubcontractingProportionRequestTest extends AbstractEspdXmlMarshalling {
+class SubcontractingProportionRequestTest extends AbstractRequestSelectionFixture {
 
     def "27. should contain the 'Subcontracting proportion' criterion"() {
         given:

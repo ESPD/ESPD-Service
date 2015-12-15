@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class ToolsPlantRequestTest extends AbstractEspdXmlMarshalling {
+class ToolsPlantRequestTest extends AbstractRequestSelectionFixture {
 
     def "26. should contain the 'Tools, plant or technical equipment' criterion"() {
         given:

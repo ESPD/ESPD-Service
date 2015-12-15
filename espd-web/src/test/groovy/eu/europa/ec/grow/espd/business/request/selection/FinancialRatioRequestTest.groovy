@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class FinancialRatioRequestTest extends AbstractEspdXmlMarshalling {
+class FinancialRatioRequestTest extends AbstractRequestSelectionFixture {
 
     def "10. should contain the 'Financial ratio' criterion"() {
         given:
