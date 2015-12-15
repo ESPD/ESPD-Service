@@ -8,15 +8,23 @@
 <tiles:importAttribute name="title_code"/>
 <tiles:importAttribute name="tooltip_code"/>
 <tiles:importAttribute name="description_code"/>
+<tiles:importAttribute name="ischecked"/>
+<tiles:importAttribute name="isdisabled"/>
 
 <div class="checkbox" style="border: 1px solid lightgray;    margin-bottom: 5px;    padding-left: 5px;    padding-bottom: 5px;">
 	<label>
-		<form:checkbox path="${field}.exists"/>
+		<c:if test="${ischecked}">
+			<form:checkbox path="${field}.exists" checked="checked" disabled="${isdisabled?'true':''}"/>
+		</c:if>
+		<c:if test="${!ischecked}">
+			<form:checkbox path="${field}.exists" disabled="${isdisabled?'true':''}"/>
+		</c:if>
+		
 		<span style="font-weight: bold;" data-i18n="${title_code}">  
 			<s:message code='${title_code}'/> 
 		</span>
 		<%-- TOOLTIP (delete this)--%>
-		<c:if test="${field == 'paymentTaxes'}">
+		<c:if test="${field == 'paymentTaxes'}"> 
 			<img id="taxTooltip" title=
 				"
 				<div style='width:550px; text-align:left'>

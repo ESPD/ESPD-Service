@@ -70,6 +70,8 @@
         <put-attribute name="title_code" value=""/>
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="description_code" value=""/>
+        <put-attribute name="ischecked" value="true"/>
+        <put-attribute name="isdisabled" value="true"/>
     </definition>
     
     <definition name="formCriterion" template="/WEB-INF/views/wizard/templates/formCriterion.jsp">
