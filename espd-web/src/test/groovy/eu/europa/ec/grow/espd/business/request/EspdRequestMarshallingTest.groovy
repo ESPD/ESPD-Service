@@ -224,4 +224,15 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         result.Criterion.size() == 52
     }
 
+    def "should not fail when a criterion has a null exists flag"() {
+        given:
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: null))
+
+        when:
+        def result = parseRequestXml(espd)
+
+        then:
+        result.Criterion.size() == 0
+    }
+
 }

@@ -35,15 +35,15 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractRequestExcl
         request.Criterion[idx].Requirement.size() == 1
         checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
 
-        then: "check all the sub criteria"
+        then: "check all the sub groups"
         request.Criterion[idx].SubCriterion.size() == 2
 
-        then: "main sub criterion"
+        then: "main sub group"
         request.Criterion[idx].SubCriterion[0].ID.text() == "7c637c0c-7703-4389-ba52-02997a055bd7"
         request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 1
         request.Criterion[idx].SubCriterion[0].Requirement.size() == 4
 
-        then: "main sub criterion requirements"
+        then: "main sub group requirements"
         def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
         checkRequirement(r1_1, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
 
@@ -56,10 +56,10 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractRequestExcl
         def r1_4 = request.Criterion[idx].SubCriterion[0].Requirement[3]
         checkRequirement(r1_4, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
 
-        then: "check the self-cleaning sub criterion"
+        then: "check the self-cleaning sub group"
         checkSelfCleaningSubCriterion(request.Criterion[idx].SubCriterion[0].SubCriterion[0])
 
-        then: "info available electronically sub criterion"
+        then: "info available electronically sub group"
         checkInfoAvailableElectronicallySubCriterion(request.Criterion[idx].SubCriterion[1])
     }
 

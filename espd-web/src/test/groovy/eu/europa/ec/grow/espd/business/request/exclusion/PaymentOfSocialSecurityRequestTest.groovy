@@ -36,29 +36,29 @@ class PaymentOfSocialSecurityRequestTest extends AbstractRequestExclusionFixture
         request.Criterion[idx].Requirement.size() == 1
         checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
 
-        then: "check all the sub criteria"
+        then: "check all the sub groups"
         request.Criterion[idx].SubCriterion.size() == 2
 
-        then: "main sub criterion"
+        then: "main sub group"
         request.Criterion[idx].SubCriterion[0].ID.text() == "e0b0dedc-19d7-4d12-9542-1ca656b6f4f8"
         request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 3
         request.Criterion[idx].SubCriterion[0].Requirement.size() == 2
 
-        then: "main sub criterion requirements"
+        then: "main sub group requirements"
         def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
         checkRequirement(r1_1, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "COUNTRY")
 
         def r1_2 = request.Criterion[idx].SubCriterion[0].Requirement[1]
         checkRequirement(r1_2, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
 
-        then: "check first sub criterion"
+        then: "check first sub group"
         def sub1_1 = request.Criterion[idx].SubCriterion[0].SubCriterion[0]
         sub1_1.ID.text() == "7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02"
         sub1_1.Requirement.size() == 2
         checkRequirement(sub1_1.Requirement[0], "9b4497e6-a166-46f9-8581-7fc39ff975c4", "Has this breach of obligations been established by means other than a judicial or administrative decision?", "INDICATOR")
         checkRequirement(sub1_1.Requirement[1], "201f11c3-1fa2-4464-acc0-f021266fd881", "Please describe which means were used", "DESCRIPTION")
 
-        then: "check second sub criterion"
+        then: "check second sub group"
         def sub1_2 = request.Criterion[idx].SubCriterion[0].SubCriterion[1]
         sub1_2.ID.text() == "c882afa4-6971-4b00-8970-0c283eb122cc"
         sub1_2.Requirement.size() == 3
@@ -66,7 +66,7 @@ class PaymentOfSocialSecurityRequestTest extends AbstractRequestExclusionFixture
         checkRequirement(sub1_2.Requirement[1], "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
         checkRequirement(sub1_2.Requirement[2], "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
 
-        then: "check third sub criterion"
+        then: "check third sub group"
         def sub1_3 = request.Criterion[idx].SubCriterion[0].SubCriterion[2]
         sub1_3.ID.text() == "fc57e473-d63e-4a04-b589-dcf81cab8052"
         sub1_3.Requirement.size() == 2
@@ -74,7 +74,7 @@ class PaymentOfSocialSecurityRequestTest extends AbstractRequestExclusionFixture
                 "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?", "INDICATOR")
         checkRequirement(sub1_3.Requirement[1], "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
 
-        then: "info available electronically sub criterion"
+        then: "info available electronically sub group"
         checkInfoAvailableElectronicallySubCriterion(request.Criterion[idx].SubCriterion[1])
     }
 

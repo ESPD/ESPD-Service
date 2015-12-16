@@ -30,6 +30,22 @@ class DirectInvolvementPreparationProcurementRequestTest extends AbstractRequest
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
+
+        then: "Your answer"
+        request.Criterion[idx].Requirement.size() == 1
+        checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].SubCriterion.size() == 1
+
+        then: "main sub group"
+        request.Criterion[idx].SubCriterion[0].ID.text() == "77ae3f29-7c5f-4afa-af97-24afec48c5bf"
+        request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 0
+        request.Criterion[idx].SubCriterion[0].Requirement.size() == 1
+
+        then: "main sub group requirements"
+        def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
+        checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
     }
 
 
