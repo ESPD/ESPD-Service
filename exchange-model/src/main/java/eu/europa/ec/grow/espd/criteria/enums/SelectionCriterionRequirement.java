@@ -12,13 +12,23 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    ANSWER_YES_NO("7e7db838-eeac-46d9-ab39-42927486f22d", CriterionText.ANSWER_YES_NO_TEXT,
+    YOUR_ANSWER("15335c12-ad77-4728-b5ad-3c06a60d65a4", CriterionText.YOUR_ANSWER_TEXT,
             ExpectedResponseType.INDICATOR),
     /**
      *
      */
-    YEAR_AMOUNT_CURRENCY("7e7db838-eeac-46d9-ab39-42927486f22d", CriterionText.YEAR_AMOUNT_CURRENCY_TEXT,
+    YEAR("5aacceb3-280e-42f1-b2da-3d8ac7877fe9", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT_TEXT,
             ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    CURRENCY("095c4a57-7f84-4863-a55e-363068d1aaf4", CriterionText.CURRENCY_TEXT,
+            ExpectedResponseType.CURRENCY),
     /**
      *
      */
@@ -52,22 +62,17 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    DESCRIPTION("ab05ff3b-f3e1-4441-9b43-ee9912e29e92", CriterionText.DESCRIPTION,
+    DESCRIPTION("ab05ff3b-f3e1-4441-9b43-ee9912e29e92", CriterionText.DESCRIPTION_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
      *
      */
-    AMOUNT("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT,
-            ExpectedResponseType.AMOUNT),
-    /**
-     *
-     */
-    DATE("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DATE,
+    DATE("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DATE_TEXT,
             ExpectedResponseType.DATE),
     /**
      *
      */
-    RECIPIENTS("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS,
+    RECIPIENTS("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS_TEXT,
             ExpectedResponseType.TEXT),
     /**
      *

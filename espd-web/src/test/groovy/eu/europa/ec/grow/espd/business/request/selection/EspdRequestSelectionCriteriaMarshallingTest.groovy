@@ -1,9 +1,7 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
-
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
@@ -35,6 +33,12 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractRequestSelecti
         then: "check name and description"
         request.Criterion[0].Name.text() == "All selection criteria will be satisfied"
         request.Criterion[0].Description.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+
+        then: "main subgroup"
+        request.Criterion[0].RequirementGroup.size() == 1
+        request.Criterion[0].RequirementGroup[0].ID.text() == "f3a6836d-2de2-4cd1-81ca-fb06178d05c5"
+
+        checkRequirement(request.Criterion[0].RequirementGroup[0].Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
     }
 
     def "all selection criteria (except satisfies all) should be in the correct order"() {

@@ -63,7 +63,7 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    AMOUNT("9052cc59-cfe5-41c6-a314-02a7f378ffe8", CriterionText.AMOUNT_TEXT, ExpectedResponseType.AMOUNT),
+    AMOUNT("9052cc59-cfe5-41c6-a314-02a7f378ffe8", CriterionText.AMOUNT_CONCERNED_TEXT, ExpectedResponseType.AMOUNT),
     /**
      *
      */

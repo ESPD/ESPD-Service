@@ -24,48 +24,67 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    YEAR_AMOUNT_CURRENCY_1_GROUP("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR, AMOUNT, CURRENCY)),
+    /**
+     *
+     */
+    YEAR_AMOUNT_CURRENCY_2_GROUP("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR, AMOUNT, CURRENCY)),
+    /**
+     *
+     */
+    YEAR_AMOUNT_CURRENCY_3_GROUP("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR, AMOUNT, CURRENCY)),
+    /**
+     *
+     */
     ALL_CRITERIA_SATISFIED_GROUP("f3a6836d-2de2-4cd1-81ca-fb06178d05c5", Collections.<CcvCriterionGroup>emptyList(),
-            list(ANSWER_YES_NO)),
+            list(YOUR_ANSWER)),
     /**
      *
      */
     ENROLMENT_PROFESSIONAL_REGISTER_GROUP("1768de86-a6c8-48e4-bd8e-de2f2f7424d0",
-            Collections.<CcvCriterionGroup>emptyList(), list(ANSWER_YES_NO)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */
     ENROLMENT_TRADE_REGISTER_GROUP("8fe21e2c-5490-474b-90e6-fe25a7d8c538", Collections.<CcvCriterionGroup>emptyList(),
-            list(ANSWER_YES_NO)),
+            list(YOUR_ANSWER)),
     /**
      *
      */
     SERVICE_CONTRACTS_AUTHORISATION_GROUP("a109e144-f65e-469d-bcda-220f1af34b6c",
-            Collections.<CcvCriterionGroup>emptyList(), list(ANSWER_YES_NO)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */
     SERVICE_CONTRACTS_MEMBERSHIP_GROUP("84c72d9c-6372-4781-b957-afe97c503c6c",
-            Collections.<CcvCriterionGroup>emptyList(), list(ANSWER_YES_NO)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */
-    GENERAL_YEARLY_TURNOVER_GROUP("e1886054-ada4-473c-9afc-2fde82c24cf4", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR_AMOUNT_CURRENCY)),
+    GENERAL_YEARLY_TURNOVER_GROUP("e1886054-ada4-473c-9afc-2fde82c24cf4",
+            list(YEAR_AMOUNT_CURRENCY_1_GROUP, YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
+            list(YOUR_ANSWER)),
     /**
      *
      */
-    AVERAGE_YEARLY_TURNOVER_GROUP("08da0667-c7e3-445f-a548-1107794ef7d5", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR_AMOUNT_CURRENCY)),
+    AVERAGE_YEARLY_TURNOVER_GROUP("08da0667-c7e3-445f-a548-1107794ef7d5", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
+            list(YOUR_ANSWER)),
     /**
      *
      */
-    SPECIFIC_YEARLY_TURNOVER_GROUP("ee1fdbab-f54e-4579-bcb8-060fe45178e9", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR_AMOUNT_CURRENCY)),
+    SPECIFIC_YEARLY_TURNOVER_GROUP("ee1fdbab-f54e-4579-bcb8-060fe45178e9", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
+            list(YOUR_ANSWER)),
     /**
      *
      */
-    SPECIFIC_AVERAGE_TURNOVER_GROUP("fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR_AMOUNT_CURRENCY)),
+    SPECIFIC_AVERAGE_TURNOVER_GROUP("fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
+            list(YOUR_ANSWER)),
     /**
      *
      */
@@ -175,12 +194,12 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA_GROUP("0e88f63c-5642-4a17-833b-ae5800e1750a",
-            Collections.<CcvCriterionGroup>emptyList(), list(ANSWER_YES_NO)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL_GROUP("82a59ce2-9c59-4075-af08-843ad89a45ec",
-            Collections.<CcvCriterionGroup>emptyList(), list(ANSWER_YES_NO)),;
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),;
 
     private final String id;
 

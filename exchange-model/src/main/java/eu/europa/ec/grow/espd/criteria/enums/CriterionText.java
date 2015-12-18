@@ -20,22 +20,22 @@ final class CriterionText {
     static final String URL_TEXT = "URL";
     static final String URL_CODE_TEXT = "Code";
     static final String COUNTRY_MS_TEXT = "Country or member state concerned";
-    static final String AMOUNT_TEXT = "Amount concerned";
+    static final String AMOUNT_CONCERNED_TEXT = "Amount concerned";
     static final String BREACH_OF_OBLIGATIONS_OTHER_THAN_TEXT = "Has this breach of obligations been established by means other than a judicial or administrative decision?";
     static final String DESCRIBE_MEANS_TEXT = "Please describe which means were used";
     static final String DECISION_FINAL_AND_BINDING_TEXT = "If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?";
     static final String EO_FULFILLED_OBLIGATIONS_TEXT = "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?";
     static final String REASONS_NEVERTHELESS_CONTRACT_TEXT = "Indicate reasons for being nevertheless to perform the contract";
 
-    static final String ANSWER_YES_NO_TEXT = "Please answer yes or no";
-    static final String YEAR_AMOUNT_CURRENCY_TEXT = "Year, amount and currency";
+    static final String YEAR_TEXT = "Year";
+    static final String AMOUNT_TEXT = "Amount";
+    static final String CURRENCY_TEXT = "Currency";
     static final String REQUIRED_RATIO_TEXT = "Please provide the the required ratio - ratio between x and y - and the value";
     static final String AMOUNT_CURRENCY_TEXT = "Please provide the insured amount and the currency";
     static final String PLEASE_SPECIFY_TEXT = "Please specify";
     static final String PERCENTAGE_TEXT = "Please specify this percentage";
     static final String PLEASE_ENUMERATE_TEXT = "Please enumerate";
-    static final String DESCRIPTION = "Description";
-    static final String AMOUNT = "Amount";
-    static final String DATE = "Date";
-    static final String RECIPIENTS = "Recipients";
+    static final String DESCRIPTION_TEXT = "Description";
+    static final String DATE_TEXT = "Date";
+    static final String RECIPIENTS_TEXT = "Recipients";
 }
