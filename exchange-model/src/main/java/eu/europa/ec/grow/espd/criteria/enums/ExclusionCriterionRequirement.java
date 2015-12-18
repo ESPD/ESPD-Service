@@ -13,7 +13,7 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     YOUR_ANSWER("974c8196-9d1c-419c-9ca9-45bb9f5fd59a", CriterionText.YOUR_ANSWER_TEXT,
-            ExpectedResponseType.CRITERION_INDICATOR),
+            ExpectedResponseType.INDICATOR),
     /**
      *
      */

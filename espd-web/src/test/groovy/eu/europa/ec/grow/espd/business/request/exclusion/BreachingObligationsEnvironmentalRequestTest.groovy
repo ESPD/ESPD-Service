@@ -32,25 +32,24 @@ class BreachingObligationsEnvironmentalRequestTest extends AbstractRequestExclus
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
 
-        then: "Your answer"
-        request.Criterion[idx].Requirement.size() == 1
-        checkRequirement(request.Criterion[idx].Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "CRITERION_INDICATOR")
-
         then: "check all the sub groups"
-        request.Criterion[idx].SubCriterion.size() == 1
+        request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].SubCriterion[0].ID.text() == "976b5acb-c00f-46ca-8f83-5ce6abfdfe43"
-        request.Criterion[idx].SubCriterion[0].SubCriterion.size() == 1
-        request.Criterion[idx].SubCriterion[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "976b5acb-c00f-46ca-8f83-5ce6abfdfe43"
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
-        def r1_1 = request.Criterion[idx].SubCriterion[0].Requirement[0]
+        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
         checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
 
         then: "check first sub group"
-        def sub1_1 = request.Criterion[idx].SubCriterion[0].SubCriterion[0]
-        checkSelfCleaningSubCriterion(sub1_1)
+        def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        checkSelfCleaningRequirementGroup(sub1_1)
     }
 
 }

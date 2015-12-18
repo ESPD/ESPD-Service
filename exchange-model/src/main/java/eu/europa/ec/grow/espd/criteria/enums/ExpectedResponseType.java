@@ -7,7 +7,6 @@ import eu.europa.ec.grow.espd.entities.CcvResponseType;
  */
 public enum ExpectedResponseType implements CcvResponseType {
 
-    CRITERION_INDICATOR,
     INDICATOR,
     DATE,
     TEXT,

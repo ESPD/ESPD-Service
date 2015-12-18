@@ -15,47 +15,47 @@
     </jxb:globalBindings>
 
     <!-- Customize the names given to the namespaces -->
-    <jxb:bindings schemaLocation="ESPDRequest-1.1.xsd">
+    <jxb:bindings schemaLocation="ESPDRequest-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="espd-req"/>
         </jxb:bindings>
     </jxb:bindings>
-    <jxb:bindings schemaLocation="ESPDResponse-1.1.xsd">
+    <jxb:bindings schemaLocation="ESPDResponse-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="espd"/>
         </jxb:bindings>
     </jxb:bindings>
 
-    <jxb:bindings schemaLocation="../common/CCV-CommonAggregateComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/CCV-CommonAggregateComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="ccv"/>
         </jxb:bindings>
     </jxb:bindings>
-    <jxb:bindings schemaLocation="../common/CCV-CommonBasicComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/CCV-CommonBasicComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="ccv-cbc"/>
         </jxb:bindings>
     </jxb:bindings>
 
 
-    <jxb:bindings schemaLocation="../common/CEV-CommonAggregateComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/CEV-CommonAggregateComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="cev"/>
         </jxb:bindings>
     </jxb:bindings>
-    <jxb:bindings schemaLocation="../common/CEV-CommonBasicComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/CEV-CommonBasicComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="cev-cbc"/>
         </jxb:bindings>
     </jxb:bindings>
 
 
-    <jxb:bindings schemaLocation="../common/ESPD-CommonAggregateComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/ESPD-CommonAggregateComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="espd-cac"/>
         </jxb:bindings>
     </jxb:bindings>
-    <jxb:bindings schemaLocation="../common/ESPD-CommonBasicComponents-1.1.xsd">
+    <jxb:bindings schemaLocation="../common/ESPD-CommonBasicComponents-1.0.xsd">
         <jxb:bindings>
             <namespace:prefix name="espd-cbc"/>
         </jxb:bindings>

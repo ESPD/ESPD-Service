@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionSubCriterion.*;
+import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionGroup.*;
 
 /**
  * Created by vigi on 11/17/15:2:34 PM.
@@ -186,17 +186,17 @@ public enum ExclusionCriterion implements CcvCriterion {
 
     private final LegislationReference legislationReference;
 
-    private final List<? extends CcvCriterion> subCriteria;
+    private final List<? extends CcvCriterionGroup> groups;
 
     ExclusionCriterion(String uuid, String shortName, String description,
             ExclusionCriterionTypeCode criterionTypeCode, LegislationReference legislationReference,
-            List<? extends CcvCriterion> subCriteria) {
+            List<? extends CcvCriterionGroup> groups) {
         this.uuid = uuid;
         this.shortName = shortName;
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legislationReference = legislationReference;
-        this.subCriteria = subCriteria;
+        this.groups = groups;
     }
 
     @Override
@@ -214,12 +214,7 @@ public enum ExclusionCriterion implements CcvCriterion {
         return getLegislationReference();
     }
 
-    @Override
-    public List<? extends CcvCriterionRequirement> getRequirements() {
-        return Collections.singletonList(ExclusionCriterionRequirement.YOUR_ANSWER);
-    }
-
-    private static List<ExclusionSubCriterion> list(ExclusionSubCriterion... values) {
+    private static List<ExclusionCriterionGroup> list(ExclusionCriterionGroup... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
 }

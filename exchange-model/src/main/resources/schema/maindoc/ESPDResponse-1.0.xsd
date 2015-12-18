@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- editado con XMLSpy v2016 (x64) (http://www.altova.com) por Enric Staromiejski (everis) -->
 <!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
 <!--
-	eDocument	:	ESPDResponse . Syntax Binding based on OASIS UBL-2.1 
-	version			:	1.1
-	Last update	: 	20151001Th
-	Author			:	Enric Staromiejski <enric.staromiejski.torregrosa@everis.com>
-	Project Owner: 	DG GROW, European Commission
+	eDocument		:	ESPDResponse. Syntax Binding based on OASIS UBL-2.1
+	version				:	1.0
+	Last update		: 	20151001Th
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
 	-->
-<xsd:schema xmlns="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" targetNamespace="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
-	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" schemaLocation="../common/ESPD-CommonAggregateComponents-1.1.xsd"/>
-	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" schemaLocation="../common/ESPD-CommonBasicComponents-1.1.xsd"/>
-	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" schemaLocation="../common/CCV-CommonAggregateComponents-1.1.xsd"/>
+<xsd:schema xmlns="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" targetNamespace="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" schemaLocation="../common/ESPD-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" schemaLocation="../common/ESPD-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" schemaLocation="../common/CCV-CommonAggregateComponents-1.0.xsd"/>
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="../common/UBL-CommonAggregateComponents-2.1.xsd"/>
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="../common/UBL-CommonBasicComponents-2.1.xsd"/>
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" schemaLocation="../common/UBL-CommonExtensionComponents-2.1.xsd"/>

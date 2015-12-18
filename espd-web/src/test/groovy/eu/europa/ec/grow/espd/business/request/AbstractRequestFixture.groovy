@@ -37,7 +37,7 @@ class AbstractRequestFixture extends AbstractEspdXmlMarshalling {
                                            String expectedResponseType) {
         assert requirementType.ID.text() == expectedId
         assert requirementType.Description.text() == expectedDescription
-        assert requirementType.ExpectedResponseType.text() == expectedResponseType
+        assert requirementType.@responseDataType.text() == expectedResponseType
         assert requirementType.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert requirementType.ID.@schemeVersionID.text() == "1.0"
     }

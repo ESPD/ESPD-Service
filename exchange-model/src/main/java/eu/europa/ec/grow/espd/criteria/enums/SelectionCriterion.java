@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
-import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.SelectionSubCriterion.*;
+import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionGroup.*;
 
 /**
  * Created by vigi on 11/17/15:3:11 PM.
@@ -30,14 +30,14 @@ public enum SelectionCriterion implements CcvCriterion {
             "Enrolment in a relevant professional register",
             "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-            list(ENROLLMENT_PROFESSIONAL_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(ENROLMENT_PROFESSIONAL_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
     ENROLMENT_TRADE_REGISTER("87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7", "Enrolment in a trade register",
             "The economic operator is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
             SelectionCriterionTypeCode.SUITABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_2,
-            list(ENROLLMENT_TRADE_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(ENROLMENT_TRADE_REGISTER_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
@@ -266,16 +266,16 @@ public enum SelectionCriterion implements CcvCriterion {
 
     private final LegislationReference legislationReference;
 
-    private final List<? extends CcvCriterion> subCriteria;
+    private final List<? extends CcvCriterionGroup> groups;
 
     SelectionCriterion(String uuid, String shortName, String description, SelectionCriterionTypeCode criterionTypeCode,
-            LegislationReference legislationReference, List<? extends CcvCriterion> subCriteria) {
+            LegislationReference legislationReference, List<? extends CcvCriterionGroup> groups) {
         this.uuid = uuid;
         this.shortName = shortName;
         this.description = description;
         this.criterionTypeCode = criterionTypeCode;
         this.legislationReference = legislationReference;
-        this.subCriteria = subCriteria;
+        this.groups = groups;
     }
 
     @Override
@@ -293,12 +293,7 @@ public enum SelectionCriterion implements CcvCriterion {
         return legislationReference;
     }
 
-    @Override
-    public List<? extends CcvCriterionRequirement> getRequirements() {
-        return null;
-    }
-
-    private static List<SelectionSubCriterion> list(SelectionSubCriterion... values) {
+    private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
 

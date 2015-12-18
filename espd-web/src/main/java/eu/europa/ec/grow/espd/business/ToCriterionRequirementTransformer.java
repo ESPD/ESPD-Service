@@ -6,7 +6,6 @@ import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.DescriptionType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.TypeCodeType;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,9 +29,7 @@ class ToCriterionRequirementTransformer implements Function<CcvCriterionRequirem
         descriptionType.setValue(input.getDescription());
         requirementType.setDescription(descriptionType);
 
-        TypeCodeType typeCodeType = new TypeCodeType();
-        typeCodeType.setValue(input.getResponseType().getCode());
-        requirementType.setExpectedResponseType(typeCodeType);
+        requirementType.setResponseDataType(input.getResponseType().getCode());
 
         return requirementType;
     }
