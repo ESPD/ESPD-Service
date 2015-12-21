@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Created by ratoico on 12/7/15 at 2:25 PM.
  */
 @Component
-class ToCriterionRequirementTransformer implements Function<CcvCriterionRequirement, RequirementType> {
+class UblRequirementTypeTransformer implements Function<CcvCriterionRequirement, RequirementType> {
 
     @Override
     public RequirementType apply(final CcvCriterionRequirement input) {

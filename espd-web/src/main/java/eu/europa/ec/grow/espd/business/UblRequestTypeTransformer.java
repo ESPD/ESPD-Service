@@ -18,16 +18,16 @@ import java.util.Date;
  * Created by vigi on 11/11/15:10:58 AM.
  */
 @Component
-class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESPDRequestType> {
+class UblRequestTypeTransformer implements Function<EspdDocument, ESPDRequestType> {
 
     private final CommonUblFactory commonUblFactory;
-    private final ToContractingPartyTransformer contractingPartyTransformer;
-    private final EspdRequestCriteriaTransformer criteriaTransformer;
+    private final UblContractingPartyTypeTransformer contractingPartyTransformer;
+    private final UblRequestCriteriaTransformer criteriaTransformer;
 
     @Autowired
-    EspdDocumentToEspdRequestTransformer(CommonUblFactory commonUblFactory,
-            ToContractingPartyTransformer contractingPartyTransformer,
-            EspdRequestCriteriaTransformer criteriaTransformer) {
+    UblRequestTypeTransformer(CommonUblFactory commonUblFactory,
+            UblContractingPartyTypeTransformer contractingPartyTransformer,
+            UblRequestCriteriaTransformer criteriaTransformer) {
         this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
         this.criteriaTransformer = criteriaTransformer;

@@ -15,13 +15,13 @@ import java.util.List;
  * Created by ratoico on 11/25/15 11:28 AM.
  */
 @Component
-class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
+class UblRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
 
-    private final ToPartyImplTransformer toPartyImplTransformer;
+    private final PartyImplTransformer partyImplTransformer;
 
     @Autowired
-    EspdRequestToEspdDocumentTransformer(ToPartyImplTransformer toPartyImplTransformer) {
-        this.toPartyImplTransformer = toPartyImplTransformer;
+    UblRequestToEspdDocumentTransformer(PartyImplTransformer partyImplTransformer) {
+        this.partyImplTransformer = partyImplTransformer;
     }
 
     @Override
@@ -39,7 +39,7 @@ class EspdRequestToEspdDocumentTransformer implements Function<ESPDRequestType, 
             return;
         }
 
-        PartyImpl authority = toPartyImplTransformer.apply(input.getContractingParty().getParty());
+        PartyImpl authority = partyImplTransformer.apply(input.getContractingParty().getParty());
         espdDocument.setAuthority(authority);
     }
 

@@ -21,13 +21,13 @@ import java.util.List;
  * Created by vigi on 11/16/15:3:38 PM.
  */
 @Component
-class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, CriterionType> {
+class UblCriterionTypeTransformer implements Function<CcvCriterion, CriterionType> {
 
-    private final ToCriterionGroupTransformer criterionGroupTransformer;
+    private final UblRequirementGroupTypeTransformer groupTypeTransformer;
 
     @Autowired
-    CcvCriterionToCriterionTypeTransformer(ToCriterionGroupTransformer criterionGroupTransformer) {
-        this.criterionGroupTransformer = criterionGroupTransformer;
+    UblCriterionTypeTransformer(UblRequirementGroupTypeTransformer groupTypeTransformer) {
+        this.groupTypeTransformer = groupTypeTransformer;
     }
 
     @Override
@@ -112,7 +112,7 @@ class CcvCriterionToCriterionTypeTransformer implements Function<CcvCriterion, C
             return;
         }
 
-        List<RequirementGroupType> groupTypes = Lists.transform(input.getGroups(), criterionGroupTransformer);
+        List<RequirementGroupType> groupTypes = Lists.transform(input.getGroups(), groupTypeTransformer);
         criterionType.getRequirementGroup().addAll(groupTypes);
 
     }

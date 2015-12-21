@@ -15,24 +15,22 @@ import java.util.Collections;
 import java.util.List;
 
 import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.*;
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.GUILTY_OF_MISINTERPRETATION;
-import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS;
 import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.*;
 
 /**
- * Create the UBL {@link CriterionType} criteria for a ESPD Response, including both exclusion and selection
+ * Create the UBL {@link CriterionType} criteria for a ESPD Request, including both exclusion and selection
  * criteria.
  * <p/>
- * Created by ratoico on 11/27/15 at 11:40 AM.
+ * Created by ratoico on 11/26/15 at 5:19 PM.
  */
 @Component
-class EspdResponseCriteriaTransformer implements Function<EspdDocument, List<CriterionType>> {
+class UblRequestCriteriaTransformer implements Function<EspdDocument, List<CriterionType>> {
 
-    private final CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer;
+    private final UblCriterionTypeTransformer ublCriterionTypeTransformer;
 
     @Autowired
-    EspdResponseCriteriaTransformer(CcvCriterionToCriterionTypeTransformer ccvCriterionTransformer) {
-        this.ccvCriterionTransformer = ccvCriterionTransformer;
+    UblRequestCriteriaTransformer(UblCriterionTypeTransformer ublCriterionTypeTransformer) {
+        this.ublCriterionTypeTransformer = ublCriterionTypeTransformer;
     }
 
     @Override
@@ -183,11 +181,12 @@ class EspdResponseCriteriaTransformer implements Function<EspdDocument, List<Cri
     private void addUblCriterionIfSelected(CcvCriterion ccvCriterion, Criterion espdCriterion,
             List<CriterionType> ublCriteria) {
         if (isCriterionSelectedInEspd(espdCriterion)) {
-            ublCriteria.add(ccvCriterionTransformer.apply(ccvCriterion));
+            ublCriteria.add(ublCriterionTypeTransformer.apply(ccvCriterion));
         }
     }
 
     private boolean isCriterionSelectedInEspd(Criterion espdCriterion) {
         return espdCriterion != null && Boolean.TRUE.equals(espdCriterion.getExists());
     }
+
 }

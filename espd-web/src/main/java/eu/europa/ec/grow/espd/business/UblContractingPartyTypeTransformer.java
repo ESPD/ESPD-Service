@@ -15,7 +15,7 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  * Created by vigi on 11/16/15:3:29 PM.
  */
 @Component
-class ToContractingPartyTransformer implements Function<CacParty, ContractingPartyType> {
+class UblContractingPartyTypeTransformer implements Function<CacParty, ContractingPartyType> {
 
     @Override
     public ContractingPartyType apply(CacParty party) {

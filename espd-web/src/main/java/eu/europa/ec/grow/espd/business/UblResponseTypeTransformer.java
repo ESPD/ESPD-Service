@@ -17,16 +17,16 @@ import java.util.Date;
  * Created by ratoico on 11/26/15.
  */
 @Component
-class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ESPDResponseType> {
+class UblResponseTypeTransformer implements Function<EspdDocument, ESPDResponseType> {
 
     private final CommonUblFactory commonUblFactory;
-    private final ToContractingPartyTransformer contractingPartyTransformer;
-    private final EspdResponseCriteriaTransformer criteriaTransformer;
+    private final UblContractingPartyTypeTransformer contractingPartyTransformer;
+    private final UblResponseCriteriaTransformer criteriaTransformer;
 
     @Autowired
-    EspdDocumentToEspdResponseTransformer(CommonUblFactory commonUblFactory,
-            ToContractingPartyTransformer contractingPartyTransformer,
-            EspdResponseCriteriaTransformer criteriaTransformer) {
+    UblResponseTypeTransformer(CommonUblFactory commonUblFactory,
+            UblContractingPartyTypeTransformer contractingPartyTransformer,
+            UblResponseCriteriaTransformer criteriaTransformer) {
         this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
         this.criteriaTransformer = criteriaTransformer;

@@ -32,15 +32,15 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
 
     private static void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
         def commonUblFactory = new CommonUblFactory()
-        def contractingPartyTransformer = new ToContractingPartyTransformer()
-        def toCriterionTypeTransformer = new CcvCriterionToCriterionTypeTransformer(new ToCriterionGroupTransformer(new ToCriterionRequirementTransformer()))
-        def requestCriteriaTransformer = new EspdRequestCriteriaTransformer(toCriterionTypeTransformer)
-        def toEspdRequestTransformer = new EspdDocumentToEspdRequestTransformer(commonUblFactory, contractingPartyTransformer, requestCriteriaTransformer)
-        def toPartyImplTransformer = new ToPartyImplTransformer()
-        def toEspdDocumentTransformer = new EspdRequestToEspdDocumentTransformer(toPartyImplTransformer)
-        def responseCriteriaTransformer = new EspdResponseCriteriaTransformer(toCriterionTypeTransformer)
-        def toEspdResponseTransformer = new EspdDocumentToEspdResponseTransformer(commonUblFactory, contractingPartyTransformer, responseCriteriaTransformer)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, toEspdRequestTransformer, toEspdDocumentTransformer, toEspdResponseTransformer)
+        def ublContractingPartyTypeTransformer = new UblContractingPartyTypeTransformer()
+        def ublCriterionTypeTransformer = new UblCriterionTypeTransformer(new UblRequirementGroupTypeTransformer(new UblRequirementTypeTransformer()))
+        def requestCriteriaTransformer = new UblRequestCriteriaTransformer(ublCriterionTypeTransformer)
+        def ublRequestTypeTransformer = new UblRequestTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer, requestCriteriaTransformer)
+        def partyImplTransformer = new PartyImplTransformer()
+        def toEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer)
+        def responseCriteriaTransformer = new UblResponseCriteriaTransformer(ublCriterionTypeTransformer)
+        def ublResponseTypeTransformer = new UblResponseTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer, responseCriteriaTransformer)
+        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, toEspdDocumentTransformer, ublResponseTypeTransformer)
     }
 
     void cleanupSpec() {

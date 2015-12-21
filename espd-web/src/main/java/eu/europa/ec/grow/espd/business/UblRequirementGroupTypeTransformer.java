@@ -18,13 +18,13 @@ import static org.apache.commons.collections.CollectionUtils.isEmpty;
  * Created by ratoico on 12/7/15 at 2:27 PM.
  */
 @Component
-class ToCriterionGroupTransformer implements Function<CcvCriterionGroup, RequirementGroupType> {
+class UblRequirementGroupTypeTransformer implements Function<CcvCriterionGroup, RequirementGroupType> {
 
-    private final ToCriterionRequirementTransformer requirementTransformer;
+    private final UblRequirementTypeTransformer requirementTypeTransformer;
 
     @Autowired
-    ToCriterionGroupTransformer(ToCriterionRequirementTransformer requirementTransformer) {
-        this.requirementTransformer = requirementTransformer;
+    UblRequirementGroupTypeTransformer(UblRequirementTypeTransformer requirementTypeTransformer) {
+        this.requirementTypeTransformer = requirementTypeTransformer;
     }
 
     @Override
@@ -52,7 +52,7 @@ class ToCriterionGroupTransformer implements Function<CcvCriterionGroup, Require
         }
 
         List<RequirementType> requirementTypes = Lists
-                .transform(input.getRequirements(), requirementTransformer);
+                .transform(input.getRequirements(), requirementTypeTransformer);
         groupType.getRequirement().addAll(requirementTypes);
     }
 

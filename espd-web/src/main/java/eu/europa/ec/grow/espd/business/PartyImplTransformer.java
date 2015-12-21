@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  */
 @Component
 @Slf4j
-class ToPartyImplTransformer implements Function<PartyType, PartyImpl> {
+class PartyImplTransformer implements Function<PartyType, PartyImpl> {
 
     @Override
     public PartyImpl apply(PartyType input) {

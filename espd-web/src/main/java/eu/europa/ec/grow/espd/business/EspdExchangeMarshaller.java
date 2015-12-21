@@ -24,17 +24,17 @@ import java.io.StringWriter;
 public class EspdExchangeMarshaller {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
-    private final EspdDocumentToEspdRequestTransformer toEspdRequestTransformer;
-    private final EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer;
-    private final EspdDocumentToEspdResponseTransformer toEspdResponseTransformer;
+    private final UblRequestTypeTransformer toEspdRequestTransformer;
+    private final UblRequestToEspdDocumentTransformer toEspdDocumentTransformer;
+    private final UblResponseTypeTransformer toEspdResponseTransformer;
     private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
     private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
 
     @Autowired
     EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
-            EspdDocumentToEspdRequestTransformer toEspdRequestTransformer,
-            EspdRequestToEspdDocumentTransformer toEspdDocumentTransformer,
-            EspdDocumentToEspdResponseTransformer toEspdResponseTransformer) {
+            UblRequestTypeTransformer toEspdRequestTransformer,
+            UblRequestToEspdDocumentTransformer toEspdDocumentTransformer,
+            UblResponseTypeTransformer toEspdResponseTransformer) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
         this.toEspdDocumentTransformer = toEspdDocumentTransformer;
