@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/8/15 at 10:20 AM.
  */
-class ParticipationInCriminalOrganisationRequestTest extends AbstractRequestExclusionFixture {
+class ParticipationInCriminalOrganisationRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "01. should contain the 'Participation in a criminal organisation' criterion"() {
         given:

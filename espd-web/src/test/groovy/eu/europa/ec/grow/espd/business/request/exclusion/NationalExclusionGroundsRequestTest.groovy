@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
 /**
  * Created by ratoico on 12/9/15 at 1:28 PM.
  */
-class NationalExclusionGroundsRequestTest extends AbstractRequestExclusionFixture {
+class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "21. should contain the 'Purely national grounds of exclusion' criterion"() {
         given:

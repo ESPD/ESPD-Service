@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:19 PM.
  */
-class AssetsAdministeredByLiquidatorRequestTest extends AbstractRequestExclusionFixture {
+class AssetsAdministeredByLiquidatorRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "14. should contain the 'Assets being administered by liquidator' criterion"() {
         given:

@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
 /**
  * Created by ratoico on 12/9/15 at 1:13 PM.
  */
-class PaymentOfSocialSecurityRequestTest extends AbstractRequestExclusionFixture {
+class PaymentOfSocialSecurityRequestTest extends AbstractExclusionCriteriaFixture {
 
 
     def "08. should contain the 'Payment of social security contributions' criterion"() {

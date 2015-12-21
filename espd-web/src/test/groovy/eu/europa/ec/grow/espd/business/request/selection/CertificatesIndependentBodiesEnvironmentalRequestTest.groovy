@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractRequestSelectionFixture {
+class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSelectionCriteriaFixture {
 
     def "32. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
         given:

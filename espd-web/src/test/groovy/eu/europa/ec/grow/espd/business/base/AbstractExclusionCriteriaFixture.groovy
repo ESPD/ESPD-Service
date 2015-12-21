@@ -1,10 +1,8 @@
-package eu.europa.ec.grow.espd.business.request.exclusion
-
-import eu.europa.ec.grow.espd.business.request.AbstractRequestFixture
+package eu.europa.ec.grow.espd.business.base
 /**
  * Created by ratoico on 12/15/15 at 3:53 PM.
  */
-class AbstractRequestExclusionFixture extends AbstractRequestFixture {
+class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkSelfCleaningRequirementGroup(def selfCleaningCriterion) {
         assert selfCleaningCriterion.ID.text() == "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b"

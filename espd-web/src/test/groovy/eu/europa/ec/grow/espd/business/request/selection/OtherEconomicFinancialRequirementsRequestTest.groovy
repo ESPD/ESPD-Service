@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class OtherEconomicFinancialRequirementsRequestTest extends AbstractRequestSelectionFixture {
+class OtherEconomicFinancialRequirementsRequestTest extends AbstractSelectionCriteriaFixture {
 
     def "12. should contain the 'Other economic or financial requirements' criterion"() {
         given:

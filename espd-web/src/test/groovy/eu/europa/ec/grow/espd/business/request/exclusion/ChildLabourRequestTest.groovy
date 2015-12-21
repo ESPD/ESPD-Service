@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:58 AM.
  */
-class ChildLabourRequestTest extends AbstractRequestExclusionFixture {
+class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "06. should contain the 'Child labour and other forms of trafficking in human beings' criterion"() {
         given:

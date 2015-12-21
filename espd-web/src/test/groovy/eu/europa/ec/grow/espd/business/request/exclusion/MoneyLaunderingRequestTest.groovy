@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:57 AM.
  */
-class MoneyLaunderingRequestTest extends AbstractRequestExclusionFixture {
+class MoneyLaunderingRequestTest extends AbstractExclusionCriteriaFixture {
 
 
     def "05. should contain the 'Money laundering or terrorist financing' criterion"() {

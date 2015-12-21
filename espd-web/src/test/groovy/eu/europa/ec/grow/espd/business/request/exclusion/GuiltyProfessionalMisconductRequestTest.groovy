@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:21 PM.
  */
-class GuiltyProfessionalMisconductRequestTest extends AbstractRequestExclusionFixture {
+class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "16. should contain the 'Guilty of grave professional misconduct' criterion"() {
         given:

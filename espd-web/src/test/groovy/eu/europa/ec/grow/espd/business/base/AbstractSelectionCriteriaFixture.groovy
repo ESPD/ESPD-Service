@@ -1,10 +1,8 @@
-package eu.europa.ec.grow.espd.business.request.selection
-
-import eu.europa.ec.grow.espd.business.request.AbstractRequestFixture
+package eu.europa.ec.grow.espd.business.base
 /**
  * Created by ratoico on 12/15/15 at 5:29 PM.
  */
-class AbstractRequestSelectionFixture extends AbstractRequestFixture {
+class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkInfoAvailableElectronicallyRequirementGroup(def infoElectronicallyRequirementGroup) {
         assert infoElectronicallyRequirementGroup.ID.text() == "9026e403-3eb6-4705-a9e9-e21a1efc867d"

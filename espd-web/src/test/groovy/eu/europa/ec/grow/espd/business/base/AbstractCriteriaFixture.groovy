@@ -1,11 +1,8 @@
-package eu.europa.ec.grow.espd.business.request
-
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
-
+package eu.europa.ec.grow.espd.business.base
 /**
  * Created by ratoico on 12/15/15 at 3:54 PM.
  */
-class AbstractRequestFixture extends AbstractEspdXmlMarshalling {
+class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
 
     protected static void checkCriterionId(def request, int idx, String expectedId) {
         assert request.Criterion[idx].ID.text() == expectedId

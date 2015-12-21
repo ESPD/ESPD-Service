@@ -1,10 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.*
 /**
  *  Created by vigi on 11/17/15:3:54 PM.
  */
-class EspdRequestExclusionCriteriaMarshallingTest extends AbstractRequestExclusionFixture {
+class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCriteriaFixture {
 
     def "criteria should appear only if they were selected in the ESPD UI"() {
         given:

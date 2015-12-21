@@ -42,6 +42,7 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
         addCopyIndicatorInformation(responseType);
         addVersionIdInformation(responseType);
         addIssueDateAndTimeInformation(responseType);
+        addContractFolderIdInformation(responseType);
         addContractingPartyInformation(input, responseType);
         addProcurementProjectLots(responseType);
         addCriteria(input, responseType);
@@ -78,6 +79,7 @@ class EspdDocumentToEspdResponseTransformer implements Function<EspdDocument, ES
 
     private void addContractFolderIdInformation(ESPDResponseType responseType) {
         ContractFolderIDType contractFolderIDType = new ContractFolderIDType();
+        // TODO update this
         contractFolderIDType.setValue("SMART 2015/0065");
         contractFolderIDType.setSchemeAgencyID("TeD");
         responseType.setContractFolderID(contractFolderIDType);

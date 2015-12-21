@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.business.response
 
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+import eu.europa.ec.grow.espd.business.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl

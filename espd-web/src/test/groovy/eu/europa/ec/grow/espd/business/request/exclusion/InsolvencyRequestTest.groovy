@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:16 PM.
  */
-class InsolvencyRequestTest extends AbstractRequestExclusionFixture {
+class InsolvencyRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "11. should contain the 'Insolvency' criterion"() {
         given:

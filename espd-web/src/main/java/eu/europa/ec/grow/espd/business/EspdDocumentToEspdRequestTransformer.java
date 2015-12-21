@@ -80,6 +80,7 @@ class EspdDocumentToEspdRequestTransformer implements Function<EspdDocument, ESP
 
     private void addContractFolderIdInformation(ESPDRequestType espdRequestType) {
         ContractFolderIDType contractFolderIDType = new ContractFolderIDType();
+        // TODO update this element+
         contractFolderIDType.setValue("SMART 2015/0065");
         contractFolderIDType.setSchemeAgencyID("TeD");
         espdRequestType.setContractFolderID(contractFolderIDType);

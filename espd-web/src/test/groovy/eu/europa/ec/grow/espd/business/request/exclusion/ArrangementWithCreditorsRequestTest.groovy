@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:17 PM.
  */
-class ArrangementWithCreditorsRequestTest extends AbstractRequestExclusionFixture {
+class ArrangementWithCreditorsRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "12. should contain the 'Arrangement with creditors' criterion"() {
         given:

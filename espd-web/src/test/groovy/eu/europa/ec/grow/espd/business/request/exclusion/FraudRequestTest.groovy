@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictions
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:44 AM.
  */
-class FraudRequestTest extends AbstractRequestExclusionFixture {
+class FraudRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "03. should contain the 'Fraud' criterion"() {
         given:

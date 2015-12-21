@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
-class EspdRequestSelectionCriteriaMarshallingTest extends AbstractRequestSelectionFixture {
+class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCriteriaFixture {
 
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:

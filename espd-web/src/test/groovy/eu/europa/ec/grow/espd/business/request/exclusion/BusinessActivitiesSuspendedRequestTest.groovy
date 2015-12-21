@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.exclusion
 
+import eu.europa.ec.grow.espd.business.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.BreachOfObligations
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:20 PM.
  */
-class BusinessActivitiesSuspendedRequestTest extends AbstractRequestExclusionFixture {
+class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "15. should contain the 'Business activities are suspended' criterion"() {
         given:

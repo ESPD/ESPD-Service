@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class TechniciansTechnicalBodiesRequestTest extends AbstractRequestSelectionFixture {
+class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFixture {
 
     def "16. should contain the 'Technicians or technical bodies for quality control' criterion"() {
         given:

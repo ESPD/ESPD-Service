@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business
 
+import eu.europa.ec.grow.espd.business.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import org.apache.commons.io.IOUtils
 

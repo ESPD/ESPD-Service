@@ -1,11 +1,12 @@
 package eu.europa.ec.grow.espd.business.request.selection
 
+import eu.europa.ec.grow.espd.business.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class SupplyContractsSamplesWithoutCARequestTest extends AbstractRequestSelectionFixture {
+class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriteriaFixture {
 
     def "28. should contain the 'For supply contracts: samples, descriptions or photographs without certification of authenticity' criterion"() {
         given:

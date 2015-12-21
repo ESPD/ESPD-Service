@@ -1,10 +1,13 @@
-package eu.europa.ec.grow.espd.business
+package eu.europa.ec.grow.espd.business.base
+
+import eu.europa.ec.grow.espd.business.*
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
 import spock.lang.Specification
+
 /**
  *  Created by vigi on 11/20/15:9:13 AM.
  */
