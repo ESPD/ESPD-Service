@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.business.request.selection
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
@@ -30,6 +30,21 @@ class SubcontractingProportionRequestTest extends AbstractRequestSelectionFixtur
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].RequirementGroup.size() == 2
+
+        then: "main sub group"
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "575f7550-8a2d-4bad-b9d8-be07ab570076"
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+
+        then: "main sub group requirements"
+        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(r1_0, "612a1625-118d-4ea4-a6db-413184e7c0a8", "Please specify this percentage", "PERCENTAGE")
+
+        then: "info available electronically sub group"
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
 }

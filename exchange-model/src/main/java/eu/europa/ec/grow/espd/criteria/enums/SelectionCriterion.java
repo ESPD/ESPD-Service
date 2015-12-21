@@ -110,7 +110,8 @@ public enum SelectionCriterion implements CcvCriterion {
             "For works contracts: performance of works of the specified type",
             "During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(WORK_CONTRACTS_PERFORMANCE_OF_WORKS_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP, DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP,
+                    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
@@ -118,7 +119,8 @@ public enum SelectionCriterion implements CcvCriterion {
             "For supply contracts: performance of deliveries of the specified type",
             "During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES_GROUP)),
+            list(DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP, DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP,
+                    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
@@ -126,7 +128,8 @@ public enum SelectionCriterion implements CcvCriterion {
             "For service contracts: performance of services of the specified type",
             "During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP, DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP,
+                    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */

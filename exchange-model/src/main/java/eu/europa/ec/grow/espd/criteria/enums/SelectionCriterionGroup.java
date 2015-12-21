@@ -39,6 +39,21 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP("96f00020-0a25-402e-b850-2378e83b5695", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+    /**
+     *
+     */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP("c48572f9-47bf-423a-9885-2c78ae9ca718", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+    /**
+     *
+     */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+    /**
+     *
+     */
     ALL_CRITERIA_SATISFIED_GROUP("f3a6836d-2de2-4cd1-81ca-fb06178d05c5", Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER)),
     /**
@@ -71,50 +86,32 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     AVERAGE_YEARLY_TURNOVER_GROUP("08da0667-c7e3-445f-a548-1107794ef7d5", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
-            list(YOUR_ANSWER)),
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
     /**
      *
      */
     SPECIFIC_YEARLY_TURNOVER_GROUP("ee1fdbab-f54e-4579-bcb8-060fe45178e9", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
-            list(YOUR_ANSWER)),
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
     /**
      *
      */
     SPECIFIC_AVERAGE_TURNOVER_GROUP("fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
-            list(YOUR_ANSWER)),
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
     /**
      *
      */
-    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", Collections.<CcvCriterionGroup>emptyList(),
-            list(REQUIRED_RATIO)),
+    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
+            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(REQUIRED_RATIO)),
     /**
      *
      */
     PROFESSIONAL_RISK_INSURANCE_GROUP("42dc8062-974d-4201-91ba-7f2ea90338fd",
-            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT_CURRENCY)),
+            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT, CURRENCY)),
     /**
      *
      */
     OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS_GROUP("488ca189-bcdb-4bf4-80c7-3ad507fd89fb",
             Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
-    /**
-     *
-     */
-    WORK_CONTRACTS_PERFORMANCE_OF_WORKS_GROUP("996e24f2-fc7b-49a3-8b97-37268516a57c",
-            Collections.<CcvCriterionGroup>emptyList(), list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
-    /**
-     *
-     */
-    SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES_GROUP("082fac2f-2667-4cd9-8eda-c92b27a17803",
-            Collections.<CcvCriterionGroup>emptyList(), list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
-    /**
-     *
-     */
-    SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES_GROUP("adcc74e6-3a89-476b-b66d-870b28f50960",
-            Collections.<CcvCriterionGroup>emptyList(), list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
     /**
      *
      */
@@ -149,7 +146,7 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS_GROUP("094618e3-b243-49ce-9b12-6aab357f2f88",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_ENUMERATE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *
      */
@@ -184,12 +181,12 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA_GROUP("511ddbf6-2c53-4fea-a469-3edc9941e603",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_ENUMERATE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *
      */
     SUPPLY_CONTRACTS_CERTIFICATES_QC_GROUP("4887c3d7-05fc-4e3e-b066-f338910f0c4c",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_ENUMERATE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *
      */

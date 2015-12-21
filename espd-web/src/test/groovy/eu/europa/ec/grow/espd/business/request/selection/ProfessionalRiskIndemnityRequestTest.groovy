@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.business.request.selection
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
@@ -30,6 +30,24 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractRequestSelectionFixtu
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].RequirementGroup.size() == 2
+
+        then: "main sub group"
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+
+        then: "main sub group requirements"
+        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(r1_0, "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
+
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
+
+        then: "info available electronically sub group"
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
 }

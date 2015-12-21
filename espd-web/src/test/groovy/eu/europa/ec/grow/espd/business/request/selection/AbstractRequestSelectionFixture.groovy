@@ -54,4 +54,34 @@ class AbstractRequestSelectionFixture extends AbstractRequestFixture {
         checkRequirement(yearAmountCurrencyGroup.Requirement[2], "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
     }
 
+    protected static void checkDescriptionAmountDateRecipients1Group(def group) {
+        group.ID.text() == "96f00020-0a25-402e-b850-2378e83b5695"
+        group.Requirement.size() == 4
+
+        checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+    }
+
+    protected static void checkDescriptionAmountDateRecipients2Group(def group) {
+        group.ID.text() == "c48572f9-47bf-423a-9885-2c78ae9ca718"
+        group.Requirement.size() == 4
+
+        checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+    }
+
+    protected static void checkDescriptionAmountDateRecipients3Group(def group) {
+        group.ID.text() == "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7"
+        group.Requirement.size() == 4
+
+        checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+    }
+
 }

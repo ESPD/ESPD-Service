@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.business.request.selection
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
@@ -30,6 +30,21 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractRequestSelectio
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "62(2)")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].RequirementGroup.size() == 2
+
+        then: "main sub group"
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "0e88f63c-5642-4a17-833b-ae5800e1750a"
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+
+        then: "main sub group requirements"
+        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+
+        then: "info available electronically sub group"
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
 }

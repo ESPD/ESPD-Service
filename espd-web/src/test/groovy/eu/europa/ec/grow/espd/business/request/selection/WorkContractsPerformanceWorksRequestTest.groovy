@@ -1,11 +1,11 @@
 package eu.europa.ec.grow.espd.business.request.selection
-import eu.europa.ec.grow.espd.business.AbstractEspdXmlMarshalling
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
-class ServiceContractsPerformanceWorksRequestTest extends AbstractRequestSelectionFixture {
+class WorkContractsPerformanceWorksRequestTest extends AbstractRequestSelectionFixture {
 
     def "13. should contain the 'For works contracts: performance of works of the specified type' criterion"() {
         given:
@@ -30,6 +30,17 @@ class ServiceContractsPerformanceWorksRequestTest extends AbstractRequestSelecti
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].RequirementGroup.size() == 4
+
+        then: "check description amount date recipients"
+        checkDescriptionAmountDateRecipients1Group(request.Criterion[idx].RequirementGroup[0])
+        checkDescriptionAmountDateRecipients2Group(request.Criterion[idx].RequirementGroup[1])
+        checkDescriptionAmountDateRecipients3Group(request.Criterion[idx].RequirementGroup[2])
+
+        then: "info available electronically sub group"
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[3])
     }
 
 }

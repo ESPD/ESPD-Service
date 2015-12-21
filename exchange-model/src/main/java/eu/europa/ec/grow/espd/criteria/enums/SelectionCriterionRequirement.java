@@ -37,11 +37,6 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    AMOUNT_CURRENCY("7604bd40-4462-4086-8763-a50da51a869c", CriterionText.AMOUNT_CURRENCY_TEXT,
-            ExpectedResponseType.AMOUNT),
-    /**
-     *
-     */
     PLEASE_SPECIFY("3aaca389-4a7b-406b-a4b9-080845d127e7", CriterionText.PLEASE_SPECIFY_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
@@ -49,11 +44,6 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      */
     PERCENTAGE("612a1625-118d-4ea4-a6db-413184e7c0a8", CriterionText.PERCENTAGE_TEXT,
             ExpectedResponseType.PERCENTAGE),
-    /**
-     *
-     */
-    PLEASE_ENUMERATE("07301031-2270-41af-8e7e-66fe0c777107", CriterionText.PLEASE_ENUMERATE_TEXT,
-            ExpectedResponseType.DESCRIPTION),
     /**
      *
      */

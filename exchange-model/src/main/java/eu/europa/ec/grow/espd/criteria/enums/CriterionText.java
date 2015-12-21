@@ -31,7 +31,6 @@ final class CriterionText {
     static final String AMOUNT_TEXT = "Amount";
     static final String CURRENCY_TEXT = "Currency";
     static final String REQUIRED_RATIO_TEXT = "Please provide the the required ratio - ratio between x and y - and the value";
-    static final String AMOUNT_CURRENCY_TEXT = "Please provide the insured amount and the currency";
     static final String PLEASE_SPECIFY_TEXT = "Please specify";
     static final String PERCENTAGE_TEXT = "Please specify this percentage";
     static final String PLEASE_ENUMERATE_TEXT = "Please enumerate";

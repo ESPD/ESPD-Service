@@ -30,6 +30,21 @@ class WorkContractsTechniciansRequestTest extends AbstractRequestSelectionFixtur
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")
+
+        then: "check all the sub groups"
+        request.Criterion[idx].RequirementGroup.size() == 2
+
+        then: "main sub group"
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "162843ae-aa63-47ab-9b05-e5e3e0f284ff"
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+
+        then: "main sub group requirements"
+        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(r1_0, "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
+
+        then: "info available electronically sub group"
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
 }
