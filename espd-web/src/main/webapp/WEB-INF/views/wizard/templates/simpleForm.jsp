@@ -9,6 +9,6 @@
 <div class="form-group">
 	<label class="control-label col-md-4 small" for="${field}-field-describe">Please describe them </label>
 	<div class="col-md-8"> 
-		<textarea if="${field}-field-describe" class="form-control" placeholder="Enter text"></textarea>
+		<textarea id="${field}-field-describe" class="form-control" placeholder="Enter text"></textarea>
 	</div>
 </div> 

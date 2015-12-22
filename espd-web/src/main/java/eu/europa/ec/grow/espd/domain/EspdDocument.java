@@ -86,6 +86,8 @@ public class EspdDocument {
     private SelectionCriterion economicServiceContracts;
 
     private Criterion selectionSatisfiesAll;
+    
+    private SelectionCriterion reductionOfNumbers;
 
     //trick to use MultipartFile as @RequestParam
     public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {

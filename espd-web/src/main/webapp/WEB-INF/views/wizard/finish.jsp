@@ -45,7 +45,13 @@
                         <s:message code='createcafinish_reduction_question'/>
                     </span>
 					
-					<p>TODO
+					<tiles:insertDefinition name="simpleFormCriterion">
+						<tiles:putAttribute name="field" value="reductionOfNumbers"/>
+						<tiles:putAttribute name="title_code" value="createcafinish_title_eo_declares_that"/>
+						<tiles:putAttribute name="description_code" value="createcafinish_text_eo_declares_that"/>
+						<tiles:putAttribute name="availableElectronically" value="true"/>
+						<tiles:putAttribute name="selfCleaning" value="false"/>
+					</tiles:insertDefinition>
                     
                 </div>
             </div>
