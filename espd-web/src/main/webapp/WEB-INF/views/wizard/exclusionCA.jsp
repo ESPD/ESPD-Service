@@ -196,7 +196,7 @@
 			</div>
             <div id="ca-insolvency-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
+                    <span data-i18n="crit_eu_main_purely_national" class="aligned" style="font-weight: bold;">
                         <s:message code='crit_eu_main_purely_national'/>
                     </span>
 

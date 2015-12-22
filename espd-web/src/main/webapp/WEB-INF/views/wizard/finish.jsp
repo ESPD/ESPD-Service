@@ -24,14 +24,64 @@
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
 			</h2>
 		</div>
+		
+		<div class="panel panel-default espd-panel">
+			<div data-i18n="createcafinish_reduction" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
+				 <s:message code='createcafinish_reduction'/>
+			</div>
+            <div id="finish-statements-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
 
-		<div class="espd-panel panel panel-default">
-			<div data-i18n="createcafinish_export" class="espd-panel-heading">
+					<div class="alert alert-espd-info">
+						<ul class="fa-ul">
+						<li>
+							<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+							<span data-i18n="createcafinish_toptext"><s:message code='createcafinish_toptext'/></span>
+						</li>
+						</ul>
+					</div>
+					
+					<span data-i18n="createcafinish_reduction_question" class="aligned" style="font-weight: bold;">
+                        <s:message code='createcafinish_reduction_question'/>
+                    </span>
+					
+					<p>TODO
+                    
+                </div>
+            </div>
+		</div>
+		
+		<div class="panel panel-default espd-panel">
+			<div data-i18n="createcafinish_concl_statements" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
+				 <s:message code='createcafinish_concl_statements'/>
+			</div>
+            <div id="finish-statements-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <span data-i18n="createcafinish_concl_statements_text" class="aligned" style="">
+                        <s:message code='createcafinish_concl_statements_text'/>
+                    </span>
+                    
+                    <p>
+	                    <span data-i18n="createcafinish_concl_statements_signature" class="aligned" style="">
+	                        <s:message code='createcafinish_concl_statements_signature'/>
+	                    </span>
+                    </p>
+                    
+                </div>
+            </div>
+		</div>
+		
+		<div class="panel panel-default espd-panel">
+			<div data-i18n="createcafinish_export" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
 				 <s:message code='createcafinish_export'/>
 			</div>
-			<div data-i18n="createcafinish_export_content" class="panel-body">
-				<s:message code='createcafinish_export_content'/>
-			</div>
+            <div id="finish-statements-section" class="collapse in">
+                <div class="espd-panel-body panel-body">
+                    <span data-i18n="createcafinish_export_content" class="aligned" style="">
+                        <s:message code='createcafinish_export_content'/>
+                    </span>
+                </div>
+            </div>
 		</div>
 
         <tiles:insertDefinition name="footerButtons">
