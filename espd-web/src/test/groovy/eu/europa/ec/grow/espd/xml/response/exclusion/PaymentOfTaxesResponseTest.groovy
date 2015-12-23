@@ -1,8 +1,10 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
-import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
+import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.Taxes
+import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
+
 /**
  * Created by ratoico on 12/9/15 at 11:58 AM.
  */
@@ -11,7 +13,8 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "07. should contain the 'Payment of taxes' criterion"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new Taxes(exists: true))
+        def espd = new EspdDocument(paymentTaxes: new Taxes(exists: true, country: Country.ROMANIA,
+                amount: 445, currency: "RON"))
 
         when:
         def request = parseResponseXml(espd)
@@ -44,12 +47,22 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        r1_0.Response.size() == 1
+        r1_0.Response[0].Indicator.text() == "true"
 
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
         checkRequirement(r1_1, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "COUNTRY")
+        r1_1.Response.size() == 1
+        r1_1.Response[0].Code.text() == "RO"
+        r1_1.Response[0].Code.@listAgencyID.text() == "ISO"
+        r1_1.Response[0].Code.@listID.text() == "ISO 3166-2"
+        r1_1.Response[0].Code.@listVersionID.text() == "1.0"
 
         def r1_2 = request.Criterion[idx].RequirementGroup[0].Requirement[2]
         checkRequirement(r1_2, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
+        r1_2.Response.size() == 1
+        r1_2.Response[0].Amount.text() == "445"
+        r1_2.Response[0].Amount.@currencyID.text() == "RON"
 
         then: "check first sub group"
         def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

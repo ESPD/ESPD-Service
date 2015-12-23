@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.business.common;
 
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
@@ -18,9 +18,9 @@ import java.util.UUID;
  * Created by ratoico on 11/26/15.
  */
 @Component
-class CommonUblFactory {
+public class CommonUblFactory {
 
-    enum EspdType {
+    public enum EspdType {
         ESPD_REQUEST,
         ESPD_RESPONSE
     }
@@ -31,7 +31,7 @@ class CommonUblFactory {
      *
      * @return The corresponding UBL element
      */
-    UBLVersionIDType buildUblVersionIDType() {
+    public UBLVersionIDType buildUblVersionIDType() {
         UBLVersionIDType versionIDType = new UBLVersionIDType();
         versionIDType.setValue("2.1");
         versionIDType.setSchemeAgencyID("OASIS-UBL-TC");
@@ -45,7 +45,7 @@ class CommonUblFactory {
      *
      * @return The corresponding UBL element
      */
-    CustomizationIDType buildCustomizationIDType(EspdType espdType) {
+    public CustomizationIDType buildCustomizationIDType(EspdType espdType) {
         CustomizationIDType customizationIDType = new CustomizationIDType();
         if (EspdType.ESPD_REQUEST.equals(espdType)) {
             customizationIDType.setValue("urn:www.cenbii.eu:transaction:biitrns070:ver3.0");
@@ -65,7 +65,7 @@ class CommonUblFactory {
      *
      * @return The corresponding UBL element
      */
-    IDType buildIdType() {
+    public IDType buildIdType() {
         IDType idType = new IDType();
         idType.setValue(UUID.randomUUID().toString());
         idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
@@ -82,7 +82,7 @@ class CommonUblFactory {
      *
      * @return The corresponding UBL element
      */
-    CopyIndicatorType buildCopyIndicatorType(boolean isCopy) {
+    public CopyIndicatorType buildCopyIndicatorType(boolean isCopy) {
         CopyIndicatorType copyIndicatorType = new CopyIndicatorType();
         copyIndicatorType.setValue(isCopy);
         return copyIndicatorType;
@@ -93,7 +93,7 @@ class CommonUblFactory {
      *
      * @return The corresponding UBL element
      */
-    VersionIDType buildVersionIDType() {
+    public VersionIDType buildVersionIDType() {
         VersionIDType versionIDType = new VersionIDType();
         versionIDType.setValue("1");
         versionIDType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
@@ -106,7 +106,7 @@ class CommonUblFactory {
      * @param when The desired date
      * @return The corresponding UBL element
      */
-    IssueDateType buildIssueDateType(Date when) {
+    public IssueDateType buildIssueDateType(Date when) {
         IssueDateType issueDateType = new IssueDateType();
         issueDateType.setValue(new LocalDate(when));
         return issueDateType;
@@ -118,7 +118,7 @@ class CommonUblFactory {
      * @param when The desired time
      * @return The corresponding UBL element
      */
-    IssueTimeType buildIssueTimeType(Date when) {
+    public IssueTimeType buildIssueTimeType(Date when) {
         IssueTimeType issueTimeType = new IssueTimeType();
         issueTimeType.setValue(new LocalTime(when));
         return issueTimeType;

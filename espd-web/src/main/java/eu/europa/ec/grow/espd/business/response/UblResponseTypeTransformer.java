@@ -1,6 +1,8 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.business.response;
 
 import com.google.common.base.Function;
+import eu.europa.ec.grow.espd.business.common.CommonUblFactory;
+import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
@@ -17,7 +19,7 @@ import java.util.Date;
  * Created by ratoico on 11/26/15.
  */
 @Component
-class UblResponseTypeTransformer implements Function<EspdDocument, ESPDResponseType> {
+public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDResponseType> {
 
     private final CommonUblFactory commonUblFactory;
     private final UblContractingPartyTypeTransformer contractingPartyTransformer;
@@ -25,11 +27,10 @@ class UblResponseTypeTransformer implements Function<EspdDocument, ESPDResponseT
 
     @Autowired
     UblResponseTypeTransformer(CommonUblFactory commonUblFactory,
-            UblContractingPartyTypeTransformer contractingPartyTransformer,
-            UblResponseCriteriaTransformer criteriaTransformer) {
+            UblContractingPartyTypeTransformer contractingPartyTransformer) {
         this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
-        this.criteriaTransformer = criteriaTransformer;
+        this.criteriaTransformer = new UblResponseCriteriaTransformer();
     }
 
     @Override

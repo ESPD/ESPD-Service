@@ -9,4 +9,6 @@ public class AvailableElectronically extends Criterion {
 
     private String description;
 
+    // TODO add url and code
+
 }

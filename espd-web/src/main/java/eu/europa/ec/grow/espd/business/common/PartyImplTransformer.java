@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.business.common;
 
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.constants.enums.Country;
@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  */
 @Component
 @Slf4j
-class PartyImplTransformer implements Function<PartyType, PartyImpl> {
+public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
 
     @Override
     public PartyImpl apply(PartyType input) {

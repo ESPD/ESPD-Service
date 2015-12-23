@@ -1,6 +1,7 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.business.request;
 
 import com.google.common.base.Function;
+import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.*;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by ratoico on 11/25/15 11:28 AM.
  */
 @Component
-class UblRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
+public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
 
     private final PartyImplTransformer partyImplTransformer;
 

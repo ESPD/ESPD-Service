@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.business.common;
 
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.entities.CacParty;
@@ -15,12 +15,10 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  * Created by vigi on 11/16/15:3:29 PM.
  */
 @Component
-class UblContractingPartyTypeTransformer implements Function<CacParty, ContractingPartyType> {
+public class UblContractingPartyTypeTransformer implements Function<CacParty, ContractingPartyType> {
 
     @Override
     public ContractingPartyType apply(CacParty party) {
-        // TODO create party interface
-
         ContractingPartyType contractingPartyType = new ContractingPartyType();
         if (party == null) {
             return contractingPartyType;
