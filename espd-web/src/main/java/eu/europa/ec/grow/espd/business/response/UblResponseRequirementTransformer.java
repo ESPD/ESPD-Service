@@ -7,6 +7,7 @@ import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
 import eu.europa.ec.grow.espd.domain.CriminalConvictions;
 import eu.europa.ec.grow.espd.domain.Criterion;
+import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.Taxes;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
@@ -53,22 +54,20 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
     private ResponseType buildResponse(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion) {
         ResponseType responseType = new ResponseType();
 
-        if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)
-                || SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
-            IndicatorType indicatorType = new IndicatorType();
-            indicatorType.setValue(espdCriterion.getExists());
-            responseType.setIndicator(indicatorType);
+        if (isIndicatorRequirement(ccvRequirement)) {
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
         } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
-            DateType dateType = new DateType();
-            LocalDate date = getDateOfConviction(espdCriterion);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            Date date = exclusionCriterion.getDateOfConviction();
             if (date != null) {
-                dateType.setValue(date);
+                DateType dateType = new DateType();
+                dateType.setValue(new LocalDate(date.getTime()));
                 responseType.setDate(dateType);
             }
         } else if (ExclusionCriterionRequirement.REASON.equals(ccvRequirement)) {
-            CriminalConvictions crit = (CriminalConvictions) espdCriterion;
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             DescriptionType descriptionType = new DescriptionType();
-            descriptionType.setValue(crit.getReason());
+            descriptionType.setValue(exclusionCriterion.getReason());
             responseType.setDescription(descriptionType);
         } else if (ExclusionCriterionRequirement.WHO_CONVICTED.equals(ccvRequirement)) {
             CriminalConvictions crit = (CriminalConvictions) espdCriterion;
@@ -76,30 +75,35 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             descriptionType.setValue(crit.getConvicted());
             responseType.setDescription(descriptionType);
         } else if (ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION.equals(ccvRequirement)) {
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             DescriptionType descriptionType = new DescriptionType();
-            descriptionType.setValue(getPeriodLength(espdCriterion));
+            descriptionType.setValue(exclusionCriterion.getPeriodLength());
             PeriodType periodType = new PeriodType();
             periodType.getDescription().add(descriptionType);
             responseType.setPeriod(periodType);
         } else if (ExclusionCriterionRequirement.MEASURES_SELF_CLEANING.equals(ccvRequirement)) {
-            IndicatorType indicatorType = new IndicatorType();
-            indicatorType.setValue(getSelfCleaningAnswer(espdCriterion));
-            responseType.setIndicator(indicatorType);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(exclusionCriterion.getSelfCleaningAnswer()));
         } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             DescriptionType descriptionType = new DescriptionType();
-            descriptionType.setValue(getSelfCleaningDescription(espdCriterion));
+            descriptionType.setValue(exclusionCriterion.getSelfCleaningDescription());
             responseType.setDescription(descriptionType);
         } else if (ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            IndicatorType indicatorType = new IndicatorType();
-            indicatorType.setValue(infoElectronicallyAnswer(espdCriterion));
-            responseType.setIndicator(indicatorType);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(exclusionCriterion.getInfoElectronicallyAnswer()));
         } else if (ExclusionCriterionRequirement.URL.equals(ccvRequirement)) {
-            EvidenceType evidenceType = buildEvidenceType(espdCriterion);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            EvidenceType evidenceType = buildEvidenceType(exclusionCriterion);
             responseType.getEvidence().add(evidenceType);
         } else if (ExclusionCriterionRequirement.URL_CODE.equals(ccvRequirement)) {
-            // TODO
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            TypeCodeType typeCodeType = new TypeCodeType();
+            typeCodeType.setValue(exclusionCriterion.getInfoElectronicallyCode());
+            responseType.setCode(typeCodeType);
         } else if (ExclusionCriterionRequirement.COUNTRY_MS.equals(ccvRequirement)) {
-            Country country = getCountry(espdCriterion);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            Country country = exclusionCriterion.getCountry();
             if (country != null) {
                 TypeCodeType typeCodeType = new TypeCodeType();
                 typeCodeType.setValue(country.getIso2Code());
@@ -109,97 +113,57 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
                 responseType.setCode(typeCodeType);
             }
         } else if (ExclusionCriterionRequirement.AMOUNT.equals(ccvRequirement)) {
-            Integer amount = getAmount(espdCriterion);
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            Integer amount = exclusionCriterion.getAmount();
             if (amount != null) {
                 AmountType amountType = new AmountType();
                 amountType.setValue(BigDecimal.valueOf(amount));
-                amountType.setCurrencyID(getCurrency(espdCriterion));
+                amountType.setCurrencyID(exclusionCriterion.getCurrency());
                 responseType.setAmount(amountType);
             }
+        } else if (ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN.equals(ccvRequirement)) {
+            Taxes taxesCriterion = (Taxes) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(taxesCriterion.isBreachEstablishedOtherThanJudicialDecision()));
+        } else if (ExclusionCriterionRequirement.DESCRIBE_MEANS.equals(ccvRequirement)) {
+            Taxes taxesCriterion = (Taxes) espdCriterion;
+            DescriptionType descriptionType = new DescriptionType();
+            descriptionType.setValue(taxesCriterion.getMeansDescription());
+            responseType.setDescription(descriptionType);
+        } else if (ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING.equals(ccvRequirement)) {
+            Taxes taxesCriterion = (Taxes) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(taxesCriterion.isDecisionFinalAndBinding()));
+        } else if (ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION.equals(ccvRequirement)) {
+            Taxes taxesCriterion = (Taxes) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(taxesCriterion.isEoFulfilledObligations()));
+        } else if (ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS.equals(ccvRequirement)) {
+            Taxes taxesCriterion = (Taxes) espdCriterion;
+            DescriptionType descriptionType = new DescriptionType();
+            descriptionType.setValue(taxesCriterion.getObligationsDescription());
+            responseType.setDescription(descriptionType);
         }
 
         return responseType;
     }
 
-    private LocalDate getDateOfConviction(Criterion espdCriterion) {
-        Date when = null;
-        if (espdCriterion instanceof CriminalConvictions) {
-            when = ((CriminalConvictions) espdCriterion).getDateOfConviction();
-        }
-        if (when != null) {
-            return new LocalDate(when);
-        }
-        return null;
+    private boolean isIndicatorRequirement(CcvCriterionRequirement ccvRequirement) {
+        return ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement);
     }
 
-    private String getPeriodLength(Criterion espdCriterion) {
-        if (espdCriterion instanceof CriminalConvictions) {
-            return ((CriminalConvictions) espdCriterion).getPeriodLength();
-        }
-        return null;
+    private IndicatorType buildIndicatorType(boolean value) {
+        IndicatorType indicatorType = new IndicatorType();
+        indicatorType.setValue(value);
+        return indicatorType;
     }
 
-    private String getSelfCleaningDescription(Criterion espdCriterion) {
-        if (espdCriterion instanceof CriminalConvictions) {
-            return ((CriminalConvictions) espdCriterion).getSelfCleaning() != null ?
-                    ((CriminalConvictions) espdCriterion).getSelfCleaning().getDescription() : null;
-        }
-        return null;
-    }
-
-    private boolean infoElectronicallyAnswer(Criterion espdCriterion) {
-        if (espdCriterion instanceof CriminalConvictions) {
-            return ((CriminalConvictions) espdCriterion).getAvailableElectronically() != null && Boolean.TRUE
-                    .equals(((CriminalConvictions) espdCriterion).getAvailableElectronically().getExists());
-        }
-        return false;
-    }
-
-    private String geUrl(Criterion espdCriterion) {
-        if (espdCriterion instanceof CriminalConvictions) {
-            return ((CriminalConvictions) espdCriterion).getAvailableElectronically() != null ?
-                    ((CriminalConvictions) espdCriterion).getAvailableElectronically().getDescription() : null;
-        }
-        return null;
-    }
-
-    private Country getCountry(Criterion espdCriterion) {
-        if (espdCriterion instanceof Taxes) {
-            return ((Taxes) espdCriterion).getCountry();
-        }
-        return null;
-    }
-
-    private Integer getAmount(Criterion espdCriterion) {
-        if (espdCriterion instanceof Taxes) {
-            return ((Taxes) espdCriterion).getAmount();
-        }
-        return null;
-    }
-
-    private String getCurrency(Criterion espdCriterion) {
-        if (espdCriterion instanceof Taxes) {
-            return ((Taxes) espdCriterion).getCurrency();
-        }
-        return null;
-    }
-
-    private boolean getSelfCleaningAnswer(Criterion espdCriterion) {
-        if (espdCriterion instanceof CriminalConvictions) {
-            return ((CriminalConvictions) espdCriterion).getSelfCleaning() != null &&
-                    Boolean.TRUE.equals(((CriminalConvictions) espdCriterion).getSelfCleaning().getExists());
-        }
-        return false;
-    }
-
-    private EvidenceType buildEvidenceType(Criterion espdCriterion) {
+    private EvidenceType buildEvidenceType(ExclusionCriterion espdCriterion) {
         EvidenceType evidenceType = new EvidenceType();
         DocumentReferenceType documentReferenceType = new DocumentReferenceType();
         AttachmentType attachmentType = new AttachmentType();
         ExternalReferenceType externalReferenceType = new ExternalReferenceType();
         attachmentType.setExternalReference(externalReferenceType);
         URIType uriType = new URIType();
-        uriType.setValue(geUrl(espdCriterion));
+        uriType.setValue(espdCriterion.getInfoElectronicallyUrl());
         externalReferenceType.setURI(uriType);
         documentReferenceType.setAttachment(attachmentType);
         evidenceType.getEvidenceDocumentReference().add(documentReferenceType);

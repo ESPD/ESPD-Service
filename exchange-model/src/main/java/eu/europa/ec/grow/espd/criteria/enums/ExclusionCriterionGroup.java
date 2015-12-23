@@ -71,7 +71,7 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     PAYMENT_EO_FULFILLED_GROUP("fc57e473-d63e-4a04-b589-dcf81cab8052", Collections.<CcvCriterionGroup>emptyList(),
-            list(EO_FULFILLED_OBLIGATION, PLEASE_DESCRIBE)),
+            list(EO_FULFILLED_OBLIGATION, DESCRIBE_OBLIGATIONS)),
     /**
      *
      */

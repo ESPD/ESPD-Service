@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -7,6 +8,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Deprecated
 public class BreachOfObligations extends ExclusionCriterion {
 
     private Boolean isFinal;
@@ -20,4 +22,23 @@ public class BreachOfObligations extends ExclusionCriterion {
         return breach;
     }
 
+    @Override
+    public Country getCountry() {
+        throw new UnsupportedOperationException("Breach of obligations criterion does not have a country.");
+    }
+
+    @Override
+    public Integer getAmount() {
+        throw new UnsupportedOperationException("Breach of obligations criterion does not have an amount.");
+    }
+
+    @Override
+    public String getCurrency() {
+        throw new UnsupportedOperationException("Breach of obligations criterion does not have a currency.");
+    }
+
+    @Override
+    public String getReason() {
+        throw new UnsupportedOperationException("Breach of obligations criterion does not have a reason.");
+    }
 }

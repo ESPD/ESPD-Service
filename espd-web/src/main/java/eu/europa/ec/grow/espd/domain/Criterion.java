@@ -7,4 +7,8 @@ public class Criterion {
 
     private Boolean exists;
 
+    public boolean getExists() {
+        return Boolean.TRUE.equals(exists);
+    }
+
 }

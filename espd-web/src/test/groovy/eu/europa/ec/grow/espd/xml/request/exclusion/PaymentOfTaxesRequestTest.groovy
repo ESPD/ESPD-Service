@@ -75,7 +75,7 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
 
         checkRequirement(sub1_3.Requirement[0], "70f8697b-8953-411a-a489-4ff62e5250d2",
                 "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?", "INDICATOR")
-        checkRequirement(sub1_3.Requirement[1], "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+        checkRequirement(sub1_3.Requirement[1], "55905dd0-38f0-4f93-8c74-5ae05a21afc5", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

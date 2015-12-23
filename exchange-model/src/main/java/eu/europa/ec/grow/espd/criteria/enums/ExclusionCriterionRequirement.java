@@ -87,6 +87,11 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
+    DESCRIBE_OBLIGATIONS("55905dd0-38f0-4f93-8c74-5ae05a21afc5", CriterionText.PLEASE_DESCRIBE_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
     REASONS_NEVERTHELESS_CONTRACT("4e3f468a-86c4-4c99-bd15-c8b221229348",
             CriterionText.REASONS_NEVERTHELESS_CONTRACT_TEXT, ExpectedResponseType.DESCRIPTION),;
 
