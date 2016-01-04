@@ -27,11 +27,6 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    CURRENCY("095c4a57-7f84-4863-a55e-363068d1aaf4", CriterionText.CURRENCY_TEXT,
-            ExpectedResponseType.CURRENCY),
-    /**
-     *
-     */
     REQUIRED_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", CriterionText.REQUIRED_RATIO_TEXT,
             ExpectedResponseType.RATIO),
     /**

@@ -25,17 +25,17 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     YEAR_AMOUNT_CURRENCY_1_GROUP("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT, CURRENCY)),
+            list(YEAR, AMOUNT)),
     /**
      *
      */
     YEAR_AMOUNT_CURRENCY_2_GROUP("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT, CURRENCY)),
+            list(YEAR, AMOUNT)),
     /**
      *
      */
     YEAR_AMOUNT_CURRENCY_3_GROUP("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT, CURRENCY)),
+            list(YEAR, AMOUNT)),
     /**
      *
      */
@@ -106,7 +106,7 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     PROFESSIONAL_RISK_INSURANCE_GROUP("42dc8062-974d-4201-91ba-7f2ea90338fd",
-            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT, CURRENCY)),
+            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT)),
     /**
      *
      */

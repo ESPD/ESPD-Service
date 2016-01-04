@@ -5,10 +5,7 @@ import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
-import eu.europa.ec.grow.espd.domain.CriminalConvictions;
-import eu.europa.ec.grow.espd.domain.Criterion;
-import eu.europa.ec.grow.espd.domain.ExclusionCriterion;
-import eu.europa.ec.grow.espd.domain.Taxes;
+import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
@@ -54,7 +51,15 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
     private ResponseType buildResponse(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion) {
         ResponseType responseType = new ResponseType();
 
-        if (isIndicatorRequirement(ccvRequirement)) {
+        fillExclusionCriteria(ccvRequirement, espdCriterion, responseType);
+        fillSelectionCriteria(ccvRequirement, espdCriterion, responseType);
+
+        return responseType;
+    }
+
+    private void fillExclusionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
+            ResponseType responseType) {
+        if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
             responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
         } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
@@ -94,7 +99,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             responseType.setIndicator(buildIndicatorType(exclusionCriterion.getInfoElectronicallyAnswer()));
         } else if (ExclusionCriterionRequirement.URL.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            EvidenceType evidenceType = buildEvidenceType(exclusionCriterion);
+            EvidenceType evidenceType = buildEvidenceType(exclusionCriterion.getInfoElectronicallyUrl());
             responseType.getEvidence().add(evidenceType);
         } else if (ExclusionCriterionRequirement.URL_CODE.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
@@ -141,13 +146,25 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             descriptionType.setValue(taxesCriterion.getObligationsDescription());
             responseType.setDescription(descriptionType);
         }
-
-        return responseType;
     }
 
-    private boolean isIndicatorRequirement(CcvCriterionRequirement ccvRequirement) {
-        return ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
-                SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement);
+    private void fillSelectionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
+            ResponseType responseType) {
+        if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
+        } else if (SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
+            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(selectionCriterion.getInfoElectronicallyAnswer()));
+        } else if (SelectionCriterionRequirement.URL.equals(ccvRequirement)) {
+            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
+            EvidenceType evidenceType = buildEvidenceType(selectionCriterion.getInfoElectronicallyUrl());
+            responseType.getEvidence().add(evidenceType);
+        } else if (SelectionCriterionRequirement.URL_CODE.equals(ccvRequirement)) {
+            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
+            TypeCodeType typeCodeType = new TypeCodeType();
+            typeCodeType.setValue(selectionCriterion.getInfoElectronicallyCode());
+            responseType.setCode(typeCodeType);
+        }
     }
 
     private IndicatorType buildIndicatorType(boolean value) {
@@ -156,14 +173,14 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         return indicatorType;
     }
 
-    private EvidenceType buildEvidenceType(ExclusionCriterion espdCriterion) {
+    private EvidenceType buildEvidenceType(String url) {
         EvidenceType evidenceType = new EvidenceType();
         DocumentReferenceType documentReferenceType = new DocumentReferenceType();
         AttachmentType attachmentType = new AttachmentType();
         ExternalReferenceType externalReferenceType = new ExternalReferenceType();
         attachmentType.setExternalReference(externalReferenceType);
         URIType uriType = new URIType();
-        uriType.setValue(espdCriterion.getInfoElectronicallyUrl());
+        uriType.setValue(url);
         externalReferenceType.setURI(uriType);
         documentReferenceType.setAttachment(attachmentType);
         evidenceType.getEvidenceDocumentReference().add(documentReferenceType);

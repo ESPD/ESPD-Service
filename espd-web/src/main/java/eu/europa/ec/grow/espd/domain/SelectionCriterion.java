@@ -11,4 +11,25 @@ import lombok.EqualsAndHashCode;
 public class SelectionCriterion extends Criterion {
 
     private AvailableElectronically availableElectronically;
+
+    public final boolean getInfoElectronicallyAnswer() {
+        if (availableElectronically != null) {
+            return Boolean.TRUE.equals(availableElectronically.getExists());
+        }
+        return false;
+    }
+
+    public final String getInfoElectronicallyUrl() {
+        if (availableElectronically != null) {
+            return availableElectronically.getUrl();
+        }
+        return null;
+    }
+
+    public final String getInfoElectronicallyCode() {
+        if (availableElectronically != null) {
+            return availableElectronically.getCode();
+        }
+        return null;
+    }
 }

@@ -1,8 +1,10 @@
 package eu.europa.ec.grow.espd.xml.request.selection
 
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -46,6 +48,75 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+    }
+
+    def "check the 'Your answer' requirement response"() {
+        given:
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
+
+    def "check the 'Is this information available electronically' requirement response"() {
+        given:
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: false)))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Info electronically URL' requirement response"() {
+        given:
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_04.com")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[1]
+        req.Response.size() == 1
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_04.com"
+    }
+
+    def "check the 'Info electronically code' requirement response"() {
+        given:
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_04")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[2]
+        req.Response.size() == 1
+        req.Response[0].Code.text() == "HODOR_04"
     }
 
 }

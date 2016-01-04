@@ -24,8 +24,6 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.lookupNamespace('ccv') == 'urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1'
         result.lookupNamespace('ccv-cbc') == 'urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1'
         result.lookupNamespace('cev-cbc') == 'urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1'
-//        result.lookupNamespace('cev') == 'urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1'
-//        result.lookupNamespace('ext') == 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2'
     }
 
     def "should contain UBLVersionID element information"() {
