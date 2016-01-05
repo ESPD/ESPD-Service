@@ -1,10 +1,8 @@
-package eu.europa.ec.grow.espd.xml.request.selection
-
+package eu.europa.ec.grow.espd.xml.response.selection
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
-
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -12,7 +10,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
     def "04. should contain the 'For service contracts: authorisation of particular organisation needed' criterion"() {
         given:
-        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -52,7 +50,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -70,7 +68,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -87,7 +85,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_04.com")))
 
         when:
@@ -104,7 +102,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsAuthorisation: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_04")))
 
         when:

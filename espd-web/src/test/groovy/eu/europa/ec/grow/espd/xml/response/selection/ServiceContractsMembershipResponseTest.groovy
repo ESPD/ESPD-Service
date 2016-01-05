@@ -1,9 +1,8 @@
-package eu.europa.ec.grow.espd.xml.request.selection
-
+package eu.europa.ec.grow.espd.xml.response.selection
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -11,7 +10,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
     def "05. should contain the 'For service contracts: membership of particular organisation needed' criterion"() {
         given:
-        def espd = new EspdDocument(serviceContractsMembership: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -51,7 +50,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsMembership: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -66,10 +65,9 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         req.Response[0].Indicator.text() == "true"
     }
 
-
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsMembership: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -86,7 +84,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsMembership: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_05.com")))
 
         when:
@@ -103,7 +101,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(serviceContractsMembership: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_05")))
 
         when:

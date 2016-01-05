@@ -1,8 +1,8 @@
-package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+package eu.europa.ec.grow.espd.xml.response.selection
+import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +10,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
 
     def "12. should contain the 'Other economic or financial requirements' criterion"() {
         given:
-        def espd = new EspdDocument(otherEconomicFinancialRequirements: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -46,6 +46,74 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+    }
+
+    def "check the 'Please describe them' requirements response"() {
+        given:
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true,
+                description: "other economic or financial description"))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "other economic or financial description"
+    }
+
+    def "check the 'Is this information available electronically' requirement response"() {
+        given:
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: false)))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Info electronically URL' requirement response"() {
+        given:
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_12.com")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[1]
+        req.Response.size() == 1
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_12.com"
+    }
+
+    def "check the 'Info electronically code' requirement response"() {
+        given:
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_12")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[2]
+        req.Response.size() == 1
+        req.Response[0].Code.text() == "HODOR_12"
     }
 
 }

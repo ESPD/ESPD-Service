@@ -1,8 +1,8 @@
-package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+package eu.europa.ec.grow.espd.xml.response.selection
+import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +10,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
     def "11. should contain the 'Professional risk indemnity insurance' criterion"() {
         given:
-        def espd = new EspdDocument(professionalRiskInsurance: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -38,17 +38,99 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
 
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
-
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+    }
+
+    def "check the 'Amount' requirements response"() {
+        given:
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+                amount1: 11.11, currency1: "EUR"))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Amount.text() == "11.11"
+        req.Response[0].Amount.@currencyID.text() == "EUR"
+    }
+
+    def "check empty 'Amount' requirements response"() {
+        given:
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+                amount1: null, currency1: "EUR"))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Amount.size() == 0
+    }
+
+    def "check the 'Is this information available electronically' requirement response"() {
+        given:
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: false)))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Info electronically URL' requirement response"() {
+        given:
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_11.com")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[1]
+        req.Response.size() == 1
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_11.com"
+    }
+
+    def "check the 'Info electronically code' requirement response"() {
+        given:
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_11")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[2]
+        req.Response.size() == 1
+        req.Response[0].Code.text() == "HODOR_11"
     }
 
 }

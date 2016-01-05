@@ -1,8 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
+import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
@@ -10,11 +8,11 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
 
     def "should contain a single selection Criterion element if the economic operator claims that it satisfies all the criteria"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new SelectionCriterion(exists: true),
-                enrolmentProfessionalRegister: new SelectionCriterion(exists: true),
-                enrolmentTradeRegister: new SelectionCriterion(exists: true),
-                serviceContractsAuthorisation: new SelectionCriterion(exists: true),
-                serviceContractsMembership: new SelectionCriterion(exists: true),)
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true),
+                enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
+                enrolmentTradeRegister: new SuitabilityCriterion(exists: true),
+                serviceContractsAuthorisation: new SuitabilityCriterion(exists: true),
+                serviceContractsMembership: new SuitabilityCriterion(exists: true),)
 
         when:
         def request = parseRequestXml(espd)
@@ -45,37 +43,37 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
     def "all selection criteria (except satisfies all) should be in the correct order"() {
         given:
         def espd = new EspdDocument(
-                enrolmentProfessionalRegister: new SelectionCriterion(exists: true),
-                enrolmentTradeRegister: new SelectionCriterion(exists: true),
-                serviceContractsAuthorisation: new SelectionCriterion(exists: true),
-                serviceContractsMembership: new SelectionCriterion(exists: true),
-                generalYearlyTurnover: new SelectionCriterion(exists: true),
-                averageYearlyTurnover: new SelectionCriterion(exists: true),
-                specificYearlyTurnover: new SelectionCriterion(exists: true),
-                specificAverageTurnover: new SelectionCriterion(exists: true),
-                financialRatio: new SelectionCriterion(exists: true),
-                professionalRiskInsurance: new SelectionCriterion(exists: true),
-                otherEconomicFinancialRequirements: new SelectionCriterion(exists: true),
-                workContractsPerformanceOfWorks: new SelectionCriterion(exists: true),
-                supplyContractsPerformanceDeliveries: new SelectionCriterion(exists: true),
-                serviceContractsPerformanceServices: new SelectionCriterion(exists: true),
-                techniciansTechnicalBodies: new SelectionCriterion(exists: true),
-                workContractsTechnicians: new SelectionCriterion(exists: true),
-                technicalFacilitiesMeasures: new SelectionCriterion(exists: true),
-                studyResearchFacilities: new SelectionCriterion(exists: true),
-                supplyChainManagement: new SelectionCriterion(exists: true),
-                allowanceOfChecks: new SelectionCriterion(exists: true),
-                educationalProfessionalQualifications: new SelectionCriterion(exists: true),
-                environmentalManagementFeatures: new SelectionCriterion(exists: true),
-                numberManagerialStaff: new SelectionCriterion(exists: true),
-                averageAnnualManpower: new SelectionCriterion(exists: true),
-                toolsPlantTechnicalEquipment: new SelectionCriterion(exists: true),
-                subcontractingProportion: new SelectionCriterion(exists: true),
-                supplyContractsSamplesDescriptionsWithoutCa: new SelectionCriterion(exists: true),
-                supplyContractsSamplesDescriptionsWithCa: new SelectionCriterion(exists: true),
-                supplyContractsCertificatesQc: new SelectionCriterion(exists: true),
-                certificateIndependentBodiesAboutQa: new SelectionCriterion(exists: true),
-                certificateIndependentBodiesAboutEnvironmental: new SelectionCriterion(exists: true))
+                enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
+                enrolmentTradeRegister: new SuitabilityCriterion(exists: true),
+                serviceContractsAuthorisation: new SuitabilityCriterion(exists: true),
+                serviceContractsMembership: new SuitabilityCriterion(exists: true),
+                generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
+                averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
+                specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
+                specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true),
+                financialRatio: new EconomicFinancialStandingCriterion(exists: true),
+                professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true),
+                otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true),
+                workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true),
+                supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true),
+                serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true),
+                techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true),
+                workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true),
+                technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true),
+                studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true),
+                supplyChainManagement: new TechnicalProfessionalCriterion(exists: true),
+                allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true),
+                educationalProfessionalQualifications: new TechnicalProfessionalCriterion(exists: true),
+                environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true),
+                numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true),
+                averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true),
+                toolsPlantTechnicalEquipment: new TechnicalProfessionalCriterion(exists: true),
+                subcontractingProportion: new TechnicalProfessionalCriterion(exists: true),
+                supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true),
+                supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true),
+                supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true),
+                certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true),
+                certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

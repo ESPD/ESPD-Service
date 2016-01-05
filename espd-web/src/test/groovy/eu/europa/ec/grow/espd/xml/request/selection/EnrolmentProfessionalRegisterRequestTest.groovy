@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
 
     def "02. should contain the 'Enrolment in a relevant professional register' criterion"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

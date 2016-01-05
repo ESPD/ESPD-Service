@@ -18,7 +18,7 @@ public class EspdDocument {
     private String fileRefByCA;
     private String websiteProcDocs;
 
-    //Exclusions
+    //Exclusion criteria
 
     private CriminalConvictions criminalConvictions;
     private CriminalConvictions corruption;
@@ -38,8 +38,6 @@ public class EspdDocument {
     private BreachOfObligations assetsAdministeredByLiquidator;
     private BreachOfObligations businessActivitiesSuspended;
     private BreachOfObligations guiltyGrave;
-    // TODO should remove this field? Probably we should.
-    //private BreachOfObligations agreementsEo;
     private BreachOfObligations conflictInterest;
     private BreachOfObligations involvementPreparationProcurement;
     private BreachOfObligations earlyTermination;
@@ -47,46 +45,51 @@ public class EspdDocument {
 
     private PurelyNationalGrounds purelyNationalGrounds;
 
-    private SelectionCriterion enrolmentProfessionalRegister;
-    private SelectionCriterion enrolmentTradeRegister;
-    private SelectionCriterion serviceContractsAuthorisation;
-    private SelectionCriterion serviceContractsMembership;
+    // Selection criteria
 
-    private SelectionCriterion generalYearlyTurnover;
-    private SelectionCriterion averageYearlyTurnover;
-    private SelectionCriterion specificYearlyTurnover;
-    private SelectionCriterion specificAverageTurnover;
-    private SelectionCriterion financialRatio;
-    private SelectionCriterion professionalRiskInsurance;
-    private SelectionCriterion otherEconomicFinancialRequirements;
+    private SatisfiesAllCriterion selectionSatisfiesAll;
 
-    private SelectionCriterion workContractsPerformanceOfWorks;
-    private SelectionCriterion supplyContractsPerformanceDeliveries;
-    private SelectionCriterion serviceContractsPerformanceServices;
-    private SelectionCriterion techniciansTechnicalBodies;
-    private SelectionCriterion workContractsTechnicians;
-    private SelectionCriterion technicalFacilitiesMeasures;
-    private SelectionCriterion studyResearchFacilities;
-    private SelectionCriterion supplyChainManagement;
-    private SelectionCriterion allowanceOfChecks;
-    private SelectionCriterion educationalProfessionalQualifications;
-    private SelectionCriterion environmentalManagementFeatures;
-    private SelectionCriterion numberManagerialStaff;
-    private SelectionCriterion averageAnnualManpower;
-    private SelectionCriterion toolsPlantTechnicalEquipment;
-    private SelectionCriterion subcontractingProportion;
-    private SelectionCriterion supplyContractsSamplesDescriptionsWithoutCa;
-    private SelectionCriterion supplyContractsSamplesDescriptionsWithCa;
-    private SelectionCriterion supplyContractsCertificatesQc;
-    private SelectionCriterion certificateIndependentBodiesAboutQa;
-    private SelectionCriterion certificateIndependentBodiesAboutEnvironmental;
+    private SuitabilityCriterion enrolmentProfessionalRegister;
+    private SuitabilityCriterion enrolmentTradeRegister;
+    private SuitabilityCriterion serviceContractsAuthorisation;
+    private SuitabilityCriterion serviceContractsMembership;
 
+    private EconomicFinancialStandingCriterion generalYearlyTurnover;
+    private EconomicFinancialStandingCriterion averageYearlyTurnover;
+    private EconomicFinancialStandingCriterion specificYearlyTurnover;
+    private EconomicFinancialStandingCriterion specificAverageTurnover;
+    private EconomicFinancialStandingCriterion financialRatio;
+    private EconomicFinancialStandingCriterion professionalRiskInsurance;
+    private EconomicFinancialStandingCriterion otherEconomicFinancialRequirements;
+
+    private TechnicalProfessionalCriterion workContractsPerformanceOfWorks;
+    private TechnicalProfessionalCriterion supplyContractsPerformanceDeliveries;
+    private TechnicalProfessionalCriterion serviceContractsPerformanceServices;
+    private TechnicalProfessionalCriterion techniciansTechnicalBodies;
+    private TechnicalProfessionalCriterion workContractsTechnicians;
+    private TechnicalProfessionalCriterion technicalFacilitiesMeasures;
+    private TechnicalProfessionalCriterion studyResearchFacilities;
+    private TechnicalProfessionalCriterion supplyChainManagement;
+    private TechnicalProfessionalCriterion allowanceOfChecks;
+    private TechnicalProfessionalCriterion educationalProfessionalQualifications;
+    private TechnicalProfessionalCriterion environmentalManagementFeatures;
+    private TechnicalProfessionalCriterion numberManagerialStaff;
+    private TechnicalProfessionalCriterion averageAnnualManpower;
+    private TechnicalProfessionalCriterion toolsPlantTechnicalEquipment;
+    private TechnicalProfessionalCriterion subcontractingProportion;
+    private TechnicalProfessionalCriterion supplyContractsSamplesDescriptionsWithoutCa;
+    private TechnicalProfessionalCriterion supplyContractsSamplesDescriptionsWithCa;
+    private TechnicalProfessionalCriterion supplyContractsCertificatesQc;
+    private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
+    private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
+
+    @Deprecated
     private SelectionCriterion economicEnrolment;
 
+    @Deprecated
     private SelectionCriterion economicServiceContracts;
 
-    private Criterion selectionSatisfiesAll;
-    
+    @Deprecated
     private SelectionCriterion reductionOfNumbers;
 
     //trick to use MultipartFile as @RequestParam

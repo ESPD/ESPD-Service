@@ -31,25 +31,22 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
 
         checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[2], "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
     }
 
     protected static void checkYearAmountCurrency2Group(def yearAmountCurrencyGroup) {
         yearAmountCurrencyGroup.ID.text() == "c628dd27-8016-4d80-8660-7461f2e3ee0f"
         yearAmountCurrencyGroup.Requirement.size() == 3
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[2], "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "49a57870-7fb8-451f-a7af-fa0e7f8b97e7", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
     }
 
     protected static void checkYearAmountCurrency3Group(def yearAmountCurrencyGroup) {
         yearAmountCurrencyGroup.ID.text() == "9dd09f9f-3326-4865-9d5a-f0836076fb19"
         yearAmountCurrencyGroup.Requirement.size() == 3
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[2], "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
     }
 
     protected static void checkDescriptionAmountDateRecipients1Group(def group) {
@@ -66,20 +63,20 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         group.ID.text() == "c48572f9-47bf-423a-9885-2c78ae9ca718"
         group.Requirement.size() == 4
 
-        checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
-        checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+        checkRequirement(group.Requirement[0], "927def36-1fa3-4018-8b45-7ee2c5b1e0af", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "8d0e5e16-85ed-4730-a784-d4db8f439c0c", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "TEXT")
     }
 
     protected static void checkDescriptionAmountDateRecipients3Group(def group) {
         group.ID.text() == "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7"
         group.Requirement.size() == 4
 
-        checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
-        checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+        checkRequirement(group.Requirement[0], "e6ca4034-cfee-499a-9a47-c4f2862ef4d0", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "c953e635-580b-4d7c-a30c-2edbde3b8fdf", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "TEXT")
     }
 
 }

@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
-import eu.europa.ec.grow.espd.domain.Criterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 1/4/16 at 1:24 PM.
@@ -10,7 +10,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
 
     def "01. should contain the 'All selection criteria will be satisfied' criterion"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new Criterion(exists: true))
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
         def idx = 0
 
         when:
@@ -40,7 +40,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new Criterion(exists: true))
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)

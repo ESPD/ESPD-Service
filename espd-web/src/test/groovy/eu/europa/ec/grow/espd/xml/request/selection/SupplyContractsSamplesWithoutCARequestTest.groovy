@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriter
 
     def "28. should contain the 'For supply contracts: samples, descriptions or photographs without certification of authenticity' criterion"() {
         given:
-        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

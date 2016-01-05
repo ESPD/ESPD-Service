@@ -11,7 +11,7 @@ import java.util.Date;
 public class Taxes extends ExclusionCriterion {
 
     private Country country;
-    private Integer amount;
+    private Double amount;
     private String currency;
     private boolean breachEstablishedOtherThanJudicialDecision;
     private String meansDescription;

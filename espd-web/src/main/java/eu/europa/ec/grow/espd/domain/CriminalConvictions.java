@@ -27,7 +27,7 @@ public class CriminalConvictions extends ExclusionCriterion {
     }
 
     @Override
-    public Integer getAmount() {
+    public Double getAmount() {
         throw new UnsupportedOperationException("Criminal convictions criterion does not have an amount.");
     }
 

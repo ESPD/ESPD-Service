@@ -28,7 +28,7 @@ public class BreachOfObligations extends ExclusionCriterion {
     }
 
     @Override
-    public Integer getAmount() {
+    public Double getAmount() {
         throw new UnsupportedOperationException("Breach of obligations criterion does not have an amount.");
     }
 

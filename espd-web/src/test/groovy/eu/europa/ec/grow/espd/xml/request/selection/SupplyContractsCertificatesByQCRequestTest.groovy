@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class SupplyContractsCertificatesByQCRequestTest extends AbstractSelectionCriter
 
     def "30. should contain the 'For supply contracts: certificates by quality control institutes' criterion"() {
         given:
-        def espd = new EspdDocument(supplyContractsCertificatesQc: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

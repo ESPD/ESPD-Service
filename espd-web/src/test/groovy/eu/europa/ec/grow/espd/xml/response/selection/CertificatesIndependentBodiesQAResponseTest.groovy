@@ -1,8 +1,7 @@
-package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+package eu.europa.ec.grow.espd.xml.response.selection
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "31. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)

@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractSelectionCriteriaFixt
 
     def "11. should contain the 'Professional risk indemnity insurance' criterion"() {
         given:
-        def espd = new EspdDocument(professionalRiskInsurance: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -38,14 +37,11 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractSelectionCriteriaFixt
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "095c4a57-7f84-4863-a55e-363068d1aaf4", "Currency", "CURRENCY")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

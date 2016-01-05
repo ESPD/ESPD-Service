@@ -10,7 +10,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "02. should contain the 'Enrolment in a relevant professional register' criterion"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -50,7 +50,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -67,7 +67,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -84,7 +84,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_02.com")))
 
         when:
@@ -101,7 +101,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SelectionCriterion(exists: true,
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_02")))
 
         when:

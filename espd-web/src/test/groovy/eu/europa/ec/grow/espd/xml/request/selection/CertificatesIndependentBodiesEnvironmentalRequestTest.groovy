@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
-import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -10,7 +9,7 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
 
     def "32. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new SelectionCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

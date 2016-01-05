@@ -109,7 +109,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
         checkRequirement(req, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
         req.Response.size() == 1
-        req.Response[0].Amount.text() == "445"
+        req.Response[0].Amount.text() == "445.0"
         req.Response[0].Amount.@currencyID.text() == "RON"
     }
 

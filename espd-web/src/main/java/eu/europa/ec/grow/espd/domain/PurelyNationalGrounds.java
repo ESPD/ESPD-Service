@@ -32,7 +32,7 @@ public class PurelyNationalGrounds extends ExclusionCriterion {
     }
 
     @Override
-    public Integer getAmount() {
+    public Double getAmount() {
         throw new UnsupportedOperationException("National grounds criterion does not have an amount.");
     }
 

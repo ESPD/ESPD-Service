@@ -17,12 +17,32 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    YEAR("5aacceb3-280e-42f1-b2da-3d8ac7877fe9", CriterionText.YEAR_TEXT,
+    YEAR_1("5aacceb3-280e-42f1-b2da-3d8ac7877fe9", CriterionText.YEAR_TEXT,
             ExpectedResponseType.QUANTITY),
     /**
      *
      */
-    AMOUNT("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT_TEXT,
+    AMOUNT_1("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    YEAR_2("49a57870-7fb8-451f-a7af-fa0e7f8b97e7", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT_2("4acd0a02-c267-4d05-b456-c0565c2ffd46", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    YEAR_3("9d0cf1cb-27bc-4747-8579-47dce4d8d490", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT_3("28fb4b41-5178-4b79-ba24-d9a62fa4a658", CriterionText.AMOUNT_TEXT,
             ExpectedResponseType.AMOUNT),
     /**
      *
@@ -47,17 +67,47 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    DESCRIPTION("ab05ff3b-f3e1-4441-9b43-ee9912e29e92", CriterionText.DESCRIPTION_TEXT,
+    DESCRIPTION_1("ab05ff3b-f3e1-4441-9b43-ee9912e29e92", CriterionText.DESCRIPTION_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
      *
      */
-    DATE("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DATE_TEXT,
+    DESCRIPTION_2("927def36-1fa3-4018-8b45-7ee2c5b1e0af", CriterionText.DESCRIPTION_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    DESCRIPTION_3("e6ca4034-cfee-499a-9a47-c4f2862ef4d0", CriterionText.DESCRIPTION_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    DATE_1("42ec8116-31a7-4118-8612-5b04f5c8bde7", CriterionText.DATE_TEXT,
             ExpectedResponseType.DATE),
     /**
      *
      */
-    RECIPIENTS("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS_TEXT,
+    DATE_2("8d0e5e16-85ed-4730-a784-d4db8f439c0c", CriterionText.DATE_TEXT,
+            ExpectedResponseType.DATE),
+    /**
+     *
+     */
+    DATE_3("c953e635-580b-4d7c-a30c-2edbde3b8fdf", CriterionText.DATE_TEXT,
+            ExpectedResponseType.DATE),
+    /**
+     *
+     */
+    RECIPIENTS_1("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS_TEXT,
+            ExpectedResponseType.TEXT),
+    /**
+     *
+     */
+    RECIPIENTS_2("c8babafa-b6fa-4e14-8749-d913d8f1d33b", CriterionText.RECIPIENTS_TEXT,
+            ExpectedResponseType.TEXT),
+    /**
+     *
+     */
+    RECIPIENTS_3("5157e1ff-d272-4382-98a9-6953f5a15300", CriterionText.RECIPIENTS_TEXT,
             ExpectedResponseType.TEXT),
     /**
      *

@@ -25,32 +25,32 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     YEAR_AMOUNT_CURRENCY_1_GROUP("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT)),
+            list(YEAR_1, AMOUNT_1)),
     /**
      *
      */
     YEAR_AMOUNT_CURRENCY_2_GROUP("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT)),
+            list(YEAR_2, AMOUNT_2)),
     /**
      *
      */
     YEAR_AMOUNT_CURRENCY_3_GROUP("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
-            list(YEAR, AMOUNT)),
+            list(YEAR_3, AMOUNT_3)),
     /**
      *
      */
     DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP("96f00020-0a25-402e-b850-2378e83b5695", Collections.<CcvCriterionGroup>emptyList(),
-            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+            list(DESCRIPTION_1, AMOUNT_1, DATE_1, RECIPIENTS_1)),
     /**
      *
      */
     DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP("c48572f9-47bf-423a-9885-2c78ae9ca718", Collections.<CcvCriterionGroup>emptyList(),
-            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+            list(DESCRIPTION_2, AMOUNT_2, DATE_2, RECIPIENTS_2)),
     /**
      *
      */
     DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7", Collections.<CcvCriterionGroup>emptyList(),
-            list(DESCRIPTION, AMOUNT, DATE, RECIPIENTS)),
+            list(DESCRIPTION_3, AMOUNT_3, DATE_3, RECIPIENTS_3)),
     /**
      *
      */
@@ -106,7 +106,7 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     PROFESSIONAL_RISK_INSURANCE_GROUP("42dc8062-974d-4201-91ba-7f2ea90338fd",
-            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT)),
+            Collections.<CcvCriterionGroup>emptyList(), list(AMOUNT_1)),
     /**
      *
      */

@@ -55,7 +55,7 @@ public abstract class ExclusionCriterion extends Criterion {
 
     public abstract Country getCountry();
 
-    public abstract Integer getAmount();
+    public abstract Double getAmount();
 
     public abstract String getCurrency();
 
