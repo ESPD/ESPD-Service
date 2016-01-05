@@ -156,7 +156,8 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.AMOUNT_3.equals(ccvRequirement)) {
             MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount3(), selectionCriterion.getCurrency3()));
-        } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+        } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.PLEASE_SPECIFY.equals(ccvRequirement)) {
             DescriptionHolder selectionCriterion = (DescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription()));
         } else if (SelectionCriterionRequirement.DESCRIPTION_1.equals(ccvRequirement)) {
@@ -186,6 +187,9 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.RECIPIENTS_3.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients3()));
+        } else if (SelectionCriterionRequirement.PERCENTAGE.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setPercent(buildPercentType(selectionCriterion.getPercentage()));
         }
     }
 
@@ -228,6 +232,15 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         DateType dateType = new DateType();
         dateType.setValue(new LocalDate(date.getTime()));
         return dateType;
+    }
+
+    private PercentType buildPercentType(Double percentage) {
+        if (percentage == null) {
+            return null;
+        }
+        PercentType percentType = new PercentType();
+        percentType.setValue(BigDecimal.valueOf(percentage));
+        return percentType;
     }
 
     private IndicatorType buildIndicatorType(boolean value) {

@@ -32,6 +32,8 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion implement
     private String recipients2;
     private String recipients3;
 
+    private Double percentage;
+
     @Override
     public String getDescription() {
         return description1;
