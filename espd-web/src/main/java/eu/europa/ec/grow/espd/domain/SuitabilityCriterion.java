@@ -9,4 +9,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class SuitabilityCriterion extends SelectionCriterion {
+
+    public static SuitabilityCriterion buildWithExists(boolean exists) {
+        SuitabilityCriterion criterion = new SuitabilityCriterion();
+        criterion.setExists(exists);
+        return criterion;
+    }
 }

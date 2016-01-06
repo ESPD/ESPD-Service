@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.xml
+package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
@@ -7,7 +7,7 @@ import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 11/25/15.
  */
-class EspdDocumentUnmarshallingTest extends AbstractEspdXmlMarshalling {
+class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling {
 
     def "should parse full authority information"() {
         given:

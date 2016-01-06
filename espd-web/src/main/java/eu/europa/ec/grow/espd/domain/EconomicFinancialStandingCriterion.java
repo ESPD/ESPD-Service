@@ -25,4 +25,10 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion imple
     // TODO ratio
     private String description;
 
+    public static EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
+        EconomicFinancialStandingCriterion criterion = new EconomicFinancialStandingCriterion();
+        criterion.setExists(exists);
+        return criterion;
+    }
+
 }

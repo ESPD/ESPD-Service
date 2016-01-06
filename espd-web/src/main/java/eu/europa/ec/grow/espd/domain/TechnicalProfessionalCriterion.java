@@ -38,4 +38,10 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion implement
     public String getDescription() {
         return description1;
     }
+
+    public static TechnicalProfessionalCriterion buildWithExists(boolean exists) {
+        TechnicalProfessionalCriterion criterion = new TechnicalProfessionalCriterion();
+        criterion.setExists(exists);
+        return criterion;
+    }
 }
