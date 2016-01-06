@@ -1,32 +1,32 @@
-package eu.europa.ec.grow.espd.business.request;
+package eu.europa.ec.grow.espd.business.response;
 
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator;
 import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
-import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
+import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by ratoico on 11/25/15 11:28 AM.
+ * Created by ratoico on 1/6/16 at 5:41 PM.
  */
 @Component
-public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
+public class UblResponseToEspdDocumentTransformer implements Function<ESPDResponseType, EspdDocument> {
 
     private final PartyImplTransformer partyImplTransformer;
     private final CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator;
 
     @Autowired
-    UblRequestToEspdDocumentTransformer(PartyImplTransformer partyImplTransformer,
+    public UblResponseToEspdDocumentTransformer(PartyImplTransformer partyImplTransformer,
             CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator) {
         this.partyImplTransformer = partyImplTransformer;
         this.criteriaToEspdDocumentPopulator = criteriaToEspdDocumentPopulator;
     }
 
     @Override
-    public EspdDocument apply(ESPDRequestType input) {
+    public EspdDocument apply(ESPDResponseType input) {
         EspdDocument espdDocument = new EspdDocument();
 
         addPartyInformation(input, espdDocument);
@@ -35,7 +35,7 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
         return espdDocument;
     }
 
-    private void addPartyInformation(ESPDRequestType input, EspdDocument espdDocument) {
+    private void addPartyInformation(ESPDResponseType input, EspdDocument espdDocument) {
         if (input.getContractingParty() == null || input.getContractingParty().getParty() == null) {
             return;
         }
@@ -44,8 +44,7 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
         espdDocument.setAuthority(authority);
     }
 
-    private void addCriteriaInformation(ESPDRequestType input, EspdDocument espdDocument) {
+    private void addCriteriaInformation(ESPDResponseType input, EspdDocument espdDocument) {
         criteriaToEspdDocumentPopulator.addCriteriaToEspdDocument(espdDocument, input.getCriterion());
     }
-
 }

@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.business;
 
 import eu.europa.ec.grow.espd.business.request.UblRequestToEspdDocumentTransformer;
 import eu.europa.ec.grow.espd.business.request.UblRequestTypeTransformer;
+import eu.europa.ec.grow.espd.business.response.UblResponseToEspdDocumentTransformer;
 import eu.europa.ec.grow.espd.business.response.UblResponseTypeTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
@@ -28,7 +29,8 @@ public class EspdExchangeMarshaller {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
     private final UblRequestTypeTransformer toEspdRequestTransformer;
-    private final UblRequestToEspdDocumentTransformer toEspdDocumentTransformer;
+    private final UblRequestToEspdDocumentTransformer requestToEspdDocumentTransformer;
+    private final UblResponseToEspdDocumentTransformer responseToEspdDocumentTransformer;
     private final UblResponseTypeTransformer toEspdResponseTransformer;
     private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
     private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
@@ -36,11 +38,13 @@ public class EspdExchangeMarshaller {
     @Autowired
     EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
             UblRequestTypeTransformer toEspdRequestTransformer,
-            UblRequestToEspdDocumentTransformer toEspdDocumentTransformer,
+            UblRequestToEspdDocumentTransformer requestToEspdDocumentTransformer,
+            UblResponseToEspdDocumentTransformer responseToEspdDocumentTransformer,
             UblResponseTypeTransformer toEspdResponseTransformer) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
-        this.toEspdDocumentTransformer = toEspdDocumentTransformer;
+        this.requestToEspdDocumentTransformer = requestToEspdDocumentTransformer;
+        this.responseToEspdDocumentTransformer = responseToEspdDocumentTransformer;
         this.toEspdResponseTransformer = toEspdResponseTransformer;
         this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
         this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
@@ -112,6 +116,22 @@ public class EspdExchangeMarshaller {
         JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
                 .unmarshal(new StreamSource(espdRequestStream));
         ESPDRequestType requestType = element.getValue();
-        return toEspdDocumentTransformer.apply(requestType);
+        return requestToEspdDocumentTransformer.apply(requestType);
+    }
+
+    /**
+     * Convert a {@link ESPDResponseType} coming from an input stream into a {@link EspdDocument} object needed by
+     * the web application user interface.
+     *
+     * @param espdResponseStream An input stream containing the ESPD Response
+     *
+     * @return The ESPD Document object coming out from the ESPD Response
+     */
+    @SuppressWarnings("unchecked")
+    public EspdDocument importEspdResponse(InputStream espdResponseStream) {
+        JAXBElement<ESPDResponseType> element = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
+                .unmarshal(new StreamSource(espdResponseStream));
+        ESPDResponseType responseType = element.getValue();
+        return responseToEspdDocumentTransformer.apply(responseType);
     }
 }
