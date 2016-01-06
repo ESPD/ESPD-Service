@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:58 AM.
@@ -10,7 +10,7 @@ class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "06. should contain the 'Child labour and other forms of trafficking in human beings' criterion"() {
         given:
-        def espd = new EspdDocument(childLabour: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

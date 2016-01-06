@@ -21,12 +21,12 @@ public class EspdDocument {
 
     //Exclusion criteria
 
-    private CriminalConvictions criminalConvictions;
-    private CriminalConvictions corruption;
-    private CriminalConvictions fraud;
-    private CriminalConvictions terroristOffences;
-    private CriminalConvictions moneyLaundering;
-    private CriminalConvictions childLabour;
+    private CriminalConvictionsCriterion criminalConvictions;
+    private CriminalConvictionsCriterion corruption;
+    private CriminalConvictionsCriterion fraud;
+    private CriminalConvictionsCriterion terroristOffences;
+    private CriminalConvictionsCriterion moneyLaundering;
+    private CriminalConvictionsCriterion childLabour;
 
     private TaxesCriterion paymentTaxes;
     private TaxesCriterion paymentSocialSecurity;

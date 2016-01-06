@@ -66,34 +66,34 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
     private void markExclusionSelectedCriminalConvictions(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria)) {
-            espdDocument.setCriminalConvictions(CriminalConvictions.buildWithExists(true));
+            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setCriminalConvictions(CriminalConvictions.buildWithExists(false));
+            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.CORRUPTION, ublCriteria)) {
-            espdDocument.setCorruption(CriminalConvictions.buildWithExists(true));
+            espdDocument.setCorruption(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setCorruption(CriminalConvictions.buildWithExists(false));
+            espdDocument.setCorruption(CriminalConvictionsCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.FRAUD, ublCriteria)) {
-            espdDocument.setFraud(CriminalConvictions.buildWithExists(true));
+            espdDocument.setFraud(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setFraud(CriminalConvictions.buildWithExists(false));
+            espdDocument.setFraud(CriminalConvictionsCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.TERRORIST_OFFENCES, ublCriteria)) {
-            espdDocument.setTerroristOffences(CriminalConvictions.buildWithExists(true));
+            espdDocument.setTerroristOffences(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setTerroristOffences(CriminalConvictions.buildWithExists(false));
+            espdDocument.setTerroristOffences(CriminalConvictionsCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.MONEY_LAUNDERING, ublCriteria)) {
-            espdDocument.setMoneyLaundering(CriminalConvictions.buildWithExists(true));
+            espdDocument.setMoneyLaundering(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setMoneyLaundering(CriminalConvictions.buildWithExists(false));
+            espdDocument.setMoneyLaundering(CriminalConvictionsCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.CHILD_LABOUR, ublCriteria)) {
-            espdDocument.setChildLabour(CriminalConvictions.buildWithExists(true));
+            espdDocument.setChildLabour(CriminalConvictionsCriterion.buildWithExists(true));
         } else {
-            espdDocument.setChildLabour(CriminalConvictions.buildWithExists(false));
+            espdDocument.setChildLabour(CriminalConvictionsCriterion.buildWithExists(false));
         }
     }
 

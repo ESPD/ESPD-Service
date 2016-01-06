@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
@@ -13,7 +13,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "01. should contain the 'Participation in a criminal organisation' full responses"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
         def idx = 0
 
         when:
@@ -55,7 +55,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
     def "01. 'Participation in a criminal organisation' should not appear at all when the response is negative"() {
         given:
         def now = new Date()
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: false, dateOfConviction: now,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false, dateOfConviction: now,
                 reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
                 selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean"),
                 availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "INTERNATIONAL")))
@@ -70,7 +70,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -88,7 +88,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
     def "check the 'Date of conviction' requirement response"() {
         given:
         def now = new Date()
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true, dateOfConviction: now))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
         def request = parseResponseXml(espd)
@@ -105,7 +105,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Reason' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true, reason: "Reason_01 here"))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, reason: "Reason_01 here"))
 
         when:
         def request = parseResponseXml(espd)
@@ -122,7 +122,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Who has been convicted' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true, convicted: "Hodor_01 was convicted"))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_01 was convicted"))
 
         when:
         def request = parseResponseXml(espd)
@@ -139,7 +139,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Length of the period of exclusion' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true, periodLength: "7 years"))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
         def request = parseResponseXml(espd)
@@ -156,7 +156,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(exists: false)))
 
         when:
@@ -173,7 +173,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Self cleaning description' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(description: "Hodor_01 is clean")))
 
         when:
@@ -190,7 +190,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -207,7 +207,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_01.com")))
 
         when:
@@ -224,7 +224,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_01")))
 
         when:

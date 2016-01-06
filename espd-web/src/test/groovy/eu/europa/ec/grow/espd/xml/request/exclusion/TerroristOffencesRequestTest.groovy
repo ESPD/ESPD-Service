@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:55 AM.
@@ -10,7 +10,7 @@ class TerroristOffencesRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "04. should contain the 'Terrorist offences or offences linked to terrorist activities' criterion"() {
         given:
-        def espd = new EspdDocument(terroristOffences: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(terroristOffences: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

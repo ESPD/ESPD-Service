@@ -4,7 +4,7 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import org.joda.time.LocalDate
 
@@ -16,7 +16,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "05. should contain the 'Money laundering or terrorist financing' criterion"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -56,7 +56,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -74,7 +74,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Date of conviction' requirement response"() {
         given:
         def now = new Date()
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true, dateOfConviction: now))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
         def request = parseResponseXml(espd)
@@ -91,7 +91,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Reason' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true, reason: "Reason_05 here"))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, reason: "Reason_05 here"))
 
         when:
         def request = parseResponseXml(espd)
@@ -108,7 +108,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Who has been convicted' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true, convicted: "Hodor_05 was convicted"))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_05 was convicted"))
 
         when:
         def request = parseResponseXml(espd)
@@ -125,7 +125,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Length of the period of exclusion' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true, periodLength: "7 years"))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
         def request = parseResponseXml(espd)
@@ -142,7 +142,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(exists: false)))
 
         when:
@@ -159,7 +159,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Self cleaning description' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(description: "Hodor_05 is clean")))
 
         when:
@@ -176,7 +176,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -193,7 +193,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_05.com")))
 
         when:
@@ -210,7 +210,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_05")))
 
         when:

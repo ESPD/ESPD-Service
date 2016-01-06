@@ -158,12 +158,12 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         given:
         def espd = new EspdDocument(
                 // exclusion
-                criminalConvictions: new CriminalConvictions(exists: true),
-                corruption: new CriminalConvictions(exists: true),
-                fraud: new CriminalConvictions(exists: true),
-                terroristOffences: new CriminalConvictions(exists: true),
-                moneyLaundering: new CriminalConvictions(exists: true),
-                childLabour: new CriminalConvictions(exists: true),
+                criminalConvictions: new CriminalConvictionsCriterion(exists: true),
+                corruption: new CriminalConvictionsCriterion(exists: true),
+                fraud: new CriminalConvictionsCriterion(exists: true),
+                terroristOffences: new CriminalConvictionsCriterion(exists: true),
+                moneyLaundering: new CriminalConvictionsCriterion(exists: true),
+                childLabour: new CriminalConvictionsCriterion(exists: true),
                 paymentTaxes: new TaxesCriterion(exists: true),
                 paymentSocialSecurity: new TaxesCriterion(exists: true),
                 breachingObligations: new EnvironmentalCriterion(exists: true),
@@ -224,7 +224,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should not fail when a criterion has a null exists flag"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: null))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: null))
 
         when:
         def result = parseRequestXml(espd)

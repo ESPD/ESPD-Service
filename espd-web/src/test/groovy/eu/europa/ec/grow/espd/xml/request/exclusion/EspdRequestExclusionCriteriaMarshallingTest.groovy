@@ -9,8 +9,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
 
     def "criteria should appear only if they were selected in the ESPD UI"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true),
-                paymentTaxes: new TaxesCriterion(exists: true), corruption: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true),
+                paymentTaxes: new TaxesCriterion(exists: true), corruption: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -25,12 +25,12 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
     def "all exclusion criteria should be in the correct order"() {
         given:
         def espd = new EspdDocument(
-                criminalConvictions: new CriminalConvictions(exists: true),
-                corruption: new CriminalConvictions(exists: true),
-                fraud: new CriminalConvictions(exists: true),
-                terroristOffences: new CriminalConvictions(exists: true),
-                moneyLaundering: new CriminalConvictions(exists: true),
-                childLabour: new CriminalConvictions(exists: true),
+                criminalConvictions: new CriminalConvictionsCriterion(exists: true),
+                corruption: new CriminalConvictionsCriterion(exists: true),
+                fraud: new CriminalConvictionsCriterion(exists: true),
+                terroristOffences: new CriminalConvictionsCriterion(exists: true),
+                moneyLaundering: new CriminalConvictionsCriterion(exists: true),
+                childLabour: new CriminalConvictionsCriterion(exists: true),
                 paymentTaxes: new TaxesCriterion(exists: true),
                 paymentSocialSecurity: new TaxesCriterion(exists: true),
                 breachingObligations: new EnvironmentalCriterion(exists: true),

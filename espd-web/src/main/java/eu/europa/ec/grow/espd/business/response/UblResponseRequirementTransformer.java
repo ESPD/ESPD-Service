@@ -60,16 +60,16 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
             responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
         } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            ConvictionHolder exclusionCriterion = (ConvictionHolder) espdCriterion;
             responseType.setDate(buildDateType(exclusionCriterion.getDateOfConviction()));
         } else if (ExclusionCriterionRequirement.REASON.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            CriminalConvictionsCriterion exclusionCriterion = (CriminalConvictionsCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(exclusionCriterion.getReason()));
         } else if (ExclusionCriterionRequirement.WHO_CONVICTED.equals(ccvRequirement)) {
-            CriminalConvictions crit = (CriminalConvictions) espdCriterion;
+            CriminalConvictionsCriterion crit = (CriminalConvictionsCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(crit.getConvicted()));
         } else if (ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            ConvictionHolder exclusionCriterion = (ConvictionHolder) espdCriterion;
             PeriodType periodType = new PeriodType();
             periodType.getDescription().add(buildDescriptionType(exclusionCriterion.getPeriodLength()));
             responseType.setPeriod(periodType);
@@ -92,10 +92,10 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             typeCodeType.setValue(exclusionCriterion.getInfoElectronicallyCode());
             responseType.setCode(typeCodeType);
         } else if (ExclusionCriterionRequirement.COUNTRY_MS.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            TaxesCriterion exclusionCriterion = (TaxesCriterion) espdCriterion;
             responseType.setCode(buildCountryType(exclusionCriterion.getCountry()));
         } else if (ExclusionCriterionRequirement.AMOUNT.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            TaxesCriterion exclusionCriterion = (TaxesCriterion) espdCriterion;
             responseType.setAmount(buildAmountType(exclusionCriterion.getAmount(), exclusionCriterion.getCurrency()));
         } else if (ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN.equals(ccvRequirement)) {
             TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;

@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:35 AM.
@@ -10,7 +10,7 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "02. should contain the 'Corruption' criterion"() {
         given:
-        def espd = new EspdDocument(corruption: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(corruption: new CriminalConvictionsCriterion(exists: true))
         def idx = 0
 
         when:

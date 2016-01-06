@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TaxesCriterion extends ExclusionCriterion {
+public class TaxesCriterion extends ExclusionCriterion implements ConvictionHolder {
 
     private Country country;
     private Double amount;
@@ -25,11 +25,6 @@ public class TaxesCriterion extends ExclusionCriterion {
         TaxesCriterion taxes = new TaxesCriterion();
         taxes.setExists(exists);
         return taxes;
-    }
-
-    @Override
-    public String getReason() {
-        throw new UnsupportedOperationException("Payment criterion does not have a date of reason.");
     }
 
 }

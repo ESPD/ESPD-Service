@@ -1,10 +1,7 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.constants.enums.Country;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -12,7 +9,6 @@ public abstract class ExclusionCriterion extends Criterion {
 
     private AvailableElectronically availableElectronically;
     private SelfCleaning selfCleaning;
-    private BreachOfObligations breachOfObligations;
     private String description;
 
     public final String getSelfCleaningDescription() {
@@ -23,10 +19,7 @@ public abstract class ExclusionCriterion extends Criterion {
     }
 
     public final boolean getInfoElectronicallyAnswer() {
-        if (availableElectronically != null) {
-            return Boolean.TRUE.equals(availableElectronically.getExists());
-        }
-        return false;
+        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getExists());
     }
 
     public final String getInfoElectronicallyUrl() {
@@ -44,22 +37,7 @@ public abstract class ExclusionCriterion extends Criterion {
     }
 
     public final boolean getSelfCleaningAnswer() {
-        if (selfCleaning != null) {
-            return Boolean.TRUE.equals(selfCleaning.getExists());
-        }
-        return false;
+        return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getExists());
     }
-
-    public abstract Date getDateOfConviction();
-
-    public abstract String getPeriodLength();
-
-    public abstract Country getCountry();
-
-    public abstract Double getAmount();
-
-    public abstract String getCurrency();
-
-    public abstract String getReason();
 
 }

@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/8/15 at 10:20 AM.
@@ -10,7 +10,7 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractExclusionCr
 
     def "01. should contain the 'Participation in a criminal organisation' criterion"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
         def idx = 0
 
         when:

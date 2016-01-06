@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
@@ -15,7 +15,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "03. should contain the 'Fraud' criterion"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true))
         def idx = 0
 
         when:
@@ -54,7 +54,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -72,7 +72,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Date of conviction' requirement response"() {
         given:
         def now = new Date()
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true, dateOfConviction: now))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
         def request = parseResponseXml(espd)
@@ -89,7 +89,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Reason' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true, reason: "Reason_03 here"))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, reason: "Reason_03 here"))
 
         when:
         def request = parseResponseXml(espd)
@@ -106,7 +106,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Who has been convicted' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true, convicted: "Hodor_03 was convicted"))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_03 was convicted"))
 
         when:
         def request = parseResponseXml(espd)
@@ -123,7 +123,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Length of the period of exclusion' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true, periodLength: "7 years"))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
         def request = parseResponseXml(espd)
@@ -140,7 +140,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(exists: false)))
 
         when:
@@ -157,7 +157,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Self cleaning description' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true,
                 selfCleaning: new SelfCleaning(description: "Hodor_03 is clean")))
 
         when:
@@ -174,7 +174,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: false)))
 
         when:
@@ -191,7 +191,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_03.com")))
 
         when:
@@ -208,7 +208,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictions(exists: true,
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_03")))
 
         when:

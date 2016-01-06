@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.CriminalConvictions
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 11:57 AM.
@@ -11,7 +11,7 @@ class MoneyLaunderingRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "05. should contain the 'Money laundering or terrorist financing' criterion"() {
         given:
-        def espd = new EspdDocument(moneyLaundering: new CriminalConvictions(exists: true))
+        def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

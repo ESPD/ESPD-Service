@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class AvailableElectronically extends Criterion {
 
-    @Deprecated
     private String description;
 
     private String url;
