@@ -84,11 +84,24 @@
 	            </div>
 	            <div id="createeo_info_eo_div" class="collapse in">
 	                <div class="panel-body">
+	                
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.name" placeholder="Enter name" required="true"/>
+                                    [INPUT]
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createeo_postal_address"><s:message code="createeo_postal_address"/></label>
+                                <div class="col-md-8">
+                                    [INPUT]
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createeo_telephon"><s:message code="createeo_telephon"/></label>
+                                <div class="col-md-8">
+                                    [INPUT]
                                 </div>
                             </div>
                         </div>
@@ -96,10 +109,147 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.name" placeholder="Enter name" required="true"/>
+                                    [INPUT]
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
+                                <div class="col-md-8">
+                                    [INPUT]
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createeo_email"><s:message code="createeo_email"/></label>
+                                <div class="col-md-8">
+                                    [INPUT]
                                 </div>
                             </div>
                         </div>
+
+                       <div class="col-md-12 form_group">
+                            <label class="control-label col-md-6" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
+                            <div class="col-md-6">
+                                [INPUT]
+                            </div>
+                       </div>
+                       <div class="col-md-12 form_group">
+                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_sized"><s:message code="createeo_is_eo_sized"/></label>
+                            <div class="col-md-6">
+                                [YES/NO]
+                            </div>
+                       </div>
+                       <div class="col-md-12 form_group">
+                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
+                            	<s:message code="createeo_if_proc_reserved"/>
+                            </label>
+                            <div class="col-md-6">
+                                [YES/NO]
+                            </div>
+                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_percentage_disworkers">
+	                            	<s:message code="createeo_percentage_disworkers"/>
+	                            </label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_disworkers_details">
+	                            	<s:message code="createeo_disworkers_details"/>
+	                            </label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+
+                       <div class="col-md-12 form_group">
+                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
+                            	<s:message code="createeo_if_proc_reserved"/>
+                            </label>
+                            <div class="col-md-6">
+                                [YES/NO]
+                            </div>
+                       </div>
+                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                [IF YES]<span data-i18n="createeo_answer_following_parts"><s:message code="createeo_answer_following_parts"/></span>
+                           </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_provide_regnumber"><s:message code="createeo_provide_regnumber"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_cert_e_avaliable"> <s:message code="createeo_cert_e_avaliable"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_ref_for_cert"> <s:message code="createeo_ref_for_cert"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_all_selection_covered"> <s:message code="createeo_all_selection_covered"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+ 
+                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                [IF NO]<span data-i18n="createeo_add_complete_missing"><s:message code="createeo_add_complete_missing"/></span>
+                           </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_eo_has_cert_soc"> <s:message code="createeo_eo_has_cert_soc"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_doc_e_avaliable"> <s:message code="createeo_doc_e_avaliable"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+
+                       <div class="col-md-12 form_group">
+                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_proc_together"><s:message code="createeo_is_eo_proc_together"/></label>
+                            <div class="col-md-6">
+                                [YES/NO]
+                            </div>
+                       </div>
+                            <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                [IF YES]<span data-i18n="createeo_ensure_others_espd"><s:message code="createeo_ensure_others_espd"/></span>
+                            </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_eo_group_role"> <s:message code="createeo_eo_group_role"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_other_eo_part"> <s:message code="createeo_other_eo_part"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form_group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_name_part_group"> <s:message code="createeo_name_part_group"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+
+                       <div class="form-group col-md-12">
+                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert"><s:message code="createeo_eo_approved_cert"/></label>
+                            <div class="col-md-6">
+                                <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
+                            </div>
+                       </div>
+                       
 	                </div>
 	            </div>
 	        </div>
@@ -280,15 +430,6 @@
                                 </div>
                             </div>
 
- 							<%-- to move into part 2 --%>
-                            <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="lotConcerned"><span
-                                        data-i18n="createca_lots_concerned"><s:message code="createca_lots_concerned"/></span></label>
-
-                                <div class="col-md-4">
-                                    <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
-                                </div>
-                            </div>
                             
                             <%--
                             <div class="form-group col-md-12">
