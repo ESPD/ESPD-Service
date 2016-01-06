@@ -1,8 +1,6 @@
-package eu.europa.ec.grow.espd.xml.request.exclusion
-
+package eu.europa.ec.grow.espd.xml.response.exclusion
+import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.BreachOfObligations
-import eu.europa.ec.grow.espd.domain.EspdDocument
 /**
  * Created by ratoico on 12/9/15 at 1:22 PM.
  */
@@ -10,7 +8,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
     def "17. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
         given:
-        def espd = new EspdDocument(conflictInterest: new BreachOfObligations(exists: true))
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -45,7 +43,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
         then: "self cleaninng"
         def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -54,6 +52,123 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         then: "info electronically"
         def sub2 = request.Criterion[idx].RequirementGroup[1]
         checkInfoAvailableElectronicallyRequirementGroup(sub2)
+    }
+
+    def "check the 'Your answer' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
+    def "check the 'Please describe them' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                description: "bogus description."))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[1]
+        checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        req.Response[0].Description.text() == "bogus description."
+    }
+
+    def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                selfCleaning: new SelfCleaning(exists: false)))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Self cleaning description' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                selfCleaning: new SelfCleaning(description: "Hodor_17 is clean")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+
+        def req = subGroup.Requirement[1]
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "Hodor_17 is clean"
+    }
+
+    def "check the 'Is this information available electronically' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: false)))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Info electronically URL' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_17.com")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[1]
+        req.Response.size() == 1
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_17.com"
+    }
+
+    def "check the 'Info electronically code' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_17")))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[1]
+
+        def req = subGroup.Requirement[2]
+        req.Response.size() == 1
+        req.Response[0].Code.text() == "HODOR_17"
     }
 
 }

@@ -112,73 +112,73 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria)) {
-            espdDocument.setBreachingObligations(BreachOfObligations.buildWithExists(true));
+            espdDocument.setBreachingObligations(EnvironmentalCriterion.buildWithExists(true));
         } else {
-            espdDocument.setBreachingObligations(BreachOfObligations.buildWithExists(false));
+            espdDocument.setBreachingObligations(EnvironmentalCriterion.buildWithExists(false));
         }
     }
 
     private void markExclusionInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.BANKRUPTCY, ublCriteria)) {
-            espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(true));
+            espdDocument.setBankruptcy(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setBankruptcy(BreachOfObligations.buildWithExists(false));
+            espdDocument.setBankruptcy(BankruptcyCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.INSOLVENCY, ublCriteria)) {
-            espdDocument.setInsolvency(BreachOfObligations.buildWithExists(true));
+            espdDocument.setInsolvency(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setInsolvency(BreachOfObligations.buildWithExists(false));
+            espdDocument.setInsolvency(BankruptcyCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria)) {
-            espdDocument.setAnalogousSituation(BreachOfObligations.buildWithExists(true));
+            espdDocument.setAnalogousSituation(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setAnalogousSituation(BreachOfObligations.buildWithExists(false));
+            espdDocument.setAnalogousSituation(BankruptcyCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria)) {
-            espdDocument.setAssetsAdministeredByLiquidator(BreachOfObligations.buildWithExists(true));
+            espdDocument.setAssetsAdministeredByLiquidator(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setAssetsAdministeredByLiquidator(BreachOfObligations.buildWithExists(false));
+            espdDocument.setAssetsAdministeredByLiquidator(BankruptcyCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria)) {
-            espdDocument.setBusinessActivitiesSuspended(BreachOfObligations.buildWithExists(true));
+            espdDocument.setBusinessActivitiesSuspended(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setBusinessActivitiesSuspended(BreachOfObligations.buildWithExists(false));
+            espdDocument.setBusinessActivitiesSuspended(BankruptcyCriterion.buildWithExists(false));
         }
     }
 
     private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria)) {
-            espdDocument.setArrangementWithCreditors(BreachOfObligations.buildWithExists(true));
+            espdDocument.setArrangementWithCreditors(BankruptcyCriterion.buildWithExists(true));
         } else {
-            espdDocument.setArrangementWithCreditors(BreachOfObligations.buildWithExists(false));
+            espdDocument.setArrangementWithCreditors(BankruptcyCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, ublCriteria)) {
-            espdDocument.setGuiltyGrave(BreachOfObligations.buildWithExists(true));
+            espdDocument.setGuiltyGrave(MisconductCriterion.buildWithExists(true));
         } else {
-            espdDocument.setGuiltyGrave(BreachOfObligations.buildWithExists(false));
+            espdDocument.setGuiltyGrave(MisconductCriterion.buildWithExists(false));
         }
     }
 
     private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, ublCriteria)) {
-            espdDocument.setConflictInterest(BreachOfObligations.buildWithExists(true));
+            espdDocument.setConflictInterest(ConflictInterestCriterion.buildWithExists(true));
         } else {
-            espdDocument.setConflictInterest(BreachOfObligations.buildWithExists(false));
+            espdDocument.setConflictInterest(ConflictInterestCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, ublCriteria)) {
-            espdDocument.setInvolvementPreparationProcurement(BreachOfObligations.buildWithExists(true));
+            espdDocument.setInvolvementPreparationProcurement(ConflictInterestCriterion.buildWithExists(true));
         } else {
-            espdDocument.setInvolvementPreparationProcurement(BreachOfObligations.buildWithExists(false));
+            espdDocument.setInvolvementPreparationProcurement(ConflictInterestCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.EARLY_TERMINATION, ublCriteria)) {
-            espdDocument.setEarlyTermination(BreachOfObligations.buildWithExists(true));
+            espdDocument.setEarlyTermination(ConflictInterestCriterion.buildWithExists(true));
         } else {
-            espdDocument.setEarlyTermination(BreachOfObligations.buildWithExists(false));
+            espdDocument.setEarlyTermination(ConflictInterestCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION, ublCriteria)) {
-            espdDocument.setGuiltyMisinterpretation(BreachOfObligations.buildWithExists(true));
+            espdDocument.setGuiltyMisinterpretation(ConflictInterestCriterion.buildWithExists(true));
         } else {
-            espdDocument.setGuiltyMisinterpretation(BreachOfObligations.buildWithExists(false));
+            espdDocument.setGuiltyMisinterpretation(ConflictInterestCriterion.buildWithExists(false));
         }
     }
 

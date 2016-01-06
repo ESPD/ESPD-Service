@@ -76,7 +76,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (ExclusionCriterionRequirement.MEASURES_SELF_CLEANING.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             responseType.setIndicator(buildIndicatorType(exclusionCriterion.getSelfCleaningAnswer()));
-        } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+        } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE_SELF_CLEANING.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(exclusionCriterion.getSelfCleaningDescription()));
         } else if (ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
@@ -113,6 +113,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS.equals(ccvRequirement)) {
             Taxes taxesCriterion = (Taxes) espdCriterion;
             responseType.setDescription(buildDescriptionType(taxesCriterion.getObligationsDescription()));
+        } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(exclusionCriterion.getDescription()));
+        } else if (ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT.equals(ccvRequirement)) {
+            BankruptcyCriterion exclusionCriterion = (BankruptcyCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(exclusionCriterion.getReason()));
         }
     }
 

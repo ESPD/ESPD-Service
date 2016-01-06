@@ -41,7 +41,7 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    PLEASE_DESCRIBE("7b07904f-e080-401a-a3a1-9a3efeeda54b", CriterionText.PLEASE_DESCRIBE_TEXT,
+    PLEASE_DESCRIBE_SELF_CLEANING("7b07904f-e080-401a-a3a1-9a3efeeda54b", CriterionText.PLEASE_DESCRIBE_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
      *
@@ -93,7 +93,12 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     REASONS_NEVERTHELESS_CONTRACT("4e3f468a-86c4-4c99-bd15-c8b221229348",
-            CriterionText.REASONS_NEVERTHELESS_CONTRACT_TEXT, ExpectedResponseType.DESCRIPTION),;
+            CriterionText.REASONS_NEVERTHELESS_CONTRACT_TEXT, ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    PLEASE_DESCRIBE("e098da8e-4717-4500-965f-f882d5b4e1ad", CriterionText.PLEASE_DESCRIBE_TEXT,
+            ExpectedResponseType.DESCRIPTION),;
 
     private final String id;
 

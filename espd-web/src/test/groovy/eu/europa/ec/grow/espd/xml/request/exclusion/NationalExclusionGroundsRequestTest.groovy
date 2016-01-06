@@ -45,7 +45,7 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
         then: "check second sub group"
         def sub2 = request.Criterion[idx].RequirementGroup[1]

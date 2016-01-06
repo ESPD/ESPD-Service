@@ -31,18 +31,21 @@ public class EspdDocument {
     private Taxes paymentTaxes;
     private Taxes paymentSocialSecurity;
 
-    private BreachOfObligations breachingObligations;
-    private BreachOfObligations bankruptcy;
-    private BreachOfObligations insolvency;
-    private BreachOfObligations arrangementWithCreditors;
-    private BreachOfObligations analogousSituation;
-    private BreachOfObligations assetsAdministeredByLiquidator;
-    private BreachOfObligations businessActivitiesSuspended;
-    private BreachOfObligations guiltyGrave;
-    private BreachOfObligations conflictInterest;
-    private BreachOfObligations involvementPreparationProcurement;
-    private BreachOfObligations earlyTermination;
-    private BreachOfObligations guiltyMisinterpretation;
+    private EnvironmentalCriterion breachingObligations;
+    
+    private BankruptcyCriterion bankruptcy;
+    private BankruptcyCriterion insolvency;
+    private BankruptcyCriterion arrangementWithCreditors;
+    private BankruptcyCriterion analogousSituation;
+    private BankruptcyCriterion assetsAdministeredByLiquidator;
+    private BankruptcyCriterion businessActivitiesSuspended;
+
+    private MisconductCriterion guiltyGrave;
+
+    private ConflictInterestCriterion conflictInterest;
+    private ConflictInterestCriterion involvementPreparationProcurement;
+    private ConflictInterestCriterion earlyTermination;
+    private ConflictInterestCriterion guiltyMisinterpretation;
 
     private PurelyNationalGrounds purelyNationalGrounds;
 

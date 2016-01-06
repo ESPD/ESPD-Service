@@ -1,8 +1,7 @@
-package eu.europa.ec.grow.espd.xml.request.exclusion
-
-import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.BreachOfObligations
+package eu.europa.ec.grow.espd.xml.response.exclusion
+import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:23 PM.
  */
@@ -10,7 +9,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
     def "18. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
         given:
-        def espd = new EspdDocument(involvementPreparationProcurement: new BreachOfObligations(exists: true))
+        def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -45,7 +44,39 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+    }
+
+    def "check the 'Your answer' requirement response"() {
+        given:
+        def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
+    def "check the 'Please describe them' requirement response"() {
+        given:
+        def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true,
+                description: "bogus description."))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[1]
+        checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        req.Response[0].Description.text() == "bogus description."
     }
 
 }

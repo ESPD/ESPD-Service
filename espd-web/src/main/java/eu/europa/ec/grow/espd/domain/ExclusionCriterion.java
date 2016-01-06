@@ -13,6 +13,7 @@ public abstract class ExclusionCriterion extends Criterion {
     private AvailableElectronically availableElectronically;
     private SelfCleaning selfCleaning;
     private BreachOfObligations breachOfObligations;
+    private String description;
 
     public final String getSelfCleaningDescription() {
         if (selfCleaning != null) {

@@ -20,7 +20,7 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
      *
      */
     SELF_CLEANING_GROUP("41dd2e9b-1bfd-44c7-93ee-56bd74a4334b", Collections.<CcvCriterionGroup>emptyList(),
-            list(MEASURES_SELF_CLEANING, PLEASE_DESCRIBE)),
+            list(MEASURES_SELF_CLEANING, PLEASE_DESCRIBE_SELF_CLEANING)),
     /**
      *
      */

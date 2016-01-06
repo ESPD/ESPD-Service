@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
-
-import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
-import eu.europa.ec.grow.espd.domain.BreachOfObligations
+import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:26 PM.
  */
@@ -10,7 +9,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
 
     def "20. should contain the 'Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure' criterion"() {
         given:
-        def espd = new EspdDocument(guiltyMisinterpretation: new BreachOfObligations(exists: true))
+        def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -45,7 +44,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
         then: "check second sub group"
         def sub2 = request.Criterion[idx].RequirementGroup[1]
