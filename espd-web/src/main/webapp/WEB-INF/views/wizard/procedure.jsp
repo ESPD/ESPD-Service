@@ -15,6 +15,8 @@
     });
 </script>
 
+<c:set var="isAgentEO" value="${param['agent'] == 'eo'}"/>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="currentPage" value="procedure"/>
@@ -56,12 +58,6 @@
             </ul>
         </div>
 
-        <div class="paragraph">
-            <h2>
-                <span data-i18n="createca_header"><s:message code="createca_header"/></span>
-            </h2>
-        </div>
-
         <div class="errorContainer alert alert-danger" style="display: none">
             <ul class="fa-ul">
                 <li>
@@ -74,8 +70,71 @@
                 </li>
             </ul>
         </div>
+
+        <c:if test="${isAgentEO}">
+	        <div class="paragraph">
+	            <h2>
+	                <span data-i18n="createeo_header"><s:message code="createeo_header"/></span>
+	            </h2>
+	        </div>
+        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div">
+	                <span data-i18n="createeo_info_eo"><s:message code="createeo_info_eo"/></span>
+	            </div>
+	            <div id="createeo_info_eo_div" class="collapse in">
+	                <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
+                                <div class="col-md-8">
+                                    <form:input cssClass="form-control" path="authority.name" placeholder="Enter name" required="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
+                                <div class="col-md-8">
+                                    <form:input cssClass="form-control" path="authority.name" placeholder="Enter name" required="true"/>
+                                </div>
+                            </div>
+                        </div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_respresent_div">
+	                <span data-i18n="createeo_info_respresent"><s:message code="createeo_info_respresent"/></span>
+	            </div>
+	            <div id="createeo_info_respresent_div" class="collapse in">
+	                <div class="panel-body">
+	                    form 2
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
+	                <span data-i18n="createeo_info_reliance"><s:message code="createeo_info_reliance"/></span>
+	            </div>
+	            <div id="createeo_info_reliance_div" class="collapse in">
+	                <div class="panel-body">
+						form 3
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
+        
+        <div class="paragraph">
+            <h2>
+                <span data-i18n="createca_header"><s:message code="createca_header"/></span>
+            </h2>
+        </div>
+        
         <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
+            <div class="espd-panel-heading ${isAgentEO?'collapsed':''}" data-toggle="collapse" data-target="#cadiv">
                 <span data-i18n="createca_contact_details_ca"><s:message code="createca_contact_details_ca"/></span>
             </div>
             <div id="cadiv" class="collapse in">
@@ -83,11 +142,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label col-md-4 " for="authorityName"><span
-                                        data-i18n="createca_name"><s:message code="createca_name"/></span></label>
+                                <label class="control-label col-md-4 " for="authorityName"><span data-i18n="createca_name"><s:message code="createca_name"/></span></label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" id="authorityName" path="authority.name" placeholder="Enter name"
-                                                required="true"/>
+                                    <form:input cssClass="form-control" id="authorityName" path="authority.name" placeholder="Enter name" required="true"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -186,8 +243,7 @@
         </div>
         <div class="espd-panel panel panel-default">
             <div class="espd-panel-heading" data-toggle="collapse" data-target="#ppdiv">
-                <span data-i18n="createca_info_procurement_proc"><s:message
-                        code="createca_info_procurement_proc"/></span>
+                <span data-i18n="createca_info_procurement_proc"><s:message code="createca_info_procurement_proc"/></span>
             </div>
             <div id="ppdiv" class="collapse in">
                 <div class="panel-body">
@@ -195,26 +251,26 @@
                         <div class="col-md-12">
                             <div class="alert alert-espd-info"
                                  style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                <span data-i18n="createca_to_be_filled_alert"><s:message
-                                        code="createca_to_be_filled_alert"/></span>
+                                <span data-i18n="createca_to_be_filled_alert"><s:message code="createca_to_be_filled_alert"/></span>
+                            </div>
+
+                            <div class="alert alert-espd-info"
+                                 style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                <span data-i18n="createca_to_be_filled_subalert"><s:message code="createca_to_be_filled_subalert"/></span>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class="control-label" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message
-                                        code="createca_title_or_short_desc_"/></span></label>
-                                <form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"
-                                               cssClass="form-control"/>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="lotConcerned"><span
-                                        data-i18n="createca_lots_concerned"><s:message
-                                        code="createca_lots_concerned"/></span></label>
-
+                                <label class="control-label"><span data-i18n="createca_procurer_name"><s:message code="createca_procurer_name"/></span></label>
                                 <div class="col-md-4">
-                                    <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
+                                    <form:input cssClass="form-control" path="procurerName" placeholder="Name"/>
                                 </div>
                             </div>
+
+                            <div class="form-group col-md-12">
+                                <label class="control-label" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message code="createca_title_or_short_desc_"/></span></label>
+                                <form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
+                            </div>
+                            
                             <div class="form-group col-md-12">
                                 <label class="control-label col-md-8 " for="fileRefByCA"><span
                                         data-i18n="createca_file_ref_ca"><s:message code="createca_file_ref_ca"/></span></label>
@@ -223,6 +279,18 @@
                                     <form:input cssClass="form-control" path="fileRefByCA" id="fileRefByCA" placeholder=""/>
                                 </div>
                             </div>
+
+ 							<%-- to move into part 2 --%>
+                            <div class="form-group col-md-12">
+                                <label class="control-label col-md-8 " for="lotConcerned"><span
+                                        data-i18n="createca_lots_concerned"><s:message code="createca_lots_concerned"/></span></label>
+
+                                <div class="col-md-4">
+                                    <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
+                                </div>
+                            </div>
+                            
+                            <%--
                             <div class="form-group col-md-12">
                                 <label class="control-label col-md-8 " for="websiteProcDocs"><span
                                         data-i18n="createca_website_proc_doc"><s:message
@@ -232,6 +300,7 @@
                                     <form:input cssClass="form-control" path="websiteProcDocs" id="websiteProcDocs" placeholder=""/>
                                 </div>
                             </div>
+                            --%>
                         </div>
                     </div>
                 </div>

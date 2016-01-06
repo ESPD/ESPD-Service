@@ -12,11 +12,12 @@ public class EspdDocument {
     private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
-
+    
+    private String procurerName;
     private String procedureDesc;
     private String lotConcerned;
     private String fileRefByCA;
-    private String websiteProcDocs;
+    //private String websiteProcDocs;
 
     //Exclusion criteria
 
