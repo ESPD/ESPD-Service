@@ -99,14 +99,14 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
     private void markExclusionSelectedTaxes(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria)) {
-            espdDocument.setPaymentTaxes(Taxes.buildWithExists(true));
+            espdDocument.setPaymentTaxes(TaxesCriterion.buildWithExists(true));
         } else {
-            espdDocument.setPaymentTaxes(Taxes.buildWithExists(false));
+            espdDocument.setPaymentTaxes(TaxesCriterion.buildWithExists(false));
         }
         if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria)) {
-            espdDocument.setPaymentSocialSecurity(Taxes.buildWithExists(true));
+            espdDocument.setPaymentSocialSecurity(TaxesCriterion.buildWithExists(true));
         } else {
-            espdDocument.setPaymentSocialSecurity(Taxes.buildWithExists(false));
+            espdDocument.setPaymentSocialSecurity(TaxesCriterion.buildWithExists(false));
         }
     }
 

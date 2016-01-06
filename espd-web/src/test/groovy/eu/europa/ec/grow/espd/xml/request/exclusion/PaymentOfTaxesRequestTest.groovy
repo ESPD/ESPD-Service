@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.Taxes
+import eu.europa.ec.grow.espd.domain.TaxesCriterion
 /**
  * Created by ratoico on 12/9/15 at 11:58 AM.
  */
@@ -11,7 +11,7 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
 
     def "07. should contain the 'Payment of taxes' criterion"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new Taxes(exists: true))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

@@ -98,21 +98,21 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             responseType.setAmount(buildAmountType(exclusionCriterion.getAmount(), exclusionCriterion.getCurrency()));
         } else if (ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN.equals(ccvRequirement)) {
-            Taxes taxesCriterion = (Taxes) espdCriterion;
+            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
             responseType
-                    .setIndicator(buildIndicatorType(taxesCriterion.isBreachEstablishedOtherThanJudicialDecision()));
+                    .setIndicator(buildIndicatorType(taxesCriterionCriterion.isBreachEstablishedOtherThanJudicialDecision()));
         } else if (ExclusionCriterionRequirement.DESCRIBE_MEANS.equals(ccvRequirement)) {
-            Taxes taxesCriterion = (Taxes) espdCriterion;
-            responseType.setDescription(buildDescriptionType(taxesCriterion.getMeansDescription()));
+            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(taxesCriterionCriterion.getMeansDescription()));
         } else if (ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING.equals(ccvRequirement)) {
-            Taxes taxesCriterion = (Taxes) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(taxesCriterion.isDecisionFinalAndBinding()));
+            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(taxesCriterionCriterion.isDecisionFinalAndBinding()));
         } else if (ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION.equals(ccvRequirement)) {
-            Taxes taxesCriterion = (Taxes) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(taxesCriterion.isEoFulfilledObligations()));
+            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(taxesCriterionCriterion.isEoFulfilledObligations()));
         } else if (ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS.equals(ccvRequirement)) {
-            Taxes taxesCriterion = (Taxes) espdCriterion;
-            responseType.setDescription(buildDescriptionType(taxesCriterion.getObligationsDescription()));
+            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(taxesCriterionCriterion.getObligationsDescription()));
         } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
             ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(exclusionCriterion.getDescription()));
@@ -120,12 +120,6 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             BankruptcyCriterion exclusionCriterion = (BankruptcyCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(exclusionCriterion.getReason()));
         }
-    }
-
-    private DescriptionType buildDescriptionType(String description) {
-        DescriptionType descriptionType = new DescriptionType();
-        descriptionType.setValue(description);
-        return descriptionType;
     }
 
     private void fillSelectionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
@@ -197,6 +191,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setPercent(buildPercentType(selectionCriterion.getPercentage()));
         }
+    }
+
+    private DescriptionType buildDescriptionType(String description) {
+        DescriptionType descriptionType = new DescriptionType();
+        descriptionType.setValue(description);
+        return descriptionType;
     }
 
     private QuantityType buildYearType(Integer year) {

@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.Taxes
+import eu.europa.ec.grow.espd.domain.TaxesCriterion
 /**
  * Created by ratoico on 12/9/15 at 1:13 PM.
  */
@@ -11,7 +11,7 @@ class PaymentOfSocialSecurityRequestTest extends AbstractExclusionCriteriaFixtur
 
     def "08. should contain the 'Payment of social security contributions' criterion"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)

@@ -5,7 +5,7 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.Taxes
+import eu.europa.ec.grow.espd.domain.TaxesCriterion
 import org.joda.time.LocalDate
 
 /**
@@ -16,7 +16,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "08. should contain the 'Payment of social security contributions' criterion"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -89,7 +89,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -104,7 +104,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Country member state' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, country: Country.ROMANIA))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, country: Country.ROMANIA))
 
         when:
         def request = parseResponseXml(espd)
@@ -122,7 +122,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Amount concerned' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, amount: 445, currency: "RON"))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, amount: 445, currency: "RON"))
 
         when:
         def request = parseResponseXml(espd)
@@ -138,7 +138,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Has this breach of obligations been established by means other than a judicial or administrative decision' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, breachEstablishedOtherThanJudicialDecision: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, breachEstablishedOtherThanJudicialDecision: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -152,7 +152,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Please describe which means were used' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, meansDescription: "Other means were used"))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, meansDescription: "Other means were used"))
 
         when:
         def request = parseResponseXml(espd)
@@ -166,7 +166,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, decisionFinalAndBinding: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, decisionFinalAndBinding: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -185,7 +185,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
     def "check the 'Date of conviction' requirement response"() {
         given:
         def now = new Date()
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, dateOfConviction: now))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, dateOfConviction: now))
 
         when:
         def request = parseResponseXml(espd)
@@ -201,7 +201,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Length of the period of exclusion' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, periodLength: "Till the end of the year 2013."))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, periodLength: "Till the end of the year 2013."))
 
         when:
         def request = parseResponseXml(espd)
@@ -217,7 +217,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, eoFulfilledObligations: true))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, eoFulfilledObligations: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -235,7 +235,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Please describe them' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, obligationsDescription: "This debt was the result of a miscalculation by our accountability department."))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, obligationsDescription: "This debt was the result of a miscalculation by our accountability department."))
 
         when:
         def request = parseResponseXml(espd)
@@ -251,7 +251,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, availableElectronically: new AvailableElectronically(exists: true)))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true)))
 
         when:
         def request = parseResponseXml(espd)
@@ -266,7 +266,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf")))
 
         when:
         def request = parseResponseXml(espd)
@@ -281,7 +281,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new Taxes(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR")))
 
         when:
         def request = parseResponseXml(espd)

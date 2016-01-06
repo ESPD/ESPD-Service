@@ -10,7 +10,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
     def "criteria should appear only if they were selected in the ESPD UI"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictions(exists: true),
-                paymentTaxes: new Taxes(exists: true), corruption: new CriminalConvictions(exists: true))
+                paymentTaxes: new TaxesCriterion(exists: true), corruption: new CriminalConvictions(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -31,8 +31,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
                 terroristOffences: new CriminalConvictions(exists: true),
                 moneyLaundering: new CriminalConvictions(exists: true),
                 childLabour: new CriminalConvictions(exists: true),
-                paymentTaxes: new Taxes(exists: true),
-                paymentSocialSecurity: new Taxes(exists: true),
+                paymentTaxes: new TaxesCriterion(exists: true),
+                paymentSocialSecurity: new TaxesCriterion(exists: true),
                 breachingObligations: new EnvironmentalCriterion(exists: true),
                 bankruptcy: new BankruptcyCriterion(exists: true),
                 insolvency: new BankruptcyCriterion(exists: true),

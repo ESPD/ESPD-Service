@@ -28,8 +28,8 @@ public class EspdDocument {
     private CriminalConvictions moneyLaundering;
     private CriminalConvictions childLabour;
 
-    private Taxes paymentTaxes;
-    private Taxes paymentSocialSecurity;
+    private TaxesCriterion paymentTaxes;
+    private TaxesCriterion paymentSocialSecurity;
 
     private EnvironmentalCriterion breachingObligations;
     

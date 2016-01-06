@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Taxes extends ExclusionCriterion {
+public class TaxesCriterion extends ExclusionCriterion {
 
     private Country country;
     private Double amount;
@@ -21,8 +21,8 @@ public class Taxes extends ExclusionCriterion {
     private boolean eoFulfilledObligations;
     private String obligationsDescription;
 
-    public static final Taxes buildWithExists(Boolean exists) {
-        Taxes taxes = new Taxes();
+    public static final TaxesCriterion buildWithExists(Boolean exists) {
+        TaxesCriterion taxes = new TaxesCriterion();
         taxes.setExists(exists);
         return taxes;
     }
