@@ -1,12 +1,13 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
+import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import lombok.Getter;
 
 /**
  * Created by vigi on 11/16/15:5:04 PM.
  */
 @Getter
-public enum SelectionCriterionTypeCode {
+public enum SelectionCriterionTypeCode implements CcvCriterionType {
 
     /**
      * Selection criteria relating to the suitability of the economic operator
@@ -40,5 +41,10 @@ public enum SelectionCriterionTypeCode {
 
     SelectionCriterionTypeCode(final String description) {
         this.description = description;
+    }
+
+    @Override
+    public String getTypeName() {
+        return name();
     }
 }

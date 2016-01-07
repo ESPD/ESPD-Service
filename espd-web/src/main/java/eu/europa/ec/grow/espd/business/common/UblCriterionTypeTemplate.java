@@ -18,6 +18,8 @@ import java.util.List;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 /**
+ * Creates a UBL {@link CriterionType} from the information coming from ESPD.
+ * <p/>
  * Created by ratoico on 12/22/15 at 10:27 AM.
  */
 public abstract class UblCriterionTypeTemplate {
@@ -29,9 +31,11 @@ public abstract class UblCriterionTypeTemplate {
     }
 
     /**
+     * Creates a UBL {@link CriterionType} from the ESPD criteria.
      *
-     * @param ccvCriterion
-     * @param espdCriterion
+     * @param ccvCriterion  The meta information concerning a criterion
+     * @param espdCriterion The criterion holding the user values
+     *
      * @return
      */
     public CriterionType buildCriterionType(CcvCriterion ccvCriterion, Criterion espdCriterion) {
@@ -165,7 +169,6 @@ public abstract class UblCriterionTypeTemplate {
     }
 
     /**
-     *
      * @return
      */
     protected abstract UblRequirementTypeTemplate buildRequirementTransformer();

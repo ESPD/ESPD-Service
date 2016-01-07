@@ -14,8 +14,8 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def file = new File("/home/ratoico/Downloads/espd-request.xml")
-        file.text = xmlOutput
+//        def file = new File("/home/ratoico/Downloads/espd-request.xml")
+//        file.text = xmlOutput
 
         then: "CriterionID element"
         request.Criterion.size() == 1

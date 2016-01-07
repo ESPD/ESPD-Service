@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
+import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -294,6 +295,11 @@ public enum SelectionCriterion implements CcvCriterion {
     @Override
     public CcvLegislation getLegislation() {
         return legislationReference;
+    }
+
+    @Override
+    public CcvCriterionType getCriterionType() {
+        return this.criterionTypeCode;
     }
 
     private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {

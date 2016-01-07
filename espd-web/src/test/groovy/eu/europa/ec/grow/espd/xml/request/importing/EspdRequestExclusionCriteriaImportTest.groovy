@@ -1,17 +1,17 @@
-package eu.europa.ec.grow.espd.xml.request.exclusion
+package eu.europa.ec.grow.espd.xml.request.importing
 
-import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
 
 /**
  * Created by ratoico on 11/25/15.
  */
-class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling {
+class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
 
     def "should parse full authority information"() {
         given:
-        def espdRequestXml = readXmlFile("economic_operator_authority_full.xml")
+        def espdRequestXml = importXmlRequestFile("economic_operator_authority_full.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -31,7 +31,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling 
 
     def "should parse minimal authority information"() {
         given:
-        def espdRequestXml = readXmlFile("party_authority_minimalistic.xml")
+        def espdRequestXml = importXmlRequestFile("party_authority_minimalistic.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -51,7 +51,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling 
 
     def "all exclusion criteria should be selected"() {
         given:
-        def espdRequestXml = readXmlFile("all_exclusion_criteria_selected.xml")
+        def espdRequestXml = importXmlRequestFile("all_exclusion_criteria_selected.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -94,7 +94,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling 
 
     def "no exclusion criteria should appear as selected"() {
         given:
-        def espdRequestXml = readXmlFile("no_exclusion_criteria_selected.xml")
+        def espdRequestXml = importXmlRequestFile("no_exclusion_criteria_selected.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -133,10 +133,6 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractEspdXmlMarshalling 
 
         then: "national"
         espd.purelyNationalGrounds.exists == false
-    }
-
-    private String readXmlFile(String fileName) {
-        return new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/${fileName}").getText('UTF-8')
     }
 
 }

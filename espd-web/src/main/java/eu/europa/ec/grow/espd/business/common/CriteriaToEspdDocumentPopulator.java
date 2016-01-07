@@ -18,6 +18,8 @@ import java.util.List;
 @Component
 public class CriteriaToEspdDocumentPopulator {
 
+    private final EspdCriterionPopulator criterionPopulator = new EspdCriterionPopulator();
+
     /**
      * Update criteria information on the given ESPD document.
      * <p></p>
@@ -49,11 +51,13 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionSelectedCriminalConvictions(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria)) {
-            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(false));
-        }
+//        if (isCriterionSelected(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria)) {
+//            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(true));
+//        } else {
+//            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(false));
+//        }
+        espdDocument.setCriminalConvictions(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria));
         if (isCriterionSelected(ExclusionCriterion.CORRUPTION, ublCriteria)) {
             espdDocument.setCorruption(CriminalConvictionsCriterion.buildWithExists(true));
         } else {

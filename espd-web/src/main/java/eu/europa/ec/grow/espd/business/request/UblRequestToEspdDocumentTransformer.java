@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * Create an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
+ * <p/>
  * Created by ratoico on 11/25/15 11:28 AM.
  */
 @Component
@@ -25,6 +27,13 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
         this.criteriaToEspdDocumentPopulator = criteriaToEspdDocumentPopulator;
     }
 
+    /**
+     * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
+     *
+     * @param input
+     *
+     * @return
+     */
     @Override
     public EspdDocument apply(ESPDRequestType input) {
         EspdDocument espdDocument = new EspdDocument();

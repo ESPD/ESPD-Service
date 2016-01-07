@@ -32,7 +32,7 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     LENGTH_PERIOD_EXCLUSION("9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", CriterionText.LENGTH_PERIOD_EXCLUSION_TEXT,
-            ExpectedResponseType.TEXT),
+            ExpectedResponseType.PERIOD),
     /**
      *
      */
@@ -55,7 +55,7 @@ public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    URL_CODE("1f1cd18e-3e01-4ca2-af4c-e2981924ba8d", CriterionText.URL_CODE_TEXT, ExpectedResponseType.TEXT),
+    URL_CODE("1f1cd18e-3e01-4ca2-af4c-e2981924ba8d", CriterionText.URL_CODE_TEXT, ExpectedResponseType.CODE),
     /**
      *
      */

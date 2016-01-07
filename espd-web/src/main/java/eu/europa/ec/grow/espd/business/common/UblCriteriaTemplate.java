@@ -189,5 +189,10 @@ public abstract class UblCriteriaTemplate {
         return espdCriterion != null && Boolean.TRUE.equals(espdCriterion.getExists());
     }
 
+    /**
+     * Construct a class that can build UBL {@link CriterionType}.
+     *
+     * @return
+     */
     protected abstract UblCriterionTypeTemplate buildCriterionTypeTransformerTemplate();
 }

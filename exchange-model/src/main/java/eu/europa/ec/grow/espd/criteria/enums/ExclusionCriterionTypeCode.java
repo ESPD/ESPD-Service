@@ -1,12 +1,13 @@
 package eu.europa.ec.grow.espd.criteria.enums;
 
+import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import lombok.Getter;
 
 /**
  * Created by vigi on 11/16/15:4:59 PM.
  */
 @Getter
-public enum ExclusionCriterionTypeCode {
+public enum ExclusionCriterionTypeCode implements CcvCriterionType {
 
     /**
      * Grounds for exclusion relating to criminal convictions
@@ -46,5 +47,10 @@ public enum ExclusionCriterionTypeCode {
 
     ExclusionCriterionTypeCode(final String description) {
         this.description = description;
+    }
+
+    @Override
+    public String getTypeName() {
+        return name();
     }
 }

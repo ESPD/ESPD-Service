@@ -1,15 +1,15 @@
-package eu.europa.ec.grow.espd.xml.request.selection
+package eu.europa.ec.grow.espd.xml.request.importing
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
+import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/6/16 at 3:15 PM.
  */
-class EspdRequestSelectionCriteriaImportTest extends AbstractEspdXmlMarshalling {
+class EspdRequestSelectionCriteriaImportTest extends AbstractXmlFileImport {
 
     def "all exclusion criteria should be selected"() {
         given:
-        def espdRequestXml = readXmlFile("all_selection_criteria_selected.xml")
+        def espdRequestXml = importXmlRequestFile("all_selection_criteria_selected.xml")
 
         when:
         EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -57,7 +57,7 @@ class EspdRequestSelectionCriteriaImportTest extends AbstractEspdXmlMarshalling 
 
     def "no exclusion criteria should appear as selected"() {
         given:
-        def espdRequestXml = readXmlFile("no_selection_criteria_selected.xml")
+        def espdRequestXml = importXmlRequestFile("no_selection_criteria_selected.xml")
 
         when:
         EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -101,10 +101,6 @@ class EspdRequestSelectionCriteriaImportTest extends AbstractEspdXmlMarshalling 
         espd.supplyContractsCertificatesQc.exists == false
         espd.certificateIndependentBodiesAboutQa.exists == false
         espd.certificateIndependentBodiesAboutEnvironmental.exists == false
-    }
-
-    private String readXmlFile(String fileName) {
-        return new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/${fileName}").getText('UTF-8')
     }
 
 }

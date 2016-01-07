@@ -19,8 +19,8 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 
 /**
- * Class that transforms a {@link EspdDocument} into a {@link ESPDRequestType} and marshals the result into a XML
- * representation to different outputs.
+ * Class that can perform XML marshalling and unmarshalling from {@link ESPDRequestType} and {@link ESPDResponseType}
+ * to a {@link EspdDocument}.
  * <p/>
  * Created by vigi on 11/11/15:3:22 PM.
  */

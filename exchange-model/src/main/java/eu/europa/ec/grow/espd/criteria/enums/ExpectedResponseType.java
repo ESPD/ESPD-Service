@@ -18,7 +18,9 @@ public enum ExpectedResponseType implements CcvResponseType {
     CURRENCY,
     COUNTRY,
     RATIO,
-    PERCENTAGE;
+    PERCENTAGE,
+    PERIOD,
+    CODE;
 
     @Override
     public String getCode() {

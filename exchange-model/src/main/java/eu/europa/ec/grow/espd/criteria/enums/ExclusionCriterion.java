@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.criteria.enums;
 
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
+import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
@@ -214,7 +215,14 @@ public enum ExclusionCriterion implements CcvCriterion {
         return getLegislationReference();
     }
 
+    @Override
+    public CcvCriterionType getCriterionType() {
+        return this.criterionTypeCode;
+    }
+
     private static List<ExclusionCriterionGroup> list(ExclusionCriterionGroup... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
+
+
 }

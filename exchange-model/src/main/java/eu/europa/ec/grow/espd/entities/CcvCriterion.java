@@ -21,4 +21,6 @@ public interface CcvCriterion {
     CcvLegislation getLegislation();
 
     List<? extends CcvCriterionGroup> getGroups();
+
+    CcvCriterionType getCriterionType();
 }
