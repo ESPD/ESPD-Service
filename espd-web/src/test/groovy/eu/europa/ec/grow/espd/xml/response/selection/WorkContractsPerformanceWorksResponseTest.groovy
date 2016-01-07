@@ -1,11 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import org.joda.time.LocalDate
-
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -88,22 +88,22 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[1]
         req1.Response.size() == 1
-        req1.Response[0].Amount.text() == "11.11"
-        req1.Response[0].Amount.@currencyID.text() == "EUR"
+        req1.Response.Amount.text() == "11.11"
+        req1.Response.Amount.@currencyID.text() == "EUR"
 
         then: "Second amount"
         def subGroup2 = request.Criterion[idx].RequirementGroup[1]
         def req2 = subGroup2.Requirement[1]
         req2.Response.size() == 1
-        req2.Response[0].Amount.text() == "22.22"
-        req2.Response[0].Amount.@currencyID.text() == "RON"
+        req2.Response.Amount.text() == "22.22"
+        req2.Response.Amount.@currencyID.text() == "RON"
 
         then: "Third amount"
         def subGroup3 = request.Criterion[idx].RequirementGroup[2]
         def req3 = subGroup3.Requirement[1]
         req3.Response.size() == 1
-        req3.Response[0].Amount.text() == "33.33"
-        req3.Response[0].Amount.@currencyID == "USD"
+        req3.Response.Amount.text() == "33.33"
+        req3.Response.Amount.@currencyID == "USD"
     }
 
     def "check the 'Date' requirements response"() {

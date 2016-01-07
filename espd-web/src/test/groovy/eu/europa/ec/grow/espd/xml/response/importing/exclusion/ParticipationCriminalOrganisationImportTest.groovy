@@ -1,10 +1,12 @@
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
+import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/7/16 at 10:41 AM.
  */
@@ -19,7 +21,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
 
         then:
         espd.criminalConvictions.exists == true
-        espd.criminalConvictions.dateOfConviction == LocalDateAdapter.unmarshal("2016-07-01").toDate()
+        espd.criminalConvictions.dateOfConviction == LocalDateAdapter.unmarshal("2016-17-01").toDate()
         espd.criminalConvictions.reason == "Reason here"
         espd.criminalConvictions.convicted == "Hodor was convicted"
         espd.criminalConvictions.periodLength == "7 years"
@@ -32,6 +34,17 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
         espd.criminalConvictions.availableElectronically.exists == true
         espd.criminalConvictions.availableElectronically.url == "www.hodor.com"
         espd.criminalConvictions.availableElectronically.code == "INTERNATIONAL"
+    }
+
+    def "all fields needed to generate a XML sample"() {
+        given:
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false, dateOfConviction: new Date(),
+                reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
+                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean"),
+                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "INTERNATIONAL")))
+
+        expect:
+        1 == 1
     }
 
 }

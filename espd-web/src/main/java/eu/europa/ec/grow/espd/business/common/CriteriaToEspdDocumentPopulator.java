@@ -51,51 +51,27 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionSelectedCriminalConvictions(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-//        if (isCriterionSelected(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria)) {
-//            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(true));
-//        } else {
-//            espdDocument.setCriminalConvictions(CriminalConvictionsCriterion.buildWithExists(false));
-//        }
         espdDocument.setCriminalConvictions(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria));
-        if (isCriterionSelected(ExclusionCriterion.CORRUPTION, ublCriteria)) {
-            espdDocument.setCorruption(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setCorruption(CriminalConvictionsCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.FRAUD, ublCriteria)) {
-            espdDocument.setFraud(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setFraud(CriminalConvictionsCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.TERRORIST_OFFENCES, ublCriteria)) {
-            espdDocument.setTerroristOffences(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setTerroristOffences(CriminalConvictionsCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.MONEY_LAUNDERING, ublCriteria)) {
-            espdDocument.setMoneyLaundering(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setMoneyLaundering(CriminalConvictionsCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.CHILD_LABOUR, ublCriteria)) {
-            espdDocument.setChildLabour(CriminalConvictionsCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setChildLabour(CriminalConvictionsCriterion.buildWithExists(false));
-        }
+        espdDocument.setCorruption(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.CORRUPTION, ublCriteria));
+        espdDocument.setFraud(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.FRAUD, ublCriteria));
+        espdDocument.setTerroristOffences(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.TERRORIST_OFFENCES, ublCriteria));
+        espdDocument.setMoneyLaundering(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.MONEY_LAUNDERING, ublCriteria));
+        espdDocument.setChildLabour(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+                ExclusionCriterion.CHILD_LABOUR, ublCriteria));
     }
 
     private void markExclusionSelectedTaxes(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria)) {
-            espdDocument.setPaymentTaxes(TaxesCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setPaymentTaxes(TaxesCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria)) {
-            espdDocument.setPaymentSocialSecurity(TaxesCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setPaymentSocialSecurity(TaxesCriterion.buildWithExists(false));
-        }
+        espdDocument.setPaymentTaxes(
+                (TaxesCriterion) criterionPopulator
+                        .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria));
+        espdDocument.setPaymentSocialSecurity(
+                (TaxesCriterion) criterionPopulator
+                        .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria));
     }
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {

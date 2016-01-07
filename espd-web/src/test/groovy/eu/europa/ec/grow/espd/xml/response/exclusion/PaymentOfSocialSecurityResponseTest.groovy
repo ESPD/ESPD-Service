@@ -1,13 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
-
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
-import eu.europa.ec.grow.espd.xml.LocalDateAdapter
-import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TaxesCriterion
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter
+import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import org.joda.time.LocalDate
-
 /**
  * Created by ratoico on 12/9/15 at 1:13 PM.
  */
@@ -72,7 +70,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         checkRequirement(sub1_2.Requirement[0], "08b0c984-c5e6-4143-8493-868c39745637", "If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?", "INDICATOR")
         checkRequirement(sub1_2.Requirement[1], "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
-        checkRequirement(sub1_2.Requirement[2], "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+        checkRequirement(sub1_2.Requirement[2], "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
 
         then: "check third sub group"
         def sub1_3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
@@ -132,8 +130,8 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
         checkRequirement(req, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
         req.Response.size() == 1
-        req.Response[0].Amount.text() == "445.0"
-        req.Response[0].Amount.@currencyID.text() == "RON"
+        req.Response.Amount.text() == "445.0"
+        req.Response.Amount.@currencyID.text() == "RON"
     }
 
     def "check the 'Has this breach of obligations been established by means other than a judicial or administrative decision' requirement response"() {
@@ -211,7 +209,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
-        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response[0].Period.Description.text() == "Till the end of the year 2013."
     }
 

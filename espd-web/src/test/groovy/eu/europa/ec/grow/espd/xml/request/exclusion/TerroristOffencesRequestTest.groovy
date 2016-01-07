@@ -55,7 +55,7 @@ class TerroristOffencesRequestTest extends AbstractExclusionCriteriaFixture {
         checkRequirement(r1_3, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
 
         def r1_4 = request.Criterion[idx].RequirementGroup[0].Requirement[4]
-        checkRequirement(r1_4, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+        checkRequirement(r1_4, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
 
         then: "check the self-cleaning sub group"
         checkSelfCleaningRequirementGroup(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])

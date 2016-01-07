@@ -1,5 +1,4 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
-
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -7,7 +6,6 @@ import eu.europa.ec.grow.espd.domain.TaxesCriterion
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import org.joda.time.LocalDate
-
 /**
  * Created by ratoico on 12/9/15 at 11:58 AM.
  */
@@ -109,8 +107,8 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
         checkRequirement(req, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
         req.Response.size() == 1
-        req.Response[0].Amount.text() == "445.0"
-        req.Response[0].Amount.@currencyID.text() == "RON"
+        req.Response.Amount.text() == "445.0"
+        req.Response.Amount.@currencyID.text() == "RON"
     }
 
     def "check the 'Has this breach of obligations been established by means other than a judicial or administrative decision' requirement response"() {
@@ -188,7 +186,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
-        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response[0].Period.Description.text() == "Till the end of the year 2013."
     }
 

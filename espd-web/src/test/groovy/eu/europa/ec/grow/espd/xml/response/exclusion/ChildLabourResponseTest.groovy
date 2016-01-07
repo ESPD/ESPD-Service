@@ -134,7 +134,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def subGroup = request.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[4]
-        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "TEXT")
+        checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response.size() == 1
         req.Response[0].Period.Description[0].text() == "7 years"
     }

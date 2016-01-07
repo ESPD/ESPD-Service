@@ -176,4 +176,13 @@ public enum Country implements CacCountry {
     public static final List<Country> EFTA_COUNTRIES = Collections
             .unmodifiableList(Arrays.asList(ICELAND, LIECHTENSTEIN, NORWAY, SWITZERLAND));
 
+    public static Country findByIso2Code(String iso2Code) {
+        for (Country country : values()) {
+            if (country.getIso2Code().equalsIgnoreCase(iso2Code)) {
+                return country;
+            }
+        }
+        return null;
+    }
+
 }

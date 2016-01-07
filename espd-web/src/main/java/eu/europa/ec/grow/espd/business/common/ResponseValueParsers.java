@@ -1,6 +1,8 @@
 package eu.europa.ec.grow.espd.business.common;
 
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.criteria.enums.ExpectedResponseType;
+import eu.europa.ec.grow.espd.domain.Amount;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import eu.europa.ec.grow.espd.entities.CcvResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
@@ -31,6 +33,8 @@ final class ResponseValueParsers {
         PARSERS.put(ExpectedResponseType.PERIOD, new PeriodValueParser());
         PARSERS.put(ExpectedResponseType.URL, new UrlValueParser());
         PARSERS.put(ExpectedResponseType.CODE, new CodeValueParser());
+        PARSERS.put(ExpectedResponseType.COUNTRY, new CountryValueParser());
+        PARSERS.put(ExpectedResponseType.AMOUNT, new AmountValueParser());
     }
 
     private ResponseValueParsers() {
@@ -127,6 +131,29 @@ final class ResponseValueParsers {
                 return null;
             }
             return responseType.getCode().getValue();
+        }
+    }
+
+    private static class CountryValueParser implements ResponseValueParser<Country> {
+
+        @Override
+        public Country parseValue(ResponseType responseType) {
+            if (responseType.getCode() == null) {
+                return null;
+            }
+            return Country.findByIso2Code(responseType.getCode().getValue());
+        }
+    }
+
+    private static class AmountValueParser implements ResponseValueParser<Amount> {
+
+        @Override
+        public Amount parseValue(ResponseType responseType) {
+            if (responseType.getAmount() == null || responseType.getAmount().getValue() == null) {
+                return null;
+            }
+            return new Amount(responseType.getAmount().getValue().doubleValue(),
+                    responseType.getAmount().getCurrencyID());
         }
     }
 }

@@ -1,11 +1,9 @@
 package eu.europa.ec.grow.espd.business.common;
 
+import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionTypeCode;
-import eu.europa.ec.grow.espd.domain.AvailableElectronically;
-import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion;
-import eu.europa.ec.grow.espd.domain.Criterion;
-import eu.europa.ec.grow.espd.domain.SelfCleaning;
+import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
@@ -29,6 +27,9 @@ class EspdCriterionPopulator {
     <T extends Criterion> T buildEspdCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
         if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.equals(ccvCriterion.getCriterionType())) {
             return (T) buildCriminalConvictionsCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.equals(ccvCriterion.getCriterionType()) ||
+                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildTaxesCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -37,10 +38,10 @@ class EspdCriterionPopulator {
             List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
-            return null;
+            return CriminalConvictionsCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readRequirementValue(ExclusionCriterionRequirement.YOUR_ANSWER, criterionType);
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
         CriminalConvictionsCriterion criterion = CriminalConvictionsCriterion.buildWithExists(yourAnswer);
 
         Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
@@ -59,9 +60,62 @@ class EspdCriterionPopulator {
         return criterion;
     }
 
+    private boolean readExclusionCriterionAnswer(CriterionType criterionType) {
+        Boolean yourAnswer = readRequirementValue(ExclusionCriterionRequirement.YOUR_ANSWER, criterionType);
+        if (yourAnswer == null) {
+            // could come from a ESPD Request where we only have the criterion present without any response
+            return criterionType != null;
+        }
+        return yourAnswer;
+    }
+
+    private TaxesCriterion buildTaxesCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return TaxesCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        TaxesCriterion criterion = TaxesCriterion.buildWithExists(yourAnswer);
+
+        Country country = readRequirementValue(ExclusionCriterionRequirement.COUNTRY_MS, criterionType);
+        criterion.setCountry(country);
+        Amount amount = readRequirementValue(ExclusionCriterionRequirement.AMOUNT, criterionType);
+        if (amount != null) {
+            criterion.setAmount(amount.getAmount());
+            criterion.setCurrency(amount.getCurrency());
+        }
+
+        boolean breach = readBooleanRequirement(ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN,
+                criterionType);
+        criterion.setBreachEstablishedOtherThanJudicialDecision(breach);
+        String meansDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_MEANS, criterionType);
+        criterion.setMeansDescription(meansDescription);
+
+        boolean finalAndBinding = readBooleanRequirement(ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING,
+                criterionType);
+        criterion.setDecisionFinalAndBinding(finalAndBinding);
+        Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
+        criterion.setDateOfConviction(dateOfConviction);
+        String periodLength = readRequirementValue(ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION,
+                criterionType);
+        criterion.setPeriodLength(periodLength);
+
+        boolean fulfilledObligation = readBooleanRequirement(ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION,
+                criterionType);
+        criterion.setEoFulfilledObligations(fulfilledObligation);
+        String obligationDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS,
+                criterionType);
+        criterion.setObligationsDescription(obligationDescription);
+
+        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+
+        return criterion;
+    }
 
     private SelfCleaning buildSelfCleaningMeasures(CriterionType criterionType) {
-        boolean selfCleaningAnswer = readRequirementValue(ExclusionCriterionRequirement.MEASURES_SELF_CLEANING,
+        boolean selfCleaningAnswer = readBooleanRequirement(ExclusionCriterionRequirement.MEASURES_SELF_CLEANING,
                 criterionType);
         SelfCleaning selfCleaning = new SelfCleaning();
         selfCleaning.setExists(selfCleaningAnswer);
@@ -73,7 +127,7 @@ class EspdCriterionPopulator {
 
     private AvailableElectronically buildAvailableElectronically(CriterionType criterionType) {
         AvailableElectronically electronically = new AvailableElectronically();
-        boolean electronicallyAnswer = readRequirementValue(
+        boolean electronicallyAnswer = readBooleanRequirement(
                 ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY, criterionType);
         electronically.setExists(electronicallyAnswer);
         String url = readRequirementValue(ExclusionCriterionRequirement.URL, criterionType);
@@ -81,6 +135,11 @@ class EspdCriterionPopulator {
         String code = readRequirementValue(ExclusionCriterionRequirement.URL_CODE, criterionType);
         electronically.setCode(code);
         return electronically;
+    }
+
+    private boolean readBooleanRequirement(CcvCriterionRequirement requirement, CriterionType criterionType) {
+        // special case to avoid null pointer exceptions
+        return Boolean.TRUE.equals(readRequirementValue(requirement, criterionType));
     }
 
     private CriterionType isCriterionPresent(CcvCriterion criterion, List<CriterionType> ublCriteria) {
@@ -96,21 +155,9 @@ class EspdCriterionPopulator {
         if (isEmpty(criterionType.getRequirementGroup())) {
             return null;
         }
-//        for (RequirementGroupType groupType : criterionType.getRequirementGroup()) {
-//            if (isEmpty(groupType.getRequirement())) {
-//                return null;
-//            }
-//            for (RequirementType requirementType : groupType.getRequirement()) {
-//                if (requirementType.getID() != null && requirement.getId().equals(requirementType.getID().getValue())) {
-//                    if (isEmpty(requirementType.getResponse())) {
-//                        return null;
-//                    }
-//                    return ResponseValueParsers.parse(requirement, requirementType.getResponse().get(0));
-//                }
-//            }
-//        }
+
         RequirementType requirementType = findRequirementInGroups(requirement, criterionType.getRequirementGroup());
-        if (requirementType != null) {
+        if (requirementType != null && isNotEmpty(requirementType.getResponse())) {
             return ResponseValueParsers.parse(requirement, requirementType.getResponse().get(0));
         }
         return null;

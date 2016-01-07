@@ -20,7 +20,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert r1.ID.@schemeVersionID.text() == "1.0"
 
         def r2 = infoElectronicallyRequirementGroup.Requirement[2]
-        checkRequirement(r2, "e2d863a0-60cb-4e58-8c14-4c1595af48b7", "Code", "TEXT")
+        checkRequirement(r2, "e2d863a0-60cb-4e58-8c14-4c1595af48b7", "Code", "CODE")
         assert r2.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r2.ID.@schemeVersionID.text() == "1.0"
     }

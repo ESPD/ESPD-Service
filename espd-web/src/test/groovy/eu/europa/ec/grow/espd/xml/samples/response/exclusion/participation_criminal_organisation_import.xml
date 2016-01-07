@@ -37,7 +37,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
                 <cbc:Description>Date of conviction</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-07-01</cbc:Date>
+                    <cbc:Date>2016-17-01</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">

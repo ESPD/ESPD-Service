@@ -1,4 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -62,8 +63,8 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Amount.text() == "11.11"
-        req.Response[0].Amount.@currencyID.text() == "EUR"
+        req.Response.Amount.text() == "11.11"
+        req.Response.Amount.@currencyID.text() == "EUR"
     }
 
     def "check empty 'Amount' requirements response"() {
@@ -79,7 +80,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         def subGroup = request.Criterion[idx].RequirementGroup[0]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Amount.size() == 0
+        req.Response.Amount.size() == 0
     }
 
     def "check the 'Is this information available electronically' requirement response"() {
