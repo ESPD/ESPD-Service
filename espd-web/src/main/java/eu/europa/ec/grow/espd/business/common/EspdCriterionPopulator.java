@@ -30,6 +30,9 @@ class EspdCriterionPopulator {
         } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.equals(ccvCriterion.getCriterionType()) ||
                 ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTaxesCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL.equals(ccvCriterion.getCriterionType()) ||
+                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildEnvironmentalCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -58,15 +61,6 @@ class EspdCriterionPopulator {
 
         criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
         return criterion;
-    }
-
-    private boolean readExclusionCriterionAnswer(CriterionType criterionType) {
-        Boolean yourAnswer = readRequirementValue(ExclusionCriterionRequirement.YOUR_ANSWER, criterionType);
-        if (yourAnswer == null) {
-            // could come from a ESPD Request where we only have the criterion present without any response
-            return criterionType != null;
-        }
-        return yourAnswer;
     }
 
     private TaxesCriterion buildTaxesCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
@@ -114,6 +108,32 @@ class EspdCriterionPopulator {
         return criterion;
     }
 
+    private EnvironmentalCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return EnvironmentalCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        EnvironmentalCriterion criterion = EnvironmentalCriterion.buildWithExists(yourAnswer);
+        String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+
+        criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+
+        return criterion;
+    }
+
+    private boolean readExclusionCriterionAnswer(CriterionType criterionType) {
+        Boolean yourAnswer = readRequirementValue(ExclusionCriterionRequirement.YOUR_ANSWER, criterionType);
+        if (yourAnswer == null) {
+            // could come from a ESPD Request where we only have the criterion present without any response
+            return criterionType != null;
+        }
+        return yourAnswer;
+    }
+
     private SelfCleaning buildSelfCleaningMeasures(CriterionType criterionType) {
         boolean selfCleaningAnswer = readBooleanRequirement(ExclusionCriterionRequirement.MEASURES_SELF_CLEANING,
                 criterionType);
@@ -148,6 +168,7 @@ class EspdCriterionPopulator {
                 return ubl;
             }
         }
+
         return null;
     }
 
@@ -160,6 +181,7 @@ class EspdCriterionPopulator {
         if (requirementType != null && isNotEmpty(requirementType.getResponse())) {
             return ResponseValueParsers.parse(requirement, requirementType.getResponse().get(0));
         }
+
         return null;
     }
 
@@ -172,6 +194,7 @@ class EspdCriterionPopulator {
                 }
             }
         }
+
         return findRequirementInGroups(requirement, requirementGroup.getRequirementGroup());
     }
 
@@ -180,12 +203,14 @@ class EspdCriterionPopulator {
         if (isEmpty(requirementGroups)) {
             return null;
         }
+
         for (RequirementGroupType group : requirementGroups) {
             RequirementType found = findRequirementInGroup(requirement, group);
             if (found != null) {
                 return found;
             }
         }
+
         return null;
     }
 

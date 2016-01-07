@@ -75,11 +75,8 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria)) {
-            espdDocument.setBreachingObligations(EnvironmentalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setBreachingObligations(EnvironmentalCriterion.buildWithExists(false));
-        }
+        espdDocument.setBreachingObligations((EnvironmentalCriterion) criterionPopulator
+                .buildEspdCriterion(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria));
     }
 
     private void markExclusionInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
