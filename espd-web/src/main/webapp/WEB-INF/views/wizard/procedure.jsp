@@ -84,61 +84,50 @@
 	            </div>
 	            <div id="createeo_info_eo_div" class="collapse in">
 	                <div class="panel-body">
-	                
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createeo_postal_address"><s:message code="createeo_postal_address"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createeo_telephon"><s:message code="createeo_telephon"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_name"><s:message code="createca_name"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createeo_email"><s:message code="createeo_email"/></label>
-                                <div class="col-md-8">
-                                    [INPUT]
-                                </div>
-                            </div>
-                        </div>
+	                	
+	                        <div class="col-md-6">
+	                            <div class="form-group">
+	                                <label class="control-label col-md-4" data-i18n="createeo_name"><s:message code="createeo_name"/></label>
+	                                <div class="col-md-8">
+	                                    <form:input cssClass="form-control" path="eoperator.name" placeholder="Name"/>
+	                                </div>
+	                            </div>
+		                       <tiles:insertDefinition name="partyInfo">
+		                             <tiles:putAttribute name="field" value="eoperator"/>
+		                             <tiles:putAttribute name="address" value="true"/>
+		                       </tiles:insertDefinition>
+	                        </div>
+	                        <div class="col-md-6">
 
-                       <div class="col-md-12 form_group">
-                            <label class="control-label col-md-6" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
-                            <div class="col-md-6">
-                                [INPUT]
-                            </div>
-                       </div>
-                       <div class="col-md-12 form_group">
+	                            <tiles:insertDefinition name="partyInfo">
+	                                 <tiles:putAttribute name="field" value="eoperator"/>
+	                                 <tiles:putAttribute name="vat" value="true"/>
+	                                 <tiles:putAttribute name="contacts" value="true"/>
+	                            </tiles:insertDefinition>
+                            
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
+		                            <div class="col-md-8">
+		                                [TEXTAREA]
+		                            </div>
+		                        </div>
+		
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
+		                            <div class="col-md-8">
+		                                [INPUT]
+		                            </div>
+		                       </div>
+	                        </div>
+                       
+
+                       <div class="col-md-12 form-group">
                             <label class="control-label col-md-6" data-i18n="createeo_is_eo_sized"><s:message code="createeo_is_eo_sized"/></label>
                             <div class="col-md-6">
                                 [YES/NO]
                             </div>
                        </div>
-                       <div class="col-md-12 form_group">
+                       <div class="col-md-12 form-group">
                             <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
                             	<s:message code="createeo_if_proc_reserved"/>
                             </label>
@@ -146,7 +135,7 @@
                                 [YES/NO]
                             </div>
                        </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_percentage_disworkers">
 	                            	<s:message code="createeo_percentage_disworkers"/>
 	                            </label>
@@ -154,7 +143,7 @@
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_disworkers_details">
 	                            	<s:message code="createeo_disworkers_details"/>
 	                            </label>
@@ -163,9 +152,9 @@
 	                            </div>
 	                       </div>
 
-                       <div class="col-md-12 form_group">
-                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
-                            	<s:message code="createeo_if_proc_reserved"/>
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert">
+                            	<s:message code="createeo_eo_approved_cert"/>
                             </label>
                             <div class="col-md-6">
                                 [YES/NO]
@@ -174,25 +163,25 @@
                            <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
                                 [IF YES]<span data-i18n="createeo_answer_following_parts"><s:message code="createeo_answer_following_parts"/></span>
                            </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_provide_regnumber"><s:message code="createeo_provide_regnumber"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_cert_e_avaliable"> <s:message code="createeo_cert_e_avaliable"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_ref_for_cert"> <s:message code="createeo_ref_for_cert"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_all_selection_covered"> <s:message code="createeo_all_selection_covered"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
@@ -202,20 +191,20 @@
                            <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
                                 [IF NO]<span data-i18n="createeo_add_complete_missing"><s:message code="createeo_add_complete_missing"/></span>
                            </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_eo_has_cert_soc"> <s:message code="createeo_eo_has_cert_soc"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_doc_e_avaliable"> <s:message code="createeo_doc_e_avaliable"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
 
-                       <div class="col-md-12 form_group">
+                       <div class="col-md-12 form-group">
                             <label class="control-label col-md-6" data-i18n="createeo_is_eo_proc_together"><s:message code="createeo_is_eo_proc_together"/></label>
                             <div class="col-md-6">
                                 [YES/NO]
@@ -224,27 +213,27 @@
                             <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
                                 [IF YES]<span data-i18n="createeo_ensure_others_espd"><s:message code="createeo_ensure_others_espd"/></span>
                             </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_eo_group_role"> <s:message code="createeo_eo_group_role"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_other_eo_part"> <s:message code="createeo_other_eo_part"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
-	                       <div class="col-md-12 form_group">
+	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_name_part_group"> <s:message code="createeo_name_part_group"/></label>
 	                            <div class="col-md-4">
 	                                [INPUT]
 	                            </div>
 	                       </div>
 
-                       <div class="form-group col-md-12">
-                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert"><s:message code="createeo_eo_approved_cert"/></label>
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_lots_concerned"><s:message code="createeo_lots_concerned"/></label>
                             <div class="col-md-6">
                                 <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
                             </div>
@@ -260,7 +249,44 @@
 	            </div>
 	            <div id="createeo_info_respresent_div" class="collapse in">
 	                <div class="panel-body">
-	                    form 2
+                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                            <span data-i18n="createeo_person_empowered"><s:message code="createeo_person_empowered"/></span>
+                       </div>
+                       <div class="col-md-12 form-group">
+                           <label class="control-label col-md-4" data-i18n="createeo_full_name_and_birth"><s:message code="createeo_full_name_and_birth"/></label>
+                           <div class="col-md-8">
+                                [INPUT]
+                           </div>
+                       </div>
+                       <div class="col-md-12 form-group">
+                           <label class="control-label col-md-4" data-i18n="createeo_pos_act_in_capacity"><s:message code="createeo_pos_act_in_capacity"/></label>
+                           <div class="col-md-8">
+                                 [INPUT]
+                           </div>
+                       </div>
+                       
+                       
+                       <div class="col-md-6">
+	                        <tiles:insertDefinition name="partyInfo">
+	                            <tiles:putAttribute name="field" value="empowered"/>
+	                            <tiles:putAttribute name="address" value="true"/>
+	                        </tiles:insertDefinition>
+                       </div>
+                        
+                       <div class="col-md-6">
+	                        <tiles:insertDefinition name="partyInfo">
+	                            <tiles:putAttribute name="field" value="empowered"/>
+	                            <tiles:putAttribute name="contacts" value="true"/>
+	                        </tiles:insertDefinition>
+                       </div>
+                        
+
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-3" data-i18n="createeo_detinfo_of_represent"><s:message code="createeo_detinfo_of_represent"/></label>
+                            <div class="col-md-9">
+                               [TEXTAREA]
+                            </div>
+                       </div>
 	                </div>
 	            </div>
 	        </div>
@@ -271,12 +297,22 @@
 	            </div>
 	            <div id="createeo_info_reliance_div" class="collapse in">
 	                <div class="panel-body">
-						form 3
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_eo_rely_other_entities">
+                            	<s:message code="createeo_eo_rely_other_entities"/>
+                            </label>
+                            <div class="col-md-6">
+                                [YES/NO]
+                            </div>
+                       </div>
+                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
+                            <span data-i18n="createeo_separate_espd_sections_a_b"><s:message code="createeo_separate_espd_sections_a_b"/></span>
+                       </div>
 	                </div>
 	            </div>
 	        </div>
         </c:if>
-        
+       
         <div class="paragraph">
             <h2>
                 <span data-i18n="createca_header"><s:message code="createca_header"/></span>
@@ -311,77 +347,28 @@
                                                 placeholder="Enter registration number"/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 " for="streetAndNumber"><span
-                                        data-i18n="createca_street_and_num"><s:message
-                                        code="createca_street_and_num"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.street" id="streetAndNumber"
-                                                placeholder="Enter street and number"/>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="postcode"><span
-                                        data-i18n="createca_postcode"><s:message
-                                        code="createca_postcode"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.postalCode" id="postcode" placeholder="Enter Postcode"/>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="city"><span
-                                        data-i18n="createca_city"><s:message code="createca_city"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.city" id="city" placeholder="Enter City"/>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="country"><span
-                                        data-i18n="createca_country"><s:message code="createca_country"/></span></label>
-                                <div class="col-md-8">
-                                    <tiles:insertDefinition name="countries">
-                                        <tiles:putAttribute name="countryField" value="authority.country"/>
-                                        <tiles:putAttribute name="countryHtmlId" value="country"/>
-                                        <tiles:putAttribute name="countryCssClass" value="form-control"/>
-                                    </tiles:insertDefinition>
-                                </div>
-                            </div>
+                            
+                            <tiles:insertDefinition name="partyInfo">
+                                 <tiles:putAttribute name="field" value="authority"/>
+                                 <tiles:putAttribute name="address" value="true"/>
+                            </tiles:insertDefinition>
+                            
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="contactName"><span
-                                        data-i18n="createca_contact_person"><s:message
-                                        code="createca_contact_person"/></span></label>
-
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createca_contact_person"><s:message code="createca_contact_person"/></label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.contactName" id="contactName"
-                                                placeholder="Enter contact person"/>
+                                    <form:input cssClass="form-control" path="authority.contactName" id="contactName" placeholder="Enter contact person"/>
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="contactEmail"><span
-                                        data-i18n="createca_email"><s:message code="createca_email"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.contactEmail" id="contactEmail" placeholder="Enter E-mail"/>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="contactPhone"><span
-                                        data-i18n="createca_telephone"><s:message
-                                        code="createca_telephone"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.contactPhone" id="contactPhone" placeholder="Enter Telephone"/>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4 " for="website"><span
-                                        data-i18n="createca_website"><s:message code="createca_website"/></span></label>
-
+                            
+                            <tiles:insertDefinition name="partyInfo">
+                                 <tiles:putAttribute name="field" value="authority"/>
+                                 <tiles:putAttribute name="contacts" value="true"/>
+                            </tiles:insertDefinition>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-md-4" data-i18n="createca_website"><s:message code="createca_website"/></label>
                                 <div class="col-md-8">
                                     <form:input cssClass="form-control" path="authority.website" id="website" placeholder="Enter Website"/>
                                 </div>
@@ -409,30 +396,31 @@
                                 <span data-i18n="createca_to_be_filled_subalert"><s:message code="createca_to_be_filled_subalert"/></span>
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <label class="control-label"><span data-i18n="createca_procurer_name"><s:message code="createca_procurer_name"/></span></label>
-                                <div class="col-md-4">
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-4" for="procurerName" data-i18n="createca_procurer_name"><s:message code="createca_procurer_name"/></label>
+                                <div class="col-md-8">
                                     <form:input cssClass="form-control" path="procurerName" placeholder="Name"/>
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <label class="control-label" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message code="createca_title_or_short_desc_"/></span></label>
-                                <form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-4" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message code="createca_title_or_short_desc_"/></span></label>
+                                 <div class="col-md-8">
+                                	<form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
+                               	</div>
                             </div>
                             
-                            <div class="form-group col-md-12">
-                                <label class="control-label col-md-8 " for="fileRefByCA"><span
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-4 " for="fileRefByCA"><span
                                         data-i18n="createca_file_ref_ca"><s:message code="createca_file_ref_ca"/></span></label>
 
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <form:input cssClass="form-control" path="fileRefByCA" id="fileRefByCA" placeholder=""/>
                                 </div>
                             </div>
-
-                            
+ 
                             <%--
-                            <div class="form-group col-md-12">
+                            <div class="col-md-12 form-group">
                                 <label class="control-label col-md-8 " for="websiteProcDocs"><span
                                         data-i18n="createca_website_proc_doc"><s:message
                                         code="createca_website_proc_doc"/></span></label>

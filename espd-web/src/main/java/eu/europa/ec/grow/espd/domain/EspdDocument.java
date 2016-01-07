@@ -12,11 +12,14 @@ public class EspdDocument {
     private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
+    private PartyImpl empowered;
+    private EconomicOperatorImpl eoperator;
     
     private String procurerName;
     private String procedureDesc;
     private String lotConcerned;
     private String fileRefByCA;
+
     //private String websiteProcDocs;
 
     //Exclusion criteria
@@ -87,13 +90,13 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
 
-    @Deprecated
+    //Deprecated
     private SelectionCriterion economicEnrolment;
 
-    @Deprecated
+    //Deprecated
     private SelectionCriterion economicServiceContracts;
 
-    @Deprecated
+    //Deprecated
     private SelectionCriterion reductionOfNumbers;
 
     //trick to use MultipartFile as @RequestParam

@@ -10,6 +10,8 @@ package eu.europa.ec.grow.espd.entities;
 public interface CacParty {
 
     String getName();
+    
+    String getVat();
 
     String getNationalRegistrationNumber();
 

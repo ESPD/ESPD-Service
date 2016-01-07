@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public abstract class SelectionCriterion extends Criterion {
+public class SelectionCriterion extends Criterion {
 
     private AvailableElectronically availableElectronically;
 

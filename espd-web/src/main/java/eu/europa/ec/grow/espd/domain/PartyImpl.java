@@ -11,6 +11,8 @@ import lombok.Data;
 public class PartyImpl implements CacParty {
 
     private String name;
+    
+    private String vat;
 
     private String nationalRegistrationNumber;
 

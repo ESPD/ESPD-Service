@@ -140,4 +140,11 @@
         <put-attribute name="countryCssClass" value=""/>
     </definition>
 
+    <definition name="partyInfo" template="/WEB-INF/views/wizard/templates/partyAddress.jsp">
+        <put-attribute name="field" value=""/>
+        <put-attribute name="address" value="false"/>
+        <put-attribute name="vat" value="false"/>
+        <put-attribute name="contacts" value="false"/>
+    </definition>
+
 </tiles-definitions>
