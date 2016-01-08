@@ -22,11 +22,6 @@ public enum SelectionCriterionTypeCode implements CcvCriterionType {
      */
     TECHNICAL_PROFESSIONAL_ABILITY("Selection criteria relating to the technical and professional ability"),
     /**
-     * Selection criteria relating to the quality assurance schemes and environmental management standards
-     */
-    QUALITY_ASSURANCE(
-            "Selection criteria relating to the quality assurance schemes and environmental management standards"),
-    /**
      * The economic operator declares that it will satisfy all the required selection criteria indicated
      * in the relevant notice or in the procurement documents referred to in the notice
      */

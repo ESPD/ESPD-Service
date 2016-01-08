@@ -3,6 +3,8 @@ package eu.europa.ec.grow.espd.business.common;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionTypeCode;
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionTypeCode;
 import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
@@ -50,6 +52,8 @@ class EspdCriterionFactory {
             return (T) buildConflictOfInterestCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.OTHER.equals(ccvCriterion.getCriterionType())) {
             return (T) buildPurelyNationalGrounds(ccvCriterion, ublCriteria);
+        } else if (SelectionCriterionTypeCode.SUITABILITY.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildSuitabilityCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -76,7 +80,7 @@ class EspdCriterionFactory {
 
         criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
 
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
         return criterion;
     }
 
@@ -120,7 +124,7 @@ class EspdCriterionFactory {
                 criterionType);
         criterion.setObligationsDescription(obligationDescription);
 
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
         return criterion;
     }
@@ -158,7 +162,7 @@ class EspdCriterionFactory {
                 criterionType);
         criterion.setReason(reasonContract);
 
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
         return criterion;
     }
@@ -176,7 +180,7 @@ class EspdCriterionFactory {
         criterion.setDescription(description);
 
         criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
         return criterion;
     }
@@ -195,7 +199,7 @@ class EspdCriterionFactory {
         criterion.setDescription(description);
 
         criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
         return criterion;
     }
@@ -213,13 +217,36 @@ class EspdCriterionFactory {
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
-        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+        criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private SuitabilityCriterion buildSuitabilityCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return SuitabilityCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+
+        SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(yourAnswer);
+
+        criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
         return criterion;
     }
 
     private boolean readExclusionCriterionAnswer(CriterionType criterionType) {
-        Boolean yourAnswer = readRequirementValue(ExclusionCriterionRequirement.YOUR_ANSWER, criterionType);
+        return readCriterionAnswer(criterionType, ExclusionCriterionRequirement.YOUR_ANSWER);
+    }
+
+    private boolean readSelectionCriterionAnswer(CriterionType criterionType) {
+        return readCriterionAnswer(criterionType, SelectionCriterionRequirement.YOUR_ANSWER);
+    }
+
+    private boolean readCriterionAnswer(CriterionType criterionType, CcvCriterionRequirement answerReq) {
+        Boolean yourAnswer = readRequirementValue(answerReq, criterionType);
         if (yourAnswer == null) {
             // could come from a ESPD Request where we only have the criterion present without any response
             return criterionType != null;
@@ -238,14 +265,24 @@ class EspdCriterionFactory {
         return selfCleaning;
     }
 
-    private AvailableElectronically buildAvailableElectronically(CriterionType criterionType) {
+    private AvailableElectronically buildExclusionAvailableElectronically(CriterionType criterionType) {
+        return buildAvailableElectronically(criterionType, ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
+                ExclusionCriterionRequirement.URL, ExclusionCriterionRequirement.URL_CODE);
+    }
+
+    private AvailableElectronically buildSelectionAvailableElectronically(CriterionType criterionType) {
+        return buildAvailableElectronically(criterionType, SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
+                SelectionCriterionRequirement.URL, SelectionCriterionRequirement.URL_CODE);
+    }
+
+    private AvailableElectronically buildAvailableElectronically(CriterionType criterionType,
+            CcvCriterionRequirement answerReq, CcvCriterionRequirement urlReq, CcvCriterionRequirement urlCodeReq) {
         AvailableElectronically electronically = new AvailableElectronically();
-        boolean electronicallyAnswer = readBooleanRequirement(
-                ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY, criterionType);
+        boolean electronicallyAnswer = readBooleanRequirement(answerReq, criterionType);
         electronically.setExists(electronicallyAnswer);
-        String url = readRequirementValue(ExclusionCriterionRequirement.URL, criterionType);
+        String url = readRequirementValue(urlReq, criterionType);
         electronically.setUrl(url);
-        String code = readRequirementValue(ExclusionCriterionRequirement.URL_CODE, criterionType);
+        String code = readRequirementValue(urlCodeReq, criterionType);
         electronically.setCode(code);
         return electronically;
     }
