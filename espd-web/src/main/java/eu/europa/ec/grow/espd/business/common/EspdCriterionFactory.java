@@ -46,6 +46,8 @@ class EspdCriterionFactory {
             return (T) buildBankruptcyCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.MISCONDUCT.equals(ccvCriterion.getCriterionType())) {
             return (T) buildMisconductCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildConflictOfInterestCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -168,6 +170,25 @@ class EspdCriterionFactory {
         boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
 
         MisconductCriterion criterion = MisconductCriterion.buildWithExists(yourAnswer);
+        String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+
+        criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private ConflictInterestCriterion buildConflictOfInterestCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return ConflictInterestCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        ConflictInterestCriterion criterion = ConflictInterestCriterion.buildWithExists(yourAnswer);
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 

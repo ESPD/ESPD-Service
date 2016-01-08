@@ -105,26 +105,14 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, ublCriteria)) {
-            espdDocument.setConflictInterest(ConflictInterestCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setConflictInterest(ConflictInterestCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, ublCriteria)) {
-            espdDocument.setInvolvementPreparationProcurement(ConflictInterestCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setInvolvementPreparationProcurement(ConflictInterestCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.EARLY_TERMINATION, ublCriteria)) {
-            espdDocument.setEarlyTermination(ConflictInterestCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setEarlyTermination(ConflictInterestCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION, ublCriteria)) {
-            espdDocument.setGuiltyMisinterpretation(ConflictInterestCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setGuiltyMisinterpretation(ConflictInterestCriterion.buildWithExists(false));
-        }
+        espdDocument.setConflictInterest((ConflictInterestCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE, ublCriteria));
+        espdDocument.setInvolvementPreparationProcurement((ConflictInterestCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE, ublCriteria));
+        espdDocument.setEarlyTermination((ConflictInterestCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.EARLY_TERMINATION, ublCriteria));
+        espdDocument.setGuiltyMisinterpretation((ConflictInterestCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION, ublCriteria));
     }
 
     private void markExclusionPurelyNational(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
