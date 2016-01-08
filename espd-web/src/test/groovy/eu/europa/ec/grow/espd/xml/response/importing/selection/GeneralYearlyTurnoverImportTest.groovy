@@ -1,9 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
+
 /**
  * Created by ratoico on 1/8/16 at 2:44 PM.
  */
@@ -47,6 +49,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
                 year2: 2015, amount2: 222.2, currency2: "EUR",
                 year3: 2014, amount3: 333.3, currency3: "USD",
                 availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
+        //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:
         1 == 1

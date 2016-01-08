@@ -85,4 +85,10 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         println("---------------------- ${xmlOutput}")
     }
 
+    protected void saveEspdAsXmlResponse(EspdDocument espd, String filePath) {
+        parseResponseXml(espd)
+        def file = new File(filePath)
+        file.text = xmlOutput
+    }
+
 }

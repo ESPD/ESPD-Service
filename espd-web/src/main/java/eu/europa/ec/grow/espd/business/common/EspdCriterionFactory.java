@@ -276,6 +276,9 @@ class EspdCriterionFactory {
             criterion.setCurrency3(amount3.getCurrency());
         }
 
+        String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
         return criterion;

@@ -54,6 +54,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
                 description2: "description2", amount2: 222, currency2: "EUR", date2: new Date().plus(1), recipients2: "recipients2",
                 description3: "description3", amount3: 333, currency3: "USD", date3: new Date().plus(2), recipients3: "recipients3",
                 availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "PERF")))
+        //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:
         1 == 1

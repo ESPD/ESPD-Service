@@ -1,9 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
+
 /**
  * Created by ratoico on 1/8/16 at 11:22 AM.
  */
@@ -29,6 +31,7 @@ class EnrolmentProfessionalRegisterImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "PROF_REGISTER")))
+        //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:
         1 == 1
