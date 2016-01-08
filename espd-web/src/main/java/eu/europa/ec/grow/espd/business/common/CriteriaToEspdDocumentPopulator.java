@@ -116,11 +116,8 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionPurelyNational(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS, ublCriteria)) {
-            espdDocument.setPurelyNationalGrounds(PurelyNationalGrounds.buildWithExists(true));
-        } else {
-            espdDocument.setPurelyNationalGrounds(PurelyNationalGrounds.buildWithExists(false));
-        }
+        espdDocument.setPurelyNationalGrounds((PurelyNationalGrounds) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS, ublCriteria));
     }
 
     private void markSelectedSelectionCriteria(EspdDocument espdDocument, List<CriterionType> ublCriteria) {

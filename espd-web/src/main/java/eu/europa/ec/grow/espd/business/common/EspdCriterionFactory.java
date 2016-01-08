@@ -48,6 +48,8 @@ class EspdCriterionFactory {
             return (T) buildMisconductCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.equals(ccvCriterion.getCriterionType())) {
             return (T) buildConflictOfInterestCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.OTHER.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildPurelyNationalGrounds(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -193,6 +195,24 @@ class EspdCriterionFactory {
         criterion.setDescription(description);
 
         criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private PurelyNationalGrounds buildPurelyNationalGrounds(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return PurelyNationalGrounds.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        PurelyNationalGrounds criterion = PurelyNationalGrounds.buildWithExists(yourAnswer);
+        String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+
         criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
 
         return criterion;
