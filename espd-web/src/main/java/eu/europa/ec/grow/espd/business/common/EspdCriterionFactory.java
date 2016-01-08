@@ -171,6 +171,7 @@ class EspdCriterionFactory {
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
+        criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
         criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
 
         return criterion;

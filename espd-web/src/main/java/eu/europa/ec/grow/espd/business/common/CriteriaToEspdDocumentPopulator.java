@@ -93,19 +93,15 @@ public class CriteriaToEspdDocumentPopulator {
         espdDocument.setBusinessActivitiesSuspended(
                 (BankruptcyCriterion) criterionFactory
                         .buildEspdCriterion(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria));
+        espdDocument.setArrangementWithCreditors(
+                (BankruptcyCriterion) criterionFactory
+                        .buildEspdCriterion(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria));
     }
 
     private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria)) {
-            espdDocument.setArrangementWithCreditors(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setArrangementWithCreditors(BankruptcyCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, ublCriteria)) {
-            espdDocument.setGuiltyGrave(MisconductCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setGuiltyGrave(MisconductCriterion.buildWithExists(false));
-        }
+        espdDocument.setGuiltyGrave(criterionFactory
+                .<MisconductCriterion>buildEspdCriterion(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT,
+                        ublCriteria));
     }
 
     private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
