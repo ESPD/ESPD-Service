@@ -52,7 +52,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Please describe them' requirements response"() {
         given:
         def espd = new EspdDocument(studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true,
-                description1: "technical description"))
+                description: "technical description"))
 
         when:
         def request = parseResponseXml(espd)

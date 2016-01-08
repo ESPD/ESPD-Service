@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 public class SelectionCriterion extends Criterion {
 
     private AvailableElectronically availableElectronically;
+    private String description;
 
     public final boolean getInfoElectronicallyAnswer() {
         if (availableElectronically != null) {

@@ -286,6 +286,15 @@ class EspdCriterionFactory {
         String recipients3 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_3, criterionType);
         criterion.setRecipients3(recipients3);
 
+        String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
+        criterion.setSpecify(specify);
+
+        String pleaseDescribe = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(pleaseDescribe);
+
+        Double percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
+        criterion.setPercentage(percentage);
+
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
         return criterion;

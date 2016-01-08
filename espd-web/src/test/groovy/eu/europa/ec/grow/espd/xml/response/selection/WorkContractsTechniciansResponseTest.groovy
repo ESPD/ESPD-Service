@@ -52,7 +52,7 @@ class WorkContractsTechniciansResponseTest extends AbstractSelectionCriteriaFixt
     def "check the 'Please specify' requirements response"() {
         given:
         def espd = new EspdDocument(workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true,
-                description1: "technicians description"))
+                specify: "technicians description"))
 
         when:
         def request = parseResponseXml(espd)

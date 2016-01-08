@@ -52,7 +52,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
     def "check the 'Please describe them' requirements response"() {
         given:
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true,
-                description1: "technical description"))
+                description: "technical description"))
 
         when:
         def request = parseResponseXml(espd)

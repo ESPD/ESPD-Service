@@ -35,6 +35,7 @@ final class ResponseValueParsers {
         PARSERS.put(ExpectedResponseType.CODE, new CodeValueParser());
         PARSERS.put(ExpectedResponseType.COUNTRY, new CountryValueParser());
         PARSERS.put(ExpectedResponseType.AMOUNT, new AmountValueParser());
+        PARSERS.put(ExpectedResponseType.PERCENTAGE, new PercentageValueParser());
     }
 
     private ResponseValueParsers() {
@@ -154,6 +155,17 @@ final class ResponseValueParsers {
             }
             return new Amount(responseType.getAmount().getValue().doubleValue(),
                     responseType.getAmount().getCurrencyID());
+        }
+    }
+
+    private static class PercentageValueParser implements ResponseValueParser<Double> {
+
+        @Override
+        public Double parseValue(ResponseType responseType) {
+            if (responseType.getPercent() == null || responseType.getPercent().getValue() == null) {
+                return null;
+            }
+            return responseType.getPercent().getValue().doubleValue();
         }
     }
 }

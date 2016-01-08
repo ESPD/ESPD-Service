@@ -33,11 +33,7 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion implement
     private String recipients3;
 
     private Double percentage;
-
-    @Override
-    public String getDescription() {
-        return description1;
-    }
+    private String specify;
 
     public static TechnicalProfessionalCriterion buildWithExists(boolean exists) {
         TechnicalProfessionalCriterion criterion = new TechnicalProfessionalCriterion();
