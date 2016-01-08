@@ -36,6 +36,7 @@ final class ResponseValueParsers {
         PARSERS.put(ExpectedResponseType.COUNTRY, new CountryValueParser());
         PARSERS.put(ExpectedResponseType.AMOUNT, new AmountValueParser());
         PARSERS.put(ExpectedResponseType.PERCENTAGE, new PercentageValueParser());
+        PARSERS.put(ExpectedResponseType.QUANTITY, new QuantityValueParser());
     }
 
     private ResponseValueParsers() {
@@ -166,6 +167,17 @@ final class ResponseValueParsers {
                 return null;
             }
             return responseType.getPercent().getValue().doubleValue();
+        }
+    }
+
+    private static class QuantityValueParser implements ResponseValueParser<Integer> {
+
+        @Override
+        public Integer parseValue(ResponseType responseType) {
+            if (responseType.getQuantity() == null || responseType.getQuantity().getValue() == null) {
+                return null;
+            }
+            return responseType.getQuantity().getValue().intValue();
         }
     }
 }

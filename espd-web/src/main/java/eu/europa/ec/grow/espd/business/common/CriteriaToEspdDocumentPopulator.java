@@ -67,12 +67,10 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionSelectedTaxes(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        espdDocument.setPaymentTaxes(
-                (TaxesCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria));
-        espdDocument.setPaymentSocialSecurity(
-                (TaxesCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria));
+        espdDocument.setPaymentTaxes((TaxesCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria));
+        espdDocument.setPaymentSocialSecurity((TaxesCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria));
     }
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
@@ -85,18 +83,14 @@ public class CriteriaToEspdDocumentPopulator {
                 (BankruptcyCriterion) criterionFactory.buildEspdCriterion(ExclusionCriterion.BANKRUPTCY, ublCriteria));
         espdDocument.setInsolvency(
                 (BankruptcyCriterion) criterionFactory.buildEspdCriterion(ExclusionCriterion.INSOLVENCY, ublCriteria));
-        espdDocument.setAnalogousSituation(
-                (BankruptcyCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria));
-        espdDocument.setAssetsAdministeredByLiquidator(
-                (BankruptcyCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria));
-        espdDocument.setBusinessActivitiesSuspended(
-                (BankruptcyCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria));
-        espdDocument.setArrangementWithCreditors(
-                (BankruptcyCriterion) criterionFactory
-                        .buildEspdCriterion(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria));
+        espdDocument.setAnalogousSituation((BankruptcyCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria));
+        espdDocument.setAssetsAdministeredByLiquidator((BankruptcyCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria));
+        espdDocument.setBusinessActivitiesSuspended((BankruptcyCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria));
+        espdDocument.setArrangementWithCreditors((BankruptcyCriterion) criterionFactory
+                .buildEspdCriterion(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria));
     }
 
     private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
@@ -145,51 +139,20 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markSelectionSelectedEconomicFinancial(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(SelectionCriterion.GENERAL_YEARLY_TURNOVER,
-                ublCriteria)) {
-            espdDocument.setGeneralYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setGeneralYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.AVERAGE_YEARLY_TURNOVER,
-                ublCriteria)) {
-            espdDocument.setAverageYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setAverageYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER,
-                ublCriteria)) {
-            espdDocument.setSpecificYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSpecificYearlyTurnover(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER,
-                ublCriteria)) {
-            espdDocument.setSpecificAverageTurnover(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSpecificAverageTurnover(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.FINANCIAL_RATIO,
-                ublCriteria)) {
-            espdDocument.setFinancialRatio(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setFinancialRatio(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE,
-                ublCriteria)) {
-            espdDocument.setProfessionalRiskInsurance(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setProfessionalRiskInsurance(EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS,
-                ublCriteria)) {
-            espdDocument
-                    .setOtherEconomicFinancialRequirements(EconomicFinancialStandingCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setOtherEconomicFinancialRequirements(
-                    EconomicFinancialStandingCriterion.buildWithExists(false));
-        }
+        espdDocument.setGeneralYearlyTurnover((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.GENERAL_YEARLY_TURNOVER, ublCriteria));
+        espdDocument.setAverageYearlyTurnover((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.AVERAGE_YEARLY_TURNOVER, ublCriteria));
+        espdDocument.setSpecificYearlyTurnover((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER, ublCriteria));
+        espdDocument.setSpecificAverageTurnover((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER, ublCriteria));
+        espdDocument.setFinancialRatio((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.FINANCIAL_RATIO, ublCriteria));
+        espdDocument.setProfessionalRiskInsurance((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE, ublCriteria));
+        espdDocument.setOtherEconomicFinancialRequirements((EconomicFinancialStandingCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS, ublCriteria));
     }
 
     private void markSelectionSelectedTechnicalProfessionalAbility(EspdDocument espdDocument,

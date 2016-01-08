@@ -54,6 +54,8 @@ class EspdCriterionFactory {
             return (T) buildPurelyNationalGrounds(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.SUITABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildSuitabilityCriterion(ccvCriterion, ublCriteria);
+        } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildEconomicFinancialStandingCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
         }
@@ -233,6 +235,46 @@ class EspdCriterionFactory {
         boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
 
         SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(yourAnswer);
+
+        criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private EconomicFinancialStandingCriterion buildEconomicFinancialStandingCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return EconomicFinancialStandingCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+
+        EconomicFinancialStandingCriterion criterion = EconomicFinancialStandingCriterion.buildWithExists(yourAnswer);
+
+        Integer year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
+        criterion.setYear1(year1);
+        Amount amount1 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_1, criterionType);
+        if (amount1 != null) {
+            criterion.setAmount1(amount1.getAmount());
+            criterion.setCurrency1(amount1.getCurrency());
+        }
+
+        Integer year2 = readRequirementValue(SelectionCriterionRequirement.YEAR_2, criterionType);
+        criterion.setYear2(year2);
+        Amount amount2 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_2, criterionType);
+        if (amount2 != null) {
+            criterion.setAmount2(amount2.getAmount());
+            criterion.setCurrency2(amount2.getCurrency());
+        }
+
+        Integer year3 = readRequirementValue(SelectionCriterionRequirement.YEAR_3, criterionType);
+        criterion.setYear3(year3);
+        Amount amount3 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_3, criterionType);
+        if (amount3 != null) {
+            criterion.setAmount3(amount3.getAmount());
+            criterion.setCurrency3(amount3.getCurrency());
+        }
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
