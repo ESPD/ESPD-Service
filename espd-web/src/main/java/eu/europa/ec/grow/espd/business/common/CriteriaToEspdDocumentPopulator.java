@@ -18,7 +18,7 @@ import java.util.List;
 @Component
 public class CriteriaToEspdDocumentPopulator {
 
-    private final EspdCriterionPopulator criterionPopulator = new EspdCriterionPopulator();
+    private final EspdCriterionFactory criterionFactory = new EspdCriterionFactory();
 
     /**
      * Update criteria information on the given ESPD document.
@@ -44,67 +44,55 @@ public class CriteriaToEspdDocumentPopulator {
         markExclusionSelectedCriminalConvictions(espdDocument, ublCriteria);
         markExclusionSelectedTaxes(espdDocument, ublCriteria);
         markExclusionEnvironmental(espdDocument, ublCriteria);
-        markExclusionInsolvency(espdDocument, ublCriteria);
+        markExclusionBankruptcyInsolvency(espdDocument, ublCriteria);
         markExclusionMisconduct(espdDocument, ublCriteria);
         markExclusionConflictOfInterest(espdDocument, ublCriteria);
         markExclusionPurelyNational(espdDocument, ublCriteria);
     }
 
     private void markExclusionSelectedCriminalConvictions(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        espdDocument.setCriminalConvictions(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setCriminalConvictions(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION, ublCriteria));
-        espdDocument.setCorruption(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setCorruption(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.CORRUPTION, ublCriteria));
-        espdDocument.setFraud(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setFraud(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.FRAUD, ublCriteria));
-        espdDocument.setTerroristOffences(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setTerroristOffences(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.TERRORIST_OFFENCES, ublCriteria));
-        espdDocument.setMoneyLaundering(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setMoneyLaundering(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.MONEY_LAUNDERING, ublCriteria));
-        espdDocument.setChildLabour(criterionPopulator.<CriminalConvictionsCriterion>buildEspdCriterion(
+        espdDocument.setChildLabour(criterionFactory.<CriminalConvictionsCriterion>buildEspdCriterion(
                 ExclusionCriterion.CHILD_LABOUR, ublCriteria));
     }
 
     private void markExclusionSelectedTaxes(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         espdDocument.setPaymentTaxes(
-                (TaxesCriterion) criterionPopulator
+                (TaxesCriterion) criterionFactory
                         .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_TAXES, ublCriteria));
         espdDocument.setPaymentSocialSecurity(
-                (TaxesCriterion) criterionPopulator
+                (TaxesCriterion) criterionFactory
                         .buildEspdCriterion(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria));
     }
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        espdDocument.setBreachingObligations((EnvironmentalCriterion) criterionPopulator
+        espdDocument.setBreachingObligations((EnvironmentalCriterion) criterionFactory
                 .buildEspdCriterion(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria));
     }
 
-    private void markExclusionInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(ExclusionCriterion.BANKRUPTCY, ublCriteria)) {
-            espdDocument.setBankruptcy(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setBankruptcy(BankruptcyCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.INSOLVENCY, ublCriteria)) {
-            espdDocument.setInsolvency(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setInsolvency(BankruptcyCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria)) {
-            espdDocument.setAnalogousSituation(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setAnalogousSituation(BankruptcyCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria)) {
-            espdDocument.setAssetsAdministeredByLiquidator(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setAssetsAdministeredByLiquidator(BankruptcyCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria)) {
-            espdDocument.setBusinessActivitiesSuspended(BankruptcyCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setBusinessActivitiesSuspended(BankruptcyCriterion.buildWithExists(false));
-        }
+    private void markExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        espdDocument.setBankruptcy(
+                (BankruptcyCriterion) criterionFactory.buildEspdCriterion(ExclusionCriterion.BANKRUPTCY, ublCriteria));
+        espdDocument.setInsolvency(
+                (BankruptcyCriterion) criterionFactory.buildEspdCriterion(ExclusionCriterion.INSOLVENCY, ublCriteria));
+        espdDocument.setAnalogousSituation(
+                (BankruptcyCriterion) criterionFactory
+                        .buildEspdCriterion(ExclusionCriterion.ANALOGOUS_SITUATION, ublCriteria));
+        espdDocument.setAssetsAdministeredByLiquidator(
+                (BankruptcyCriterion) criterionFactory
+                        .buildEspdCriterion(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR, ublCriteria));
+        espdDocument.setBusinessActivitiesSuspended(
+                (BankruptcyCriterion) criterionFactory
+                        .buildEspdCriterion(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED, ublCriteria));
     }
 
     private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {

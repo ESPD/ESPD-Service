@@ -22,8 +22,17 @@ import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
  * <p/>
  * Created by ratoico on 1/7/16 at 11:16 AM.
  */
-class EspdCriterionPopulator {
+class EspdCriterionFactory {
 
+    /**
+     * Create a ESPD {@link Criterion} instance containing the appropriate information provided as UBL criteria.
+     *
+     * @param ccvCriterion
+     * @param ublCriteria
+     * @param <T>
+     *
+     * @return
+     */
     <T extends Criterion> T buildEspdCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
         if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.equals(ccvCriterion.getCriterionType())) {
             return (T) buildCriminalConvictionsCriterion(ccvCriterion, ublCriteria);
@@ -33,6 +42,10 @@ class EspdCriterionPopulator {
         } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL.equals(ccvCriterion.getCriterionType()) ||
                 ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildEnvironmentalCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildBankruptcyCriterion(ccvCriterion, ublCriteria);
+        } else if (ExclusionCriterionTypeCode.MISCONDUCT.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildMisconductCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -108,7 +121,8 @@ class EspdCriterionPopulator {
         return criterion;
     }
 
-    private EnvironmentalCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+    private EnvironmentalCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
             return EnvironmentalCriterion.buildWithExists(false);
@@ -121,6 +135,43 @@ class EspdCriterionPopulator {
         criterion.setDescription(description);
 
         criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+
+        return criterion;
+    }
+
+    private BankruptcyCriterion buildBankruptcyCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return BankruptcyCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        BankruptcyCriterion criterion = BankruptcyCriterion.buildWithExists(yourAnswer);
+        String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+        String reasonContract = readRequirementValue(ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT,
+                criterionType);
+        criterion.setReason(reasonContract);
+
+        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private MisconductCriterion buildMisconductCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return MisconductCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+
+        MisconductCriterion criterion = MisconductCriterion.buildWithExists(yourAnswer);
+        String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        criterion.setDescription(description);
+
+        criterion.setAvailableElectronically(buildAvailableElectronically(criterionType));
 
         return criterion;
     }
