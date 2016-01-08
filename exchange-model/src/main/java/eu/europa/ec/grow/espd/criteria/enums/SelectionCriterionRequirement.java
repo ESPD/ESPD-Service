@@ -98,17 +98,17 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     RECIPIENTS_1("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS_TEXT,
-            ExpectedResponseType.TEXT),
+            ExpectedResponseType.DESCRIPTION),
     /**
      *
      */
     RECIPIENTS_2("c8babafa-b6fa-4e14-8749-d913d8f1d33b", CriterionText.RECIPIENTS_TEXT,
-            ExpectedResponseType.TEXT),
+            ExpectedResponseType.DESCRIPTION),
     /**
      *
      */
     RECIPIENTS_3("5157e1ff-d272-4382-98a9-6953f5a15300", CriterionText.RECIPIENTS_TEXT,
-            ExpectedResponseType.TEXT),
+            ExpectedResponseType.DESCRIPTION),
     /**
      *
      */

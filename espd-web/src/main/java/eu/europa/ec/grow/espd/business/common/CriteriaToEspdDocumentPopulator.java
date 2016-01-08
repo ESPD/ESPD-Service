@@ -194,147 +194,46 @@ public class CriteriaToEspdDocumentPopulator {
 
     private void markSelectionSelectedTechnicalProfessionalAbility(EspdDocument espdDocument,
             List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(
-                SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS,
-                ublCriteria)) {
-            espdDocument.setWorkContractsPerformanceOfWorks(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setWorkContractsPerformanceOfWorks(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES,
-                ublCriteria)) {
-            espdDocument.setSupplyContractsPerformanceDeliveries(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSupplyContractsPerformanceDeliveries(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES,
-                ublCriteria)) {
-            espdDocument.setServiceContractsPerformanceServices(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setServiceContractsPerformanceServices(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES,
-                ublCriteria)) {
-            espdDocument.setTechniciansTechnicalBodies(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setTechniciansTechnicalBodies(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES,
-                ublCriteria)) {
-            espdDocument.setWorkContractsTechnicians(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setWorkContractsTechnicians(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES,
-                ublCriteria)) {
-            espdDocument.setTechnicalFacilitiesMeasures(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setTechnicalFacilitiesMeasures(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES,
-                ublCriteria)) {
-            espdDocument.setStudyResearchFacilities(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setStudyResearchFacilities(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT,
-                ublCriteria)) {
-            espdDocument.setSupplyChainManagement(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSupplyChainManagement(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.ALLOWANCE_OF_CHECKS,
-                ublCriteria)) {
-            espdDocument.setAllowanceOfChecks(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setAllowanceOfChecks(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS,
-                ublCriteria)) {
-            espdDocument.setEducationalProfessionalQualifications(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument
-                    .setEducationalProfessionalQualifications(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES,
-                ublCriteria)) {
-            espdDocument.setEnvironmentalManagementFeatures(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setEnvironmentalManagementFeatures(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF,
-                ublCriteria)) {
-            espdDocument.setNumberManagerialStaff(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setNumberManagerialStaff(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER,
-                ublCriteria)) {
-            espdDocument.setAverageAnnualManpower(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setAverageAnnualManpower(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT,
-                ublCriteria)) {
-            espdDocument.setToolsPlantTechnicalEquipment(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setToolsPlantTechnicalEquipment(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(SelectionCriterion.SUBCONTRACTING_PROPORTION,
-                ublCriteria)) {
-            espdDocument.setSubcontractingProportion(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSubcontractingProportion(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA,
-                ublCriteria)) {
-            espdDocument.setSupplyContractsSamplesDescriptionsWithoutCa(
-                    TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSupplyContractsSamplesDescriptionsWithoutCa(
-                    TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA,
-                ublCriteria)) {
-            espdDocument.setSupplyContractsSamplesDescriptionsWithCa(
-                    TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSupplyContractsSamplesDescriptionsWithCa(
-                    TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC,
-                ublCriteria)) {
-            espdDocument.setSupplyContractsCertificatesQc(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setSupplyContractsCertificatesQc(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA,
-                ublCriteria)) {
-            espdDocument.setCertificateIndependentBodiesAboutQa(TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setCertificateIndependentBodiesAboutQa(TechnicalProfessionalCriterion.buildWithExists(false));
-        }
-        if (isCriterionSelected(
-                SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL,
-                ublCriteria)) {
-            espdDocument.setCertificateIndependentBodiesAboutEnvironmental(
-                    TechnicalProfessionalCriterion.buildWithExists(true));
-        } else {
-            espdDocument.setCertificateIndependentBodiesAboutEnvironmental(
-                    TechnicalProfessionalCriterion.buildWithExists(false));
-        }
+        espdDocument.setWorkContractsPerformanceOfWorks((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS, ublCriteria));
+        espdDocument.setSupplyContractsPerformanceDeliveries((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES, ublCriteria));
+        espdDocument.setServiceContractsPerformanceServices((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES, ublCriteria));
+        espdDocument.setTechniciansTechnicalBodies((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES, ublCriteria));
+        espdDocument.setWorkContractsTechnicians((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES, ublCriteria));
+        espdDocument.setTechnicalFacilitiesMeasures((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES, ublCriteria));
+        espdDocument.setStudyResearchFacilities((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES, ublCriteria));
+        espdDocument.setSupplyChainManagement((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT, ublCriteria));
+        espdDocument.setAllowanceOfChecks((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.ALLOWANCE_OF_CHECKS, ublCriteria));
+        espdDocument.setEducationalProfessionalQualifications((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS, ublCriteria));
+        espdDocument.setEnvironmentalManagementFeatures((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES, ublCriteria));
+        espdDocument.setNumberManagerialStaff((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF, ublCriteria));
+        espdDocument.setAverageAnnualManpower((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER, ublCriteria));
+        espdDocument.setToolsPlantTechnicalEquipment((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT, ublCriteria));
+        espdDocument.setSubcontractingProportion((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUBCONTRACTING_PROPORTION, ublCriteria));
+        espdDocument.setSupplyContractsSamplesDescriptionsWithoutCa((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA, ublCriteria));
+        espdDocument.setSupplyContractsSamplesDescriptionsWithCa((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA, ublCriteria));
+        espdDocument.setSupplyContractsCertificatesQc((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC, ublCriteria));
+        espdDocument.setCertificateIndependentBodiesAboutQa((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA, ublCriteria));
+        espdDocument.setCertificateIndependentBodiesAboutEnvironmental((TechnicalProfessionalCriterion) criterionFactory
+                .buildEspdCriterion(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA, ublCriteria));
     }
 
     private boolean isCriterionSelected(CcvCriterion criterion, List<CriterionType> ublCriteria) {

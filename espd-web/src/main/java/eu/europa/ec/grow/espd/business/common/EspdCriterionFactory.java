@@ -54,6 +54,8 @@ class EspdCriterionFactory {
             return (T) buildPurelyNationalGrounds(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.SUITABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildSuitabilityCriterion(ccvCriterion, ublCriteria);
+        } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
         }
         return null;
     }
@@ -231,6 +233,58 @@ class EspdCriterionFactory {
         boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
 
         SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(yourAnswer);
+
+        criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private TechnicalProfessionalCriterion buildTechnicalProfessionalCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return TechnicalProfessionalCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+
+        TechnicalProfessionalCriterion criterion = TechnicalProfessionalCriterion.buildWithExists(yourAnswer);
+
+        String description1 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_1, criterionType);
+        criterion.setDescription1(description1);
+        Amount amount1 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_1, criterionType);
+        if (amount1 != null) {
+            criterion.setAmount1(amount1.getAmount());
+            criterion.setCurrency1(amount1.getCurrency());
+        }
+        Date date1 = readRequirementValue(SelectionCriterionRequirement.DATE_1, criterionType);
+        criterion.setDate1(date1);
+        String recipients1 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_1, criterionType);
+        criterion.setRecipients1(recipients1);
+
+        String description2 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_2, criterionType);
+        criterion.setDescription2(description2);
+        Amount amount2 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_2, criterionType);
+        if (amount2 != null) {
+            criterion.setAmount2(amount2.getAmount());
+            criterion.setCurrency2(amount2.getCurrency());
+        }
+        Date date2 = readRequirementValue(SelectionCriterionRequirement.DATE_2, criterionType);
+        criterion.setDate2(date2);
+        String recipients2 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_2, criterionType);
+        criterion.setRecipients2(recipients2);
+
+        String description3 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_3, criterionType);
+        criterion.setDescription3(description3);
+        Amount amount3 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_3, criterionType);
+        if (amount3 != null) {
+            criterion.setAmount3(amount3.getAmount());
+            criterion.setCurrency3(amount3.getCurrency());
+        }
+        Date date3 = readRequirementValue(SelectionCriterionRequirement.DATE_3, criterionType);
+        criterion.setDate3(date3);
+        String recipients3 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_3, criterionType);
+        criterion.setRecipients3(recipients3);
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 

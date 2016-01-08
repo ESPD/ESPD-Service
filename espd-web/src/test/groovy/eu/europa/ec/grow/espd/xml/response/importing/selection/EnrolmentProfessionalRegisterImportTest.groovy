@@ -9,7 +9,7 @@ import org.apache.commons.io.IOUtils
  */
 class EnrolmentProfessionalRegisterImportTest extends AbstractXmlFileImport {
 
-    def "02. should import all fields of 'Purely national exclusion grounds'"() {
+    def "02. should import all fields of 'Enrolment in a relevant professional register'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/enrolment_professional_register_import.xml")
 

@@ -56,7 +56,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
         checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "TEXT")
+        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipients2Group(def group) {
@@ -66,7 +66,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[0], "927def36-1fa3-4018-8b45-7ee2c5b1e0af", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
         checkRequirement(group.Requirement[2], "8d0e5e16-85ed-4730-a784-d4db8f439c0c", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "TEXT")
+        checkRequirement(group.Requirement[3], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipients3Group(def group) {
@@ -76,7 +76,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[0], "e6ca4034-cfee-499a-9a47-c4f2862ef4d0", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
         checkRequirement(group.Requirement[2], "c953e635-580b-4d7c-a30c-2edbde3b8fdf", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "TEXT")
+        checkRequirement(group.Requirement[3], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "DESCRIPTION")
     }
 
 }
