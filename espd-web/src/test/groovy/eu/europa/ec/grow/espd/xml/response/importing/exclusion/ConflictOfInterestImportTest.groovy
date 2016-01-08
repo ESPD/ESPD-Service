@@ -9,7 +9,7 @@ import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/8/16 at 10:49 AM.
  */
-class ConflictOfInterestImport extends AbstractXmlFileImport {
+class ConflictOfInterestImportTest extends AbstractXmlFileImport {
 
     def "17. should import all fields of 'Conflict of interest due to its participation in the procurement procedure'"() {
         given:
