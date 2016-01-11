@@ -13,12 +13,12 @@
 <tiles:importAttribute name="breachOfObligations"/>
 <tiles:importAttribute name="availableElectronically"/>
 
-<div class="row" style="border: 1px solid lightgray; margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
-		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
+<div class="row" style="border: 1px solid lightgray; margin-right: 5px; margin-left: 0px; margin-bottom: 5px;">
+		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 5px;padding-left: 5px; padding-top: 7px;">
 				<div class="form-group">
 					<div class="col-md-12"> 
 						<strong data-i18n="${title_code}">  
-							<s:message code='${title_code}'/> 
+							<s:message code='${title_code}'/>
 						</strong>
 						<%-- TOOLTIP (delete this)--%>
 						<c:if test="${field == 'paymentTaxes'}">

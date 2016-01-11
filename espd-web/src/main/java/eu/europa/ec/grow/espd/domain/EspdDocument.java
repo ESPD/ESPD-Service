@@ -14,9 +14,11 @@ public class EspdDocument {
     private PartyImpl authority;
     private PartyImpl empowered;
     private EconomicOperatorImpl eoperator;
+
+    private String ojsNumber;
     
-    private String procurerName;
-    private String procedureDesc;
+    private String procedureTitle;
+    private String procedureShortDesc;
     private String lotConcerned;
     private String fileRefByCA;
 

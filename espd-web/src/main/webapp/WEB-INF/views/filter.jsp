@@ -17,11 +17,16 @@ $(function() {
 	$("input:file").change(function (){
 		if($(this).val() != '') {
 			$('#tab-from').addClass('active');
+			$('#nextBtn').prop('disabled', $("#country").val() === '');
 		}
 	});
-    $("*[name='country']").change(function() {
-    	$('#nextBtn').prop('disabled', $(this).val() === '---');
+    $("#country").change(function() {
+    	$('#nextBtn').prop('disabled', $(this).val() === '');
     });
+    $("*[name='action']").click(function () {
+    	$('#nextBtn').prop('disabled', $("#country").val() === '');
+    });
+    $('#nextBtn').prop('disabled', true);
 });
 </script>
 
@@ -82,17 +87,12 @@ $(function() {
 						<span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_ca_can_import_espd'/>"></span>
 					</div>
 					<div class="radio">
-						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_overview_espds"><s:message code='filter_overview_espds'/></span></label>
-						<span data-i18n="tooltip_overview_received_espds" data-toggle="tooltip" title="<s:message code='tooltip_overview_received_espds'/>"></span>
-					</div>
-					<div class="radio">
 						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_review_espd"><s:message code='filter_review_espd'/></span></label>
 						<span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="<s:message code='tooltip_review_espd'/>"></span>
 					</div>
 				</div>
 
 				<div class="tab-pane" id="tab_eo">
-				
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
 					
 					<div class=" radio">
@@ -100,11 +100,6 @@ $(function() {
 						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_import_espd"><s:message code='filter_import_espd'/></span></label>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
 						
-					</div>
-					<div class="radio">
-						<span class="k-button fa fa-upload hoverable"></span>
-						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_reuse_espd"><s:message code='filter_reuse_espd'/></span></label>
-						<span data-i18n="tooltip_eo_can_reuse_espd" data-toggle="tooltip" title="<s:message code='tooltip_eo_can_reuse_espd'/>"/>
 					</div>
 					
 				</div>
@@ -130,6 +125,8 @@ $(function() {
 	</div>
 
     <tiles:insertDefinition name="footerButtons">
+    	<tiles:putAttribute name="prevLink" value="true"/>
+    	<tiles:putAttribute name="prevUrl" value="welcome"/>
     </tiles:insertDefinition>
 	
 </form:form>

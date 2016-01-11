@@ -45,12 +45,7 @@ class WelcomeController {
     public String showWelcomePage() {
         return "welcome";
     }
-
-    @RequestMapping("/splash")
-    public String showSplashPage() {
-        return "splash";
-    }
-
+    
     @RequestMapping("/filter")
     public String showFilterPage() {
 

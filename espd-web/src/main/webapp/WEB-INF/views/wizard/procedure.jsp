@@ -104,22 +104,22 @@
 	                                 <tiles:putAttribute name="vat" value="true"/>
 	                                 <tiles:putAttribute name="contacts" value="true"/>
 	                            </tiles:insertDefinition>
-                            
+                           
 		                       <div class="form-group">
 		                            <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
 		                            <div class="col-md-8">
-		                                [TEXTAREA]
+		                            	<form:input cssClass="form-control" path="eoperator.contactPerson" placeholder="Person(s)"/>
 		                            </div>
 		                        </div>
-		
+
 		                       <div class="form-group">
 		                            <label class="control-label col-md-4" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
 		                            <div class="col-md-8">
-		                                [INPUT]
+		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="web address"/>
 		                            </div>
 		                       </div>
 	                        </div>
-                       
+
 
                        <div class="col-md-12 form-group">
                             <label class="control-label col-md-6" data-i18n="createeo_is_eo_sized"><s:message code="createeo_is_eo_sized"/></label>
@@ -338,41 +338,19 @@
                                     <form:errors path="authority.name" cssClass="alert-danger"/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4 " for="natRegNumber"><span data-i18n="createca_nat_regnum"><s:message
-                                        code="createca_nat_regnum"/></span></label>
-
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.nationalRegistrationNumber" id="natRegNumber"
-                                                placeholder="Enter registration number"/>
-                                </div>
-                            </div>
-                            
-                            <tiles:insertDefinition name="partyInfo">
-                                 <tiles:putAttribute name="field" value="authority"/>
-                                 <tiles:putAttribute name="address" value="true"/>
-                            </tiles:insertDefinition>
-                            
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_contact_person"><s:message code="createca_contact_person"/></label>
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.contactName" id="contactName" placeholder="Enter contact person"/>
-                                </div>
-                            </div>
-                            
-                            <tiles:insertDefinition name="partyInfo">
-                                 <tiles:putAttribute name="field" value="authority"/>
-                                 <tiles:putAttribute name="contacts" value="true"/>
-                            </tiles:insertDefinition>
-                            
-                            <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_website"><s:message code="createca_website"/></label>
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="authority.website" id="website" placeholder="Enter Website"/>
-                                </div>
-                            </div>
+
+							<div class=" form-group ">
+								<label class="control-label col-md-4" data-i18n="createca_country"><s:message code="createca_country"/></label>
+								<div class="col-md-8">
+									<tiles:insertDefinition name="countries">
+										<tiles:putAttribute name="countryField" value="authority.country"/>
+										<tiles:putAttribute name="countryHtmlId" value="country"/>
+										<tiles:putAttribute name="countryCssClass" value="form-control"/>
+									</tiles:insertDefinition>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -386,9 +364,19 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-espd-info"
-                                 style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                <span data-i18n="createca_to_be_filled_alert"><s:message code="createca_to_be_filled_alert"/></span>
+                            <div class="alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                <div class="form-group">
+                                	<span data-i18n="createca_to_be_filled_alert"><s:message code="createca_to_be_filled_alert"/></span>
+                                </div>
+	                            <div class="form-group">
+	                                <label class="control-label col-md-4" data-i18n="createca_ojs_label"><s:message code="createca_ojs_label"/></label>
+	                                <div class="col-md-8">
+	                                    <form:input cssClass="form-control" path="ojsNumber" placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ][ ]"/>
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+                                	<span data-i18n="createca_official_journal_alert"><s:message code="createca_official_journal_alert"/></span>
+                                </div>
                             </div>
 
                             <div class="alert alert-espd-info"
@@ -397,16 +385,16 @@
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <label class="control-label col-md-4" for="procurerName" data-i18n="createca_procurer_name"><s:message code="createca_procurer_name"/></label>
+                                <label class="control-label col-md-4" data-i18n="createca_procurer_name"><s:message code="createca_procurer_name"/></label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="procurerName" placeholder="Name"/>
+                                    <form:input cssClass="form-control" path="procedureTitle" placeholder="Name"/>
                                 </div>
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <label class="control-label col-md-4" for="procedureDesc"><span data-i18n="createca_title_or_short_desc_"><s:message code="createca_title_or_short_desc_"/></span></label>
+                                <label class="control-label col-md-4"><span data-i18n="createca_title_or_short_desc_"><s:message code="createca_title_or_short_desc_"/></span></label>
                                  <div class="col-md-8">
-                                	<form:textarea path="procedureDesc" id="procedureDesc" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
+                                	<form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
                                	</div>
                             </div>
                             
@@ -440,6 +428,8 @@
     </div>
 
     <tiles:insertDefinition name="footerButtons">
+    	<tiles:putAttribute name="prevLink" value="true"/>
+    	<tiles:putAttribute name="prevUrl" value="filter"/>
     </tiles:insertDefinition>
 
 </form:form>

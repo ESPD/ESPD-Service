@@ -4,7 +4,7 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="row" style="border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;">
-		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 20px;">
+		<div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 5px;">
 				<div class="form-group">
 					<div class="col-md-12"> 
 						<strong>${number}. </strong>

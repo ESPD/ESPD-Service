@@ -14,10 +14,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />
     </definition>
 
-    <definition name="splash" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/splash.jsp" />
-    </definition>
-
     <definition name="filter" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/filter.jsp" />
     </definition>
@@ -122,6 +118,8 @@
 
     <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/footerButtons.jsp">
         <put-attribute name="lastStep" value="false"/>
+        <put-attribute name="prevLink" value="false"/>
+        <put-attribute name="prevUrl" value=""/>
     </definition>
 
     <!-- test for selection-->

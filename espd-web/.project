@@ -3,6 +3,7 @@
 	<name>espd-web</name>
 	<comment></comment>
 	<projects>
+		<project>exchange-model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
