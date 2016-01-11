@@ -11,8 +11,9 @@
 </tiles:insertTemplate>
 
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-nevertheless">Indicate reasons for being nevertheless to perfom the contract </label>
-	<div class="col-md-8"> 
-		<textarea if="${field}-field-nevertheless" class="form-control" placeholder="Enter text"></textarea>
+	<label class="control-label col-md-4 small" for="${field}-field-nevertheless" data-i18n="crit_reasons_nevertheless_contract"><s:message code='crit_reasons_nevertheless_contract'/> </label>
+	<div class="col-md-8">
+        <s:message code="crit_reasons_nevertheless_contract_placeholder" var="reasonPlaceholder"/>
+		<textarea if="${field}-field-nevertheless" class="form-control" placeholder="${reasonPlaceholder}"></textarea>
 	</div>
 </div> 

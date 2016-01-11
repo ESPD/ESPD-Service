@@ -23,7 +23,8 @@
 		</div>
 	</div>
 	<div class=" form-group">
-		<label class="control-label col-md-4" data-i18n="createca_city"><s:message code="createca_city"/></label>                                <div class="col-md-8">
+		<label class="control-label col-md-4" data-i18n="createca_city"><s:message code="createca_city"/></label>
+        <div class="col-md-8">
 			<form:input cssClass="form-control" path="${field}.city" id="city" placeholder="Enter City"/>
 		</div>
 	</div>

@@ -24,14 +24,16 @@
     </div>
 	<div class="form-group">
 		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-date" data-i18n="crit_date_of_conviction_or_decision"><s:message code='crit_date_of_conviction_or_decision'/></label>
-		<div class="col-md-8"> 
-			<input type="text" path="${field}.dateOfConviction" class="form-control datepicker" id="${field}-breach-of-obligations-date-value" placeholder="Enter date"/>
+		<div class="col-md-8">
+            <s:message code="crit_date_of_conviction_or_decision" var="dateOfConvictionPlaceholder"/>
+			<input type="text" path="${field}.dateOfConviction" class="form-control datepicker" id="${field}-breach-of-obligations-date-value" placeholder="${dateOfConvictionPlaceholder}"/>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-repiod-length" data-i18n="crit_taxes_length_period_of_exclusion"><s:message code='crit_taxes_length_period_of_exclusion'/></label>
-		<div class="col-md-8"> 
-			<input type="text" path="${field}.periodLength" class="form-control" id="${field}-breach-of-obligations-repiod-length"/>
+		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-period-length" data-i18n="crit_taxes_length_period_of_exclusion"><s:message code='crit_taxes_length_period_of_exclusion'/></label>
+		<div class="col-md-8">
+            <s:message code="crit_length_period_exclusion_placeholder" var="periodOfExclusionPlaceholder"/>
+			<input type="text" path="${field}.periodLength" class="form-control" id="${field}-breach-of-obligations-period-length" placeholder="${periodOfExclusionPlaceholder}"/>
 		</div>
 	</div>
     <div class="form-group">

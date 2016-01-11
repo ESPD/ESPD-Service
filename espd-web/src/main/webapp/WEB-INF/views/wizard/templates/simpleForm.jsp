@@ -7,8 +7,9 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-describe">Please describe them </label>
-	<div class="col-md-8"> 
-		<textarea id="${field}-field-describe" class="form-control" placeholder="Enter text"></textarea>
+	<label class="control-label col-md-4 small" for="${field}-field-describe" data-i18n="crit_please_describe_them"><s:message code='crit_please_describe_them'/></label>
+	<div class="col-md-8">
+        <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
+		<textarea id="${field}-field-describe" class="form-control" placeholder="${describePlaceholder}"></textarea>
 	</div>
 </div> 
