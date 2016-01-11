@@ -35,7 +35,9 @@ public class EspdDocument {
     private TaxesCriterion paymentSocialSecurity;
 
     private LawCriterion breachingObligationsEnvironmental;
-    
+    private LawCriterion breachingObligationsSocial;
+    private LawCriterion breachingObligationsLabour;
+
     private BankruptcyCriterion bankruptcy;
     private BankruptcyCriterion insolvency;
     private BankruptcyCriterion arrangementWithCreditors;

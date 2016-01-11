@@ -1,15 +1,16 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
-import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
- * Created by ratoico on 12/9/15 at 1:24 PM.
+ * Created by ratoico on 1/11/16 at 10:59 AM.
  */
-class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
+class BreachingObligationsSocialRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "21. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
+    def "10. should contain the 'Breaching of obligations in the fields of social law' criterion"() {
         given:
-        def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true))
+        def espd = new EspdDocument(breachingObligationsSocial: new LawCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -17,16 +18,16 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
 
         then: "CriterionID element"
         request.Criterion.size() == 1
-        checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
+        checkCriterionId(request, idx, "a261a395-ed17-4939-9c75-b9ff1109ca6e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.SOCIAL_LAW")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Early termination, damages or other comparable sanctions"
+        request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of social law"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?"
+        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of social law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
@@ -35,7 +36,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "72f29e01-d0be-4e33-90f3-954c26fd0899"
+        request.Criterion[idx].RequirementGroup[0].ID.text() == "78e741f5-d41e-48e8-9052-70b8c7e5c8ab"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
         request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
@@ -46,7 +47,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
         def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
         checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
-        then: "self cleanining"
+        then: "check first sub group"
         def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
         checkSelfCleaningRequirementGroup(sub1_1)
     }

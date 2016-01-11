@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "15. should contain the 'Business activities are suspended' criterion"() {
+    def "17. should contain the 'Business activities are suspended' criterion"() {
         given:
         def espd = new EspdDocument(businessActivitiesSuspended: new BankruptcyCriterion(exists: true))
 

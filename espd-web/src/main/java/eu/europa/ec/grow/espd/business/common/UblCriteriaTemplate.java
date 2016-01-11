@@ -48,7 +48,7 @@ public abstract class UblCriteriaTemplate {
         List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
         markSelectedExclusionCriminalConvictions(espdDocument, criterionTypes);
         markSelectedExclusionPayment(espdDocument, criterionTypes);
-        markSelectedExclusionEnvironmental(espdDocument, criterionTypes);
+        markSelectedExclusionLaw(espdDocument, criterionTypes);
         markSelectedExclusionBankruptcyInsolvency(espdDocument, criterionTypes);
         markSelectedExclusionMisconduct(espdDocument, criterionTypes);
         markSelectedExclusionConflictOfInterest(espdDocument, criterionTypes);
@@ -70,9 +70,13 @@ public abstract class UblCriteriaTemplate {
         addUblCriterionIfSelected(PAYMENT_OF_SOCIAL_SECURITY, espdDocument.getPaymentSocialSecurity(), criteria);
     }
 
-    private void markSelectedExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> criteria) {
+    private void markSelectedExclusionLaw(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL,
                 espdDocument.getBreachingObligationsEnvironmental(), criteria);
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_SOCIAL,
+                espdDocument.getBreachingObligationsSocial(), criteria);
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_LABOUR,
+                espdDocument.getBreachingObligationsLabour(), criteria);
     }
 
     private void markSelectedExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> criteria) {

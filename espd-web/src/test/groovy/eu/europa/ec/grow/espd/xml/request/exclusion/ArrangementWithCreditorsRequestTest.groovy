@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class ArrangementWithCreditorsRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "12. should contain the 'Arrangement with creditors' criterion"() {
+    def "14. should contain the 'Arrangement with creditors' criterion"() {
         given:
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true))
 

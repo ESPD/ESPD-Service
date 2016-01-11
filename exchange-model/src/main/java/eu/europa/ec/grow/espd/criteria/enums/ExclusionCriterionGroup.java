@@ -92,6 +92,16 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    BREACHING_OF_OBLIGATIONS_SOCIAL_GROUP("78e741f5-d41e-48e8-9052-70b8c7e5c8ab", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+    /**
+     *
+     */
+    BREACHING_OF_OBLIGATIONS_LABOUR_GROUP("c5bc8338-6f20-4f53-a3b1-1e6be0480759", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+    /**
+     *
+     */
     BANKRUPTCY_GROUP("d91c11a1-f19e-4b83-8ade-c4be2bf00555", Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER, PLEASE_DESCRIBE, REASONS_NEVERTHELESS_CONTRACT)),
     /**

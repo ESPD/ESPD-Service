@@ -6,7 +6,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class ConflictOfInterestParticipationProcurementProcedureResponseTest extends AbstractExclusionCriteriaFixture {
 
-    def "17. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
+    def "19. should contain the 'Conflict of interest due to its participation in the procurement procedure' criterion"() {
         given:
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true))
 

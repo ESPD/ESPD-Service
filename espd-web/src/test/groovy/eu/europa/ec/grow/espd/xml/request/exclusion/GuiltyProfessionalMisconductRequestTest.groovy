@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "16. should contain the 'Guilty of grave professional misconduct' criterion"() {
+    def "18. should contain the 'Guilty of grave professional misconduct' criterion"() {
         given:
         def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true))
 

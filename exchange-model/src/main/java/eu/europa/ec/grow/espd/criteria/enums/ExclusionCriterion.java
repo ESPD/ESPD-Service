@@ -89,6 +89,22 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
+    BREACHING_OF_OBLIGATIONS_SOCIAL("a261a395-ed17-4939-9c75-b9ff1109ca6e",
+            "Breaching of obligations in the fields of social law",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of social law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            ExclusionCriterionTypeCode.SOCIAL_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            list(BREACHING_OF_OBLIGATIONS_SOCIAL_GROUP)),
+    /**
+     *
+     */
+    BREACHING_OF_OBLIGATIONS_LABOUR("a34b70d6-c43d-4726-9a88-8e2b438424bf",
+            "Breaching of obligations in the fields of labour law",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            ExclusionCriterionTypeCode.LABOUR_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            list(BREACHING_OF_OBLIGATIONS_LABOUR_GROUP)),
+    /**
+     *
+     */
     BANKRUPTCY("d3732c09-7d62-4edc-a172-241da6636e7c", "Bankruptcy",
             "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract.",
             ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY, LegislationReference.DIRECTIVE_2014_24_EU_57_4,

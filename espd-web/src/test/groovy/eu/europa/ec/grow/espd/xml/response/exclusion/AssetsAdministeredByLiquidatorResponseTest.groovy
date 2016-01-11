@@ -8,7 +8,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriteriaFixture {
 
-    def "14. should contain the 'Assets being administered by liquidator' criterion"() {
+    def "16. should contain the 'Assets being administered by liquidator' criterion"() {
         given:
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true))
 

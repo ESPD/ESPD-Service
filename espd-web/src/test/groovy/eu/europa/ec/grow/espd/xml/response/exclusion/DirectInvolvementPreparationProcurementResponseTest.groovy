@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclusionCriteriaFixture {
 
-    def "18. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
+    def "20. should contain the 'Direct or indirect involvement in the preparation of this procurement procedure' criterion"() {
         given:
         def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true))
 

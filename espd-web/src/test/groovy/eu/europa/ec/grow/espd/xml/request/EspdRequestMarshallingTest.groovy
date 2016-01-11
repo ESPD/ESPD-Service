@@ -167,6 +167,8 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
                 paymentTaxes: new TaxesCriterion(exists: true),
                 paymentSocialSecurity: new TaxesCriterion(exists: true),
                 breachingObligationsEnvironmental: new LawCriterion(exists: true),
+                breachingObligationsSocial: new LawCriterion(exists: true),
+                breachingObligationsLabour: new LawCriterion(exists: true),
                 bankruptcy: new BankruptcyCriterion(exists: true),
                 insolvency: new BankruptcyCriterion(exists: true),
                 arrangementWithCreditors: new BankruptcyCriterion(exists: true),
@@ -219,7 +221,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 //        file.text = xmlOutput
 
         then:
-        result.Criterion.size() == 52
+        result.Criterion.size() == 54
     }
 
     def "should not fail when a criterion has a null exists flag"() {

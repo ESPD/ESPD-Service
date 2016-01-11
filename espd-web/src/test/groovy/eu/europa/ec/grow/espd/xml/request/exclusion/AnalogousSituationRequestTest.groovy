@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class AnalogousSituationRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "13. should contain the 'Analogous situation like bankruptcy under national law' criterion"() {
+    def "15. should contain the 'Analogous situation like bankruptcy under national law' criterion"() {
         given:
         def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true))
 

@@ -7,7 +7,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class InsolvencyRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "11. should contain the 'Insolvency' criterion"() {
+    def "13. should contain the 'Insolvency' criterion"() {
         given:
         def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true))
 

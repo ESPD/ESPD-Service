@@ -43,8 +43,9 @@ class EspdCriterionFactory {
                 ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTaxesCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.equals(ccvCriterion.getCriterionType()) ||
-                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
-            return (T) buildEnvironmentalCriterion(ccvCriterion, ublCriteria);
+                ExclusionCriterionTypeCode.SOCIAL_LAW.equals(ccvCriterion.getCriterionType()) ||
+                ExclusionCriterionTypeCode.LABOUR_LAW.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildLawCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildBankruptcyCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.MISCONDUCT.equals(ccvCriterion.getCriterionType())) {
@@ -136,7 +137,7 @@ class EspdCriterionFactory {
         return criterion;
     }
 
-    private LawCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion,
+    private LawCriterion buildLawCriterion(CcvCriterion ccvCriterion,
             List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
