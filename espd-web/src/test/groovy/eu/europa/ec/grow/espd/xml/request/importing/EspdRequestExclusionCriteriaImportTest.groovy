@@ -69,7 +69,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
         espd.paymentSocialSecurity.exists == true
 
         then: "should have all environmental"
-        espd.breachingObligations.exists == true
+        espd.breachingObligationsEnvironmental.exists == true
 
         then: "should have all insolvency"
         espd.bankruptcy.exists == true
@@ -112,7 +112,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
         espd.paymentSocialSecurity.exists == false
 
         then: "environmental"
-        espd.breachingObligations.exists == false
+        espd.breachingObligationsEnvironmental.exists == false
 
         then: "insolvency"
         espd.bankruptcy.exists == false

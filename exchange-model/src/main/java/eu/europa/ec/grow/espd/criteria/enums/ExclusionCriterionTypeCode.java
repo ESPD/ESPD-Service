@@ -22,9 +22,17 @@ public enum ExclusionCriterionTypeCode implements CcvCriterionType {
      */
     PAYMENT_OF_SOCIAL_SECURITY("Grounds for exclusion relating to the payment of social security contributions"),
     /**
-     * Grounds for exclusion relating to the breaching of environmental, social and labour laws
+     * Grounds for exclusion relating to the breaching of environmental laws
      */
-    ENVIRONMENTAL("Grounds for exclusion relating to the breaching of environmental, social and labour laws"),
+    ENVIRONMENTAL_LAW("Grounds for exclusion relating to the breaching of environmental laws"),
+    /**
+     * Grounds for exclusion relating to the breaching of social laws
+     */
+    SOCIAL_LAW("Grounds for exclusion relating to the breaching of social laws"),
+    /**
+     * Grounds for exclusion relating to the breaching of labour laws
+     */
+    LABOUR_LAW("Grounds for exclusion relating to the breaching of labour laws"),
     /**
      * Grounds for exclusion for bankruptcy of insolvency
      */

@@ -73,7 +73,7 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        espdDocument.setBreachingObligations(criterionFactory.<EnvironmentalCriterion>buildEspdCriterion(
+        espdDocument.setBreachingObligationsEnvironmental(criterionFactory.<LawCriterion>buildEspdCriterion(
                 ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria));
     }
 

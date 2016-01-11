@@ -166,7 +166,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
                 childLabour: new CriminalConvictionsCriterion(exists: true),
                 paymentTaxes: new TaxesCriterion(exists: true),
                 paymentSocialSecurity: new TaxesCriterion(exists: true),
-                breachingObligations: new EnvironmentalCriterion(exists: true),
+                breachingObligationsEnvironmental: new LawCriterion(exists: true),
                 bankruptcy: new BankruptcyCriterion(exists: true),
                 insolvency: new BankruptcyCriterion(exists: true),
                 arrangementWithCreditors: new BankruptcyCriterion(exists: true),

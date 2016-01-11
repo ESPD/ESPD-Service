@@ -71,8 +71,8 @@ public abstract class UblCriteriaTemplate {
     }
 
     private void markSelectedExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> criteria) {
-        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, espdDocument.getBreachingObligations(),
-                criteria);
+        addUblCriterionIfSelected(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL,
+                espdDocument.getBreachingObligationsEnvironmental(), criteria);
     }
 
     private void markSelectedExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> criteria) {

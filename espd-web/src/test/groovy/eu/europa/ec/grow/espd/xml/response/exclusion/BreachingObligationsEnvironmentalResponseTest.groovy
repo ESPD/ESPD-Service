@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
-import eu.europa.ec.grow.espd.domain.EnvironmentalCriterion
+import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -9,9 +9,9 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCriteriaFixture {
 
 
-    def "09. should contain the 'Breaching of obligations in the fields of environmental, social and labour law' criterion"() {
+    def "09. should contain the 'Breaching of obligations in the fields of environmental law' criterion"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true))
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -22,13 +22,13 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.ENVIRONMENTAL")
+        checkCriterionTypeCode(request, idx, "EXCLUSION.ENVIRONMENTAL_LAW")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental, social and labour law"
+        request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental law"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU."
+        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")
@@ -55,7 +55,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true))
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -70,7 +70,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
     def "check the 'Please describe them' requirement response"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true,
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true,
                 description: "bogus description."))
 
         when:
@@ -87,7 +87,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true,
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true,
                 selfCleaning: new SelfCleaning(exists: false)))
 
         when:
@@ -104,7 +104,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
     def "check the 'Self cleaning description' requirement response"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true,
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true,
                 selfCleaning: new SelfCleaning(description: "Hodor_09 is clean")))
 
         when:

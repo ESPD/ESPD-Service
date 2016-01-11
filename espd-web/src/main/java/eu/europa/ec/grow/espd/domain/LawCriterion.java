@@ -8,10 +8,10 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class EnvironmentalCriterion extends ExclusionCriterion implements DescriptionHolder {
+public class LawCriterion extends ExclusionCriterion implements DescriptionHolder {
 
-    public static EnvironmentalCriterion buildWithExists(boolean exists) {
-        EnvironmentalCriterion criterion = new EnvironmentalCriterion();
+    public static LawCriterion buildWithExists(boolean exists) {
+        LawCriterion criterion = new LawCriterion();
         criterion.setExists(exists);
         return criterion;
     }

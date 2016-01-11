@@ -29,11 +29,12 @@ class EspdCriterionFactory {
     /**
      * Create a ESPD {@link Criterion} instance containing the appropriate information provided as UBL criteria.
      *
-     * @param ccvCriterion
-     * @param ublCriteria
+     * @param ccvCriterion The desired criterion containing this metadata
+     * @param ublCriteria List of UBL criteria to be matched
      * @param <T>
      *
      * @return
+     * @throws IllegalArgumentException If the criterion type is not recognized
      */
     <T extends Criterion> T buildEspdCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
         if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.equals(ccvCriterion.getCriterionType())) {
@@ -41,7 +42,7 @@ class EspdCriterionFactory {
         } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.equals(ccvCriterion.getCriterionType()) ||
                 ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTaxesCriterion(ccvCriterion, ublCriteria);
-        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL.equals(ccvCriterion.getCriterionType()) ||
+        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.equals(ccvCriterion.getCriterionType()) ||
                 ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildEnvironmentalCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.equals(ccvCriterion.getCriterionType())) {
@@ -59,7 +60,9 @@ class EspdCriterionFactory {
         } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
         }
-        return null;
+        throw new IllegalArgumentException(
+                String.format("Could not build criterion '%s' with id '%s' having type code '%s'.",
+                        ccvCriterion.getName(), ccvCriterion.getUuid(), ccvCriterion.getCriterionType()));
     }
 
     private CriminalConvictionsCriterion buildCriminalConvictionsCriterion(CcvCriterion ccvCriterion,
@@ -133,16 +136,16 @@ class EspdCriterionFactory {
         return criterion;
     }
 
-    private EnvironmentalCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion,
+    private LawCriterion buildEnvironmentalCriterion(CcvCriterion ccvCriterion,
             List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
-            return EnvironmentalCriterion.buildWithExists(false);
+            return LawCriterion.buildWithExists(false);
         }
 
         boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
 
-        EnvironmentalCriterion criterion = EnvironmentalCriterion.buildWithExists(yourAnswer);
+        LawCriterion criterion = LawCriterion.buildWithExists(yourAnswer);
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 

@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
-import eu.europa.ec.grow.espd.domain.EnvironmentalCriterion
+import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -18,18 +18,18 @@ class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImpor
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
 
         then:
-        espd.breachingObligations.exists == true
-        espd.breachingObligations.description == "Hodor description"
+        espd.breachingObligationsEnvironmental.exists == true
+        espd.breachingObligationsEnvironmental.description == "Hodor description"
 
         then: "self cleaning"
-        espd.breachingObligations.selfCleaning.exists == true
-        espd.breachingObligations.selfCleaning.description == "Hodor is very clean"
+        espd.breachingObligationsEnvironmental.selfCleaning.exists == true
+        espd.breachingObligationsEnvironmental.selfCleaning.description == "Hodor is very clean"
 
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(breachingObligations: new EnvironmentalCriterion(exists: true, description: "Hodor description",
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true, description: "Hodor description",
                 selfCleaning: new SelfCleaning(exists: true, description: "Hodor is very clean")))
 
         expect:

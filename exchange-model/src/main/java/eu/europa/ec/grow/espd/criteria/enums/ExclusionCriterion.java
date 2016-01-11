@@ -82,9 +82,9 @@ public enum ExclusionCriterion implements CcvCriterion {
      *
      */
     BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL("a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
-            "Breaching of obligations in the fields of environmental, social and labour law",
-            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental, social and labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
-            ExclusionCriterionTypeCode.ENVIRONMENTAL, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            "Breaching of obligations in the fields of environmental law",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             list(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL_GROUP)),
     /**
      *
