@@ -115,9 +115,21 @@
                     </span>
                     
                     <tiles:insertDefinition name="checkCriterion">
-                        <tiles:putAttribute name="field" value="breachingObligations"/>
-                        <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
-                        <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
+                        <tiles:putAttribute name="field" value="breachingObligationsEnvironmental"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_environmental"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_environmental"/>
+                    </tiles:insertDefinition>
+
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="breachingObligationsSocial"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_social"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_social"/>
+                    </tiles:insertDefinition>
+
+                    <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="breachingObligationsLabour"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_labour"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_labour"/>
                     </tiles:insertDefinition>
 
                     <tiles:insertDefinition name="checkCriterion">
@@ -194,7 +206,7 @@
 			<div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
 				 <s:message code='crit_top_title_purely_national'/>
 			</div>
-            <div id="ca-insolvency-section" class="collapse in">
+            <div id="ca-national-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
                     <span data-i18n="crit_eu_main_purely_national" class="aligned" style="font-weight: bold;">
                         <s:message code='crit_eu_main_purely_national'/>

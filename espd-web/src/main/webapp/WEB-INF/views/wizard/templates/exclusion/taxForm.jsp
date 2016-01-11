@@ -7,7 +7,7 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-country">Country or Member State concerned</label>
+	<label class="control-label col-md-4 small" for="${field}-field-country" data-i18n="crit_country_member_state"><s:message code='crit_country_member_state'/></label>
 	<div class="col-md-8">
         <tiles:insertDefinition name="countries">
             <tiles:putAttribute name="countryField" value="${field}.country"/>
@@ -17,9 +17,10 @@
 	</div>
 </div> 
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-amount">Amount concerned</label>
+	<label class="control-label col-md-4 small" for="${field}-field-amount" data-i18n="crit_amount_concerned"><s:message code='crit_amount_concerned'/></label>
 	<div class="col-md-5">
-		<form:input path="${field}.amount" cssClass="form-control" id="${field}-field-amount" placeholder="Enter amount"/>
+        <s:message code="crit_amount_concerned_placeholder" var="amountPlaceholder"/>
+		<form:input path="${field}.amount" cssClass="form-control" id="${field}-field-amount" placeholder="${amountPlaceholder}"/>
 	</div>
 	<div class="col-md-3">
 		<form:select id="${field}-field-country" path="${field}.currency" cssClass="form-control">

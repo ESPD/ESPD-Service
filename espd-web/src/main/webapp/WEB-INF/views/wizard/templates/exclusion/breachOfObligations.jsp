@@ -7,32 +7,42 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-	<label class="control-label small" for="${field}-breach-of-obligations-question">Has this breach of obligations have been established though judicial or administrative decision?</label> 
-	<input type="checkbox" id="${field}-breach-of-obligations-question" data-toggle="collapse" data-target="${'#'}${field}-breach-of-obligations-form" class="radioslide checktoggle" />
+	<label class="control-label small" for="${field}-other-than-judicial-question" data-i18n="crit_other_than_judicial_or_administrative_decision"><s:message code='crit_other_than_judicial_or_administrative_decision'/></label>
+	<input path="${field}.breachEstablishedOtherThanJudicialDecision" type="checkbox" id="${field}-other-than-judicial-question" data-toggle="collapse" data-target="${'#'}${field}-breach-of-obligations-form" class="radioslide checktoggle" />
 </div>
 <div class="tab-pane" id="${field}-breach-of-obligations-form" style="display:none">
+    <div class="form-group">
+        <label class="control-label col-md-4 small" for="${field}-field6" data-i18n="crit_taxes_means_description"><s:message code='crit_taxes_means_description'/></label>
+        <div class="col-md-8">
+            <s:message code="crit_taxes_means_description" var="meansDescriptionPlaceholder"/>
+            <textarea path="${field}.meansDescription" class="form-control" id="${field}-means-description" placeholder="${meansDescriptionPlaceholder}"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label small" for="${field}-decision-final-and-binding" data-i18n="crit_decision_final_and_binding"><s:message code='crit_decision_final_and_binding'/></label>
+        <input path="${field}.decisionFinalAndBinding" type="checkbox" id="${field}-decision-final-and-binding" data-toggle="collapse" data-target="${'#'}${field}-breach-of-obligations-form" class="radioslide checktoggle" />
+    </div>
 	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-final">Is this decision final and binding?</label>
-		<div class="col-md-8">
-			<input type="checkbox" class="big" id="${field}-breach-of-obligations-final"/>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-date">Indicate date of conviction or decision </label>
+		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-date" data-i18n="crit_date_of_conviction_or_decision"><s:message code='crit_date_of_conviction_or_decision'/></label>
 		<div class="col-md-8"> 
-			<input type="text" class="form-control datepicker" id="${field}-breach-of-obligations-date-value" placeholder="Enter date"/>
+			<input type="text" path="${field}.dateOfConviction" class="form-control datepicker" id="${field}-breach-of-obligations-date-value" placeholder="Enter date"/>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-repiod-length">Length of the period of exclusion</label>
+		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-repiod-length" data-i18n="crit_taxes_length_period_of_exclusion"><s:message code='crit_taxes_length_period_of_exclusion'/></label>
 		<div class="col-md-8"> 
-			<input type="text" class="form-control" id="${field}-breach-of-obligations-repiod-length"/>
+			<input type="text" path="${field}.periodLength" class="form-control" id="${field}-breach-of-obligations-repiod-length"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-breach-of-obligations-repiod-other-means">Other means</label>
-		<div class="col-md-8"> 
-			<textarea class="form-control" id="${field}-breach-of-obligations-repiod-other-means" placeholder="describe"></textarea>
-		</div>
-	</div>
+    <div class="form-group">
+        <label class="control-label small" for="${field}-eo-fulfilled-obligations" data-i18n="crit_taxes_eo_fulfilled_obligations"><s:message code='crit_taxes_eo_fulfilled_obligations'/></label>
+        <input path="${field}.eoFulfilledObligations" type="checkbox" id="${field}-eo-fulfilled-obligations" data-toggle="collapse" data-target="${'#'}${field}-breach-of-obligations-form" class="radioslide checktoggle" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4 small" for="${field}-please-describe" data-i18n="crit_please_describe_them"><s:message code='crit_please_describe_them'/></label>
+        <div class="col-md-8">
+            <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
+            <textarea path="${field}.obligationsDescription" class="form-control" id="${field}--please-describe" placeholder="${describePlaceholder}"></textarea>
+        </div>
+    </div>
 </div>
