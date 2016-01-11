@@ -69,25 +69,20 @@
 			</div>
 
 			<div class="col-md-12" id="${field}-form" style="display:none"> 
-			
 				<tiles:insertAttribute name="form">
 					<tiles:putAttribute name="field" value="${field}"/>
 				</tiles:insertAttribute>
-				
 				<c:if test="${breachOfObligations}">
 					<tiles:insertDefinition name="breachOfObligations">
 						<tiles:putAttribute name="field" value="${field}"/>
 					</tiles:insertDefinition>
 				</c:if>
-				
 				<c:if test="${selfCleaning}">
 					<tiles:insertDefinition name="selfCleaning">
 						<tiles:putAttribute name="field" value="${field}"/>
 					</tiles:insertDefinition>
 				</c:if>
-			
 			</div>
-
 			<div class="col-md-12">
 				<c:if test="${availableElectronically}">
 					<tiles:insertDefinition name="availableElectronically">
@@ -96,11 +91,6 @@
 				</c:if>
 			</div>
 		</div>
-		
-		
-
-		
-
 </div>
 
 

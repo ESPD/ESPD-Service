@@ -125,11 +125,25 @@
 				</div>
 					
 				<tiles:insertDefinition name="simpleFormCriterion">
-					<tiles:putAttribute name="field" value="breachingObligations"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations"/>
+					<tiles:putAttribute name="field" value="breachingObligationsEnvironmental"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_environmental"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_environmental"/>
 					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
+
+                <tiles:insertDefinition name="simpleFormCriterion">
+                    <tiles:putAttribute name="field" value="breachingObligationsSocial"/>
+                    <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_social"/>
+                    <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_social"/>
+                    <tiles:putAttribute name="availableElectronically" value="false"/>
+                </tiles:insertDefinition>
+
+                <tiles:insertDefinition name="simpleFormCriterion">
+                    <tiles:putAttribute name="field" value="breachingObligationsLabour"/>
+                    <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_labour"/>
+                    <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_labour"/>
+                    <tiles:putAttribute name="availableElectronically" value="false"/>
+                </tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="reasonsNeverlessPerformForm">
 					<tiles:putAttribute name="field" value="bankruptcy"/>
@@ -188,8 +202,8 @@
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
 					<tiles:putAttribute name="field" value="involvementPreparationProcurement"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_involvement"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_involvement"/>
 					<tiles:putAttribute name="availableElectronically" value="false"/>
 					<tiles:putAttribute name="selfCleaning" value="false"/>
 				</tiles:insertDefinition>

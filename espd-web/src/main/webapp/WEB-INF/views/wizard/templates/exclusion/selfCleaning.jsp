@@ -7,14 +7,15 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-		<label class="control-label small" for="${field}-field5">Have you taken measures to demonstrate your reliability ("Self-Cleaning")</label> 
+		<label class="control-label small" for="${field}-field5" data-i18n="crit_taken_self_cleaning_measures"><s:message code='crit_taken_self_cleaning_measures'/></label>
 		<input type="checkbox" id="${field}-field5" data-toggle="collapse" data-target="${'#'}${field}-reliability" class="radioslide checktoggle" />
 </div>
 <div class="tab-pane" id="${field}-reliability" style="display:none">
 	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-field6">Please describe them</label>
-		<div class="col-md-8"> 
-			<textarea class="form-control" id="${field}-field6" placeholder="describe"></textarea>
+		<label class="control-label col-md-4 small" for="${field}-field6" data-i18n="crit_please_describe_them"><s:message code='crit_please_describe_them'/></label>
+		<div class="col-md-8">
+            <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
+			<textarea class="form-control" id="${field}-field6" placeholder="${describePlaceholder}"></textarea>
 		</div>
 	</div>
 </div>
