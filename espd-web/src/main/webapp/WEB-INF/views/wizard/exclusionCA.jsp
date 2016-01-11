@@ -182,7 +182,7 @@
 
                     <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="involvementPreparationProcurement"/>
-                        <tiles:putAttribute name="title_code" value="crit_eu_title_involvment"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_involvement"/>
                         <tiles:putAttribute name="description_code" value="crit_eu_text_involvment"/>
                     </tiles:insertDefinition>
 
