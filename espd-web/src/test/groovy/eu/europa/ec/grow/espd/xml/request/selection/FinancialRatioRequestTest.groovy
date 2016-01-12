@@ -36,17 +36,15 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 3
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 5
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 0
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Please provide the the required ratio - ratio between x and y - and the value", "RATIO")
-
-        then: "check year amount currency subgroups"
-        checkYearAmountCurrency1Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
-        checkYearAmountCurrency2Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
-        checkYearAmountCurrency3Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
+        then: "check description ratio subgroups"
+        checkDescriptionRatioGroup1(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        checkDescriptionRatioGroup2(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
+        checkDescriptionRatioGroup3(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
+        checkDescriptionRatioGroup4(request.Criterion[idx].RequirementGroup[0].RequirementGroup[3])
+        checkDescriptionRatioGroup5(request.Criterion[idx].RequirementGroup[0].RequirementGroup[4])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

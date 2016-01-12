@@ -29,11 +29,10 @@ final class CriterionText {
 
     static final String YEAR_TEXT = "Year";
     static final String AMOUNT_TEXT = "Amount";
-    static final String CURRENCY_TEXT = "Currency";
     static final String REQUIRED_RATIO_TEXT = "Please provide the the required ratio - ratio between x and y - and the value";
     static final String PLEASE_SPECIFY_TEXT = "Please specify";
     static final String PERCENTAGE_TEXT = "Please specify this percentage";
-    static final String PLEASE_ENUMERATE_TEXT = "Please enumerate";
+    static final String RATIO_TEXT = "Ratio";
     static final String DESCRIPTION_TEXT = "Description";
     static final String DATE_TEXT = "Date";
     static final String RECIPIENTS_TEXT = "Recipients";

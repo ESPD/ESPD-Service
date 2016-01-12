@@ -175,14 +175,35 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getSpecify()));
         } else if (SelectionCriterionRequirement.DESCRIPTION_1.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
         } else if (SelectionCriterionRequirement.DESCRIPTION_2.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription2()));
         } else if (SelectionCriterionRequirement.DESCRIPTION_3.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription3()));
+        } else if (SelectionCriterionRequirement.DESCRIPTION_4.equals(ccvRequirement)) {
+            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription4()));
+        } else if (SelectionCriterionRequirement.DESCRIPTION_5.equals(ccvRequirement)) {
+            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription5()));
+        } else if (SelectionCriterionRequirement.RATIO_1.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio1()));
+        } else if (SelectionCriterionRequirement.RATIO_2.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio2()));
+        } else if (SelectionCriterionRequirement.RATIO_3.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio3()));
+        } else if (SelectionCriterionRequirement.RATIO_4.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio4()));
+        } else if (SelectionCriterionRequirement.RATIO_5.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio5()));
         } else if (SelectionCriterionRequirement.DATE_1.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDate(buildDateType(selectionCriterion.getDate1()));
@@ -220,6 +241,15 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         QuantityType quantityType = new QuantityType();
         quantityType.setValue(BigDecimal.valueOf(year));
         quantityType.setUnitCode("YEAR");
+        return quantityType;
+    }
+
+    private QuantityType buildQuantityType(Double quantity) {
+        if (quantity == null) {
+            return null;
+        }
+        QuantityType quantityType = new QuantityType();
+        quantityType.setValue(BigDecimal.valueOf(quantity));
         return quantityType;
     }
 

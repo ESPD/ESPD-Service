@@ -170,14 +170,14 @@ final class ResponseValueParsers {
         }
     }
 
-    private static class QuantityValueParser implements ResponseValueParser<Integer> {
+    private static class QuantityValueParser implements ResponseValueParser<Double> {
 
         @Override
-        public Integer parseValue(ResponseType responseType) {
+        public Double parseValue(ResponseType responseType) {
             if (responseType.getQuantity() == null || responseType.getQuantity().getValue() == null) {
                 return null;
             }
-            return responseType.getQuantity().getValue().intValue();
+            return responseType.getQuantity().getValue().doubleValue();
         }
     }
 }

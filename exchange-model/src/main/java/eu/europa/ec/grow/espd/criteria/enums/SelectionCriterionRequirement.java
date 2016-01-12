@@ -67,11 +67,6 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    REQUIRED_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", CriterionText.REQUIRED_RATIO_TEXT,
-            ExpectedResponseType.RATIO),
-    /**
-     *
-     */
     PLEASE_SPECIFY("3aaca389-4a7b-406b-a4b9-080845d127e7", CriterionText.PLEASE_SPECIFY_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
@@ -99,6 +94,41 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      */
     DESCRIPTION_3("e6ca4034-cfee-499a-9a47-c4f2862ef4d0", CriterionText.DESCRIPTION_TEXT,
             ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    DESCRIPTION_4("b1640c24-b405-443e-bf5e-d7771f66aab6", CriterionText.DESCRIPTION_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    DESCRIPTION_5("587129bc-a5e1-43be-94ac-6e5366d30c67", CriterionText.DESCRIPTION_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    RATIO_1("5461b973-7067-457e-93cc-8338da2c3eef", CriterionText.RATIO_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    RATIO_2("295d82b7-5ee6-4977-8aea-bac4acf6ecdf", CriterionText.RATIO_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    RATIO_3("2b792afb-87ba-47b5-a80c-aee76a6f2cc8", CriterionText.RATIO_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    RATIO_4("22dc4bef-182d-4b81-bddc-cc30b218f9bb", CriterionText.RATIO_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    RATIO_5("990eef0a-14c6-41af-8bf2-b8311332d152", CriterionText.RATIO_TEXT,
+            ExpectedResponseType.QUANTITY),
     /**
      *
      */

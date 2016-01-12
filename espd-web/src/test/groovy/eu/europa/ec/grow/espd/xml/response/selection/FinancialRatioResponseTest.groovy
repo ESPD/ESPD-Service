@@ -38,140 +38,98 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 3
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Please provide the the required ratio - ratio between x and y - and the value", "RATIO")
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 5
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 0
 
         then: "check year amount currency subgroups"
-        checkYearAmountCurrency1Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
-        checkYearAmountCurrency2Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
-        checkYearAmountCurrency3Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
+        checkDescriptionRatioGroup1(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        checkDescriptionRatioGroup2(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
+        checkDescriptionRatioGroup3(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
+        checkDescriptionRatioGroup4(request.Criterion[idx].RequirementGroup[0].RequirementGroup[3])
+        checkDescriptionRatioGroup5(request.Criterion[idx].RequirementGroup[0].RequirementGroup[4])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
-    // TODO ratio
-
-    def "check the 'Year' requirements response"() {
+    def "check the 'Description' requirements response"() {
         given:
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true,
-                year1: 2016, year2: 2015, year3: 2014))
+                description1: "d1", description2: "d2", description3: "d3", description4: "d4", description5: "d5"))
 
         when:
         def request = parseResponseXml(espd)
         def idx = 0
 
-        then: "First year"
+        then: "Description 1"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
         def req1 = subGroup1.Requirement[0]
         req1.Response.size() == 1
-        req1.Response[0].Quantity.text() == "2016"
-        req1.Response[0].Quantity.@unitCode.text() == "YEAR"
+        req1.Response[0].Description.text() == "d1"
 
-        then: "Second year"
+        then: "Description 2"
         def subGroup2 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
         def req2 = subGroup2.Requirement[0]
         req2.Response.size() == 1
-        req2.Response[0].Quantity.text() == "2015"
-        req2.Response[0].Quantity.@unitCode.text() == "YEAR"
+        req2.Response[0].Description.text() == "d2"
 
-        then: "Third year"
+        then: "Description 3"
         def subGroup3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
         def req3 = subGroup3.Requirement[0]
         req3.Response.size() == 1
-        req3.Response[0].Quantity.text() == "2014"
-        req3.Response[0].Quantity.@unitCode.text() == "YEAR"
+        req3.Response[0].Description.text() == "d3"
+
+        then: "Description 4"
+        def subGroup4 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[3]
+        def req4 = subGroup4.Requirement[0]
+        req4.Response.size() == 1
+        req4.Response[0].Description.text() == "d4"
+
+        then: "Description 5"
+        def subGroup5 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[4]
+        def req5 = subGroup5.Requirement[0]
+        req5.Response.size() == 1
+        req5.Response[0].Description.text() == "d5"
     }
 
-    def "check empty 'Year' requirements response"() {
+    def "check the 'Ratio' requirements response"() {
         given:
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true,
-                year1: null, year2: null, year3: null))
+                ratio1: 11.1, ratio2: 22.2, ratio3: 33.3, ratio4: 44.4, ratio5: 55.5))
 
         when:
         def request = parseResponseXml(espd)
         def idx = 0
 
-        then: "First year"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        def req1 = subGroup1.Requirement[0]
-        req1.Response.size() == 1
-        req1.Response[0].Quantity.size() == 0
-
-        then: "Second year"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
-        def req2 = subGroup2.Requirement[0]
-        req2.Response.size() == 1
-        req2.Response[0].Quantity.size() == 0
-
-        then: "Third year"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[0]
-        req3.Response.size() == 1
-        req3.Response[0].Quantity.size() == 0
-    }
-
-    def "check the 'Amount' requirements response"() {
-        given:
-        def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: 11.11, amount2: 22.22, amount3: 33.33, currency1: "EUR", currency2: "RON", currency3: "USD"))
-
-        when:
-        def request = parseResponseXml(espd)
-        def idx = 0
-
-        then: "First amount"
+        then: "Ratio 1"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
         def req1 = subGroup1.Requirement[1]
         req1.Response.size() == 1
-        req1.Response.Amount.text() == "11.11"
-        req1.Response.Amount.@currencyID.text() == "EUR"
+        req1.Response[0].Quantity.text() == "11.1"
 
-        then: "Second amount"
+        then: "Ratio 2"
         def subGroup2 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
         def req2 = subGroup2.Requirement[1]
         req2.Response.size() == 1
-        req2.Response.Amount.text() == "22.22"
-        req2.Response.Amount.@currencyID.text() == "RON"
+        req2.Response[0].Quantity.text() == "22.2"
 
-        then: "Third amount"
+        then: "Ratio 3"
         def subGroup3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
         def req3 = subGroup3.Requirement[1]
         req3.Response.size() == 1
-        req3.Response.Amount.text() == "33.33"
-        req3.Response.Amount.@currencyID == "USD"
-    }
+        req3.Response[0].Quantity.text() == "33.3"
 
-    def "check empty 'Amount' requirements response"() {
-        given:
-        def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: null, amount2: null, amount3: null, currency1: "EUR", currency2: "RON", currency3: "USD"))
+        then: "Ratio 4"
+        def subGroup4 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[3]
+        def req4 = subGroup4.Requirement[1]
+        req4.Response.size() == 1
+        req4.Response[0].Quantity.text() == "44.4"
 
-        when:
-        def request = parseResponseXml(espd)
-        def idx = 0
-
-        then: "First amount"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        def req1 = subGroup1.Requirement[1]
-        req1.Response.size() == 1
-        req1.Response.Amount.size() == 0
-
-        then: "Second amount"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
-        def req2 = subGroup2.Requirement[1]
-        req2.Response.size() == 1
-        req2.Response.Amount.size() == 0
-
-        then: "Third amount"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[1]
-        req3.Response.size() == 1
-        req3.Response.Amount.size() == 0
+        then: "Ratio 5"
+        def subGroup5 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[4]
+        def req5 = subGroup5.Requirement[1]
+        req5.Response.size() == 1
+        req5.Response[0].Quantity.text() == "55.5"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

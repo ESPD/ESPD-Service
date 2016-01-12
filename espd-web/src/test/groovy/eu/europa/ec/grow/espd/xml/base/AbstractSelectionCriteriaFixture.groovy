@@ -25,7 +25,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert r2.ID.@schemeVersionID.text() == "1.0"
     }
 
-    protected static void checkYearAmountCurrency1Group(def yearAmountCurrencyGroup) {
+    protected static void checkYearAmountCurrencyGroup1(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "1689194b-6ecf-4ab4-ab38-7656610c25bb"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
@@ -33,7 +33,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
     }
 
-    protected static void checkYearAmountCurrency2Group(def yearAmountCurrencyGroup) {
+    protected static void checkYearAmountCurrencyGroup2(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "c628dd27-8016-4d80-8660-7461f2e3ee0f"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
@@ -41,7 +41,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
     }
 
-    protected static void checkYearAmountCurrency3Group(def yearAmountCurrencyGroup) {
+    protected static void checkYearAmountCurrencyGroup3(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "9dd09f9f-3326-4865-9d5a-f0836076fb19"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
@@ -49,7 +49,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
     }
 
-    protected static void checkYearAmountCurrency4Group(def yearAmountCurrencyGroup) {
+    protected static void checkYearAmountCurrencyGroup4(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "962011c9-9e2e-4e7b-818e-30e8506e874f"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
@@ -57,12 +57,52 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "9f278e42-aa1d-4b2e-97cd-832248aa5393", "Amount", "AMOUNT")
     }
 
-    protected static void checkYearAmountCurrency5Group(def yearAmountCurrencyGroup) {
+    protected static void checkYearAmountCurrencyGroup5(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "343795e2-98e9-4cc9-8ef2-8817cec8f49a"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
         checkRequirement(yearAmountCurrencyGroup.Requirement[0], "34825634-5151-4e31-af1b-7eafadcf15be", "Year", "QUANTITY")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b", "Amount", "AMOUNT")
+    }
+
+    protected static void checkDescriptionRatioGroup1(def descriptionRatioGroup) {
+        assert descriptionRatioGroup.ID.text() == "1689194b-6ecf-4ab4-ab38-7656610c25bb"
+        assert descriptionRatioGroup.Requirement.size() == 2
+
+        checkRequirement(descriptionRatioGroup.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
+        checkRequirement(descriptionRatioGroup.Requirement[1], "5461b973-7067-457e-93cc-8338da2c3eef", "Ratio", "QUANTITY")
+    }
+
+    protected static void checkDescriptionRatioGroup2(def descriptionRatioGroup) {
+        assert descriptionRatioGroup.ID.text() == "c628dd27-8016-4d80-8660-7461f2e3ee0f"
+        assert descriptionRatioGroup.Requirement.size() == 2
+
+        checkRequirement(descriptionRatioGroup.Requirement[0], "927def36-1fa3-4018-8b45-7ee2c5b1e0af", "Description", "DESCRIPTION")
+        checkRequirement(descriptionRatioGroup.Requirement[1], "295d82b7-5ee6-4977-8aea-bac4acf6ecdf", "Ratio", "QUANTITY")
+    }
+
+    protected static void checkDescriptionRatioGroup3(def descriptionRatioGroup) {
+        assert descriptionRatioGroup.ID.text() == "9dd09f9f-3326-4865-9d5a-f0836076fb19"
+        assert descriptionRatioGroup.Requirement.size() == 2
+
+        checkRequirement(descriptionRatioGroup.Requirement[0], "e6ca4034-cfee-499a-9a47-c4f2862ef4d0", "Description", "DESCRIPTION")
+        checkRequirement(descriptionRatioGroup.Requirement[1], "2b792afb-87ba-47b5-a80c-aee76a6f2cc8", "Ratio", "QUANTITY")
+    }
+
+    protected static void checkDescriptionRatioGroup4(def descriptionRatioGroup) {
+        assert descriptionRatioGroup.ID.text() == "4564d79e-5db6-4a31-93ee-ac1f0019bdcb"
+        assert descriptionRatioGroup.Requirement.size() == 2
+
+        checkRequirement(descriptionRatioGroup.Requirement[0], "b1640c24-b405-443e-bf5e-d7771f66aab6", "Description", "DESCRIPTION")
+        checkRequirement(descriptionRatioGroup.Requirement[1], "22dc4bef-182d-4b81-bddc-cc30b218f9bb", "Ratio", "QUANTITY")
+    }
+
+    protected static void checkDescriptionRatioGroup5(def descriptionRatioGroup) {
+        assert descriptionRatioGroup.ID.text() == "bc43685e-8473-40e3-b174-3233aead6207"
+        assert descriptionRatioGroup.Requirement.size() == 2
+
+        checkRequirement(descriptionRatioGroup.Requirement[0], "587129bc-a5e1-43be-94ac-6e5366d30c67", "Description", "DESCRIPTION")
+        checkRequirement(descriptionRatioGroup.Requirement[1], "990eef0a-14c6-41af-8bf2-b8311332d152", "Ratio", "QUANTITY")
     }
 
     protected static void checkDescriptionAmountDateRecipients1Group(def group) {

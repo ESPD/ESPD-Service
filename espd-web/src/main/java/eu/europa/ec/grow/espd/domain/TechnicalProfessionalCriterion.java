@@ -10,11 +10,14 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TechnicalProfessionalCriterion extends SelectionCriterion implements MultipleAmountsHolder, DescriptionHolder {
+public class TechnicalProfessionalCriterion extends SelectionCriterion
+        implements MultipleAmountsHolder, MultipleDescriptionHolder, DescriptionHolder {
 
     private String description1;
     private String description2;
     private String description3;
+    private String description4;
+    private String description5;
 
     private Double amount1;
     private Double amount2;

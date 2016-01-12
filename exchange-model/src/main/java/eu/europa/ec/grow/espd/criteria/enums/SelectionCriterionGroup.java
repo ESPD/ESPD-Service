@@ -49,19 +49,44 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP("96f00020-0a25-402e-b850-2378e83b5695",
+    DESCRIPTION_RATIO_GROUP_1("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_1, RATIO_1)),
+    /**
+     *
+     */
+    DESCRIPTION_RATIO_GROUP_2("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_2, RATIO_2)),
+    /**
+     *
+     */
+    DESCRIPTION_RATIO_GROUP_3("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_3, RATIO_3)),
+    /**
+     *
+     */
+    DESCRIPTION_RATIO_GROUP_4("4564d79e-5db6-4a31-93ee-ac1f0019bdcb", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_4, RATIO_4)),
+    /**
+     *
+     */
+    DESCRIPTION_RATIO_GROUP_5("bc43685e-8473-40e3-b174-3233aead6207", Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_5, RATIO_5)),
+    /**
+     *
+     */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_GROUP_1("96f00020-0a25-402e-b850-2378e83b5695",
             Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_1, AMOUNT_1, DATE_1, RECIPIENTS_1)),
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP("c48572f9-47bf-423a-9885-2c78ae9ca718",
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS__GROUP_2("c48572f9-47bf-423a-9885-2c78ae9ca718",
             Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_2, AMOUNT_2, DATE_2, RECIPIENTS_2)),
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_GROUP_3("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
             Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_3, AMOUNT_3, DATE_3, RECIPIENTS_3)),
     /**
@@ -113,8 +138,9 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(YEAR_AMOUNT_GROUP_1,
-            YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3), list(REQUIRED_RATIO)),
+    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(DESCRIPTION_RATIO_GROUP_1,
+            DESCRIPTION_RATIO_GROUP_2, DESCRIPTION_RATIO_GROUP_3, DESCRIPTION_RATIO_GROUP_4, DESCRIPTION_RATIO_GROUP_5),
+            Collections.<CcvCriterionRequirement>emptyList()),
     /**
      *
      */

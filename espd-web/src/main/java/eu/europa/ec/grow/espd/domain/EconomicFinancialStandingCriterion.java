@@ -8,7 +8,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class EconomicFinancialStandingCriterion extends SelectionCriterion implements MultipleAmountsHolder, DescriptionHolder {
+public class EconomicFinancialStandingCriterion extends SelectionCriterion
+        implements MultipleAmountsHolder, MultipleDescriptionHolder, DescriptionHolder {
 
     private Integer year1;
     private Integer year2;
@@ -28,7 +29,17 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion imple
     private String currency4;
     private String currency5;
 
-    // TODO ratio
+    private String description1;
+    private String description2;
+    private String description3;
+    private String description4;
+    private String description5;
+
+    private Double ratio1;
+    private Double ratio2;
+    private Double ratio3;
+    private Double ratio4;
+    private Double ratio5;
 
     public static EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
         EconomicFinancialStandingCriterion criterion = new EconomicFinancialStandingCriterion();

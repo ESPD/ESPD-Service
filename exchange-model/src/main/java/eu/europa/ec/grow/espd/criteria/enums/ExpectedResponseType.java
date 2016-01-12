@@ -17,7 +17,6 @@ public enum ExpectedResponseType implements CcvResponseType {
     AMOUNT,
     CURRENCY,
     COUNTRY,
-    RATIO,
     PERCENTAGE,
     PERIOD,
     CODE;

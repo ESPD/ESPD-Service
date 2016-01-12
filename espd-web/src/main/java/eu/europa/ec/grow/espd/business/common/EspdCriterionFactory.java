@@ -30,10 +30,11 @@ class EspdCriterionFactory {
      * Create a ESPD {@link Criterion} instance containing the appropriate information provided as UBL criteria.
      *
      * @param ccvCriterion The desired criterion containing this metadata
-     * @param ublCriteria List of UBL criteria to be matched
+     * @param ublCriteria  List of UBL criteria to be matched
      * @param <T>
      *
      * @return
+     *
      * @throws IllegalArgumentException If the criterion type is not recognized
      */
     <T extends Criterion> T buildEspdCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
@@ -256,45 +257,77 @@ class EspdCriterionFactory {
 
         EconomicFinancialStandingCriterion criterion = EconomicFinancialStandingCriterion.buildWithExists(yourAnswer);
 
-        Integer year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
-        criterion.setYear1(year1);
+        Double year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
+        if (year1 != null) {
+            criterion.setYear1(year1.intValue());
+        }
         Amount amount1 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_1, criterionType);
         if (amount1 != null) {
             criterion.setAmount1(amount1.getAmount());
             criterion.setCurrency1(amount1.getCurrency());
         }
 
-        Integer year2 = readRequirementValue(SelectionCriterionRequirement.YEAR_2, criterionType);
-        criterion.setYear2(year2);
+        Double year2 = readRequirementValue(SelectionCriterionRequirement.YEAR_2, criterionType);
+        if (year2 != null) {
+            criterion.setYear2(year2.intValue());
+        }
         Amount amount2 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_2, criterionType);
         if (amount2 != null) {
             criterion.setAmount2(amount2.getAmount());
             criterion.setCurrency2(amount2.getCurrency());
         }
 
-        Integer year3 = readRequirementValue(SelectionCriterionRequirement.YEAR_3, criterionType);
-        criterion.setYear3(year3);
+        Double year3 = readRequirementValue(SelectionCriterionRequirement.YEAR_3, criterionType);
+        if (year3 != null) {
+            criterion.setYear3(year3.intValue());
+        }
         Amount amount3 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_3, criterionType);
         if (amount3 != null) {
             criterion.setAmount3(amount3.getAmount());
             criterion.setCurrency3(amount3.getCurrency());
         }
 
-        Integer year4 = readRequirementValue(SelectionCriterionRequirement.YEAR_4, criterionType);
-        criterion.setYear4(year4);
+        Double year4 = readRequirementValue(SelectionCriterionRequirement.YEAR_4, criterionType);
+        if (year4 != null) {
+            criterion.setYear4(year4.intValue());
+        }
         Amount amount4 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_4, criterionType);
         if (amount4 != null) {
             criterion.setAmount4(amount4.getAmount());
             criterion.setCurrency4(amount4.getCurrency());
         }
 
-        Integer year5 = readRequirementValue(SelectionCriterionRequirement.YEAR_5, criterionType);
-        criterion.setYear5(year5);
+        Double year5 = readRequirementValue(SelectionCriterionRequirement.YEAR_5, criterionType);
+        if (year5 != null) {
+            criterion.setYear5(year5.intValue());
+        }
         Amount amount5 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_5, criterionType);
         if (amount5 != null) {
             criterion.setAmount5(amount5.getAmount());
             criterion.setCurrency5(amount5.getCurrency());
         }
+
+        String description1 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_1, criterionType);
+        criterion.setDescription1(description1);
+        String description2 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_2, criterionType);
+        criterion.setDescription2(description2);
+        String description3 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_3, criterionType);
+        criterion.setDescription3(description3);
+        String description4 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_4, criterionType);
+        criterion.setDescription4(description4);
+        String description5 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_5, criterionType);
+        criterion.setDescription5(description5);
+
+        Double ratio1 = readRequirementValue(SelectionCriterionRequirement.RATIO_1, criterionType);
+        criterion.setRatio1(ratio1);
+        Double ratio2 = readRequirementValue(SelectionCriterionRequirement.RATIO_2, criterionType);
+        criterion.setRatio2(ratio2);
+        Double ratio3 = readRequirementValue(SelectionCriterionRequirement.RATIO_3, criterionType);
+        criterion.setRatio3(ratio3);
+        Double ratio4 = readRequirementValue(SelectionCriterionRequirement.RATIO_4, criterionType);
+        criterion.setRatio4(ratio4);
+        Double ratio5 = readRequirementValue(SelectionCriterionRequirement.RATIO_5, criterionType);
+        criterion.setRatio5(ratio5);
 
         String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
