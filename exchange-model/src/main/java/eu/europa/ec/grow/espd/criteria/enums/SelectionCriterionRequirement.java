@@ -192,7 +192,11 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     URL_CODE("e2d863a0-60cb-4e58-8c14-4c1595af48b7", CriterionText.URL_CODE_TEXT, ExpectedResponseType.CODE),
-    ;
+    /**
+     *
+     */
+    ALLOW_CHECKS("23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", CriterionText.ALLOW_CHECKS_TEXT,
+            ExpectedResponseType.INDICATOR),;
 
     private final String id;
 

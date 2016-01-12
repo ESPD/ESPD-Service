@@ -124,7 +124,8 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
     private void fillSelectionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
             ResponseType responseType) {
-        if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
+        if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.ALLOW_CHECKS.equals(ccvRequirement)) {
             responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
         } else if (SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
             SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;

@@ -1,6 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
-import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -34,7 +33,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "d7721546-9106-43a7-8d31-2fe08a862b00"
@@ -43,16 +42,12 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
-
-        then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkRequirement(r1_0, "23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", "Do you allow checks?", "INDICATOR")
     }
 
-    def "check the 'Please describe them' requirements response"() {
+    def "check the 'Do you allow checks' requirements response"() {
         given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true,
-                description: "technical description"))
+        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -63,58 +58,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Description.text() == "technical description"
-    }
-
-    def "check the 'Is this information available electronically' requirement response"() {
-        given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
-
-        when:
-        def request = parseResponseXml(espd)
-        def idx = 0
-
-        then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[0]
-        req.Response.size() == 1
-        req.Response[0].Indicator.text() == "false"
-    }
-
-    def "check the 'Info electronically URL' requirement response"() {
-        given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_21.com")))
-
-        when:
-        def request = parseResponseXml(espd)
-        def idx = 0
-
-        then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[1]
-        req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_21.com"
-    }
-
-    def "check the 'Info electronically code' requirement response"() {
-        given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_21")))
-
-        when:
-        def request = parseResponseXml(espd)
-        def idx = 0
-
-        then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[2]
-        req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_21"
+        req.Response[0].Indicator.text() == "true"
     }
 
 }

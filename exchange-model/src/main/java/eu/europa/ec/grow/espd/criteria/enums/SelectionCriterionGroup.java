@@ -192,7 +192,7 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     ALLOWANCE_OF_CHECKS_GROUP("d7721546-9106-43a7-8d31-2fe08a862b00", Collections.<CcvCriterionGroup>emptyList(),
-            list(PLEASE_DESCRIBE)),
+            list(ALLOW_CHECKS)),
     /**
      *
      */

@@ -32,7 +32,7 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "d7721546-9106-43a7-8d31-2fe08a862b00"
@@ -41,10 +41,7 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
-
-        then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkRequirement(r1_0, "23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", "Do you allow checks?", "INDICATOR")
     }
 
 }

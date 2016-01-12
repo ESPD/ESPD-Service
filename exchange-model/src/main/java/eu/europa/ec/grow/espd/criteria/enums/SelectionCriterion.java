@@ -178,7 +178,7 @@ public enum SelectionCriterion implements CcvCriterion {
     ALLOWANCE_OF_CHECKS("c8809aa1-29b6-4f27-ae2f-27e612e394db", "Allowance of checks",
             "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(ALLOWANCE_OF_CHECKS_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(ALLOWANCE_OF_CHECKS_GROUP)),
     /**
      *
      */
