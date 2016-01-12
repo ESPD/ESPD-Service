@@ -28,7 +28,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
         request.Criterion[idx].Name.text() == "Specific yearly turnover"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator's specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows."
+        request.Criterion[idx].Description.text() == "Its specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

@@ -28,7 +28,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
         request.Criterion[idx].Name.text() == "For supply contracts: samples, descriptions or photographs without certification of authenticity"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity."
+        request.Criterion[idx].Description.text() == "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

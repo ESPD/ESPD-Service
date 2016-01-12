@@ -26,7 +26,7 @@ class SupplyContractsPerformanceDeliveriesRequestTest extends AbstractSelectionC
         request.Criterion[idx].Name.text() == "For supply contracts: performance of deliveries of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
+        request.Criterion[idx].Description.text() == "For public supply contracts only: During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

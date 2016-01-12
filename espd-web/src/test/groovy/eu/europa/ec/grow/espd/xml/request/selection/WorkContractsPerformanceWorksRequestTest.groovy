@@ -26,7 +26,7 @@ class WorkContractsPerformanceWorksRequestTest extends AbstractSelectionCriteria
         request.Criterion[idx].Name.text() == "For works contracts: performance of works of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years."
+        request.Criterion[idx].Description.text() == "For public works contracts only: During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

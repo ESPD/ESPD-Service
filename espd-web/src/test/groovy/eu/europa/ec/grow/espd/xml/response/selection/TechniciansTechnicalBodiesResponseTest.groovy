@@ -28,7 +28,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         request.Criterion[idx].Name.text() == "Technicians or technical bodies for quality control"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator can call upon the following technicians or technical bodies , especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in."
+        request.Criterion[idx].Description.text() == "It can call upon the following technicians or technical bodies, especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

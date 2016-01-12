@@ -26,7 +26,7 @@ class TechnicalFacilitiesRequestTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].Name.text() == "Technical facilities and measures for ensuring quality"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator uses the following technical facilities and measures for ensuring quality are as follows."
+        request.Criterion[idx].Description.text() == "It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

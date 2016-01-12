@@ -26,7 +26,7 @@ class ToolsPlantRequestTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].Name.text() == "Tools, plant or technical equipment"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The following tools, plant or technical equipment will be available to it for performing the contract."
+        request.Criterion[idx].Description.text() == "The following tools, plant or technical equipment will be available to it for performing the contract:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

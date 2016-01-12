@@ -31,7 +31,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
 
         then: "check name and description"
         request.Criterion[0].Name.text() == "All selection criteria will be satisfied"
-        request.Criterion[0].Description.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+        request.Criterion[0].Description.text() == "It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
 
         then: "main subgroup"
         request.Criterion[0].RequirementGroup.size() == 1

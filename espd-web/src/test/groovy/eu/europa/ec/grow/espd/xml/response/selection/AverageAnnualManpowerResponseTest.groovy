@@ -28,7 +28,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         request.Criterion[idx].Name.text() == "Average annual manpower"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator’s average annual manpower for the last three years were as follows."
+        request.Criterion[idx].Description.text() == "The economic operator’s average annual manpower and the number of managerial staff for the last three years were as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

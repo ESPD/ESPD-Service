@@ -28,7 +28,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
         request.Criterion[idx].Name.text() == "Study and research facilities"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator uses the following study and research facilities are as follows."
+        request.Criterion[idx].Description.text() == "It uses the following study and research facilities are as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

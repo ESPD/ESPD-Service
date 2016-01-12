@@ -27,7 +27,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         request.Criterion[idx].Name.text() == "All selection criteria will be satisfied"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+        request.Criterion[idx].Description.text() == "It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
 
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 1

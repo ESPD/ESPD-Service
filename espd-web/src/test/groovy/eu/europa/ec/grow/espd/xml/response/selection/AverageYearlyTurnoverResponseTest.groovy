@@ -28,7 +28,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         request.Criterion[idx].Name.text() == "Average yearly turnover"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator's average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows."
+        request.Criterion[idx].Description.text() == "Its average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

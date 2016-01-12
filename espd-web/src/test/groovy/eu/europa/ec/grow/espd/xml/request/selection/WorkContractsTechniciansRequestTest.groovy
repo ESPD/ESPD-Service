@@ -26,7 +26,7 @@ class WorkContractsTechniciansRequestTest extends AbstractSelectionCriteriaFixtu
         request.Criterion[idx].Name.text() == "For works contracts: technicians or technical bodies to carry out the work"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work."
+        request.Criterion[idx].Description.text() == "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

@@ -28,7 +28,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
         request.Criterion[idx].Name.text() == "Specific average turnover"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator's specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows."
+        request.Criterion[idx].Description.text() == "Its specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

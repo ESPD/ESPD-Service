@@ -28,7 +28,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
         request.Criterion[idx].Name.text() == "Environmental management measures"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract."
+        request.Criterion[idx].Description.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

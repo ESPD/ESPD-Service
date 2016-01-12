@@ -14,8 +14,6 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-//        def file = new File("/home/ratoico/Downloads/espd-request.xml")
-//        file.text = xmlOutput
 
         then: "CriterionID element"
         request.Criterion.size() == 1
@@ -28,7 +26,7 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].Name.text() == "All selection criteria will be satisfied"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
+        request.Criterion[idx].Description.text() == "It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice."
 
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 1

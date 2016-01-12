@@ -27,7 +27,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
         request.Criterion[idx].Name.text() == "Other economic or financial requirements"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, please specify which apply to this economic operator."
+        request.Criterion[idx].Description.text() == "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, the economic operator declares that:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

@@ -26,7 +26,7 @@ class SupplyContractsSamplesWithCARequestTest extends AbstractSelectionCriteriaF
         request.Criterion[idx].Name.text() == "For supply contracts: samples, descriptions or photographs with certification of authenticity"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable."
+        request.Criterion[idx].Description.text() == "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

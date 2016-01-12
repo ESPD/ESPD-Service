@@ -28,7 +28,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         request.Criterion[idx].Name.text() == "Professional risk indemnity insurance"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The insured amount in its professional risk indemnity insurance is the following."
+        request.Criterion[idx].Description.text() == "The insured amount in its professional risk indemnity insurance is the following:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")

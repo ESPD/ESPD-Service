@@ -26,7 +26,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
         request.Criterion[idx].Name.text() == "Enrolment in a relevant professional register"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex."
+        request.Criterion[idx].Description.text() == "It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(2)")

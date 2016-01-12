@@ -26,7 +26,7 @@ class ServiceContractsPerformanceServicesRequestTest extends AbstractSelectionCr
         request.Criterion[idx].Name.text() == "For service contracts: performance of services of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
+        request.Criterion[idx].Description.text() == "For public service contracts only: During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(4)")

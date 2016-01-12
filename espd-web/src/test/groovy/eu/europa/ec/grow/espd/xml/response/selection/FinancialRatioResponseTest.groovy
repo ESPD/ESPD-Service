@@ -28,7 +28,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].Name.text() == "Financial ratio"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows."
+        request.Criterion[idx].Description.text() == "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:"
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "58(3)")
