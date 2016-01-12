@@ -105,7 +105,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(descriptionRatioGroup.Requirement[1], "990eef0a-14c6-41af-8bf2-b8311332d152", "Ratio", "QUANTITY")
     }
 
-    protected static void checkDescriptionAmountDateRecipients1Group(def group) {
+    protected static void checkDescriptionAmountDateRecipientsGroup1(def group) {
         assert group.ID.text() == "96f00020-0a25-402e-b850-2378e83b5695"
         assert group.Requirement.size() == 4
 
@@ -115,7 +115,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "DESCRIPTION")
     }
 
-    protected static void checkDescriptionAmountDateRecipients2Group(def group) {
+    protected static void checkDescriptionAmountDateRecipientsGroup2(def group) {
         assert group.ID.text() == "c48572f9-47bf-423a-9885-2c78ae9ca718"
         assert group.Requirement.size() == 4
 
@@ -125,7 +125,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[3], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "DESCRIPTION")
     }
 
-    protected static void checkDescriptionAmountDateRecipients3Group(def group) {
+    protected static void checkDescriptionAmountDateRecipientsGroup3(def group) {
         assert group.ID.text() == "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7"
         assert group.Requirement.size() == 4
 
@@ -133,6 +133,26 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(group.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
         checkRequirement(group.Requirement[2], "c953e635-580b-4d7c-a30c-2edbde3b8fdf", "Date", "DATE")
         checkRequirement(group.Requirement[3], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "DESCRIPTION")
+    }
+
+    protected static void checkDescriptionAmountDateRecipientsGroup4(def group) {
+        assert group.ID.text() == "d67a6126-dd6d-4ed2-bda7-214a19e13a63"
+        assert group.Requirement.size() == 4
+
+        checkRequirement(group.Requirement[0], "b1640c24-b405-443e-bf5e-d7771f66aab6", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "9f278e42-aa1d-4b2e-97cd-832248aa5393", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "9b263b45-fc63-4b01-a3dc-cb9c95dda449", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "a84ea948-cf03-47b5-b4cf-a35f49910d10", "Recipients", "DESCRIPTION")
+    }
+
+    protected static void checkDescriptionAmountDateRecipientsGroup5(def group) {
+        assert group.ID.text() == "159fc086-cf34-48a4-a41b-afed62661383"
+        assert group.Requirement.size() == 4
+
+        checkRequirement(group.Requirement[0], "587129bc-a5e1-43be-94ac-6e5366d30c67", "Description", "DESCRIPTION")
+        checkRequirement(group.Requirement[1], "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b", "Amount", "AMOUNT")
+        checkRequirement(group.Requirement[2], "056cba1d-986b-4164-92b6-26a1cbdf0690", "Date", "DATE")
+        checkRequirement(group.Requirement[3], "38a4802f-0b93-4e78-ad4e-2a057e1aa578", "Recipients", "DESCRIPTION")
     }
 
 }

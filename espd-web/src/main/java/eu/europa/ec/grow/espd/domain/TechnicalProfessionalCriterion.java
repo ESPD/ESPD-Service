@@ -34,10 +34,14 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
     private Date date1;
     private Date date2;
     private Date date3;
+    private Date date4;
+    private Date date5;
 
     private String recipients1;
     private String recipients2;
     private String recipients3;
+    private String recipients4;
+    private String recipients5;
 
     private Double percentage;
     private String specify;

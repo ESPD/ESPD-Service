@@ -92,6 +92,18 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_GROUP_4("d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+            Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_4, AMOUNT_4, DATE_4, RECIPIENTS_4)),
+    /**
+     *
+     */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_GROUP_5("159fc086-cf34-48a4-a41b-afed62661383",
+            Collections.<CcvCriterionGroup>emptyList(),
+            list(DESCRIPTION_5, AMOUNT_5, DATE_5, RECIPIENTS_5)),
+    /**
+     *
+     */
     ALL_CRITERIA_SATISFIED_GROUP("f3a6836d-2de2-4cd1-81ca-fb06178d05c5", Collections.<CcvCriterionGroup>emptyList(),
             list(YOUR_ANSWER)),
     /**

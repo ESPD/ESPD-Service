@@ -147,6 +147,16 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
+    DATE_4("9b263b45-fc63-4b01-a3dc-cb9c95dda449", CriterionText.DATE_TEXT,
+            ExpectedResponseType.DATE),
+    /**
+     *
+     */
+    DATE_5("056cba1d-986b-4164-92b6-26a1cbdf0690", CriterionText.DATE_TEXT,
+            ExpectedResponseType.DATE),
+    /**
+     *
+     */
     RECIPIENTS_1("a92536ab-6783-40bb-a037-5d31f421fd85", CriterionText.RECIPIENTS_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
@@ -158,6 +168,16 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     RECIPIENTS_3("5157e1ff-d272-4382-98a9-6953f5a15300", CriterionText.RECIPIENTS_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    RECIPIENTS_4("a84ea948-cf03-47b5-b4cf-a35f49910d10", CriterionText.RECIPIENTS_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    RECIPIENTS_5("38a4802f-0b93-4e78-ad4e-2a057e1aa578", CriterionText.RECIPIENTS_TEXT,
             ExpectedResponseType.DESCRIPTION),
     /**
      *

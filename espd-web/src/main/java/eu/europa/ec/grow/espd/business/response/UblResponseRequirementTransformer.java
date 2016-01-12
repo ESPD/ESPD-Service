@@ -213,6 +213,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.DATE_3.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDate(buildDateType(selectionCriterion.getDate3()));
+        } else if (SelectionCriterionRequirement.DATE_4.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setDate(buildDateType(selectionCriterion.getDate4()));
+        } else if (SelectionCriterionRequirement.DATE_5.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setDate(buildDateType(selectionCriterion.getDate5()));
         } else if (SelectionCriterionRequirement.RECIPIENTS_1.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients1()));
@@ -222,6 +228,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.RECIPIENTS_3.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients3()));
+        } else if (SelectionCriterionRequirement.RECIPIENTS_4.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients4()));
+        } else if (SelectionCriterionRequirement.RECIPIENTS_5.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients5()));
         } else if (SelectionCriterionRequirement.PERCENTAGE.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setPercent(buildPercentType(selectionCriterion.getPercentage()));

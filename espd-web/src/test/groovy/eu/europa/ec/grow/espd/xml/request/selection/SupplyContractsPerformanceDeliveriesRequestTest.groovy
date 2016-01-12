@@ -32,15 +32,17 @@ class SupplyContractsPerformanceDeliveriesRequestTest extends AbstractSelectionC
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 4
+        request.Criterion[idx].RequirementGroup.size() == 6
 
         then: "check description amount date recipients"
-        checkDescriptionAmountDateRecipients1Group(request.Criterion[idx].RequirementGroup[0])
-        checkDescriptionAmountDateRecipients2Group(request.Criterion[idx].RequirementGroup[1])
-        checkDescriptionAmountDateRecipients3Group(request.Criterion[idx].RequirementGroup[2])
+        checkDescriptionAmountDateRecipientsGroup1(request.Criterion[idx].RequirementGroup[0])
+        checkDescriptionAmountDateRecipientsGroup2(request.Criterion[idx].RequirementGroup[1])
+        checkDescriptionAmountDateRecipientsGroup3(request.Criterion[idx].RequirementGroup[2])
+        checkDescriptionAmountDateRecipientsGroup4(request.Criterion[idx].RequirementGroup[3])
+        checkDescriptionAmountDateRecipientsGroup5(request.Criterion[idx].RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[3])
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[5])
     }
 
 }
