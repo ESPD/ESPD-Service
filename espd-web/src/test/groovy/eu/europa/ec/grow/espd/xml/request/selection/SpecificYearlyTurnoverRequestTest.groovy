@@ -36,7 +36,7 @@ class SpecificYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "ee1fdbab-f54e-4579-bcb8-060fe45178e9"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 3
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 5
         request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "main sub group requirements"
@@ -47,6 +47,8 @@ class SpecificYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture
         checkYearAmountCurrency1Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
         checkYearAmountCurrency2Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
         checkYearAmountCurrency3Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
+        checkYearAmountCurrency4Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[3])
+        checkYearAmountCurrency5Group(request.Criterion[idx].RequirementGroup[0].RequirementGroup[4])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

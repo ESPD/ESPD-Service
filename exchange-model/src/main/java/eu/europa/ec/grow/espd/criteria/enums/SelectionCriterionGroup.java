@@ -24,32 +24,45 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    YEAR_AMOUNT_CURRENCY_1_GROUP("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
+    YEAR_AMOUNT_GROUP_1("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
             list(YEAR_1, AMOUNT_1)),
     /**
      *
      */
-    YEAR_AMOUNT_CURRENCY_2_GROUP("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
+    YEAR_AMOUNT_GROUP_2("c628dd27-8016-4d80-8660-7461f2e3ee0f", Collections.<CcvCriterionGroup>emptyList(),
             list(YEAR_2, AMOUNT_2)),
     /**
      *
      */
-    YEAR_AMOUNT_CURRENCY_3_GROUP("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
+    YEAR_AMOUNT_GROUP_3("9dd09f9f-3326-4865-9d5a-f0836076fb19", Collections.<CcvCriterionGroup>emptyList(),
             list(YEAR_3, AMOUNT_3)),
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP("96f00020-0a25-402e-b850-2378e83b5695", Collections.<CcvCriterionGroup>emptyList(),
+    YEAR_AMOUNT_GROUP_4("962011c9-9e2e-4e7b-818e-30e8506e874f", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR_4, AMOUNT_4)),
+    /**
+     *
+     */
+    YEAR_AMOUNT_GROUP_5("343795e2-98e9-4cc9-8ef2-8817cec8f49a", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR_5, AMOUNT_5)),
+    /**
+     *
+     */
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_1_GROUP("96f00020-0a25-402e-b850-2378e83b5695",
+            Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_1, AMOUNT_1, DATE_1, RECIPIENTS_1)),
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP("c48572f9-47bf-423a-9885-2c78ae9ca718", Collections.<CcvCriterionGroup>emptyList(),
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_2_GROUP("c48572f9-47bf-423a-9885-2c78ae9ca718",
+            Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_2, AMOUNT_2, DATE_2, RECIPIENTS_2)),
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7", Collections.<CcvCriterionGroup>emptyList(),
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_3_GROUP("2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+            Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_3, AMOUNT_3, DATE_3, RECIPIENTS_3)),
     /**
      *
@@ -80,28 +93,28 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     GENERAL_YEARLY_TURNOVER_GROUP("e1886054-ada4-473c-9afc-2fde82c24cf4",
-            list(YEAR_AMOUNT_CURRENCY_1_GROUP, YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP),
-            list(YOUR_ANSWER)),
+            list(YEAR_AMOUNT_GROUP_1, YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3, YEAR_AMOUNT_GROUP_4,
+                    YEAR_AMOUNT_GROUP_5), list(YOUR_ANSWER)),
     /**
      *
      */
-    AVERAGE_YEARLY_TURNOVER_GROUP("08da0667-c7e3-445f-a548-1107794ef7d5", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
+    AVERAGE_YEARLY_TURNOVER_GROUP("08da0667-c7e3-445f-a548-1107794ef7d5", list(YEAR_AMOUNT_GROUP_1,
+            YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3, YEAR_AMOUNT_GROUP_4, YEAR_AMOUNT_GROUP_5), list(YOUR_ANSWER)),
     /**
      *
      */
-    SPECIFIC_YEARLY_TURNOVER_GROUP("ee1fdbab-f54e-4579-bcb8-060fe45178e9", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
+    SPECIFIC_YEARLY_TURNOVER_GROUP("ee1fdbab-f54e-4579-bcb8-060fe45178e9", list(YEAR_AMOUNT_GROUP_1,
+            YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3, YEAR_AMOUNT_GROUP_4, YEAR_AMOUNT_GROUP_5), list(YOUR_ANSWER)),
     /**
      *
      */
-    SPECIFIC_AVERAGE_TURNOVER_GROUP("fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(YOUR_ANSWER)),
+    SPECIFIC_AVERAGE_TURNOVER_GROUP("fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0", list(YEAR_AMOUNT_GROUP_1,
+            YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3, YEAR_AMOUNT_GROUP_4, YEAR_AMOUNT_GROUP_5), list(YOUR_ANSWER)),
     /**
      *
      */
-    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(YEAR_AMOUNT_CURRENCY_1_GROUP,
-            YEAR_AMOUNT_CURRENCY_2_GROUP, YEAR_AMOUNT_CURRENCY_3_GROUP), list(REQUIRED_RATIO)),
+    FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(YEAR_AMOUNT_GROUP_1,
+            YEAR_AMOUNT_GROUP_2, YEAR_AMOUNT_GROUP_3), list(REQUIRED_RATIO)),
     /**
      *
      */

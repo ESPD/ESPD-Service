@@ -280,6 +280,22 @@ class EspdCriterionFactory {
             criterion.setCurrency3(amount3.getCurrency());
         }
 
+        Integer year4 = readRequirementValue(SelectionCriterionRequirement.YEAR_4, criterionType);
+        criterion.setYear4(year4);
+        Amount amount4 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_4, criterionType);
+        if (amount4 != null) {
+            criterion.setAmount4(amount4.getAmount());
+            criterion.setCurrency4(amount4.getCurrency());
+        }
+
+        Integer year5 = readRequirementValue(SelectionCriterionRequirement.YEAR_5, criterionType);
+        criterion.setYear5(year5);
+        Amount amount5 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_5, criterionType);
+        if (amount5 != null) {
+            criterion.setAmount5(amount5.getAmount());
+            criterion.setCurrency5(amount5.getCurrency());
+        }
+
         String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 

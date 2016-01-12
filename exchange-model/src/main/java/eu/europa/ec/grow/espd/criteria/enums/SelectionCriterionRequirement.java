@@ -47,6 +47,26 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
+    YEAR_4("17a7353d-a7a4-43ee-9cc8-b9db83eeafb3", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT_4("9f278e42-aa1d-4b2e-97cd-832248aa5393", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    YEAR_5("34825634-5151-4e31-af1b-7eafadcf15be", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT_5("cc1a0b1e-dbfd-4313-a4fb-2e543b05549b", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
     REQUIRED_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", CriterionText.REQUIRED_RATIO_TEXT,
             ExpectedResponseType.RATIO),
     /**

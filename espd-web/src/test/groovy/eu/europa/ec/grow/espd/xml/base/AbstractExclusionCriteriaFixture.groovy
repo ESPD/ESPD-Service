@@ -6,18 +6,18 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkSelfCleaningRequirementGroup(def selfCleaningGroup) {
         assert selfCleaningGroup.ID.text() == "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b"
-        selfCleaningGroup.Requirement.size() == 2
+        assert selfCleaningGroup.Requirement.size() == 2
 
         def r0 = selfCleaningGroup.Requirement[0]
         checkRequirement(r0, "20c5361b-7599-4ee6-b030-7f8323174d1e", "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?", "INDICATOR")
-        r0.ID.@schemeID.text() == "CriterionRelatedIDs"
-        r0.ID.@schemeVersionID.text() == "1.0"
+        assert r0.ID.@schemeID.text() == "CriterionRelatedIDs"
+        assert r0.ID.@schemeVersionID.text() == "1.0"
 
 
         def r1 = selfCleaningGroup.Requirement[1]
         checkRequirement(r1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
-        r1.ID.@schemeID.text() == "CriterionRelatedIDs"
-        r1.ID.@schemeVersionID.text() == "1.0"
+        assert r1.ID.@schemeID.text() == "CriterionRelatedIDs"
+        assert r1.ID.@schemeVersionID.text() == "1.0"
     }
 
     protected static void checkInfoAvailableElectronicallyRequirementGroup(def infoElectronicallyRequirementGroup) {

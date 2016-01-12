@@ -147,6 +147,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.YEAR_3.equals(ccvRequirement)) {
             EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear3()));
+        } else if (SelectionCriterionRequirement.YEAR_4.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildYearType(selectionCriterion.getYear4()));
+        } else if (SelectionCriterionRequirement.YEAR_5.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildYearType(selectionCriterion.getYear5()));
         } else if (SelectionCriterionRequirement.AMOUNT_1.equals(ccvRequirement)) {
             MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount1(), selectionCriterion.getCurrency1()));
@@ -156,6 +162,12 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.AMOUNT_3.equals(ccvRequirement)) {
             MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount3(), selectionCriterion.getCurrency3()));
+        } else if (SelectionCriterionRequirement.AMOUNT_4.equals(ccvRequirement)) {
+            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            responseType.setAmount(buildAmountType(selectionCriterion.getAmount4(), selectionCriterion.getCurrency4()));
+        } else if (SelectionCriterionRequirement.AMOUNT_5.equals(ccvRequirement)) {
+            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            responseType.setAmount(buildAmountType(selectionCriterion.getAmount5(), selectionCriterion.getCurrency5()));
         } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
             DescriptionHolder selectionCriterion = (DescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription()));

@@ -19,10 +19,14 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion implement
     private Double amount1;
     private Double amount2;
     private Double amount3;
+    private Double amount4;
+    private Double amount5;
 
     private String currency1;
     private String currency2;
     private String currency3;
+    private String currency4;
+    private String currency5;
 
     private Date date1;
     private Date date2;

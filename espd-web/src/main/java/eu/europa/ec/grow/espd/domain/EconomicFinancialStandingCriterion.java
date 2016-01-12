@@ -13,14 +13,20 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion imple
     private Integer year1;
     private Integer year2;
     private Integer year3;
+    private Integer year4;
+    private Integer year5;
 
     private Double amount1;
     private Double amount2;
     private Double amount3;
+    private Double amount4;
+    private Double amount5;
 
     private String currency1;
     private String currency2;
     private String currency3;
+    private String currency4;
+    private String currency5;
 
     // TODO ratio
 

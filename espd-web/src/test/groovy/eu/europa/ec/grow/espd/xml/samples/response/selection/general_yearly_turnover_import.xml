@@ -2,11 +2,11 @@
 <espd:ESPDResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1">
     <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
     <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns092:ver3.0</cbc:CustomizationID>
-    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">24a792d0-a5e8-476f-a66b-6aee3a8736a2</cbc:ID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">db48d433-06ed-4d88-afcc-19c7bbcdc047</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
-    <cbc:IssueDate>2016-08-01</cbc:IssueDate>
-    <cbc:IssueTime>14:48:59</cbc:IssueTime>
+    <cbc:IssueDate>2016-12-01</cbc:IssueDate>
+    <cbc:IssueTime>14:18:19</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
     <cac:ContractingParty/>
     <cac:ProcurementProjectLot>
@@ -16,7 +16,7 @@
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">499efc97-2ac1-4af2-9e84-323c2ca67747</cbc:ID>
         <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ECONOMIC_FINANCIAL_STANDING</cbc:TypeCode>
         <cbc:Name>General yearly turnover</cbc:Name>
-        <cbc:Description>The economic operator's general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows.</cbc:Description>
+        <cbc:Description>Its general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:</cbc:Description>
         <ccv:LegislationReference>
             <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
             <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
@@ -39,7 +39,7 @@
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5aacceb3-280e-42f1-b2da-3d8ac7877fe9</cbc:ID>
                     <cbc:Description>Year</cbc:Description>
                     <ccv:Response>
-                        <cbc:Quantity unitCode="YEAR">2016.0</cbc:Quantity>
+                        <cbc:Quantity unitCode="YEAR">2016</cbc:Quantity>
                     </ccv:Response>
                 </ccv:Requirement>
                 <ccv:Requirement responseDataType="AMOUNT">
@@ -81,6 +81,40 @@
                     <cbc:Description>Amount</cbc:Description>
                     <ccv:Response>
                         <cbc:Amount currencyID="USD">333.3</cbc:Amount>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">962011c9-9e2e-4e7b-818e-30e8506e874f</cbc:ID>
+                <ccv:Requirement responseDataType="QUANTITY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">17a7353d-a7a4-43ee-9cc8-b9db83eeafb3</cbc:ID>
+                    <cbc:Description>Year</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Quantity unitCode="YEAR">2013</cbc:Quantity>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="AMOUNT">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
+                    <cbc:Description>Amount</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Amount currencyID="CHF">444.4</cbc:Amount>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">343795e2-98e9-4cc9-8ef2-8817cec8f49a</cbc:ID>
+                <ccv:Requirement responseDataType="QUANTITY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">34825634-5151-4e31-af1b-7eafadcf15be</cbc:ID>
+                    <cbc:Description>Year</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Quantity unitCode="YEAR">2012</cbc:Quantity>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="AMOUNT">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</cbc:ID>
+                    <cbc:Description>Amount</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Amount currencyID="YEN">555.5</cbc:Amount>
                     </ccv:Response>
                 </ccv:Requirement>
             </ccv:RequirementGroup>

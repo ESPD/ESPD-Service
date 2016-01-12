@@ -11,9 +11,17 @@ public interface MultipleAmountsHolder {
 
     Double getAmount3();
 
+    Double getAmount4();
+
+    Double getAmount5();
+
     String getCurrency1();
 
     String getCurrency2();
 
     String getCurrency3();
+
+    String getCurrency4();
+
+    String getCurrency5();
 }
