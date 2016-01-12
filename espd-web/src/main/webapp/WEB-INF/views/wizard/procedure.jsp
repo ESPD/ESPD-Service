@@ -9,8 +9,9 @@
     $(function () {
         $("#espdform").validate({
             errorContainer: $("div.errorContainer"),
-            errorLabelContainer: $(".errorLabelContainer ul"),
-            wrapper: 'li'
+            errorPlacement: function ($error, $element) {
+            	$element.parent().append($error);
+            }
         });
     });
 </script>
@@ -331,6 +332,7 @@
                                 <label class="control-label col-md-4 " for="authorityName"><span data-i18n="createca_name"><s:message code="createca_name"/></span></label>
                                 <div class="col-md-8">
                                     <form:input cssClass="form-control" id="authorityName" path="authority.name" placeholder="Enter name" required="true"/>
+                                    <span class="error"></span>
                                 </div>
                             </div>
                             <div class="row">

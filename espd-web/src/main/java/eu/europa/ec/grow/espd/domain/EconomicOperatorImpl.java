@@ -38,4 +38,5 @@ public class EconomicOperatorImpl extends PartyImpl {
 	private String representAddInfo;//If needed, please provide detailed information on the representation (its forms, extent, purpose ...):
 	
 	private Boolean isEORelyOnEntities;//Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?
+
 }
