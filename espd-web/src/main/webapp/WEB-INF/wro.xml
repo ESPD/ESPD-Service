@@ -24,5 +24,7 @@
         <js minimize="false">/static/jquery-plugins/validate/jquery.validate.min.js</js>
         <js minimize="false">/static/jquery-plugins/validate/additional-methods.min.js</js>
         <js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js</js>
+        <js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js</js>
+        <js minimize="false">/static/jquery-plugins/inputmask/min/jquery.inputmask.bundle.min.js</js>
     </group>
-</groups>   
+</groups>  

@@ -49,10 +49,10 @@
     validator(defaultValidators, "min", "<s:message code='validator_min'/>");
 
     $(function () {
-
         $(".filecontrol").fileinput();
         $(".datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
         $(".selectfilter").select2();
+        //$(":input").inputmask(); // seems it is too heavy to apply on criterias forms
 
         jQuery.extend(jQuery.validator.messages, defaultValidators);
         $('[data-toggle="tooltip"]').tooltip({
@@ -67,9 +67,11 @@
         $('.checktoggle').change(function () {
             if ($(this).prop('checked')) {
                 $($(this).attr("data-target")).show();
+                $($(this).attr("data-target-invert")).hide();
             }
             else {
                 $($(this).attr("data-target")).hide();
+                $($(this).attr("data-target-invert")).show();
             }
         });
 
@@ -85,6 +87,9 @@
 
         $('.radioslide:checked').each(function (index) {
             $($(this).attr("data-target")).show();
+        });
+        $('.radioslide:not(:checked)').each(function (index) {
+            $($(this).attr("data-target-invert")).show();
         });
     });
 
@@ -137,6 +142,8 @@
                 //	$(this).html(Date.parse($(this).html()).toLocaleDateString(code))
                 //});
                 //pageDateFormat = array.datefmt;
+                
+                
             }
         });
     }

@@ -13,6 +13,7 @@
             	$element.parent().append($error);
             }
         });
+        $("#ojsNumber").inputmask("9999/S 999-9999999");
     });
 </script>
 
@@ -71,249 +72,8 @@
                 </li>
             </ul>
         </div>
-
-        <c:if test="${isAgentEO}">
-	        <div class="paragraph">
-	            <h2>
-	                <span data-i18n="createeo_header"><s:message code="createeo_header"/></span>
-	            </h2>
-	        </div>
         
-	        <div class="espd-panel panel panel-default">
-	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div">
-	                <span data-i18n="createeo_info_eo"><s:message code="createeo_info_eo"/></span>
-	            </div>
-	            <div id="createeo_info_eo_div" class="collapse in">
-	                <div class="panel-body">
-	                	
-	                        <div class="col-md-6">
-	                            <div class="form-group">
-	                                <label class="control-label col-md-4" data-i18n="createeo_name"><s:message code="createeo_name"/></label>
-	                                <div class="col-md-8">
-	                                    <form:input cssClass="form-control" path="eoperator.name" placeholder="Name"/>
-	                                </div>
-	                            </div>
-		                       <tiles:insertDefinition name="partyInfo">
-		                             <tiles:putAttribute name="field" value="eoperator"/>
-		                             <tiles:putAttribute name="address" value="true"/>
-		                       </tiles:insertDefinition>
-	                        </div>
-	                        <div class="col-md-6">
-
-	                            <tiles:insertDefinition name="partyInfo">
-	                                 <tiles:putAttribute name="field" value="eoperator"/>
-	                                 <tiles:putAttribute name="vat" value="true"/>
-	                                 <tiles:putAttribute name="contacts" value="true"/>
-	                            </tiles:insertDefinition>
-                           
-		                       <div class="form-group">
-		                            <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
-		                            <div class="col-md-8">
-		                            	<form:input cssClass="form-control" path="eoperator.contactPerson" placeholder="Person(s)"/>
-		                            </div>
-		                        </div>
-
-		                       <div class="form-group">
-		                            <label class="control-label col-md-4" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
-		                            <div class="col-md-8">
-		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="web address"/>
-		                            </div>
-		                       </div>
-	                        </div>
-
-
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_sized"><s:message code="createeo_is_eo_sized"/></label>
-                            <div class="col-md-6">
-                                [YES/NO]
-                            </div>
-                       </div>
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
-                            	<s:message code="createeo_if_proc_reserved"/>
-                            </label>
-                            <div class="col-md-6">
-                                [YES/NO]
-                            </div>
-                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_percentage_disworkers">
-	                            	<s:message code="createeo_percentage_disworkers"/>
-	                            </label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_disworkers_details">
-	                            	<s:message code="createeo_disworkers_details"/>
-	                            </label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert">
-                            	<s:message code="createeo_eo_approved_cert"/>
-                            </label>
-                            <div class="col-md-6">
-                                [YES/NO]
-                            </div>
-                       </div>
-                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                [IF YES]<span data-i18n="createeo_answer_following_parts"><s:message code="createeo_answer_following_parts"/></span>
-                           </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_provide_regnumber"><s:message code="createeo_provide_regnumber"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_cert_e_avaliable"> <s:message code="createeo_cert_e_avaliable"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_ref_for_cert"> <s:message code="createeo_ref_for_cert"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_all_selection_covered"> <s:message code="createeo_all_selection_covered"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
- 
-                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                [IF NO]<span data-i18n="createeo_add_complete_missing"><s:message code="createeo_add_complete_missing"/></span>
-                           </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_eo_has_cert_soc"> <s:message code="createeo_eo_has_cert_soc"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_doc_e_avaliable"> <s:message code="createeo_doc_e_avaliable"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_proc_together"><s:message code="createeo_is_eo_proc_together"/></label>
-                            <div class="col-md-6">
-                                [YES/NO]
-                            </div>
-                       </div>
-                            <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                [IF YES]<span data-i18n="createeo_ensure_others_espd"><s:message code="createeo_ensure_others_espd"/></span>
-                            </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_eo_group_role"> <s:message code="createeo_eo_group_role"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_other_eo_part"> <s:message code="createeo_other_eo_part"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-	                       <div class="col-md-12 form-group">
-	                            <label class="control-label col-md-8" data-i18n="createeo_name_part_group"> <s:message code="createeo_name_part_group"/></label>
-	                            <div class="col-md-4">
-	                                [INPUT]
-	                            </div>
-	                       </div>
-
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_lots_concerned"><s:message code="createeo_lots_concerned"/></label>
-                            <div class="col-md-6">
-                                <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
-                            </div>
-                       </div>
-                       
-	                </div>
-	            </div>
-	        </div>
-	        
-	        <div class="espd-panel panel panel-default">
-	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_respresent_div">
-	                <span data-i18n="createeo_info_respresent"><s:message code="createeo_info_respresent"/></span>
-	            </div>
-	            <div id="createeo_info_respresent_div" class="collapse in">
-	                <div class="panel-body">
-                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                            <span data-i18n="createeo_person_empowered"><s:message code="createeo_person_empowered"/></span>
-                       </div>
-                       <div class="col-md-12 form-group">
-                           <label class="control-label col-md-4" data-i18n="createeo_full_name_and_birth"><s:message code="createeo_full_name_and_birth"/></label>
-                           <div class="col-md-8">
-                                [INPUT]
-                           </div>
-                       </div>
-                       <div class="col-md-12 form-group">
-                           <label class="control-label col-md-4" data-i18n="createeo_pos_act_in_capacity"><s:message code="createeo_pos_act_in_capacity"/></label>
-                           <div class="col-md-8">
-                                 [INPUT]
-                           </div>
-                       </div>
-                       
-                       
-                       <div class="col-md-6">
-	                        <tiles:insertDefinition name="partyInfo">
-	                            <tiles:putAttribute name="field" value="empowered"/>
-	                            <tiles:putAttribute name="address" value="true"/>
-	                        </tiles:insertDefinition>
-                       </div>
-                        
-                       <div class="col-md-6">
-	                        <tiles:insertDefinition name="partyInfo">
-	                            <tiles:putAttribute name="field" value="empowered"/>
-	                            <tiles:putAttribute name="contacts" value="true"/>
-	                        </tiles:insertDefinition>
-                       </div>
-                        
-
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-3" data-i18n="createeo_detinfo_of_represent"><s:message code="createeo_detinfo_of_represent"/></label>
-                            <div class="col-md-9">
-                               [TEXTAREA]
-                            </div>
-                       </div>
-	                </div>
-	            </div>
-	        </div>
-	        
-	        <div class="espd-panel panel panel-default">
-	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
-	                <span data-i18n="createeo_info_reliance"><s:message code="createeo_info_reliance"/></span>
-	            </div>
-	            <div id="createeo_info_reliance_div" class="collapse in">
-	                <div class="panel-body">
-                       <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_eo_rely_other_entities">
-                            	<s:message code="createeo_eo_rely_other_entities"/>
-                            </label>
-                            <div class="col-md-6">
-                                [YES/NO]
-                            </div>
-                       </div>
-                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
-                            <span data-i18n="createeo_separate_espd_sections_a_b"><s:message code="createeo_separate_espd_sections_a_b"/></span>
-                       </div>
-	                </div>
-	            </div>
-	        </div>
-        </c:if>
-       
+      
         <div class="paragraph">
             <h2>
                 <span data-i18n="createca_header"><s:message code="createca_header"/></span>
@@ -426,6 +186,256 @@
             </div>
         </div>
 
+
+        <c:if test="${isAgentEO}">
+	        <div class="paragraph">
+	            <h2>
+	                <span data-i18n="createeo_header"><s:message code="createeo_header"/></span>
+	            </h2>
+	        </div>
+        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div">
+	                <span data-i18n="createeo_info_eo"><s:message code="createeo_info_eo"/></span>
+	            </div>
+	            <div id="createeo_info_eo_div" class="collapse in">
+	                <div class="panel-body">
+	                	
+	                        <div class="col-md-6">
+	                            <div class="form-group">
+	                                <label class="control-label col-md-4" data-i18n="createeo_name"><s:message code="createeo_name"/></label>
+	                                <div class="col-md-8">
+	                                    <form:input cssClass="form-control" path="eoperator.name" placeholder="Name"/>
+	                                </div>
+	                            </div>
+		                       <tiles:insertDefinition name="partyInfo">
+		                             <tiles:putAttribute name="field" value="eoperator"/>
+		                             <tiles:putAttribute name="address" value="true"/>
+		                       </tiles:insertDefinition>
+	                        </div>
+	                        <div class="col-md-6">
+
+	                            <tiles:insertDefinition name="partyInfo">
+	                                 <tiles:putAttribute name="field" value="eoperator"/>
+	                                 <tiles:putAttribute name="vat" value="true"/>
+	                                 <tiles:putAttribute name="contacts" value="true"/>
+	                            </tiles:insertDefinition>
+                           
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4" data-i18n="createeo_contact_person"><s:message code="createeo_contact_person"/></label>
+		                            <div class="col-md-8">
+		                            	<form:input cssClass="form-control" path="eoperator.contactPerson" placeholder="Person(s)"/>
+		                            </div>
+		                        </div>
+
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4" data-i18n="createeo_internet_addr_if_exists"><s:message code="createeo_internet_addr_if_exists"/></label>
+		                            <div class="col-md-8">
+		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="web address"/>
+		                            </div>
+		                       </div>
+	                        </div>
+
+
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_sized"><s:message code="createeo_is_eo_sized"/></label>
+                            <div class="col-md-6">
+                                <form:checkbox path="eoperator.isSmallSizedEnterprise" cssClass="radioslide checktoggle form-control" />
+                            </div>
+                       </div>
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
+                            	<s:message code="createeo_if_proc_reserved"/>
+                            </label>
+                            <div class="col-md-6">
+                                <form:checkbox path="eoperator.isShelteredWorkshop" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
+                            </div>
+                       </div>
+                       
+                       <div class="col-md-12" id="disworkers-form" style="display:none"> 
+	                       <div class=" form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_percentage_disworkers">
+	                            	<s:message code="createeo_percentage_disworkers"/>
+	                            </label>
+	                            <div class="col-md-4" >
+	                                <form:input cssClass="form-control" path="eoperator.percentageDisabledWorkers" placeholder="%"/>
+	                            </div>
+	                       </div>
+	                       <div class=" form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_disworkers_details">
+	                            	<s:message code="createeo_disworkers_details"/>
+	                            </label>
+	                            <div class="col-md-4">
+	                                <form:input cssClass="form-control" path="eoperator.detailsDisabledWorkers" placeholder=""/>
+	                            </div>
+	                       </div>
+						</div>
+						
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert">
+                            	<s:message code="createeo_eo_approved_cert"/>
+                            </label>
+                            <div class="col-md-6">
+                                <form:checkbox path="eoperator.isEORegisteredOfficially" data-toggle="collapse" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
+                            </div>
+                       </div>
+                       <div class="col-md-12" id="reg-official-yes" style="display:none"><%-- [IF YES] --%>
+                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                <span data-i18n="createeo_answer_following_parts"><s:message code="createeo_answer_following_parts"/></span>
+                           </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_provide_regnumber"><s:message code="createeo_provide_regnumber"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_cert_e_avaliable"> <s:message code="createeo_cert_e_avaliable"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_ref_for_cert"> <s:message code="createeo_ref_for_cert"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_all_selection_covered"> <s:message code="createeo_all_selection_covered"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+ 					</div>
+ 					 <div class="col-md-12" id="reg-official-no" style="display:none"><%-- [IF NO] --%>
+                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                <span data-i18n="createeo_add_complete_missing"><s:message code="createeo_add_complete_missing"/></span>
+                           </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_eo_has_cert_soc"> <s:message code="createeo_eo_has_cert_soc"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_doc_e_avaliable"> <s:message code="createeo_doc_e_avaliable"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+					</div>
+					
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_proc_together"><s:message code="createeo_is_eo_proc_together"/></label>
+                            <div class="col-md-6">
+                                <form:checkbox path="eoperator.isEOInGroup" data-toggle="collapse" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
+                            </div>
+                       </div>
+                       <div id="group-form" style="display:none"><%-- [IF YES] --%>
+                            <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                <span data-i18n="createeo_ensure_others_espd"><s:message code="createeo_ensure_others_espd"/></span>
+                            </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_eo_group_role"> <s:message code="createeo_eo_group_role"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_other_eo_part"> <s:message code="createeo_other_eo_part"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+	                       <div class="col-md-12 form-group">
+	                            <label class="control-label col-md-8" data-i18n="createeo_name_part_group"> <s:message code="createeo_name_part_group"/></label>
+	                            <div class="col-md-4">
+	                                [INPUT]
+	                            </div>
+	                       </div>
+						</div>
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_lots_concerned"><s:message code="createeo_lots_concerned"/></label>
+                            <div class="col-md-6">
+                                <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder=""/>
+                            </div>
+                       </div>
+                       
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_respresent_div">
+	                <span data-i18n="createeo_info_respresent"><s:message code="createeo_info_respresent"/></span>
+	            </div>
+	            <div id="createeo_info_respresent_div" class="collapse in">
+	                <div class="panel-body">
+                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                            <span data-i18n="createeo_person_empowered"><s:message code="createeo_person_empowered"/></span>
+                       </div>
+                       <div class="col-md-12 form-group">
+                           <label class="control-label col-md-4" data-i18n="createeo_full_name_and_birth"><s:message code="createeo_full_name_and_birth"/></label>
+                           <div class="col-md-8">
+                                [INPUT]
+                           </div>
+                       </div>
+                       <div class="col-md-12 form-group">
+                           <label class="control-label col-md-4" data-i18n="createeo_pos_act_in_capacity"><s:message code="createeo_pos_act_in_capacity"/></label>
+                           <div class="col-md-8">
+                                 [INPUT]
+                           </div>
+                       </div>
+                       
+                       
+                       <div class="col-md-6">
+	                        <tiles:insertDefinition name="partyInfo">
+	                            <tiles:putAttribute name="field" value="empowered"/>
+	                            <tiles:putAttribute name="address" value="true"/>
+	                        </tiles:insertDefinition>
+                       </div>
+                        
+                       <div class="col-md-6">
+	                        <tiles:insertDefinition name="partyInfo">
+	                            <tiles:putAttribute name="field" value="empowered"/>
+	                            <tiles:putAttribute name="contacts" value="true"/>
+	                        </tiles:insertDefinition>
+                       </div>
+                        
+
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-3" data-i18n="createeo_detinfo_of_represent"><s:message code="createeo_detinfo_of_represent"/></label>
+                            <div class="col-md-9">
+                               <form:textarea path="eoperator.representAddInfo" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control"/>
+                            </div>
+                       </div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="espd-panel panel panel-default">
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
+	                <span data-i18n="createeo_info_reliance"><s:message code="createeo_info_reliance"/></span>
+	            </div>
+	            <div id="createeo_info_reliance_div" class="collapse in">
+	                <div class="panel-body">
+                       <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6" data-i18n="createeo_eo_rely_other_entities">
+                            	<s:message code="createeo_eo_rely_other_entities"/>
+                            </label>
+                            <div class="col-md-6">
+                                <form:checkbox path="eoperator.isEORelyOnEntities" cssClass="radioslide checktoggle form-control" />
+                            </div>
+                       </div>
+                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
+                            <span data-i18n="createeo_separate_espd_sections_a_b"><s:message code="createeo_separate_espd_sections_a_b"/></span>
+                       </div>
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
+ 
 
     </div>
 
