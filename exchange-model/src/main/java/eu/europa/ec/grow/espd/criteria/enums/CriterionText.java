@@ -37,4 +37,7 @@ final class CriterionText {
     static final String RECIPIENTS_TEXT = "Recipients";
     static final String ALLOW_CHECKS_TEXT = "Do you allow checks?";
     static final String NUMBER_TEXT = "Number";
+    static final String EXPLAIN_SUPPLY_CONTRACTS_QC_TEXT = "If not, please explain why and state which other means of proof can be provided:";
+    static final String EXPLAIN_CERTIFICATES_QA_TEXT = "If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:";
+    static final String EXPLAIN_CERTIFICATES_ENVIRONMENTAL_TEXT = "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:";
 }

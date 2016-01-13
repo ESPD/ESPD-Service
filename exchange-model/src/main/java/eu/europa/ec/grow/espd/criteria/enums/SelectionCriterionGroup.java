@@ -242,17 +242,18 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     SUPPLY_CONTRACTS_CERTIFICATES_QC_GROUP("4887c3d7-05fc-4e3e-b066-f338910f0c4c",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, EXPLAIN_SUPPLY_CONTRACTS_QC)),
     /**
      *
      */
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA_GROUP("0e88f63c-5642-4a17-833b-ae5800e1750a",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, EXPLAIN_CERTIFICATES_QA)),
     /**
      *
      */
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL_GROUP("82a59ce2-9c59-4075-af08-843ad89a45ec",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),;
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, EXPLAIN_CERTIFICATES_ENVIRONMENTAL))
+    ,;
 
     private final String id;
 

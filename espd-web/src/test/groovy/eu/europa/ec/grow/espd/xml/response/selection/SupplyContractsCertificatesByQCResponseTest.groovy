@@ -39,17 +39,36 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "4887c3d7-05fc-4e3e-b066-f338910f0c4c"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "b9dec4cb-2f6f-47d7-a023-e9099b19b338", "If not, please explain why and state which other means of proof can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
-    def "check the 'Please describe them' requirements response"() {
+    def "check the 'Your answer' requirement response"() {
+        given:
+        def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
+    def "check the 'If not, please explain why and state which other means of proof can be provided:' requirements response"() {
         given:
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true,
                 description: "technical description"))
@@ -61,7 +80,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
 
-        def req = subGroup.Requirement[0]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Description.text() == "technical description"
     }

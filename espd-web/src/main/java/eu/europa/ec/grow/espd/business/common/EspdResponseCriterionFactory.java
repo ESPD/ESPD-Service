@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Class that reads data coming from UBL {@link CriterionType} and creates the appropriate ESPD criterion objects
@@ -324,11 +325,10 @@ class EspdResponseCriterionFactory {
         addMultipleYears(criterionType, criterion);
         addMultipleNumbers(criterionType, criterion);
 
+        addDescriptionForTechnicalProfessional(criterionType, criterion);
+
         String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
         criterion.setSpecify(specify);
-
-        String pleaseDescribe = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-        criterion.setDescription(pleaseDescribe);
 
         Double percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
         criterion.setPercentage(percentage);
@@ -336,6 +336,31 @@ class EspdResponseCriterionFactory {
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
         return criterion;
+    }
+
+    private void addDescriptionForTechnicalProfessional(CriterionType criterionType,
+            TechnicalProfessionalCriterion criterion) {
+        // description is overloaded so we cannot have all these fields set at the same time
+        // the design is not very good
+        String explainSupplyQc = readRequirementValue(SelectionCriterionRequirement.EXPLAIN_SUPPLY_CONTRACTS_QC,
+                criterionType);
+        if (isNotBlank(explainSupplyQc)) {
+            criterion.setDescription(explainSupplyQc);
+        }
+        String explainCertificatesQa = readRequirementValue(SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA,
+                criterionType);
+        if (isNotBlank(explainCertificatesQa)) {
+            criterion.setDescription(explainCertificatesQa);
+        }
+        String explainCertificatesEnvironmental = readRequirementValue(
+                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL, criterionType);
+        if (isNotBlank(explainCertificatesEnvironmental)) {
+            criterion.setDescription(explainCertificatesEnvironmental);
+        }
+        String pleaseDescribe = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        if (isNotBlank(pleaseDescribe)) {
+            criterion.setDescription(pleaseDescribe);
+        }
     }
 
     private void addMultipleNumbers(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {

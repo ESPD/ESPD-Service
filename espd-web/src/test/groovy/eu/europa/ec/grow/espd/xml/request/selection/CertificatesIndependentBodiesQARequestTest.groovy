@@ -37,11 +37,14 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "0e88f63c-5642-4a17-833b-ae5800e1750a"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "8c5d1e13-54f7-4895-a65c-b8e09253130c",
+                "If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

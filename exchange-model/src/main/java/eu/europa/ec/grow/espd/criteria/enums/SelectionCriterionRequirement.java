@@ -211,7 +211,23 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     NUMBER_3("668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a", CriterionText.NUMBER_TEXT,
-            ExpectedResponseType.QUANTITY),;
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    EXPLAIN_SUPPLY_CONTRACTS_QC("b9dec4cb-2f6f-47d7-a023-e9099b19b338", CriterionText.EXPLAIN_SUPPLY_CONTRACTS_QC_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    EXPLAIN_CERTIFICATES_QA("8c5d1e13-54f7-4895-a65c-b8e09253130c", CriterionText.EXPLAIN_CERTIFICATES_QA_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    EXPLAIN_CERTIFICATES_ENVIRONMENTAL("b0aace10-fd73-46d1-ae78-289ee5cd42ca", CriterionText.EXPLAIN_CERTIFICATES_ENVIRONMENTAL_TEXT,
+            ExpectedResponseType.DESCRIPTION),
+    ;
 
     private final String id;
 

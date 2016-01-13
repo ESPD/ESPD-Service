@@ -39,11 +39,14 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "82a59ce2-9c59-4075-af08-843ad89a45ec"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
+                "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
@@ -64,6 +67,25 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "true"
+    }
+
+    def "check the 'If not, please explain why and state which other means of proof can be provided:' requirements response"() {
+        given:
+        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true,
+                description: "explain description"))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[1]
+        checkRequirement(req, "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
+                "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:", "DESCRIPTION")
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "explain description"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

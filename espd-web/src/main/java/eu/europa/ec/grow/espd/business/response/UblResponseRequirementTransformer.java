@@ -169,7 +169,10 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.AMOUNT_5.equals(ccvRequirement)) {
             MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount5(), selectionCriterion.getCurrency5()));
-        } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+        } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.EXPLAIN_SUPPLY_CONTRACTS_QC.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA.equals(ccvRequirement) ||
+                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL.equals(ccvRequirement)) {
             DescriptionHolder selectionCriterion = (DescriptionHolder) espdCriterion;
             responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription()));
         } else if (SelectionCriterionRequirement.PLEASE_SPECIFY.equals(ccvRequirement)) {
