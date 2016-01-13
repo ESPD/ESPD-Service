@@ -49,6 +49,21 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    YEAR_NUMBER_GROUP_1("96defecc-7d32-4957-82e9-aad5f3c5b736", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR_1, NUMBER_1)),
+    /**
+     *
+     */
+    YEAR_NUMBER_GROUP_2("dac727d8-2cd2-43e0-8561-6f17e25870a4", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR_2, NUMBER_2)),
+    /**
+     *
+     */
+    YEAR_NUMBER_GROUP_3("b799d324-358c-48b0-bd5e-6d205969b4a5", Collections.<CcvCriterionGroup>emptyList(),
+            list(YEAR_3, NUMBER_3)),
+    /**
+     *
+     */
     DESCRIPTION_RATIO_GROUP_1("1689194b-6ecf-4ab4-ab38-7656610c25bb", Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_1, RATIO_1)),
     /**
@@ -202,11 +217,6 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     ENVIRONMENTAL_MANAGEMENT_FEATURES_GROUP("96defecc-7d32-4957-82e9-aad5f3c5b736",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
-    /**
-     *
-     */
-    NUMBER_OF_MANAGERIAL_STAFF_GROUP("990e8da4-33af-4d3e-ac39-83a003c18d97",
             Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *

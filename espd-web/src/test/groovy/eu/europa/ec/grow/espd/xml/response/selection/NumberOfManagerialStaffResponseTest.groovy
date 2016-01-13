@@ -1,5 +1,4 @@
 package eu.europa.ec.grow.espd.xml.response.selection
-
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -34,36 +33,77 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        request.Criterion[idx].RequirementGroup.size() == 4
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "990e8da4-33af-4d3e-ac39-83a003c18d97"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        then:
+        checkYearNumberGroup1(request.Criterion[idx].RequirementGroup[0])
+        checkYearNumberGroup2(request.Criterion[idx].RequirementGroup[1])
+        checkYearNumberGroup3(request.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[3])
     }
 
-    def "check the 'Please describe them' requirements response"() {
+    def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                description: "technical description"))
+                year1: 2016, year2: 2015, year3: 2014))
 
         when:
         def request = parseResponseXml(espd)
         def idx = 0
 
-        then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        then: "First year"
+        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def req1 = subGroup1.Requirement[0]
+        req1.Response.size() == 1
+        req1.Response[0].Quantity.text() == "2016"
+        req1.Response[0].Quantity.@unitCode.text() == "YEAR"
 
-        def req = subGroup.Requirement[0]
-        req.Response.size() == 1
-        req.Response[0].Description.text() == "technical description"
+        then: "Second year"
+        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def req2 = subGroup2.Requirement[0]
+        req2.Response.size() == 1
+        req2.Response[0].Quantity.text() == "2015"
+        req2.Response[0].Quantity.@unitCode.text() == "YEAR"
+
+        then: "Third year"
+        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def req3 = subGroup3.Requirement[0]
+        req3.Response.size() == 1
+        req3.Response[0].Quantity.text() == "2014"
+        req3.Response[0].Quantity.@unitCode.text() == "YEAR"
+    }
+
+    def "check the 'Number' requirements response"() {
+        given:
+        def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
+                number1: 11, number2: 22, number3: 33))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = 0
+
+        then: "First number"
+        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def req1 = subGroup1.Requirement[1]
+        req1.Response.size() == 1
+        req1.Response[0].Quantity.text() == "11"
+        req1.Response[0].Quantity.@unitCode.text() == "NUMBER"
+
+        then: "Second number"
+        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def req2 = subGroup2.Requirement[1]
+        req2.Response.size() == 1
+        req2.Response[0].Quantity.text() == "22"
+        req2.Response[0].Quantity.@unitCode.text() == "NUMBER"
+
+        then: "Third number"
+        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def req3 = subGroup3.Requirement[1]
+        req3.Response.size() == 1
+        req3.Response[0].Quantity.text() == "33"
+        req3.Response[0].Quantity.@unitCode.text() == "NUMBER"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {
@@ -76,7 +116,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = 0
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[3]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -93,7 +133,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = 0
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[3]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
@@ -110,7 +150,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = 0
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[3]
 
         def req = subGroup.Requirement[2]
         req.Response.size() == 1

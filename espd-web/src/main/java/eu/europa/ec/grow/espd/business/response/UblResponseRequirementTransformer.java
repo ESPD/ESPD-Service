@@ -140,34 +140,34 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             typeCodeType.setValue(selectionCriterion.getInfoElectronicallyCode());
             responseType.setCode(typeCodeType);
         } else if (SelectionCriterionRequirement.YEAR_1.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear1()));
         } else if (SelectionCriterionRequirement.YEAR_2.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear2()));
         } else if (SelectionCriterionRequirement.YEAR_3.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear3()));
         } else if (SelectionCriterionRequirement.YEAR_4.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear4()));
         } else if (SelectionCriterionRequirement.YEAR_5.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
             responseType.setQuantity(buildYearType(selectionCriterion.getYear5()));
         } else if (SelectionCriterionRequirement.AMOUNT_1.equals(ccvRequirement)) {
-            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount1(), selectionCriterion.getCurrency1()));
         } else if (SelectionCriterionRequirement.AMOUNT_2.equals(ccvRequirement)) {
-            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount2(), selectionCriterion.getCurrency2()));
         } else if (SelectionCriterionRequirement.AMOUNT_3.equals(ccvRequirement)) {
-            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount3(), selectionCriterion.getCurrency3()));
         } else if (SelectionCriterionRequirement.AMOUNT_4.equals(ccvRequirement)) {
-            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount4(), selectionCriterion.getCurrency4()));
         } else if (SelectionCriterionRequirement.AMOUNT_5.equals(ccvRequirement)) {
-            MultipleAmountsHolder selectionCriterion = (MultipleAmountsHolder) espdCriterion;
+            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
             responseType.setAmount(buildAmountType(selectionCriterion.getAmount5(), selectionCriterion.getCurrency5()));
         } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
             DescriptionHolder selectionCriterion = (DescriptionHolder) espdCriterion;
@@ -238,6 +238,15 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.PERCENTAGE.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setPercent(buildPercentType(selectionCriterion.getPercentage()));
+        } else if (SelectionCriterionRequirement.NUMBER_1.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber1()));
+        } else if (SelectionCriterionRequirement.NUMBER_2.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber2()));
+        } else if (SelectionCriterionRequirement.NUMBER_3.equals(ccvRequirement)) {
+            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
+            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber3()));
         }
     }
 
@@ -263,6 +272,16 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         }
         QuantityType quantityType = new QuantityType();
         quantityType.setValue(BigDecimal.valueOf(quantity));
+        return quantityType;
+    }
+
+    private QuantityType buildNumberType(Integer number) {
+        if (number == null) {
+            return null;
+        }
+        QuantityType quantityType = new QuantityType();
+        quantityType.setValue(BigDecimal.valueOf(number));
+        quantityType.setUnitCode("NUMBER");
         return quantityType;
     }
 

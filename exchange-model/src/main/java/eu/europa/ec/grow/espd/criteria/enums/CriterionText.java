@@ -36,4 +36,5 @@ final class CriterionText {
     static final String DATE_TEXT = "Date";
     static final String RECIPIENTS_TEXT = "Recipients";
     static final String ALLOW_CHECKS_TEXT = "Do you allow checks?";
+    static final String NUMBER_TEXT = "Number";
 }

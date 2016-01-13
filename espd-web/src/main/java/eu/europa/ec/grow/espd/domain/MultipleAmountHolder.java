@@ -3,7 +3,7 @@ package eu.europa.ec.grow.espd.domain;
 /**
  * Created by ratoico on 1/5/16 at 2:47 PM.
  */
-public interface MultipleAmountsHolder {
+public interface MultipleAmountHolder {
 
     Double getAmount1();
     Double getAmount2();

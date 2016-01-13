@@ -200,12 +200,12 @@ public enum SelectionCriterion implements CcvCriterion {
     NUMBER_OF_MANAGERIAL_STAFF("6346959b-e097-4ea1-89cd-d1b4c131ea4d", "Number of managerial staff",
             "The economic operator’s number of managerial staff for the last three years were as follows:",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(NUMBER_OF_MANAGERIAL_STAFF_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(YEAR_NUMBER_GROUP_1, YEAR_NUMBER_GROUP_2, YEAR_NUMBER_GROUP_3, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */
     AVERAGE_ANNUAL_MANPOWER("1f49b3f0-d50f-43f6-8b30-4bafab108b9b", "Average annual manpower",
-            "The economic operator’s average annual manpower and the number of managerial staff for the last three years were as follows:",
+            "The economic operator’s average annual manpower for the last three years were as follows:",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
             list(AVERAGE_ANNUAL_MANPOWER_GROUP, INFO_ELECTRONICALLY_GROUP)),
     /**

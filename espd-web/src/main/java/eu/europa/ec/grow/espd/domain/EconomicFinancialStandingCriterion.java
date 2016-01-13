@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class EconomicFinancialStandingCriterion extends SelectionCriterion
-        implements MultipleAmountsHolder, MultipleDescriptionHolder, DescriptionHolder {
+        implements MultipleAmountHolder, MultipleDescriptionHolder, DescriptionHolder, MultipleYearHolder {
 
     private Integer year1;
     private Integer year2;

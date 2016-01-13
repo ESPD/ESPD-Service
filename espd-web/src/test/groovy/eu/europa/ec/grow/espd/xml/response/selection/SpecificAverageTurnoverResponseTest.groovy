@@ -76,7 +76,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                year1: 2016, year2: 2015, year3: 2014))
+                year1: 2016, year2: 2015, year3: 2014, year4: 2013, year5: 2012))
 
         when:
         def request = parseResponseXml(espd)
@@ -102,6 +102,20 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
         req3.Response.size() == 1
         req3.Response[0].Quantity.text() == "2014"
         req3.Response[0].Quantity.@unitCode.text() == "YEAR"
+
+        then: "Fourth year"
+        def subGroup4 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[3]
+        def req4 = subGroup4.Requirement[0]
+        req4.Response.size() == 1
+        req4.Response[0].Quantity.text() == "2013"
+        req4.Response[0].Quantity.@unitCode.text() == "YEAR"
+
+        then: "Fifth year"
+        def subGroup5 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[4]
+        def req5 = subGroup5.Requirement[0]
+        req5.Response.size() == 1
+        req5.Response[0].Quantity.text() == "2012"
+        req5.Response[0].Quantity.@unitCode.text() == "YEAR"
     }
 
     def "check empty 'Year' requirements response"() {

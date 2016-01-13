@@ -22,18 +22,8 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    AMOUNT_1("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT_TEXT,
-            ExpectedResponseType.AMOUNT),
-    /**
-     *
-     */
     YEAR_2("49a57870-7fb8-451f-a7af-fa0e7f8b97e7", CriterionText.YEAR_TEXT,
             ExpectedResponseType.QUANTITY),
-    /**
-     *
-     */
-    AMOUNT_2("4acd0a02-c267-4d05-b456-c0565c2ffd46", CriterionText.AMOUNT_TEXT,
-            ExpectedResponseType.AMOUNT),
     /**
      *
      */
@@ -42,23 +32,33 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
     /**
      *
      */
-    AMOUNT_3("28fb4b41-5178-4b79-ba24-d9a62fa4a658", CriterionText.AMOUNT_TEXT,
-            ExpectedResponseType.AMOUNT),
-    /**
-     *
-     */
     YEAR_4("17a7353d-a7a4-43ee-9cc8-b9db83eeafb3", CriterionText.YEAR_TEXT,
             ExpectedResponseType.QUANTITY),
     /**
      *
      */
-    AMOUNT_4("9f278e42-aa1d-4b2e-97cd-832248aa5393", CriterionText.AMOUNT_TEXT,
+    YEAR_5("34825634-5151-4e31-af1b-7eafadcf15be", CriterionText.YEAR_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    AMOUNT_1("42db0eaa-d2dd-48cb-83ac-38d73cab9b50", CriterionText.AMOUNT_TEXT,
             ExpectedResponseType.AMOUNT),
     /**
      *
      */
-    YEAR_5("34825634-5151-4e31-af1b-7eafadcf15be", CriterionText.YEAR_TEXT,
-            ExpectedResponseType.QUANTITY),
+    AMOUNT_2("4acd0a02-c267-4d05-b456-c0565c2ffd46", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    AMOUNT_3("28fb4b41-5178-4b79-ba24-d9a62fa4a658", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
+    /**
+     *
+     */
+    AMOUNT_4("9f278e42-aa1d-4b2e-97cd-832248aa5393", CriterionText.AMOUNT_TEXT,
+            ExpectedResponseType.AMOUNT),
     /**
      *
      */
@@ -196,7 +196,22 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      *
      */
     ALLOW_CHECKS("23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", CriterionText.ALLOW_CHECKS_TEXT,
-            ExpectedResponseType.INDICATOR),;
+            ExpectedResponseType.INDICATOR),
+    /**
+     *
+     */
+    NUMBER_1("42037f41-53af-44df-b6b8-2395cee98087", CriterionText.NUMBER_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    NUMBER_2("0bb2d3bf-160f-4904-a4e8-ee672bd5cb30", CriterionText.NUMBER_TEXT,
+            ExpectedResponseType.QUANTITY),
+    /**
+     *
+     */
+    NUMBER_3("668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a", CriterionText.NUMBER_TEXT,
+            ExpectedResponseType.QUANTITY),;
 
     private final String id;
 

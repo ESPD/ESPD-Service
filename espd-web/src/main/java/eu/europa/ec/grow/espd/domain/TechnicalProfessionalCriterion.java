@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class TechnicalProfessionalCriterion extends SelectionCriterion
-        implements MultipleAmountsHolder, MultipleDescriptionHolder, DescriptionHolder {
+        implements MultipleAmountHolder, MultipleDescriptionHolder, DescriptionHolder, MultipleYearHolder {
 
     private String description1;
     private String description2;
@@ -43,6 +43,14 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
     private String recipients4;
     private String recipients5;
 
+    private Integer year1;
+    private Integer year2;
+    private Integer year3;
+
+    private Integer number1;
+    private Integer number2;
+    private Integer number3;
+
     private Double percentage;
     private String specify;
 
@@ -50,5 +58,25 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
         TechnicalProfessionalCriterion criterion = new TechnicalProfessionalCriterion();
         criterion.setExists(exists);
         return criterion;
+    }
+
+    @Override
+    public Integer getYear4() {
+        return null;
+    }
+
+    @Override
+    public Integer getYear5() {
+        return null;
+    }
+
+    @Override
+    public void setYear4(Integer year4) {
+
+    }
+
+    @Override
+    public void setYear5(Integer year5) {
+
     }
 }

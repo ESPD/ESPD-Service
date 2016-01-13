@@ -24,7 +24,7 @@ import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
  * <p/>
  * Created by ratoico on 1/7/16 at 11:16 AM.
  */
-class EspdCriterionFactory {
+class EspdResponseCriterionFactory {
 
     /**
      * Create a ESPD {@link Criterion} instance containing the appropriate information provided as UBL criteria.
@@ -270,7 +270,7 @@ class EspdCriterionFactory {
         return criterion;
     }
 
-    private void addMultipleYears(CriterionType criterionType, EconomicFinancialStandingCriterion criterion) {
+    private void addMultipleYears(CriterionType criterionType, MultipleYearHolder criterion) {
         Double year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
         if (year1 != null) {
             criterion.setYear1(year1.intValue());
@@ -321,6 +321,8 @@ class EspdCriterionFactory {
         addMultipleAmounts(criterionType, criterion);
         addMultipleDates(criterionType, criterion);
         addMultipleRecipients(criterionType, criterion);
+        addMultipleYears(criterionType, criterion);
+        addMultipleNumbers(criterionType, criterion);
 
         String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
         criterion.setSpecify(specify);
@@ -336,6 +338,22 @@ class EspdCriterionFactory {
         return criterion;
     }
 
+    private void addMultipleNumbers(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {
+        Double number1 = readRequirementValue(SelectionCriterionRequirement.NUMBER_1, criterionType);
+        if (number1 != null) {
+            criterion.setNumber1(number1.intValue());
+        }
+        Double number2 = readRequirementValue(SelectionCriterionRequirement.NUMBER_2, criterionType);
+        if (number2 != null) {
+            criterion.setNumber2(number2.intValue());
+        }
+        Double number3 = readRequirementValue(SelectionCriterionRequirement.NUMBER_3, criterionType);
+        if (number3 != null) {
+            criterion.setNumber3(number3.intValue());
+        }
+
+    }
+
     private void addMultipleDescriptions(CriterionType criterionType, MultipleDescriptionHolder criterion) {
         String description1 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_1, criterionType);
         criterion.setDescription1(description1);
@@ -349,7 +367,7 @@ class EspdCriterionFactory {
         criterion.setDescription5(description5);
     }
 
-    private void addMultipleAmounts(CriterionType criterionType, MultipleAmountsHolder criterion) {
+    private void addMultipleAmounts(CriterionType criterionType, MultipleAmountHolder criterion) {
         Amount amount1 = readRequirementValue(SelectionCriterionRequirement.AMOUNT_1, criterionType);
         if (amount1 != null) {
             criterion.setAmount1(amount1.getAmount());

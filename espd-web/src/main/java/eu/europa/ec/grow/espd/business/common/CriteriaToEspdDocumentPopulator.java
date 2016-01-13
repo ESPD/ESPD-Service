@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class CriteriaToEspdDocumentPopulator {
 
-    private final EspdCriterionFactory criterionFactory = new EspdCriterionFactory();
+    private final EspdResponseCriterionFactory criterionFactory = new EspdResponseCriterionFactory();
 
     /**
      * Update criteria information on the given ESPD document.
