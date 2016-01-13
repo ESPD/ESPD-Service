@@ -28,10 +28,10 @@
 <div class="col-md-7 criteria-cell-right">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="control-label small" style="padding-top: 0px;" for="${field}-${number}">
+                <label class="control-label small" style="padding-top: 0px;" for="${field}-answer-${number}">
                     <s:message code='crit_your_answer'/>
                 </label>
-                <form:checkbox path="${field}.exists" id="${field}-${number}" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
+                <form:checkbox path="${field}.exists" id="${field}-answer-${number}" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
             </div>
         </div>
         <c:if test="${has_please_describe_them == true}">
@@ -39,9 +39,9 @@
                 <div class="form-group">
                     <div class="tab-pane" id="${field}-reliability">
                         <div class="form-group">
-                            <label class="control-label col-md-4 small" for="${field}-field6"><s:message code='crit_please_describe_them'/></label>
+                            <label class="control-label col-md-4 small" for="${field}-description-${number}"><s:message code='crit_please_describe_them'/></label>
                             <div class="col-md-8">
-                                <textarea class="form-control" id="${field}-field6" placeholder=""></textarea>
+                                <textarea class="form-control" id="${field}-description-${number}" placeholder=""></textarea>
                             </div>
                         </div>
                     </div>

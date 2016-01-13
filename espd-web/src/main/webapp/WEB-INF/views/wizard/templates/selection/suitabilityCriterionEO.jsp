@@ -27,10 +27,10 @@
     <div class="col-md-7 criteria-cell-right">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="control-label small" style="padding-top: 0px;" for="${field}-field-${number}">
+                <label class="control-label small" style="padding-top: 0px;" for="${field}-answer-${number}">
                     <s:message code='crit_your_answer'/>
                 </label>
-                <form:checkbox path="${field}.exists" id="${field}-field-${number}" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
+                <form:checkbox path="${field}.exists" id="${field}-answer-${number}" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
             </div>
         </div>
         <tiles:insertDefinition name="availableElectronically">

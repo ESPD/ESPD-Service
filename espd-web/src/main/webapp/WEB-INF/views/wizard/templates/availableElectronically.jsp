@@ -21,12 +21,12 @@
             code="crit_url"/></label>
     <div class="col-md-5">
         <s:message code="crit_url_placeholder" var="urlPlaceholder"/>
-        <input type="text" class="form-control input-sm" id="${field}-field6" placeholder="${urlPlaceholder}"/>
+        <form:input type="text" path="${field}.availableElectronically.url" class="form-control input-sm" id="${field}-field6" placeholder="${urlPlaceholder}"/>
     </div>
     <label class="control-label col-md-1 small" for="${field}-field7" data-i18n="crit_code"><s:message
             code="crit_code"/></label>
     <div class="col-md-4">
         <s:message code="crit_code_placeholder" var="codePlaceholder"/>
-        <input type="text" class="form-control input-sm" id="${field}-field7" placeholder="${codePlaceholder}"/>
+        <form:input type="text" path="${field}.availableElectronically.code" class="form-control input-sm" id="${field}-field7" placeholder="${codePlaceholder}"/>
     </div>
 </div>
