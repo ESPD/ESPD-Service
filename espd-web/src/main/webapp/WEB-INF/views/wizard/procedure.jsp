@@ -127,18 +127,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                <div class="form-group">
-                                	<span data-i18n="createca_to_be_filled_alert"><s:message code="createca_to_be_filled_alert"/></span>
-                                </div>
+                                <span data-i18n="createca_to_be_filled_alert"><s:message code="createca_to_be_filled_alert"/></span>
 	                            <div class="form-group">
 	                                <label class="control-label col-md-4" data-i18n="createca_ojs_label"><s:message code="createca_ojs_label"/></label>
 	                                <div class="col-md-8">
 	                                    <form:input cssClass="form-control" path="ojsNumber" placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ][ ]"/>
 	                                </div>
 	                            </div>
-	                            <div class="form-group">
-                                	<span data-i18n="createca_official_journal_alert"><s:message code="createca_official_journal_alert"/></span>
-                                </div>
+                               	<span data-i18n="createca_official_journal_alert"><s:message code="createca_official_journal_alert"/></span>
                             </div>
 
                             <div class="alert alert-espd-info"
@@ -286,25 +282,25 @@
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_provide_regnumber"><s:message code="createeo_provide_regnumber"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.certNumber" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_cert_e_avaliable"> <s:message code="createeo_cert_e_avaliable"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.certificateUrl" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_ref_for_cert"> <s:message code="createeo_ref_for_cert"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.certRefBasis" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_all_selection_covered"> <s:message code="createeo_all_selection_covered"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:checkbox path="eoperator.certCoversAllCrit" cssClass="radioslide checktoggle form-control" />
 	                            </div>
 	                       </div>
  					</div>
@@ -315,13 +311,13 @@
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_eo_has_cert_soc"> <s:message code="createeo_eo_has_cert_soc"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.socialSecPaymentDoc" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_doc_e_avaliable"> <s:message code="createeo_doc_e_avaliable"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.socialSecPaymentDocUrl" placeholder=""/>
 	                            </div>
 	                       </div>
 					</div>
@@ -339,19 +335,19 @@
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_eo_group_role"> <s:message code="createeo_eo_group_role"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.eoRoleInGroup" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_other_eo_part"> <s:message code="createeo_other_eo_part"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.otherEOInGroup" placeholder=""/>
 	                            </div>
 	                       </div>
 	                       <div class="col-md-12 form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_name_part_group"> <s:message code="createeo_name_part_group"/></label>
 	                            <div class="col-md-4">
-	                                [INPUT]
+	                                <form:input cssClass="form-control" path="eoperator.eoGroupName" placeholder=""/>
 	                            </div>
 	                       </div>
 						</div>
@@ -378,32 +374,27 @@
                        <div class="col-md-12 form-group">
                            <label class="control-label col-md-4" data-i18n="createeo_full_name_and_birth"><s:message code="createeo_full_name_and_birth"/></label>
                            <div class="col-md-8">
-                                [INPUT]
+                                <form:input cssClass="form-control" path="eoperator.representFullName" placeholder=""/>
                            </div>
                        </div>
                        <div class="col-md-12 form-group">
                            <label class="control-label col-md-4" data-i18n="createeo_pos_act_in_capacity"><s:message code="createeo_pos_act_in_capacity"/></label>
                            <div class="col-md-8">
-                                 [INPUT]
+                                 <form:input cssClass="form-control" path="eoperator.representPosition" placeholder=""/>
                            </div>
                        </div>
-                       
-                       
                        <div class="col-md-6">
 	                        <tiles:insertDefinition name="partyInfo">
 	                            <tiles:putAttribute name="field" value="empowered"/>
 	                            <tiles:putAttribute name="address" value="true"/>
 	                        </tiles:insertDefinition>
                        </div>
-                        
                        <div class="col-md-6">
 	                        <tiles:insertDefinition name="partyInfo">
 	                            <tiles:putAttribute name="field" value="empowered"/>
 	                            <tiles:putAttribute name="contacts" value="true"/>
 	                        </tiles:insertDefinition>
                        </div>
-                        
-
                        <div class="col-md-12 form-group">
                             <label class="control-label col-md-3" data-i18n="createeo_detinfo_of_represent"><s:message code="createeo_detinfo_of_represent"/></label>
                             <div class="col-md-9">
