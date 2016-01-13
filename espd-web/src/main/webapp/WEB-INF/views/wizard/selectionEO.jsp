@@ -107,19 +107,35 @@
                               title="<s:message code='crit_selection_eo_suitability_article_tooltip'/>"></span>
                     </div>
                 </div>
-                <tiles:insertDefinition name="selectionCriterionEO">
+                <tiles:insertDefinition name="suitabilityCriterionEO">
                     <tiles:putAttribute name="field" value="enrolmentProfessionalRegister"/>
                     <tiles:putAttribute name="number" value="1"/>
-                    <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_enrolment_main"/>
-                    <tiles:putAttribute name="tooltip_code" value="crit_selection_eo_suitability_enrolment_description"/>
+                    <tiles:putAttribute name="title_code" value="crit_selection_suitability_enrolment_professional_register_main"/>
+                    <tiles:putAttribute name="tooltip_code" value="crit_selection_suitability_enrolment_professional_register_description"/>
                 </tiles:insertDefinition>
-                <tiles:insertDefinition name="selectionCriterionEO">
-                    <tiles:putAttribute name="field" value="serviceContractsAuthorisation"/>
+
+                <tiles:insertDefinition name="suitabilityCriterionEO">
+                    <tiles:putAttribute name="field" value="enrolmentTradeRegister"/>
                     <tiles:putAttribute name="number" value="2"/>
-                    <tiles:putAttribute name="title_code" value="crit_selection_eo_suitability_service_contracts_main"/>
+                    <tiles:putAttribute name="title_code" value="crit_selection_suitability_enrolment_trade_register_main"/>
                     <tiles:putAttribute name="tooltip_code"
-                                        value="crit_selection_eo_suitability_service_contracts_description"/>
-                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
+                                        value="crit_selection_suitability_enrolment_trade_register_description"/>
+                </tiles:insertDefinition>
+
+                <tiles:insertDefinition name="suitabilityCriterionEO">
+                    <tiles:putAttribute name="field" value="serviceContractsAuthorisation"/>
+                    <tiles:putAttribute name="number" value="3"/>
+                    <tiles:putAttribute name="title_code" value="crit_selection_suitability_service_contracts_auth_main"/>
+                    <tiles:putAttribute name="tooltip_code"
+                                        value="crit_selection_suitability_service_contracts_auth_description"/>
+                </tiles:insertDefinition>
+
+                <tiles:insertDefinition name="suitabilityCriterionEO">
+                    <tiles:putAttribute name="field" value="serviceContractsMembership"/>
+                    <tiles:putAttribute name="number" value="4"/>
+                    <tiles:putAttribute name="title_code" value="crit_selection_suitability_service_contracts_membership_main"/>
+                    <tiles:putAttribute name="tooltip_code"
+                                        value="crit_selection_suitability_service_contracts_membership_description"/>
                 </tiles:insertDefinition>
             </div>
         </div>
