@@ -207,7 +207,7 @@ public enum SelectionCriterion implements CcvCriterion {
     AVERAGE_ANNUAL_MANPOWER("1f49b3f0-d50f-43f6-8b30-4bafab108b9b", "Average annual manpower",
             "The economic operator’s average annual manpower for the last three years were as follows:",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(AVERAGE_ANNUAL_MANPOWER_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(YEAR_NUMBER_GROUP_1, YEAR_NUMBER_GROUP_2, YEAR_NUMBER_GROUP_3, INFO_ELECTRONICALLY_GROUP)),
     /**
      *
      */

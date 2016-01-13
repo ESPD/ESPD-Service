@@ -221,11 +221,6 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    AVERAGE_ANNUAL_MANPOWER_GROUP("21e41b02-e82b-4e02-953c-7351f5cd221b",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
-    /**
-     *
-     */
     TOOLS_PLANT_TECHNICAL_EQUIPMENT_GROUP("eb18b241-7a11-415d-a04f-94fe0dae8e77",
             Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
