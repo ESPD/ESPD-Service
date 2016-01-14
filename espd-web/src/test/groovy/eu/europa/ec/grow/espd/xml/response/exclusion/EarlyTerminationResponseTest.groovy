@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
@@ -14,10 +16,10 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
 
         then: "CriterionTypeCode element"
@@ -58,7 +60,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -74,7 +76,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -91,7 +93,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -108,7 +110,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

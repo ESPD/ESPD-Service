@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -11,15 +12,14 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
     def "02. should contain the 'Corruption' criterion"() {
         given:
         def espd = new EspdDocument(corruption: new CriminalConvictionsCriterion(exists: true))
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CORRUPTION)
 
         when:
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
-
 
         then: "CriterionTypeCode element"
         checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")

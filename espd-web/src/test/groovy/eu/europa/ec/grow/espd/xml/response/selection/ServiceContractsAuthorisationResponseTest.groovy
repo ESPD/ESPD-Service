@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
@@ -14,10 +16,10 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4")
 
         then: "CriterionTypeCode element"
@@ -54,7 +56,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +75,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +92,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +109,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -1,4 +1,8 @@
 package eu.europa.ec.grow.espd.xml.base
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+
 /**
  * Created by ratoico on 12/15/15 at 3:54 PM.
  */
@@ -37,5 +41,9 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert requirementType.@responseDataType.text() == expectedResponseType
         assert requirementType.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert requirementType.ID.@schemeVersionID.text() == "1.0"
+    }
+
+    protected static int getTotalNumberOfCriteria() {
+        return ExclusionCriterion.values().size() + SelectionCriterion.values().size()
     }
 }

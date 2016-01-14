@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -14,10 +16,10 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
 
         then: "CriterionTypeCode element"
@@ -62,7 +64,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -78,7 +80,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +97,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +114,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -125,35 +127,35 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_14.com")))
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_16.com")))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_14.com"
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_16.com"
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_14")))
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_16")))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
         req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_14"
+        req.Response[0].Code.text() == "HODOR_16"
     }
 
 }

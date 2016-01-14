@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -13,10 +15,10 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"

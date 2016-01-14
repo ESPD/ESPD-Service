@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
@@ -19,10 +20,10 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "d486fb70-86b3-4e75-97f2-0d71b5697c7d")
 
         then: "CriterionTypeCode element"
@@ -59,7 +60,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -77,7 +78,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -94,7 +95,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -111,7 +112,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -128,7 +129,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -146,7 +147,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -163,7 +164,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -180,7 +181,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -197,7 +198,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -214,7 +215,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

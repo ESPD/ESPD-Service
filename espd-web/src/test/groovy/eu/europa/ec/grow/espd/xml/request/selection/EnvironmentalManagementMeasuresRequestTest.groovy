@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -13,10 +15,10 @@ class EnvironmentalManagementMeasuresRequestTest extends AbstractSelectionCriter
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "9460457e-b43d-48a9-acd1-615de6ddd33e")
 
         then: "CriterionTypeCode element"

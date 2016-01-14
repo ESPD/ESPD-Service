@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -13,10 +15,10 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "d3dfb714-f558-4512-bbc5-e456fa2339de")
 
         then: "CriterionTypeCode element"

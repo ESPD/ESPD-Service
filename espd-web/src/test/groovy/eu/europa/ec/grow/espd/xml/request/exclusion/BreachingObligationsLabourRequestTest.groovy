@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -13,10 +15,10 @@ class BreachingObligationsLabourRequestTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "a34b70d6-c43d-4726-9a88-8e2b438424bf")
 
         then: "CriterionTypeCode element"

@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -15,10 +16,10 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "7662b7a9-bcb8-4763-a0a7-7505d8e8470d")
 
         then: "CriterionTypeCode element"
@@ -56,7 +57,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +74,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +91,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +108,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

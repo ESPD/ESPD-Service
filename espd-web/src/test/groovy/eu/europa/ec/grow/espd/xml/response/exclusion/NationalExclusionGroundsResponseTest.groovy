@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
@@ -14,10 +16,10 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"
@@ -58,7 +60,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -74,7 +76,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -91,7 +93,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +110,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -125,7 +127,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

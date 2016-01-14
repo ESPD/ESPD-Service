@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -14,10 +16,10 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "166536e2-77f7-455c-b018-70582474e4f6")
 
         then: "CriterionTypeCode element"
@@ -62,7 +64,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -78,7 +80,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +97,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +114,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -129,7 +131,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -146,7 +148,7 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

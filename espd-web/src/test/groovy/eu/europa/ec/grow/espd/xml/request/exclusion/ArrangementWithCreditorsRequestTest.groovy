@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -13,10 +15,10 @@ class ArrangementWithCreditorsRequestTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
 
         then: "CriterionTypeCode element"

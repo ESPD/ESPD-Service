@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -13,10 +15,10 @@ class AnalogousSituationRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "daffa2a9-9f8f-4568-8be8-7b8bf306d096")
 
         then: "CriterionTypeCode element"

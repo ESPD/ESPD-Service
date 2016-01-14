@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -14,10 +16,10 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "6346959b-e097-4ea1-89cd-d1b4c131ea4d")
 
         then: "CriterionTypeCode element"
@@ -51,7 +53,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -82,7 +84,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -113,7 +115,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -130,7 +132,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -147,7 +149,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]

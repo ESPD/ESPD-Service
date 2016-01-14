@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
@@ -20,10 +21,10 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
 
         then: "CriterionTypeCode element"
@@ -60,7 +61,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -78,7 +79,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +96,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +113,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -129,7 +130,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -147,7 +148,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -164,7 +165,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -181,7 +182,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -198,7 +199,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -215,7 +216,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

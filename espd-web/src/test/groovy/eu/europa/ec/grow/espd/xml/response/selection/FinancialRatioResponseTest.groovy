@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -15,10 +16,10 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46")
 
         then: "CriterionTypeCode element"
@@ -59,7 +60,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "Description 1"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -99,7 +100,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "Ratio 1"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -139,7 +140,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -156,7 +157,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -173,7 +174,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

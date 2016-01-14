@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -13,10 +15,10 @@ class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "166536e2-77f7-455c-b018-70582474e4f6")
 
         then: "CriterionTypeCode element"

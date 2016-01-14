@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SelfCleaning
@@ -15,10 +17,10 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"
@@ -59,7 +61,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -75,7 +77,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -92,7 +94,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -109,7 +111,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
@@ -13,10 +15,10 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "61874050-5130-4f1c-a174-720939c7b483")
 
         then: "CriterionTypeCode element"
@@ -53,7 +55,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -69,7 +71,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

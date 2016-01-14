@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -20,17 +21,19 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then:
-        request.Criterion.size() == 2
+        request.Criterion.size() == getTotalNumberOfCriteria()
 
         then: "check who has been convicted requirement in participation criterion"
-        def participationSubGroup = request.Criterion[0].RequirementGroup[0]
+        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0]
         def participationReq = participationSubGroup.Requirement[3]
         checkRequirement(participationReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         participationReq.Response.size() == 1
         participationReq.Response[0].Description.text() == "Hodor_01 was convicted"
 
         then: "check who has been convicted requirement in corruption criterion"
-        def corruptionSubGroup = request.Criterion[1].RequirementGroup[0]
+        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0]
         def corruptionReq = corruptionSubGroup.Requirement[3]
         checkRequirement(corruptionReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         corruptionReq.Response.size() == 1
@@ -46,16 +49,15 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         when:
         def request = parseResponseXml(espd)
 
-        then:
-        request.Criterion.size() == 2
-
         then: "check self cleaning description requirement in participation criterion"
-        def participationSubGroup = request.Criterion[0].RequirementGroup[0].RequirementGroup[0]
+        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0].RequirementGroup[0]
         def participationReq = participationSubGroup.Requirement[1]
         participationReq.Response[0].Description.text() == "Hodor_01 is clean"
 
         then: "check who has been convicted requirement in corruption criterion"
-        def corruptionSubGroup = request.Criterion[1].RequirementGroup[0].RequirementGroup[0]
+        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0].RequirementGroup[0]
         def corruptionReq = corruptionSubGroup.Requirement[1]
         corruptionReq.Response.size() == 1
         corruptionReq.Response[0].Description.text() == "Hodor_02 is clean"
@@ -70,16 +72,15 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         when:
         def request = parseResponseXml(espd)
 
-        then:
-        request.Criterion.size() == 2
-
         then: "check self cleaning description requirement in participation criterion"
-        def participationSubGroup = request.Criterion[0].RequirementGroup[1]
+        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[1]
         def participationReq = participationSubGroup.Requirement[1]
         participationReq.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_01.com"
 
         then: "check who has been convicted requirement in corruption criterion"
-        def corruptionSubGroup = request.Criterion[1].RequirementGroup[1]
+        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[1]
         def corruptionReq = corruptionSubGroup.Requirement[1]
         corruptionReq.Response.size() == 1
         corruptionReq.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_02.com"

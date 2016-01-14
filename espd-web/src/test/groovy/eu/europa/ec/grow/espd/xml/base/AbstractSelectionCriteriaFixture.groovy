@@ -1,4 +1,7 @@
 package eu.europa.ec.grow.espd.xml.base
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 /**
  * Created by ratoico on 12/15/15 at 5:29 PM.
  */
@@ -177,6 +180,10 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
 
         checkRequirement(yearNumberGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY")
         checkRequirement(yearNumberGroup.Requirement[1], "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a", "Number", "QUANTITY")
+    }
+
+    protected static int getCriterionIndex(SelectionCriterion criterion) {
+        return ExclusionCriterion.values().size() + criterion.ordinal()
     }
 
 }

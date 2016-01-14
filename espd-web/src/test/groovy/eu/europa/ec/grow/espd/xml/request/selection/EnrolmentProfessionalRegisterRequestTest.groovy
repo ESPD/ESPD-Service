@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -13,10 +15,10 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
 
         when:
         def request = parseRequestXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
 
         then: "CriterionTypeCode element"

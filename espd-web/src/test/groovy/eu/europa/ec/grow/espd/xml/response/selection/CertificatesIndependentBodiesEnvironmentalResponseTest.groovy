@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -15,10 +16,10 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"
@@ -58,7 +59,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -76,7 +77,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +96,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -112,7 +113,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -129,7 +130,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

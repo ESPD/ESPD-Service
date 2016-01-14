@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -15,10 +16,10 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "612a1625-118d-4ea4-a6db-413184e7c0a8")
 
         then: "CriterionTypeCode element"
@@ -56,7 +57,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +74,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +91,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +108,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

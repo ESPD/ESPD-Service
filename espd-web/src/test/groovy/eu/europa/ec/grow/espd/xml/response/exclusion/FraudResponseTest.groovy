@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -16,13 +17,13 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
     def "03. should contain the 'Fraud' criterion"() {
         given:
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true))
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         when:
         def request = parseResponseXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"
@@ -58,7 +59,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -76,7 +77,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +94,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -110,7 +111,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -127,7 +128,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -145,7 +146,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -162,7 +163,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -179,7 +180,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -196,7 +197,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -213,7 +214,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

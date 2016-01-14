@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -11,13 +12,13 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
     def "01. should contain the 'All selection criteria will be satisfied' criterion"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
         def request = parseResponseXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "CriterionTypeCode element"
@@ -44,7 +45,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
@@ -15,10 +16,10 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "a34b70d6-c43d-4726-9a88-8e2b438424bf")
 
         then: "CriterionTypeCode element"
@@ -59,7 +60,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -75,7 +76,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -92,7 +93,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -109,7 +110,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

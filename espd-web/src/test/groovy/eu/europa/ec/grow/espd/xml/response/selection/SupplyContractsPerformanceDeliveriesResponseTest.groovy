@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -17,10 +19,10 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "3a18a175-1863-4b1d-baef-588ce61960ca")
 
         then: "CriterionTypeCode element"
@@ -56,7 +58,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First description"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -97,7 +99,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -147,7 +149,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First date"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -187,7 +189,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First recipients"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -227,7 +229,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]
@@ -244,7 +246,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]
@@ -261,7 +263,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]

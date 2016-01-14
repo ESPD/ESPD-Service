@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -15,10 +16,10 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "499efc97-2ac1-4af2-9e84-323c2ca67747")
 
         then: "CriterionTypeCode element"
@@ -62,7 +63,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -80,7 +81,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -111,7 +112,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -139,7 +140,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -170,7 +171,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -198,7 +199,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -215,7 +216,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -232,7 +233,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

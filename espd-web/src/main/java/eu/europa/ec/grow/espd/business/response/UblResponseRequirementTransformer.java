@@ -57,6 +57,9 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
     private void fillExclusionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
             ResponseType responseType) {
+        if (espdCriterion == null) {
+            return;
+        }
         if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
             responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
         } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
@@ -124,6 +127,9 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
     private void fillSelectionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
             ResponseType responseType) {
+        if (espdCriterion == null) {
+            return;
+        }
         if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
                 SelectionCriterionRequirement.ALLOW_CHECKS.equals(ccvRequirement)) {
             responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));

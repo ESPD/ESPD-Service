@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.MisconductCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
@@ -15,10 +16,10 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3")
 
         then: "CriterionTypeCode element"
@@ -59,7 +60,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -75,7 +76,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -92,7 +93,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -109,7 +110,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

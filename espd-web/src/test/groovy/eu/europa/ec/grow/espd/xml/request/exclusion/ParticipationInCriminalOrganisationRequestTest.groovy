@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -11,13 +12,13 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractExclusionCr
     def "01. should contain the 'Participation in a criminal organisation' criterion"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         when:
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
 
         then: "CriterionTypeCode element"

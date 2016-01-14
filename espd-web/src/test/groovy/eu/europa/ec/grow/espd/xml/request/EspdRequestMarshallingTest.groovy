@@ -1,13 +1,13 @@
 package eu.europa.ec.grow.espd.xml.request
 
-import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.*
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 
 /**
  *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
  */
-class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
+class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should make sure that we use the correct XML namespaces"() {
         when:
@@ -146,15 +146,15 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "0"
     }
 
-    def "should contain no Criterion elements information"() {
+    def "should contain all Criterion elements information even if none of them is selected from ESPD"() {
         when:
         def result = parseRequestXml()
 
         then:
-        result.Criterion.size() == 0
+        result.Criterion.size() == getTotalNumberOfCriteria()
     }
 
-    def "should contain all exclusion and selection criteria (without satisfies all)"() {
+    def "should contain all exclusion and selection criteria"() {
         given:
         def espd = new EspdDocument(
                 // exclusion
@@ -217,11 +217,9 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
 
         when:
         def result = parseRequestXml(espd)
-//        def file = new File("/home/ratoico/Downloads/espd-request.xml")
-//        file.text = xmlOutput
 
         then:
-        result.Criterion.size() == 54
+        result.Criterion.size() == getTotalNumberOfCriteria()
     }
 
     def "should not fail when a criterion has a null exists flag"() {
@@ -232,7 +230,7 @@ class EspdRequestMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = parseRequestXml(espd)
 
         then:
-        result.Criterion.size() == 0
+        result.Criterion.size() == getTotalNumberOfCriteria()
     }
 
 }

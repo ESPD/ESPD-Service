@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -15,10 +16,10 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "dc12a151-7fdf-4733-a8f0-30f667292e66")
 
         then: "CriterionTypeCode element"
@@ -56,7 +57,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +74,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +91,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +108,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

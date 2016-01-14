@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -14,13 +16,13 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
     def "01. should contain the 'Participation in a criminal organisation' full responses"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         when:
         def request = parseResponseXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
 
         then: "CriterionTypeCode element"
@@ -52,29 +54,13 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         checkInfoAvailableElectronicallyRequirementGroup(info)
     }
 
-    def "01. 'Participation in a criminal organisation' should not appear at all when the response is negative"() {
-        given:
-        def now = new Date()
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false, dateOfConviction: now,
-                reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
-                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean"),
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "INTERNATIONAL")))
-        def idx = 0
-
-        when:
-        def request = parseResponseXml(espd)
-
-        then: "main sub group requirements"
-        request.Criterion[idx].size() == 0
-    }
-
     def "check the 'Your answer' requirement response"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -92,7 +78,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -109,7 +95,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -126,7 +112,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -143,7 +129,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -161,7 +147,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -178,7 +164,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -195,7 +181,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -212,7 +198,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -229,7 +215,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

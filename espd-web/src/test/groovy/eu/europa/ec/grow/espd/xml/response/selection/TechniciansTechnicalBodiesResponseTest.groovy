@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
@@ -15,10 +16,10 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "3aaca389-4a7b-406b-a4b9-080845d127e7")
 
         then: "CriterionTypeCode element"
@@ -56,7 +57,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +74,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +91,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +108,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

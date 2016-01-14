@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
+
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
@@ -14,10 +16,10 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7")
 
         then: "CriterionTypeCode element"
@@ -54,7 +56,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +75,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +92,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +109,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

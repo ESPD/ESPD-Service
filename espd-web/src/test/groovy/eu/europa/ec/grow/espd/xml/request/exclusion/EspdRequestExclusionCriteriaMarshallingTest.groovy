@@ -1,25 +1,31 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
-import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.*
+import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
+
 /**
  *  Created by vigi on 11/17/15:3:54 PM.
  */
 class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCriteriaFixture {
 
-    def "criteria should appear only if they were selected in the ESPD UI"() {
+    def "very important test - criteria should appear even if they were not selected in the ESPD UI"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true),
-                paymentTaxes: new TaxesCriterion(exists: true), corruption: new CriminalConvictionsCriterion(exists: true))
+                paymentTaxes: new TaxesCriterion(exists: false, availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "HODOR")),
+                corruption: new CriminalConvictionsCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
 
-        then: "only one criterion response per criterion"
-        request.Criterion.size() == 3
-        checkCriterionId(request, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
-        checkCriterionId(request, 1, "c27b7c4e-c837-4529-b867-ed55ce639db5")
-        checkCriterionId(request, 2, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
+        then:
+        request.Criterion.size() == getTotalNumberOfCriteria()
+        checkCriterionId(request, getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION), "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
+        checkCriterionId(request, getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES), "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
+        checkCriterionId(request, getCriterionIndex(ExclusionCriterion.CORRUPTION), "c27b7c4e-c837-4529-b867-ed55ce639db5")
+
+        then:
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)].RequirementGroup[1])
     }
 
     def "all exclusion criteria should be in the correct order"() {
@@ -53,7 +59,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         def request = parseRequestXml(espd)
 
         then:
-        request.Criterion.size() == 23
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
         checkCriterionId(request, 1, "c27b7c4e-c837-4529-b867-ed55ce639db5")
         checkCriterionId(request, 2, "297d2323-3ede-424e-94bc-a91561e6f320")

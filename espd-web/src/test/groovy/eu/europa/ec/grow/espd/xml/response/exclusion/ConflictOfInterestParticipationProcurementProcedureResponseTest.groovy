@@ -1,5 +1,10 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
-import eu.europa.ec.grow.espd.domain.*
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
+import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:22 PM.
@@ -12,10 +17,10 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "b1b5ac18-f393-4280-9659-1367943c1a2e")
 
         then: "CriterionTypeCode element"
@@ -60,7 +65,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -76,7 +81,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +98,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -110,7 +115,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -127,7 +132,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -144,7 +149,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -161,7 +166,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

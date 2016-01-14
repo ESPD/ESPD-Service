@@ -1,4 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
+
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -14,10 +16,10 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"
-        request.Criterion.size() == 1
+        request.Criterion.size() == getTotalNumberOfCriteria()
         checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
 
         then: "CriterionTypeCode element"
@@ -62,7 +64,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -78,7 +80,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +97,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +114,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -125,35 +127,35 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_12.com")))
+                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_14.com")))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_12.com"
+        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_14.com"
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_12")))
+                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_14")))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = 0
+        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
         req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_12"
+        req.Response[0].Code.text() == "HODOR_14"
     }
 
 }
