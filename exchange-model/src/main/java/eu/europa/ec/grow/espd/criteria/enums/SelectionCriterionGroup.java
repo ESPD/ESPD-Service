@@ -95,7 +95,7 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    DESCRIPTION_AMOUNT_DATE_RECIPIENTS__GROUP_2("c48572f9-47bf-423a-9885-2c78ae9ca718",
+    DESCRIPTION_AMOUNT_DATE_RECIPIENTS_GROUP_2("c48572f9-47bf-423a-9885-2c78ae9ca718",
             Collections.<CcvCriterionGroup>emptyList(),
             list(DESCRIPTION_2, AMOUNT_2, DATE_2, RECIPIENTS_2)),
     /**

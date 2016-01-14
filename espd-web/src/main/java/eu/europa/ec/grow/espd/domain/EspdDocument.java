@@ -22,8 +22,6 @@ public class EspdDocument {
     private String lotConcerned;
     private String fileRefByCA;
 
-    //private String websiteProcDocs;
-
     //Exclusion criteria
 
     private CriminalConvictionsCriterion criminalConvictions;
@@ -93,15 +91,6 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion supplyContractsCertificatesQc;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
-
-    //Deprecated
-    private SelectionCriterion economicEnrolment;
-
-    //Deprecated
-    private SelectionCriterion economicServiceContracts;
-
-    //Deprecated
-    private SelectionCriterion reductionOfNumbers;
 
     //trick to use MultipartFile as @RequestParam
     public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {
