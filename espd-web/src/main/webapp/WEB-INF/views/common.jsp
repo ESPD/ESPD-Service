@@ -4,6 +4,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%request.setAttribute("i18n", new eu.europa.ec.grow.espd.util.I18NTag(pageContext));%>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,6 +108,13 @@
                 codes.push(className)
             }
         });
+        $("*[placeholder-i18n]").each(function (index) {
+            var className = $(this).attr("placeholder-i18n");
+            if (flags[className] != true) {
+                flags[className] = true;
+                codes.push(className);
+            }
+        });
         for (var name in defaultValidators) {
             if (flags["validator_" + name] != true) {
                 codes.push("validator_" + name);
@@ -126,13 +134,19 @@
                     if (codes[i].indexOf("validator_") == 0) {
                         validator(validators, codes[i].substring("validator_".length), array[i]);
                     }
-                    var elem = $("*[data-i18n='" + codes[i] + "']");
-                    if (elem.attr("data-toggle") == "tooltip") {
-                        elem.attr("title", array[i]);
-                        elem.attr("data-original-title", array[i])
+                    if (codes[i].indexOf("_placeholder") != -1) {
+                        validator(validators, codes[i].substring(codes[i] - "_placeholder".length), array[i]);
+                        $("*[placeholder-i18n='" + codes[i] + "']").attr('placeholder', array[i]);
                     }
                     else {
-                        elem.html(array[i]);
+	                    var elem = $("*[data-i18n='" + codes[i] + "']");
+	                    if (elem.attr("data-toggle") == "tooltip") {
+	                        elem.attr("title", array[i]);
+	                        elem.attr("data-original-title", array[i])
+	                    }
+	                    else {
+	                        elem.html(array[i]);
+	                    }
                     }
                 }
                 pageLanguageCode = code;

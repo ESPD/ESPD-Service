@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class EconomicOperatorImpl extends PartyImpl {
+	
+	private String anotherNationalId;//If no VAT-number is applicable, please indicate another national identification number, if required and applicable
 
 	private String contactPerson;//Contact person or persons: (for the moment one field)
 
