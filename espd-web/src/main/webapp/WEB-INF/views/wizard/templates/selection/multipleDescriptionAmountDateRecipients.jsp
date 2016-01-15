@@ -22,7 +22,7 @@
 </div>
 <div class="form-group">
     <label class="control-label col-md-4 small" for="${field}-amount1"
-           data-i18n="crit_amount_concerned"><s:message code='crit_amount_concerned'/></label>
+           data-i18n="crit_amount"><s:message code='crit_amount'/></label>
     <div class="col-md-5">
         <form:input path="${field}.amount1" cssClass="form-control" id="${field}-amount1"
                     placeholder="${amountPlaceholder}"/>

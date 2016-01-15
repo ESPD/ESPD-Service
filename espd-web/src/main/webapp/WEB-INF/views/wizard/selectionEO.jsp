@@ -200,6 +200,7 @@
                     <tiles:putAttribute name="field" value="financialRatio"/>
                     <tiles:putAttribute name="number" value="10"/>
                     <tiles:putAttribute name="has_multiple_description_ratio" value="true"/>
+                    <tiles:putAttribute name="has_your_answer" value="false"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_financial_ratio_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_financial_ratio_description"/>
@@ -208,6 +209,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="professionalRiskInsurance"/>
                     <tiles:putAttribute name="number" value="11"/>
+                    <tiles:putAttribute name="has_your_answer" value="false"/>
                     <tiles:putAttribute name="has_single_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_professional_risk_insurance_main"/>
                     <tiles:putAttribute name="tooltip_code"
@@ -217,6 +219,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="otherEconomicFinancialRequirements"/>
                     <tiles:putAttribute name="number" value="12"/>
+                    <tiles:putAttribute name="has_your_answer" value="false"/>
                     <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_other_financial_requirements_main"/>
                     <tiles:putAttribute name="tooltip_code"
@@ -398,6 +401,8 @@
                     <tiles:putAttribute name="field" value="supplyContractsCertificatesQc"/>
                     <tiles:putAttribute name="number" value="30"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
+                    <tiles:putAttribute name="has_explain_supply_contracts_quality" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_certificate_quality_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_contracts_certificate_quality_description"/>
@@ -407,6 +412,8 @@
                     <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutQa"/>
                     <tiles:putAttribute name="number" value="31"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
+                    <tiles:putAttribute name="has_explain_certificates_independent_quality" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_certificate_independent_bodies_quality_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_certificate_independent_bodies_quality_description"/>
@@ -416,6 +423,8 @@
                     <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutEnvironmental"/>
                     <tiles:putAttribute name="number" value="32"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
+                    <tiles:putAttribute name="has_explain_certificates_independent_environmental" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_certificate_independent_bodies_environmental_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_certificate_independent_bodies_environmental_description"/>
