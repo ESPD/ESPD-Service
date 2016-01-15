@@ -9,6 +9,9 @@
 <tiles:importAttribute name="tooltip_text"/>
 <tiles:importAttribute name="tooltip_code"/>
 <tiles:importAttribute name="has_please_describe_them"/>
+<tiles:importAttribute name="has_multiple_description_amount_date_recipients"/>
+
+
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
@@ -34,7 +37,7 @@
                 <form:checkbox path="${field}.exists" id="${field}-answer-${number}" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
             </div>
         </div>
-        <c:if test="${has_please_describe_them == true}">
+        <c:if test="${has_please_describe_them != null && has_please_describe_them}">
             <div class="col-md-12" id="${field}-form">
                 <div class="form-group">
                     <div class="tab-pane" id="${field}-reliability">
@@ -47,6 +50,11 @@
                     </div>
                 </div>
             </div>
+        </c:if>
+        <c:if test="${has_multiple_description_amount_date_recipients != null && has_multiple_description_amount_date_recipients}">
+            <tiles:insertDefinition name="multipleDescriptionAmountDateRecipients">
+                <tiles:putAttribute name="field" value="${field}"/>
+            </tiles:insertDefinition>
         </c:if>
         <tiles:insertDefinition name="availableElectronically">
             <tiles:putAttribute name="field" value="${field}"/>

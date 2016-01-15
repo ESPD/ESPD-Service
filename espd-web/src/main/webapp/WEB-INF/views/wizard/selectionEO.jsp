@@ -234,6 +234,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="workContractsPerformanceOfWorks"/>
                     <tiles:putAttribute name="number" value="13"/>
+                    <tiles:putAttribute name="has_multiple_description_amount_date_recipients" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_work_contracts_performance_works_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_work_contracts_performance_works_description"/>
@@ -242,6 +243,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="supplyContractsPerformanceDeliveries"/>
                     <tiles:putAttribute name="number" value="14"/>
+                    <tiles:putAttribute name="has_multiple_description_amount_date_recipients" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_performance_deliveries_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_contracts_performance_deliveries_description"/>
@@ -250,6 +252,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="serviceContractsPerformanceServices"/>
                     <tiles:putAttribute name="number" value="15"/>
+                    <tiles:putAttribute name="has_multiple_description_amount_date_recipients" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_service_contracts_performance_services_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_service_contracts_performance_services_description"/>
@@ -258,6 +261,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="techniciansTechnicalBodies"/>
                     <tiles:putAttribute name="number" value="16"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_technicians_technical_bodies_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_technicians_technical_bodies_description"/>
@@ -266,6 +270,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="workContractsTechnicians"/>
                     <tiles:putAttribute name="number" value="17"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_work_contracts_technicians_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_work_contracts_technicians_description"/>
@@ -274,6 +279,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="technicalFacilitiesMeasures"/>
                     <tiles:putAttribute name="number" value="18"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_technical_facilities_measures_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_technical_facilities_measures_description"/>
@@ -282,6 +288,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="studyResearchFacilities"/>
                     <tiles:putAttribute name="number" value="19"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_study_research_facilities_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_study_research_facilities_description"/>
@@ -290,6 +297,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="supplyChainManagement"/>
                     <tiles:putAttribute name="number" value="20"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_chain_management_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_chain_management_description"/>
@@ -306,6 +314,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="educationalProfessionalQualifications"/>
                     <tiles:putAttribute name="number" value="22"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_educational_professional_qualifications_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_educational_professional_qualifications_description"/>
@@ -314,6 +323,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="environmentalManagementFeatures"/>
                     <tiles:putAttribute name="number" value="23"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_environment_management_features_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_environment_management_features_description"/>
@@ -338,6 +348,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="toolsPlantTechnicalEquipment"/>
                     <tiles:putAttribute name="number" value="26"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_tools_plant_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_tools_plant_description"/>
@@ -346,6 +357,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="subcontractingProportion"/>
                     <tiles:putAttribute name="number" value="27"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_subcontracting_proportion_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_subcontracting_proportion_description"/>
