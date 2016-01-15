@@ -13,19 +13,19 @@
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_street_and_num"><s:message code="createca_street_and_num"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.street" id="streetAndNumber" placeholder="Enter street and number"/>
+			<form:input cssClass="form-control" path="${field}.street" id="streetAndNumber" placeholder="${i18n['createca_street_and_num_placeholder']}" data-i18n="createca_street_and_num_placeholder"/>
 		</div>
 	</div>
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_postcode"><s:message code="createca_postcode"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.postalCode" id="postcode" placeholder="Enter Postcode"/>
+			<form:input cssClass="form-control" path="${field}.postalCode" placeholder="${i18n['createca_postcode_placeholder']}" data-i18n="createca_postcode_placeholder"/>
 		</div>
 	</div>
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_city"><s:message code="createca_city"/></label>
         <div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.city" id="city" placeholder="Enter City"/>
+			<form:input cssClass="form-control" path="${field}.city" placeholder="${i18n['createca_city_placeholder']}" data-i18n="createca_city_placeholder"/>
 		</div>
 	</div>
 	<div class=" form-group ">
@@ -43,7 +43,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createeo_vat"><s:message code="createeo_vat"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.vat" placeholder="VAT"/>
+			<form:input cssClass="form-control" path="${field}.vat" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
 		</div>
 	</div>
 </c:if>
@@ -51,13 +51,13 @@
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createca_email"><s:message code="createca_email"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.contactEmail" id="contactEmail" placeholder="Enter E-mail"/>
+			<form:input cssClass="form-control" path="${field}.contactEmail" placeholder="${i18n['createca_email_placeholder']}" data-i18n="createca_email_placeholder"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createca_telephone"><s:message code="createca_telephone"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.contactPhone" id="contactPhone" placeholder="Enter Telephone"/>
+			<form:input cssClass="form-control" path="${field}.contactPhone" placeholder="${i18n['createca_telephone_placeholder']}" data-i18n="createca_telephone_placeholder"/>
 		</div>
 	</div>
 </c:if>

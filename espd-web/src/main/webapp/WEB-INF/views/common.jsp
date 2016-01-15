@@ -4,7 +4,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%request.setAttribute("i18n", new eu.europa.ec.grow.espd.util.I18NTag(pageContext));%>
+<%request.setAttribute("i18n", (new eu.europa.ec.grow.espd.util.I18NFunc(pageContext)).message());%>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
