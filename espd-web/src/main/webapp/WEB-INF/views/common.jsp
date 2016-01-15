@@ -101,6 +101,11 @@
         var flags = [];
         var codes = [];
 
+        for (var name in defaultValidators) {
+            if (flags["validator_" + name] != true) {
+                codes.push("validator_" + name);
+            }
+        }
         $("*[data-i18n]").each(function (index) {
             var className = $(this).attr("data-i18n");
             if (flags[className] != true) {
@@ -108,18 +113,6 @@
                 codes.push(className)
             }
         });
-        $("*[placeholder-i18n]").each(function (index) {
-            var className = $(this).attr("placeholder-i18n");
-            if (flags[className] != true) {
-                flags[className] = true;
-                codes.push(className);
-            }
-        });
-        for (var name in defaultValidators) {
-            if (flags["validator_" + name] != true) {
-                codes.push("validator_" + name);
-            }
-        }
 
         $.ajax({
             type: "POST",
@@ -134,13 +127,13 @@
                     if (codes[i].indexOf("validator_") == 0) {
                         validator(validators, codes[i].substring("validator_".length), array[i]);
                     }
-                    if (codes[i].indexOf("_placeholder") != -1) {
-                        validator(validators, codes[i].substring(codes[i] - "_placeholder".length), array[i]);
-                        $("*[placeholder-i18n='" + codes[i] + "']").attr('placeholder', array[i]);
-                    }
                     else {
 	                    var elem = $("*[data-i18n='" + codes[i] + "']");
-	                    if (elem.attr("data-toggle") == "tooltip") {
+	                    var tagName = elem.prop("tagName").toLowerCase();
+	                    if(tagName == "input" || tagName == "textarea") {
+	                    	$("*[data-i18n='" + codes[i] + "']").attr('placeholder', array[i]);
+	                    }
+	                    else if (elem.attr("data-toggle") == "tooltip") {
 	                        elem.attr("title", array[i]);
 	                        elem.attr("data-original-title", array[i])
 	                    }

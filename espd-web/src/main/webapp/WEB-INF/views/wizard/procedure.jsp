@@ -150,7 +150,7 @@
                             <div class="col-md-12 form-group">
                                 <label class="control-label col-md-4" data-i18n="createca_procurer_name">${i18n['createca_procurer_name']}</label>
                                 <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="procedureTitle" placeholder="${i18n['createca_procurer_name_placeholder']}"  placeholder-i18n="createca_procurer_name_placeholder"/>
+                                    <form:input cssClass="form-control" path="procedureTitle" placeholder="${i18n['createca_procurer_name_placeholder']}"  data-i18n="createca_procurer_name_placeholder"/>
                                 </div>
                             </div>
 
@@ -239,7 +239,7 @@
 		                       <div class="form-group">
 		                            <label class="control-label col-md-2" data-i18n="createeo_contact_person">${i18n['createeo_another_vat']}</label>
 		                            <div class="col-md-10">
-		                            	<form:input cssClass="form-control" path="eoperator.anotherNationalId" placeholder="${i18n['createeo_another_vat_placeholder']}" placeholder-i18n="createeo_another_vat_placeholder"/>
+		                            	<form:input cssClass="form-control" path="eoperator.anotherNationalId" placeholder="${i18n['createeo_another_vat_placeholder']}" data-i18n="createeo_another_vat_placeholder"/>
 		                            </div>
 		                        </div>
 	                       </div>
@@ -258,7 +258,6 @@
                                 <form:checkbox path="eoperator.isShelteredWorkshop" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
                             </div>
                        </div>
-                       
                        <div class="col-md-12" id="disworkers-form" style="display:none"> 
 	                       <div class=" form-group">
 	                            <label class="control-label col-md-8" data-i18n="createeo_percentage_disworkers">
