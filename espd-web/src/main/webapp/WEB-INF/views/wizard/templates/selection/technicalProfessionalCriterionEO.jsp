@@ -16,6 +16,7 @@
 <tiles:importAttribute name="allows_checks"/>
 <tiles:importAttribute name="has_info_electronically"/>
 
+<s:message code="crit_description_placeholder" var="descriptionPlaceholder"/>
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
@@ -58,10 +59,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 small" for="${field}-description-${number}"><s:message
                                     code='crit_please_describe_them'/></label>
-
                             <div class="col-md-8">
                                 <textarea class="form-control" id="${field}-description-${number}"
-                                          placeholder=""></textarea>
+                                          placeholder="${descriptionPlaceholder}"></textarea>
                             </div>
                         </div>
                     </div>

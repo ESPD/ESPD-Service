@@ -16,6 +16,7 @@
 	<xsd:element name="EconomicOperatorRoleDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="NationalDatabaseAccessCredentials" type="cbc:TextType"/>
 	<xsd:element name="NaturalPersonRoleCode" type="cbc:TypeCodeType"/>
+	<xsd:element name="NaturalPersonRoleDescription" type="cbc:DescriptionType"/>
 	<xsd:element name="NaturalPersonRegistrationCountryCode" type="cbc:TypeCodeType"/>
 	<xsd:element name="NationalDataBaseURIID" type="cbc:IDType"/>
 	<xsd:element name="SMEIndicator" type="IndicatorType"/>

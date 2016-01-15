@@ -23,6 +23,7 @@
 	<xsd:complexType name="EconomicOperatorPartyType">
 		<xsd:sequence>
 			<xsd:element ref="espd-cbc:EconomicOperatorRoleCode" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:EconomicOperatorRoleDescription" minOccurs="0"/>
 			<xsd:element ref="espd-cbc:NationalDataBaseURIID" minOccurs="0"/>
 			<xsd:element ref="espd-cbc:NationalDatabaseAccessCredentials" minOccurs="0"/>
 			<xsd:element ref="espd-cbc:SMEIndicator" minOccurs="0"/>
@@ -33,8 +34,8 @@
 	<xsd:complexType name="NaturalPersonType">
 		<xsd:sequence>
 			<xsd:element ref="espd-cbc:NaturalPersonRoleCode" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:NaturalPersonRoleDescription" minOccurs="0"/>
 			<xsd:element ref="espd-cbc:NaturalPersonRegistrationCountryCode" minOccurs="0"/>
-			<xsd:element ref="cac:Person"/>
 			<xsd:element ref="cac:PowerOfAttorney" minOccurs="0"/>
 		</xsd:sequence>
 	</xsd:complexType>

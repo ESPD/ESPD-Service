@@ -56,7 +56,7 @@
 		<xsd:sequence>
 			<xsd:element ref="cbc:ID" minOccurs="0"/>
 			<xsd:element ref="cbc:Description" minOccurs="0"/>
-			<xsd:element ref="Response" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Response" minOccurs="0"  maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
 		<xsd:attribute name="responseDataType" type="xsd:normalizedString" use="optional"/>

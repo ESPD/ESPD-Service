@@ -25,7 +25,7 @@
 			<xsd:element ref="cbc:ProfileExecutionID" minOccurs="0"/>
 			<xsd:element ref="cbc:ID"/>
 			<xsd:element ref="cbc:CopyIndicator" minOccurs="0"/>
-			<xsd:element ref="cbc:UUID"/>
+			<xsd:element ref="cbc:UUID" minOccurs="0"/>
 			<xsd:element ref="cbc:VersionID" minOccurs="0"/>
 			<xsd:element ref="cbc:PreviousVersionID" minOccurs="0"/>
 			<xsd:element ref="cbc:IssueDate"/>
