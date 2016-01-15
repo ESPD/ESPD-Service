@@ -156,6 +156,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="generalYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="6"/>
+                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_general_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code" value="crit_selection_economic_general_yearly_turnover_description"/>
                 </tiles:insertDefinition>
@@ -163,6 +164,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="averageYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="7"/>
+                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_average_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_average_yearly_turnover_description"/>
@@ -171,6 +173,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="specificYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="8"/>
+                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_specific_yearly_turnover_description"/>
@@ -179,6 +182,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="specificAverageTurnover"/>
                     <tiles:putAttribute name="number" value="9"/>
+                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_average_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_specific_average_turnover_description"/>
@@ -187,6 +191,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="financialRatio"/>
                     <tiles:putAttribute name="number" value="10"/>
+                    <tiles:putAttribute name="has_multiple_description_ratio" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_financial_ratio_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_financial_ratio_description"/>
@@ -195,6 +200,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="professionalRiskInsurance"/>
                     <tiles:putAttribute name="number" value="11"/>
+                    <tiles:putAttribute name="has_single_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_professional_risk_insurance_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_professional_risk_insurance_description"/>
@@ -203,6 +209,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="otherEconomicFinancialRequirements"/>
                     <tiles:putAttribute name="number" value="12"/>
+                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_other_financial_requirements_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_other_financial_requirements_description"/>

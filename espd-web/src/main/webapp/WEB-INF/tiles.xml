@@ -110,6 +110,7 @@
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
     </definition>
+
     <definition name="economicFinancialCriterionEO" template="/WEB-INF/views/wizard/templates/selection/economicFinancialCriterionEO.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="number" value=""/>
@@ -117,7 +118,11 @@
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
         <put-attribute name="has_please_describe_them" value="false"/>
+        <put-attribute name="has_multiple_year_amount" value="false"/>
+        <put-attribute name="has_multiple_description_ratio" value="false"/>
+        <put-attribute name="has_single_amount" value="false"/>
     </definition>
+
     <definition name="technicalProfessionalCriterionEO" template="/WEB-INF/views/wizard/templates/selection/technicalProfessionalCriterionEO.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="number" value=""/>
@@ -125,6 +130,14 @@
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
         <put-attribute name="has_please_describe_them" value="false"/>
+    </definition>
+
+    <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp">
+        <put-attribute name="field" value=""/>
+    </definition>
+
+    <definition name="multipleDescriptionRatio" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionRatio.jsp">
+        <put-attribute name="field" value=""/>
     </definition>
 
     <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp">
@@ -151,6 +164,11 @@
         <put-attribute name="countryField" value=""/>
         <put-attribute name="countryHtmlId" value=""/>
         <put-attribute name="countryCssClass" value=""/>
+    </definition>
+    <definition name="currencies" template="/WEB-INF/views/wizard/templates/currencies.jsp">
+        <put-attribute name="currencyField" value=""/>
+        <put-attribute name="currencyHtmlId" value=""/>
+        <put-attribute name="currencyCssClass" value=""/>
     </definition>
 
     <definition name="partyInfo" template="/WEB-INF/views/wizard/templates/partyAddress.jsp">

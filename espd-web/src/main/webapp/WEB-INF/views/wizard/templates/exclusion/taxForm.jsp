@@ -11,7 +11,7 @@
 	<div class="col-md-8">
         <tiles:insertDefinition name="countries">
             <tiles:putAttribute name="countryField" value="${field}.country"/>
-            <tiles:putAttribute name="countryHtmlId" value="country"/>
+            <tiles:putAttribute name="countryHtmlId" value="${field}.country"/>
             <tiles:putAttribute name="countryCssClass" value="form-control"/>
         </tiles:insertDefinition>
 	</div>
@@ -23,10 +23,11 @@
 		<form:input path="${field}.amount" cssClass="form-control" id="${field}-field-amount" placeholder="${amountPlaceholder}"/>
 	</div>
 	<div class="col-md-3">
-		<form:select id="${field}-field-country" path="${field}.currency" cssClass="form-control">
-			<form:option value='euro'>EUR</form:option>
-			<form:option value='dollar'>USD</form:option>
-		</form:select>
+        <tiles:insertDefinition name="currencies">
+            <tiles:putAttribute name="currencyField" value="${field}.currency"/>
+            <tiles:putAttribute name="currencyHtmlId" value="${field}.currency"/>
+            <tiles:putAttribute name="currencyCssClass" value="form-control"/>
+        </tiles:insertDefinition>
 	</div>
 </div>
 
