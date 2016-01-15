@@ -6,10 +6,9 @@ import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
+import static eu.europa.ec.grow.espd.criteria.enums.ListUtil.list;
 import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionGroup.*;
 
 /**
@@ -303,10 +302,6 @@ public enum SelectionCriterion implements CcvCriterion {
     @Override
     public CcvCriterionType getCriterionType() {
         return this.criterionTypeCode;
-    }
-
-    private static List<SelectionCriterionGroup> list(SelectionCriterionGroup... values) {
-        return Collections.unmodifiableList(Arrays.asList(values));
     }
 
 }

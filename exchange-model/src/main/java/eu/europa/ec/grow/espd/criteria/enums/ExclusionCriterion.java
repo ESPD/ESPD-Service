@@ -6,12 +6,10 @@ import eu.europa.ec.grow.espd.entities.CcvCriterionType;
 import eu.europa.ec.grow.espd.entities.CcvLegislation;
 import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionGroup.*;
-
+import static eu.europa.ec.grow.espd.criteria.enums.ListUtil.list;
 /**
  * Created by vigi on 11/17/15:2:34 PM.
  */
@@ -151,7 +149,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     GUILTY_OF_PROFESSIONAL_MISCONDUCT("514d3fde-1e3e-4dcd-b02a-9f984d5bbda3", "Guilty of grave professional misconduct",
             "Is the economic operator  guilty of grave professional misconduct? Where applicable, see definitions in national law, the relevant notice or the procurement documents.",
             ExclusionCriterionTypeCode.MISCONDUCT, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
-            list(GUILTY_OF_PROFESSIONAL_MISCONDUCT_GROUP)),
+            ListUtil.list(GUILTY_OF_PROFESSIONAL_MISCONDUCT_GROUP)),
     /**
      *
      */
@@ -235,10 +233,5 @@ public enum ExclusionCriterion implements CcvCriterion {
     public CcvCriterionType getCriterionType() {
         return this.criterionTypeCode;
     }
-
-    private static List<ExclusionCriterionGroup> list(ExclusionCriterionGroup... values) {
-        return Collections.unmodifiableList(Arrays.asList(values));
-    }
-
 
 }

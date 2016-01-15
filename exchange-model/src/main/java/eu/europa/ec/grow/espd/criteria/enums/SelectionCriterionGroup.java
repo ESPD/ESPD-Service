@@ -4,10 +4,10 @@ import eu.europa.ec.grow.espd.entities.CcvCriterionGroup;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static eu.europa.ec.grow.espd.criteria.enums.ListUtil.list;
 import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement.*;
 
 /**
@@ -266,11 +266,6 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
         this.id = id;
         this.subgroups = subgroups;
         this.requirements = requirements;
-    }
-
-    @SafeVarargs
-    private static <T> List<T> list(T... values) {
-        return Collections.unmodifiableList(Arrays.asList(values));
     }
 
 }

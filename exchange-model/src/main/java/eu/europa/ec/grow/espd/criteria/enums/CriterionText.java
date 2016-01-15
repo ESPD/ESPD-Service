@@ -9,6 +9,7 @@ final class CriterionText {
         
     }
 
+    // exclusion
     static final String YOUR_ANSWER_TEXT = "Your answer?";
     static final String DATE_OF_CONVICTION_TEXT = "Date of conviction";
     static final String REASON_TEXT = "Reason";
@@ -27,6 +28,7 @@ final class CriterionText {
     static final String EO_FULFILLED_OBLIGATIONS_TEXT = "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?";
     static final String REASONS_NEVERTHELESS_CONTRACT_TEXT = "Indicate reasons for being nevertheless to perform the contract";
 
+    // selection
     static final String YEAR_TEXT = "Year";
     static final String AMOUNT_TEXT = "Amount";
     static final String PLEASE_SPECIFY_TEXT = "Please specify";
@@ -40,4 +42,5 @@ final class CriterionText {
     static final String EXPLAIN_SUPPLY_CONTRACTS_QC_TEXT = "If not, please explain why and state which other means of proof can be provided:";
     static final String EXPLAIN_CERTIFICATES_QA_TEXT = "If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:";
     static final String EXPLAIN_CERTIFICATES_ENVIRONMENTAL_TEXT = "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:";
+
 }
