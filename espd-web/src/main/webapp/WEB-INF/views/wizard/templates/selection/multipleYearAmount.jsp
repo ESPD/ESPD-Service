@@ -13,8 +13,11 @@
     <label class="control-label col-md-4 small" for="${field}-year1"
            data-i18n="crit_year"><s:message code='crit_year'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.year1" cssClass="form-control" id="${field}-year1"
-                    placeholder="${yearPlaceholder}"/>
+        <tiles:insertDefinition name="years">
+            <tiles:putAttribute name="yearField" value="${field}.year1"/>
+            <tiles:putAttribute name="yearHtmlId" value="${field}-year1"/>
+            <tiles:putAttribute name="yearCssClass" value="form-control"/>
+        </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">
@@ -37,8 +40,11 @@
     <label class="control-label col-md-4 small" for="${field}-year2"
            data-i18n="crit_year"><s:message code='crit_year'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.year2" cssClass="form-control" id="${field}-year2"
-                    placeholder="${yearPlaceholder}"/>
+        <tiles:insertDefinition name="years">
+            <tiles:putAttribute name="yearField" value="${field}.year2"/>
+            <tiles:putAttribute name="yearHtmlId" value="${field}-year2"/>
+            <tiles:putAttribute name="yearCssClass" value="form-control"/>
+        </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">
@@ -61,8 +67,11 @@
     <label class="control-label col-md-4 small" for="${field}-year3"
            data-i18n="crit_year"><s:message code='crit_year'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.year3" cssClass="form-control" id="${field}-year3"
-                    placeholder="${yearPlaceholder}"/>
+        <tiles:insertDefinition name="years">
+            <tiles:putAttribute name="yearField" value="${field}.year3"/>
+            <tiles:putAttribute name="yearHtmlId" value="${field}-year3"/>
+            <tiles:putAttribute name="yearCssClass" value="form-control"/>
+        </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">
@@ -85,8 +94,11 @@
     <label class="control-label col-md-4 small" for="${field}-year4"
            data-i18n="crit_year"><s:message code='crit_year'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.year4" cssClass="form-control" id="${field}-year4"
-                    placeholder="${yearPlaceholder}"/>
+        <tiles:insertDefinition name="years">
+            <tiles:putAttribute name="yearField" value="${field}.year4"/>
+            <tiles:putAttribute name="yearHtmlId" value="${field}-year4"/>
+            <tiles:putAttribute name="yearCssClass" value="form-control"/>
+        </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">
@@ -109,8 +121,11 @@
     <label class="control-label col-md-4 small" for="${field}-year5"
            data-i18n="crit_year"><s:message code='crit_year'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.year5" cssClass="form-control" id="${field}-year5"
-                    placeholder="${yearPlaceholder}"/>
+        <tiles:insertDefinition name="years">
+            <tiles:putAttribute name="yearField" value="${field}.year5"/>
+            <tiles:putAttribute name="yearHtmlId" value="${field}-year5"/>
+            <tiles:putAttribute name="yearCssClass" value="form-control"/>
+        </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">

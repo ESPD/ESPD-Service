@@ -170,6 +170,12 @@
         <put-attribute name="currencyHtmlId" value=""/>
         <put-attribute name="currencyCssClass" value=""/>
     </definition>
+    <definition name="years" template="/WEB-INF/views/wizard/templates/years.jsp">
+        <put-attribute name="currencyField" value=""/>
+        <put-attribute name="currencyHtmlId" value=""/>
+        <put-attribute name="currencyCssClass" value=""/>
+        <put-attribute name="maximumYears" value="5"/>
+    </definition>
 
     <definition name="partyInfo" template="/WEB-INF/views/wizard/templates/partyAddress.jsp">
         <put-attribute name="field" value=""/>
