@@ -110,6 +110,7 @@
                 <tiles:insertDefinition name="suitabilityCriterionEO">
                     <tiles:putAttribute name="field" value="enrolmentProfessionalRegister"/>
                     <tiles:putAttribute name="number" value="2"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_suitability_enrolment_professional_register_main"/>
                     <tiles:putAttribute name="tooltip_code" value="crit_selection_suitability_enrolment_professional_register_description"/>
                 </tiles:insertDefinition>
@@ -117,6 +118,7 @@
                 <tiles:insertDefinition name="suitabilityCriterionEO">
                     <tiles:putAttribute name="field" value="enrolmentTradeRegister"/>
                     <tiles:putAttribute name="number" value="3"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_suitability_enrolment_trade_register_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_suitability_enrolment_trade_register_description"/>
@@ -125,6 +127,7 @@
                 <tiles:insertDefinition name="suitabilityCriterionEO">
                     <tiles:putAttribute name="field" value="serviceContractsAuthorisation"/>
                     <tiles:putAttribute name="number" value="4"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_suitability_service_contracts_auth_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_suitability_service_contracts_auth_description"/>
@@ -133,6 +136,7 @@
                 <tiles:insertDefinition name="suitabilityCriterionEO">
                     <tiles:putAttribute name="field" value="serviceContractsMembership"/>
                     <tiles:putAttribute name="number" value="5"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_suitability_service_contracts_membership_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_suitability_service_contracts_membership_description"/>
@@ -156,6 +160,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="generalYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="6"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_general_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code" value="crit_selection_economic_general_yearly_turnover_description"/>
@@ -164,6 +169,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="averageYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="7"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_average_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
@@ -173,6 +179,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="specificYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="8"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
@@ -182,6 +189,7 @@
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
                     <tiles:putAttribute name="field" value="specificAverageTurnover"/>
                     <tiles:putAttribute name="number" value="9"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_average_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
@@ -306,6 +314,9 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="allowanceOfChecks"/>
                     <tiles:putAttribute name="number" value="21"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
+                    <tiles:putAttribute name="allows_checks" value="true"/>
+                    <tiles:putAttribute name="has_info_electronically" value="false"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_allowance_of_checks_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_allowance_of_checks_description"/>
@@ -332,6 +343,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="numberManagerialStaff"/>
                     <tiles:putAttribute name="number" value="24"/>
+                    <tiles:putAttribute name="has_multiple_year_number" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_number_managerial_staff_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_number_managerial_staff_description"/>
@@ -340,6 +352,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="averageAnnualManpower"/>
                     <tiles:putAttribute name="number" value="25"/>
+                    <tiles:putAttribute name="has_multiple_year_number" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_average_annual_manpower_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_average_annual_manpower_description"/>
@@ -366,6 +379,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="supplyContractsSamplesDescriptionsWithoutCa"/>
                     <tiles:putAttribute name="number" value="28"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_without_ca_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_contracts_without_ca_description"/>
@@ -374,6 +388,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="supplyContractsSamplesDescriptionsWithCa"/>
                     <tiles:putAttribute name="number" value="29"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_with_ca_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_contracts_with_ca_description"/>
@@ -382,6 +397,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="supplyContractsCertificatesQc"/>
                     <tiles:putAttribute name="number" value="30"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_certificate_quality_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_supply_contracts_certificate_quality_description"/>
@@ -390,6 +406,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutQa"/>
                     <tiles:putAttribute name="number" value="31"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_certificate_independent_bodies_quality_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_certificate_independent_bodies_quality_description"/>
@@ -398,6 +415,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutEnvironmental"/>
                     <tiles:putAttribute name="number" value="32"/>
+                    <tiles:putAttribute name="has_your_answer" value="true"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_certificate_independent_bodies_environmental_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_certificate_independent_bodies_environmental_description"/>

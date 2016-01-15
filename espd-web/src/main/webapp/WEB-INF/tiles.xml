@@ -129,8 +129,12 @@
         <put-attribute name="title_code" value=""/>
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="tooltip_text" value=""/>
+        <put-attribute name="has_your_answer" value="false"/>
         <put-attribute name="has_please_describe_them" value="false"/>
         <put-attribute name="has_multiple_description_amount_date_recipients" value="false"/>
+        <put-attribute name="allows_checks" value="false"/>
+        <put-attribute name="has_multiple_year_number" value="false"/>
+        <put-attribute name="has_info_electronically" value="true"/>
     </definition>
 
     <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp">
@@ -142,6 +146,10 @@
     </definition>
 
     <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionAmountDateRecipients.jsp">
+        <put-attribute name="field" value=""/>
+    </definition>
+
+    <definition name="multipleYearNumber" template="/WEB-INF/views/wizard/templates/selection/multipleYearNumber.jsp">
         <put-attribute name="field" value=""/>
     </definition>
 
