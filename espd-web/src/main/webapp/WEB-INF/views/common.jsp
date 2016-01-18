@@ -4,7 +4,12 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%request.setAttribute("i18n", (new eu.europa.ec.grow.espd.util.I18NFunc(pageContext)).message());%>
+<%
+eu.europa.ec.grow.espd.util.I18NFunc inst = new eu.europa.ec.grow.espd.util.I18NFunc(pageContext);
+request.setAttribute("i18n", inst.message());
+request.setAttribute("div18n", inst.div());
+request.setAttribute("span18n", inst.span());
+%>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">

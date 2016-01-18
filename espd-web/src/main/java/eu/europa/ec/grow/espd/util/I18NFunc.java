@@ -12,17 +12,37 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 @SuppressWarnings("serial")
 public class I18NFunc {
 
-	private MessageMap messageMap;
+	private static MessageMap messageMap;
+	private static MessageMap spanMessageMap;
+	private static MessageMap divMessageMap;
 	
 	public I18NFunc(PageContext pageContext) {
 		WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext());
 		MessageSource ms = (MessageSource) springContext.getBean("messageSource");
 		Locale locale = pageContext.getResponse().getLocale();
 		messageMap = new MessageMap(ms, locale);
+		spanMessageMap = new MessageMap(ms, locale) {
+			@Override public synchronized String get(Object key) {
+		        return "<span data-i18n=\""+key+"\">" + super.get(key) + "</span>";
+		    }
+		};
+		divMessageMap = new MessageMap(ms, locale) {
+			@Override public synchronized String get(Object key) {
+		        return "<div data-i18n=\""+key+"\">" + super.get(key) + "</div>";
+		    }
+		};
 	}
 
-    public HashMap<String, String> message() {
+    public static HashMap<String, String> message() {
 		return messageMap;
+    }
+
+    public static HashMap<String, String> span() {
+		return spanMessageMap;
+    }
+
+    public static HashMap<String, String> div() {
+		return divMessageMap;
     }
 
 	class MessageMap extends HashMap<String, String> {

@@ -28,38 +28,29 @@
     <div class="panel-default">
         <div class="panel panel-default no-border">
             <ul class="nav nav-pills nav-wizard nav-justified">
-                <li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span
-                        data-i18n="progress_start">${i18n['progress_start']}</span></a>
-
+                <li class="active">
+					<a href="#"><i class="fa fa-random"></i>&nbsp;${span18n['progress_start']}</a>
                     <div class="nav-arrow"></div>
                 </li>
                 <li class="active">
                     <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-university"></i>&nbsp;<span data-i18n="progress_procedure">
-                    	${i18n['progress_procedure']}
-                    </span></a>
-
+                    <a href="#"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
                     <div class="nav-arrow"></div>
                 </li>
                 <li>
                     <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-exclamation"></i>&nbsp;<span data-i18n="progress_exclusion">
-                    	${i18n['progress_exclusion']}
-                    </span></a>
-
+                    <a href="#"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
                     <div class="nav-arrow"></div>
                 </li>
                 <li>
                     <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-check-circle"></i>&nbsp;<span data-i18n="progress_selection">
-                    	${i18n['progress_selection']}</span></a>
+                    <a href="#"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
                     <div class="nav-arrow"></div>
                 </li>
                 <li>
                     <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-download"></i>&nbsp;<span data-i18n="progress_finish">
-	                    ${i18n['progress_finish']}
-                    </span></a></li>
+                    <a href="#"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
+				</li>
             </ul>
         </div>
 
@@ -68,7 +59,7 @@
                 <li>
                     <i class="info-label fa fa-exclamation-triangle fa-lg fa-li"></i>
 
-                    <div data-i18n="createca_correct_errors">${i18n['createca_correct_errors']}</div>
+					${div18n['createca_correct_errors']}
                     <div class="errorLabelContainer">
                         <ul></ul>
                     </div>
@@ -76,29 +67,45 @@
             </ul>
         </div>
         
-      
         <div class="paragraph">
-            <h2>
-                <span data-i18n="createca_header">${i18n['createca_header']}</span>
-            </h2>
+            <h2>${span18n['createca_header']}</h2>
         </div>
-        
+ 
         <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading ${isAgentEO?'collapsed':''}" data-toggle="collapse" data-target="#cadiv">
-                <span data-i18n="createca_contact_details_ca">${i18n['createca_contact_details_ca']}</span>
+            <div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
+                ${span18n['createca_info_pub']}
             </div>
             <div id="cadiv" class="collapse in">
                 <div class="panel-body">
-                    <div class="row">
+					<div class="alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                ${div18n['createca_to_be_filled_alert']}
+	                            <div class="form-group">
+	                                <label class="control-label col-md-4">${span18n['createca_ojs_label']}</label>
+	                                <div class="col-md-8">
+	                                    <form:input cssClass="form-control" path="ojsNumber" placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ][ ]"/>
+	                                </div>
+	                            </div>
+                               	${span18n['createca_official_journal_alert']}
+					</div>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="espd-panel panel panel-default">
+            <div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
+                ${span18n['createca_contact_details_ca']}
+            </div>
+            <div id="cadiv" class="collapse in">
+                <div class="panel-body">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_name">${i18n['createca_name']}</label>
+                                <label class="control-label col-md-4">${span18n['createca_name']}</label>
                                 <div class="col-md-8">
                                     <form:input cssClass="form-control" path="authority.name" placeholder="${i18n['createca_name_placeholder']}" data-i18n="createca_name_placeholder" required="true"/>
                                     <span class="error"></span>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <form:errors path="authority.name" cssClass="alert-danger"/>
                                 </div>
@@ -107,7 +114,7 @@
                         <div class="col-md-6">
 
 							<div class=" form-group ">
-								<label class="control-label col-md-4" data-i18n="createca_country">${i18n['createca_country']}</label>
+								<label class="control-label col-md-4">${span18n['createca_country']}</label>
 								<div class="col-md-8">
 									<tiles:insertDefinition name="countries">
 										<tiles:putAttribute name="countryField" value="authority.country"/>
@@ -118,76 +125,60 @@
 							</div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
         <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading" data-toggle="collapse" data-target="#ppdiv" data-i18n="createca_info_procurement_proc">
-            	${i18n['createca_info_procurement_proc']}
+            <div class="espd-panel-heading" data-toggle="collapse" data-target="#ppdiv" >
+            	${span18n['createca_info_procurement_proc']}
             </div>
             <div id="ppdiv" class="collapse in">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                <div data-i18n="createca_to_be_filled_alert">
-                                	${i18n['createca_to_be_filled_alert']}
-                                </div>
-	                            <div class="form-group">
-	                                <label class="control-label col-md-4" data-i18n="createca_ojs_label">${i18n['createca_ojs_label']}</label>
-	                                <div class="col-md-8">
-	                                    <form:input cssClass="form-control" path="ojsNumber" placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ][ ]"/>
-	                                </div>
-	                            </div>
-                               	<span data-i18n="createca_official_journal_alert">${i18n['createca_official_journal_alert']}</span>
-                            </div>
-
-                            <div class="col-md-12 form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_procurer_name">${i18n['createca_procurer_name']}</label>
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="procedureTitle" placeholder="${i18n['createca_procurer_name_placeholder']}"  data-i18n="createca_procurer_name_placeholder"/>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_title_or_short_desc">${i18n['createca_title_or_short_desc']}</label>
-                                 <div class="col-md-8">
-                                	<form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control" placeholder="${i18n['createca_title_or_short_desc_placeholder']}" data-i18n="createca_title_or_short_desc_placeholder"/>
-                               	</div>
-                            </div>
-                            
-                            <div class="col-md-12 form-group">
-                                <label class="control-label col-md-4" data-i18n="createca_file_ref_ca">
-                                	${i18n['createca_file_ref_ca']}
+                	<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label col-md-4">${span18n['createca_procurer_name']}</label>
+							<div class="col-md-8">
+								<form:input cssClass="form-control" path="procedureTitle" placeholder="${i18n['createca_procurer_name_placeholder']}" data-i18n="createca_procurer_name_placeholder"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label col-md-4">${span18n['createca_title_or_short_desc']}</label>
+							<div class="col-md-8">
+								<form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control" placeholder="${i18n['createca_title_or_short_desc_placeholder']}" data-i18n="createca_title_or_short_desc_placeholder"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+								<label class="control-label col-md-4">
+									${span18n['createca_file_ref_ca']}
 								</label>
-                                <div class="col-md-8">
-                                    <form:input cssClass="form-control" path="fileRefByCA" placeholder="${i18n['createca_file_ref_ca_placeholder']}" data-i18n="createca_file_ref_ca_placeholder"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+								<div class="col-md-8">
+									<form:input cssClass="form-control" path="fileRefByCA" placeholder="${i18n['createca_file_ref_ca_placeholder']}" data-i18n="createca_file_ref_ca_placeholder"/>
+								</div>
+							</div>
+						</div>
+					</div>
             </div>
         </div>
 
 
         <c:if test="${isAgentEO}">
 	        <div class="paragraph">
-	            <h2>
-	                <span data-i18n="createeo_header">${i18n['createeo_header']}</span>
-	            </h2>
+	            <h2>${span18n['createeo_header']}</h2>
 	        </div>
         
 	        <div class="espd-panel panel panel-default">
-	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div" data-i18n="createeo_info_eo">
-	            	${i18n['createeo_info_eo']}
+	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div">
+	            	${span18n['createeo_info_eo']}
 	            </div>
 	            <div id="createeo_info_eo_div" class="collapse in">
 	                <div class="panel-body">
 	                	
 	                        <div class="col-md-6">
 	                            <div class="form-group">
-	                                <label class="control-label col-md-4" data-i18n="createeo_name">${i18n['createeo_name']}</label>
+	                                <label class="control-label col-md-4">${span18n['createeo_name']}</label>
 	                                <div class="col-md-8">
 	                                    <form:input cssClass="form-control" path="eoperator.name" placeholder="${i18n['createeo_name_placeholder']}" data-i18n="createeo_name_placeholder"/>
 	                                </div>
@@ -200,14 +191,14 @@
 	                        <div class="col-md-6">
 	                            
 								<div class="form-group">
-									<label class="control-label col-md-4" data-i18n="createeo_vat">${i18n['createeo_vat']}</label>
+									<label class="control-label col-md-4">${span18n['createeo_vat']}</label>
 									<div class="col-md-8">
 										<form:input cssClass="form-control" path="eoperator.vat" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
 									</div>
 								</div>
 								
 		                       <div class="form-group">
-		                            <label class="control-label col-md-4" data-i18n="createeo_another_vat">${i18n['createeo_another_vat']}</label>
+		                            <label class="control-label col-md-4">${span18n['createeo_another_vat']}</label>
 		                            <div class="col-md-8">
 		                            	<form:input cssClass="form-control" path="eoperator.anotherNationalId" placeholder="${i18n['createeo_another_vat_placeholder']}" data-i18n="createeo_another_vat_placeholder"/>
 		                            </div>
@@ -219,14 +210,14 @@
 	                            </tiles:insertDefinition>
                            
 		                       <div class="form-group">
-		                            <label class="control-label col-md-4" data-i18n="createeo_contact_person">${i18n['createeo_contact_person']}</label>
+		                            <label class="control-label col-md-4">${span18n['createeo_contact_person']}</label>
 		                            <div class="col-md-8">
 		                            	<form:input cssClass="form-control" path="eoperator.contactPerson" placeholder="${i18n['createeo_contact_person_placeholder']}" data-i18n="createeo_contact_person_placeholder"/>
 		                            </div>
 		                        </div>
 
 		                       <div class="form-group">
-		                            <label class="control-label col-md-4" data-i18n="createeo_internet_addr_if_exists">${i18n['createeo_internet_addr_if_exists']}</label>
+		                            <label class="control-label col-md-4">${span18n['createeo_internet_addr_if_exists']}</label>
 		                            <div class="col-md-8">
 		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="${i18n['createeo_internet_addr_if_exists_placeholder']}" data-i18n="createeo_internet_addr_if_exists_placeholder"/>
 		                            </div>
@@ -237,7 +228,7 @@
                        <div class="col-md-12">
                        		<div class="form-group">
 	                            <label class="control-label col-md-6">
-	                            	<span data-i18n="createeo_is_eo_sized">${i18n['createeo_is_eo_sized']}</span>
+	                            	${span18n['createeo_is_eo_sized']}
 	                           	 	<span data-i18n="createeo_is_eo_sized_tooltip" title="${i18n['createeo_is_eo_sized_tooltip']}" data-toggle="tooltip"></span>
 	                            </label>
 	                            <div class="col-md-6">
@@ -247,8 +238,8 @@
                        </div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_if_proc_reserved">
-	                            	${i18n['createeo_if_proc_reserved']}
+	                            <label class="control-label col-md-6">
+	                            	${span18n['createeo_if_proc_reserved']}
 	                            </label>
 	                            <div class="col-md-6">
 	                                <form:checkbox path="eoperator.isShelteredWorkshop" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
@@ -257,16 +248,16 @@
                        </div>
                        <div class="col-md-12" id="disworkers-form" style="display:none"> 
 	                       <div class=" form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_percentage_disworkers">
-	                            	${i18n['createeo_percentage_disworkers']}
+	                            <label class="control-label col-md-6">
+	                            	${span18n['createeo_percentage_disworkers']}
 	                            </label>
 	                            <div class="col-md-6" >
 	                                <form:input cssClass="form-control" path="eoperator.percentageDisabledWorkers" placeholder="${i18n['createeo_percentage_disworkers_placeholder']}" data-i18n="createeo_percentage_disworkers_placeholder"/>
 	                            </div>
 	                       </div>
 	                       <div class="form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_disworkers_details">
-	                            	${i18n['createeo_disworkers_details']}
+	                            <label class="control-label col-md-6">
+	                            	${span18n['createeo_disworkers_details']}
 	                            </label>
 	                            <div class="col-md-6">
 	                                <form:input cssClass="form-control" path="eoperator.detailsDisabledWorkers" placeholder="${i18n['createeo_disworkers_details_placeholder']}" data-i18n="createeo_disworkers_details_placeholder"/>
@@ -276,8 +267,8 @@
 						
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_eo_approved_cert">
-	                            	${i18n['createeo_eo_approved_cert']}
+	                            <label class="control-label col-md-6">
+	                            	${span18n['createeo_eo_approved_cert']}
 	                            </label>
 	                            <div class="col-md-6">
 	                                <form:checkbox path="eoperator.isEORegisteredOfficially" data-toggle="collapse" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
@@ -285,12 +276,12 @@
 	                        </div>
                        </div>
                        <div id="reg-official-yes" style="display:none"><%-- [IF YES] --%>
-                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;" data-i18n="createeo_answer_following_parts">
-                           		${i18n['createeo_answer_following_parts']}
+                           <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
+                           		${span18n['createeo_answer_following_parts']}
                            </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_provide_regnumber">${i18n['createeo_provide_regnumber']}</label>
+		                            <label class="control-label col-md-6">${span18n['createeo_provide_regnumber']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.certNumber" placeholder="${i18n['createeo_provide_regnumber_placeholder']}" data-i18n="createeo_provide_regnumber_placeholder"/>
 		                            </div>
@@ -298,7 +289,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_cert_e_avaliable"> ${i18n['createeo_cert_e_avaliable']}</label>
+		                            <label class="control-label col-md-6">${span18n['createeo_cert_e_avaliable']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.certificateUrl" placeholder="${i18n['createeo_cert_e_avaliable_placeholder']}" data-i18n="createeo_cert_e_avaliable_placeholder"/>
 		                            </div>
@@ -306,7 +297,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_ref_for_cert"> ${i18n['createeo_ref_for_cert']}</label>
+		                            <label class="control-label col-md-6">${span18n['createeo_ref_for_cert']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.certRefBasis" placeholder="${i18n['createeo_ref_for_cert_placeholder']}" data-i18n="createeo_ref_for_cert_placeholder"/>
 		                            </div>
@@ -314,7 +305,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_all_selection_covered"> ${i18n['createeo_all_selection_covered']}</label>
+		                            <label class="control-label col-md-6">${span18n['createeo_all_selection_covered']}</label>
 		                            <div class="col-md-6">
 		                                <form:checkbox path="eoperator.certCoversAllCrit" cssClass="radioslide checktoggle form-control" />
 		                            </div>
@@ -327,7 +318,7 @@
                            </div>
 	                       <div class="col-md-12 ">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_eo_has_cert_soc"> ${i18n['createeo_eo_has_cert_soc']}</label>
+		                            <label class="control-label col-md-6" > ${span18n['createeo_eo_has_cert_soc']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.socialSecPaymentDoc" placeholder="${i18n['createeo_eo_has_cert_soc_placeholder']}" data-i18n="createeo_eo_has_cert_soc_placeholder"/>
 		                            </div>
@@ -335,7 +326,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_doc_e_avaliable"> ${i18n['createeo_doc_e_avaliable']}</label>
+		                            <label class="control-label col-md-6"> ${span18n['createeo_doc_e_avaliable']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.socialSecPaymentDocUrl" placeholder="${i18n['createeo_doc_e_avaliable_placeholder']}" data-i18n="createeo_doc_e_avaliable_placeholder"/>
 		                            </div>
@@ -345,7 +336,7 @@
 					
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_is_eo_proc_together">${i18n['createeo_is_eo_proc_together']}</label>
+	                            <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
 	                            <div class="col-md-6">
 	                                <form:checkbox path="eoperator.isEOInGroup" data-toggle="collapse" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
@@ -353,11 +344,11 @@
                        </div>
                        <div id="group-form" style="display:none"><%-- [IF YES] --%>
                             <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                                <span data-i18n="createeo_ensure_others_espd">${i18n['createeo_ensure_others_espd']}</span>
+                                ${span18n['createeo_ensure_others_espd']}
                             </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_eo_group_role"> ${i18n['createeo_eo_group_role']}</label>
+		                            <label class="control-label col-md-6"> ${span18n['createeo_eo_group_role']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.eoRoleInGroup" placeholder="${i18n['createeo_eo_group_role_placeholder']}" data-i18n="createeo_eo_group_role_placeholder"/>
 		                            </div>
@@ -365,7 +356,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_other_eo_part"> ${i18n['createeo_other_eo_part']}</label>
+		                            <label class="control-label col-md-6"> ${span18n['createeo_other_eo_part']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.otherEOInGroup" placeholder="${i18n['createeo_other_eo_part_placeholder']}" data-i18n="createeo_other_eo_part_placeholder"/>
 		                            </div>
@@ -373,7 +364,7 @@
 	                       </div>
 	                       <div class="col-md-12">
 	                       		<div class="form-group">
-		                            <label class="control-label col-md-6" data-i18n="createeo_name_part_group"> ${i18n['createeo_name_part_group']}</label>
+		                            <label class="control-label col-md-6" > ${span18n['createeo_name_part_group']}</label>
 		                            <div class="col-md-6">
 		                                <form:input cssClass="form-control" path="eoperator.eoGroupName" placeholder="${i18n['createeo_name_part_group_placeholder']}" data-i18n="createeo_name_part_group_placeholder"/>
 		                            </div>
@@ -382,7 +373,7 @@
 						</div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-6" data-i18n="createeo_lots_concerned">${i18n['createeo_lots_concerned']}</label>
+	                            <label class="control-label col-md-6">${span18n['createeo_lots_concerned']}</label>
 	                            <div class="col-md-6">
 	                                <form:input cssClass="form-control" path="lotConcerned" id="lotConcerned" placeholder="${i18n['createeo_lots_concerned_placeholder']}" data-i18n="createeo_lots_concerned_placeholder"/>
 	                            </div>
@@ -395,16 +386,16 @@
 	        
 	        <div class="espd-panel panel panel-default">
 	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_respresent_div">
-	                <span data-i18n="createeo_info_respresent">${i18n['createeo_info_respresent']}</span>
+	                ${span18n['createeo_info_respresent']}
 	            </div>
 	            <div id="createeo_info_respresent_div" class="collapse in">
 	                <div class="panel-body">
                        <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
-                            <span data-i18n="createeo_person_empowered">${i18n['createeo_person_empowered']}</span>
+                            ${span18n['createeo_person_empowered']}
                        </div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                           <label class="control-label col-md-3" data-i18n="createeo_full_name_and_birth">${i18n['createeo_full_name_and_birth']}</label>
+	                           <label class="control-label col-md-3">${span18n['createeo_full_name_and_birth']}</label>
 	                           <div class="col-md-9">
 	                                <form:input cssClass="form-control" path="eoperator.representFullName" placeholder="${i18n['createeo_full_name_and_birth_placeholder']}" data-i18n="createeo_full_name_and_birth_placeholder"/>
 	                           </div>
@@ -412,7 +403,7 @@
                        </div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                           <label class="control-label col-md-3" data-i18n="createeo_pos_act_in_capacity">${i18n['createeo_pos_act_in_capacity']}</label>
+	                           <label class="control-label col-md-3" >${span18n['createeo_pos_act_in_capacity']}</label>
 	                           <div class="col-md-9">
 	                                 <form:input cssClass="form-control" path="eoperator.representPosition" placeholder="${i18n['createeo_pos_act_in_capacity_placeholder']}" data-i18n="createeo_pos_act_in_capacity_placeholder"/>
 	                           </div>
@@ -432,9 +423,9 @@
                        </div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-3" data-i18n="createeo_detinfo_of_represent">${i18n['createeo_detinfo_of_represent']}</label>
+	                            <label class="control-label col-md-3">${span18n['createeo_detinfo_of_represent']}</label>
 	                            <div class="col-md-9">
-	                               <form:textarea path="eoperator.representAddInfo" cssStyle="resize: none" rows="4" cols="20"  cssClass="form-control" placeholder="${i18n['createeo_detinfo_of_represent_placeholder']}" data-i18n="createeo_detinfo_of_represent_placeholder"/>
+	                               <form:textarea path="eoperator.representAddInfo" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control" placeholder="${i18n['createeo_detinfo_of_represent_placeholder']}" data-i18n="createeo_detinfo_of_represent_placeholder"/>
 	                            </div>
                             </div>
                        </div>
@@ -444,20 +435,20 @@
 	        
 	        <div class="espd-panel panel panel-default">
 	            <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
-	                <span data-i18n="createeo_info_reliance">${i18n['createeo_info_reliance']}</span>
+	                ${span18n['createeo_info_reliance']}
 	            </div>
 	            <div id="createeo_info_reliance_div" class="collapse in">
 	                <div class="panel-body">
                        <div class="col-md-12 form-group">
-                            <label class="control-label col-md-6" data-i18n="createeo_eo_rely_other_entities">
-                            	${i18n['createeo_eo_rely_other_entities']}
+                            <label class="control-label col-md-6">
+                            	${span18n['createeo_eo_rely_other_entities']}
                             </label>
                             <div class="col-md-6">
                                 <form:checkbox path="eoperator.isEORelyOnEntities" cssClass="radioslide checktoggle form-control" />
                             </div>
                        </div>
                        <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
-                            <span data-i18n="createeo_separate_espd_sections_a_b">${i18n['createeo_separate_espd_sections_a_b']}</span>
+                            ${span18n['createeo_separate_espd_sections_a_b']}
                        </div>
 	                </div>
 	            </div>
