@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixture {
 
-    def "23. should contain the 'Purely national grounds of exclusion' criterion"() {
+    def "24. should contain the 'Purely national grounds of exclusion' criterion"() {
         given:
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 

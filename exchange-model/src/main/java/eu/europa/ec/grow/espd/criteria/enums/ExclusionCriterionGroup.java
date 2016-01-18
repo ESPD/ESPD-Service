@@ -139,6 +139,11 @@ public enum ExclusionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    AGREEMENTS_WITH_OTHER_EO_GROUP("dd635133-2952-4cbf-a582-d6e61efd7c28", list(SELF_CLEANING_GROUP),
+            list(YOUR_ANSWER, PLEASE_DESCRIBE)),
+    /**
+     *
+     */
     CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE_GROUP("30450436-f559-4dfa-98ba-f0842ed9d2a0",
             list(SELF_CLEANING_GROUP), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**

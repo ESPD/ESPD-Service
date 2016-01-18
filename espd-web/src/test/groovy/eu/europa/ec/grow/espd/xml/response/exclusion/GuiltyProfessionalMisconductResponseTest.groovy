@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.xml.response.exclusion
 
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.MisconductCriterion
+import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
@@ -12,7 +12,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "18. should contain the 'Guilty of grave professional misconduct' criterion"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true))
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -56,7 +56,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true))
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -71,7 +71,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "check the 'Please describe them' requirement response"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true,
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true,
                 description: "bogus description."))
 
         when:
@@ -88,7 +88,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true,
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true,
                 selfCleaning: new SelfCleaning(exists: false)))
 
         when:
@@ -105,7 +105,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "check the 'Self cleaning description' requirement response"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true,
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true,
                 selfCleaning: new SelfCleaning(description: "Hodor_16 is clean")))
 
         when:

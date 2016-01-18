@@ -175,6 +175,12 @@
                     </tiles:insertDefinition>
 
                     <tiles:insertDefinition name="checkCriterion">
+                        <tiles:putAttribute name="field" value="agreementsWithOtherEO"/>
+                        <tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
+                        <tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
+                    </tiles:insertDefinition>
+
+                    <tiles:insertDefinition name="checkCriterion">
                         <tiles:putAttribute name="field" value="conflictInterest"/>
                         <tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
                         <tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>

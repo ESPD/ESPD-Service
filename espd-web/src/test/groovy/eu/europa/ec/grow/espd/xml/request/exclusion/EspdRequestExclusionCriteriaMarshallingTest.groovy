@@ -48,7 +48,8 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
                 analogousSituation: new BankruptcyCriterion(exists: true),
                 assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true),
                 businessActivitiesSuspended: new BankruptcyCriterion(exists: true),
-                guiltyGrave: new MisconductCriterion(exists: true),
+                guiltyGrave: new MisconductDistortionCriterion(exists: true),
+                agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true),
                 conflictInterest: new ConflictInterestCriterion(exists: true),
                 involvementPreparationProcurement: new ConflictInterestCriterion(exists: true),
                 earlyTermination: new ConflictInterestCriterion(exists: true),
@@ -78,11 +79,12 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         checkCriterionId(request, 15, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
         checkCriterionId(request, 16, "166536e2-77f7-455c-b018-70582474e4f6")
         checkCriterionId(request, 17, "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3")
-        checkCriterionId(request, 18, "b1b5ac18-f393-4280-9659-1367943c1a2e")
-        checkCriterionId(request, 19, "61874050-5130-4f1c-a174-720939c7b483")
-        checkCriterionId(request, 20, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
-        checkCriterionId(request, 21, "696a75b2-6107-428f-8b74-82affb67e184")
-        checkCriterionId(request, 22, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
+        checkCriterionId(request, 18, "56d13e3d-76e8-4f23-8af6-13e60a2ee356")
+        checkCriterionId(request, 19, "b1b5ac18-f393-4280-9659-1367943c1a2e")
+        checkCriterionId(request, 20, "61874050-5130-4f1c-a174-720939c7b483")
+        checkCriterionId(request, 21, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
+        checkCriterionId(request, 22, "696a75b2-6107-428f-8b74-82affb67e184")
+        checkCriterionId(request, 23, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
     }
 
 }

@@ -45,7 +45,7 @@ public class CriteriaToEspdDocumentPopulator {
         markExclusionSelectedTaxes(espdDocument, ublCriteria);
         markExclusionEnvironmental(espdDocument, ublCriteria);
         markExclusionBankruptcyInsolvency(espdDocument, ublCriteria);
-        markExclusionMisconduct(espdDocument, ublCriteria);
+        markExclusionMisconductDistortion(espdDocument, ublCriteria);
         markExclusionConflictOfInterest(espdDocument, ublCriteria);
         markExclusionPurelyNational(espdDocument, ublCriteria);
     }
@@ -92,9 +92,11 @@ public class CriteriaToEspdDocumentPopulator {
                 ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS, ublCriteria));
     }
 
-    private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        espdDocument.setGuiltyGrave(criterionFactory.<MisconductCriterion>buildEspdCriterion(
+    private void markExclusionMisconductDistortion(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        espdDocument.setGuiltyGrave(criterionFactory.<MisconductDistortionCriterion>buildEspdCriterion(
                 ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT, ublCriteria));
+        espdDocument.setAgreementsWithOtherEO(criterionFactory.<MisconductDistortionCriterion>buildEspdCriterion(
+                ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO, ublCriteria));
     }
 
     private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> ublCriteria) {

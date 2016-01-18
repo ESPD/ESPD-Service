@@ -8,10 +8,10 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class MisconductCriterion extends ExclusionCriterion {
+public class MisconductDistortionCriterion extends ExclusionCriterion {
 
-    public static MisconductCriterion buildWithExists(boolean exists) {
-        MisconductCriterion criterion = new MisconductCriterion();
+    public static MisconductDistortionCriterion buildWithExists(boolean exists) {
+        MisconductDistortionCriterion criterion = new MisconductDistortionCriterion();
         criterion.setExists(exists);
         return criterion;
     }

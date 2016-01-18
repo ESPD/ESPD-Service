@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "21. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
+    def "22. should contain the 'Early termination, damages or other comparable sanctions' criterion"() {
         given:
         def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true))
 

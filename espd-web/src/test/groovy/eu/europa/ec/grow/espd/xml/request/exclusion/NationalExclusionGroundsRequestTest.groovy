@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
  */
 class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixture {
 
-    def "23. should contain the 'Purely national grounds of exclusion' criterion"() {
+    def "24. should contain the 'Purely national grounds of exclusion' criterion"() {
         given:
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 

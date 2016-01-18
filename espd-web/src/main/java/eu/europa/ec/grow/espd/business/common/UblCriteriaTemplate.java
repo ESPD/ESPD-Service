@@ -50,7 +50,7 @@ public abstract class UblCriteriaTemplate {
         markExclusionPayment(espdDocument, criterionTypes);
         markExclusionLaw(espdDocument, criterionTypes);
         markExclusionBankruptcyInsolvency(espdDocument, criterionTypes);
-        markExclusionMisconduct(espdDocument, criterionTypes);
+        markExclusionMisconductDistortion(espdDocument, criterionTypes);
         markExclusionConflictOfInterest(espdDocument, criterionTypes);
         markExclusionNationalGrounds(espdDocument, criterionTypes);
         return criterionTypes;
@@ -86,8 +86,9 @@ public abstract class UblCriteriaTemplate {
         addUblCriterion(BUSINESS_ACTIVITIES_SUSPENDED, espdDocument.getBusinessActivitiesSuspended(), criteria);
     }
 
-    private void markExclusionMisconduct(EspdDocument espdDocument, List<CriterionType> criteria) {
+    private void markExclusionMisconductDistortion(EspdDocument espdDocument, List<CriterionType> criteria) {
         addUblCriterion(GUILTY_OF_PROFESSIONAL_MISCONDUCT, espdDocument.getGuiltyGrave(), criteria);
+        addUblCriterion(AGREEMENTS_WITH_OTHER_EO, espdDocument.getAgreementsWithOtherEO(), criteria);
     }
 
     private void markExclusionConflictOfInterest(EspdDocument espdDocument, List<CriterionType> criteria) {

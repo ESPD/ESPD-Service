@@ -175,7 +175,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
                 analogousSituation: new BankruptcyCriterion(exists: true),
                 assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true),
                 businessActivitiesSuspended: new BankruptcyCriterion(exists: true),
-                guiltyGrave: new MisconductCriterion(exists: true),
+                guiltyGrave: new MisconductDistortionCriterion(exists: true),
                 conflictInterest: new ConflictInterestCriterion(exists: true),
                 involvementPreparationProcurement: new ConflictInterestCriterion(exists: true),
                 earlyTermination: new ConflictInterestCriterion(exists: true),

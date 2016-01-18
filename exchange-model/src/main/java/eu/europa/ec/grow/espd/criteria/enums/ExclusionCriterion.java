@@ -153,6 +153,13 @@ public enum ExclusionCriterion implements CcvCriterion {
     /**
      *
      */
+    AGREEMENTS_WITH_OTHER_EO("56d13e3d-76e8-4f23-8af6-13e60a2ee356", "Agreements with other economic operators aimed at distorting competition",
+            "Has the economic operator entered into agreements with other economic operators aimed at distorting competition?",
+            ExclusionCriterionTypeCode.DISTORTING_MARKET, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
+            ListUtil.list(AGREEMENTS_WITH_OTHER_EO_GROUP)),
+    /**
+     *
+     */
     CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE("b1b5ac18-f393-4280-9659-1367943c1a2e",
             "Conflict of interest due to its participation in the procurement procedure",
             "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?",

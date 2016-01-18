@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFixture {
 
-    def "22. should contain the 'Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure' criterion"() {
+    def "23. should contain the 'Guilty of misinterpretation, withheld information, able to provide required documents and obtained confidential information of this procedure' criterion"() {
         given:
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true))
 

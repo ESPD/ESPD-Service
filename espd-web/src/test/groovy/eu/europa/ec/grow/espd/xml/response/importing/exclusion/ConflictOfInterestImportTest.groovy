@@ -11,7 +11,7 @@ import org.apache.commons.io.IOUtils
  */
 class ConflictOfInterestImportTest extends AbstractXmlFileImport {
 
-    def "17. should import all fields of 'Conflict of interest due to its participation in the procurement procedure'"() {
+    def "20. should import all fields of 'Conflict of interest due to its participation in the procurement procedure'"() {
         given:
         def espdResponseXml = importXmlResponseFile("exclusion/conflict_of_interest_import.xml")
 
@@ -37,6 +37,7 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true, description: "Hodor is conflicted",
                 selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean"),
                 availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "HODOR?")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:
         1 == 1

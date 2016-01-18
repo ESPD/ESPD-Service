@@ -45,7 +45,8 @@ public class EspdDocument {
     private BankruptcyCriterion assetsAdministeredByLiquidator;
     private BankruptcyCriterion businessActivitiesSuspended;
 
-    private MisconductCriterion guiltyGrave;
+    private MisconductDistortionCriterion guiltyGrave;
+    private MisconductDistortionCriterion agreementsWithOtherEO;
 
     private ConflictInterestCriterion conflictInterest;
     private ConflictInterestCriterion involvementPreparationProcurement;

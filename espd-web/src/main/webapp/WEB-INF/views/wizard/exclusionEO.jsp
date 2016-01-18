@@ -188,11 +188,18 @@
 				</tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
-					<tiles:putAttribute name="field" value="guiltyGrave"/>
-					<tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
-					<tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
+					<tiles:putAttribute name="field" value="agreementsWithOtherEO"/>
+					<tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
+					<tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
 					<tiles:putAttribute name="availableElectronically" value="false"/>
 				</tiles:insertDefinition>
+
+                <tiles:insertDefinition name="simpleFormCriterion">
+                    <tiles:putAttribute name="field" value="guiltyGrave"/>
+                    <tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
+                    <tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
+                    <tiles:putAttribute name="availableElectronically" value="false"/>
+                </tiles:insertDefinition>
 				
 				<tiles:insertDefinition name="simpleFormCriterion">
 					<tiles:putAttribute name="field" value="conflictInterest"/>

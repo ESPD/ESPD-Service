@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.xml.request.exclusion
 
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.MisconductCriterion
+import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:21 PM.
@@ -11,11 +11,11 @@ class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaF
 
     def "18. should contain the 'Guilty of grave professional misconduct' criterion"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true))
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
         request.Criterion.size() == getTotalNumberOfCriteria()

@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.MisconductCriterion
+import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
@@ -10,7 +10,7 @@ import org.apache.commons.io.IOUtils
  */
 class MisconductImportTest extends AbstractXmlFileImport {
 
-    def "16. should import all fields of 'Guilty of grave professional misconduct'"() {
+    def "18. should import all fields of 'Guilty of grave professional misconduct'"() {
         given:
         def espdResponseXml = importXmlResponseFile("exclusion/guilty_of_grave_professional_misconduct_import.xml")
 
@@ -33,8 +33,9 @@ class MisconductImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductCriterion(exists: true, description: "Hodor is misbehaving",
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true, description: "Hodor is misbehaving",
                 selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:
         1 == 1
