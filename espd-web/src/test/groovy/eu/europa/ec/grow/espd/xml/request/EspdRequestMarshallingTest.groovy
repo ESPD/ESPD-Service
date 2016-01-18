@@ -94,12 +94,43 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
     }
 
     def "should contain ContractFolderID element information"() {
+        given:
+        def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")
+
         when:
-        def result = parseRequestXml()
+        def result = parseRequestXml(espd)
 
         then:
-        result.ContractFolderID.text() == "SMART 2015/0065"
+        result.ContractFolderID.text() == "HODOR refd by CA"
         result.ContractFolderID.@schemeAgencyID.text() == "TeD"
+    }
+
+    def "should contain AdditionalDocumentReference element information"() {
+        given:
+        def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
+                procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services."
+        )
+
+        when:
+        def result = parseRequestXml(espd)
+
+        then:
+        result.AdditionalDocumentReference[0].ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
+
+        then:
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TeD_CN"
+
+        then:
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
     }
 
     def "should transform ContractingParty element information"() {

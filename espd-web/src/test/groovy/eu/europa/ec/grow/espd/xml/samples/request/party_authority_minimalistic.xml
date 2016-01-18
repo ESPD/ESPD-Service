@@ -24,10 +24,16 @@
         <cbc:ID>0</cbc:ID>
     </cac:ProcurementProjectLot>
     <ccv:Criterion>
-        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</cbc:ID>
-        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ALL_CRITERIA_SATISFIED</cbc:TypeCode>
-        <cbc:Name>All Selection Criteria Will Be Satisfied</cbc:Name>
-        <cbc:Description>The economic operator satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</cbc:Description>
-        <ccv:Requirement></ccv:Requirement>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">BOGUS_CODE</cbc:TypeCode>
+        <cbc:Name>BOGUS_NAME</cbc:Name>
+        <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+                <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd-req:ESPDRequest>
