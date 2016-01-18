@@ -1,5 +1,7 @@
 package eu.europa.ec.grow.espd.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +11,7 @@ public class EconomicOperatorImpl extends PartyImpl {
 	
 	private String anotherNationalId;//If no VAT-number is applicable, please indicate another national identification number, if required and applicable
 
-	private String contactPerson;//Contact person or persons: (for the moment one field)
+	//private String contactPerson;//Contact person or persons: (for the moment one field)
 
 	private Boolean isSmallSizedEnterprise;//Is the economic operator a Micro, a Small or a Medium-Sized Enterprise ?
 	private Boolean isShelteredWorkshop;//Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?
@@ -35,7 +37,13 @@ public class EconomicOperatorImpl extends PartyImpl {
 	private String eoGroupName;// Where applicable, name of the participating group:
 	
 	
-	private String representFullName;//Full name; accompanied by the date and place of birth, if required:
+	//private String representFullName;//replaced by following 4 fields
+
+	private String representFirstName;
+	private String representLastName;
+	private Date representDateOfBirth;
+	private String representPlaceOfBirth;
+	
 	private String representPosition;//Position/Acting in the capacity of:
 	private String representAddInfo;//If needed, please provide detailed information on the representation (its forms, extent, purpose ...):
 	

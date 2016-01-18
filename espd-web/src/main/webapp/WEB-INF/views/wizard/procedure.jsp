@@ -187,9 +187,28 @@
 		                             <tiles:putAttribute name="field" value="eoperator"/>
 		                             <tiles:putAttribute name="address" value="true"/>
 		                       </tiles:insertDefinition>
+
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4">${span18n['createeo_internet_addr_if_exists']}</label>
+		                            <div class="col-md-8">
+		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="${i18n['createeo_internet_addr_if_exists_placeholder']}" data-i18n="createeo_internet_addr_if_exists_placeholder"/>
+		                            </div>
+		                       </div>
 	                        </div>
 	                        <div class="col-md-6">
-	                            
+
+	                            <tiles:insertDefinition name="partyInfo">
+	                                 <tiles:putAttribute name="field" value="eoperator"/>
+	                                 <tiles:putAttribute name="contacts" value="true"/>
+	                            </tiles:insertDefinition>
+                           
+		                       <div class="form-group">
+		                            <label class="control-label col-md-4">${span18n['createeo_contact_person']}</label>
+		                            <div class="col-md-8">
+		                            	<form:input cssClass="form-control" path="eoperator.contactName" placeholder="${i18n['createeo_contact_person_placeholder']}" data-i18n="createeo_contact_person_placeholder"/>
+		                            </div>
+		                        </div>
+
 								<div class="form-group">
 									<label class="control-label col-md-4">${span18n['createeo_vat']}</label>
 									<div class="col-md-8">
@@ -204,24 +223,6 @@
 		                            </div>
 		                        </div>
 
-	                            <tiles:insertDefinition name="partyInfo">
-	                                 <tiles:putAttribute name="field" value="eoperator"/>
-	                                 <tiles:putAttribute name="contacts" value="true"/>
-	                            </tiles:insertDefinition>
-                           
-		                       <div class="form-group">
-		                            <label class="control-label col-md-4">${span18n['createeo_contact_person']}</label>
-		                            <div class="col-md-8">
-		                            	<form:input cssClass="form-control" path="eoperator.contactPerson" placeholder="${i18n['createeo_contact_person_placeholder']}" data-i18n="createeo_contact_person_placeholder"/>
-		                            </div>
-		                        </div>
-
-		                       <div class="form-group">
-		                            <label class="control-label col-md-4">${span18n['createeo_internet_addr_if_exists']}</label>
-		                            <div class="col-md-8">
-		                                <form:input cssClass="form-control" path="eoperator.website" placeholder="${i18n['createeo_internet_addr_if_exists_placeholder']}" data-i18n="createeo_internet_addr_if_exists_placeholder"/>
-		                            </div>
-		                       </div>
 	                       </div>
 
 
@@ -393,22 +394,36 @@
                        <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;">
                             ${span18n['createeo_person_empowered']}
                        </div>
-                       <div class="col-md-12">
+
+                       <div class="col-md-6">
                        		<div class="form-group">
-	                           <label class="control-label col-md-3">${span18n['createeo_full_name_and_birth']}</label>
-	                           <div class="col-md-9">
-	                                <form:input cssClass="form-control" path="eoperator.representFullName" placeholder="${i18n['createeo_full_name_and_birth_placeholder']}" data-i18n="createeo_full_name_and_birth_placeholder"/>
+	                           <label class="control-label col-md-4">${span18n['createeo_first_name']}</label>
+	                           <div class="col-md-8">
+	                                <form:input cssClass="form-control" path="eoperator.representFirstName" placeholder="${i18n['createeo_first_name_placeholder']}" data-i18n="createeo_first_name_placeholder"/>
+	                           </div>
+                           </div>
+                       		<div class="form-group">
+	                           <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
+	                           <div class="col-md-8"> 
+									<form:input path="eoperator.representDateOfBirth" cssClass="form-control datepicker" placeholder="${i18n['createeo_birth_date_placeholder']}" data-i18n="createeo_birth_date_placeholder"/>
 	                           </div>
                            </div>
                        </div>
-                       <div class="col-md-12">
+                       <div class="col-md-6">
                        		<div class="form-group">
-	                           <label class="control-label col-md-3" >${span18n['createeo_pos_act_in_capacity']}</label>
-	                           <div class="col-md-9">
-	                                 <form:input cssClass="form-control" path="eoperator.representPosition" placeholder="${i18n['createeo_pos_act_in_capacity_placeholder']}" data-i18n="createeo_pos_act_in_capacity_placeholder"/>
+	                           <label class="control-label col-md-4">${span18n['createeo_last_name']}</label>
+	                           <div class="col-md-8">
+	                                <form:input cssClass="form-control" path="eoperator.representLastName" placeholder="${i18n['createeo_last_name_placeholder']}" data-i18n="createeo_last_name_placeholder"/>
+	                           </div>
+                           </div>
+                       		<div class="form-group">
+	                           <label class="control-label col-md-4">${span18n['createeo_birth_place']}</label>
+	                           <div class="col-md-8">
+	                                <form:input cssClass="form-control" path="eoperator.representPlaceOfBirth" placeholder="${i18n['createeo_birth_place_placeholder']}" data-i18n="createeo_birth_place_placeholder"/>
 	                           </div>
                            </div>
                        </div>
+
                        <div class="col-md-6">
 	                        <tiles:insertDefinition name="partyInfo">
 	                            <tiles:putAttribute name="field" value="empowered"/>
@@ -420,11 +435,18 @@
 	                            <tiles:putAttribute name="field" value="empowered"/>
 	                            <tiles:putAttribute name="contacts" value="true"/>
 	                        </tiles:insertDefinition>
+	                        
+                       		<div class="form-group">
+	                           <label class="control-label col-md-4" >${span18n['createeo_pos_act_in_capacity']}</label>
+	                           <div class="col-md-8">
+	                                 <form:input cssClass="form-control" path="eoperator.representPosition" placeholder="${i18n['createeo_pos_act_in_capacity_placeholder']}" data-i18n="createeo_pos_act_in_capacity_placeholder"/>
+	                           </div>
+                           </div>
                        </div>
                        <div class="col-md-12">
                        		<div class="form-group">
-	                            <label class="control-label col-md-3">${span18n['createeo_detinfo_of_represent']}</label>
-	                            <div class="col-md-9">
+	                            <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
+	                            <div class="col-md-10">
 	                               <form:textarea path="eoperator.representAddInfo" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control" placeholder="${i18n['createeo_detinfo_of_represent_placeholder']}" data-i18n="createeo_detinfo_of_represent_placeholder"/>
 	                            </div>
                             </div>
