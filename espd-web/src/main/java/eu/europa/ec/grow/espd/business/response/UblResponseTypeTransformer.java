@@ -93,9 +93,9 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
             responseType.setContractingParty(contractingPartyType);
         }
 
-        if (espdDocument.getEoperator() != null) {
+        if (espdDocument.getEconomicOperator() != null) {
             EconomicOperatorPartyType economicOperatorPartyType = economicOperatorPartyTypeTransformer
-                    .apply(espdDocument.getEoperator());
+                    .apply(espdDocument.getEconomicOperator());
             responseType.setEconomicOperatorParty(economicOperatorPartyType);
         }
 

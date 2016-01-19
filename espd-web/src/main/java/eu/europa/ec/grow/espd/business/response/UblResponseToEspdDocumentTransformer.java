@@ -54,7 +54,7 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
             espdDocument.setAuthority(authority);
         }
         if (input.getEconomicOperatorParty() != null) {
-            espdDocument.setEoperator(economicOperatorImplTransformer.apply(input.getEconomicOperatorParty()));
+            espdDocument.setEconomicOperator(economicOperatorImplTransformer.apply(input.getEconomicOperatorParty()));
         }
     }
 

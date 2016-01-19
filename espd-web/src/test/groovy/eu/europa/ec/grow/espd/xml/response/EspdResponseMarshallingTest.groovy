@@ -1,10 +1,13 @@
 package eu.europa.ec.grow.espd.xml.response
 
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl
+import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
+import org.joda.time.LocalDate
 
 /**
  * Created by ratoico on 11/26/15.
@@ -134,7 +137,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 street: "  Vitruvio  ", postalCode: "  28006  ", city: "  Madrid  ", country: Country.SPAIN,
                 contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  +34 96 123 456  ",
                 website: "  www.hodor.com  ", isSmallSizedEnterprise: true)
-        def espd = new EspdDocument(eoperator: economicOperator)
+        def espd = new EspdDocument(economicOperator: economicOperator)
 
         when:
         def result = parseResponseXml(espd)
@@ -163,6 +166,41 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "other"
         result.EconomicOperatorParty.SMEIndicator.text() == "true"
+    }
+
+    def "should contain RepresentativeNaturalPerson element information"() {
+        given:
+        def birthDate = new Date()
+        def economicOperator = new EconomicOperatorImpl(representative: new EconomicOperatorRepresentative(
+                firstName: "Emilio", lastName: "García De Tres Torres", dateOfBirth: birthDate,
+                placeOfBirth: "València, Spain", street: "Vitruvio", postalCode: "28006", city: "Madrid",
+                country: Country.SPAIN, email: "emilio.garcia3torres@acme.com", phone: "+34 96 123 456",
+                position: "Empowered to represent the Consortium",
+                additionalInfo: "Can represent ACME, Corp. and the Consortia to which ACME, Corp"))
+        def espd = new EspdDocument(economicOperator: economicOperator)
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then: "person details"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.FirstName.text() == "Emilio"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.FamilyName.text() == "García De Tres Torres"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.BirthDate.text() == LocalDateAdapter.marshal(new LocalDate(birthDate))
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.BirthplaceName.text() == "València, Spain"
+
+        then: "check address information"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.ResidenceAddress.Country.IdentificationCode.text() == "ES"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.ResidenceAddress.CityName.text() == "Madrid"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.ResidenceAddress.StreetName.text() == "Vitruvio"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.ResidenceAddress.Postbox.text() == "28006"
+
+        then: "check contact information"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.Contact.ElectronicMail.text() == "emilio.garcia3torres@acme.com"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.AgentParty.Person.Contact.Telephone.text() == "+34 96 123 456"
+
+        then: "other"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.NaturalPersonRoleDescription.text() == "Empowered to represent the Consortium"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson.PowerOfAttorney.Description.text() == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
     }
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {

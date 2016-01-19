@@ -5,8 +5,6 @@ import eu.europa.ec.grow.espd.entities.CacParty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Date;
-
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class EconomicOperatorImpl extends PartyImpl {
@@ -35,18 +33,9 @@ public class EconomicOperatorImpl extends PartyImpl {
 	private String eoRoleInGroup;//Please indicate the role of the economic operator in the group (leader, responsible for specific tasks...)
 	private String otherEOInGroup;//Please identify the other economic operators participating in the procurement procedure together:
 	private String eoGroupName;// Where applicable, name of the participating group:
-	
-	
-	//private String representFullName;//replaced by following 4 fields
 
-	private String representFirstName;
-	private String representLastName;
-	private Date representDateOfBirth;
-	private String representPlaceOfBirth;
-	
-	private String representPosition;//Position/Acting in the capacity of:
-	private String representAddInfo;//If needed, please provide detailed information on the representation (its forms, extent, purpose ...):
-	
+    private EconomicOperatorRepresentative representative;
+
 	private Boolean isEORelyOnEntities;//Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?
 
     public void copyProperties(CacParty fromParty) {

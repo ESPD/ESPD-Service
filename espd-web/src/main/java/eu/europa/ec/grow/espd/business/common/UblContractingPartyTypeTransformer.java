@@ -23,6 +23,7 @@ public class UblContractingPartyTypeTransformer implements Function<CacParty, Co
         ContractingPartyType contractingPartyType = new ContractingPartyType();
 
         contractingPartyType.setParty(partyTypeTransformer.apply(party));
+
         return contractingPartyType;
     }
 

@@ -16,25 +16,31 @@
         </cac:Party>
     </cac:ContractingParty>
     <espd-cac:EconomicOperatorParty>
-        <!-- This economic operatoris the leader (Main Tenderer) of the SkyNet Consortium. See the ESPDResponse root element  espd-cbc:EconomicOperatorGroupName -->
-        <espd-cbc:EconomicOperatorRoleCode listAgencyID="BII" listID="TendererRole" listVersionID="1.0">MT</espd-cbc:EconomicOperatorRoleCode>
         <!-- Main Tenderer -->
         <!-- This economic operator is not an SME, as defined in http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition/index_en.htm -->
         <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
         <espd-cac:RepresentativeNaturalPerson>
-            <espd-cbc:NaturalPersonRoleDescription>Empowered to represent the Consortium in front of any European Public Administration and Contracting Authority, Body or Entity.</espd-cbc:NaturalPersonRoleDescription>
+            <espd-cbc:NaturalPersonRoleDescription>Empowered to represent the Consortium</espd-cbc:NaturalPersonRoleDescription>
             <cac:PowerOfAttorney>
-                <cbc:Description>Can represent ACME, Corp. and the Consortia to which ACME, Corp. belongs to represent and made any type of contractual decisions with any public European Administration or Institution.</cbc:Description>
+                <cbc:Description>Can represent ACME, Corp. and the Consortia to which ACME, Corp</cbc:Description>
                 <cac:AgentParty>
                     <cac:Person>
                         <cbc:FirstName>Emilio</cbc:FirstName>
                         <cbc:FamilyName>García De Tres Torres</cbc:FamilyName>
-                        <cbc:BirthDate>1960-07-15</cbc:BirthDate>
+                        <cbc:BirthDate>1960-19-01</cbc:BirthDate>
                         <cbc:BirthplaceName>València, Spain</cbc:BirthplaceName>
                         <cac:Contact>
                             <cbc:Telephone>+34 96 123 456</cbc:Telephone>
                             <cbc:ElectronicMail>emilio.garcia3torres@acme.com</cbc:ElectronicMail>
                         </cac:Contact>
+                        <cac:ResidenceAddress>
+                            <cbc:Postbox>28006</cbc:Postbox>
+                            <cbc:StreetName>Vitruvio</cbc:StreetName>
+                            <cbc:CityName>Madrid</cbc:CityName>
+                            <cac:Country>
+                                <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">ES</cbc:IdentificationCode>
+                            </cac:Country>
+                        </cac:ResidenceAddress>
                     </cac:Person>
                 </cac:AgentParty>
             </cac:PowerOfAttorney>

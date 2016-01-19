@@ -12,8 +12,7 @@ public class EspdDocument {
     private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
-    private PartyImpl empowered;
-    private EconomicOperatorImpl eoperator;
+    private EconomicOperatorImpl economicOperator;
 
     private String ojsNumber;
     

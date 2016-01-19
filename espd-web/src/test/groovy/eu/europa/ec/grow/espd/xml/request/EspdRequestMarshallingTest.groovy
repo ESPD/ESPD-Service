@@ -133,7 +133,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
     }
 
-    def "should transform ContractingParty element information"() {
+    def "should contain ContractingParty element information"() {
         given:
         def authority = new PartyImpl(name: "  Hodor authority  ", vatNumber: "  Hodor national reg number  ",
                 street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
