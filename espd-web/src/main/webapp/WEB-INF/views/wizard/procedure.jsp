@@ -212,7 +212,7 @@
 								<div class="form-group">
 									<label class="control-label col-md-4">${span18n['createeo_vat']}</label>
 									<div class="col-md-8">
-										<form:input cssClass="form-control" path="eoperator.vat" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
+										<form:input cssClass="form-control" path="eoperator.vatNumber" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
 									</div>
 								</div>
 								

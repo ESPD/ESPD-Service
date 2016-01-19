@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response
 
+import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -94,9 +95,9 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}"
     }
 
-    def "should transform ContractingParty element information"() {
+    def "should contain ContractingParty element information"() {
         given:
-        def authority = new PartyImpl(name: "  Hodor authority  ", nationalRegistrationNumber: "  Hodor national reg number  ",
+        def authority = new PartyImpl(name: "  Hodor authority  ", vatNumber: "  Hodor national reg number  ",
                 street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
                 contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
                 website: "  www.hodor.com  ")
@@ -119,12 +120,49 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"
         result.ContractingParty.Party.Contact.ElectronicMail.text() == "hodor@hodor.com"
         result.ContractingParty.Party.Contact.Telephone.text() == "555-HODOR"
+    }
+
+    def "should contain EconomicOperatorParty element information"() {
+        given:
+        def economicOperator = new EconomicOperatorImpl(name: "  ACME Corp.  ", vatNumber: "  B207781243  ", anotherNationalId: "B66666",
+                street: "  Vitruvio  ", postalCode: "  28006  ", city: "  Madrid  ", country: Country.SPAIN,
+                contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  +34 96 123 456  ",
+                website: "  www.hodor.com  ", isSmallSizedEnterprise: true)
+        def espd = new EspdDocument(eoperator: economicOperator)
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then: "all values should be trimmed"
+        result.EconomicOperatorParty.Party.PartyName.Name.text() == "ACME Corp."
+        result.EconomicOperatorParty.Party.WebsiteURI.text() == "www.hodor.com"
+
+        then: "party identification"
+        result.EconomicOperatorParty.Party.PartyIdentification.ID[0].text() == "B207781243"
+        result.EconomicOperatorParty.Party.PartyIdentification.ID[1].text() == "B66666"
+
+        then: "check address information"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.text() == "ES"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "ISO"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-1"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
+        result.EconomicOperatorParty.Party.PostalAddress.CityName.text() == "Madrid"
+        result.EconomicOperatorParty.Party.PostalAddress.StreetName.text() == "Vitruvio"
+        result.EconomicOperatorParty.Party.PostalAddress.Postbox.text() == "28006"
+
+        then: "check contact information"
+        result.EconomicOperatorParty.Party.Contact.Name.text() == "Hodor contact person"
+        result.EconomicOperatorParty.Party.Contact.ElectronicMail.text() == "hodor@hodor.com"
+        result.EconomicOperatorParty.Party.Contact.Telephone.text() == "+34 96 123 456"
+
+        then: "other"
+        result.EconomicOperatorParty.SMEIndicator.text() == "true"
     }
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
@@ -136,6 +174,46 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
         then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
         result.ProcurementProjectLot.ID.text() == "0"
+    }
+
+    def "should contain AdditionalDocumentReference element information"() {
+        given:
+        def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
+                procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services."
+        )
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.AdditionalDocumentReference[0].ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
+
+        then:
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TeD_CN"
+
+        then:
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+    }
+
+    def "should contain ContractFolderID element information"() {
+        given:
+        def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.ContractFolderID.text() == "HODOR refd by CA"
+        result.ContractFolderID.@schemeAgencyID.text() == "TeD"
     }
 
 }

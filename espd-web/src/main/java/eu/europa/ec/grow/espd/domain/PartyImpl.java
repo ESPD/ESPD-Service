@@ -12,9 +12,9 @@ public class PartyImpl implements CacParty {
 
     private String name;
     
-    private String vat;
+    private String vatNumber;
 
-    private String nationalRegistrationNumber;
+    private String anotherNationalId;//If no VAT-number is applicable, please indicate another national identification number, if required and applicable
 
     private String website;
 

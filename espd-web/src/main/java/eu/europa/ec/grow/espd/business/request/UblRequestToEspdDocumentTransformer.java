@@ -64,6 +64,7 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
             espdDocument.setFileRefByCA(input.getContractFolderID().getValue());
         }
         if (isNotEmpty(input.getAdditionalDocumentReference())) {
+            // TODO maybe filter by typecode
             DocumentReferenceType procurementInfo = input.getAdditionalDocumentReference().get(0);
             if (procurementInfo.getID() != null) {
                 espdDocument.setOjsNumber(procurementInfo.getID().getValue());

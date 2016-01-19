@@ -1,16 +1,16 @@
 package eu.europa.ec.grow.espd.domain;
 
-import java.util.Date;
-
+import eu.europa.ec.grow.espd.constants.enums.Country;
+import eu.europa.ec.grow.espd.entities.CacParty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class EconomicOperatorImpl extends PartyImpl {
 	
-	private String anotherNationalId;//If no VAT-number is applicable, please indicate another national identification number, if required and applicable
-
 	//private String contactPerson;//Contact person or persons: (for the moment one field)
 
 	private Boolean isSmallSizedEnterprise;//Is the economic operator a Micro, a Small or a Medium-Sized Enterprise ?
@@ -48,5 +48,19 @@ public class EconomicOperatorImpl extends PartyImpl {
 	private String representAddInfo;//If needed, please provide detailed information on the representation (its forms, extent, purpose ...):
 	
 	private Boolean isEORelyOnEntities;//Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?
+
+    public void copyProperties(CacParty fromParty) {
+        setName(fromParty.getName());
+        setWebsite(fromParty.getWebsite());
+        setVatNumber(fromParty.getVatNumber());
+        setAnotherNationalId(fromParty.getAnotherNationalId());
+        setStreet(fromParty.getStreet());
+        setPostalCode(fromParty.getPostalCode());
+        setCity(fromParty.getCity());
+        setCountry((Country) fromParty.getCountry());
+        setContactName(fromParty.getContactName());
+        setContactPhone(fromParty.getContactPhone());
+        setContactEmail(fromParty.getContactEmail());
+    }
 
 }

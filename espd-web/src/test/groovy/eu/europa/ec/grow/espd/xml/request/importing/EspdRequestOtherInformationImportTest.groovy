@@ -11,7 +11,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
 
     def "should parse full authority information"() {
         given:
-        def espdRequestXml = importXmlRequestFile("economic_operator_authority_full.xml")
+        def espdRequestXml = importXmlRequestFile("authority_party_full_import.xml")
 
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
@@ -19,7 +19,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         then:
         espd.authority.name == "hodor"
         espd.authority.website == "www.hodor.com"
-        espd.authority.nationalRegistrationNumber == "43354d43323"
+        espd.authority.vatNumber == "43354d43323"
         espd.authority.street == "elm street"
         espd.authority.postalCode == "1500"
         espd.authority.city == "drubetis"
@@ -39,7 +39,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         then:
         espd.authority.name == "hodor"
         espd.authority.website == null
-        espd.authority.nationalRegistrationNumber == null
+        espd.authority.vatNumber == null
         espd.authority.street == null
         espd.authority.postalCode == null
         espd.authority.city == null

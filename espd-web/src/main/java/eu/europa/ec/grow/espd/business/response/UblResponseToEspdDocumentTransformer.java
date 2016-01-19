@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.business.response;
 
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator;
+import eu.europa.ec.grow.espd.business.common.EconomicOperatorImplTransformer;
 import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
@@ -18,12 +19,15 @@ import org.springframework.stereotype.Component;
 public class UblResponseToEspdDocumentTransformer implements Function<ESPDResponseType, EspdDocument> {
 
     private final PartyImplTransformer partyImplTransformer;
+    private final EconomicOperatorImplTransformer economicOperatorImplTransformer;
     private final CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator;
 
     @Autowired
     public UblResponseToEspdDocumentTransformer(PartyImplTransformer partyImplTransformer,
+            EconomicOperatorImplTransformer economicOperatorImplTransformer,
             CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator) {
         this.partyImplTransformer = partyImplTransformer;
+        this.economicOperatorImplTransformer = economicOperatorImplTransformer;
         this.criteriaToEspdDocumentPopulator = criteriaToEspdDocumentPopulator;
     }
 
@@ -45,12 +49,13 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
     }
 
     private void addPartyInformation(ESPDResponseType input, EspdDocument espdDocument) {
-        if (input.getContractingParty() == null || input.getContractingParty().getParty() == null) {
-            return;
+        if (input.getContractingParty() != null && input.getContractingParty().getParty() != null) {
+            PartyImpl authority = partyImplTransformer.apply(input.getContractingParty().getParty());
+            espdDocument.setAuthority(authority);
         }
-
-        PartyImpl authority = partyImplTransformer.apply(input.getContractingParty().getParty());
-        espdDocument.setAuthority(authority);
+        if (input.getEconomicOperatorParty() != null) {
+            espdDocument.setEoperator(economicOperatorImplTransformer.apply(input.getEconomicOperatorParty()));
+        }
     }
 
     private void addCriteriaInformation(ESPDResponseType input, EspdDocument espdDocument) {

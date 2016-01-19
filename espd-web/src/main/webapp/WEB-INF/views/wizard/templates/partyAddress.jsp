@@ -6,7 +6,7 @@
 
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="address"/>
-<tiles:importAttribute name="vat"/>
+<tiles:importAttribute name="vatNumber"/>
 <tiles:importAttribute name="contacts"/>
 
 <c:if test="${address}">
@@ -39,11 +39,11 @@
 		</div>
 	</div>
 </c:if>
-<c:if test="${vat}">
+<c:if test="${vatNumber}">
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createeo_vat"><s:message code="createeo_vat"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.vat" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
+			<form:input cssClass="form-control" path="${field}.vatNumber" placeholder="${i18n['createeo_vat_placeholder']}" data-i18n="createeo_vat_placeholder"/>
 		</div>
 	</div>
 </c:if>

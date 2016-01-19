@@ -3,11 +3,12 @@ package eu.europa.ec.grow.espd.business.response;
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.business.common.CommonUblFactory;
 import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer;
+import eu.europa.ec.grow.espd.business.common.UblEconomicOperatorPartyTypeTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ContractFolderIDType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,18 +24,21 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
 
     private final CommonUblFactory commonUblFactory;
     private final UblContractingPartyTypeTransformer contractingPartyTransformer;
+    private final UblEconomicOperatorPartyTypeTransformer economicOperatorPartyTypeTransformer;
     private final UblResponseCriteriaTransformer criteriaTransformer;
 
     @Autowired
     UblResponseTypeTransformer(CommonUblFactory commonUblFactory,
-            UblContractingPartyTypeTransformer contractingPartyTransformer) {
+            UblContractingPartyTypeTransformer contractingPartyTransformer,
+            UblEconomicOperatorPartyTypeTransformer economicOperatorPartyTypeTransformer) {
         this.commonUblFactory = commonUblFactory;
         this.contractingPartyTransformer = contractingPartyTransformer;
+        this.economicOperatorPartyTypeTransformer = economicOperatorPartyTypeTransformer;
         this.criteriaTransformer = new UblResponseCriteriaTransformer();
     }
 
     @Override
-    public ESPDResponseType apply(EspdDocument input) {
+    public ESPDResponseType apply(EspdDocument espdDocument) {
         ESPDResponseType responseType = new ESPDResponseType();
 
         addUBLVersionInformation(responseType);
@@ -43,11 +47,12 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
         addCopyIndicatorInformation(responseType);
         addVersionIdInformation(responseType);
         addIssueDateAndTimeInformation(responseType);
-        addContractFolderIdInformation(responseType);
-        addContractingPartyInformation(input, responseType);
+        addContractFolderIdInformation(espdDocument, responseType);
+        addPartyInformation(espdDocument, responseType);
         addProcurementProjectLots(responseType);
-        addCriteria(input, responseType);
-        
+        addAdditionalDocumentReference(espdDocument, responseType);
+        addCriteria(espdDocument, responseType);
+
         return responseType;
     }
 
@@ -78,17 +83,22 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
         responseType.setIssueDate(commonUblFactory.buildIssueDateType(now));
     }
 
-    private void addContractFolderIdInformation(ESPDResponseType responseType) {
-        ContractFolderIDType contractFolderIDType = new ContractFolderIDType();
-        // TODO update this
-        contractFolderIDType.setValue("SMART 2015/0065");
-        contractFolderIDType.setSchemeAgencyID("TeD");
-        responseType.setContractFolderID(contractFolderIDType);
+    private void addContractFolderIdInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+        responseType.setContractFolderID(commonUblFactory.buildContractFolderType(espdDocument.getFileRefByCA()));
     }
 
-    private void addContractingPartyInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
-        ContractingPartyType contractingPartyType = contractingPartyTransformer.apply(espdDocument.getAuthority());
-        responseType.setContractingParty(contractingPartyType);
+    private void addPartyInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+        if (espdDocument.getAuthority() != null) {
+            ContractingPartyType contractingPartyType = contractingPartyTransformer.apply(espdDocument.getAuthority());
+            responseType.setContractingParty(contractingPartyType);
+        }
+
+        if (espdDocument.getEoperator() != null) {
+            EconomicOperatorPartyType economicOperatorPartyType = economicOperatorPartyTypeTransformer
+                    .apply(espdDocument.getEoperator());
+            responseType.setEconomicOperatorParty(economicOperatorPartyType);
+        }
+
     }
 
     private void addProcurementProjectLots(ESPDResponseType responseType) {
@@ -99,9 +109,14 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
         responseType.getProcurementProjectLot().add(procurementProjectLotType);
     }
 
+    private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDResponseType responseType) {
+        // TODO add espd request reference
+        responseType.getAdditionalDocumentReference()
+                .add(commonUblFactory.buildProcurementProcedureType(espdDocument));
+    }
+
     private void addCriteria(EspdDocument espdDocument, ESPDResponseType responseType) {
         responseType.getCriterion().addAll(criteriaTransformer.apply(espdDocument));
     }
-
 
 }

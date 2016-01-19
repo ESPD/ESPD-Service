@@ -11,9 +11,9 @@ public interface CacParty {
 
     String getName();
     
-    String getVat();
+    String getVatNumber();
 
-    String getNationalRegistrationNumber();
+    String getAnotherNationalId();
 
     String getWebsite();
 

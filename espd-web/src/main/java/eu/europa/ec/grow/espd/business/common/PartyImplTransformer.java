@@ -28,7 +28,7 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
 
         addName(input, authority);
         addWebsite(input, authority);
-        addReferenceNumber(input, authority);
+        addVatNumber(input, authority);
         addAddressInformation(input, authority);
         addContactInformation(input, authority);
 
@@ -54,7 +54,7 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
         authority.setWebsite(trimToEmpty(input.getWebsiteURI().getValue()));
     }
 
-    private void addReferenceNumber(PartyType input, PartyImpl authority) {
+    private void addVatNumber(PartyType input, PartyImpl authority) {
         if (isEmpty(input.getPartyIdentification())) {
             return;
         }
@@ -63,7 +63,7 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
         if (partyIdentificationType.getID() == null) {
             return;
         }
-        authority.setNationalRegistrationNumber(trimToEmpty(partyIdentificationType.getID().getValue()));
+        authority.setVatNumber(trimToEmpty(partyIdentificationType.getID().getValue()));
     }
 
     private void addAddressInformation(PartyType input, PartyImpl authority) {
@@ -72,7 +72,7 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
         }
 
         addStreetName(input.getPostalAddress(), authority);
-        addPostalCode(input.getPostalAddress(), authority);
+        addPostbox(input.getPostalAddress(), authority);
         addCity(input.getPostalAddress(), authority);
         addCountry(input.getPostalAddress(), authority);
     }
@@ -85,12 +85,12 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
         authority.setStreet(trimToEmpty(addressType.getStreetName().getValue()));
     }
 
-    private void addPostalCode(AddressType addressType, PartyImpl authority) {
-        if (addressType.getPostalZone() == null) {
+    private void addPostbox(AddressType addressType, PartyImpl authority) {
+        if (addressType.getPostbox() == null) {
             return;
         }
 
-        authority.setPostalCode(trimToEmpty(addressType.getPostalZone().getValue()));
+        authority.setPostalCode(trimToEmpty(addressType.getPostbox().getValue()));
     }
 
     private void addCity(AddressType addressType, PartyImpl authority) {

@@ -135,7 +135,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should transform ContractingParty element information"() {
         given:
-        def authority = new PartyImpl(name: "  Hodor authority  ", nationalRegistrationNumber: "  Hodor national reg number  ",
+        def authority = new PartyImpl(name: "  Hodor authority  ", vatNumber: "  Hodor national reg number  ",
                 street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
                 contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
                 website: "  www.hodor.com  ")
@@ -158,7 +158,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"

@@ -18,9 +18,9 @@
                 <cbc:Name>hodor</cbc:Name>
             </cac:PartyName>
             <cac:PostalAddress>
+                <cbc:Postbox>1500</cbc:Postbox>
                 <cbc:StreetName>elm street</cbc:StreetName>
                 <cbc:CityName>drubetis</cbc:CityName>
-                <cbc:PostalZone>1500</cbc:PostalZone>
                 <cac:Country>
                     <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">RO</cbc:IdentificationCode>
                 </cac:Country>

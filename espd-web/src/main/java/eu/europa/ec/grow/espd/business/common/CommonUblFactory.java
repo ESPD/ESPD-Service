@@ -1,8 +1,12 @@
 package eu.europa.ec.grow.espd.business.common;
 
 import eu.europa.ec.grow.espd.constants.enums.Agency;
+import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.AttachmentType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -122,5 +126,57 @@ public class CommonUblFactory {
         IssueTimeType issueTimeType = new IssueTimeType();
         issueTimeType.setValue(new LocalTime(when));
         return issueTimeType;
+    }
+
+    public ContractFolderIDType buildContractFolderType(String fileReferenceNumber) {
+        ContractFolderIDType contractFolderIDType = new ContractFolderIDType();
+        contractFolderIDType.setValue(fileReferenceNumber);
+        contractFolderIDType.setSchemeAgencyID("TeD");
+        return contractFolderIDType;
+    }
+
+    /**
+     * Reference to the Contract Notice in TeD.
+     * <p></p>
+     * For procurement projects above the threshold it is compulsory to specify the following data,
+     * by means of an AdditionalDocumentReference element, about the Contract Notice published in TeD:
+     * the OJEU S number[], date[], page[], Notice number in OJS: YYYY/S [][][]-[][][][][][],
+     * Title and Description of the Procurement Project
+     *
+     * @param espdDocument
+     */
+    public DocumentReferenceType buildProcurementProcedureType(EspdDocument espdDocument) {
+        DocumentReferenceType documentReferenceType = new DocumentReferenceType();
+        IDType idType = new IDType();
+        idType.setSchemeID("ISO/IEC 9834-8:2008 - 4UUID");
+        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
+        idType.setSchemeAgencyName(Agency.EU_COM_GROW.getLongName());
+        idType.setSchemeVersionID("1.1");
+        idType.setValue(espdDocument.getOjsNumber());
+        documentReferenceType.setID(idType);
+
+        // A reference to a Contract Notice published in the TeD platform (European Commission, Office of Publications).
+        DocumentTypeCodeType documentTypeCode = new DocumentTypeCodeType();
+        documentTypeCode.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
+        documentTypeCode.setListID("ReferencesTypeCodes");
+        documentTypeCode.setListVersionID("1.0");
+        documentTypeCode.setValue("TeD_CN");
+        documentReferenceType.setDocumentTypeCode(documentTypeCode);
+
+        AttachmentType attachmentType = new AttachmentType();
+        ExternalReferenceType externalReferenceType = new ExternalReferenceType();
+
+        FileNameType fileNameType = new FileNameType();
+        fileNameType.setValue(espdDocument.getProcedureTitle());
+        externalReferenceType.setFileName(fileNameType);
+
+        DescriptionType descriptionType = new DescriptionType();
+        descriptionType.setValue(espdDocument.getProcedureShortDesc());
+        externalReferenceType.getDescription().add(descriptionType);
+
+        attachmentType.setExternalReference(externalReferenceType);
+        documentReferenceType.setAttachment(attachmentType);
+
+        return documentReferenceType;
     }
 }
