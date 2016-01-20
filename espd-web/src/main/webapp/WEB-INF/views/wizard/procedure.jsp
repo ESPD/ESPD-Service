@@ -243,7 +243,7 @@
 	                            	${span18n['createeo_if_proc_reserved']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="economicOperator.isShelteredWorkshop" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="procurementReserved.exists" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                             </div>
                        </div>
@@ -253,7 +253,7 @@
 	                            	${span18n['createeo_percentage_disworkers']}
 	                            </label>
 	                            <div class="col-md-6" >
-	                                <form:input cssClass="form-control" path="economicOperator.percentageDisabledWorkers" placeholder="${i18n['createeo_percentage_disworkers_placeholder']}" data-i18n="createeo_percentage_disworkers_placeholder"/>
+	                                <form:input cssClass="form-control" path="procurementReserved.doubleValue1" placeholder="${i18n['createeo_percentage_disworkers_placeholder']}" data-i18n="createeo_percentage_disworkers_placeholder"/>
 	                            </div>
 	                       </div>
 	                       <div class="form-group">
@@ -261,7 +261,7 @@
 	                            	${span18n['createeo_disworkers_details']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:input cssClass="form-control" path="economicOperator.detailsDisabledWorkers" placeholder="${i18n['createeo_disworkers_details_placeholder']}" data-i18n="createeo_disworkers_details_placeholder"/>
+	                                <form:input cssClass="form-control" path="procurementReserved.description1" placeholder="${i18n['createeo_disworkers_details_placeholder']}" data-i18n="createeo_disworkers_details_placeholder"/>
 	                            </div>
 	                       </div>
 						</div>
@@ -272,7 +272,7 @@
 	                            	${span18n['createeo_eo_approved_cert']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="economicOperator.isEORegisteredOfficially" data-toggle="collapse" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoRegistered.exists" data-toggle="collapse" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
 	                            </div>
 	                        </div>
                        </div>
@@ -284,7 +284,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6">${span18n['createeo_provide_regnumber']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.certNumber" placeholder="${i18n['createeo_provide_regnumber_placeholder']}" data-i18n="createeo_provide_regnumber_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoRegistered.description1" placeholder="${i18n['createeo_provide_regnumber_placeholder']}" data-i18n="createeo_provide_regnumber_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -292,7 +292,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6">${span18n['createeo_cert_e_avaliable']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.certificateUrl" placeholder="${i18n['createeo_cert_e_avaliable_placeholder']}" data-i18n="createeo_cert_e_avaliable_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoRegistered.description2" placeholder="${i18n['createeo_cert_e_avaliable_placeholder']}" data-i18n="createeo_cert_e_avaliable_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -300,7 +300,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6">${span18n['createeo_ref_for_cert']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.certRefBasis" placeholder="${i18n['createeo_ref_for_cert_placeholder']}" data-i18n="createeo_ref_for_cert_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoRegistered.description3" placeholder="${i18n['createeo_ref_for_cert_placeholder']}" data-i18n="createeo_ref_for_cert_placeholder"/>
 		                            </div>
 		                        </div>
 	                       </div>
@@ -308,7 +308,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6">${span18n['createeo_all_selection_covered']}</label>
 		                            <div class="col-md-6">
-		                                <form:checkbox path="economicOperator.certCoversAllCrit" cssClass="radioslide checktoggle form-control" />
+		                                <form:checkbox path="eoRegistered.booleanValue1" cssClass="radioslide checktoggle form-control" />
 		                            </div>
 	                            </div>
 	                       </div>
@@ -321,7 +321,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6" > ${span18n['createeo_eo_has_cert_soc']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.socialSecPaymentDoc" placeholder="${i18n['createeo_eo_has_cert_soc_placeholder']}" data-i18n="createeo_eo_has_cert_soc_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoRegistered.description4" placeholder="${i18n['createeo_eo_has_cert_soc_placeholder']}" data-i18n="createeo_eo_has_cert_soc_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -329,7 +329,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6"> ${span18n['createeo_doc_e_avaliable']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.socialSecPaymentDocUrl" placeholder="${i18n['createeo_doc_e_avaliable_placeholder']}" data-i18n="createeo_doc_e_avaliable_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoRegistered.description5" placeholder="${i18n['createeo_doc_e_avaliable_placeholder']}" data-i18n="createeo_doc_e_avaliable_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -339,7 +339,7 @@
                        		<div class="form-group">
 	                            <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="economicOperator.isEOInGroup" data-toggle="collapse" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoParticipatingProcurementProcedure.exists" data-toggle="collapse" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                            	</div>
                        </div>
@@ -351,7 +351,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6"> ${span18n['createeo_eo_group_role']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.eoRoleInGroup" placeholder="${i18n['createeo_eo_group_role_placeholder']}" data-i18n="createeo_eo_group_role_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoParticipatingProcurementProcedure.description1" placeholder="${i18n['createeo_eo_group_role_placeholder']}" data-i18n="createeo_eo_group_role_placeholder"/>
 		                            </div>
 	                           	</div>
 	                       </div>
@@ -359,7 +359,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6"> ${span18n['createeo_other_eo_part']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.otherEOInGroup" placeholder="${i18n['createeo_other_eo_part_placeholder']}" data-i18n="createeo_other_eo_part_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoParticipatingProcurementProcedure.description2" placeholder="${i18n['createeo_other_eo_part_placeholder']}" data-i18n="createeo_other_eo_part_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -367,7 +367,7 @@
 	                       		<div class="form-group">
 		                            <label class="control-label col-md-6" > ${span18n['createeo_name_part_group']}</label>
 		                            <div class="col-md-6">
-		                                <form:input cssClass="form-control" path="economicOperator.eoGroupName" placeholder="${i18n['createeo_name_part_group_placeholder']}" data-i18n="createeo_name_part_group_placeholder"/>
+		                                <form:input cssClass="form-control" path="eoParticipatingProcurementProcedure.description3" placeholder="${i18n['createeo_name_part_group_placeholder']}" data-i18n="createeo_name_part_group_placeholder"/>
 		                            </div>
 	                            </div>
 	                       </div>
@@ -472,7 +472,7 @@
                             	${span18n['createeo_eo_rely_other_entities']}
                             </label>
                             <div class="col-md-6">
-                                <form:checkbox path="economicOperator.isEORelyOnEntities" cssClass="radioslide checktoggle form-control" />
+                                <form:checkbox path="eoReliesCapacities.exists" cssClass="radioslide checktoggle form-control" />
                             </div>
                        </div>
                        <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">

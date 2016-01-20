@@ -8,6 +8,7 @@
 <tiles:importAttribute name="title_code"/>
 <tiles:importAttribute name="tooltip_code"/>
 <tiles:importAttribute name="description_code"/>
+<tiles:importAttribute name="descriptionField"/>
 
 <tiles:importAttribute name="selfCleaning"/>
 <tiles:importAttribute name="breachOfObligations"/>
@@ -20,27 +21,6 @@
 						<strong data-i18n="${title_code}">  
 							<s:message code='${title_code}'/>
 						</strong>
-						<%-- TOOLTIP (delete this)--%>
-						<c:if test="${field == 'paymentTaxes'}">
-							<img id="taxTooltip" title=
-								"
-								<div style='width:550px; text-align:left'>
-									Evidences for your country to proof this criteria are<br>
-									a) Online Ausdruck des Steuerkontoauszugs<br>
-									b) Online Unbedenklichkeitsbescheinigung des Finanzamts<br>
-									c) Buchungsmitteilung des Finanzamtes<br>
-									d) Rückstandsbescheinigung (Verzicht auf Absendung einer Eilnachricht) durch das Finanzamt<br>
-									e) Unbedenklichkeitsbescheinigung durch das Finanzamt<br>
-								</div>
-								"
-								src="${pageContext.request.contextPath}/static/img/certis.png" alt="ecertis" style="width:60px;height:15px;margin-top:-4px;">
-							<script>
-								$(function() {
-									$('#taxTooltip').tooltip({placement:"top", html: true, trigger: "hover"});
-								});
-							</script>
-						</c:if>
-						<%-- TOOLTIP (delete this)--%>
 						<c:if test="${tooltip_code != ''}">
 							<s:message var="tooltip_text" code='${tooltip_code}'/>
 							<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${tooltip_text}"></span>
@@ -61,7 +41,7 @@
 				<div class="form-group">
 						 
 					<label class="control-label small" style="padding-top: 0px;" for="${field}-field6">
-						Your answer?
+						<s:message code="crit_your_answer"></s:message>
 					</label>
 						
 					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" cssClass="${yesByDefault?'radioslide-yesByDefault':''} radioslide checktoggle form-control" />
@@ -71,6 +51,7 @@
 			<div class="col-md-12" id="${field}-form" style="display:none"> 
 				<tiles:insertAttribute name="form">
 					<tiles:putAttribute name="field" value="${field}"/>
+					<tiles:putAttribute name="descriptionField" value="${descriptionField}"/>
 				</tiles:insertAttribute>
 				<c:if test="${breachOfObligations}">
 					<tiles:insertDefinition name="breachOfObligations">

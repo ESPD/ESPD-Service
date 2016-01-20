@@ -15,7 +15,6 @@ public class EspdDocument {
     private EconomicOperatorImpl economicOperator;
 
     private String ojsNumber;
-    
     private String procedureTitle;
     private String procedureShortDesc;
     private String lotConcerned;
@@ -99,8 +98,6 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
     
-    private SelectionCriterion reductionOfNumbers;
-
     //trick to use MultipartFile as @RequestParam
     public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {
     }

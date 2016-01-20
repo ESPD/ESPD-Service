@@ -5,9 +5,11 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
+<tiles:importAttribute name="descriptionField"/>
 
 <tiles:insertTemplate template="/WEB-INF/views/wizard/templates/simpleForm.jsp" flush="true">
 	<tiles:putAttribute name="field" value="${field}" />
+    <tiles:putAttribute name="descriptionField" value="${descriptionField}"/>
 </tiles:insertTemplate>
 
 <div class="form-group">

@@ -46,7 +46,8 @@
                     </span>
 					
 					<tiles:insertDefinition name="simpleFormCriterion">
-						<tiles:putAttribute name="field" value="reductionOfNumbers"/>
+						<tiles:putAttribute name="field" value="meetsObjective"/>
+                        <tiles:putAttribute name="descriptionField" value="description1"/>
 						<tiles:putAttribute name="title_code" value="createcafinish_title_eo_declares_that"/>
 						<tiles:putAttribute name="description_code" value="createcafinish_text_eo_declares_that"/>
 						<tiles:putAttribute name="availableElectronically" value="true"/>
@@ -58,10 +59,10 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcafinish_concl_statements" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
+			<div data-i18n="createcafinish_concl_statements" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-signature-section">
 				 <s:message code='createcafinish_concl_statements'/>
 			</div>
-            <div id="finish-statements-section" class="collapse in">
+            <div id="finish-statements-signature-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
                     <span data-i18n="createcafinish_concl_statements_text" class="aligned" style="">
                         <s:message code='createcafinish_concl_statements_text'/>

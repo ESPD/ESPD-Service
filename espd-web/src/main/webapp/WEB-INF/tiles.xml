@@ -68,6 +68,7 @@
         <put-attribute name="description_code" value=""/>
         <put-attribute name="ischecked" value="true"/>
         <put-attribute name="isdisabled" value="true"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
     
     <definition name="formCriterion" template="/WEB-INF/views/wizard/templates/formCriterion.jsp">
@@ -79,28 +80,34 @@
     	<put-attribute name="selfCleaning" value="false"/>
     	<put-attribute name="breachOfObligations" value="false"/>
     	<put-attribute name="availableElectronically" value="false"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
     
     <definition name="exclusionFormCriterion" extends="formCriterion">
     	<put-attribute name="selfCleaning" value="true"/>
     	<put-attribute name="availableElectronically" value="true"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
 
     <definition name="simpleFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleForm.jsp"/>
+    	<put-attribute name="descriptionField" value="description"/>
     </definition>
 
     <definition name="reasonsNeverlessPerformForm" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/reasonsNeverlessPerform.jsp"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
 
     <definition name="criminalFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/criminalForm.jsp"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
 
     <definition name="taxFormCriterion" extends="exclusionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/taxForm.jsp"/>
     	<put-attribute name="breachOfObligations" value="true"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
     
     <definition name="suitabilityCriterionEO" template="/WEB-INF/views/wizard/templates/selection/suitabilityCriterionEO.jsp">
@@ -170,10 +177,12 @@
     <!-- test for selection-->
     <definition name="selectionFormCriterion" extends="formCriterion">
     	<put-attribute name="availableElectronically" value="true"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
     
     <definition name="simpleSelectionFormCriterion" extends="selectionFormCriterion">
     	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/simpleSelectionFormCriterion.jsp"/>
+        <put-attribute name="descriptionField" value="description"/>
     </definition>
     <!-- ~test for selection -->
 
