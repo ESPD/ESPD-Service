@@ -27,6 +27,9 @@ class EspdResponseEconomicOperatorPartyImportTest extends AbstractXmlFileImport 
         espd.economicOperator.contactPhone == "+666"
         espd.economicOperator.contactEmail == "hodor@hodor.com"
         espd.economicOperator.isSmallSizedEnterprise == false
+
+        then:
+        espd.lotConcerned == "hodor lot"
     }
 
     def "should import economic operator party minimal information"() {

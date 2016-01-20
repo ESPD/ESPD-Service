@@ -10,6 +10,7 @@ import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,7 +50,7 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
         addIssueDateAndTimeInformation(responseType);
         addContractFolderIdInformation(espdDocument, responseType);
         addPartyInformation(espdDocument, responseType);
-        addProcurementProjectLots(responseType);
+        addProcurementProjectLots(espdDocument, responseType);
         addAdditionalDocumentReference(espdDocument, responseType);
         addCriteria(espdDocument, responseType);
 
@@ -101,10 +102,14 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
 
     }
 
-    private void addProcurementProjectLots(ESPDResponseType responseType) {
+    private void addProcurementProjectLots(EspdDocument espdDocument, ESPDResponseType responseType) {
         ProcurementProjectLotType procurementProjectLotType = new ProcurementProjectLotType();
         IDType idType = new IDType();
-        idType.setValue("0");
+        if (StringUtils.isNotBlank(espdDocument.getLotConcerned())) {
+            idType.setValue(espdDocument.getLotConcerned());
+        } else {
+            idType.setValue("0");
+        }
         procurementProjectLotType.setID(idType);
         responseType.getProcurementProjectLot().add(procurementProjectLotType);
     }

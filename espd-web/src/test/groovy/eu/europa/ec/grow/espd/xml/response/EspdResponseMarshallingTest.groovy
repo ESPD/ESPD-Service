@@ -1,12 +1,12 @@
 package eu.europa.ec.grow.espd.xml.response
 
+import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative
-import eu.europa.ec.grow.espd.xml.LocalDateAdapter
-import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
-import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter
+import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import org.joda.time.LocalDate
 
 /**
@@ -214,12 +214,25 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "0"
     }
 
+    def "should contain ProcurementProjectLot element information with lots information"() {
+        given:
+        def espd = new EspdDocument(lotConcerned: "hodor lot")
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.ProcurementProjectLot.size() == 1
+
+        then: "The identifier for this single ProcurementProjectLot comes from the UI"
+        result.ProcurementProjectLot.ID.text() == "hodor lot"
+    }
+
     def "should contain AdditionalDocumentReference element information"() {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
-                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services."
-        )
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.")
 
         when:
         def result = parseResponseXml(espd)

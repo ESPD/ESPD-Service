@@ -70,7 +70,7 @@
         </cac:Party>
     </espd-cac:EconomicOperatorParty>
     <cac:ProcurementProjectLot>
-        <cbc:ID>0</cbc:ID>
+        <cbc:ID>hodor lot</cbc:ID>
     </cac:ProcurementProjectLot>
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>

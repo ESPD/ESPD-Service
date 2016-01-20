@@ -7,8 +7,11 @@ import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
 /**
  * Create an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDResponseType}.
@@ -44,6 +47,7 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
 
         addPartyInformation(input, espdDocument);
         addCriteriaInformation(input, espdDocument);
+        addOtherInformation(input, espdDocument);
 
         return espdDocument;
     }
@@ -60,5 +64,20 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
 
     private void addCriteriaInformation(ESPDResponseType input, EspdDocument espdDocument) {
         criteriaToEspdDocumentPopulator.addCriteriaToEspdDocument(espdDocument, input.getCriterion());
+    }
+
+    private void addOtherInformation(ESPDResponseType input, EspdDocument espdDocument) {
+        addProjectLotInformation(input, espdDocument);
+    }
+
+    private void addProjectLotInformation(ESPDResponseType input, EspdDocument espdDocument) {
+        if (isEmpty(input.getProcurementProjectLot())) {
+            return;
+        }
+
+        ProcurementProjectLotType lotType = input.getProcurementProjectLot().get(0);
+        if (lotType.getID() != null) {
+            espdDocument.setLotConcerned(lotType.getID().getValue());
+        }
     }
 }
