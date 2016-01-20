@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.business.common;
 
+import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.*;
@@ -38,6 +39,7 @@ public class CriteriaToEspdDocumentPopulator {
 
         markSelectedExclusionCriteria(espdDocument, ublCriteria);
         markSelectedSelectionCriteria(espdDocument, ublCriteria);
+        markSelectedAwardCriteria(espdDocument, ublCriteria);
     }
 
     private void markSelectedExclusionCriteria(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
@@ -206,6 +208,19 @@ public class CriteriaToEspdDocumentPopulator {
                 buildEspdCriterion(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA, ublCriteria));
         espdDocument.setCertificateIndependentBodiesAboutEnvironmental(criterionFactory.<TechnicalProfessionalCriterion>
                 buildEspdCriterion(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL, ublCriteria));
+    }
+
+    private void markSelectedAwardCriteria(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+        espdDocument.setProcurementReserved(criterionFactory.<eu.europa.ec.grow.espd.domain.AwardCriterion>
+                buildEspdCriterion(AwardCriterion.PROCUREMENT_RESERVED, ublCriteria));
+        espdDocument.setEoRegistered(criterionFactory.<eu.europa.ec.grow.espd.domain.AwardCriterion>
+                buildEspdCriterion(AwardCriterion.EO_REGISTERED, ublCriteria));
+        espdDocument.setEoParticipatingProcurementProcedure(criterionFactory.<eu.europa.ec.grow.espd.domain.AwardCriterion>
+                buildEspdCriterion(AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE, ublCriteria));
+        espdDocument.setEoReliesCapacities(criterionFactory.<eu.europa.ec.grow.espd.domain.AwardCriterion>
+                buildEspdCriterion(AwardCriterion.EO_RELIES_CAPACITIES, ublCriteria));
+        espdDocument.setMeetsObjective(criterionFactory.<eu.europa.ec.grow.espd.domain.AwardCriterion>
+                buildEspdCriterion(AwardCriterion.MEETS_OBJECTIVE, ublCriteria));
     }
 
 }

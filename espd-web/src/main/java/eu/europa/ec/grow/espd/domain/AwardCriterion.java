@@ -40,4 +40,10 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
         }
         return null;
     }
+
+    public static AwardCriterion buildWithExists(boolean exists) {
+        AwardCriterion criterion = new AwardCriterion();
+        criterion.setExists(exists);
+        return criterion;
+    }
 }

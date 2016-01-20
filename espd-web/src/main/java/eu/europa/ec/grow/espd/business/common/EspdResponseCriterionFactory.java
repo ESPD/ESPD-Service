@@ -1,11 +1,9 @@
 package eu.europa.ec.grow.espd.business.common;
 
 import eu.europa.ec.grow.espd.constants.enums.Country;
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionTypeCode;
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionTypeCode;
+import eu.europa.ec.grow.espd.criteria.enums.*;
 import eu.europa.ec.grow.espd.domain.*;
+import eu.europa.ec.grow.espd.domain.AwardCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
@@ -63,6 +61,9 @@ class EspdResponseCriterionFactory {
             return (T) buildEconomicFinancialStandingCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
+        } else if (AwardTypeCode.DATA_ON_ECONOMIC_OPERATOR.equals(ccvCriterion.getCriterionType()) ||
+                AwardTypeCode.REDUCTION_OF_CANDIDATES.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildAwardCriterion(ccvCriterion, ublCriteria);
         }
         throw new IllegalArgumentException(
                 String.format("Could not build criterion '%s' with id '%s' having type code '%s'.",
@@ -178,7 +179,8 @@ class EspdResponseCriterionFactory {
         return criterion;
     }
 
-    private MisconductDistortionCriterion buildMisconductCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+    private MisconductDistortionCriterion buildMisconductCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
             return MisconductDistortionCriterion.buildWithExists(false);
@@ -455,6 +457,10 @@ class EspdResponseCriterionFactory {
         return readCriterionAnswer(criterionType, SelectionCriterionRequirement.YOUR_ANSWER);
     }
 
+    private boolean readAwardCriterionAnswer(CriterionType criterionType) {
+        return readCriterionAnswer(criterionType, AwardRequirement.INDICATOR);
+    }
+
     private boolean readCriterionAnswer(CriterionType criterionType, CcvCriterionRequirement answerReq) {
         Boolean yourAnswer = readRequirementValue(answerReq, criterionType);
         if (yourAnswer == null) {
@@ -485,6 +491,11 @@ class EspdResponseCriterionFactory {
                 SelectionCriterionRequirement.URL, SelectionCriterionRequirement.URL_CODE);
     }
 
+    private AvailableElectronically buildAwardAvailableElectronically(CriterionType criterionType) {
+        return buildAvailableElectronically(criterionType, AwardRequirement.INFO_AVAILABLE_ELECTRONICALLY,
+                AwardRequirement.URL, AwardRequirement.URL_CODE);
+    }
+
     private AvailableElectronically buildAvailableElectronically(CriterionType criterionType,
             CcvCriterionRequirement answerReq, CcvCriterionRequirement urlReq, CcvCriterionRequirement urlCodeReq) {
         AvailableElectronically electronically = new AvailableElectronically();
@@ -495,6 +506,73 @@ class EspdResponseCriterionFactory {
         String code = readRequirementValue(urlCodeReq, criterionType);
         electronically.setCode(code);
         return electronically;
+    }
+
+    private AwardCriterion buildAwardCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return AwardCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readAwardCriterionAnswer(criterionType);
+
+        AwardCriterion criterion = AwardCriterion.buildWithExists(yourAnswer);
+
+        // description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
+        String detailsCategory = readRequirementValue(AwardRequirement.DETAILS_EMPLOYEES_CATEGORY, criterionType);
+        if (isNotBlank(detailsCategory)) {
+            criterion.setDescription1(detailsCategory);
+        }
+        String regNumber = readRequirementValue(AwardRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
+        if (isNotBlank(regNumber)) {
+            criterion.setDescription1(regNumber);
+        }
+        String eoRole = readRequirementValue(AwardRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
+        if (isNotBlank(eoRole)) {
+            criterion.setDescription1(eoRole);
+        }
+        String describe = readRequirementValue(AwardRequirement.PLEASE_DESCRIBE, criterionType);
+        if (isNotBlank(describe)) {
+            criterion.setDescription1(describe);
+        }
+
+        String regNumberElectronically = readRequirementValue(AwardRequirement.REG_NO_AVAILABLE_ELECTRONICALLY, criterionType);
+        if (isNotBlank(regNumberElectronically)) {
+            criterion.setDescription2(regNumberElectronically);
+        }
+        String otherEos = readRequirementValue(AwardRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
+        if (isNotBlank(otherEos)) {
+            criterion.setDescription2(otherEos);
+        }
+
+        String referencesRegistration = readRequirementValue(AwardRequirement.REFERENCES_REGISTRATION, criterionType);
+        if (isNotBlank(referencesRegistration)) {
+            criterion.setDescription3(referencesRegistration);
+        }
+        String participantGroupName = readRequirementValue(AwardRequirement.PARTICIPANT_GROUP_NAME, criterionType);
+        if (isNotBlank(participantGroupName)) {
+            criterion.setDescription3(participantGroupName);
+        }
+
+
+        String eoProvideCertificate = readRequirementValue(AwardRequirement.EO_ABLE_PROVIDE_CERTIFICATE, criterionType);
+        if (isNotBlank(eoProvideCertificate)) {
+            criterion.setDescription4(eoProvideCertificate);
+        }
+        String docElectronically = readRequirementValue(AwardRequirement.DOC_AVAILABLE_ELECTRONICALLY, criterionType);
+        if (isNotBlank(docElectronically)) {
+            criterion.setDescription5(docElectronically);
+        }
+
+        boolean coversAllSelectionCriteria = readBooleanRequirement(
+                AwardRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
+        criterion.setBooleanValue1(coversAllSelectionCriteria);
+        Double percentage = readRequirementValue(AwardRequirement.CORRESPONDING_PERCENTAGE, criterionType);
+        criterion.setDoubleValue1(percentage);
+
+        criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));
+
+        return criterion;
     }
 
     private boolean readBooleanRequirement(CcvCriterionRequirement requirement, CriterionType criterionType) {
