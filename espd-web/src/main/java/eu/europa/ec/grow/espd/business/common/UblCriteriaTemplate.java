@@ -39,6 +39,7 @@ public abstract class UblCriteriaTemplate {
                 ExclusionCriterion.values().length + SelectionCriterion.values().length + 1);
         criterionTypes.addAll(addExclusionCriteria(espdDocument));
         criterionTypes.addAll(addSelectionCriteria(espdDocument));
+        criterionTypes.addAll(buildAwardCriteria(espdDocument));
         return Collections.unmodifiableList(criterionTypes);
     }
 
@@ -165,7 +166,7 @@ public abstract class UblCriteriaTemplate {
                 espdDocument.getCertificateIndependentBodiesAboutEnvironmental(), criteria);
     }
 
-    private void addUblCriterion(CcvCriterion ccvCriterion, Criterion espdCriterion, List<CriterionType> ublCriteria) {
+    protected final void addUblCriterion(CcvCriterion ccvCriterion, Criterion espdCriterion, List<CriterionType> ublCriteria) {
         ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
     }
 
@@ -175,4 +176,13 @@ public abstract class UblCriteriaTemplate {
      * @return An instance of a class that can build {@link CriterionType}
      */
     protected abstract UblCriterionTypeTemplate buildCriterionTypeTransformerTemplate();
+
+    /**
+     * Build the list of economic operator award criteria.
+     *
+     * @param espdDocument The model containing information coming from the ESPD UI
+     *
+     * @return The list of economic operator criteria
+     */
+    protected abstract List<CriterionType> buildAwardCriteria(EspdDocument espdDocument);
 }

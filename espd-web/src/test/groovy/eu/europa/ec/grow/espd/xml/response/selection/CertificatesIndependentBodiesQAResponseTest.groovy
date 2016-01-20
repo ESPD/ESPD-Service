@@ -19,7 +19,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
         def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "d726bac9-e153-4e75-bfca-c5385587766d")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "612a1625-118d-4ea4-a6db-413184e7c0a8")
 
         then: "CriterionTypeCode element"

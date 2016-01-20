@@ -9,7 +9,9 @@ import lombok.Getter;
 @Getter
 public enum EconomicOperatorTypeCode implements CcvCriterionType {
 
-    DATA_ON_ECONOMIC_OPERATOR("Date on economic operator");
+    DATA_ON_ECONOMIC_OPERATOR("Date on economic operator"),
+
+    REDUCTION_OF_CANDIDATES("Reduction of the number of qualified candidates");
 
     private final String description;
 

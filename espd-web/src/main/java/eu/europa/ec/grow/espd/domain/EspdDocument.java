@@ -21,7 +21,14 @@ public class EspdDocument {
     private String lotConcerned;
     private String fileRefByCA;
 
-    //Exclusion criteria
+    // Economic operator criteria
+    private AwardCriterion procurementReserved;
+    private AwardCriterion eoRegistered;
+    private AwardCriterion eoParticipatingProcurementProcedure;
+    private AwardCriterion eoReliesCapacities;
+    private AwardCriterion meetsObjective;
+
+    // Exclusion criteria
 
     private CriminalConvictionsCriterion criminalConvictions;
     private CriminalConvictionsCriterion corruption;
@@ -102,7 +109,4 @@ public class EspdDocument {
         return null;
     }
 
-    public final boolean satisfiesAllCriteria() {
-        return getSelectionSatisfiesAll() != null && getSelectionSatisfiesAll().getExists();
-    }
 }

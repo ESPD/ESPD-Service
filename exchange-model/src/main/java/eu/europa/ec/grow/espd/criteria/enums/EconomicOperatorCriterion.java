@@ -22,8 +22,7 @@ public enum EconomicOperatorCriterion implements CcvCriterion {
      */
     PROCUREMENT_RESERVED("2043338f-a38a-490b-b3ec-2607cb25a017",
             "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?",
-            "", EconomicOperatorTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
-            list(PROCUREMENT_RESERVED_GROUP)),
+            "", EconomicOperatorTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, list(PROCUREMENT_RESERVED_GROUP)),
     /**
      *
      */
@@ -41,20 +40,17 @@ public enum EconomicOperatorCriterion implements CcvCriterion {
     /**
      *
      */
-    EO_RELY_CAPACITIES("0d62c6ed-f074-4fcf-8e9f-f691351d52ad",
+    EO_RELIES_CAPACITIES("0d62c6ed-f074-4fcf-8e9f-f691351d52ad",
             "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?",
-            "", EconomicOperatorTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
-            list(EO_RELY_CAPACITIES_GROUP)),
+            "", EconomicOperatorTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, list(EO_RELIES_CAPACITIES_GROUP)),
     /**
      *
      */
     MEETS_OBJECTIVE("9c70375e-1264-407e-8b50-b9736bc08901",
-            "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way:"
-                    + "\n"
-                    + "In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:",
-            "", EconomicOperatorTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
-            list(MEETS_OBJECTIVE_GROUP, INFO_ELECTRONICALLY_GROUP)),
-    ;
+            "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:",
+            "If some of these certificates or forms of documentary evidence are available electronically, please indicate for each:",
+            EconomicOperatorTypeCode.REDUCTION_OF_CANDIDATES, null,
+            list(MEETS_OBJECTIVE_GROUP, INFO_ELECTRONICALLY_GROUP)),;
 
     private final String uuid;
 

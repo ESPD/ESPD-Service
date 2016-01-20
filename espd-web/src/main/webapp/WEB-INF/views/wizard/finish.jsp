@@ -26,10 +26,10 @@
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-			<div data-i18n="createcafinish_reduction" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
+			<div data-i18n="createcafinish_reduction" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-reduction-of-numbers-section">
 				 <s:message code='createcafinish_reduction'/>
 			</div>
-            <div id="finish-statements-section" class="collapse in">
+            <div id="finish-reduction-of-numbers-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
 
 					<div class="alert alert-espd-info">

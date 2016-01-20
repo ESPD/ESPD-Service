@@ -18,7 +18,7 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractExclusionCr
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
 
         then: "CriterionTypeCode element"

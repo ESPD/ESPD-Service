@@ -18,7 +18,7 @@ class TerroristOffencesRequestTest extends AbstractExclusionCriteriaFixture {
         def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "d486fb70-86b3-4e75-97f2-0d71b5697c7d")
 
         then: "CriterionTypeCode element"

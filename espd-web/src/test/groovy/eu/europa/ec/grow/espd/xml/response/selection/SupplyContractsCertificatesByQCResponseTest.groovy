@@ -19,7 +19,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "a7669d7d-9297-43e1-9d10-691a1660187c")
 
         then: "CriterionTypeCode element"

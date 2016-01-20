@@ -21,7 +21,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then:
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
 
         then: "check who has been convicted requirement in participation criterion"
         def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)

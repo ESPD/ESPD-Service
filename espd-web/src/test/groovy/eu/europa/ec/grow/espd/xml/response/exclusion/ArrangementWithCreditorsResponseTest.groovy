@@ -19,7 +19,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
         def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
 
         then: "CriterionTypeCode element"

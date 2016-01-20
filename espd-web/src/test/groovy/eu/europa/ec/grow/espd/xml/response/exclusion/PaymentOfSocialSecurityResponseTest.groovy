@@ -22,7 +22,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
 
         then: "CriterionTypeCode element"

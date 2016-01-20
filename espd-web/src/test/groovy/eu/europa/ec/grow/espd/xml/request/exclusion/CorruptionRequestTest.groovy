@@ -18,7 +18,7 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
 
         then: "CriterionTypeCode element"

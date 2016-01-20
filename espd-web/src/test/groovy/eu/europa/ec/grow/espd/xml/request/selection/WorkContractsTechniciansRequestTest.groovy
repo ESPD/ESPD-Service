@@ -18,7 +18,7 @@ class WorkContractsTechniciansRequestTest extends AbstractSelectionCriteriaFixtu
         def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "c599c130-b29f-461e-a187-4e16c7d40db7")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
         def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
 
         then: "CriterionTypeCode element"

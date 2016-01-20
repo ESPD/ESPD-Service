@@ -18,7 +18,7 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
         def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "6346959b-e097-4ea1-89cd-d1b4c131ea4d")
 
         then: "CriterionTypeCode element"

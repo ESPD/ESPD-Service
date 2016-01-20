@@ -19,7 +19,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
         def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "9460457e-b43d-48a9-acd1-615de6ddd33e")
 
         then: "CriterionTypeCode element"

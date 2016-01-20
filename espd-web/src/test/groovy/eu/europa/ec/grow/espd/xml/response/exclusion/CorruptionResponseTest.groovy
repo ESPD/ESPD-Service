@@ -23,7 +23,7 @@ class CorruptionResponseTest extends AbstractExclusionCriteriaFixture {
         def request = parseResponseXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
 
 

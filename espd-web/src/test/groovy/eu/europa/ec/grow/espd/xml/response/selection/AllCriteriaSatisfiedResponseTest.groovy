@@ -18,7 +18,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def request = parseResponseXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "CriterionTypeCode element"

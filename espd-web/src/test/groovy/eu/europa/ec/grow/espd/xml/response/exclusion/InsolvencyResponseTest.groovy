@@ -19,7 +19,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "396f288a-e267-4c20-851a-ed4f7498f137")
 
         then: "CriterionTypeCode element"

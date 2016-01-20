@@ -22,7 +22,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         def request = parseRequestXml(espd)
 
         then: "one and only one selection criteria"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
 
         then: "check the CriterionID"
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
@@ -83,7 +83,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         def request = parseRequestXml(espd)
 
         then:
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
             checkCriterionId(request, getCriterionIndex(criterion), criterion.getUuid())
         }

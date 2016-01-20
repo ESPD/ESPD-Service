@@ -19,7 +19,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"

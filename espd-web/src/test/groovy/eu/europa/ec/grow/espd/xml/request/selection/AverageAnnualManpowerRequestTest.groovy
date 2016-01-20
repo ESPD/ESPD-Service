@@ -18,7 +18,7 @@ class AverageAnnualManpowerRequestTest extends AbstractSelectionCriteriaFixture 
         def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "1f49b3f0-d50f-43f6-8b30-4bafab108b9b")
 
         then: "CriterionTypeCode element"

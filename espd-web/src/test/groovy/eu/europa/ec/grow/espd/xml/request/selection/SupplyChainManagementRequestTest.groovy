@@ -18,7 +18,7 @@ class SupplyChainManagementRequestTest extends AbstractSelectionCriteriaFixture 
         def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "dc12a151-7fdf-4733-a8f0-30f667292e66")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,7 @@ class BreachingObligationsSocialRequestTest extends AbstractExclusionCriteriaFix
         def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "a261a395-ed17-4939-9c75-b9ff1109ca6e")
 
         then: "CriterionTypeCode element"

@@ -3,6 +3,7 @@ package eu.europa.ec.grow.espd.business.response;
 import eu.europa.ec.grow.espd.business.common.UblRequirementTypeTemplate;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.constants.enums.Country;
+import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
 import eu.europa.ec.grow.espd.domain.*;
@@ -51,6 +52,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
         fillExclusionCriteria(ccvRequirement, espdCriterion, responseType);
         fillSelectionCriteria(ccvRequirement, espdCriterion, responseType);
+        fillAwardCriteria(ccvRequirement, espdCriterion, responseType);
 
         return responseType;
     }
@@ -103,7 +105,8 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN.equals(ccvRequirement)) {
             TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
             responseType
-                    .setIndicator(buildIndicatorType(taxesCriterionCriterion.isBreachEstablishedOtherThanJudicialDecision()));
+                    .setIndicator(
+                            buildIndicatorType(taxesCriterionCriterion.isBreachEstablishedOtherThanJudicialDecision()));
         } else if (ExclusionCriterionRequirement.DESCRIBE_MEANS.equals(ccvRequirement)) {
             TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
             responseType.setDescription(buildDescriptionType(taxesCriterionCriterion.getMeansDescription()));
@@ -256,6 +259,63 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.NUMBER_3.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setQuantity(buildNumberType(selectionCriterion.getNumber3()));
+        }
+    }
+
+    private void fillAwardCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
+            ResponseType responseType) {
+        if (espdCriterion == null) {
+            return;
+        }
+
+        if (EconomicOperatorRequirement.INDICATOR.equals(ccvRequirement) ||
+                EconomicOperatorRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA.equals(ccvRequirement)) {
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
+        } else if (EconomicOperatorRequirement.CORRESPONDING_PERCENTAGE.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setPercent(buildPercentType(selectionCriterion.getDoubleValue1()));
+        } else if (EconomicOperatorRequirement.DETAILS_EMPLOYEES_CATEGORY.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
+        } else if (EconomicOperatorRequirement.PROVIDE_REGISTRATION_NUMBER.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
+        } else if (EconomicOperatorRequirement.REG_NO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription2()));
+        } else if (EconomicOperatorRequirement.REFERENCES_REGISTRATION.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription3()));
+        } else if (EconomicOperatorRequirement.EO_ABLE_PROVIDE_CERTIFICATE.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription4()));
+        } else if (EconomicOperatorRequirement.DOC_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription5()));
+        } else if (EconomicOperatorRequirement.ECONOMIC_OPERATOR_ROLE.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
+        } else if (EconomicOperatorRequirement.OTHER_ECONOMIC_OPERATORS.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription2()));
+        } else if (EconomicOperatorRequirement.PARTICIPANT_GROUP_NAME.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription3()));
+        } else if (EconomicOperatorRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
+        } else if (EconomicOperatorRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(selectionCriterion.getInfoElectronicallyAnswer()));
+        } else if (EconomicOperatorRequirement.URL.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            EvidenceType evidenceType = buildEvidenceType(selectionCriterion.getInfoElectronicallyUrl());
+            responseType.getEvidence().add(evidenceType);
+        } else if (EconomicOperatorRequirement.URL_CODE.equals(ccvRequirement)) {
+            AwardCriterion selectionCriterion = (AwardCriterion) espdCriterion;
+            TypeCodeType typeCodeType = new TypeCodeType();
+            typeCodeType.setValue(selectionCriterion.getInfoElectronicallyCode());
+            responseType.setCode(typeCodeType);
         }
     }
 

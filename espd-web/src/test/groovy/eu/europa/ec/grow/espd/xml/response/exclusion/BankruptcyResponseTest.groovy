@@ -15,7 +15,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 
         then: "CriterionTypeCode element"

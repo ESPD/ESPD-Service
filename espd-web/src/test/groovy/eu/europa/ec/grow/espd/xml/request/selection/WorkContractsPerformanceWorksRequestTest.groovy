@@ -18,7 +18,7 @@ class WorkContractsPerformanceWorksRequestTest extends AbstractSelectionCriteria
         def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "cdd3bb3e-34a5-43d5-b668-2aab86a73822")
 
         then: "CriterionTypeCode element"

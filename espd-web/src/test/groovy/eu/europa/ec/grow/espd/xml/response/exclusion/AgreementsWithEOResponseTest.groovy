@@ -19,7 +19,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "56d13e3d-76e8-4f23-8af6-13e60a2ee356")
 
         then: "CriterionTypeCode element"

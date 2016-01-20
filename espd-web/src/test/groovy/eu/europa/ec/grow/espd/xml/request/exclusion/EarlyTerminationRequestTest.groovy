@@ -18,7 +18,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
         def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
 
         then: "CriterionTypeCode element"

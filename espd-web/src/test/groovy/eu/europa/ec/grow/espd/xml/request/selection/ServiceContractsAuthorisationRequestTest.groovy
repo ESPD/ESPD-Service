@@ -18,7 +18,7 @@ class ServiceContractsAuthorisationRequestTest extends AbstractSelectionCriteria
         def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4")
 
         then: "CriterionTypeCode element"

@@ -19,7 +19,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "499efc97-2ac1-4af2-9e84-323c2ca67747")
 
         then: "CriterionTypeCode element"

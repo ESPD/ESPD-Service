@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.base
 
+import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 
@@ -43,7 +44,12 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert requirementType.ID.@schemeVersionID.text() == "1.0"
     }
 
-    protected static int getTotalNumberOfCriteria() {
-        return ExclusionCriterion.values().size() + SelectionCriterion.values().size()
+    protected static int getRequestNumberOfCriteria() {
+        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + 1
+    }
+
+    protected static int getResponseNumberOfCriteria() {
+        // response has economic operator criteria plus meets objectives (reduction of candidates) which is common
+        return getRequestNumberOfCriteria() + EconomicOperatorCriterion.values().size() - 1
     }
 }

@@ -182,7 +182,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = parseRequestXml()
 
         then:
-        result.Criterion.size() == getTotalNumberOfCriteria()
+        result.Criterion.size() == getRequestNumberOfCriteria()
     }
 
     def "should contain all exclusion and selection criteria"() {
@@ -250,7 +250,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = parseRequestXml(espd)
 
         then:
-        result.Criterion.size() == getTotalNumberOfCriteria()
+        result.Criterion.size() == getRequestNumberOfCriteria()
     }
 
     def "should not fail when a criterion has a null exists flag"() {
@@ -261,7 +261,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = parseRequestXml(espd)
 
         then:
-        result.Criterion.size() == getTotalNumberOfCriteria()
+        result.Criterion.size() == getRequestNumberOfCriteria()
     }
 
 }

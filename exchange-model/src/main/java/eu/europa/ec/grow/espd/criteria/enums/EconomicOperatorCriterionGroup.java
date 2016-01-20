@@ -19,7 +19,7 @@ public enum EconomicOperatorCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    PROCUREMENT_RESERVED_GROUP("41dd2e9b-1bfd-44c7-93ee-56bd74a4334b", Collections.<CcvCriterionGroup>emptyList(),
+    PROCUREMENT_RESERVED_GROUP("6febbe4a-e715-427c-a2b1-19cfabadaef0", Collections.<CcvCriterionGroup>emptyList(),
             list(INDICATOR, CORRESPONDING_PERCENTAGE, DETAILS_EMPLOYEES_CATEGORY)),
     /**
      *
@@ -29,7 +29,7 @@ public enum EconomicOperatorCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
-    EO_REGISTERED_GROUP_1("41dd2e9b-1bfd-44c7-93ee-56bd74a4334b", list(EO_REGISTERED_GROUP_1_1),
+    EO_REGISTERED_GROUP_1("64162276-7014-408f-a9af-080426bfe1fd", list(EO_REGISTERED_GROUP_1_1),
             list(INDICATOR, PROVIDE_REGISTRATION_NUMBER, REG_NO_AVAILABLE_ELECTRONICALLY, REFERENCES_REGISTRATION)),
     /**
      *
@@ -41,11 +41,11 @@ public enum EconomicOperatorCriterionGroup implements CcvCriterionGroup {
      */
     EO_PARTICIPATING_PROCUREMENT_PROCEDURE_GROUP("d939f2c6-ba25-4dc4-889c-11d1853add19",
             Collections.<CcvCriterionGroup>emptyList(),
-            list(ECONOMIC_OPERATOR_ROLE, OTHER_ECONOMIC_OPERATORS, PARTICIPANT_GROUP_NAME)),
+            list(INDICATOR, ECONOMIC_OPERATOR_ROLE, OTHER_ECONOMIC_OPERATORS, PARTICIPANT_GROUP_NAME)),
     /**
      *
      */
-    EO_RELY_CAPACITIES_GROUP("e688f7d6-dcef-4726-bc61-052e63ead60f",
+    EO_RELIES_CAPACITIES_GROUP("e688f7d6-dcef-4726-bc61-052e63ead60f",
             Collections.<CcvCriterionGroup>emptyList(), list(INDICATOR)),
     /**
      *

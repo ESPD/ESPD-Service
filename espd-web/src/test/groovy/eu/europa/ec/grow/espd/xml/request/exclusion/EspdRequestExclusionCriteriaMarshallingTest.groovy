@@ -19,7 +19,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         def request = parseRequestXml(espd)
 
         then:
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION), "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
         checkCriterionId(request, getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES), "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
         checkCriterionId(request, getCriterionIndex(ExclusionCriterion.CORRUPTION), "c27b7c4e-c837-4529-b867-ed55ce639db5")
@@ -60,7 +60,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         def request = parseRequestXml(espd)
 
         then:
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
         checkCriterionId(request, 1, "c27b7c4e-c837-4529-b867-ed55ce639db5")
         checkCriterionId(request, 2, "297d2323-3ede-424e-94bc-a91561e6f320")

@@ -18,7 +18,7 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
         def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46")
 
         then: "CriterionTypeCode element"

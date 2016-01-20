@@ -19,7 +19,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
         def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "bdf0601d-2480-4250-b870-658d0ee95be6")
 
         then: "CriterionTypeCode element"

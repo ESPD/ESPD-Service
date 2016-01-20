@@ -18,7 +18,7 @@ class AssetsAdministeredByLiquidatorRequestTest extends AbstractExclusionCriteri
         def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"
-        request.Criterion.size() == getTotalNumberOfCriteria()
+        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
 
         then: "CriterionTypeCode element"
