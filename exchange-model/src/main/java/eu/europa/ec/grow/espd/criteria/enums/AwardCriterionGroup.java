@@ -7,14 +7,14 @@ import lombok.Getter;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorRequirement.*;
+import static eu.europa.ec.grow.espd.criteria.enums.AwardRequirement.*;
 import static eu.europa.ec.grow.espd.criteria.enums.ListUtil.list;
 
 /**
  * Created by ratoico on 1/15/16 at 3:36 PM.
  */
 @Getter
-public enum EconomicOperatorCriterionGroup implements CcvCriterionGroup {
+public enum AwardCriterionGroup implements CcvCriterionGroup {
 
     /**
      *
@@ -64,7 +64,7 @@ public enum EconomicOperatorCriterionGroup implements CcvCriterionGroup {
 
     private final List<? extends CcvCriterionRequirement> requirements;
 
-    EconomicOperatorCriterionGroup(String id, List<? extends CcvCriterionGroup> subgroups,
+    AwardCriterionGroup(String id, List<? extends CcvCriterionGroup> subgroups,
             List<? extends CcvCriterionRequirement> requirements) {
         this.id = id;
         this.subgroups = subgroups;

@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.xml.base
-import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion
+import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 
@@ -8,12 +8,12 @@ import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
  */
 class AbstractAwardCriteriaFixture extends AbstractCriteriaFixture {
 
-    protected static int getCriterionIndex(EconomicOperatorCriterion criterion) {
+    protected static int getCriterionIndex(AwardCriterion criterion) {
         return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
     }
 
     protected static int getTotalNumberOfCriteria() {
-        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + EconomicOperatorCriterion.values().size()
+        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + AwardCriterion.values().size()
     }
 
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
  * Created by ratoico on 1/15/16 at 3:12 PM.
  */
 @Getter
-public enum EconomicOperatorRequirement implements CcvCriterionRequirement {
+public enum AwardRequirement implements CcvCriterionRequirement {
 
     /**
      *
@@ -104,7 +104,7 @@ public enum EconomicOperatorRequirement implements CcvCriterionRequirement {
 
     private final ExpectedResponseType responseType;
 
-    EconomicOperatorRequirement(String id, String description, ExpectedResponseType responseType) {
+    AwardRequirement(String id, String description, ExpectedResponseType responseType) {
         this.id = id;
         this.description = description;
         this.responseType = responseType;

@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.business.request;
 
 import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.business.common.UblCriterionTypeTemplate;
-import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion;
+import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 
@@ -27,7 +27,7 @@ class UblRequestCriteriaTransformer extends UblCriteriaTemplate {
     protected List<CriterionType> buildAwardCriteria(EspdDocument espdDocument) {
         List<CriterionType> criterionTypes = new ArrayList<>(1);
         // meets objective (reduction of numbers) is common to request and response
-        addUblCriterion(EconomicOperatorCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
+        addUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
         return Collections.unmodifiableList(criterionTypes);
     }
 }

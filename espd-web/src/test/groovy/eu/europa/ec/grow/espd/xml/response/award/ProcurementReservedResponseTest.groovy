@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.award
-import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion
+
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
@@ -14,7 +14,7 @@ class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.PROCUREMENT_RESERVED)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
         response.Criterion.size() == getTotalNumberOfCriteria()
@@ -55,7 +55,7 @@ class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.PROCUREMENT_RESERVED)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -71,7 +71,7 @@ class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.PROCUREMENT_RESERVED)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -89,7 +89,7 @@ class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.PROCUREMENT_RESERVED)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]

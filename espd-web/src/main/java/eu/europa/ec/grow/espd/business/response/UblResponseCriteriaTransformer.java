@@ -2,7 +2,7 @@ package eu.europa.ec.grow.espd.business.response;
 
 import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.business.common.UblCriterionTypeTemplate;
-import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion;
+import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 
@@ -25,15 +25,15 @@ class UblResponseCriteriaTransformer extends UblCriteriaTemplate {
 
     @Override
     protected List<CriterionType> buildAwardCriteria(EspdDocument espdDocument) {
-        List<CriterionType> criterionTypes = new ArrayList<>(EconomicOperatorCriterion.values().length + 1);
-        addUblCriterion(EconomicOperatorCriterion.PROCUREMENT_RESERVED, espdDocument.getProcurementReserved(),
+        List<CriterionType> criterionTypes = new ArrayList<>(AwardCriterion.values().length + 1);
+        addUblCriterion(AwardCriterion.PROCUREMENT_RESERVED, espdDocument.getProcurementReserved(),
                 criterionTypes);
-        addUblCriterion(EconomicOperatorCriterion.EO_REGISTERED, espdDocument.getEoRegistered(), criterionTypes);
-        addUblCriterion(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE,
+        addUblCriterion(AwardCriterion.EO_REGISTERED, espdDocument.getEoRegistered(), criterionTypes);
+        addUblCriterion(AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE,
                 espdDocument.getEoParticipatingProcurementProcedure(), criterionTypes);
-        addUblCriterion(EconomicOperatorCriterion.EO_RELIES_CAPACITIES, espdDocument.getEoReliesCapacities(),
+        addUblCriterion(AwardCriterion.EO_RELIES_CAPACITIES, espdDocument.getEoReliesCapacities(),
                 criterionTypes);
-        addUblCriterion(EconomicOperatorCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
+        addUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
         return Collections.unmodifiableList(criterionTypes);
     }
 }

@@ -1,6 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.award
 
-import eu.europa.ec.grow.espd.criteria.enums.EconomicOperatorCriterion
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
@@ -15,7 +14,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
         response.Criterion.size() == getTotalNumberOfCriteria()
@@ -61,7 +60,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -76,7 +75,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -93,7 +92,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -111,7 +110,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(EconomicOperatorCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
