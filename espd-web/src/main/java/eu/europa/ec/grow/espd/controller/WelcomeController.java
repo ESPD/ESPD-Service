@@ -65,7 +65,7 @@ class WelcomeController {
 
     /* Create : page 1 */
 
-    @RequestMapping("/procedureCA") public String getProcedureCA(@ModelAttribute("espd") EspdDocument espd) { 
+    @RequestMapping("/requeastprocedureCA") public String getProcedureCA(@ModelAttribute("espd") EspdDocument espd) { 
     	return "procedureCA"; 
     }
     @RequestMapping("/procedureEO") public String getProcedureEO(@ModelAttribute("espd") EspdDocument espd) { 
@@ -161,11 +161,12 @@ class WelcomeController {
     private void export(EspdDocument espd, HttpServletResponse response, Boolean isEO, SessionStatus status) throws IOException {
         try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
             response.setContentType(APPLICATION_XML_VALUE);
-            
-            //check isEO
-            {
-            	response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-response.xml\"");
-            	exchangeMarshaller.generateEspdResponse(espd, out);
+
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-response.xml\"");
+            if (isEO) {
+                exchangeMarshaller.generateEspdResponse(espd, out);
+            } else {
+                exchangeMarshaller.generateEspdRequest(espd, out);
             }
             
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
