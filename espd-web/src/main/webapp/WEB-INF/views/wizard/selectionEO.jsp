@@ -1,9 +1,15 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.lang.Integer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
+<c:set var="lastYearsAmount" value="${[2016,2015,2014,2013,2012]}" scope="application" />
+<c:set var="lastYearsNumber" value="${[2016,2015,2014]}" scope="application" />
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
     <tiles:insertDefinition name="viewChangeRole">
@@ -118,7 +124,7 @@
                     <tiles:putAttribute name="field" value="generalYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="6"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
-                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
+                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_general_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code" value="crit_selection_economic_general_yearly_turnover_description"/>
                 </tiles:insertDefinition>
@@ -127,7 +133,7 @@
                     <tiles:putAttribute name="field" value="averageYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="7"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
-                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
+                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_average_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_average_yearly_turnover_description"/>
@@ -137,7 +143,7 @@
                     <tiles:putAttribute name="field" value="specificYearlyTurnover"/>
                     <tiles:putAttribute name="number" value="8"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
-                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
+                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_yearly_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_specific_yearly_turnover_description"/>
@@ -147,7 +153,7 @@
                     <tiles:putAttribute name="field" value="specificAverageTurnover"/>
                     <tiles:putAttribute name="number" value="9"/>
                     <tiles:putAttribute name="has_your_answer" value="true"/>
-                    <tiles:putAttribute name="has_multiple_year_amount" value="true"/>
+                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_average_turnover_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_economic_specific_average_turnover_description"/>
@@ -303,7 +309,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="numberManagerialStaff"/>
                     <tiles:putAttribute name="number" value="24"/>
-                    <tiles:putAttribute name="has_multiple_year_number" value="true"/>
+                    <tiles:putAttribute name="lastYearsNumber" value="${lastYearsNumber}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_number_managerial_staff_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_number_managerial_staff_description"/>
@@ -312,7 +318,7 @@
                 <tiles:insertDefinition name="technicalProfessionalCriterionEO">
                     <tiles:putAttribute name="field" value="averageAnnualManpower"/>
                     <tiles:putAttribute name="number" value="25"/>
-                    <tiles:putAttribute name="has_multiple_year_number" value="true"/>
+                    <tiles:putAttribute name="lastYearsNumber" value="${lastYearsNumber}"/>
                     <tiles:putAttribute name="title_code" value="crit_selection_technical_average_annual_manpower_main"/>
                     <tiles:putAttribute name="tooltip_code"
                                         value="crit_selection_technical_average_annual_manpower_description"/>

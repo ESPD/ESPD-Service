@@ -12,7 +12,7 @@
 <tiles:importAttribute name="has_your_answer"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="has_multiple_description_amount_date_recipients"/>
-<tiles:importAttribute name="has_multiple_year_number"/>
+<tiles:importAttribute name="lastYearsNumber"/>
 <tiles:importAttribute name="allows_checks"/>
 <tiles:importAttribute name="has_info_electronically"/>
 <tiles:importAttribute name="has_explain_supply_contracts_quality"/>
@@ -90,9 +90,10 @@
                 <tiles:putAttribute name="field" value="${field}"/>
             </tiles:insertDefinition>
         </c:if>
-        <c:if test="${has_multiple_year_number}">
+        <c:if test="${lastYearsNumber != null}">
             <tiles:insertDefinition name="multipleYearNumber">
                 <tiles:putAttribute name="field" value="${field}"/>
+	            <tiles:putAttribute name="lastYears" value="${lastYearsNumber}"/>
             </tiles:insertDefinition>
         </c:if>
         <c:if test="${has_info_electronically}">

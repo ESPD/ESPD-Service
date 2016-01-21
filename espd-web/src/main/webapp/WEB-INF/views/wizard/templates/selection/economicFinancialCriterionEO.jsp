@@ -11,7 +11,7 @@
 <tiles:importAttribute name="tooltip_code"/>
 <tiles:importAttribute name="has_your_answer"/>
 <tiles:importAttribute name="has_please_describe_them"/>
-<tiles:importAttribute name="has_multiple_year_amount"/>
+<tiles:importAttribute name="lastYearsAmount"/>
 <tiles:importAttribute name="has_multiple_description_ratio"/>
 <tiles:importAttribute name="has_single_amount"/>
 
@@ -60,9 +60,10 @@
 	        </c:if>
 	        
 	        
-	        <c:if test="${has_multiple_year_amount}">
+	        <c:if test="${lastYearsAmount != null}">
 	            <tiles:insertDefinition name="multipleYearAmount">
 	                <tiles:putAttribute name="field" value="${field}"/>
+	                <tiles:putAttribute name="lastYears" value="${lastYearsAmount}"/>
 	            </tiles:insertDefinition>
 	        </c:if>
 	        <c:if test="${has_multiple_description_ratio}">

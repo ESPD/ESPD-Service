@@ -126,7 +126,7 @@
         <put-attribute name="tooltip_text" value=""/>
         <put-attribute name="has_your_answer" value="true"/>
         <put-attribute name="has_please_describe_them" value="false"/>
-        <put-attribute name="has_multiple_year_amount" value="false"/>
+        <put-attribute name="lastYearsAmount" value=""/>
         <put-attribute name="has_multiple_description_ratio" value="false"/>
         <put-attribute name="has_single_amount" value="false"/>
     </definition>
@@ -141,17 +141,16 @@
         <put-attribute name="has_please_describe_them" value="false"/>
         <put-attribute name="has_multiple_description_amount_date_recipients" value="false"/>
         <put-attribute name="allows_checks" value="false"/>
-        <put-attribute name="has_multiple_year_number" value="false"/>
+        <put-attribute name="lastYearsNumber" value=""/>
         <put-attribute name="has_info_electronically" value="true"/>
         <put-attribute name="has_explain_supply_contracts_quality" value="false"/>
         <put-attribute name="has_explain_certificates_independent_quality" value="false"/>
         <put-attribute name="has_explain_certificates_independent_environmental" value="false"/>
     </definition>
 
-    <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp">
-        <put-attribute name="field" value=""/>
-    </definition>
-
+    <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp"></definition>
+    <definition name="multipleYearNumber" template="/WEB-INF/views/wizard/templates/selection/multipleYearNumber.jsp"></definition>
+   
     <definition name="multipleDescriptionRatio" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionRatio.jsp">
         <put-attribute name="field" value=""/>
     </definition>
@@ -160,9 +159,6 @@
         <put-attribute name="field" value=""/>
     </definition>
 
-    <definition name="multipleYearNumber" template="/WEB-INF/views/wizard/templates/selection/multipleYearNumber.jsp">
-        <put-attribute name="field" value=""/>
-    </definition>
 
     <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp">
         <put-attribute name="currentPage" value=""/>
