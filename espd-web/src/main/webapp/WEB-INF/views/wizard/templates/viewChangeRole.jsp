@@ -7,18 +7,18 @@
 
 <div class="row">
     <strong class="col-md-4 col-md-offset-8">
-        <c:if test="${agent == 'EO'}">
+        <c:if test="${agent == 'eo'}">
         	<span data-i18n="role_eo"><s:message code="role_eo"/></span>
         </c:if>
-        <c:if test="${agent == 'CA'}">
+        <c:if test="${agent == 'ca'}">
         	<span data-i18n="role_ca"><s:message code="role_ca"/></span>
         </c:if>
         
         <a href="${pageContext.request.contextPath}/${page}">
-	        <c:if test="${agent == 'EO'}">
+	        <c:if test="${agent == 'eo'}">
 	        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>
 	        </c:if>
-	        <c:if test="${agent == 'CA'}">
+	        <c:if test="${agent == 'ca'}">
 	        	<span data-i18n="view_eo"><s:message code="view_eo"/></span>
 	        </c:if>
         </a>

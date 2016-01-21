@@ -8,61 +8,43 @@
 		<put-attribute name="breadcrumb" value="/WEB-INF/views/breadcrumb.jsp" />
         <put-attribute name="body" value="" />
     	<put-attribute name="agent" value="" />
+    	<put-attribute name="flow" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
     </definition>
 
-    <definition name="agentCA" extends="defaultTemplate">
-    	<put-attribute name="agent" value="CA" />
+    <definition name="requestCA" extends="defaultTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="request" />
     </definition>
-    <definition name="agentEO" extends="defaultTemplate">
-    	<put-attribute name="agent" value="EO" />
+    <definition name="requestEO" extends="defaultTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="request" />
     </definition>
-
-    <definition name="welcome" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />
+    <definition name="responceCA" extends="defaultTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="responce" />
     </definition>
-
-    <definition name="filter" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/filter.jsp" />
-    </definition>
-
-    <definition name="procedureCA" extends="agentCA">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" />
-    </definition>
-    <definition name="procedureEO" extends="agentEO">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" />
+    <definition name="responceEO" extends="defaultTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="responce" />
     </definition>
 
-    <definition name="exclusionCA" extends="agentCA">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" />
-    </definition>
+    <definition name="welcome" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp" /></definition>
+	<definition name="filter" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp" /></definition>
+    <definition name="about" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp" /></definition>
+    <definition name="error" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp" /></definition>
 
-    <definition name="exclusionEO" extends="agentEO">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" />
-    </definition>
+    <definition name="requestCAProcedure" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="requestEOProcedure" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    
+    <definition name="requestCAExclusion" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
+    <definition name="requestEOExclusion" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
 
-    <definition name="selectionCA" extends="agentCA">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" />
-    </definition>
+    <definition name="requestCASelection" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
+    <definition name="requestEOSelection" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
 
-    <definition name="selectionEO" extends="agentEO">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" />
-    </definition>
-
-    <definition name="finishCA" extends="agentCA">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" />
-    </definition>
-    <definition name="finishEO" extends="agentEO">
-		<put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" />
-    </definition>
-
-    <definition name="about" extends="defaultTemplate">
-        <put-attribute name="body" value="/WEB-INF/views/about.jsp" />
-    </definition>
-
-    <definition name="error" extends="defaultTemplate">
-        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />
-    </definition>
+    <definition name="requestCAFinish" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="requestEOFinish" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
     <!-- exclusion -->
     

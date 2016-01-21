@@ -4,6 +4,9 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
+<tiles:importAttribute name="flow"/>
+
 <script>
     $(function () {
         $("#ca-satisfies-all-criteria").click(function () {
@@ -13,9 +16,9 @@
 </script>
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
-    <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="agent" value="CA"/>
-        <tiles:putAttribute name="page" value="selectionEO"/>
+	<tiles:insertDefinition name="viewChangeRole">
+        <tiles:putAttribute name="agent" value="ca"/>
+        <tiles:putAttribute name="page" value="${flow}/eo/selection"/>
     </tiles:insertDefinition>
 
     <div class="panel-default">

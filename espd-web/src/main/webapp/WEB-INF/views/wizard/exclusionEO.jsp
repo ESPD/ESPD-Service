@@ -5,11 +5,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<tiles:importAttribute name="flow"/>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="agent" value="EO"/>
-        <tiles:putAttribute name="page" value="exclusionCA"/>
+        <tiles:putAttribute name="agent" value="eo"/>
+        <tiles:putAttribute name="page" value="${flow}/ca/exclusion"/>
     </tiles:insertDefinition>
 	
 	<div class="panel-default">

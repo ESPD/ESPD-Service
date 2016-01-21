@@ -7,6 +7,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <tiles:importAttribute name="agent"/>
+<tiles:importAttribute name="flow"/>
 
 <script>
     $(function () {
@@ -24,7 +25,7 @@
 
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="${agent}"/>
-        <tiles:putAttribute name="page" value="${agent == 'CA' ? 'procedureEO' : 'procedureCA'}"/>
+        <tiles:putAttribute name="page" value="${flow}/${agent == 'ca' ? 'eo' : 'ca'}/procedure"/>
     </tiles:insertDefinition>
 
     <div class="panel-default">
@@ -142,7 +143,7 @@
         </div>
 
 
-        <c:if test="${agent == 'EO'}">
+        <c:if test="${agent == 'eo'}">
 	        <div class="paragraph">
 	            <h2>${span18n['createeo_header']}</h2>
 	        </div>

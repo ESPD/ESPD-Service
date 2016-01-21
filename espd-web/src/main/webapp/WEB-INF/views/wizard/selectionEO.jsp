@@ -5,14 +5,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<tiles:importAttribute name="flow"/>
+
 <c:set var="lastYearsAmount" value='<%=new Integer[]{2016,2015,2014,2013,2012} %>'/>
 <c:set var="lastYearsNumber" value='<%=new Integer[]{2016,2015,2014} %>'/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="agent" value="EO"/>
-        <tiles:putAttribute name="page" value="selectionCA"/>
+        <tiles:putAttribute name="agent" value="eo"/>
+        <tiles:putAttribute name="page" value="${flow}/ca/selection"/>
     </tiles:insertDefinition>
     
     <div class="panel-default">

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="agent"/>
+<tiles:importAttribute name="flow"/>
 
 <html>
     <head>
@@ -17,6 +18,7 @@
 	        <div id="body" class="container espd-container">
 	            <tiles:insertAttribute name="body">
 	            	<tiles:putAttribute name="agent" value="${agent}"/>
+	            	<tiles:putAttribute name="flow" value="${flow}"/>
 	            </tiles:insertAttribute>
 	        </div>
 		</div>
