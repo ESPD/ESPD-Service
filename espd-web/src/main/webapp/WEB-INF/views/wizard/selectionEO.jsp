@@ -1,6 +1,3 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.lang.Integer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,8 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-<c:set var="lastYearsAmount" value="${[2016,2015,2014,2013,2012]}" scope="application" />
-<c:set var="lastYearsNumber" value="${[2016,2015,2014]}" scope="application" />
+<c:set var="lastYearsAmount" value="${[2016,2015,2014,2013,2012]}"/>
+<c:set var="lastYearsNumber" value="${[2016,2015,2014]}"/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
     <tiles:insertDefinition name="viewChangeRole">

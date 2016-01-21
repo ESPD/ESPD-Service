@@ -59,7 +59,6 @@
 	            </div>
 	        </c:if>
 	        
-	        
 	        <c:if test="${lastYearsAmount != null}">
 	            <tiles:insertDefinition name="multipleYearAmount">
 	                <tiles:putAttribute name="field" value="${field}"/>
@@ -81,8 +80,6 @@
 	                <div class="col-md-3">
 	                    <tiles:insertDefinition name="currencies">
 	                        <tiles:putAttribute name="currencyField" value="${field}.currency1"/>
-	                        <tiles:putAttribute name="currencyHtmlId" value="${field}-currency1"/>
-	                        <tiles:putAttribute name="currencyCssClass" value="form-control"/>
 	                    </tiles:insertDefinition>
 	                </div>
 	            </div>

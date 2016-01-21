@@ -5,10 +5,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="currencyField"/>
-<tiles:importAttribute name="currencyHtmlId"/>
-<tiles:importAttribute name="currencyCssClass"/>
 
-<form:select path="${currencyField}" id="${currencyHtmlId}" cssClass="${currencyCssClass}">
+<form:select path="${currencyField}" cssClass="form-control">
     <form:option value="${null}" label="---"/>
     <c:forEach items="<%=eu.europa.ec.grow.espd.constants.enums.Currency.values()%>" var="curr">
         <form:option value="${curr}">${curr}</form:option>

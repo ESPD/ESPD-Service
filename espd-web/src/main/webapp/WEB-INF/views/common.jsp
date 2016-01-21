@@ -95,8 +95,10 @@ request.setAttribute("span18n", inst.span());
 
         $('.radioslide:checked').each(function (index) {
             $($(this).attr("data-target")).show();
+            $($(this).attr("data-target-invert")).hide();
         });
         $('.radioslide:not(:checked)').each(function (index) {
+            $($(this).attr("data-target")).hide();
             $($(this).attr("data-target-invert")).show();
         });
     });

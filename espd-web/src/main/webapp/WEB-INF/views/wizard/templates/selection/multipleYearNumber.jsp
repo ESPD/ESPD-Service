@@ -12,10 +12,10 @@
 		<div class="col-md-5">
 		    <label class="control-label col-md-3 small">${span18n['crit_year']}</label>
 		    <div class="col-md-9">
-		        <tiles:insertDefinition name="years">
-		            <tiles:putAttribute name="yearField" value="${field}.year${loop.count}"/>
-		            <tiles:putAttribute name="lastYears" value="${lastYears}"/>
-		        </tiles:insertDefinition>
+		        <form:select path="${field}.year${loop.count}" cssClass="form-control" >
+					<form:option value="${null}" label="---"/>
+					<form:options items="${lastYears}"/>
+				</form:select>
 		    </div>
 	    </div>
 		<div class="col-md-7">
