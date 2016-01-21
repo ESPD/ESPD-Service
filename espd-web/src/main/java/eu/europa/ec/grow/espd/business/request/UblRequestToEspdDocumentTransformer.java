@@ -3,16 +3,24 @@ package eu.europa.ec.grow.espd.business.request;
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator;
 import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
+import eu.europa.ec.grow.espd.business.common.UblDocumentReferences;
+import eu.europa.ec.grow.espd.constants.enums.DocumentTypeCode;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.DescriptionType;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+import java.util.List;
+
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 /**
  * Create an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
@@ -24,12 +32,15 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
     private final PartyImplTransformer partyImplTransformer;
     private final CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator;
+    private final UblDocumentReferences ublDocumentReferences;
 
     @Autowired
     UblRequestToEspdDocumentTransformer(PartyImplTransformer partyImplTransformer,
-            CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator) {
+            CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator,
+            UblDocumentReferences ublDocumentReferences) {
         this.partyImplTransformer = partyImplTransformer;
         this.criteriaToEspdDocumentPopulator = criteriaToEspdDocumentPopulator;
+        this.ublDocumentReferences = ublDocumentReferences;
     }
 
     /**
@@ -45,7 +56,8 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
         addPartyInformation(input, espdDocument);
         addCriteriaInformation(input, espdDocument);
-        addProcurementProcedureInformation(input, espdDocument);
+        addTedInformation(input, espdDocument);
+        addEspdRequestInformation(input, espdDocument);
 
         return espdDocument;
     }
@@ -59,26 +71,58 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
         espdDocument.setAuthority(authority);
     }
 
-    private void addProcurementProcedureInformation(ESPDRequestType input, EspdDocument espdDocument) {
+    private void addEspdRequestInformation(ESPDRequestType input, EspdDocument espdDocument) {
+        EspdRequestMetadata metadata = new EspdRequestMetadata();
+        metadata.setId(readRequestId(input));
+        metadata.setIssueDate(readRequestDate(input));
+        metadata.setDescription(readRequestDescription(input));
+        // TODO build URL of the request
+        espdDocument.setRequestMetadata(metadata);
+    }
+
+    private String readRequestId(ESPDRequestType input) {
+        if (input.getID() == null) {
+            return null;
+        }
+        return input.getID().getValue();
+    }
+
+    private String readRequestDescription(ESPDRequestType input) {
+        if (input.getContractFolderID() == null || isBlank(input.getContractFolderID().getValue())) {
+            return null;
+        }
+        return "ESPDRequest " + input.getContractFolderID().getValue();
+    }
+
+    private Date readRequestDate(ESPDRequestType input) {
+        if (input.getIssueDate() == null) {
+            return null;
+        }
+
+        LocalDate localDate = input.getIssueDate().getValue();
+        if (input.getIssueTime() != null) {
+            LocalTime localTime = input.getIssueTime().getValue();
+            return new LocalDateTime(localDate.getYear(), localDate.getMonthOfYear(),
+                    localDate.getDayOfMonth(), localTime.getHourOfDay(), localTime.getMinuteOfHour(),
+                    localTime.getSecondOfMinute()).toDate();
+        }
+
+        return new LocalDateTime(localDate.getYear(), localDate.getMonthOfYear(),
+                localDate.getDayOfMonth(), 0, 0, 0).toDate();
+    }
+
+    private void addTedInformation(ESPDRequestType input, EspdDocument espdDocument) {
         if (input.getContractFolderID() != null) {
             espdDocument.setFileRefByCA(input.getContractFolderID().getValue());
         }
-        if (isNotEmpty(input.getAdditionalDocumentReference())) {
-            // TODO maybe filter by typecode
-            DocumentReferenceType procurementInfo = input.getAdditionalDocumentReference().get(0);
-            if (procurementInfo.getID() != null) {
-                espdDocument.setOjsNumber(procurementInfo.getID().getValue());
-            }
-            if (procurementInfo.getAttachment() != null && procurementInfo.getAttachment().getExternalReference() != null) {
-                ExternalReferenceType externalReference = procurementInfo.getAttachment().getExternalReference();
-                if (externalReference.getFileName() != null) {
-                    espdDocument.setProcedureTitle(externalReference.getFileName().getValue());
-                }
-                if (isNotEmpty(externalReference.getDescription())) {
-                    DescriptionType descriptionType = externalReference.getDescription().get(0);
-                    espdDocument.setProcedureShortDesc(descriptionType.getValue());
-                }
-            }
+
+        List<DocumentReferenceType> tedContractNumbers = ublDocumentReferences
+                .filterByTypeCode(input.getAdditionalDocumentReference(), DocumentTypeCode.TED_CN);
+        if (isNotEmpty(tedContractNumbers)) {
+            DocumentReferenceType procurementInfo = tedContractNumbers.get(0);
+            espdDocument.setOjsNumber(ublDocumentReferences.readIdValue(procurementInfo));
+            espdDocument.setProcedureTitle(ublDocumentReferences.readFileNameValue(procurementInfo));
+            espdDocument.setProcedureShortDesc(ublDocumentReferences.readDescriptionValue(procurementInfo));
         }
     }
 

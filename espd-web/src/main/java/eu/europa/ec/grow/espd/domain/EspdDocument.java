@@ -20,6 +20,8 @@ public class EspdDocument {
     private String lotConcerned;
     private String fileRefByCA;
 
+    private EspdRequestMetadata requestMetadata;
+
     // Economic operator criteria
     private AwardCriterion procurementReserved;
     private AwardCriterion eoRegistered;

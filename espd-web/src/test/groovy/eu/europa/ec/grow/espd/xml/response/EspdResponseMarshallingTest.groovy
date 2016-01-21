@@ -4,10 +4,13 @@ import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.EspdRequestMetadata
 import eu.europa.ec.grow.espd.domain.PartyImpl
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
+import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import org.joda.time.LocalDate
+import org.joda.time.LocalTime
 
 /**
  * Created by ratoico on 11/26/15.
@@ -248,7 +251,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
-        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TeD_CN"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TED_CN"
 
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
@@ -265,6 +268,40 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         then:
         result.ContractFolderID.text() == "HODOR refd by CA"
         result.ContractFolderID.@schemeAgencyID.text() == "TeD"
+    }
+
+    def "should contain AdditionalDocumentReference element regarding the ESPD Request information"() {
+        given:
+        def now = new Date()
+        def espd = new EspdDocument(requestMetadata: new EspdRequestMetadata(id: "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec",
+            issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.AdditionalDocumentReference[0].ID.text() == "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
+
+        then:
+        result.AdditionalDocumentReference[0].IssueDate.text() == LocalDateAdapter.marshal(new LocalDate(now))
+        result.AdditionalDocumentReference[0].IssueTime.text() == LocalTimeAdapter.marshal(new LocalTime(now))
+
+        then:
+        result.AdditionalDocumentReference[0].DocumentDescription.text() == "ESPDRequest SMART 2015/0065"
+
+
+        then:
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "ESPD_REQUEST"
+
+        then:
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
     }
 
 }

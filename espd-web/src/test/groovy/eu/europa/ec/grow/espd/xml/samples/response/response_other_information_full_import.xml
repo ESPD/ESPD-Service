@@ -8,6 +8,7 @@
     <cbc:IssueDate>2015-25-11</cbc:IssueDate>
     <cbc:IssueTime>13:19:20</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
+
     <cac:ContractingParty>
         <cac:Party>
             <cac:PartyName>
@@ -15,6 +16,7 @@
             </cac:PartyName>
         </cac:Party>
     </cac:ContractingParty>
+
     <espd-cac:EconomicOperatorParty>
         <!-- Main Tenderer -->
         <!-- This economic operator is not an SME, as defined in http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition/index_en.htm -->
@@ -69,9 +71,11 @@
             </cac:Contact>
         </cac:Party>
     </espd-cac:EconomicOperatorParty>
+
     <cac:ProcurementProjectLot>
         <cbc:ID>hodor lot</cbc:ID>
     </cac:ProcurementProjectLot>
+
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
         <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">BOGUS_CODE</cbc:TypeCode>
@@ -85,4 +89,33 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
     </ccv:Criterion>
+
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">6d48f751-53cc-4d7f-9dfb-21c3e802b2e0</cbc:ID>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
+        <cbc:DocumentDescription>Contract Notice as published in TeD</cbc:DocumentDescription>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML</cbc:URI>
+                <!-- Title of the Contract Notice -->
+                <cbc:FileName>Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</cbc:FileName>
+                <!-- Short description of the Procurement Project -->
+                <cbc:Description>Service category No 11: Management consulting services [6] and related services.</cbc:Description>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">4a1a633c-25fa-4c4d-abd8-89c623f9e9ec</cbc:ID>
+        <!-- Date and Time were automatically captured from the ESPDRequest -->
+        <cbc:IssueDate>2015-18-12</cbc:IssueDate>
+        <cbc:IssueTime>17:46:54</cbc:IssueTime>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">ESPD_REQUEST</cbc:DocumentTypeCode>
+        <cbc:DocumentDescription>ESPDRequest SMART 2015/0065</cbc:DocumentDescription>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec</cbc:URI>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
 </espd:ESPDResponse>

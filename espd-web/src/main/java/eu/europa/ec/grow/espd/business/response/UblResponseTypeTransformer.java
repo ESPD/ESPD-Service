@@ -67,7 +67,7 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
     }
 
     private void addIdInformation(ESPDResponseType responseType) {
-        responseType.setID(commonUblFactory.buildIdType());
+        responseType.setID(commonUblFactory.buildDocumentIdentifierType());
     }
 
     private void addCopyIndicatorInformation(ESPDResponseType responseType) {
@@ -115,7 +115,10 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
     }
 
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDResponseType responseType) {
-        // TODO add espd request reference
+        if (espdDocument.getRequestMetadata() != null) {
+            responseType.getAdditionalDocumentReference()
+                    .add(commonUblFactory.buildEspdRequestReferenceType(espdDocument.getRequestMetadata()));
+        }
         responseType.getAdditionalDocumentReference()
                 .add(commonUblFactory.buildProcurementProcedureType(espdDocument));
     }

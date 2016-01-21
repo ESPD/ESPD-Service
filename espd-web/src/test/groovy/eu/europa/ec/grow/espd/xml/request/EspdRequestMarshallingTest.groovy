@@ -1,9 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request
-
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
-
 /**
  *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
  */
@@ -126,7 +124,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
         result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
-        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TeD_CN"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TED_CN"
 
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"

@@ -4,8 +4,7 @@
                       xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1"
                       xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1">
     <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW"
-            schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">c0b5454f-c8bf-465f-afe7-6ba3f50c6589
-    </cbc:ID>
+            schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">c0b5454f-c8bf-465f-afe7-6ba3f50c6589</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:UUID>3de29d72-bbfe-480f-9a67-56b4134ec744</cbc:UUID>
     <cbc:VersionID>1</cbc:VersionID>
@@ -13,9 +12,26 @@
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2016/0069</cbc:ContractFolderID>
     <cac:ContractingParty>
         <cac:Party>
+            <cbc:WebsiteURI>www.hodor.com</cbc:WebsiteURI>
+            <cac:PartyIdentification>
+                <cbc:ID>43354d43323</cbc:ID>
+            </cac:PartyIdentification>
             <cac:PartyName>
-                <cbc:Name>European Commission, DG GROW</cbc:Name>
+                <cbc:Name>hodor</cbc:Name>
             </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:Postbox>1500</cbc:Postbox>
+                <cbc:StreetName>elm street</cbc:StreetName>
+                <cbc:CityName>drubetis</cbc:CityName>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">RO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact>
+                <cbc:Name>gogu</cbc:Name>
+                <cbc:Telephone>+43435543</cbc:Telephone>
+                <cbc:ElectronicMail>gogu@gogu.com</cbc:ElectronicMail>
+            </cac:Contact>
         </cac:Party>
     </cac:ContractingParty>
 
@@ -125,8 +141,7 @@
     <cac:AdditionalDocumentReference>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW"
                 schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">S206|2015-10-23|PN33|2015/S206-373035</cbc:ID>
-        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">TeD_CN
-        </cbc:DocumentTypeCode>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
         <cac:Attachment>
             <cac:ExternalReference>
                 <cbc:URI>http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML</cbc:URI>

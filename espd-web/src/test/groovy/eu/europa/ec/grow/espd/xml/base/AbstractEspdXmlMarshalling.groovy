@@ -6,6 +6,7 @@ import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator
 import eu.europa.ec.grow.espd.business.common.EconomicOperatorImplTransformer
 import eu.europa.ec.grow.espd.business.common.PartyImplTransformer
 import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer
+import eu.europa.ec.grow.espd.business.common.UblDocumentReferences
 import eu.europa.ec.grow.espd.business.common.UblEconomicOperatorPartyTypeTransformer
 import eu.europa.ec.grow.espd.business.request.UblRequestToEspdDocumentTransformer
 import eu.europa.ec.grow.espd.business.request.UblRequestTypeTransformer
@@ -47,9 +48,10 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         def ublRequestTypeTransformer = new UblRequestTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer)
         def partyImplTransformer = new PartyImplTransformer()
         def criteriaToEspdDocumentPopulator = new CriteriaToEspdDocumentPopulator()
-        def requestToEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer, criteriaToEspdDocumentPopulator)
+        def ublDocumentReferences = new UblDocumentReferences()
+        def requestToEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer, criteriaToEspdDocumentPopulator, ublDocumentReferences)
         def economicOperatorImplTransformer = new EconomicOperatorImplTransformer(partyImplTransformer)
-        def responseToEspdDocumentTransformer = new UblResponseToEspdDocumentTransformer(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
+        def responseToEspdDocumentTransformer = new UblResponseToEspdDocumentTransformer(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator, ublDocumentReferences)
         def ublResponseTypeTransformer = new UblResponseTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer, economicOperatorPartyTypeTransformer)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, requestToEspdDocumentTransformer,
                 responseToEspdDocumentTransformer, ublResponseTypeTransformer)

@@ -64,7 +64,7 @@ public class UblRequestTypeTransformer implements Function<EspdDocument, ESPDReq
     }
 
     private void addIdInformation(ESPDRequestType espdRequestType) {
-        espdRequestType.setID(commonUblFactory.buildIdType());
+        espdRequestType.setID(commonUblFactory.buildDocumentIdentifierType());
     }
 
     private void addCopyIndicatorInformation(ESPDRequestType espdRequestType) {
