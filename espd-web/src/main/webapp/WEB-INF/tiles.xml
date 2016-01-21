@@ -191,16 +191,16 @@
         <put-attribute name="countryHtmlId" value=""/>
         <put-attribute name="countryCssClass" value=""/>
     </definition>
+
     <definition name="currencies" template="/WEB-INF/views/wizard/templates/currencies.jsp">
         <put-attribute name="currencyField" value=""/>
         <put-attribute name="currencyHtmlId" value=""/>
         <put-attribute name="currencyCssClass" value=""/>
     </definition>
+    
     <definition name="years" template="/WEB-INF/views/wizard/templates/years.jsp">
-        <put-attribute name="currencyField" value=""/>
-        <put-attribute name="currencyHtmlId" value=""/>
-        <put-attribute name="currencyCssClass" value=""/>
-        <put-attribute name="maximumYears" value="5"/>
+        <put-attribute name="yearField" value=""/>
+        <put-attribute name="lastYears" value=""/>
     </definition>
 
     <definition name="partyInfo" template="/WEB-INF/views/wizard/templates/partyAddress.jsp">
@@ -208,6 +208,14 @@
         <put-attribute name="address" value="false"/>
         <put-attribute name="vatNumber" value="false"/>
         <put-attribute name="contacts" value="false"/>
+    </definition>
+
+    <definition name="progress" template="/WEB-INF/views/wizard/templates/progress.jsp">
+        <put-attribute name="start" value=""/>
+        <put-attribute name="procedure" value=""/>
+        <put-attribute name="exclusion" value=""/>
+        <put-attribute name="selection" value=""/>
+        <put-attribute name="finish" value=""/>
     </definition>
 
 </tiles-definitions>

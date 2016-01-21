@@ -19,7 +19,7 @@
 <tiles:importAttribute name="has_explain_certificates_independent_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_environmental"/>
 
-<s:message code="crit_description_placeholder" var="descriptionPlaceholder"/>
+
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
@@ -50,44 +50,41 @@
                             </c:otherwise>
                         </c:choose>
                     </label>
-                    <form:checkbox path="${field}.exists" id="${field}-answer" data-toggle="collapse"
-                                   data-target="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
+                    <form:checkbox path="${field}.exists" id="${field}-answer" data-toggle="collapse" data-target-invert="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
                 </div>
             </div>
         </c:if>
+        
         <c:if test="${has_please_describe_them}">
+        
             <div class="col-md-12" id="${field}-form">
                 <div class="form-group">
                     <div class="tab-pane" id="${field}-reliability">
                         <div class="form-group">
                             <c:choose>
                                 <c:when test="${has_explain_supply_contracts_quality}">
-                                    <label class="control-label col-md-4 small" for="${field}-description"><s:message
-                                            code='crit_explain_supply_contracts_quality_description'/></label>
+                                    <label class="control-label col-md-4 small">${span18n['crit_explain_supply_contracts_quality_description']}</label>
                                 </c:when>
                                 <c:when test="${has_explain_certificates_independent_quality}">
-                                    <label class="control-label col-md-4 small" for="${field}-description"><s:message
-                                            code='crit_explain_certificates_independent_quality_description'/></label>
+                                    <label class="control-label col-md-4 small">${span18n['crit_explain_certificates_independent_quality_description']}</label>
                                 </c:when>
                                 <c:when test="${has_explain_certificates_independent_environmental}">
-                                    <label class="control-label col-md-4 small" for="${field}-description"><s:message
-                                            code='crit_explain_certificates_independent_environmental_description'/></label>
+                                    <label class="control-label col-md-4 small">${span18n['crit_explain_certificates_independent_environmental_description']}</label>
                                 </c:when>
                                 <c:otherwise>
-                                    <label class="control-label col-md-4 small" for="${field}-description"><s:message
-                                            code='crit_please_describe_them'/></label>
+                                    <label class="control-label col-md-4 small">${span18n['crit_please_describe_them']}</label>
                                 </c:otherwise>
                             </c:choose>
                             <div class="col-md-8">
-                                <form:textarea path="${field}.description" class="form-control"
-                                               id="${field}-description"
-                                               placeholder="${descriptionPlaceholder}"></form:textarea>
+                                <form:textarea path="${field}.description" class="form-control" placeholder="${i18n['crit_description_placeholder']}"></form:textarea>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </c:if>
+        
+        
         <c:if test="${has_multiple_description_amount_date_recipients}">
             <tiles:insertDefinition name="multipleDescriptionAmountDateRecipients">
                 <tiles:putAttribute name="field" value="${field}"/>

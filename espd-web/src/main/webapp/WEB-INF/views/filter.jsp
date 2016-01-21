@@ -34,13 +34,9 @@ $(function() {
 
 	<div class="panel-default">
 
-		<ul class="nav nav-pills nav-wizard nav-justified">
-			<li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span data-i18n="progress_start"><s:message code='progress_start'/></span></a><div class="nav-arrow"></div></li>
-			<li><div class="nav-wedge"></div><a href="#"><i class="fa fa-university"></i>&nbsp;<span data-i18n="progress_procedure"><s:message code='progress_procedure'/></span></a><div class="nav-arrow"></div></li>
-			<li><div class="nav-wedge"></div><a href="#"><i class="fa fa-exclamation"></i>&nbsp;<span data-i18n="progress_exclusion"><s:message code='progress_exclusion'/></span></a><div class="nav-arrow"></div></li>
-			<li><div class="nav-wedge"></div><a href="#"><i class="fa fa-check-circle"></i>&nbsp;<span data-i18n="progress_selection"><s:message code='progress_selection'/></span></a><div class="nav-arrow"></div></li>
-			<li><div class="nav-wedge"></div><a href="#"><i class="fa fa-download"></i>&nbsp;<span data-i18n="progress_finish"><s:message code='progress_finish'/></span></a></li>
-		</ul>
+        <tiles:insertDefinition name="progress">
+			<tiles:putAttribute name="start" value="true"/>
+        </tiles:insertDefinition>
 
 		<div class="paragraph">
 			<h2 data-i18n="filter_header"><s:message code='filter_header'/></h2>

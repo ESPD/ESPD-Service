@@ -10,46 +10,16 @@
         <tiles:putAttribute name="currentPage" value="selection"/>
     </tiles:insertDefinition>
     <div class="panel-default">
-        <div class="panel panel-default no-border">
-            <ul class="nav nav-pills nav-wizard nav-justified">
-                <li class="active"><a href="#"><i class="fa fa-random"></i>&nbsp;<span
-                        data-i18n="progress_start"><s:message code='progress_start'/></span></a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="active">
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-university"></i>&nbsp;<span data-i18n="progress_procedure"><s:message
-                            code='progress_procedure'/></span></a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="active">
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-exclamation"></i>&nbsp;<span data-i18n="progress_exclusion"><s:message
-                            code='progress_exclusion'/></span></a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="active">
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-check-circle"></i>&nbsp;<span data-i18n="progress_selection"><s:message
-                            code='progress_selection'/></span></a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li>
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-download"></i>&nbsp;<span data-i18n="progress_finish"><s:message
-                            code='progress_finish'/></span></a></li>
-            </ul>
-        </div>
-        <div class="paragraph">
-            <h2>
-                <span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
-            </h2>
-        </div>
+    
+        <tiles:insertDefinition name="progress">
+			<tiles:putAttribute name="selection" value="true"/>
+        </tiles:insertDefinition>
+
+        <div class="paragraph"><h2>${span18n['createcasel_header']}</h2></div>
         <div class="alert alert-espd-info">
             <ul class="fa-ul">
                 <li>
-                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>
-                    <span data-i18n="createcasel_alert"><s:message code='createcasel_alert'/></span>
+                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>${span18n['createcasel_alert']}
                 </li>
             </ul>
         </div>
@@ -58,41 +28,29 @@
             </div>
             <div id="eo-satisfies-all-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <div id="selectionDeclares" class="">
-                        <strong data-i18n="crit_selection_eo_declares_that">
-                            <s:message code='crit_selection_eo_declares_that'/>
-                        </strong>
-                        <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip"
-                              title="<s:message code='crit_selection_eo_declares_that_tooltip'/>"></span>
-                    </div>
+					<strong>${span18n['crit_selection_eo_declares_that']}</strong>
+					<span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_satisfies_all_criteria']}"></span>
                 </div>
                 <div class="row criteria-row">
                     <div class="col-md-5 criteria-cell-left">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <strong>1. </strong>
-                                <strong data-i18n="crit_selection_eo_satisfies_all_criteria">
-                                    <s:message code='crit_selection_eo_satisfies_all_criteria'/>
-                                </strong>
+                                <strong>1. ${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-7 criteria-cell-right">
                         <div class="col-md-12">
                             <div class="form-group">
-
-                                <label class="control-label small" style="padding-top: 0;" for="eo-satisfies-all">
-                                    <s:message code='crit_your_answer'/>
-                                </label>
-                                <form:checkbox path="selectionSatisfiesAll.exists" id="eo-satisfies-all"
-                                               data-toggle="collapse" data-target="${'#'}eo-satisfies-all-form"
-                                               class="radioslide checktoggle form-control"/>
+                                <label class="control-label small" style="padding-top:0;">${span18n['crit_your_answer']}</label>
+                                <form:checkbox path="selectionSatisfiesAll.exists" data-toggle="collapse" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="eo-satisfies-all-form">
         <div class="panel panel-default espd-panel">
             <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse" data-target="#eo-suitability-section">
                 <s:message code='createcasel_suitability'/>
@@ -153,8 +111,7 @@
                         <strong data-i18n="crit_selection_eo_economic_article">
                             <s:message code='crit_selection_eo_economic_article'/>
                         </strong>
-                        <span data-i18n="crit_selection_eo_economic_article_tooltip" data-toggle="tooltip"
-                              title="<s:message code='crit_selection_eo_economic_article_tooltip'/>"></span>
+                        <span data-i18n="crit_selection_eo_economic_article_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_economic_article_tooltip']}"></span>
                     </div>
                 </div>
                 <tiles:insertDefinition name="economicFinancialCriterionEO">
@@ -431,6 +388,8 @@
                 </tiles:insertDefinition>
             </div>
         </div>
+        </div>
+        
         <tiles:insertDefinition name="footerButtons">
         </tiles:insertDefinition>
     </div>

@@ -26,33 +26,9 @@
     </tiles:insertDefinition>
 
     <div class="panel-default">
-        <div class="panel panel-default no-border">
-            <ul class="nav nav-pills nav-wizard nav-justified">
-                <li class="active">
-					<a href="#"><i class="fa fa-random"></i>&nbsp;${span18n['progress_start']}</a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="active">
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li>
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li>
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li>
-                    <div class="nav-wedge"></div>
-                    <a href="#"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
-				</li>
-            </ul>
-        </div>
+        <tiles:insertDefinition name="progress">
+			<tiles:putAttribute name="procedure" value="true"/>
+        </tiles:insertDefinition>
 
         <div class="errorContainer alert alert-danger" style="display: none">
             <ul class="fa-ul">
