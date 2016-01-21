@@ -19,13 +19,13 @@
         </tiles:insertDefinition>
 
 		<div class="paragraph">
-			<h2>${span18n("createcaexcl_header")}</h2>
+			<h2>${span18n["createcaexcl_header"]}</h2>
 		</div>
 		
 		<div class="panel panel-default espd-panel">
 
 			<div class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
-				{$span18n("crit_top_title_grounds_criminal_conv")}
+				${span18n["crit_top_title_grounds_criminal_conv"]}
 			</div>
 
 			<div id="criminal_conv" class="collapse in">
