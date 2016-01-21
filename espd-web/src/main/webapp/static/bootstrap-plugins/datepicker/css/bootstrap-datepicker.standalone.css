@@ -6,7 +6,7 @@
  * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
  */
 .datepicker {
-  padding: 4px;
+  padding: 6px 12px 4px 12px; /* old value padding: 4px; changed by lukasal 21/01/2016 to align padding of placeholder*/
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

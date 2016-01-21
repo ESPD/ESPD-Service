@@ -222,7 +222,7 @@ a.editable-click.editable-disabled:hover {
  *
  */
 .datepicker {
-  padding: 4px;
+  padding: 6px 12px 4px 12px; /* old value padding: 4px; changed by lukasal 21/01/2016 to align padding of placeholder*/
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
