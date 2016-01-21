@@ -12,8 +12,10 @@
     });
 </script>
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="currentPage" value="selection"/>
+        <tiles:putAttribute name="agent" value="CA"/>
+        <tiles:putAttribute name="page" value="selectionEO"/>
     </tiles:insertDefinition>
 
     <div class="panel-default">

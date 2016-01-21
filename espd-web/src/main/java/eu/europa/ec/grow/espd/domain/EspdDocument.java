@@ -9,7 +9,7 @@ import java.io.IOException;
 @Data
 public class EspdDocument {
 
-    private String action;// "ca_create_espd" or "eo_import_espd"
+    //private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
     private EconomicOperatorImpl economicOperator;

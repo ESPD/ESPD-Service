@@ -6,6 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
+<tiles:importAttribute name="agent"/>
+
 <script>
     $(function () {
         $("#espdform").validate({
@@ -18,11 +20,11 @@
     });
 </script>
 
-<c:set var="isAgentEO" value="${param['agent'] == 'eo'}"/>
-
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="currentPage" value="procedure"/>
+        <tiles:putAttribute name="agent" value="${agent}"/>
+        <tiles:putAttribute name="page" value="${agent == 'CA' ? 'procedureEO' : 'procedureCA'}"/>
     </tiles:insertDefinition>
 
     <div class="panel-default">
@@ -140,7 +142,7 @@
         </div>
 
 
-        <c:if test="${isAgentEO}">
+        <c:if test="${agent == 'EO'}">
 	        <div class="paragraph">
 	            <h2>${span18n['createeo_header']}</h2>
 	        </div>

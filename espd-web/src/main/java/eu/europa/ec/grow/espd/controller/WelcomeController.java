@@ -31,145 +31,148 @@ class WelcomeController {
 
     private final EspdExchangeMarshaller exchangeMarshaller;
 
-    @Autowired
-    WelcomeController(EspdExchangeMarshaller exchangeMarshaller) {
+    @Autowired WelcomeController(EspdExchangeMarshaller exchangeMarshaller) {
         this.exchangeMarshaller = exchangeMarshaller;
     }
 
-    @ModelAttribute("espd")
-    public EspdDocument newDocument() {
-        return new EspdDocument();
-    }
-
-    @RequestMapping({ "/", "/welcome" })
-    public String showWelcomePage() {
-        return "welcome";
+    @ModelAttribute("espd") public EspdDocument newDocument() {
+    	return new EspdDocument();
     }
     
-    @RequestMapping("/filter")
-    public String showFilterPage() {
-
-        return "filter";
+    @RequestMapping({ "/", "/welcome" }) public String getWelcome() {
+    	return "welcome";
+    }
+    
+    @RequestMapping("/filter") public String getFilter() {
+    	return "filter";
     }
 
-    @RequestMapping(value = "/filter", method = POST)
-    public String importXmlFile(@RequestParam String action, @RequestParam String agent,
-            @RequestParam("authority.country") Country country, @RequestParam(required = false) MultipartFile attachment,
-            Map<String, Object> model) throws IOException {
-        if ("eo_import_espd".equals(action)) {
-            try (InputStream is = attachment.getInputStream()) {
-                EspdDocument espd = exchangeMarshaller.importEspdRequest(is);
-                espd.setAction(action);
-                model.put("espd", espd);
-                return "redirect:/procedure?agent=" + agent;
-            }
-        } else if ("ca_create_espd".equals(action)) {
-            // TODO improve this
-            EspdDocument espd = (EspdDocument) model.get("espd");
-            espd.getAuthority().setCountry(country);
-            return "redirect:/procedure?agent=" + agent;
-        }
+    @RequestMapping(value = "/filter", params="ca_create_espd", method = POST)
+    public String createCA(@RequestParam String agent, @RequestParam("authority.country") Country country, Map<String, Object> model) throws IOException {
+    	EspdDocument espd = (EspdDocument) model.get("espd");
+    	espd.getAuthority().setCountry(country);
+    	return "EO".equals(agent) ? "redirect:/procedureEO" : "redirect:/procedureCA";
+    }
 
+    @RequestMapping(value = "/filter", params="eo_import_espd", method = POST)
+    public String importEO(@RequestParam String agent, @RequestParam("authority.country") Country country, @RequestParam(required = false) MultipartFile attachment, Map<String, Object> model) throws IOException {
+    	try (InputStream is = attachment.getInputStream()) {
+    		EspdDocument espd = exchangeMarshaller.importEspdRequest(is);
+    		model.put("espd", espd);
+    		return "EO".equals(agent) ? "redirect:/procedureEO" : "redirect:/procedureCA";
+    	}
+    }
+
+    /* Create : page 1 */
+
+    @RequestMapping("/procedureCA") public String getProcedureCA(@ModelAttribute("espd") EspdDocument espd) { 
+    	return "procedureCA"; 
+    }
+    @RequestMapping("/procedureEO") public String getProcedureEO(@ModelAttribute("espd") EspdDocument espd) { 
+    	return "procedureEO"; 
+    }
+    
+    @RequestMapping(value = "/procedureCA", method = POST)
+    public String postProcedureCA(@ModelAttribute("espd") @Valid EspdDocument espd, BindingResult bindingResult) {
+    	return bindingResult.hasErrors() ? "procedureCA" : "redirect:/exclusionCA";
+    }
+
+    @RequestMapping(value = "/procedureEO", method = POST)
+    public String postProcedureEO(@ModelAttribute("espd") @Valid EspdDocument espd, BindingResult bindingResult) {
+        return bindingResult.hasErrors() ? "procedureEO" : "redirect:/exclusionEO";
+    }
+
+    /* Exclusion : page 2 */
+
+    @RequestMapping("/exclusionCA") public String getExclusionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "exclusionCA";
+    }
+    @RequestMapping("/exclusionEO") public String getExclusionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "exclusionEO";
+    }
+    @RequestMapping(value = "/exclusionCA", method = POST, params = "prev") public String prevExclusionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/procedureCA";
+    }
+    @RequestMapping(value = "/exclusionEO", method = POST, params = "prev") public String prevExclusionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/procedureEO";
+    }
+    @RequestMapping(value = "/exclusionCA", method = POST, params = "next") public String nextExclusionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/selectionCA";
+    }
+    @RequestMapping(value = "/exclusionEO", method = POST, params = "next") public String nextExclusionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/selectionEO";
+    }
+
+    /* Selection : page 3 */
+
+    @RequestMapping("/selectionCA") public String getSelectionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "selectionCA";
+    }
+    @RequestMapping("/selectionEO") public String getSelectionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "selectionEO";
+    }
+    @RequestMapping(value = "/selectionCA", method = POST, params = "prev") public String prevSelectionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/exclusionCA";
+    }
+    @RequestMapping(value = "/selectionEO", method = POST, params = "prev") public String prevSelectionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/exclusionEO";
+    }
+    @RequestMapping(value = "/selectionCA", method = POST, params = "next") public String nextSelectionCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/finishCA";
+    }
+    @RequestMapping(value = "/selectionEO", method = POST, params = "next") public String nextSelectionEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "redirect:/finishEO";
+    }
+
+    /* Finish : Page 4 */
+
+    @RequestMapping("/finishCA") public String getFinishCA(@ModelAttribute("espd") EspdDocument espd) {
+        return "finishCA";
+    }
+    @RequestMapping("/finishEO") public String getFinishEO(@ModelAttribute("espd") EspdDocument espd) {
+        return "finishEO";
+    }
+
+    @RequestMapping(value = "/finishCA", method = POST, params = "prev") public String prevFinishCA() {
+        return "redirect:/selectionCA";
+    }
+    @RequestMapping(value = "/finishEO", method = POST, params = "prev") public String prevFinishEO() {
+        return "redirect:/selectionEO";
+    }
+
+    @RequestMapping(value = "/finishCA", method = RequestMethod.POST)
+    public String postFinishCA(@ModelAttribute("espd") EspdDocument espd, HttpServletResponse response, SessionStatus status, BindingResult bindingResult) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return "/finishCA";
+        }
+        export(espd, response, false, status);
         return null;
     }
 
-    // Create : page 1
-
-    @RequestMapping("/procedure")
-    public String showCreatePage(@ModelAttribute("espd") EspdDocument espd) {
-        return "procedure";
-    }
-
-    @RequestMapping(value = "/procedure", method = POST)
-    public String postCreatePage(@RequestParam String agent, @ModelAttribute("espd") @Valid EspdDocument espd,
-            BindingResult bindingResult) {
+    @RequestMapping(value = "/finishEO", method = RequestMethod.POST)
+    public String postFinishEO(@ModelAttribute("espd") EspdDocument espd, HttpServletResponse response, SessionStatus status, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
-            return "procedure";
+            return "/finishEO";
         }
-
-        return "redirect:/exclusion?agent=" + agent;
+        export(espd, response, true, status);
+        return null;
     }
 
-    @RequestMapping(value = "/procedure", method = POST, params = "prev")
-    public String procedurePreviousPage() {
-        return "redirect:/filter";
-    }
-
-    // Exclusion : page 2
-
-    @RequestMapping("/exclusion")
-    public String showExcludeCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return (isEconomicOperator(agent)) ? "exclusionEO" : "exclusionCA";
-    }
-
-    @RequestMapping(value = "/exclusion", method = POST, params = "next")
-    public String exclusionCriteriaNextPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return "redirect:/selection?agent=" + agent;
-    }
-
-    @RequestMapping(value = "/exclusion", method = POST, params = "prev")
-    public String exclusionCriteriaPreviousPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return "redirect:/procedure?agent=" + agent;
-    }
-
-    // Selection : page 3
-
-    @RequestMapping("/selection")
-    public String showSelectCAPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return isEconomicOperator(agent) ? "selectionEO" : "selectionCA";
-    }
-
-    private boolean isEconomicOperator(@RequestParam String agent) {
-        return "eo".equals(agent);
-    }
-
-    @RequestMapping(value = "/selection", method = POST, params = "next")
-    public String selectionCriteriaNextPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return "redirect:/finish?agent=" + agent;
-    }
-
-    @RequestMapping(value = "/selection", method = POST, params = "prev")
-    public String selectionCriteriaPreviousPage(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd) {
-        return "redirect:/exclusion?agent=" + agent;
-    }
-
-    // Finish : Page 4
-
-    @RequestMapping("/finish")
-    public String showFinishCAPage(@ModelAttribute("espd") EspdDocument espd) {
-        return "finish";
-    }
-
-    @RequestMapping(value = "/finish", method = RequestMethod.POST)
-    public String exportXmlFile(@RequestParam String agent, @ModelAttribute("espd") EspdDocument espd,
-            HttpServletResponse response, SessionStatus status, BindingResult bindingResult) throws IOException {
-        if (bindingResult.hasErrors()) {
-            return "/finish";
-        }
-
+    private void export(EspdDocument espd, HttpServletResponse response, Boolean isEO, SessionStatus status) throws IOException {
         try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
             response.setContentType(APPLICATION_XML_VALUE);
-
-            if (isEconomicOperator(agent)) {
-                response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-response.xml\"");
-                exchangeMarshaller.generateEspdResponse(espd, out);
-            } else {
-                response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-request.xml\"");
-                exchangeMarshaller.generateEspdRequest(espd, out);
+            
+            //check isEO
+            {
+            	response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename =\"espd-response.xml\"");
+            	exchangeMarshaller.generateEspdResponse(espd, out);
             }
-
+            
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
-
             out.flush();
         } finally {
             status.setComplete();
         }
-        return null;
-    }
-
-    @RequestMapping(value = "/finish", method = POST, params = "prev")
-    public String finishPreviousPage(@RequestParam String agent) {
-        return "redirect:/selection?agent=" + agent;
     }
 
     @InitBinder

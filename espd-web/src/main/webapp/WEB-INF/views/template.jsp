@@ -2,6 +2,8 @@
 <!DOCTYPE HTML>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<tiles:importAttribute name="agent"/>
+
 <html>
     <head>
         <tiles:insertAttribute name="common" />
@@ -13,7 +15,9 @@
 	            <tiles:insertAttribute name="breadcrumb"/>
 	        </div>
 	        <div id="body" class="container espd-container">
-	            <tiles:insertAttribute name="body"/>
+	            <tiles:insertAttribute name="body">
+	            	<tiles:putAttribute name="agent" value="${agent}"/>
+	            </tiles:insertAttribute>
 	        </div>
 		</div>
         <div id="footer">

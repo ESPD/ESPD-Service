@@ -7,7 +7,15 @@
         <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
 		<put-attribute name="breadcrumb" value="/WEB-INF/views/breadcrumb.jsp" />
         <put-attribute name="body" value="" />
+    	<put-attribute name="agent" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+    </definition>
+
+    <definition name="agentCA" extends="defaultTemplate">
+    	<put-attribute name="agent" value="CA" />
+    </definition>
+    <definition name="agentEO" extends="defaultTemplate">
+    	<put-attribute name="agent" value="EO" />
     </definition>
 
     <definition name="welcome" extends="defaultTemplate">
@@ -18,27 +26,33 @@
 		<put-attribute name="body" value="/WEB-INF/views/filter.jsp" />
     </definition>
 
-    <definition name="procedure" extends="defaultTemplate">
+    <definition name="procedureCA" extends="agentCA">
+		<put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" />
+    </definition>
+    <definition name="procedureEO" extends="agentEO">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" />
     </definition>
 
-    <definition name="exclusionCA" extends="defaultTemplate">
+    <definition name="exclusionCA" extends="agentCA">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" />
     </definition>
 
-    <definition name="exclusionEO" extends="defaultTemplate">
+    <definition name="exclusionEO" extends="agentEO">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" />
     </definition>
 
-    <definition name="selectionCA" extends="defaultTemplate">
+    <definition name="selectionCA" extends="agentCA">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" />
     </definition>
 
-    <definition name="selectionEO" extends="defaultTemplate">
+    <definition name="selectionEO" extends="agentEO">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" />
     </definition>
 
-    <definition name="finish" extends="defaultTemplate">
+    <definition name="finishCA" extends="agentCA">
+		<put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" />
+    </definition>
+    <definition name="finishEO" extends="agentEO">
 		<put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" />
     </definition>
 
@@ -188,9 +202,7 @@
         <put-attribute name="finish" value=""/>
     </definition>
 
-    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp">
-        <put-attribute name="currentPage" value=""/>
-    </definition>
+    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp"> <!-- page, agent --></definition>
 
     <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/footerButtons.jsp">
         <put-attribute name="lastStep" value="false"/>

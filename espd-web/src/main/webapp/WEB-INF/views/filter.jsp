@@ -59,12 +59,12 @@ $(function() {
 			</h3>
 			
 			<div class="radio" >
-				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
+				<label><input id="whoareyou_ca" name="agent" value="CA" class="radiotab" type="radio" href="#tab_ca"><span data-i18n="filter_i_am_ca"><s:message code='filter_i_am_ca'/></span></label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
 			
 			<div class="radio">
-				<label><input id="whoareyou_eo" name="agent" value="eo" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
+				<label><input id="whoareyou_eo" name="agent" value="EO" class="radiotab" type="radio" href="#tab_eo"><span data-i18n="filter_i_am_eop"><s:message code='filter_i_am_eop'/></span></label>
 				<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip" title="<s:message code='tooltip_eo_ref_suppl'/>"></span>
 			</div>
 
@@ -75,7 +75,7 @@ $(function() {
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
 		
 					<div class="radio">
-						<label><input name="action" value="ca_create_espd" class="radiotab radioCa" type="radio" data-target="#tab-from"><span data-i18n="filter_create_espd"><s:message code='filter_create_espd'/></span></label>
+						<label><input name="ca_create_espd" class="radiotab radioCa" type="radio" data-target="#tab-from"><span data-i18n="filter_create_espd"><s:message code='filter_create_espd'/></span></label>
 						<span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="<s:message code='tooltip_ca_can_create_espd'/>"></span>
 					</div>
 					<div class="radio">
@@ -93,7 +93,7 @@ $(function() {
 					
 					<div class=" radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_import_espd"><s:message code='filter_import_espd'/></span></label>
+						<label><input name="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_import_espd"><s:message code='filter_import_espd'/></span></label>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
 						
 					</div>

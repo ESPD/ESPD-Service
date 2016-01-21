@@ -9,11 +9,13 @@
 <c:set var="lastYearsNumber" value="${[2016,2015,2014]}"/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="currentPage" value="selection"/>
+        <tiles:putAttribute name="agent" value="EO"/>
+        <tiles:putAttribute name="page" value="selectionCA"/>
     </tiles:insertDefinition>
-    <div class="panel-default">
     
+    <div class="panel-default">
         <tiles:insertDefinition name="progress">
 			<tiles:putAttribute name="selection" value="true"/>
         </tiles:insertDefinition>

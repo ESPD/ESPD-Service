@@ -6,8 +6,10 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="currentPage" value="exclusion"/>
+        <tiles:putAttribute name="agent" value="EO"/>
+        <tiles:putAttribute name="page" value="exclusionCA"/>
     </tiles:insertDefinition>
 	
 	<div class="panel-default">
@@ -17,17 +19,15 @@
         </tiles:insertDefinition>
 
 		<div class="paragraph">
-			<h2>
-				<span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
-			</h2>
+			<h2>${span18n("createcaexcl_header")}</h2>
 		</div>
 		
 		<div class="panel panel-default espd-panel">
-		
-			<div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
-				<s:message code="crit_top_title_grounds_criminal_conv"/>
+
+			<div class="espd-panel-heading" data-toggle="collapse" data-target="#criminal_conv">
+				{$span18n("crit_top_title_grounds_criminal_conv")}
 			</div>
-						
+
 			<div id="criminal_conv" class="collapse in">
 			<div class="espd-panel-body panel-body">
 			

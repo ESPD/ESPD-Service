@@ -6,10 +6,12 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
-        <tiles:putAttribute name="currentPage" value="exclusion"/>
+        <tiles:putAttribute name="agent" value="CA"/>
+        <tiles:putAttribute name="page" value="exclusionEO"/>
     </tiles:insertDefinition>
-	
+    
 	<div class="panel-default">
 	
         <tiles:insertDefinition name="progress">
