@@ -86,7 +86,9 @@
 		</div>
 
         <tiles:insertDefinition name="footerButtons">
-            <tiles:putAttribute name="lastStep"  value="true"/>
+            <tiles:putAttribute name="nextCode" value="export"/>
+            <tiles:putAttribute name="prev" value="selection"/>
+            <tiles:putAttribute name="next" value="generate"/>
         </tiles:insertDefinition>
 	</div>
 	</form:form>

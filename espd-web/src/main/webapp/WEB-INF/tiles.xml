@@ -12,19 +12,19 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
     </definition>
 
-    <definition name="requestCA" extends="defaultTemplate">
+    <definition name="request_ca" extends="defaultTemplate">
     	<put-attribute name="agent" value="ca" />
     	<put-attribute name="flow" value="request" />
     </definition>
-    <definition name="requestEO" extends="defaultTemplate">
+    <definition name="request_eo" extends="defaultTemplate">
     	<put-attribute name="agent" value="eo" />
     	<put-attribute name="flow" value="request" />
     </definition>
-    <definition name="responceCA" extends="defaultTemplate">
+    <definition name="responce_ca" extends="defaultTemplate">
     	<put-attribute name="agent" value="ca" />
     	<put-attribute name="flow" value="responce" />
     </definition>
-    <definition name="responceEO" extends="defaultTemplate">
+    <definition name="responce_eo" extends="defaultTemplate">
     	<put-attribute name="agent" value="eo" />
     	<put-attribute name="flow" value="responce" />
     </definition>
@@ -34,17 +34,17 @@
     <definition name="about" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp" /></definition>
     <definition name="error" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp" /></definition>
 
-    <definition name="requestCAProcedure" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
-    <definition name="requestEOProcedure" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="request_ca_procedure" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="request_eo_procedure" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
     
-    <definition name="requestCAExclusion" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
-    <definition name="requestEOExclusion" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
+    <definition name="request_ca_exclusion" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
+    <definition name="request_eo_exclusion" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
 
-    <definition name="requestCASelection" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
-    <definition name="requestEOSelection" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
+    <definition name="request_ca_selection" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
+    <definition name="request_eo_selection" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
 
-    <definition name="requestCAFinish" extends="requestCA"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
-    <definition name="requestEOFinish" extends="requestEO"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="request_ca_finish" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="request_eo_finish" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
     <!-- exclusion -->
     
@@ -184,12 +184,13 @@
         <put-attribute name="finish" value=""/>
     </definition>
 
-    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp"> <!-- page, agent --></definition>
+    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/viewChangeRole.jsp"><!-- page, agent --></definition>
 
     <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/footerButtons.jsp">
-        <put-attribute name="lastStep" value="false"/>
-        <put-attribute name="prevLink" value="false"/>
-        <put-attribute name="prevUrl" value=""/>
+        <put-attribute name="prevCode" value="previous"/>
+        <put-attribute name="nextCode" value="next"/>
+        <put-attribute name="prev" value=""/>
+        <put-attribute name="next" value=""/>
     </definition>
 
 </tiles-definitions>

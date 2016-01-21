@@ -398,6 +398,8 @@
         </div>
         
         <tiles:insertDefinition name="footerButtons">
+            <tiles:putAttribute name="prev" value="exclusion"/>
+            <tiles:putAttribute name="next" value="finish"/>
         </tiles:insertDefinition>
     </div>
 </form:form>

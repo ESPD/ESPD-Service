@@ -466,8 +466,8 @@
     </div>
 
     <tiles:insertDefinition name="footerButtons">
-    	<tiles:putAttribute name="prevLink" value="true"/>
-    	<tiles:putAttribute name="prevUrl" value="filter"/>
+    	<tiles:putAttribute name="prev" value="/filter"/>
+    	<tiles:putAttribute name="next" value="exclusion"/>
     </tiles:insertDefinition>
 
 </form:form>

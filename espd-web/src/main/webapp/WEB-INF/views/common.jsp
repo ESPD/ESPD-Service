@@ -38,23 +38,23 @@ request.setAttribute("span18n", inst.span());
     }
 
     var defaultValidators = {};
-    validator(defaultValidators, "required", "<s:message code='validator_required'/>");
-    validator(defaultValidators, "remote", "<s:message code='validator_remote'/>");
-    validator(defaultValidators, "email", "<s:message code='validator_email'/>");
-    validator(defaultValidators, "url", "<s:message code='validator_url'/>");
-    validator(defaultValidators, "date", "<s:message code='validator_date'/>");
-    validator(defaultValidators, "dateISO", "<s:message code='validator_dateISO'/>");
-    validator(defaultValidators, "number", "<s:message code='validator_number'/>");
-    validator(defaultValidators, "digits", "<s:message code='validator_digits'/>");
-    validator(defaultValidators, "creditcard", "<s:message code='validator_creditcard'/>");
-    validator(defaultValidators, "equalTo", "<s:message code='validator_equalTo'/>");
-    validator(defaultValidators, "accept", "<s:message code='validator_accept'/>");
-    validator(defaultValidators, "maxlength", "<s:message code='validator_maxlength'/>");
-    validator(defaultValidators, "minlength", "<s:message code='validator_minlength'/>");
-    validator(defaultValidators, "rangelength", "<s:message code='validator_rangelength'/>");
-    validator(defaultValidators, "range", "<s:message code='validator_range'/>");
-    validator(defaultValidators, "max", "<s:message code='validator_max'/>");
-    validator(defaultValidators, "min", "<s:message code='validator_min'/>");
+    validator(defaultValidators, "required", "${i18n['validator_required']}");
+    validator(defaultValidators, "remote", "${i18n['validator_remote']}");
+    validator(defaultValidators, "email", "${i18n['validator_email']}");
+    validator(defaultValidators, "url", "${i18n['validator_url']}");
+    validator(defaultValidators, "date", "${i18n['validator_date']}");
+    validator(defaultValidators, "dateISO", "${i18n['validator_dateISO']}");
+    validator(defaultValidators, "number", "${i18n['validator_number']}");
+    validator(defaultValidators, "digits", "${i18n['validator_digits']}");
+    validator(defaultValidators, "creditcard", "${i18n['validator_creditcard']}");
+    validator(defaultValidators, "equalTo", "${i18n['validator_equalTo']}");
+    validator(defaultValidators, "accept", "${i18n['validator_accept']}");
+    validator(defaultValidators, "maxlength", "${i18n['validator_maxlength']}");
+    validator(defaultValidators, "minlength", "${i18n['validator_minlength']}");
+    validator(defaultValidators, "rangelength", "${i18n['validator_rangelength']}");
+    validator(defaultValidators, "range", "${i18n['validator_range']}");
+    validator(defaultValidators, "max", "${i18n['validator_max']}");
+    validator(defaultValidators, "min", "${i18n['validator_min']}");
 
     $(function () {
         $(".filecontrol").fileinput();
