@@ -65,7 +65,7 @@ class WelcomeController {
 
     /* Create : page 1 */
 
-    @RequestMapping("/requeastprocedureCA") public String getProcedureCA(@ModelAttribute("espd") EspdDocument espd) { 
+    @RequestMapping("/procedureCA") public String getProcedureCA(@ModelAttribute("espd") EspdDocument espd) { 
     	return "procedureCA"; 
     }
     @RequestMapping("/procedureEO") public String getProcedureEO(@ModelAttribute("espd") EspdDocument espd) { 
