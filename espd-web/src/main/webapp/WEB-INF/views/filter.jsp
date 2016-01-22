@@ -24,7 +24,7 @@ $(function() {
 	country.change(function() {
     	$('#nextBtn').prop('disabled', $(this).val() === '');
     });
-    $("*[name='action']").click(function () {
+    $("[name=ca_create_espd], [name=eo_import_espd]").click(function () {
     	$('#nextBtn').prop('disabled', country.val() === '');
     });
     $('#nextBtn').prop('disabled', true);
@@ -110,18 +110,13 @@ $(function() {
 				<div class="tab-pane" id="tab-from">
 				
 					<h3 data-i18n="filter_where_are_you_from"><s:message code='filter_where_are_you_from'/></h3>
-					
-					<div class="form-group">
-						<div class="col-md-2">
-							<label data-i18n="form-control filter_select_country"><s:message code='filter_select_country'/></label>
-						</div>
-						<div class="col-md-2">
-		                    <tiles:insertDefinition name="countries">
-		                        <tiles:putAttribute name="field" value="authority.country"/>
-		                    </tiles:insertDefinition>
-	                    </div>
-	                    <div class="col-md-8">&nbsp;</div>
-                    </div>
+
+					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
+			        <tiles:insertDefinition name="countries">
+			        	<tiles:putAttribute name="field" value="authority.country"/>
+			        	<tiles:putAttribute name="cssClass" value=""/>
+			        </tiles:insertDefinition>
+
 				</div>
 
 			</div>

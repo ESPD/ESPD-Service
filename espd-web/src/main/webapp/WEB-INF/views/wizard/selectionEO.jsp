@@ -51,7 +51,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label small" style="padding-top:0;">${span18n['crit_your_answer']}</label>
-                                <form:checkbox path="selectionSatisfiesAll.exists" data-toggle="collapse" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
+                                <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
 						<s:message code="crit_your_answer"></s:message>
 					</label>
 						
-					<form:checkbox path="${field}.exists" id="${field}-field6" data-toggle="collapse" data-target="${'#'}${field}-form" cssClass="${yesByDefault?'radioslide-yesByDefault':''} radioslide checktoggle form-control" />
+					<form:checkbox path="${field}.exists" data-target="${'#'}${field}-form" cssClass="${yesByDefault?'radioslide-yesByDefault':''} radioslide checktoggle form-control" />
 				</div>
 			</div>
 

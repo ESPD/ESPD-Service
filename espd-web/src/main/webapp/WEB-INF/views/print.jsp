@@ -199,7 +199,7 @@
 	                            	${span18n['createeo_if_proc_reserved']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="procurementReserved.exists" data-toggle="collapse" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="procurementReserved.exists" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                             </div>
                        </div>
@@ -228,7 +228,7 @@
 	                            	${span18n['createeo_eo_approved_cert']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="eoRegistered.exists" data-toggle="collapse" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoRegistered.exists" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
 	                            </div>
 	                        </div>
                        </div>
@@ -295,7 +295,7 @@
                        		<div class="form-group">
 	                            <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="eoParticipatingProcurementProcedure.exists" data-toggle="collapse" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoParticipatingProcurementProcedure.exists" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                            	</div>
                        </div>
@@ -711,7 +711,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label small" style="padding-top:0;">${span18n['crit_your_answer']}</label>
-                                <form:checkbox path="selectionSatisfiesAll.exists" data-toggle="collapse" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
+                                <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
                             </div>
                         </div>
                     </div>

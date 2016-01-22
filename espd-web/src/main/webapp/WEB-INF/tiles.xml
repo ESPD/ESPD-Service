@@ -170,6 +170,7 @@
 
     <definition name="countries" template="/WEB-INF/views/wizard/templates/countries.jsp">
         <put-attribute name="field" value=""/>
+        <put-attribute name="cssClass" value="form-control"/>
     </definition>
 
     <!-- ~ common exclusion and selection subcriterias -->

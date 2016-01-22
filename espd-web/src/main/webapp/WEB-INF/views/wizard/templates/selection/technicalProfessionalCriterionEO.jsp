@@ -40,7 +40,7 @@
         <c:if test="${has_your_answer}">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label small" style="padding-top: 0px;" for="${field}-answer">
+                    <label class="control-label small" style="padding-top: 0px;">
                         <c:choose>
                             <c:when test="${allows_checks != null && allows_checks}">
                                 <s:message code='crit_do_you_allow_checks'/>
@@ -50,7 +50,7 @@
                             </c:otherwise>
                         </c:choose>
                     </label>
-                    <form:checkbox path="${field}.exists" id="${field}-answer" data-toggle="collapse" data-target-invert="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
+                    <form:checkbox path="${field}.exists" data-target-invert="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
                 </div>
             </div>
         </c:if>

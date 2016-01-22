@@ -32,6 +32,7 @@
 
 	<div id="header">
 
+		<img id="banner-flag" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo">
 		<c:if test="${not empty applicationScope.deploymentEnvironment}">
 			<span id="banner-env-text">
 				<span id="environment">${applicationScope.deploymentEnvironment}</span>

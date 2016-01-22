@@ -1,3 +1,4 @@
+
 div.tooltip-inner {
     max-width: 550px;
 }
@@ -157,6 +158,16 @@ option:disabled {
 #top-lang-selector li {
     display: inline;
     padding: 3px 0;
+}
+
+#banner-flag {
+	position: absolute;
+	left: 40px;
+	top: 15px;
+	color: #000;
+	width: 172px;
+	height: 119px;
+	z-index: 7;
 }
 
 #banner-title-text {

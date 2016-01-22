@@ -32,7 +32,7 @@
                 <label class="control-label small" style="padding-top: 0px;" >
                     <s:message code='crit_your_answer'/>
                 </label>
-                <form:checkbox path="${field}.exists" data-toggle="collapse" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
+                <form:checkbox path="${field}.exists" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control" />
             </div>
         </div>
         <tiles:insertDefinition name="availableElectronically">
