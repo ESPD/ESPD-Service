@@ -5,11 +5,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-<tiles:importAttribute name="countryField"/>
-<tiles:importAttribute name="countryHtmlId"/>
-<tiles:importAttribute name="countryCssClass"/>
+<tiles:importAttribute name="field"/>
 
-<form:select path="${countryField}" id="${countryHtmlId}" cssClass="${countryCssClass}">
+<form:select path="${field}" cssClass="">
     <form:option value="${null}" label="---"/>
     <optgroup label="EU">
         <c:forEach items="<%=Country.EU_COUNTRIES%>" var="cty">

@@ -20,31 +20,38 @@
     	<put-attribute name="agent" value="eo" />
     	<put-attribute name="flow" value="request" />
     </definition>
-    <definition name="responce_ca" extends="defaultTemplate">
+    <definition name="response_ca" extends="defaultTemplate">
     	<put-attribute name="agent" value="ca" />
-    	<put-attribute name="flow" value="responce" />
+    	<put-attribute name="flow" value="response" />
     </definition>
-    <definition name="responce_eo" extends="defaultTemplate">
+    <definition name="response_eo" extends="defaultTemplate">
     	<put-attribute name="agent" value="eo" />
-    	<put-attribute name="flow" value="responce" />
+    	<put-attribute name="flow" value="response" />
     </definition>
 
-    <definition name="welcome" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp" /></definition>
-	<definition name="filter" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp" /></definition>
-    <definition name="about" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp" /></definition>
-    <definition name="error" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp" /></definition>
+    <definition name="welcome" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/></definition>
+	<definition name="filter" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp"/></definition>
+    <definition name="about" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp"/></definition>
+    <definition name="error" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp"/></definition>
+    <definition name="print" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/print.jsp"/></definition>
 
     <definition name="request_ca_procedure" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
     <definition name="request_eo_procedure" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
-    
     <definition name="request_ca_exclusion" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
     <definition name="request_eo_exclusion" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
-
     <definition name="request_ca_selection" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
     <definition name="request_eo_selection" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
-
     <definition name="request_ca_finish" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="request_eo_finish" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+
+    <definition name="response_ca_procedure" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="response_eo_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="response_ca_exclusion" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
+    <definition name="response_eo_exclusion" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
+    <definition name="response_ca_selection" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
+    <definition name="response_eo_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
+    <definition name="response_ca_finish" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
     <!-- exclusion -->
     
@@ -162,9 +169,7 @@
     </definition>
 
     <definition name="countries" template="/WEB-INF/views/wizard/templates/countries.jsp">
-        <put-attribute name="countryField" value=""/>
-        <put-attribute name="countryHtmlId" value=""/>
-        <put-attribute name="countryCssClass" value=""/>
+        <put-attribute name="field" value=""/>
     </definition>
 
     <!-- ~ common exclusion and selection subcriterias -->
@@ -191,6 +196,7 @@
         <put-attribute name="nextCode" value="next"/>
         <put-attribute name="prev" value=""/>
         <put-attribute name="next" value=""/>
+        <put-attribute name="print" value="false"/>
     </definition>
 
 </tiles-definitions>

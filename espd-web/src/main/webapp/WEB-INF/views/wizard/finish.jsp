@@ -78,7 +78,7 @@
 			</div>
             <div id="finish-statements-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="createcafinish_export_content" class="aligned" style="">
+                    <span data-i18n="createcafinish_export_content" class="aligned">
                         <s:message code='createcafinish_export_content'/>
                     </span>
                 </div>
@@ -89,6 +89,7 @@
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="selection"/>
             <tiles:putAttribute name="next" value="generate"/>
+            <tiles:putAttribute name="print" value="true"/>
         </tiles:insertDefinition>
 	</div>
 	</form:form>
