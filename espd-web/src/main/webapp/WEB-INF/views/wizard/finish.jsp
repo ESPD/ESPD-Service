@@ -5,6 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
+<tiles:importAttribute name="agent"/>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 	
 	<div class="panel-default">
@@ -89,7 +91,7 @@
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="selection"/>
             <tiles:putAttribute name="next" value="generate"/>
-            <tiles:putAttribute name="print" value="true"/>
+            <tiles:putAttribute name="print" value="${agent=='eo'}"/>
         </tiles:insertDefinition>
 	</div>
 	</form:form>
