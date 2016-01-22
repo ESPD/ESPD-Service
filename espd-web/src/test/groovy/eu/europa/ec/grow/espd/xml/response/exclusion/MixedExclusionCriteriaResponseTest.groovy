@@ -76,14 +76,14 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
         def participationSubGroup = request.Criterion[idx1].RequirementGroup[1]
         def participationReq = participationSubGroup.Requirement[1]
-        participationReq.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_01.com"
+        checkEvidence(participationReq.Response[0].Evidence, "http://hodor_01.com")
 
         then: "check who has been convicted requirement in corruption criterion"
         def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
         def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[1]
         def corruptionReq = corruptionSubGroup.Requirement[1]
         corruptionReq.Response.size() == 1
-        corruptionReq.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_02.com"
+        checkEvidence(corruptionReq.Response[0].Evidence, "http://hodor_02.com")
     }
 
 }

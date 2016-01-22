@@ -138,7 +138,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_15.com"
+        checkEvidence(req.Response[0].Evidence, "http://hodor_15.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {

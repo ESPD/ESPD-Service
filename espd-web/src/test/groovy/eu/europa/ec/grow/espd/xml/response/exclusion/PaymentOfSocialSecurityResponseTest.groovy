@@ -265,7 +265,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_08.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -275,12 +275,12 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[1]
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf"
+        checkEvidence(req.Response[0].Evidence, "http://hodor_08.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_08")))
 
         when:
         def request = parseResponseXml(espd)
@@ -290,7 +290,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
-        req.Response[0].Code.text() == "HODOR"
+        req.Response[0].Code.text() == "HODOR_08"
     }
 
 }

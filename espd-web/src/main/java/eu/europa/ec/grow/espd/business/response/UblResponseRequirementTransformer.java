@@ -21,6 +21,7 @@ import org.joda.time.LocalDate;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by ratoico on 12/22/15 at 4:07 PM.
@@ -408,6 +409,10 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         attachmentType.setExternalReference(externalReferenceType);
         URIType uriType = new URIType();
         uriType.setValue(url);
+        // id is mandatory for EvidenceDocumentReference
+        IDType idType = new IDType();
+        idType.setValue(UUID.randomUUID().toString());
+        documentReferenceType.setID(idType);
         externalReferenceType.setURI(uriType);
         documentReferenceType.setAttachment(attachmentType);
         evidenceType.getEvidenceDocumentReference().add(documentReferenceType);

@@ -98,7 +98,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_16.com"
+        checkEvidence(req.Response[0].Evidence, "http://hodor_16.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {

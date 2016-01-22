@@ -52,4 +52,9 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         // response has economic operator criteria plus meets objectives (reduction of candidates) which is common
         return getRequestNumberOfCriteria() + AwardCriterion.values().size() - 1
     }
+
+    protected static void checkEvidence(def evidenceElement, String url) {
+        assert evidenceElement.EvidenceDocumentReference.ID.text().length() == 36
+        assert evidenceElement.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == url
+    }
 }

@@ -117,7 +117,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Evidence.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == "http://hodor_21.com"
+        checkEvidence(req.Response[0].Evidence, "http://hodor_21.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {
