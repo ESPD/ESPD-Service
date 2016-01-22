@@ -227,6 +227,11 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      */
     EXPLAIN_CERTIFICATES_ENVIRONMENTAL("b0aace10-fd73-46d1-ae78-289ee5cd42ca", CriterionText.EXPLAIN_CERTIFICATES_ENVIRONMENTAL_TEXT,
             ExpectedResponseType.DESCRIPTION),
+    /**
+     * In the financial ratios a requirement is required previous to a subgroup of requirements so we add a dummy sentence like 'please provide the requested data below'
+     */
+    PLEASE_PROVIDE_DATA_BELOW("3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below",
+            ExpectedResponseType.DESCRIPTION),
     ;
 
     private final String id;

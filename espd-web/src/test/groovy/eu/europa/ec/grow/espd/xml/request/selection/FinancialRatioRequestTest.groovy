@@ -39,7 +39,11 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 5
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+
+        then: "In the financial ratios a requirement is required previous to a subgroup of requirements so we add a dummy sentence like 'please provide the requested data below'"
+        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        checkRequirement(req, "3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below", "DESCRIPTION")
 
         then: "check description ratio subgroups"
         checkDescriptionRatioGroup1(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
