@@ -9,6 +9,6 @@
 <form:select path="${currencyField}" cssClass="form-control">
     <form:option value="${null}" label="---"/>
     <c:forEach items="<%=eu.europa.ec.grow.espd.constants.enums.Currency.values()%>" var="curr">
-        <form:option value="${curr}">${curr}</form:option>
+        <form:option value="${curr}">${curr} (${curr.description})</form:option>
     </c:forEach>
 </form:select>
