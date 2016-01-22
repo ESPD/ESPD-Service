@@ -8,10 +8,6 @@ import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
  */
 class AbstractAwardCriteriaFixture extends AbstractCriteriaFixture {
 
-    protected static int getCriterionIndex(AwardCriterion criterion) {
-        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
-    }
-
     protected static int getTotalNumberOfCriteria() {
         return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + AwardCriterion.values().size()
     }

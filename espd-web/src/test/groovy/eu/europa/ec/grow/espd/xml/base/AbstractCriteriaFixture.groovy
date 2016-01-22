@@ -57,4 +57,16 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert evidenceElement.EvidenceDocumentReference.ID.text().length() == 36
         assert evidenceElement.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == url
     }
+
+    protected static int getCriterionIndex(ExclusionCriterion criterion) {
+        return criterion.ordinal()
+    }
+
+    protected static int getCriterionIndex(SelectionCriterion criterion) {
+        return ExclusionCriterion.values().size() + criterion.ordinal()
+    }
+
+    protected static int getCriterionIndex(AwardCriterion criterion) {
+        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
+    }
 }

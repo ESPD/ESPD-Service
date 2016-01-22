@@ -1,17 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response
-
 import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl
-import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.EspdRequestMetadata
-import eu.europa.ec.grow.espd.domain.PartyImpl
+import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
-
 /**
  * Created by ratoico on 11/26/15.
  */

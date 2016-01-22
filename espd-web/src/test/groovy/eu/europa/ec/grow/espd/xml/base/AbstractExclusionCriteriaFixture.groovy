@@ -1,7 +1,4 @@
 package eu.europa.ec.grow.espd.xml.base
-
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
-
 /**
  * Created by ratoico on 12/15/15 at 3:53 PM.
  */
@@ -42,10 +39,6 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
         checkRequirement(r2, "1f1cd18e-3e01-4ca2-af4c-e2981924ba8d", "Code", "CODE")
         assert r2.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r2.ID.@schemeVersionID.text() == "1.0"
-    }
-
-    protected static int getCriterionIndex(ExclusionCriterion criterion) {
-        return criterion.ordinal()
     }
 
 }
