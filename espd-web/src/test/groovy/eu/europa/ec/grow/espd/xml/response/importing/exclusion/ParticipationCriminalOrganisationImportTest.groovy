@@ -21,7 +21,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
 
         then:
         espd.criminalConvictions.exists == true
-        espd.criminalConvictions.dateOfConviction == LocalDateAdapter.unmarshal("2016-17-01").toDate()
+        espd.criminalConvictions.dateOfConviction == LocalDateAdapter.unmarshal("2016-01-17").toDate()
         espd.criminalConvictions.reason == "Reason here"
         espd.criminalConvictions.convicted == "Hodor was convicted"
         espd.criminalConvictions.periodLength == "7 years"

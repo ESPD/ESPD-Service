@@ -79,7 +79,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         expect:
         espdFull.requestMetadata.id == "c0b5454f-c8bf-465f-afe7-6ba3f50c6589"
         espdFull.requestMetadata.description == "ESPDRequest SMART 2016/0069"
-        LocalDateAdapter.marshal(new LocalDate(espdFull.requestMetadata.issueDate)) == "2015-07-12"
+        LocalDateAdapter.marshal(new LocalDate(espdFull.requestMetadata.issueDate)) == "2015-01-13"
 
         and: "no url at the moment"
         espdFull.requestMetadata.url == null

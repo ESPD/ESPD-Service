@@ -5,7 +5,7 @@
     <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">a83b01cc-4100-47b5-ad41-3d3095f752bd</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
-    <cbc:IssueDate>2016-13-01</cbc:IssueDate>
+    <cbc:IssueDate>2016-01-13</cbc:IssueDate>
     <cbc:IssueTime>11:13:39</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
     <cac:ContractingParty/>

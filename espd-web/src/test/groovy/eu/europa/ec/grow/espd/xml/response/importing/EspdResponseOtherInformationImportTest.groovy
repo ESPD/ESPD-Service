@@ -72,7 +72,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         expect:
         espdFull.economicOperator.representative.firstName == "Emilio"
         espdFull.economicOperator.representative.lastName == "García De Tres Torres"
-        espdFull.economicOperator.representative.dateOfBirth == LocalDateAdapter.unmarshal("1960-19-01").toDate()
+        espdFull.economicOperator.representative.dateOfBirth == LocalDateAdapter.unmarshal("1960-01-19").toDate()
         espdFull.economicOperator.representative.placeOfBirth == "València, Spain"
         espdFull.economicOperator.representative.street == "Vitruvio"
         espdFull.economicOperator.representative.postalCode == "28006"
@@ -110,7 +110,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.requestMetadata.id == "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
         espdFull.requestMetadata.url == "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
         espdFull.requestMetadata.description == "ESPDRequest SMART 2015/0065"
-        LocalDateAdapter.marshal(new LocalDate(espdFull.requestMetadata.issueDate)) == "2015-18-12"
+        LocalDateAdapter.marshal(new LocalDate(espdFull.requestMetadata.issueDate)) == "2015-12-18"
         LocalTimeAdapter.marshal(new LocalTime(espdFull.requestMetadata.issueDate)) == "17:46:54"
     }
 

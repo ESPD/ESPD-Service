@@ -5,7 +5,7 @@
     <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">f4fc8f1b-3565-498e-a71d-040c3f8aaef6</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
-    <cbc:IssueDate>2016-20-01</cbc:IssueDate>
+    <cbc:IssueDate>2016-01-20</cbc:IssueDate>
     <cbc:IssueTime>15:33:10</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD"/>
     <cac:ProcurementProjectLot>

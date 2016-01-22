@@ -9,7 +9,7 @@ import org.joda.time.format.DateTimeFormatter;
  */
 public final class LocalDateAdapter {
 
-    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-dd-MM");
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-MM-dd");
 
     private LocalDateAdapter() {
 

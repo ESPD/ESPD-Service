@@ -5,7 +5,7 @@
     <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">345c7e34-54ac-42fc-9b39-ce1e8bad8dd7</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
-    <cbc:IssueDate>2016-12-01</cbc:IssueDate>
+    <cbc:IssueDate>2016-01-13</cbc:IssueDate>
     <cbc:IssueTime>16:47:15</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
     <cac:ContractingParty/>
@@ -44,7 +44,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
                 <cbc:Description>Date</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-17-01</cbc:Date>
+                    <cbc:Date>2016-01-17</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
@@ -75,7 +75,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">8d0e5e16-85ed-4730-a784-d4db8f439c0c</cbc:ID>
                 <cbc:Description>Date</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-18-01</cbc:Date>
+                    <cbc:Date>2016-01-18</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
@@ -106,7 +106,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c953e635-580b-4d7c-a30c-2edbde3b8fdf</cbc:ID>
                 <cbc:Description>Date</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-19-01</cbc:Date>
+                    <cbc:Date>2016-01-19</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
@@ -137,7 +137,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b263b45-fc63-4b01-a3dc-cb9c95dda449</cbc:ID>
                 <cbc:Description>Date</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-20-01</cbc:Date>
+                    <cbc:Date>2016-01-20</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
@@ -168,7 +168,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">056cba1d-986b-4164-92b6-26a1cbdf0690</cbc:ID>
                 <cbc:Description>Date</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-21-01</cbc:Date>
+                    <cbc:Date>2016-01-21</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">

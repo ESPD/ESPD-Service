@@ -5,7 +5,7 @@
     <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">efe50cbb-6dc6-4e9a-8676-3e5dcd2adb46</cbc:ID>
     <cbc:CopyIndicator>false</cbc:CopyIndicator>
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
-    <cbc:IssueDate>2016-07-01</cbc:IssueDate>
+    <cbc:IssueDate>2016-01-18</cbc:IssueDate>
     <cbc:IssueTime>10:59:20</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
     <cac:ContractingParty/>
@@ -37,7 +37,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
                 <cbc:Description>Date of conviction</cbc:Description>
                 <ccv:Response>
-                    <cbc:Date>2016-17-01</cbc:Date>
+                    <cbc:Date>2016-01-17</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">

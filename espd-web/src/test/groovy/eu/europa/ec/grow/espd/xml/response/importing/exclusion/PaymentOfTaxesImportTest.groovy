@@ -32,7 +32,7 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
 
         then: "second subgroup"
         espd.paymentTaxes.decisionFinalAndBinding == true
-        espd.paymentTaxes.dateOfConviction == LocalDateAdapter.unmarshal("2016-17-01").toDate()
+        espd.paymentTaxes.dateOfConviction == LocalDateAdapter.unmarshal("2016-01-17").toDate()
         espd.paymentTaxes.periodLength == "Till the end of the year 2013."
 
         then: "third subgroup"
