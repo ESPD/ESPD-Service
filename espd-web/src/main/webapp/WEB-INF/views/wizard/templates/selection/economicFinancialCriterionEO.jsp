@@ -74,7 +74,7 @@
 	            <div class="form-group">
 	                <label class="control-label col-md-4 small" data-i18n="crit_amount"><s:message code='crit_amount'/></label>
 	                <div class="col-md-5">
-	                    <form:input path="${field}.amount1" cssClass="form-control" placeholder="${amountPlaceholder}"/>
+	                    <form:input path="${field}.amount1" cssClass="form-control" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 	                </div>
 	                <div class="col-md-3">
 	                    <tiles:insertDefinition name="currencies">
