@@ -7,13 +7,6 @@
 
 <tiles:importAttribute name="flow"/>
 
-<script>
-    $(function () {
-        $("#ca-satisfies-all-criteria").click(function () {
-            $("#ca-selection-criteria").toggle();
-        });
-    });
-</script>
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
 	<tiles:insertDefinition name="viewChangeRole">
@@ -51,17 +44,16 @@
 
                     <div class="checkbox">
                         <label>
-                            <form:checkbox id="ca-satisfies-all-criteria" path="selectionSatisfiesAll.exists"
-                                           class="checktoggle" value="true"/>
+                            <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}ca-satisfies-all-form" class="checktoggle"/>
                             <span data-i18n="crit_selection_satisfies_all_criteria">
-                            <s:message code='crit_selection_satisfies_all_criteria'/>
+                            	<s:message code='crit_selection_satisfies_all_criteria'/>
                             </span>
                         </label>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="tab-pane active" id="ca-selection-criteria">
+        <div class="tab-pane active" id="ca-satisfies-all-form">
             <div class="panel panel-default espd-panel">
                 <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse"
                      data-target="#ca-suitability-section">
