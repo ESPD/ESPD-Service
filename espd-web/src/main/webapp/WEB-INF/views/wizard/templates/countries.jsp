@@ -7,7 +7,7 @@
 
 <tiles:importAttribute name="field"/>
 
-<form:select path="${field}" cssClass="">
+<form:select path="${field}" cssClass="form-control">
     <form:option value="${null}" label="---"/>
     <optgroup label="EU">
         <c:forEach items="<%=Country.EU_COUNTRIES%>" var="cty">

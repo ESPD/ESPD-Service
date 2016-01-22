@@ -96,9 +96,7 @@
 								<label class="control-label col-md-4">${span18n['createca_country']}</label>
 								<div class="col-md-8">
 									<tiles:insertDefinition name="countries">
-										<tiles:putAttribute name="countryField" value="authority.country"/>
-										<tiles:putAttribute name="countryHtmlId" value="country"/>
-										<tiles:putAttribute name="countryCssClass" value="form-control"/>
+										<tiles:putAttribute name="field" value="authority.country"/>
 									</tiles:insertDefinition>
 								</div>
 							</div>

@@ -10,9 +10,7 @@
 	<label class="control-label col-md-4 small" for="${field}-field-country" data-i18n="crit_country_member_state"><s:message code='crit_country_member_state'/></label>
 	<div class="col-md-8">
         <tiles:insertDefinition name="countries">
-            <tiles:putAttribute name="countryField" value="${field}.country"/>
-            <tiles:putAttribute name="countryHtmlId" value="${field}.country"/>
-            <tiles:putAttribute name="countryCssClass" value="form-control"/>
+            <tiles:putAttribute name="field" value="${field}.country"/>
         </tiles:insertDefinition>
 	</div>
 </div> 

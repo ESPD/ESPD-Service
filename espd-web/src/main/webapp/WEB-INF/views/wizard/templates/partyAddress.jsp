@@ -32,9 +32,7 @@
 		<label class="control-label col-md-4" data-i18n="createca_country"><s:message code="createca_country"/></label>
 		<div class="col-md-8">
 			<tiles:insertDefinition name="countries">
-				<tiles:putAttribute name="countryField" value="${field}.country"/>
-				<tiles:putAttribute name="countryHtmlId" value="country"/>
-				<tiles:putAttribute name="countryCssClass" value="form-control"/>
+				<tiles:putAttribute name="field" value="${field}.country"/>
 			</tiles:insertDefinition>
 		</div>
 	</div>
