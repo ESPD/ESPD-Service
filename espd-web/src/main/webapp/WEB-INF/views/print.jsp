@@ -17,6 +17,7 @@
         $('textarea').attr('readonly', true);
         $('checkbox').attr('readonly', true);
         $('select').attr('readonly', true);
+        $('select').attr("disabled", true);
          $("checkbox").attr("disabled", true);
          $('.radioslide').bootstrapToggle('disable');
     });
