@@ -49,9 +49,9 @@
 	                        <div class="form-group">
 	                            <label class="control-label col-md-4 small" for="${field}-description"><s:message
 	                                    code='crit_please_describe_them'/></label>
-	
 	                            <div class="col-md-8">
-	                                <textarea class="form-control" id="${field}-description" placeholder=""></textarea>
+                                    <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
+	                                <form:textarea path="${field}.description" cssClass="form-control" id="${field}-description" placeholder="${describePlaceholder}"></form:textarea>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -73,7 +73,6 @@
 	        <c:if test="${has_single_amount}">
 	            <div class="form-group">
 	                <label class="control-label col-md-4 small" data-i18n="crit_amount"><s:message code='crit_amount'/></label>
-	
 	                <div class="col-md-5">
 	                    <form:input path="${field}.amount1" cssClass="form-control" placeholder="${amountPlaceholder}"/>
 	                </div>
