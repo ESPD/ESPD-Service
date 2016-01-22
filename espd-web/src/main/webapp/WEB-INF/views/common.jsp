@@ -82,6 +82,14 @@ request.setAttribute("span18n", inst.span());
                 $($(this).attr("data-target-invert")).show();
             }
         });
+        $('.checktoggle:checked').each(function (index) {
+            $($(this).attr("data-target")).show();
+            $($(this).attr("data-target-invert")).hide();
+        });
+        $('.checktoggle:not(:checked)').each(function (index) {
+            $($(this).attr("data-target")).hide();
+            $($(this).attr("data-target-invert")).show();
+        });
 
         $('.radioslide').bootstrapToggle({
             style: "ios",
@@ -91,15 +99,6 @@ request.setAttribute("span18n", inst.span());
             off: "No",
             onstyle: "primary ios-toggle-on",
             offstyle: "default ios-toggle-off"
-        });
-
-        $('.radioslide:checked').each(function (index) {
-            $($(this).attr("data-target")).show();
-            $($(this).attr("data-target-invert")).hide();
-        });
-        $('.radioslide:not(:checked)').each(function (index) {
-            $($(this).attr("data-target")).hide();
-            $($(this).attr("data-target-invert")).show();
         });
     });
 

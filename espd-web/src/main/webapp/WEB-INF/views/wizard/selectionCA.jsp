@@ -44,7 +44,7 @@
 
                     <div class="checkbox">
                         <label>
-                            <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}ca-satisfies-all-form" class="checktoggle"/>
+                            <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}ca-satisfies-all-form" class="checktoggle" value="true"/>
                             <span data-i18n="crit_selection_satisfies_all_criteria">
                             	<s:message code='crit_selection_satisfies_all_criteria'/>
                             </span>
