@@ -182,12 +182,12 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     TECHNICIANS_OR_TECHNICAL_BODIES_GROUP("9e2fd892-80e2-4c13-98bb-1515e56f45af",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_SPECIFY)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *
      */
     WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES_GROUP("162843ae-aa63-47ab-9b05-e5e3e0f284ff",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_SPECIFY)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
     /**
      *
      */

@@ -43,7 +43,7 @@ class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFix
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
+        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
