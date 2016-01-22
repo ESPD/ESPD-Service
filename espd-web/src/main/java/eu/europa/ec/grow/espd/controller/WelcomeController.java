@@ -47,7 +47,7 @@ class WelcomeController {
     public EspdDocument newDocument() {
         return new EspdDocument();
     }
-
+    
     @RequestMapping("/") public String getWelcome() {
     	return "welcome";
     }

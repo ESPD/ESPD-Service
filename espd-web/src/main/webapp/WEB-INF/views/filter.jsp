@@ -5,6 +5,7 @@
 
 <script>
 $(function() { 
+	var country = $("select[name='authority.country']");
 
     $("*[name='agent']").click(function () {
     	$('#nextBtn').prop('disabled', true);
@@ -17,14 +18,14 @@ $(function() {
 	$("input:file").change(function (){
 		if($(this).val() != '') {
 			$('#tab-from').addClass('active');
-			$('#nextBtn').prop('disabled', $("#country").val() === '');
+			$('#nextBtn').prop('disabled', country.val() === '');
 		}
 	});
-    $("#country").change(function() {
+	country.change(function() {
     	$('#nextBtn').prop('disabled', $(this).val() === '');
     });
     $("*[name='action']").click(function () {
-    	$('#nextBtn').prop('disabled', $("#country").val() === '');
+    	$('#nextBtn').prop('disabled', country.val() === '');
     });
     $('#nextBtn').prop('disabled', true);
 });
@@ -90,8 +91,7 @@ $(function() {
 
 				<div class="tab-pane" id="tab_eo">
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
-					
-					<div class=" radio">
+					<div class="radio">
 						<span class="k-button fa fa-upload hoverable"></span>
 						<label><input name="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_import_espd"><s:message code='filter_import_espd'/></span></label>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_filter_eo_can_import_espd'/>"/>
@@ -108,11 +108,20 @@ $(function() {
 				</div> 
 				
 				<div class="tab-pane" id="tab-from">
+				
 					<h3 data-i18n="filter_where_are_you_from"><s:message code='filter_where_are_you_from'/></h3>
-					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
-                    <tiles:insertDefinition name="countries">
-                        <tiles:putAttribute name="field" value="authority.country"/>
-                    </tiles:insertDefinition>
+					
+					<div class="form-group">
+						<div class="col-md-2">
+							<label data-i18n="form-control filter_select_country"><s:message code='filter_select_country'/></label>
+						</div>
+						<div class="col-md-2">
+		                    <tiles:insertDefinition name="countries">
+		                        <tiles:putAttribute name="field" value="authority.country"/>
+		                    </tiles:insertDefinition>
+	                    </div>
+	                    <div class="col-md-8">&nbsp;</div>
+                    </div>
 				</div>
 
 			</div>

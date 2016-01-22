@@ -6,9 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-
-<c:set var="lastYearsAmount" value='<%=new Integer[]{2016,2015,2014,2013,2012} %>'/>
-<c:set var="lastYearsNumber" value='<%=new Integer[]{2016,2015,2014} %>'/>
+<% int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR); %>
+<c:set var="lastYearsAmount" value='<%=new Integer[]{year, year-1, year-2, year-3, year-4} %>'/>
+<c:set var="lastYearsNumber" value='<%=new Integer[]{year, year-1, year-2} %>'/>
 
 <script>
     $(function () {
