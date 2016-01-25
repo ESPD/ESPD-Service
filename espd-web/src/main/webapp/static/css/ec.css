@@ -5,5 +5,5 @@
 	.reset-list li{list-style-type:none;}
 	
 	.reset-list li + li:before {
-	    content: "|";
+	        content: " | ";
 	}

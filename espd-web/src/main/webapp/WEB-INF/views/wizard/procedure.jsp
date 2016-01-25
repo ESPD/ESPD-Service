@@ -38,7 +38,7 @@
                 <li>
                     <i class="info-label fa fa-exclamation-triangle fa-lg fa-li"></i>
 
-					${div18n['createca_correct_errors']}
+					${div18n['correct_errors']}
                     <div class="errorLabelContainer">
                         <ul></ul>
                     </div>

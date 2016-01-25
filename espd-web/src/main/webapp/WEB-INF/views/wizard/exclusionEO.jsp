@@ -7,6 +7,17 @@
 
 <tiles:importAttribute name="flow"/>
 
+<script>
+    $(function () {
+        $("#espdform").validate({
+            errorContainer: $("div.errorContainer"),
+            errorPlacement: function ($error, $element) {
+            	$element.parent().append($error);
+            }
+        });
+    });
+</script>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 
     <tiles:insertDefinition name="viewChangeRole">
@@ -19,6 +30,18 @@
         <tiles:insertDefinition name="progress">
 			<tiles:putAttribute name="exclusion" value="true"/>
         </tiles:insertDefinition>
+        
+        <div class="errorContainer alert alert-danger" style="display: none">
+            <ul class="fa-ul">
+                <li>
+                    <i class="info-label fa fa-exclamation-triangle fa-lg fa-li"></i>
+					${div18n['correct_errors']}
+                    <div class="errorLabelContainer">
+                        <ul></ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
 		<div class="paragraph">
 			<h2>${span18n["createcaexcl_header"]}</h2>
