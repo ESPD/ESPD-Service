@@ -1,67 +1,64 @@
 package eu.europa.ec.grow.espd.util;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-import javax.servlet.jsp.PageContext;
-
 import org.springframework.context.MessageSource;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.jsp.PageContext;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 @SuppressWarnings("serial")
 public class I18NFunc {
 
-	private static MessageMap messageMap;
-	private static MessageMap spanMessageMap;
-	private static MessageMap divMessageMap;
-	
-	public I18NFunc(PageContext pageContext) {
-		WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext());
-		MessageSource ms = (MessageSource) springContext.getBean("messageSource");
-		Locale locale = pageContext.getResponse().getLocale();
-		messageMap = new MessageMap(ms, locale);
-		spanMessageMap = new MessageMap(ms, locale) {
-			@Override public synchronized String get(Object key) {
-		        return "<span data-i18n=\""+key+"\">" + super.get(key) + "</span>";
-		    }
-		};
-		divMessageMap = new MessageMap(ms, locale) {
-			@Override public synchronized String get(Object key) {
-		        return "<div data-i18n=\""+key+"\">" + super.get(key) + "</div>";
-		    }
-		};
-	}
+    private final Map<String, String> messageMap;
+    private final Map<String, String> spanMessageMap;
+    private final Map<String, String> divMessageMap;
 
-    public static HashMap<String, String> message() {
-		return messageMap;
+    public I18NFunc(PageContext pageContext) {
+        WebApplicationContext springContext = WebApplicationContextUtils
+                .getWebApplicationContext(pageContext.getServletContext());
+        final MessageSource ms = (MessageSource) springContext.getBean("messageSource");
+        final Locale locale = pageContext.getResponse().getLocale();
+        messageMap = new HashMap<String, String>() {
+            @Override
+            public String get(Object key) {
+                if (key == null) {
+                    return "";
+                }
+                return ms.getMessage(key.toString(), null, locale);
+            }
+        };
+        spanMessageMap = new HashMap<String, String>() {
+            @Override
+            public String get(Object key) {
+                if (key == null) {
+                    return "";
+                }
+                return "<span data-i18n=\"" + key + "\">" + ms.getMessage(key.toString(), null, locale) + "</span>";
+            }
+        };
+        divMessageMap = new HashMap<String, String>() {
+            @Override
+            public String get(Object key) {
+                if (key == null) {
+                    return "";
+                }
+                return "<div data-i18n=\"" + key + "\">" + ms.getMessage(key.toString(), null, locale) + "</div>";
+            }
+        };
     }
 
-    public static HashMap<String, String> span() {
-		return spanMessageMap;
+    public Map<String, String> message() {
+        return messageMap;
     }
 
-    public static HashMap<String, String> div() {
-		return divMessageMap;
+    public Map<String, String> span() {
+        return spanMessageMap;
     }
 
-	class MessageMap extends HashMap<String, String> {
-
-		private MessageSource ms;
-		private Locale locale;
-		
-		public MessageMap(MessageSource ms, Locale locale) {
-			this.ms = ms;
-			this.locale = locale;
-		}
-		
-		@Override
-	    public synchronized String get(Object key) {
-			if(key == null) {
-				return "";
-			}
-	        return ms.getMessage(key.toString(), null, locale);
-	    }
-		 
-	}
+    public Map<String, String> div() {
+        return divMessageMap;
+    }
 }
