@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "27. should contain the 'Subcontracting proportion' criterion"() {
+    def "28. should contain the 'Subcontracting proportion' criterion"() {
         given:
         def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true))
 
@@ -34,7 +34,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "575f7550-8a2d-4bad-b9d8-be07ab570076"
@@ -43,10 +43,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "612a1625-118d-4ea4-a6db-413184e7c0a8", "Please specify this percentage", "PERCENTAGE")
-
-        then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkRequirement(r1_0, "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
     }
 
 }

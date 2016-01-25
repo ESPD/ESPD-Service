@@ -152,6 +152,7 @@
         <put-attribute name="has_explain_supply_contracts_quality" value="false"/>
         <put-attribute name="has_explain_certificates_independent_quality" value="false"/>
         <put-attribute name="has_explain_certificates_independent_environmental" value="false"/>
+        <put-attribute name="has_please_specify" value="false"/>
     </definition>
 
     <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp"><!-- field, lastYears --></definition>

@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "29. should contain the 'For supply contracts: samples, descriptions or photographs with certification of authenticity' criterion"() {
+    def "30. should contain the 'For supply contracts: samples, descriptions or photographs with certification of authenticity' criterion"() {
         given:
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true))
 
@@ -44,16 +44,15 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
-    def "check the 'Please describe them' requirements response"() {
+    def "check the 'Your naswer' requirements response"() {
         given:
-        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true,
-                description: "technical description"))
+        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -64,7 +63,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Description.text() == "technical description"
+        req.Response[0].Indicator.text() == "true"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

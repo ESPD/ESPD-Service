@@ -227,17 +227,17 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     SUBCONTRACTING_PROPORTION_GROUP("575f7550-8a2d-4bad-b9d8-be07ab570076",
-            Collections.<CcvCriterionGroup>emptyList(), list(PERCENTAGE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_SPECIFY)),
     /**
      *
      */
     SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA_GROUP("cb73544d-e8bb-4cc6-819b-b8e04f1e240e",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */
     SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA_GROUP("511ddbf6-2c53-4fea-a469-3edc9941e603",
-            Collections.<CcvCriterionGroup>emptyList(), list(PLEASE_DESCRIBE)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
     /**
      *
      */

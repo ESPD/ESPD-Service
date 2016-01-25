@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "28. should contain the 'For supply contracts: samples, descriptions or photographs without certification of authenticity' criterion"() {
+    def "29. should contain the 'For supply contracts: samples, descriptions or photographs without certification of authenticity' criterion"() {
         given:
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true))
 
@@ -43,7 +43,7 @@ class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriter
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

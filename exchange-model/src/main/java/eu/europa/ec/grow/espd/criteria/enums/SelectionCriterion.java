@@ -220,7 +220,7 @@ public enum SelectionCriterion implements CcvCriterion {
     SUBCONTRACTING_PROPORTION("612a1625-118d-4ea4-a6db-413184e7c0a8", "Subcontracting proportion",
             "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above.",
             SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_58_4,
-            list(SUBCONTRACTING_PROPORTION_GROUP, INFO_ELECTRONICALLY_GROUP)),
+            list(SUBCONTRACTING_PROPORTION_GROUP)),
     /**
      *
      */

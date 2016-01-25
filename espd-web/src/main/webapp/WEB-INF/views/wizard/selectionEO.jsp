@@ -337,8 +337,9 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="subcontractingProportion"/>
-	                    <tiles:putAttribute name="number" value="27"/>
-	                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
+	                    <tiles:putAttribute name="number" value="28"/>
+	                    <tiles:putAttribute name="has_please_specify" value="true"/>
+	                    <tiles:putAttribute name="has_info_electronically" value="false"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_technical_subcontracting_proportion_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
 	                                        value="crit_selection_technical_subcontracting_proportion_description"/>
@@ -346,7 +347,7 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="supplyContractsSamplesDescriptionsWithoutCa"/>
-	                    <tiles:putAttribute name="number" value="28"/>
+	                    <tiles:putAttribute name="number" value="29"/>
 	                    <tiles:putAttribute name="has_your_answer" value="true"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_without_ca_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
@@ -355,7 +356,7 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="supplyContractsSamplesDescriptionsWithCa"/>
-	                    <tiles:putAttribute name="number" value="29"/>
+	                    <tiles:putAttribute name="number" value="30"/>
 	                    <tiles:putAttribute name="has_your_answer" value="true"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_technical_supply_contracts_with_ca_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
@@ -364,7 +365,7 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="supplyContractsCertificatesQc"/>
-	                    <tiles:putAttribute name="number" value="30"/>
+	                    <tiles:putAttribute name="number" value="31"/>
 	                    <tiles:putAttribute name="has_your_answer" value="true"/>
 	                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
 	                    <tiles:putAttribute name="has_explain_supply_contracts_quality" value="true"/>
@@ -375,7 +376,7 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutQa"/>
-	                    <tiles:putAttribute name="number" value="31"/>
+	                    <tiles:putAttribute name="number" value="32"/>
 	                    <tiles:putAttribute name="has_your_answer" value="true"/>
 	                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
 	                    <tiles:putAttribute name="has_explain_certificates_independent_quality" value="true"/>
@@ -386,7 +387,7 @@
 	
 	                <tiles:insertDefinition name="technicalProfessionalCriterionEO">
 	                    <tiles:putAttribute name="field" value="certificateIndependentBodiesAboutEnvironmental"/>
-	                    <tiles:putAttribute name="number" value="32"/>
+	                    <tiles:putAttribute name="number" value="33"/>
 	                    <tiles:putAttribute name="has_your_answer" value="true"/>
 	                    <tiles:putAttribute name="has_please_describe_them" value="true"/>
 	                    <tiles:putAttribute name="has_explain_certificates_independent_environmental" value="true"/>

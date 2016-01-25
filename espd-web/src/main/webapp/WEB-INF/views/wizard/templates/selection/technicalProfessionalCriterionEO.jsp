@@ -18,6 +18,7 @@
 <tiles:importAttribute name="has_explain_supply_contracts_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_environmental"/>
+<tiles:importAttribute name="has_please_specify"/>
 
 
 <div class="row criteria-row">
@@ -83,8 +84,21 @@
                 </div>
             </div>
         </c:if>
-        
-        
+        <c:if test="${has_please_specify}">
+            <div class="col-md-12" id="${field}-form-specify">
+                <div class="form-group">
+                    <div class="tab-pane" id="${field}-specify">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 small">${span18n['crit_please_specify']}</label>
+                            <div class="col-md-8">
+                                <form:textarea path="${field}.specify" class="form-control" placeholder="${i18n['crit_please_specify']}"></form:textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
         <c:if test="${has_multiple_description_amount_date_recipients}">
             <tiles:insertDefinition name="multipleDescriptionAmountDateRecipients">
                 <tiles:putAttribute name="field" value="${field}"/>
