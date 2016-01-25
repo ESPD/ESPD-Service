@@ -25,12 +25,9 @@
 		    </div>
 	    </div>
 		<div class="col-md-2" style="padding: 0px 0px 0px 5px;">
-			<form:select path="${field}.currency${loop.count}" cssClass="form-control">
-			    <form:option value="${null}" label="---"/>
-			    <c:forEach items="<%=eu.europa.ec.grow.espd.constants.enums.Currency.values()%>" var="curr">
-			        <form:option value="${curr}">${curr}</form:option>
-			    </c:forEach>
-			</form:select>
+            <tiles:insertDefinition name="currencies">
+                <tiles:putAttribute name="currencyField" value="${field}.currency${loop.count}"/>
+            </tiles:insertDefinition>
 	    </div>
 	</div>
 </c:forEach>
