@@ -162,7 +162,10 @@
     <definition name="multipleYearNumber" template="/WEB-INF/views/wizard/templates/selection/multipleYearNumber.jsp"><!-- field, lastYears --></definition>
     <definition name="multipleDescriptionRatio" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionRatio.jsp"><!-- field --></definition>
     <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionAmountDateRecipients.jsp"><!-- field --></definition>
-    <definition name="currencies" template="/WEB-INF/views/wizard/templates/currencies.jsp"><!-- currencyField --></definition>
+    <definition name="currencies" template="/WEB-INF/views/wizard/templates/currencies.jsp">
+    	<!-- currencyField -->
+    	<put-attribute name="style" value=""/>
+    </definition>
     
     <!-- ~ selection -->
     
