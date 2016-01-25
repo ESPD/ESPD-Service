@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "31. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
+    def "32. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true))
 

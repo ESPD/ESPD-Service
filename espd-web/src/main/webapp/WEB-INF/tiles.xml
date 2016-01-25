@@ -135,6 +135,9 @@
         <put-attribute name="lastYearsAmount" value=""/>
         <put-attribute name="has_multiple_description_ratio" value="false"/>
         <put-attribute name="has_single_amount" value="false"/>
+        <put-attribute name="has_specify_year" value="false"/>
+        <put-attribute name="has_info_electronically" value="true"/>
+        <put-attribute name="has_multiple_year_amount" value="true"/>
     </definition>
 
     <definition name="technicalProfessionalCriterionEO" template="/WEB-INF/views/wizard/templates/selection/technicalProfessionalCriterionEO.jsp">
@@ -163,7 +166,7 @@
     
     <!-- ~ selection -->
     
-    <!-- common exclusion and selection subcriterias -->
+    <!-- common exclusion and selection subcriteria -->
     
     <definition name="availableElectronically" template="/WEB-INF/views/wizard/templates/availableElectronically.jsp">
     	<put-attribute name="field" value=""/>

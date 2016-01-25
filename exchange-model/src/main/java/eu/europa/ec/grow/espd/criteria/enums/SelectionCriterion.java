@@ -84,6 +84,13 @@ public enum SelectionCriterion implements CcvCriterion {
     /**
      *
      */
+    SETUP_ECONOMIC_OPERATOR("77f481ce-ffb6-483f-8e2b-c78db5e68292", "Set up of economic operator",
+            "In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:",
+            SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,
+            list(SETUP_ECONOMIC_OPERATOR_GROUP)),
+    /**
+     *
+     */
     FINANCIAL_RATIO("e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46", "Financial ratio",
             "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:",
             SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING, LegislationReference.DIRECTIVE_2014_24_EU_58_3,

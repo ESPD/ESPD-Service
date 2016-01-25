@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "11. should contain the 'Professional risk indemnity insurance' criterion"() {
+    def "12. should contain the 'Professional risk indemnity insurance' criterion"() {
         given:
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 

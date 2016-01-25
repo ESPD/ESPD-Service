@@ -232,6 +232,11 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      */
     PLEASE_PROVIDE_DATA_BELOW("3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below",
             ExpectedResponseType.DESCRIPTION),
+    /**
+     *
+     */
+    SPECIFY_YEAR("a18b2c98-8552-45ca-9751-d4c94c05847a", CriterionText.PLEASE_SPECIFY_TEXT,
+            ExpectedResponseType.QUANTITY),
     ;
 
     private final String id;

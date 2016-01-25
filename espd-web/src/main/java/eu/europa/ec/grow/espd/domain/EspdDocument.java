@@ -75,6 +75,7 @@ public class EspdDocument {
     private EconomicFinancialStandingCriterion averageYearlyTurnover;
     private EconomicFinancialStandingCriterion specificYearlyTurnover;
     private EconomicFinancialStandingCriterion specificAverageTurnover;
+    private EconomicFinancialStandingCriterion setupEconomicOperator;
     private EconomicFinancialStandingCriterion financialRatio;
     private EconomicFinancialStandingCriterion professionalRiskInsurance;
     private EconomicFinancialStandingCriterion otherEconomicFinancialRequirements;

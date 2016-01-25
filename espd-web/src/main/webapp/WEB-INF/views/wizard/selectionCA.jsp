@@ -159,6 +159,13 @@
                                scope="session"/>
                         <jsp:include page="editors/criteria.jsp"/>
 
+                        <c:set var="field" value="setupEconomicOperator" scope="session"/>
+                        <c:set var="title_code" value="crit_selection_economic_setup_eo_main" scope="session"/>
+                        <c:set var="tooltip_code" value="" scope="session"/>
+                        <c:set var="description_code" value="crit_selection_economic_setup_eo_description"
+                               scope="session"/>
+                        <jsp:include page="editors/criteria.jsp"/>
+
                         <c:set var="field" value="financialRatio" scope="session"/>
                         <c:set var="title_code" value="crit_selection_economic_financial_ratio_main" scope="session"/>
                         <c:set var="tooltip_code" value="" scope="session"/>

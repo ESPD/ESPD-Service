@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "32. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
+    def "33. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
 

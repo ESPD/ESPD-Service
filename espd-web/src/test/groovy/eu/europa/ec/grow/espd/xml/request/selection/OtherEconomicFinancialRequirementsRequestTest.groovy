@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class OtherEconomicFinancialRequirementsRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "12. should contain the 'Other economic or financial requirements' criterion"() {
+    def "13. should contain the 'Other economic or financial requirements' criterion"() {
         given:
         def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true))
 

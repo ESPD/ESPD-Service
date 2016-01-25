@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class AverageAnnualManpowerRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "25. should contain the 'Average annual manpower' criterion"() {
+    def "26. should contain the 'Average annual manpower' criterion"() {
         given:
         def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true))
 

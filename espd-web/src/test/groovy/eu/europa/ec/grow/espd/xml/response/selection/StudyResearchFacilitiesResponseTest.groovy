@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "19. should contain the 'Study and research facilities' criterion"() {
+    def "20. should contain the 'Study and research facilities' criterion"() {
         given:
         def espd = new EspdDocument(studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true))
 

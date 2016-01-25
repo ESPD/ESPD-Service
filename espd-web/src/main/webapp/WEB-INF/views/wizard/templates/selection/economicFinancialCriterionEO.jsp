@@ -13,7 +13,10 @@
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="lastYearsAmount"/>
 <tiles:importAttribute name="has_multiple_description_ratio"/>
+<tiles:importAttribute name="has_multiple_year_amount"/>
 <tiles:importAttribute name="has_single_amount"/>
+<tiles:importAttribute name="has_specify_year"/>
+<tiles:importAttribute name="has_info_electronically"/>
 
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
@@ -59,7 +62,7 @@
 	            </div>
 	        </c:if>
 	        
-	        <c:if test="${lastYearsAmount != null}">
+	        <c:if test="${has_multiple_year_amount && lastYearsAmount != null}">
 	            <tiles:insertDefinition name="multipleYearAmount">
 	                <tiles:putAttribute name="field" value="${field}"/>
 	                <tiles:putAttribute name="lastYears" value="${lastYearsAmount}"/>
@@ -83,9 +86,23 @@
 	                </div>
 	            </div>
 	        </c:if>
-	        <tiles:insertDefinition name="availableElectronically">
-	            <tiles:putAttribute name="field" value="${field}"/>
-	        </tiles:insertDefinition>
+            <c:if test="${has_specify_year}">
+                <div class="form-group">
+                    <label class="control-label col-md-4 small" data-i18n="crit_please_specify"><s:message code='crit_please_specify'/></label>
+                    <div class="col-md-5">
+                        <form:select path="${field}.year1" cssClass="form-control" >
+                            <form:option value="${null}" label="---"/>
+                            <form:options items="${lastYearsAmount}"/>
+                        </form:select>
+                    </div>
+
+                </div>
+            </c:if>
+            <c:if test="${has_info_electronically}">
+	            <tiles:insertDefinition name="availableElectronically">
+	                <tiles:putAttribute name="field" value="${field}"/>
+	            </tiles:insertDefinition>
+            </c:if>
         </div>
     </div>
 </div>

@@ -268,6 +268,11 @@ class EspdResponseCriterionFactory {
 
         String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
+        // year 1 is overloaded because of criterion 10. Set up of economic operator
+        Double year1 = readRequirementValue(SelectionCriterionRequirement.SPECIFY_YEAR, criterionType);
+        if (year1 != null) {
+            criterion.setYear1(year1.intValue());
+        }
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 

@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class TechnicalFacilitiesRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "18. should contain the 'Technical facilities and measures for ensuring quality' criterion"() {
+    def "19. should contain the 'Technical facilities and measures for ensuring quality' criterion"() {
         given:
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true))
 

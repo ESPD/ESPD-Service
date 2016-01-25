@@ -13,7 +13,7 @@ import org.joda.time.LocalDate
  */
 class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "13. should contain the 'For works contracts: performance of works of the specified type' criterion"() {
+    def "14. should contain the 'For works contracts: performance of works of the specified type' criterion"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 

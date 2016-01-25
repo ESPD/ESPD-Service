@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class SupplyChainManagementRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "20. should contain the 'Supply chain management' criterion"() {
+    def "21. should contain the 'Supply chain management' criterion"() {
         given:
         def espd = new EspdDocument(supplyChainManagement: new TechnicalProfessionalCriterion(exists: true))
 

@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class EducationalProfessionalQualificationsRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "22. should contain the 'Educational and professional qualifications' criterion"() {
+    def "23. should contain the 'Educational and professional qualifications' criterion"() {
         given:
         def espd = new EspdDocument(educationalProfessionalQualifications: new TechnicalProfessionalCriterion(exists: true))
 

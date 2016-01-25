@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "21. should contain the 'Allowance of checks' criterion"() {
+    def "22. should contain the 'Allowance of checks' criterion"() {
         given:
         def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
 

@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class ToolsPlantRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "26. should contain the 'Tools, plant or technical equipment' criterion"() {
+    def "27. should contain the 'Tools, plant or technical equipment' criterion"() {
         given:
         def espd = new EspdDocument(toolsPlantTechnicalEquipment: new TechnicalProfessionalCriterion(exists: true))
 

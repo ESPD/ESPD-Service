@@ -165,6 +165,11 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
     /**
      *
      */
+    SETUP_ECONOMIC_OPERATOR_GROUP("e9aa7763-c167-4352-8060-1a3d7d3e2662", Collections.<CcvCriterionGroup>emptyList(),
+            list(SPECIFY_YEAR)),
+    /**
+     *
+     */
     FINANCIAL_RATIO_GROUP("cf00f7bb-c2cf-4565-91bb-221d78d8dd2f", list(DESCRIPTION_RATIO_GROUP_1,
             DESCRIPTION_RATIO_GROUP_2, DESCRIPTION_RATIO_GROUP_3, DESCRIPTION_RATIO_GROUP_4, DESCRIPTION_RATIO_GROUP_5),
             list(PLEASE_PROVIDE_DATA_BELOW)),

@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "24. should contain the 'Number of managerial staff' criterion"() {
+    def "25. should contain the 'Number of managerial staff' criterion"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true))
 

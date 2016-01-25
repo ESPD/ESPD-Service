@@ -55,6 +55,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
                 averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: false),
                 specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
                 specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: false),
+                setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true),
                 financialRatio: new EconomicFinancialStandingCriterion(exists: true),
                 professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: false),
                 otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true),

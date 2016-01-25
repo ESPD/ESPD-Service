@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class EnvironmentalManagementMeasuresRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "23. should contain the 'Environmental management measures' criterion"() {
+    def "24. should contain the 'Environmental management measures' criterion"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true))
 

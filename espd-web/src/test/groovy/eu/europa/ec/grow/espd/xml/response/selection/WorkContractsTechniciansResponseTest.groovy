@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class WorkContractsTechniciansResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "17. should contain the 'For works contracts: technicians or technical bodies to carry out the work' criterion"() {
+    def "18. should contain the 'For works contracts: technicians or technical bodies to carry out the work' criterion"() {
         given:
         def espd = new EspdDocument(workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true))
 

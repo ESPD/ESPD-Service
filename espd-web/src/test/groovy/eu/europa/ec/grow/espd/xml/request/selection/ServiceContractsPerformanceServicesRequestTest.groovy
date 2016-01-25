@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class ServiceContractsPerformanceServicesRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "15. should contain the 'For service contracts: performance of services of the specified type' criterion"() {
+    def "16. should contain the 'For service contracts: performance of services of the specified type' criterion"() {
         given:
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true))
 

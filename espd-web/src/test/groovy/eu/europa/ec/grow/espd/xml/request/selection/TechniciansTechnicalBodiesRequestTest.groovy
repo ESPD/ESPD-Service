@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "16. should contain the 'Technicians or technical bodies for quality control' criterion"() {
+    def "17. should contain the 'Technicians or technical bodies for quality control' criterion"() {
         given:
         def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true))
 

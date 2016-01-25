@@ -128,6 +128,7 @@ public abstract class UblCriteriaTemplate {
         addUblCriterion(AVERAGE_YEARLY_TURNOVER, espdDocument.getAverageYearlyTurnover(), criteria);
         addUblCriterion(SPECIFIC_YEARLY_TURNOVER, espdDocument.getSpecificYearlyTurnover(), criteria);
         addUblCriterion(SPECIFIC_AVERAGE_TURNOVER, espdDocument.getSpecificAverageTurnover(), criteria);
+        addUblCriterion(SETUP_ECONOMIC_OPERATOR, espdDocument.getSetupEconomicOperator(), criteria);
         addUblCriterion(FINANCIAL_RATIO, espdDocument.getFinancialRatio(), criteria);
         addUblCriterion(PROFESSIONAL_RISK_INSURANCE, espdDocument.getProfessionalRiskInsurance(), criteria);
         addUblCriterion(OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS, espdDocument.getOtherEconomicFinancialRequirements(),

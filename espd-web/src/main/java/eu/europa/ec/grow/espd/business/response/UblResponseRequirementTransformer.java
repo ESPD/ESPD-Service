@@ -256,6 +256,9 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         } else if (SelectionCriterionRequirement.NUMBER_3.equals(ccvRequirement)) {
             TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
             responseType.setQuantity(buildNumberType(selectionCriterion.getNumber3()));
+        } else if (SelectionCriterionRequirement.SPECIFY_YEAR.equals(ccvRequirement)) {
+            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
+            responseType.setQuantity(buildYearType(selectionCriterion.getYear1()));
         }
     }
 

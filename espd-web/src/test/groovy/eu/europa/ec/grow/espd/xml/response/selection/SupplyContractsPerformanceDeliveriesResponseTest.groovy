@@ -13,7 +13,7 @@ import org.joda.time.LocalDate
  */
 class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "14. should contain the 'For supply contracts: performance of deliveries of the specified type' criterion"() {
+    def "15. should contain the 'For supply contracts: performance of deliveries of the specified type' criterion"() {
         given:
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true))
 

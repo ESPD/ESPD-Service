@@ -158,6 +158,8 @@ public class CriteriaToEspdDocumentPopulator {
                 SelectionCriterion.SPECIFIC_YEARLY_TURNOVER, ublCriteria));
         espdDocument.setSpecificAverageTurnover(criterionFactory.<EconomicFinancialStandingCriterion>buildEspdCriterion(
                 SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER, ublCriteria));
+        espdDocument.setSetupEconomicOperator(criterionFactory.<EconomicFinancialStandingCriterion>buildEspdCriterion(
+                SelectionCriterion.SETUP_ECONOMIC_OPERATOR, ublCriteria));
         espdDocument.setFinancialRatio(criterionFactory.<EconomicFinancialStandingCriterion>buildEspdCriterion(
                 SelectionCriterion.FINANCIAL_RATIO, ublCriteria));
         espdDocument.setProfessionalRiskInsurance(criterionFactory.<EconomicFinancialStandingCriterion>

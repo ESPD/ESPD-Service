@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "10. should contain the 'Financial ratio' criterion"() {
+    def "11. should contain the 'Financial ratio' criterion"() {
         given:
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true))
 

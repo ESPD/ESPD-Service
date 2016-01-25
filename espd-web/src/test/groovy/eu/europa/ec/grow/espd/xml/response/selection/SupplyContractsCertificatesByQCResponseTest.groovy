@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCriteriaFixture {
 
-    def "30. should contain the 'For supply contracts: certificates by quality control institutes' criterion"() {
+    def "31. should contain the 'For supply contracts: certificates by quality control institutes' criterion"() {
         given:
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true))
 
