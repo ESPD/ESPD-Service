@@ -9,8 +9,8 @@ $(function() {
 
     $("*[name='agent']").click(function () {
     	$('#nextBtn').prop('disabled', true);
-    	$('#tab-from').removeClass('active')
-    	$('#tab-upload').removeClass('active')
+    	$('#tab-from').removeClass('active');
+    	$('#tab-upload').removeClass('active');
     	$('.radioCa').removeAttr('checked');
     	$('[value="empty"]').prop('selected', true);
     	$("input:file").val('');

@@ -20,7 +20,7 @@
 		<div class="col-md-8">
 		    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
 		    <div class="col-md-9">
-		        <form:input path="${field}.description${loop.index}" cssClass="form-control" placeholder="${descriptionPlaceholder}"/>
+		        <form:input path="${field}.description${loop.index}" number="true" cssClass="form-control" placeholder="${descriptionPlaceholder}"/>
 		    </div>
 	    </div>
 	</div>

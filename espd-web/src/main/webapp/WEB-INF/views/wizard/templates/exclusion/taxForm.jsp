@@ -18,7 +18,7 @@
 	<label class="control-label col-md-4 small" for="${field}-field-amount" data-i18n="crit_amount_concerned"><s:message code='crit_amount_concerned'/></label>
 	<div class="col-md-5">
         <s:message code="crit_amount_concerned_placeholder" var="amountPlaceholder"/>
-		<form:input path="${field}.amount" cssClass="form-control" digits="true" id="${field}-field-amount" placeholder="${amountPlaceholder}"/>
+		<form:input path="${field}.amount" cssClass="form-control" number="true" id="${field}-field-amount" placeholder="${amountPlaceholder}"/>
 	</div>
 	<div class="col-md-3">
         <tiles:insertDefinition name="currencies">

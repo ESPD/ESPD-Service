@@ -30,7 +30,7 @@
 			<form:input path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" placeholder="${i18n['crit_description_placeholder']}"/>
 		</div>
 		<div class="col-md-2" style="padding:1px;">
-			<form:input path="${field}.amount${loop.index}" digits="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+			<form:input path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 		</div>
 		<div class="col-md-2" style="padding:1px;">
 	        <tiles:insertDefinition name="currencies">
