@@ -449,10 +449,10 @@
                             	${span18n['createeo_eo_rely_other_entities']}
                             </label>
                             <div class="col-md-6">
-                                <form:checkbox path="eoReliesCapacities.exists" cssClass="radioslide checktoggle form-control" />
+                                <form:checkbox path="eoReliesCapacities.exists" data-target="#separate_espd_div" cssClass="radioslide checktoggle form-control" />
                             </div>
                        </div>
-                       <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
+                       <div id="separate_espd_div" class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px; display: none;">
                             ${span18n['createeo_separate_espd_sections_a_b']}
                        </div>
 	                </div>

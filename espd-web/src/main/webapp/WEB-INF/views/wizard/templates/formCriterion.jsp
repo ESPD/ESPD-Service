@@ -48,11 +48,13 @@
 				</div>
 			</div>
 
-			<div class="col-md-12" id="${field}-form" style="display:none"> 
-				<tiles:insertAttribute name="form">
-					<tiles:putAttribute name="field" value="${field}"/>
-					<tiles:putAttribute name="descriptionField" value="${descriptionField}"/>
-				</tiles:insertAttribute>
+			<div class="col-md-12" id="${field}-form" style="display:none">
+				<c:if test="${descriptionField != ''}">
+					<tiles:insertAttribute name="form">
+						<tiles:putAttribute name="field" value="${field}"/>
+						<tiles:putAttribute name="descriptionField" value="${descriptionField}"/>
+					</tiles:insertAttribute>
+				</c:if>
 				<c:if test="${breachOfObligations}">
 					<tiles:insertDefinition name="breachOfObligations">
 						<tiles:putAttribute name="field" value="${field}"/>

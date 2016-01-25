@@ -33,40 +33,30 @@
         </div>
         <div class="panel panel-default espd-panel">
             <div class="espd-panel-heading" data-toggle="collapse" data-target="#ca-satisfies-all-section">
+				${span18n["all_selection_switch"]}
             </div>
             <div id="ca-satisfies-all-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                        <span data-i18n="crit_selection_ca_declares_that">
-                            <s:message code='crit_selection_ca_declares_that'/>
-                        </span>
-                        <span data-i18n="crit_selection_declares_that_tooltip" data-toggle="tooltip"
-                              title="<s:message code='crit_selection_declares_that_tooltip'/>"></span>
-
-                    <div class="checkbox">
-                        <label>
-                            <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}ca-satisfies-all-form" class="checktoggle" value="true"/>
-                            <span data-i18n="crit_selection_satisfies_all_criteria">
-                            	<s:message code='crit_selection_satisfies_all_criteria'/>
-                            </span>
-                        </label>
-                    </div>
+                        ${span18n['crit_selection_ca_declares_that']}
+                        <span data-i18n="crit_selection_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_declares_that_tooltip']}'/>"></span>
+	                    <div class="checkbox">
+	                        <label>
+	                            <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}ca-satisfies-all-form" class="checktoggle" value="true"/>
+	                            ${span18n['crit_selection_satisfies_all_criteria']}
+	                        </label>
+	                    </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane active" id="ca-satisfies-all-form">
             <div class="panel panel-default espd-panel">
-                <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse"
-                     data-target="#ca-suitability-section">
+                <div data-i18n="createcasel_suitability" class="espd-panel-heading" data-toggle="collapse" data-target="#ca-suitability-section">
                     <s:message code='createcasel_suitability'/>
                 </div>
                 <div id="ca-suitability-section" class="collapse in">
                     <div class="espd-panel-body panel-body">
-                        <span data-i18n="crit_selection_suitability_article">
-                            <s:message code='crit_selection_suitability_article'/>
-                        </span>
-                        <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip"
-                              title="<s:message code='crit_selection_suitability_article_tooltip'/>">
-                        </span>
+                        ${span18n['crit_selection_suitability_article']}
+                        <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_suitability_article_tooltip']}"></span>
 
                         <c:set var="field" value="enrolmentProfessionalRegister" scope="session"/>
                         <c:set var="title_code"

@@ -56,6 +56,7 @@
         </div>
         <div class="panel panel-default espd-panel">
             <div class="espd-panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
+            	${span18n["all_selection_switch"]}
             </div>
             <div id="eo-satisfies-all-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
@@ -66,7 +67,7 @@
                     <div class="col-md-5 criteria-cell-left">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <strong>1. ${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
+                                <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
                             </div>
                         </div>
                     </div>
@@ -148,7 +149,7 @@
 	                <tiles:insertDefinition name="economicFinancialCriterionEO">
 	                    <tiles:putAttribute name="field" value="generalYearlyTurnover"/>
 	                    <tiles:putAttribute name="number" value="6"/>
-	                    <tiles:putAttribute name="has_your_answer" value="true"/>
+	                    <tiles:putAttribute name="has_your_answer" value="false"/>
 	                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_economic_general_yearly_turnover_main"/>
 	                    <tiles:putAttribute name="tooltip_code" value="crit_selection_economic_general_yearly_turnover_description"/>
@@ -157,7 +158,7 @@
 	                <tiles:insertDefinition name="economicFinancialCriterionEO">
 	                    <tiles:putAttribute name="field" value="averageYearlyTurnover"/>
 	                    <tiles:putAttribute name="number" value="7"/>
-	                    <tiles:putAttribute name="has_your_answer" value="true"/>
+	                    <tiles:putAttribute name="has_your_answer" value="false"/>
 	                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_economic_average_yearly_turnover_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
@@ -167,7 +168,7 @@
 	                <tiles:insertDefinition name="economicFinancialCriterionEO">
 	                    <tiles:putAttribute name="field" value="specificYearlyTurnover"/>
 	                    <tiles:putAttribute name="number" value="8"/>
-	                    <tiles:putAttribute name="has_your_answer" value="true"/>
+	                    <tiles:putAttribute name="has_your_answer" value="false"/>
 	                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_yearly_turnover_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
@@ -177,7 +178,7 @@
 	                <tiles:insertDefinition name="economicFinancialCriterionEO">
 	                    <tiles:putAttribute name="field" value="specificAverageTurnover"/>
 	                    <tiles:putAttribute name="number" value="9"/>
-	                    <tiles:putAttribute name="has_your_answer" value="true"/>
+	                    <tiles:putAttribute name="has_your_answer" value="false"/>
 	                    <tiles:putAttribute name="lastYearsAmount" value="${lastYearsAmount}"/>
 	                    <tiles:putAttribute name="title_code" value="crit_selection_economic_specific_average_turnover_main"/>
 	                    <tiles:putAttribute name="tooltip_code"
