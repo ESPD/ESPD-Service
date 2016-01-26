@@ -55,6 +55,8 @@ class EspdResponseCriterionFactory {
             return (T) buildConflictOfInterestCriterion(ccvCriterion, ublCriteria);
         } else if (ExclusionCriterionTypeCode.OTHER.equals(ccvCriterion.getCriterionType())) {
             return (T) buildPurelyNationalGrounds(ccvCriterion, ublCriteria);
+        } else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildSatisfiesAllCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.SUITABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildSuitabilityCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.equals(ccvCriterion.getCriterionType())) {
@@ -231,6 +233,19 @@ class EspdResponseCriterionFactory {
         criterion.setDescription(description);
 
         criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private SatisfiesAllCriterion buildSatisfiesAllCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return SatisfiesAllCriterion.buildWithExists(false);
+        }
+
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+
+        SatisfiesAllCriterion criterion = SatisfiesAllCriterion.buildWithExists(yourAnswer);
 
         return criterion;
     }

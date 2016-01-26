@@ -4,7 +4,6 @@ import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion;
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.*;
-import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Component;
@@ -125,17 +124,8 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void markSelectionSelectedAllCriteriaSatisfied(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
-        boolean selected = isCriterionSelected(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED, ublCriteria);
-        espdDocument.setSelectionSatisfiesAll(SatisfiesAllCriterion.buildWithExists(selected));
-    }
-
-    private boolean isCriterionSelected(CcvCriterion criterion, List<CriterionType> ublCriteria) {
-        for (CriterionType ubl : ublCriteria) {
-            if (ubl.getID() != null && criterion.getUuid().equals(ubl.getID().getValue())) {
-                return true;
-            }
-        }
-        return false;
+        espdDocument.setSelectionSatisfiesAll(criterionFactory.<SatisfiesAllCriterion>buildEspdCriterion(
+                SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED, ublCriteria));
     }
 
     private void markSelectionSelectedSuitability(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
