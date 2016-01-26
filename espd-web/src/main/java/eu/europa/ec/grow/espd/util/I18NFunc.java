@@ -1,20 +1,20 @@
 package eu.europa.ec.grow.espd.util;
 
+import java.util.HashMap;
+import java.util.Locale;
+
+import javax.servlet.jsp.PageContext;
+
 import org.springframework.context.MessageSource;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.jsp.PageContext;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 @SuppressWarnings("serial")
 public class I18NFunc {
 
-    private final Map<String, String> messageMap;
-    private final Map<String, String> spanMessageMap;
-    private final Map<String, String> divMessageMap;
+    private final HashMap<String, String> messageMap;
+    private final HashMap<String, String> spanMessageMap;
+    private final HashMap<String, String> divMessageMap;
 
     public I18NFunc(PageContext pageContext) {
         WebApplicationContext springContext = WebApplicationContextUtils
@@ -50,15 +50,15 @@ public class I18NFunc {
         };
     }
 
-    public Map<String, String> message() {
+    public HashMap<String, String> message() {
         return messageMap;
     }
 
-    public Map<String, String> span() {
+    public HashMap<String, String> span() {
         return spanMessageMap;
     }
 
-    public Map<String, String> div() {
+    public HashMap<String, String> div() {
         return divMessageMap;
     }
 }
