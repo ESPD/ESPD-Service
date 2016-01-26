@@ -9,7 +9,7 @@ $(function() {
 
     $("*[name='agent']").click(function () {
     	$('#nextBtn').prop('disabled', true);
-    	$('#tab-from').removeClass('active');
+    	$('#tab-country-selection').removeClass('active');
     	$('#tab-upload').removeClass('active');
     	$('.radioCa').removeAttr('checked');
     	$('[value="empty"]').prop('selected', true);
@@ -17,7 +17,7 @@ $(function() {
     });
 	$("input:file").change(function (){
 		if($(this).val() != '') {
-			$('#tab-from').addClass('active');
+			$('#tab-country-selection').addClass('active');
 			$('#nextBtn').prop('disabled', country.val() === '');
 		}
 	});
@@ -76,15 +76,15 @@ $(function() {
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
 		
 					<div class="radio">
-						<label><input name="ca_create_espd" class="radiotab radioCa" type="radio" data-target="#tab-from"><span data-i18n="filter_create_espd"><s:message code='filter_create_espd'/></span></label>
+						<label><input name="ca_create_espd" value="ca_create_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"><span data-i18n="filter_create_espd"><s:message code='filter_create_espd'/></span></label>
 						<span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="<s:message code='tooltip_ca_can_create_espd'/>"></span>
 					</div>
 					<div class="radio">
-						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_reuse_espd"><s:message code='filter_reuse_espd'/></span></label>
+						<label><input name="ca_create_espd" disabled value="ca_reuse_espd_request" id="ca_reuse_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_reuse_espd"><s:message code='filter_reuse_espd'/></span></label>
 						<span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="<s:message code='tooltip_ca_can_import_espd'/>"></span>
 					</div>
 					<div class="radio">
-						<label><input disabled name="action" class="radiotab radioCa" type="radio" data-target="#"><span data-i18n="filter_review_espd"><s:message code='filter_review_espd'/></span></label>
+						<label><input name="ca_create_espd" value="ca_review_espd_response" id="ca_review_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"><span data-i18n="filter_review_espd"><s:message code='filter_review_espd'/></span></label>
 						<span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="<s:message code='tooltip_review_espd'/>"></span>
 					</div>
 				</div>
@@ -107,7 +107,7 @@ $(function() {
 					<form:input type="file" path="attachment"/>
 				</div> 
 				
-				<div class="tab-pane" id="tab-from">
+				<div class="tab-pane" id="tab-country-selection">
 				
 					<h3 data-i18n="filter_where_are_you_from"><s:message code='filter_where_are_you_from'/></h3>
 

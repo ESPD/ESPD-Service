@@ -44,13 +44,13 @@
     <definition name="request_ca_finish" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="request_eo_finish" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
 
-    <definition name="response_ca_procedure" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="response_ca_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
     <definition name="response_eo_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
-    <definition name="response_ca_exclusion" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
+    <definition name="response_ca_exclusion" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
     <definition name="response_eo_exclusion" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
-    <definition name="response_ca_selection" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
+    <definition name="response_ca_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
     <definition name="response_eo_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
-    <definition name="response_ca_finish" extends="response_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="response_ca_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
     <!-- exclusion -->

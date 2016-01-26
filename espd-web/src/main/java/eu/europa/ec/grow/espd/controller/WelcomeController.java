@@ -52,21 +52,39 @@ class WelcomeController {
         return page;
     }
 
-    @RequestMapping(value = "/filter", params = "ca_create_espd", method = POST)
-    public String requestCACreate(@RequestParam String agent, @RequestParam("authority.country") Country country,
+    @RequestMapping(value = "/filter", method = POST)
+    public String caCreateEspd(
+            @RequestParam("ca_create_espd") String action,
+            @RequestParam(required = false) MultipartFile attachment,
+            @RequestParam("authority.country") Country country,
             Map<String, Object> model) throws IOException {
-        if (agent.matches("eo|ca")) {
+        if ("ca_create_espd_request".equals(action)) {
             EspdDocument espd = (EspdDocument) model.get("espd");
             espd.getAuthority().setCountry(country);
-            return "redirect:/request/" + agent + "/procedure";
+            return "redirect:/request/ca/procedure";
+        } else if ("ca_reuse_espd_request".equals(action)) {
+            try (InputStream is = attachment.getInputStream()) {
+                EspdDocument espd = exchangeMarshaller.importEspdRequest(is);
+                model.put("espd", espd);
+            }
+            return "redirect:/request/ca/procedure";
+        } else if ("ca_review_espd_response".equals(action)) {
+            try (InputStream is = attachment.getInputStream()) {
+                EspdDocument espd = exchangeMarshaller.importEspdResponse(is);
+                model.put("espd", espd);
+            }
+            return "redirect:/response/ca/procedure";
         }
-        return null;
+        throw new IllegalArgumentException("Unknown action: '" + action + "'.");
     }
 
     @RequestMapping(value = "/filter", params = "eo_import_espd", method = POST)
-    public String requestEOImport(@RequestParam String agent, @RequestParam("authority.country") Country country,
-            @RequestParam(required = false) MultipartFile attachment, Map<String, Object> model) throws IOException {
-        if (agent.matches("eo|ca")) {
+    public String eoImportEspd(
+            @RequestParam String agent,
+            @RequestParam("authority.country") Country country,
+            @RequestParam(required = false) MultipartFile attachment,
+            Map<String, Object> model) throws IOException {
+        if ("eo".equals(agent)) {
             try (InputStream is = attachment.getInputStream()) {
                 EspdDocument espd = importXmlFile(is);
                 if (espd.getEconomicOperator() == null) {
@@ -77,49 +95,64 @@ class WelcomeController {
                 return "redirect:/response/" + agent + "/procedure";
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unknown agent: '" + agent + "'.");
     }
 
     private EspdDocument importXmlFile(InputStream xmlStream) throws IOException {
+        // we can only consume the stream once so we have to
         // peek at the first bytes in the file to see if it is a ESPD Request or Response
-        BufferedInputStream bis = new BufferedInputStream(xmlStream);
-        int readLimit = 80;
-        bis.mark(readLimit);
-        byte[] peek = new byte[readLimit];
-        int bytesRead = bis.read(peek, 0, readLimit - 1);
         String importError = "The uploaded file could not be correctly read. Is it a valid ESPD Request or Response?";
-        if (bytesRead < 0) {
-            throw new IllegalArgumentException(importError);
-        }
-        bis.reset(); // need to read from the beginning afterwards
-        String firstBytes = new String(peek, "UTF-8");
+        try (BufferedInputStream bis = new BufferedInputStream(xmlStream)) {
+            int readLimit = 80;
+            bis.mark(readLimit);
+            byte[] peek = new byte[readLimit];
+            int bytesRead = bis.read(peek, 0, readLimit - 1);
+            if (bytesRead < 0) {
+                throw new IllegalArgumentException(importError);
+            }
+            bis.reset(); // need to read from the beginning afterwards
+            String firstBytes = new String(peek, "UTF-8");
 
-        // decide how to read the uploaded file
-        if (firstBytes.contains("ESPDResponse")) {
-            return exchangeMarshaller.importEspdResponse(bis);
-        } else if (firstBytes.contains("ESPDRequest")) {
-            return exchangeMarshaller.importEspdRequest(bis);
+            // decide how to read the uploaded file
+            if (firstBytes.contains("ESPDResponse")) {
+                return exchangeMarshaller.importEspdResponse(bis);
+            } else if (firstBytes.contains("ESPDRequest")) {
+                return exchangeMarshaller.importEspdRequest(bis);
+            }
         }
         throw new IllegalArgumentException(importError);
     }
 
     @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}")
-    public String view(@PathVariable String flow, @PathVariable String agent, @PathVariable String step,
+    public String view(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
             @ModelAttribute("espd") EspdDocument espd) {
         return flow + "_" + agent + "_" + step;
     }
 
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", method = POST, params = "prev")
-    public String prev(@PathVariable String flow, @PathVariable String agent, @PathVariable String step,
-            @RequestParam String prev, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+    public String prev(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam String prev,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
         return bindingResult.hasErrors() ?
                 flow + "_" + agent + "_" + step : "redirect:/" + flow + "/" + agent + "/" + prev;
     }
 
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}", method = POST, params = "next")
-    public String next(@PathVariable String flow, @PathVariable String agent, @PathVariable String step,
+    public String next(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
             @RequestParam String next,
-            @ModelAttribute("espd") EspdDocument espd, HttpServletResponse response, SessionStatus status,
+            @ModelAttribute("espd") EspdDocument espd,
+            HttpServletResponse response,
+            SessionStatus status,
             BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return flow + "_" + agent + "_" + step;
