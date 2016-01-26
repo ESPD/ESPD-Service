@@ -12,7 +12,7 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
     def "01. should contain the 'All selection criteria will be satisfied' criterion"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
-        def idx = getCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
         def request = parseRequestXml(espd)

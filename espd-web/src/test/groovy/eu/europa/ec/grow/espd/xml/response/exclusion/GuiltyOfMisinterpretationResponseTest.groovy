@@ -16,7 +16,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -60,7 +60,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -76,7 +76,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +93,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -110,7 +110,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -127,7 +127,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

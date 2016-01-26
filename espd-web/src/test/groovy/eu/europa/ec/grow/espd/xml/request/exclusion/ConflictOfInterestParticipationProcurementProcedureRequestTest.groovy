@@ -15,7 +15,7 @@ class ConflictOfInterestParticipationProcurementProcedureRequestTest extends Abs
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

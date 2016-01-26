@@ -15,7 +15,7 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

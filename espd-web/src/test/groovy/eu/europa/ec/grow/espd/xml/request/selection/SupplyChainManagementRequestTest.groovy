@@ -15,7 +15,7 @@ class SupplyChainManagementRequestTest extends AbstractSelectionCriteriaFixture 
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

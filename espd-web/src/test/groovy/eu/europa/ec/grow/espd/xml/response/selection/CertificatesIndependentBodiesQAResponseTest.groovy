@@ -16,7 +16,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -59,7 +59,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -77,7 +77,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -96,7 +96,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -113,7 +113,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -130,7 +130,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

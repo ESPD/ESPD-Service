@@ -16,7 +16,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -15,7 +15,7 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

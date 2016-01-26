@@ -15,7 +15,7 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
+        def idx = getRequestCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

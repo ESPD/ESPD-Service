@@ -15,7 +15,7 @@ class ToolsPlantRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
+        def idx = getRequestCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

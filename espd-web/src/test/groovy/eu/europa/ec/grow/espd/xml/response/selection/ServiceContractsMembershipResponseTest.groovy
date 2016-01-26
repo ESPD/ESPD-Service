@@ -16,7 +16,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -56,7 +56,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

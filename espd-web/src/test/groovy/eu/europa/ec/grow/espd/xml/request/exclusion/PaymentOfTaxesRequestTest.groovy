@@ -16,7 +16,7 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

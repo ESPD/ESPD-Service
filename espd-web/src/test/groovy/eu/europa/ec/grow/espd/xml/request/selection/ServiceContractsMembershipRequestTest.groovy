@@ -15,7 +15,7 @@ class ServiceContractsMembershipRequestTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

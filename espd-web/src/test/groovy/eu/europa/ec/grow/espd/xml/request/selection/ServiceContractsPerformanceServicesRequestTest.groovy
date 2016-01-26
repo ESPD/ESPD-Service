@@ -15,7 +15,7 @@ class ServiceContractsPerformanceServicesRequestTest extends AbstractSelectionCr
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

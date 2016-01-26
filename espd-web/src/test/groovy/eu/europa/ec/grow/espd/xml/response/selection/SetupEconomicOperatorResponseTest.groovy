@@ -14,7 +14,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "CriterionID element"
         response.Criterion.size() == getResponseNumberOfCriteria()
@@ -52,7 +52,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "Specify year"
         def group = response.Criterion[idx].RequirementGroup[0]

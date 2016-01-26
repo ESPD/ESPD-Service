@@ -16,7 +16,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -58,7 +58,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -76,7 +76,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +93,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -110,7 +110,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -127,7 +127,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -15,7 +15,7 @@ class AssetsAdministeredByLiquidatorRequestTest extends AbstractExclusionCriteri
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

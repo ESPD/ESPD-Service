@@ -16,7 +16,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
     def "01. should contain the 'Participation in a criminal organisation' full responses"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         when:
         def request = parseResponseXml(espd)
@@ -60,7 +60,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -78,7 +78,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +95,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +112,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -129,7 +129,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -147,7 +147,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -164,7 +164,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -181,7 +181,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -198,7 +198,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -215,7 +215,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

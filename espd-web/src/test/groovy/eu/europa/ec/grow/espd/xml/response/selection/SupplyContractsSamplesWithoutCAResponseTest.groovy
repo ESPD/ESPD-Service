@@ -16,7 +16,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -56,7 +56,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +73,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -90,7 +90,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -107,7 +107,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

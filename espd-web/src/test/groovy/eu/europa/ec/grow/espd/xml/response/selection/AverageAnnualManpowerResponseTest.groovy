@@ -16,7 +16,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -53,7 +53,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -84,7 +84,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "First number"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -115,7 +115,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -132,7 +132,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -149,7 +149,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]

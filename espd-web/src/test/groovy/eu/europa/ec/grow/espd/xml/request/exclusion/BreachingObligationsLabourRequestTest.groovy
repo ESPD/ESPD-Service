@@ -15,7 +15,7 @@ class BreachingObligationsLabourRequestTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

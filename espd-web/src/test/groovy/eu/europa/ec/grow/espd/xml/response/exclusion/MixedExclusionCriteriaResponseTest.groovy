@@ -24,7 +24,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         request.Criterion.size() == getResponseNumberOfCriteria()
 
         then: "check who has been convicted requirement in participation criterion"
-        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx1 = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
         def participationSubGroup = request.Criterion[idx1].RequirementGroup[0]
         def participationReq = participationSubGroup.Requirement[3]
         checkRequirement(participationReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
@@ -32,7 +32,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         participationReq.Response[0].Description.text() == "Hodor_01 was convicted"
 
         then: "check who has been convicted requirement in corruption criterion"
-        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def idx2 = getResponseCriterionIndex(ExclusionCriterion.CORRUPTION)
         def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0]
         def corruptionReq = corruptionSubGroup.Requirement[3]
         checkRequirement(corruptionReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
@@ -50,13 +50,13 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then: "check self cleaning description requirement in participation criterion"
-        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx1 = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
         def participationSubGroup = request.Criterion[idx1].RequirementGroup[0].RequirementGroup[0]
         def participationReq = participationSubGroup.Requirement[1]
         participationReq.Response[0].Description.text() == "Hodor_01 is clean"
 
         then: "check who has been convicted requirement in corruption criterion"
-        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def idx2 = getResponseCriterionIndex(ExclusionCriterion.CORRUPTION)
         def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0].RequirementGroup[0]
         def corruptionReq = corruptionSubGroup.Requirement[1]
         corruptionReq.Response.size() == 1
@@ -73,13 +73,13 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then: "check self cleaning description requirement in participation criterion"
-        def idx1 = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx1 = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
         def participationSubGroup = request.Criterion[idx1].RequirementGroup[1]
         def participationReq = participationSubGroup.Requirement[1]
         checkEvidence(participationReq.Response[0].Evidence, "http://hodor_01.com")
 
         then: "check who has been convicted requirement in corruption criterion"
-        def idx2 = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def idx2 = getResponseCriterionIndex(ExclusionCriterion.CORRUPTION)
         def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[1]
         def corruptionReq = corruptionSubGroup.Requirement[1]
         corruptionReq.Response.size() == 1

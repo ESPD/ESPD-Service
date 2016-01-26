@@ -15,7 +15,7 @@ class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaF
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -15,7 +15,7 @@ class SetupEconomicOperatorRequestTest extends AbstractSelectionCriteriaFixture 
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

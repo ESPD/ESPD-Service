@@ -15,7 +15,7 @@ class BankruptcyRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BANKRUPTCY)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.BANKRUPTCY)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

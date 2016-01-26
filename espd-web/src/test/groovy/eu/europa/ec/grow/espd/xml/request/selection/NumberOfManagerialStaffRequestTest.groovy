@@ -15,7 +15,7 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getRequestCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -19,7 +19,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -58,7 +58,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First description"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -99,7 +99,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -149,7 +149,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First date"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -189,7 +189,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First recipients"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -229,7 +229,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]
@@ -246,7 +246,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]
@@ -263,7 +263,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[5]

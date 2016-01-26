@@ -14,7 +14,7 @@ class AgreementsWithEORequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

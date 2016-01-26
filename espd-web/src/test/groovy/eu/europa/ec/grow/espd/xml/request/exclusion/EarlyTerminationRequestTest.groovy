@@ -15,7 +15,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

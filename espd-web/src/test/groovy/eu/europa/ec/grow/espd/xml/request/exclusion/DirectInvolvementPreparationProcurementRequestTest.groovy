@@ -15,7 +15,7 @@ class DirectInvolvementPreparationProcurementRequestTest extends AbstractExclusi
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

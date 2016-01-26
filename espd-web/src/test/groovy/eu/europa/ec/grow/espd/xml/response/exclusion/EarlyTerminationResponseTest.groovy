@@ -16,7 +16,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -60,7 +60,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -76,7 +76,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +93,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -110,7 +110,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

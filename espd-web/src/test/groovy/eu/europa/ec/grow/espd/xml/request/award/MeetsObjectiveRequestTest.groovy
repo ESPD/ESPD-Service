@@ -16,7 +16,7 @@ class MeetsObjectiveRequestTest extends AbstractAwardCriteriaFixture {
         when:
         def request = parseRequestXml(espd)
         // we need a dirty workaround to get the proper index since the request only contains one award criterion we specify the criterion with ordinal 0
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
+        def idx = getRequestCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -15,7 +15,7 @@ class ServiceContractsAuthorisationRequestTest extends AbstractSelectionCriteria
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -20,7 +20,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -60,7 +60,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -78,7 +78,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -95,7 +95,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -112,7 +112,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -129,7 +129,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -147,7 +147,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -164,7 +164,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -181,7 +181,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -198,7 +198,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -215,7 +215,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

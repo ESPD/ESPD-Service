@@ -15,7 +15,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then: "CriterionID element"
         response.Criterion.size() == getTotalNumberOfCriteria()
@@ -81,7 +81,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -96,7 +96,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -113,7 +113,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -131,7 +131,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -149,7 +149,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -167,7 +167,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]
@@ -186,7 +186,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractAwardCriteriaFixtur
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]

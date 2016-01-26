@@ -15,7 +15,7 @@ class AverageAnnualManpowerRequestTest extends AbstractSelectionCriteriaFixture 
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

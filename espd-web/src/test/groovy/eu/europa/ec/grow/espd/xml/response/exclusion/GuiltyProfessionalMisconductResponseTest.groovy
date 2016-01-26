@@ -16,7 +16,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -60,7 +60,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -76,7 +76,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -93,7 +93,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -110,7 +110,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

@@ -15,7 +15,7 @@ class WorkContractsPerformanceWorksRequestTest extends AbstractSelectionCriteria
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
+        def idx = getRequestCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

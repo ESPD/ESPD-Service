@@ -40,6 +40,7 @@ class MessageSourceController {
             }
             labels[i] = ms.getMessage(labels[i], null, locale);
         }
+        // TODO use MessageSourceResolvable to retrieve all labels at once
         return mapper.writeValueAsString(labels);
     }
 }

@@ -15,7 +15,7 @@ class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

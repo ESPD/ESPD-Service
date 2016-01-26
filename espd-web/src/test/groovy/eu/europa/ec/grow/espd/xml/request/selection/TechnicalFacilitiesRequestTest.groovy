@@ -15,7 +15,7 @@ class TechnicalFacilitiesRequestTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

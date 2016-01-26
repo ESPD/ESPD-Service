@@ -16,7 +16,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -15,7 +15,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

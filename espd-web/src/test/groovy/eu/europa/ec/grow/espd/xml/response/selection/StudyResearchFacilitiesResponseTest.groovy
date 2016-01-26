@@ -16,7 +16,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

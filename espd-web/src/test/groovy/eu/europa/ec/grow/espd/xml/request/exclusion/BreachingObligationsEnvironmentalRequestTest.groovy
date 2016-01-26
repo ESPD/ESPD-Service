@@ -16,7 +16,7 @@ class BreachingObligationsEnvironmentalRequestTest extends AbstractExclusionCrit
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

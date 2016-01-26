@@ -14,7 +14,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractAwardCriteria
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
         response.Criterion.size() == getTotalNumberOfCriteria()
@@ -48,7 +48,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractAwardCriteria
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]

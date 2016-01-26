@@ -16,7 +16,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

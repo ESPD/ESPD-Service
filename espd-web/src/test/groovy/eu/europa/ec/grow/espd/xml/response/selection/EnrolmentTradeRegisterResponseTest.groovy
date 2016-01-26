@@ -16,7 +16,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -56,7 +56,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -75,7 +75,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -92,7 +92,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -109,7 +109,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

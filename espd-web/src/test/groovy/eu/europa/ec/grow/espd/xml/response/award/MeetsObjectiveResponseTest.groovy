@@ -15,7 +15,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
         response.Criterion.size() == getTotalNumberOfCriteria()
@@ -68,7 +68,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -83,7 +83,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -101,7 +101,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]
@@ -118,7 +118,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]
@@ -135,7 +135,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]

@@ -12,7 +12,7 @@ class FraudRequestTest extends AbstractExclusionCriteriaFixture {
     def "03. should contain the 'Fraud' criterion"() {
         given:
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true))
-        def idx = getCriterionIndex(ExclusionCriterion.FRAUD)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.FRAUD)
 
         when:
         def request = parseRequestXml(espd)

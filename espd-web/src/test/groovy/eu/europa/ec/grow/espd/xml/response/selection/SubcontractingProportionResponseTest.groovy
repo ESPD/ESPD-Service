@@ -14,7 +14,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -52,7 +52,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

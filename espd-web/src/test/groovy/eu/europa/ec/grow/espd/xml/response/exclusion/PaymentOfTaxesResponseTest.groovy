@@ -18,7 +18,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -69,7 +69,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -84,7 +84,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
@@ -102,7 +102,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
@@ -118,7 +118,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -132,7 +132,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -146,7 +146,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -165,7 +165,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -181,7 +181,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -197,7 +197,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
@@ -215,7 +215,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
@@ -231,7 +231,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -246,7 +246,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -261,7 +261,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

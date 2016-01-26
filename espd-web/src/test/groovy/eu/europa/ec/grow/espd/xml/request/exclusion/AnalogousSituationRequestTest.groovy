@@ -15,7 +15,7 @@ class AnalogousSituationRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

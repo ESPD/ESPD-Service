@@ -15,7 +15,7 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
+        def idx = getRequestCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

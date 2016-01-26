@@ -15,7 +15,7 @@ class OtherEconomicFinancialRequirementsRequestTest extends AbstractSelectionCri
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
+        def idx = getRequestCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

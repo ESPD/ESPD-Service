@@ -15,7 +15,7 @@ class AverageYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

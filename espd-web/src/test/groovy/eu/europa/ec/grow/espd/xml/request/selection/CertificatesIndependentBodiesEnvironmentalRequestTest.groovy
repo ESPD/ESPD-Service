@@ -15,7 +15,7 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
+        def idx = getRequestCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -15,7 +15,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -16,7 +16,7 @@ class MoneyLaunderingRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

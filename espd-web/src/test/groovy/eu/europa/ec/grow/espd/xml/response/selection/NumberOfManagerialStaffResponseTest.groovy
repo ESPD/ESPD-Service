@@ -16,7 +16,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -53,7 +53,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -84,7 +84,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -115,7 +115,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -132,7 +132,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]
@@ -149,7 +149,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[3]

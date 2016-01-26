@@ -15,7 +15,7 @@ class SupplyContractsPerformanceDeliveriesRequestTest extends AbstractSelectionC
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

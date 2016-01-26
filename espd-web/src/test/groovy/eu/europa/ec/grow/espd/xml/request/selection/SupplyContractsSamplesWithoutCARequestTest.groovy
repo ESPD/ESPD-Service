@@ -15,7 +15,7 @@ class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriter
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

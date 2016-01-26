@@ -15,7 +15,7 @@ class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

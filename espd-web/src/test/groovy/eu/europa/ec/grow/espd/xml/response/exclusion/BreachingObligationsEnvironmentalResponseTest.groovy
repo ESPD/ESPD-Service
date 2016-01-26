@@ -17,7 +17,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -61,7 +61,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -77,7 +77,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -94,7 +94,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -111,7 +111,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]

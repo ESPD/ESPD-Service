@@ -15,7 +15,7 @@ class EnrolmentTradeRegisterRequestTest extends AbstractSelectionCriteriaFixture
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

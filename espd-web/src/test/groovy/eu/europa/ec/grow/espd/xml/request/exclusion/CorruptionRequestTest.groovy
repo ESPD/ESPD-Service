@@ -12,7 +12,7 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
     def "02. should contain the 'Corruption' criterion"() {
         given:
         def espd = new EspdDocument(corruption: new CriminalConvictionsCriterion(exists: true))
-        def idx = getCriterionIndex(ExclusionCriterion.CORRUPTION)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.CORRUPTION)
 
         when:
         def request = parseRequestXml(espd)

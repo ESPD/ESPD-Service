@@ -16,7 +16,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

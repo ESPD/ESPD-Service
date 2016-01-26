@@ -15,7 +15,7 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

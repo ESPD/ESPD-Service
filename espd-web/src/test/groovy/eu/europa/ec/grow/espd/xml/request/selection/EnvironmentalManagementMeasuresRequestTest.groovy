@@ -15,7 +15,7 @@ class EnvironmentalManagementMeasuresRequestTest extends AbstractSelectionCriter
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

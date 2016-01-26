@@ -16,7 +16,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -56,7 +56,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -75,7 +75,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -92,7 +92,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -109,7 +109,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

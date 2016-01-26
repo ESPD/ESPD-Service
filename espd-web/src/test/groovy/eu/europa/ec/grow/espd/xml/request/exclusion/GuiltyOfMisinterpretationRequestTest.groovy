@@ -15,7 +15,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

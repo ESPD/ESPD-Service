@@ -15,7 +15,7 @@ class SupplyContractsCertificatesByQCRequestTest extends AbstractSelectionCriter
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
+        def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

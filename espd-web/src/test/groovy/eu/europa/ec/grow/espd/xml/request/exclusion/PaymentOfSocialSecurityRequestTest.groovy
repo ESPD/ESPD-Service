@@ -16,7 +16,7 @@ class PaymentOfSocialSecurityRequestTest extends AbstractExclusionCriteriaFixtur
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

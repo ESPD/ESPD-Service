@@ -18,7 +18,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -34,7 +34,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
         then:
@@ -57,7 +57,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -73,7 +73,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -89,7 +89,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
@@ -103,7 +103,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
@@ -118,7 +118,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -134,7 +134,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -150,7 +150,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.FINANCIAL_RATIO)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.FINANCIAL_RATIO)
 
         then:
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -166,7 +166,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]

@@ -15,7 +15,7 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractSelectionCriteriaFixt
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getRequestCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

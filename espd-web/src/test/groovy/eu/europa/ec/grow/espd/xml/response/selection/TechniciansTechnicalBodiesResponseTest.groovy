@@ -16,7 +16,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

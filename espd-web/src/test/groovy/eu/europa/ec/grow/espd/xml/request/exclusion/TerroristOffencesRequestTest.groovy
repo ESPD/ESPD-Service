@@ -15,7 +15,7 @@ class TerroristOffencesRequestTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

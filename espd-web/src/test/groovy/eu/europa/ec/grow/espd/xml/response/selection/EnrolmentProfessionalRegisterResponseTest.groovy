@@ -17,7 +17,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -75,7 +75,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -92,7 +92,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -109,7 +109,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -44,13 +44,24 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert requirementType.ID.@schemeVersionID.text() == "1.0"
     }
 
+    /**
+     * At the moment, the ESPD request contains only the criteria which were selected.
+     * @return
+     */
     protected static int getRequestNumberOfCriteria() {
-        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + 1
+//        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + 1
+        return 1
     }
 
+    /**
+     * At the moment, the ESPD Response contains all the criteria, even if they were not selected,
+     * but they have the 'exists' field set to false.
+     * @return
+     */
     protected static int getResponseNumberOfCriteria() {
         // response has economic operator criteria plus meets objectives (reduction of candidates) which is common
-        return getRequestNumberOfCriteria() + AwardCriterion.values().size() - 1
+//        return getRequestNumberOfCriteria() + AwardCriterion.values().size() - 1
+        ExclusionCriterion.values().size() + SelectionCriterion.values().size() + AwardCriterion.values().size()
     }
 
     protected static void checkEvidence(def evidenceElement, String url) {
@@ -58,15 +69,60 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert evidenceElement.EvidenceDocumentReference.Attachment.ExternalReference.URI.text() == url
     }
 
-    protected static int getCriterionIndex(ExclusionCriterion criterion) {
+    /**
+     * At the moment, the ESPD request contains only the criteria which were selected.
+     * @param criterion
+     * @return
+     */
+    protected static int getRequestCriterionIndex(ExclusionCriterion criterion) {
+        return 0
+    }
+
+    /**
+     * At the moment, the ESPD request contains only the criteria which were selected.
+     * @param criterion
+     * @return
+     */
+    protected static int getRequestCriterionIndex(SelectionCriterion criterion) {
+        return 0
+    }
+
+    /**
+     * At the moment, the ESPD request contains only the criteria which were selected.
+     * @param criterion
+     * @return
+     */
+    protected static int getRequestCriterionIndex(AwardCriterion criterion) {
+        return 0
+    }
+
+    /**
+     * At the moment, the ESPD Response contains all the criteria, even if they were not selected,
+     * but they have the 'exists' field set to false.
+     * @param criterion
+     * @return
+     */
+    protected static int getResponseCriterionIndex(ExclusionCriterion criterion) {
         return criterion.ordinal()
     }
 
-    protected static int getCriterionIndex(SelectionCriterion criterion) {
+    /**
+     * At the moment, the ESPD Response contains all the criteria, even if they were not selected,
+     * but they have the 'exists' field set to false.
+     * @param criterion
+     * @return
+     */
+    protected static int getResponseCriterionIndex(SelectionCriterion criterion) {
         return ExclusionCriterion.values().size() + criterion.ordinal()
     }
 
-    protected static int getCriterionIndex(AwardCriterion criterion) {
+    /**
+     * At the moment, the ESPD Response contains all the criteria, even if they were not selected,
+     * but they have the 'exists' field set to false.
+     * @param criterion
+     * @return
+     */
+    protected static int getResponseCriterionIndex(AwardCriterion criterion) {
         return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
     }
 }

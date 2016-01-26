@@ -167,8 +167,11 @@ public abstract class UblCriteriaTemplate {
                 espdDocument.getCertificateIndependentBodiesAboutEnvironmental(), criteria);
     }
 
-    protected final void addUblCriterion(CcvCriterion ccvCriterion, Criterion espdCriterion, List<CriterionType> ublCriteria) {
-        ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
+    protected final void addUblCriterion(CcvCriterion ccvCriterion, Criterion espdCriterion,
+            List<CriterionType> ublCriteria) {
+        if (isCriterionSelected(espdCriterion)) {
+            ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
+        }
     }
 
     /**
@@ -186,4 +189,14 @@ public abstract class UblCriteriaTemplate {
      * @return The list of economic operator criteria
      */
     protected abstract List<CriterionType> buildAwardCriteria(EspdDocument espdDocument);
+
+    /**
+     * See if the specific criterion was selected in ESPD in order to know if we need to add it on the
+     * ESPD Request or Response.
+     *
+     * @param espdCriterion
+     *
+     * @return
+     */
+    protected abstract boolean isCriterionSelected(Criterion espdCriterion);
 }

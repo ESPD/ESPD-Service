@@ -15,7 +15,7 @@ class WorkContractsTechniciansRequestTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -19,7 +19,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -92,7 +92,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -107,7 +107,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
@@ -125,7 +125,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
@@ -141,7 +141,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -155,7 +155,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -169,7 +169,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -188,7 +188,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -204,7 +204,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
@@ -220,7 +220,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
@@ -238,7 +238,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
@@ -254,7 +254,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -269,7 +269,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -284,7 +284,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

@@ -16,7 +16,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -64,7 +64,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -80,7 +80,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -97,7 +97,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -114,7 +114,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -131,7 +131,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -148,7 +148,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

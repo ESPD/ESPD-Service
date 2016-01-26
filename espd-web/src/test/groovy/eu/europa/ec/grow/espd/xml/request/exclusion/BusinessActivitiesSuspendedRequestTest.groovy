@@ -15,7 +15,7 @@ class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFi
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -16,7 +16,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -63,7 +63,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -81,7 +81,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -126,7 +126,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "First year"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -154,7 +154,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -185,7 +185,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "First amount"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -213,7 +213,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -230,7 +230,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -247,7 +247,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

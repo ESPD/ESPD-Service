@@ -16,7 +16,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -75,7 +75,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -91,7 +91,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -125,7 +125,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
+        def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

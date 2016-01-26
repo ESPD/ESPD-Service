@@ -16,7 +16,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -57,7 +57,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -74,7 +74,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -91,7 +91,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -108,7 +108,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

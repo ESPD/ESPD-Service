@@ -15,7 +15,7 @@ class EducationalProfessionalQualificationsRequestTest extends AbstractSelection
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
+        def idx = getRequestCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

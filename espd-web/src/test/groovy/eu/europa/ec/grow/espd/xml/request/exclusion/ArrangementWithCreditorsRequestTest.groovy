@@ -15,7 +15,7 @@ class ArrangementWithCreditorsRequestTest extends AbstractExclusionCriteriaFixtu
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

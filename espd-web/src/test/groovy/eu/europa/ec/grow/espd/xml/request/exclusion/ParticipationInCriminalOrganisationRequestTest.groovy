@@ -12,7 +12,7 @@ class ParticipationInCriminalOrganisationRequestTest extends AbstractExclusionCr
     def "01. should contain the 'Participation in a criminal organisation' criterion"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true))
-        def idx = getCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         when:
         def request = parseRequestXml(espd)

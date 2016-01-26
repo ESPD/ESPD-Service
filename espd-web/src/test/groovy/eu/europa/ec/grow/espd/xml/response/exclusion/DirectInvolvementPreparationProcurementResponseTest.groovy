@@ -15,7 +15,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
         request.Criterion.size() == getResponseNumberOfCriteria()
@@ -55,7 +55,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -71,7 +71,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

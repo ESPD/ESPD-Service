@@ -15,7 +15,7 @@ class BreachingObligationsSocialRequestTest extends AbstractExclusionCriteriaFix
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL)
+        def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()

@@ -15,7 +15,7 @@ class StudyResearchFacilitiesRequestTest extends AbstractSelectionCriteriaFixtur
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
+        def idx = getRequestCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then: "CriterionID element"
         request.Criterion.size() == getRequestNumberOfCriteria()
