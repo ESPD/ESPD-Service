@@ -37,11 +37,8 @@
             <ul class="fa-ul">
                 <li>
                     <i class="info-label fa fa-exclamation-triangle fa-lg fa-li"></i>
-
 					${div18n['correct_errors']}
-                    <div class="errorLabelContainer">
-                        <ul></ul>
-                    </div>
+                    <div class="errorLabelContainer"></div>
                 </li>
             </ul>
         </div>

@@ -32,7 +32,7 @@
 
 	<div id="header">
 
-		<img id="banner-flag" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo">
+		<img id="banner-flag" src="${pageContext.request.contextPath}/static/img/logo.png" class="hidden-print" alt="European Commission logo">
 		<c:if test="${not empty applicationScope.deploymentEnvironment}">
 			<span id="banner-env-text">
 				<span id="environment">${applicationScope.deploymentEnvironment}</span>
@@ -40,8 +40,8 @@
 		</c:if>
 		<span id="banner-title-text" data-i18n="app_title"><s:message code="app_title"/></span>
 		<span id="banner-image-title-fill"></span>
-		<span id="banner-sub-title-text" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
-		<div id="top-lang-selector">
+		<span id="banner-sub-title-text" class="hidden-print" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
+		<div id="top-lang-selector" class="hidden-print">
 			<ul class="reset-list">
 				<li><a href="#" data-i18n="legal_notice"><s:message code="legal_notice"/></a></li>
 				<li><a href="#" data-i18n="cookies"><s:message code="cookies"/></a></li>
