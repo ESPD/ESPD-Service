@@ -28,8 +28,7 @@ request.setAttribute("span18n", inst.span());
     <%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
     window.console = window.console || (function () {
                 var c = {};
-                c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () {
-                };
+                c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () {};
                 return c;
             })();
 
