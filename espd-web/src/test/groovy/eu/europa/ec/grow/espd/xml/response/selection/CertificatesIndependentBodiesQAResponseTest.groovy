@@ -92,7 +92,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -109,7 +109,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_31.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_31.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -126,7 +126,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_31")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_31")))
 
         when:
         def request = parseResponseXml(espd)

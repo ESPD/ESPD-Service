@@ -144,7 +144,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
-                selfCleaning: new SelfCleaning(exists: false)))
+                selfCleaning: new SelfCleaning(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -178,7 +178,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -195,7 +195,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_05.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_05.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -212,7 +212,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_05")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
         def request = parseResponseXml(espd)

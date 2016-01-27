@@ -70,7 +70,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -87,7 +87,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_23.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_23.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -104,7 +104,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_23")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_23")))
 
         when:
         def request = parseResponseXml(espd)

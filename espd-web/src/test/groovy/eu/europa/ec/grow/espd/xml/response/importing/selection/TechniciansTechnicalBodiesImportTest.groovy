@@ -21,7 +21,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
         espd.techniciansTechnicalBodies.specify == "specify something"
 
         then: "info electronically"
-        espd.techniciansTechnicalBodies.availableElectronically.exists == true
+        espd.techniciansTechnicalBodies.availableElectronically.answer == true
         espd.techniciansTechnicalBodies.availableElectronically.url == "www.hodor.com"
         espd.techniciansTechnicalBodies.availableElectronically.code == "TECHNICAL_BODIES"
     }
@@ -30,7 +30,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true,
                 specify: "specify something",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "TECHNICAL_BODIES")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_BODIES")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

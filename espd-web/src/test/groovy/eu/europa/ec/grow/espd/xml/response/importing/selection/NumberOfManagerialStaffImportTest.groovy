@@ -32,7 +32,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
         espd.numberManagerialStaff.number3 == 33
 
         then: "info electronically"
-        espd.numberManagerialStaff.availableElectronically.exists == true
+        espd.numberManagerialStaff.availableElectronically.answer == true
         espd.numberManagerialStaff.availableElectronically.url == "www.hodor.com"
         espd.numberManagerialStaff.availableElectronically.code == "GENERAL_TURNOVER"
     }
@@ -43,7 +43,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
                 year1: 2016, number1: 11,
                 year2: 2015, number2: 22,
                 year3: 2014, number3: 33,
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

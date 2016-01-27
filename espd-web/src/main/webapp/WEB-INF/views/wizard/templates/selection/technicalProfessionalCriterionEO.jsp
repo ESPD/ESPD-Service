@@ -20,7 +20,6 @@
 <tiles:importAttribute name="has_explain_certificates_independent_environmental"/>
 <tiles:importAttribute name="has_please_specify"/>
 
-
 <div class="row criteria-row">
     <div class="col-md-5 criteria-cell-left">
         <div class="form-group">
@@ -51,13 +50,12 @@
                             </c:otherwise>
                         </c:choose>
                     </label>
-                    <form:checkbox path="${field}.exists" data-target-invert="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
+                    <form:checkbox path="${field}.answer" data-target-invert="${'#'}${field}-form"
+                                   class="radioslide checktoggle form-control"/>
                 </div>
             </div>
         </c:if>
-        
         <c:if test="${has_please_describe_them}">
-        
             <div class="col-md-12" id="${field}-form">
                 <div class="form-group">
                     <div class="tab-pane" id="${field}-reliability">
@@ -77,7 +75,8 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="col-md-8">
-                                <form:textarea path="${field}.description" class="form-control" placeholder="${i18n['crit_description_placeholder']}"></form:textarea>
+                                <form:textarea path="${field}.description" class="form-control"
+                                               placeholder="${i18n['crit_description_placeholder']}"></form:textarea>
                             </div>
                         </div>
                     </div>
@@ -90,15 +89,16 @@
                     <div class="tab-pane" id="${field}-specify">
                         <div class="form-group">
                             <label class="control-label col-md-4 small">${span18n['crit_please_specify']}</label>
+
                             <div class="col-md-8">
-                                <form:textarea path="${field}.specify" class="form-control" placeholder="${i18n['crit_please_specify']}"></form:textarea>
+                                <form:textarea path="${field}.specify" class="form-control"
+                                               placeholder="${i18n['crit_please_specify']}"></form:textarea>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </c:if>
-
         <c:if test="${has_multiple_description_amount_date_recipients}">
             <tiles:insertDefinition name="multipleDescriptionAmountDateRecipients">
                 <tiles:putAttribute name="field" value="${field}"/>
@@ -107,7 +107,7 @@
         <c:if test="${lastYearsNumber != null}">
             <tiles:insertDefinition name="multipleYearNumber">
                 <tiles:putAttribute name="field" value="${field}"/>
-	            <tiles:putAttribute name="lastYears" value="${lastYearsNumber}"/>
+                <tiles:putAttribute name="lastYears" value="${lastYearsNumber}"/>
             </tiles:insertDefinition>
         </c:if>
         <c:if test="${has_info_electronically}">

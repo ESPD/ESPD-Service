@@ -21,10 +21,7 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
     private Boolean booleanValue1;
 
     public final boolean getInfoElectronicallyAnswer() {
-        if (availableElectronically != null) {
-            return Boolean.TRUE.equals(availableElectronically.getExists());
-        }
-        return false;
+        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
     }
 
     public final String getInfoElectronicallyUrl() {

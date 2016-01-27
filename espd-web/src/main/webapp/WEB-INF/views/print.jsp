@@ -200,7 +200,7 @@
 	                            	${span18n['createeo_if_proc_reserved']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="procurementReserved.exists" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="procurementReserved.answer" data-target="#disworkers-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                             </div>
                        </div>
@@ -229,7 +229,7 @@
 	                            	${span18n['createeo_eo_approved_cert']}
 	                            </label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="eoRegistered.exists" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoRegistered.answer" data-target="#reg-official-yes" data-target-invert="#reg-official-no" cssClass="radioslide checktoggle form-control" />
 	                            </div>
 	                        </div>
                        </div>
@@ -296,7 +296,7 @@
                        		<div class="form-group">
 	                            <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
 	                            <div class="col-md-6">
-	                                <form:checkbox path="eoParticipatingProcurementProcedure.exists" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
+	                                <form:checkbox path="eoParticipatingProcurementProcedure.answer" data-target="#group-form" cssClass="radioslide checktoggle form-control" />
 	                            </div>
                            	</div>
                        </div>
@@ -429,7 +429,7 @@
                             	${span18n['createeo_eo_rely_other_entities']}
                             </label>
                             <div class="col-md-6">
-                                <form:checkbox path="eoReliesCapacities.exists" cssClass="radioslide checktoggle form-control" />
+                                <form:checkbox path="eoReliesCapacities.answer" cssClass="radioslide checktoggle form-control" />
                             </div>
                        </div>
                        <div class="col-md-12 alert alert-espd-info" style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px;">
@@ -712,7 +712,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label small" style="padding-top:0;">${span18n['crit_your_answer']}</label>
-                                <form:checkbox path="selectionSatisfiesAll.exists" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
+                                <form:checkbox path="selectionSatisfiesAll.answer" data-target-invert="${'#'}eo-satisfies-all-form" class="radioslide checktoggle form-control"/>
                             </div>
                         </div>
                     </div>

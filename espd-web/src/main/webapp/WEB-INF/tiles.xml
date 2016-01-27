@@ -63,14 +63,13 @@
     	<put-attribute name="field" value=""/>
     </definition>
 
-    <definition name="checkCriterion" template="/WEB-INF/views/wizard/templates/checkCriterion.jsp">
+    <definition name="requestCriterion" template="/WEB-INF/views/wizard/templates/checkCriterion.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="title_code" value=""/>
         <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="description_code" value=""/>
-        <put-attribute name="ischecked" value="true"/>
-        <put-attribute name="isdisabled" value="true"/>
-        <put-attribute name="descriptionField" value="description"/>
+        <put-attribute name="is_always_checked" value="false"/>
+        <put-attribute name="is_disabled" value="false"/>
     </definition>
     
     <definition name="formCriterion" template="/WEB-INF/views/wizard/templates/formCriterion.jsp">

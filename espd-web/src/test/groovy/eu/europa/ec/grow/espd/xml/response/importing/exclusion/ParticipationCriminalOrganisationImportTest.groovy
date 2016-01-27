@@ -27,11 +27,11 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
         espd.criminalConvictions.periodLength == "7 years"
 
         then: "self cleaning"
-        espd.criminalConvictions.selfCleaning.exists == true
+        espd.criminalConvictions.selfCleaning.answer == true
         espd.criminalConvictions.selfCleaning.description == "Hodor is clean"
 
         then: "info electronically"
-        espd.criminalConvictions.availableElectronically.exists == true
+        espd.criminalConvictions.availableElectronically.answer == true
         espd.criminalConvictions.availableElectronically.url == "www.hodor.com"
         espd.criminalConvictions.availableElectronically.code == "INTERNATIONAL"
     }
@@ -40,8 +40,8 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false, dateOfConviction: new Date(),
                 reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
-                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean"),
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "INTERNATIONAL")))
+                selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))
 
         expect:
         1 == 1

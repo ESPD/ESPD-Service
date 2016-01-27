@@ -22,11 +22,11 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
         espd.agreementsWithOtherEO.description == "Hodor is distorting"
 
         then: "self cleaning"
-        espd.agreementsWithOtherEO.selfCleaning.exists == true
+        espd.agreementsWithOtherEO.selfCleaning.answer == true
         espd.agreementsWithOtherEO.selfCleaning.description == "Hodor is clean"
 
         then: "there should be no info electronically"
-        espd.agreementsWithOtherEO.availableElectronically.exists == false
+        espd.agreementsWithOtherEO.availableElectronically.answer == false
         espd.agreementsWithOtherEO.availableElectronically.url == null
         espd.agreementsWithOtherEO.availableElectronically.code == null
     }
@@ -34,7 +34,7 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true, description: "Hodor is distorting",
-                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean")))
+                selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

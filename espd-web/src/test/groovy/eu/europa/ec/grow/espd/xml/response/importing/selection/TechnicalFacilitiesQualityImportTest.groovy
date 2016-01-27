@@ -23,7 +23,7 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
         espd.technicalFacilitiesMeasures.description == "Another description"
 
         then: "info electronically"
-        espd.technicalFacilitiesMeasures.availableElectronically.exists == true
+        espd.technicalFacilitiesMeasures.availableElectronically.answer == true
         espd.technicalFacilitiesMeasures.availableElectronically.url == "www.hodor.com"
         espd.technicalFacilitiesMeasures.availableElectronically.code == "TECHNICAL_QUALITY"
     }
@@ -32,7 +32,7 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true,
                 description: "Another description",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

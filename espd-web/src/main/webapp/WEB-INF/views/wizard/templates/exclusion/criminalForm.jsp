@@ -44,3 +44,4 @@
                     placeholder="${periodLengthPlaceholder}"/>
     </div>
 </div>
+

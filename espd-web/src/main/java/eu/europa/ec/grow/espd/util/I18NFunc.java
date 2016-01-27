@@ -1,13 +1,12 @@
 package eu.europa.ec.grow.espd.util;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-import javax.servlet.jsp.PageContext;
-
 import org.springframework.context.MessageSource;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import javax.servlet.jsp.PageContext;
+import java.util.HashMap;
+import java.util.Locale;
 
 @SuppressWarnings("serial")
 public class I18NFunc {
@@ -36,7 +35,12 @@ public class I18NFunc {
                 if (key == null) {
                     return "";
                 }
-                return "<span data-i18n=\"" + key + "\">" + ms.getMessage(key.toString(), null, locale) + "</span>";
+                return new StringBuilder("<span data-i18n=\"")
+                        .append((String) key)
+                        .append("\">")
+                        .append(ms.getMessage(key.toString(), null, locale))
+                        .append("</span>")
+                        .toString();
             }
         };
         divMessageMap = new HashMap<String, String>() {
@@ -45,7 +49,12 @@ public class I18NFunc {
                 if (key == null) {
                     return "";
                 }
-                return "<div data-i18n=\"" + key + "\">" + ms.getMessage(key.toString(), null, locale) + "</div>";
+                return new StringBuilder("<div data-i18n=\"")
+                        .append((String) key)
+                        .append("\">")
+                        .append(ms.getMessage(key.toString(), null, locale))
+                        .append("</div>")
+                        .toString();
             }
         };
     }

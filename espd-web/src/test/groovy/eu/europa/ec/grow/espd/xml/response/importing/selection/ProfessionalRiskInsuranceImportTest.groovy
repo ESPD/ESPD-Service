@@ -26,7 +26,7 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
         espd.professionalRiskInsurance.currency1 == "RON"
 
         then: "info electronically"
-        espd.professionalRiskInsurance.availableElectronically.exists == true
+        espd.professionalRiskInsurance.availableElectronically.answer == true
         espd.professionalRiskInsurance.availableElectronically.url == "www.hodor.com"
         espd.professionalRiskInsurance.availableElectronically.code == "RISK_INSURANCE"
     }
@@ -35,7 +35,7 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
                 amount1: 777.7, currency1: "RON",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "RISK_INSURANCE")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "RISK_INSURANCE")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

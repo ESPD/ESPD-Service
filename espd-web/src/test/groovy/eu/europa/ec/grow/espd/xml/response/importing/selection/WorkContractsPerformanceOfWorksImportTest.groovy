@@ -56,7 +56,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.recipients5 == "recipients5"
 
         then: "info electronically"
-        espd.workContractsPerformanceOfWorks.availableElectronically.exists == true
+        espd.workContractsPerformanceOfWorks.availableElectronically.answer == true
         espd.workContractsPerformanceOfWorks.availableElectronically.url == "www.hodor.com"
         espd.workContractsPerformanceOfWorks.availableElectronically.code == "PERF"
     }
@@ -69,7 +69,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
                 description3: "description3", amount3: 33.3, currency3: "USD", date3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), recipients3: "recipients3",
                 description4: "description4", amount4: 44.4, currency4: "CHF", date4: LocalDateAdapter.unmarshal("2016-01-20").toDate(), recipients4: "recipients4",
                 description5: "description5", amount5: 55.5, currency5: "YEN", date5: LocalDateAdapter.unmarshal("2016-01-21").toDate(), recipients5: "recipients5",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "PERF")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PERF")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

@@ -11,7 +11,7 @@
     <label data-i18n="crit_information_available_electronically" class="control-label small">
         <s:message code='crit_information_available_electronically'/>
     </label>
-    <form:checkbox path="${field}.availableElectronically.exists" data-target="${'#'}${field}-electronically" class="radioslide checktoggle form-control"/>
+    <form:checkbox path="${field}.availableElectronically.answer" data-target="${'#'}${field}-electronically" class="radioslide checktoggle form-control"/>
 </div>
 <div id="${field}-electronically" class="form-group" style="display:none">
     <label class="control-label col-md-2 small" for="${field}-field6" data-i18n="crit_url"><s:message

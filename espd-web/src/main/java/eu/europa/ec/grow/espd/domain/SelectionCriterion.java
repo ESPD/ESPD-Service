@@ -8,14 +8,14 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SelectionCriterion extends Criterion {
+public abstract class SelectionCriterion extends Criterion {
 
     private AvailableElectronically availableElectronically;
     private String description;
 
     public final boolean getInfoElectronicallyAnswer() {
         if (availableElectronically != null) {
-            return Boolean.TRUE.equals(availableElectronically.getExists());
+            return Boolean.TRUE.equals(availableElectronically.getAnswer());
         }
         return false;
     }

@@ -227,7 +227,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true)))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true)))
 
         when:
         def request = parseResponseXml(espd)
@@ -242,7 +242,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_07.com")))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_07.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -257,7 +257,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_07")))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_07")))
 
         when:
         def request = parseResponseXml(espd)

@@ -225,7 +225,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -242,7 +242,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_14.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_14.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -259,7 +259,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_14")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_14")))
 
         when:
         def request = parseResponseXml(espd)

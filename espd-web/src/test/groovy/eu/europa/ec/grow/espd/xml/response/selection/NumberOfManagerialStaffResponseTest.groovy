@@ -111,7 +111,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -128,7 +128,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_24.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_24.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -145,7 +145,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_24")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_24")))
 
         when:
         def request = parseResponseXml(espd)

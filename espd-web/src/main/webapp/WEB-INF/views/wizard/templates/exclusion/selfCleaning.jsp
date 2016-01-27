@@ -8,7 +8,7 @@
 
 <div class="form-group">
 		<label class="control-label small" data-i18n="crit_taken_self_cleaning_measures"><s:message code='crit_taken_self_cleaning_measures'/></label>
-		<form:checkbox path="${field}.selfCleaning.exists" id="${field}-field5" data-target="${'#'}${field}-reliability" cssClass="radioslide checktoggle" />
+		<form:checkbox path="${field}.selfCleaning.answer" id="${field}-field5" data-target="${'#'}${field}-reliability" cssClass="radioslide checktoggle" />
 </div>
 <div class="tab-pane" id="${field}-reliability" style="display:none">
 	<div class="form-group">

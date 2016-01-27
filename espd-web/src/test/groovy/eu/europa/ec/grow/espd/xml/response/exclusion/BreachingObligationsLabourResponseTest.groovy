@@ -89,7 +89,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
         def espd = new EspdDocument(breachingObligationsLabour: new LawCriterion(exists: true,
-                selfCleaning: new SelfCleaning(exists: false)))
+                selfCleaning: new SelfCleaning(answer: false)))
 
         when:
         def request = parseResponseXml(espd)

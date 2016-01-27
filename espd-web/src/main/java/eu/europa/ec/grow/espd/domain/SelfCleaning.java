@@ -4,8 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class SelfCleaning extends Criterion {
+@EqualsAndHashCode
+public class SelfCleaning {
+
+    private Boolean answer;
 
     private String description;
 

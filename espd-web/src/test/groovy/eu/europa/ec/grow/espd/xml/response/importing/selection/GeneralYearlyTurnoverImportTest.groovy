@@ -47,7 +47,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         espd.generalYearlyTurnover.currency5 == "YEN"
 
         then: "info electronically"
-        espd.generalYearlyTurnover.availableElectronically.exists == true
+        espd.generalYearlyTurnover.availableElectronically.answer == true
         espd.generalYearlyTurnover.availableElectronically.url == "www.hodor.com"
         espd.generalYearlyTurnover.availableElectronically.code == "GENERAL_TURNOVER"
     }
@@ -60,7 +60,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
                 year3: 2014, amount3: 333.3, currency3: "USD",
                 year4: 2013, amount4: 444.4, currency4: "CHF",
                 year5: 2012, amount5: 555.5, currency5: "YEN",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

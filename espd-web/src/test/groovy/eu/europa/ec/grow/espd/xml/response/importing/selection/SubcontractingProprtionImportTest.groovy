@@ -23,7 +23,7 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
         espd.subcontractingProportion.percentage == 66.6
 
         then: "info electronically"
-        espd.subcontractingProportion.availableElectronically.exists == true
+        espd.subcontractingProportion.availableElectronically.answer == true
         espd.subcontractingProportion.availableElectronically.url == "www.hodor.com"
         espd.subcontractingProportion.availableElectronically.code == "SUBCONTRACTING"
     }
@@ -32,7 +32,7 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true,
                 percentage: 66.6,
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "SUBCONTRACTING")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "SUBCONTRACTING")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

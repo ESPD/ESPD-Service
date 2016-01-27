@@ -195,7 +195,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -212,7 +212,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_06.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_06.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -229,7 +229,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_06")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_06")))
 
         when:
         def request = parseResponseXml(espd)

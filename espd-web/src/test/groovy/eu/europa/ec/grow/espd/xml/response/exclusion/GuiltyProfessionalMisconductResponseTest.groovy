@@ -89,7 +89,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
     def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
         given:
         def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true,
-                selfCleaning: new SelfCleaning(exists: false)))
+                selfCleaning: new SelfCleaning(answer: false)))
 
         when:
         def request = parseResponseXml(espd)

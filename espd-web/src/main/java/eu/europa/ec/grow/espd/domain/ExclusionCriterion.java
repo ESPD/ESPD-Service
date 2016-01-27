@@ -19,7 +19,7 @@ public abstract class ExclusionCriterion extends Criterion {
     }
 
     public final boolean getInfoElectronicallyAnswer() {
-        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getExists());
+        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
     }
 
     public final String getInfoElectronicallyUrl() {
@@ -37,7 +37,7 @@ public abstract class ExclusionCriterion extends Criterion {
     }
 
     public final boolean getSelfCleaningAnswer() {
-        return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getExists());
+        return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getAnswer());
     }
 
 }

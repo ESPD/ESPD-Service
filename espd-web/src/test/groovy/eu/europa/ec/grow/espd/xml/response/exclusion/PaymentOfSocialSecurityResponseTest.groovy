@@ -250,7 +250,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true)))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true)))
 
         when:
         def request = parseResponseXml(espd)
@@ -265,7 +265,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_08.com")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_08.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -280,7 +280,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_08")))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_08")))
 
         when:
         def request = parseResponseXml(espd)

@@ -22,7 +22,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
         espd.bankruptcy.reason == "We lost all our money at poker."
 
         then: "info electronically"
-        espd.bankruptcy.availableElectronically.exists == true
+        espd.bankruptcy.availableElectronically.answer == true
         espd.bankruptcy.availableElectronically.url == "www.hodor.com"
         espd.bankruptcy.availableElectronically.code == "INTERNATIONAL"
 
@@ -32,7 +32,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, description: "Bankruptcy description",
                 reason: "We lost all our money at poker.",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "INTERNATIONAL")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))
 
         expect:
         1 == 1

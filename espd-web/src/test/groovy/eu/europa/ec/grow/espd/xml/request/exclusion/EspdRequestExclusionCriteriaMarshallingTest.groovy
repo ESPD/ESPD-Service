@@ -12,7 +12,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
     def "very important test - criteria should appear even if they were not selected in the ESPD UI"() {
         given:
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true),
-                paymentTaxes: new TaxesCriterion(exists: false, availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "HODOR")),
+                paymentTaxes: new TaxesCriterion(exists: false, availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "HODOR")),
                 corruption: new CriminalConvictionsCriterion(exists: true))
 
         when:

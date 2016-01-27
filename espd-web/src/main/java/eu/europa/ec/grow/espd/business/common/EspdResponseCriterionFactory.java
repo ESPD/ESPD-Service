@@ -245,9 +245,7 @@ class EspdResponseCriterionFactory {
 
         boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
 
-        SatisfiesAllCriterion criterion = SatisfiesAllCriterion.buildWithExists(yourAnswer);
-
-        return criterion;
+        return SatisfiesAllCriterion.buildWithExists(yourAnswer);
     }
 
     private SuitabilityCriterion buildSuitabilityCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
@@ -494,7 +492,7 @@ class EspdResponseCriterionFactory {
         boolean selfCleaningAnswer = readBooleanRequirement(ExclusionCriterionRequirement.MEASURES_SELF_CLEANING,
                 criterionType);
         SelfCleaning selfCleaning = new SelfCleaning();
-        selfCleaning.setExists(selfCleaningAnswer);
+        selfCleaning.setAnswer(selfCleaningAnswer);
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE_SELF_CLEANING,
                 criterionType);
         selfCleaning.setDescription(description);
@@ -520,7 +518,7 @@ class EspdResponseCriterionFactory {
             CcvCriterionRequirement answerReq, CcvCriterionRequirement urlReq, CcvCriterionRequirement urlCodeReq) {
         AvailableElectronically electronically = new AvailableElectronically();
         boolean electronicallyAnswer = readBooleanRequirement(answerReq, criterionType);
-        electronically.setExists(electronicallyAnswer);
+        electronically.setAnswer(electronicallyAnswer);
         String url = readRequirementValue(urlReq, criterionType);
         electronically.setUrl(url);
         String code = readRequirementValue(urlCodeReq, criterionType);

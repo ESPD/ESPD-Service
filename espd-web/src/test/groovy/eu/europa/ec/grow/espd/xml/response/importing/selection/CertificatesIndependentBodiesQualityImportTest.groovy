@@ -23,7 +23,7 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
         espd.certificateIndependentBodiesAboutQa.description == "Another description"
 
         then: "info electronically"
-        espd.certificateIndependentBodiesAboutQa.availableElectronically.exists == true
+        espd.certificateIndependentBodiesAboutQa.availableElectronically.answer == true
         espd.certificateIndependentBodiesAboutQa.availableElectronically.url == "www.hodor.com"
         espd.certificateIndependentBodiesAboutQa.availableElectronically.code == "TECHNICAL_QUALITY"
     }
@@ -32,7 +32,7 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
                 description: "Another description",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

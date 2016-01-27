@@ -23,7 +23,7 @@ class MeetsObjectiveImportTest extends AbstractXmlFileImport {
         espd.meetsObjective.description1 == "please describe"
 
         then: "info electronically"
-        espd.meetsObjective.availableElectronically.exists == true
+        espd.meetsObjective.availableElectronically.answer == true
         espd.meetsObjective.availableElectronically.url == "www.hodor.com"
         espd.meetsObjective.availableElectronically.code == "MEETS"
     }
@@ -32,7 +32,7 @@ class MeetsObjectiveImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: true,
             description1: "please describe",
-                availableElectronically: new AvailableElectronically(exists: true, url: "www.hodor.com", code: "MEETS")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "MEETS")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

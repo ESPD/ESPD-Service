@@ -30,7 +30,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
     def "'Is this information available electronically' empty requirement should have empty response"() {
         given:
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false, url: null, code: "   ")))
+                availableElectronically: new AvailableElectronically(answer: false, url: null, code: "   ")))
 
         when:
         def request = parseResponseXml(espd)

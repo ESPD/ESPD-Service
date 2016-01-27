@@ -22,11 +22,11 @@ class MisconductImportTest extends AbstractXmlFileImport {
         espd.guiltyGrave.description == "Hodor is misbehaving"
 
         then: "self cleaning"
-        espd.guiltyGrave.selfCleaning.exists == true
+        espd.guiltyGrave.selfCleaning.answer == true
         espd.guiltyGrave.selfCleaning.description == "Hodor is clean"
 
         then: "info electronically"
-        espd.guiltyGrave.availableElectronically.exists == false
+        espd.guiltyGrave.availableElectronically.answer == false
         espd.guiltyGrave.availableElectronically.url == null
         espd.guiltyGrave.availableElectronically.code == null
     }
@@ -34,7 +34,7 @@ class MisconductImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true, description: "Hodor is misbehaving",
-                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is clean")))
+                selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

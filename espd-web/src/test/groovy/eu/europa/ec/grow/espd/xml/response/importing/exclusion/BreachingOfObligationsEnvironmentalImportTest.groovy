@@ -22,7 +22,7 @@ class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImpor
         espd.breachingObligationsEnvironmental.description == "Hodor description"
 
         then: "self cleaning"
-        espd.breachingObligationsEnvironmental.selfCleaning.exists == true
+        espd.breachingObligationsEnvironmental.selfCleaning.answer == true
         espd.breachingObligationsEnvironmental.selfCleaning.description == "Hodor is very clean"
 
     }
@@ -30,7 +30,7 @@ class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImpor
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true, description: "Hodor description",
-                selfCleaning: new SelfCleaning(exists: true, description: "Hodor is very clean")))
+                selfCleaning: new SelfCleaning(answer: true, description: "Hodor is very clean")))
 
         expect:
         1 == 1

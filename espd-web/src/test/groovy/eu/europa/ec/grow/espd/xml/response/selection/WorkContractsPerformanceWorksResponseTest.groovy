@@ -225,7 +225,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
     def "check the 'Is this information available electronically' requirement response"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: false)))
+                availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
         def request = parseResponseXml(espd)
@@ -242,7 +242,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_13.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_13.com")))
 
         when:
         def request = parseResponseXml(espd)
@@ -259,7 +259,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(exists: true, code: "HODOR_13")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_13")))
 
         when:
         def request = parseResponseXml(espd)

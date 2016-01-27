@@ -4,8 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class AvailableElectronically extends Criterion {
+@EqualsAndHashCode
+public class AvailableElectronically {
+
+    private Boolean answer;
 
     private String url;
 

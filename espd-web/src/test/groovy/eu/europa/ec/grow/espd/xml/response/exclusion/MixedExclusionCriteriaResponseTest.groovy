@@ -42,8 +42,8 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
 
     def "should contain mixed criminal convictions self cleaning requirements"() {
         given:
-        def participation = new CriminalConvictionsCriterion(exists: true, selfCleaning: new SelfCleaning(exists: true, description: "Hodor_01 is clean"))
-        def corruption = new CriminalConvictionsCriterion(exists: true, selfCleaning: new SelfCleaning(exists: true, description: "Hodor_02 is clean"))
+        def participation = new CriminalConvictionsCriterion(exists: true, selfCleaning: new SelfCleaning(answer: true, description: "Hodor_01 is clean"))
+        def corruption = new CriminalConvictionsCriterion(exists: true, selfCleaning: new SelfCleaning(answer: true, description: "Hodor_02 is clean"))
         def espd = new EspdDocument(criminalConvictions: participation, corruption: corruption)
 
         when:
@@ -65,8 +65,8 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
 
     def "should contain mixed criminal convictions info electronically requirements"() {
         given:
-        def participation = new CriminalConvictionsCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_01.com"))
-        def corruption = new CriminalConvictionsCriterion(exists: true, availableElectronically: new AvailableElectronically(exists: true, url: "http://hodor_02.com"))
+        def participation = new CriminalConvictionsCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_01.com"))
+        def corruption = new CriminalConvictionsCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_02.com"))
         def espd = new EspdDocument(criminalConvictions: participation, corruption: corruption)
 
         when:
