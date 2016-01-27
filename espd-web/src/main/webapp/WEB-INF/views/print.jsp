@@ -13,10 +13,10 @@
 <script>
     $(function () {
         $("#ojsNumber").inputmask("9999/S 999-9999999");
-        $('input').attr('readonly', true);
-        $('textarea').attr('readonly', true);
-        $('checkbox').attr('readonly', true);
-        $('select').attr('readonly', true);
+        $('input').attr('readonly', true).removeAttr('placeholder');
+        $('textarea').attr('readonly', true).removeAttr('placeholder');
+        $('checkbox').attr('readonly', true).removeAttr('placeholder');
+        $('select').attr('readonly', true).removeAttr('placeholder');
         $('select').attr("disabled", true);
          $("checkbox").attr("disabled", true);
          $('.radioslide').bootstrapToggle('disable');

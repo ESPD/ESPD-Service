@@ -242,6 +242,7 @@
                     </c:if>
 	            </div>
 	        </div>
+
 	        <div class="panel panel-default espd-panel">
 	            <div data-i18n="createcasel_technical_professional_ability" class="espd-panel-heading" data-toggle="collapse" data-target="#eo-technical-professional-section">
 	                <s:message code='createcasel_technical_professional_ability'/>

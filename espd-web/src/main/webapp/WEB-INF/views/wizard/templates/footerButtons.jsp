@@ -12,8 +12,8 @@
 <c:set var="prevUrl" value="${fn:startsWith(prev,'/')}"/>
 <c:set var="nextUrl" value="${fn:startsWith(next,'/')}"/>
 
-<div class="col-md-6">&nbsp;</div>
-<div class="col-md-6">
+<div class="col-md-6 hidden-print">&nbsp;</div>
+<div class="col-md-6 hidden-print">
     <div class="btn-group">
     	<c:if test="${!prevUrl}">
 	        <button id="prevBtn" type="submit" class="btn btn-default btn-lg" name="prev" value="${prev}">

@@ -39,57 +39,55 @@
                     <label class="control-label small" style="padding-top: 0px;">
                         <s:message code='crit_your_answer'/>
                     </label>
-                    <form:checkbox path="${field}.answer" data-target="${'#'}${field}-form"
-                                   class="radioslide checktoggle form-control"/>
+                    <form:checkbox path="${field}.answer" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
                 </div>
             </div>
         </c:if>
+       
         <div id="${field}-form" style='${has_your_answer?"display:none":""}'>
-            <c:if test="${has_please_describe_them}">
-                <div class="col-md-12" id="${field}-form">
-                    <div class="form-group">
-                        <div class="tab-pane" id="${field}-reliability">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 small" for="${field}-description"><s:message
-                                        code='crit_please_describe_them'/></label>
-                                <div class="col-md-8">
+        
+	        <c:if test="${has_please_describe_them}">
+	            <div class="col-md-12" id="${field}-form">
+	                <div class="form-group">
+	                    <div class="tab-pane" id="${field}-reliability">
+	                        <div class="form-group">
+	                            <label class="control-label col-md-4 small" for="${field}-description"><s:message
+	                                    code='crit_please_describe_them'/></label>
+	                            <div class="col-md-8">
                                     <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
-                                    <form:textarea path="${field}.description" cssClass="form-control"
-                                                   id="${field}-description"
-                                                   placeholder="${describePlaceholder}"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </c:if>
-            <c:if test="${has_multiple_year_amount && lastYearsAmount != null}">
-                <tiles:insertDefinition name="multipleYearAmount">
-                    <tiles:putAttribute name="field" value="${field}"/>
-                    <tiles:putAttribute name="lastYears" value="${lastYearsAmount}"/>
-                </tiles:insertDefinition>
-            </c:if>
-            <c:if test="${has_multiple_description_ratio}">
-                <tiles:insertDefinition name="multipleDescriptionRatio">
-                    <tiles:putAttribute name="field" value="${field}"/>
-                </tiles:insertDefinition>
-            </c:if>
-            <c:if test="${has_single_amount}">
-                <div class="form-group">
-                    <label class="control-label col-md-4 small" data-i18n="crit_amount"><s:message
-                            code='crit_amount'/></label>
-
-                    <div class="col-md-5">
-                        <form:input path="${field}.amount1" cssClass="form-control"
-                                    placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
-                    </div>
-                    <div class="col-md-3">
-                        <tiles:insertDefinition name="currencies">
-                            <tiles:putAttribute name="currencyField" value="${field}.currency1"/>
-                        </tiles:insertDefinition>
-                    </div>
-                </div>
-            </c:if>
+	                                <form:textarea path="${field}.description" cssClass="form-control" id="${field}-description" placeholder="${describePlaceholder}"></form:textarea>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </c:if>
+	        
+	        <c:if test="${has_multiple_year_amount && lastYearsAmount != null}">
+	            <tiles:insertDefinition name="multipleYearAmount">
+	                <tiles:putAttribute name="field" value="${field}"/>
+	                <tiles:putAttribute name="lastYears" value="${lastYearsAmount}"/>
+	            </tiles:insertDefinition>
+	        </c:if>
+	        <c:if test="${has_multiple_description_ratio}">
+	            <tiles:insertDefinition name="multipleDescriptionRatio">
+	                <tiles:putAttribute name="field" value="${field}"/>
+	            </tiles:insertDefinition>
+	        </c:if>
+	        <c:if test="${has_single_amount}">
+	            <div class="form-group">
+	                <label class="control-label col-xs-4 small" data-i18n="crit_amount"><s:message code='crit_amount'/></label>
+	                <div class="col-xs-5">
+	                    <form:input path="${field}.amount1" cssClass="form-control" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+	                </div>
+	                <div class="col-xs-3">
+	                    <tiles:insertDefinition name="currencies">
+	                        <tiles:putAttribute name="currencyField" value="${field}.currency1"/>
+	                    </tiles:insertDefinition>
+	                </div>
+	            </div>
+	            
+	        </c:if>
             <c:if test="${has_specify_year}">
                 <div class="form-group">
                     <label class="control-label col-md-4 small" data-i18n="crit_please_specify"><s:message

@@ -12,7 +12,7 @@
 <tiles:importAttribute name="selection"/>
 <tiles:importAttribute name="finish"/>
 
-        <div class="panel panel-default no-border">
+        <div class="panel panel-default no-border hidden-print">
             <ul class="nav nav-pills nav-wizard nav-justified">
                 <li class="${(start||procedure||exclusion||selection||finish)?'active':''}">
 					<a href="#"><i class="fa fa-random"></i>&nbsp;${span18n['progress_start']}</a> <div class="nav-arrow"></div>
