@@ -56,7 +56,7 @@ class CorruptionResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(corruption: new CriminalConvictionsCriterion(exists: true))
+        def espd = new EspdDocument(corruption: new CriminalConvictionsCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

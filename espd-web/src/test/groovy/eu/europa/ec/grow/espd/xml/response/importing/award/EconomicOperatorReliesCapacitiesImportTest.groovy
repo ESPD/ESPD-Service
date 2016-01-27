@@ -19,6 +19,7 @@ class EconomicOperatorReliesCapacitiesImportTest extends AbstractXmlFileImport {
 
         then:
         espd.eoReliesCapacities.exists == true
+        espd.eoReliesCapacities.answer == true
     }
 
     def "all fields needed to generate a XML sample"() {

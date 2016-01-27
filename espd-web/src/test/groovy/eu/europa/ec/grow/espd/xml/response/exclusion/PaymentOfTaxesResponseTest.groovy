@@ -65,7 +65,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

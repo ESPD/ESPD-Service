@@ -52,7 +52,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentTradeRegister: new SuitabilityCriterion(exists: true))
+        def espd = new EspdDocument(enrolmentTradeRegister: new SuitabilityCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

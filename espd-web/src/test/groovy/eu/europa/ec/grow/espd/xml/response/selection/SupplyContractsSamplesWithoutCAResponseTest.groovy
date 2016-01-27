@@ -52,7 +52,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Your answer' requirements response"() {
         given:
-        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -63,7 +63,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

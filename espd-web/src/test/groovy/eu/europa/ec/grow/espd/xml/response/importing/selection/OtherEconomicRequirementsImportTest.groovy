@@ -20,6 +20,7 @@ class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
 
         then:
         espd.otherEconomicFinancialRequirements.exists == true
+        espd.otherEconomicFinancialRequirements.answer == false
         espd.otherEconomicFinancialRequirements.description == "Other economic Hodor"
 
         then: "info electronically"
@@ -30,7 +31,7 @@ class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true,
+        def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true, answer: false,
                 description: "Other economic Hodor",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "OTHER_ECONOMIC")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

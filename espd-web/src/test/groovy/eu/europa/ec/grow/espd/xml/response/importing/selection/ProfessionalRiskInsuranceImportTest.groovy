@@ -11,7 +11,7 @@ import org.apache.commons.io.IOUtils
  */
 class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
 
-    def "11. should import all fields of 'Professional risk indemnity insurance'"() {
+    def "12. should import all fields of 'Professional risk indemnity insurance'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/professional_risk_insurance_import.xml")
 
@@ -20,6 +20,7 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
 
         then:
         espd.professionalRiskInsurance.exists == true
+        espd.professionalRiskInsurance.answer == false // has no answer criterion
 
         then:
         espd.professionalRiskInsurance.amount1 == 777.7
@@ -33,7 +34,7 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
+        def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true, answer: true,
                 amount1: 777.7, currency1: "RON",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "RISK_INSURANCE")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

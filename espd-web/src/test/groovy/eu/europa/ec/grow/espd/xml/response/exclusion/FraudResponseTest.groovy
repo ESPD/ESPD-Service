@@ -55,7 +55,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true))
+        def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -67,7 +67,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def req = subGroup.Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'Date of conviction' requirement response"() {

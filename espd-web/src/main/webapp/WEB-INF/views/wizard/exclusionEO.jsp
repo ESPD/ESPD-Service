@@ -152,7 +152,6 @@
                         <tiles:putAttribute name="description_code"
                                             value="crit_eu_text_breaching_obligations_environmental"/>
                         <tiles:putAttribute name="availableElectronically" value="false"/>
-                        <tiles:putAttribute name="descriptionField" value=""/>
                     </tiles:insertDefinition>
 
                     <tiles:insertDefinition name="simpleFormCriterion">

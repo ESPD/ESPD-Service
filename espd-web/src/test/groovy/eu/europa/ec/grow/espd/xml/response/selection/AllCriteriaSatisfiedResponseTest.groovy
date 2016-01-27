@@ -41,7 +41,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -53,7 +53,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
 }

@@ -43,7 +43,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
 
     def "check the 'Indicator' requirement response"() {
         given:
-        def espd = new EspdDocument(eoReliesCapacities: new AwardCriterion(exists: true))
+        def espd = new EspdDocument(eoReliesCapacities: new AwardCriterion(exists: true, answer: false))
 
         when:
         def response = parseResponseXml(espd)
@@ -53,7 +53,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
 }

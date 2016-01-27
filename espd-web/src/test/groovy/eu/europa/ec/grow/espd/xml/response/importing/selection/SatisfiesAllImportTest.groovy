@@ -16,13 +16,14 @@ class SatisfiesAllImportTest extends AbstractXmlFileImport {
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
 
         then:
-        espd.selectionSatisfiesAll.exists == false
+        espd.selectionSatisfiesAll.exists == true
+        espd.selectionSatisfiesAll.answer == false
 
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: false))
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: false, answer: false,))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

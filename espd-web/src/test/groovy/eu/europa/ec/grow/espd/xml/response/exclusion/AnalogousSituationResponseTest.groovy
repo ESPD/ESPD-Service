@@ -60,7 +60,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true))
+        def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true, answer: null))
 
         when:
         def request = parseResponseXml(espd)
@@ -70,7 +70,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'Please describe them' requirement response"() {

@@ -55,7 +55,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

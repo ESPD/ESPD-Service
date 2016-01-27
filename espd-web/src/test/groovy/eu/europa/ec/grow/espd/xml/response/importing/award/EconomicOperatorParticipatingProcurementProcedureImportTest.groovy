@@ -19,6 +19,7 @@ class EconomicOperatorParticipatingProcurementProcedureImportTest extends Abstra
 
         then:
         espd.eoParticipatingProcurementProcedure.exists == true
+        espd.eoParticipatingProcurementProcedure.answer == true
         espd.eoParticipatingProcurementProcedure.description1 == "descr 1"
         espd.eoParticipatingProcurementProcedure.description2 == "descr 2"
         espd.eoParticipatingProcurementProcedure.description3 == "descr 3"
@@ -26,7 +27,7 @@ class EconomicOperatorParticipatingProcurementProcedureImportTest extends Abstra
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(eoParticipatingProcurementProcedure: new AwardCriterion(exists: true,
+        def espd = new EspdDocument(eoParticipatingProcurementProcedure: new AwardCriterion(exists: true, answer: true,
                 description1: "descr 1", description2: "descr 2", description3: "descr 3"))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

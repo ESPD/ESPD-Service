@@ -57,7 +57,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
+        def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

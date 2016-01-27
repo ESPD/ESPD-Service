@@ -10,7 +10,7 @@ import org.apache.commons.io.IOUtils
  */
 class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
-    def "13. should import all fields of 'For works contracts: performance of works of the specified type'"() {
+    def "14. should import all fields of 'For works contracts: performance of works of the specified type'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import.xml")
 
@@ -19,6 +19,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
         then:
         espd.workContractsPerformanceOfWorks.exists == true
+        espd.workContractsPerformanceOfWorks.answer == false // has no answer criterion
 
         then:
         espd.workContractsPerformanceOfWorks.description1 == "description1"
@@ -63,7 +64,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 description1: "description1", amount1: 11.1, currency1: "RON", date1: LocalDateAdapter.unmarshal("2016-01-17").toDate(), recipients1: "recipients1",
                 description2: "description2", amount2: 22.2, currency2: "EUR", date2: LocalDateAdapter.unmarshal("2016-01-18").toDate(), recipients2: "recipients2",
                 description3: "description3", amount3: 33.3, currency3: "USD", date3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), recipients3: "recipients3",

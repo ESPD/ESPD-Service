@@ -20,6 +20,7 @@ class CertificatesIndependentBodiesEnvironmentalImportTest extends AbstractXmlFi
 
         then:
         espd.certificateIndependentBodiesAboutEnvironmental.exists == true
+        espd.certificateIndependentBodiesAboutEnvironmental.answer == true
         espd.certificateIndependentBodiesAboutEnvironmental.description == "Another description"
 
         then: "info electronically"
@@ -30,8 +31,8 @@ class CertificatesIndependentBodiesEnvironmentalImportTest extends AbstractXmlFi
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true,
-                description: "Another description",
+        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(
+                exists: true, answer: true, description: "Another description",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 

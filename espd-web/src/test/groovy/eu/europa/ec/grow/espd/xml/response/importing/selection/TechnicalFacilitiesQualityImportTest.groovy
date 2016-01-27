@@ -11,7 +11,7 @@ import org.apache.commons.io.IOUtils
  */
 class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
 
-    def "18. should import all fields of 'Technical facilities and measures for ensuring quality'"() {
+    def "19. should import all fields of 'Technical facilities and measures for ensuring quality'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/technical_facilities_quality_import.xml")
 
@@ -20,6 +20,7 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
 
         then:
         espd.technicalFacilitiesMeasures.exists == true
+        espd.technicalFacilitiesMeasures.answer == false // has no answer criterion
         espd.technicalFacilitiesMeasures.description == "Another description"
 
         then: "info electronically"
@@ -30,7 +31,7 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 description: "Another description",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

@@ -9,7 +9,7 @@ import org.apache.commons.io.IOUtils
  */
 class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
 
-    def "16. should import all fields of 'Technicians or technical bodies for quality control'"() {
+    def "17. should import all fields of 'Technicians or technical bodies for quality control'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/technicians_technical_bodies_import.xml")
 
@@ -18,6 +18,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
 
         then:
         espd.techniciansTechnicalBodies.exists == true
+        espd.techniciansTechnicalBodies.answer == false // has no answer criterion
         espd.techniciansTechnicalBodies.specify == "specify something"
 
         then: "info electronically"
@@ -28,7 +29,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 specify: "specify something",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_BODIES")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

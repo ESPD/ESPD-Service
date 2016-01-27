@@ -48,7 +48,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
 
     def "check the 'Do you allow checks' requirements response"() {
         given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -59,7 +59,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
 }

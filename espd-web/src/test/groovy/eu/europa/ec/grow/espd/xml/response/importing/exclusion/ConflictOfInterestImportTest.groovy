@@ -20,6 +20,7 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
 
         then:
         espd.conflictInterest.exists == true
+        espd.conflictInterest.answer == true
         espd.conflictInterest.description == "Hodor is conflicted"
 
         then: "self cleaning"
@@ -34,7 +35,8 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true, description: "Hodor is conflicted",
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,  answer: true,
+                description: "Hodor is conflicted",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "HODOR?")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

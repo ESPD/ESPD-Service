@@ -8,7 +8,7 @@ import org.apache.commons.io.IOUtils
  */
 class AllowanceOfChecksImportTest extends AbstractXmlFileImport {
 
-    def "21. should import all fields of 'Allowance of checks'"() {
+    def "22. should import all fields of 'Allowance of checks'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/allowance_of_checks_import.xml")
 
@@ -17,12 +17,12 @@ class AllowanceOfChecksImportTest extends AbstractXmlFileImport {
 
         then:
         espd.allowanceOfChecks.exists == true
-
+        espd.allowanceOfChecks.answer == true
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true, answer: true))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
 
         expect:

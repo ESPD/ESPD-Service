@@ -63,7 +63,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
 
     def "check the 'Indicator' requirement response"() {
         given:
-        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: true))
+        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: true, answer: false))
 
         when:
         def response = parseResponseXml(espd)
@@ -73,7 +73,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'Please describe them' requirement response"() {

@@ -20,6 +20,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
 
         then:
         espd.generalYearlyTurnover.exists == true
+        espd.generalYearlyTurnover.answer == true
 
         then:
         espd.generalYearlyTurnover.year1 == 2016
@@ -54,7 +55,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
+        def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: true,
                 year1: 2016, amount1: 111.1, currency1: "RON",
                 year2: 2015, amount2: 222.2, currency2: "EUR",
                 year3: 2014, amount3: 333.3, currency3: "USD",

@@ -43,4 +43,8 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
         criterion.setExists(exists);
         return criterion;
     }
+
+    public Boolean getBooleanValue1() {
+        return Boolean.TRUE.equals(this.booleanValue1);
+    }
 }

@@ -22,7 +22,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
                 <cbc:Description></cbc:Description>
                 <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                    <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">

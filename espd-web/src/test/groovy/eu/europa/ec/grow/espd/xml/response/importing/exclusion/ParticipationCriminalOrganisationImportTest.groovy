@@ -21,6 +21,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
 
         then:
         espd.criminalConvictions.exists == true
+        espd.criminalConvictions.answer == true
         espd.criminalConvictions.dateOfConviction == LocalDateAdapter.unmarshal("2016-01-17").toDate()
         espd.criminalConvictions.reason == "Reason here"
         espd.criminalConvictions.convicted == "Hodor was convicted"
@@ -38,7 +39,8 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false, dateOfConviction: new Date(),
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false,  answer: true,
+                dateOfConviction: new Date(),
                 reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))

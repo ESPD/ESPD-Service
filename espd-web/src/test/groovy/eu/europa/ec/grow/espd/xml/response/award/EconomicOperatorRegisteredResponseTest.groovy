@@ -77,7 +77,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
     def "check the 'Indicator' requirement response"() {
         given:
-        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true))
+        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, answer: true))
 
         when:
         def response = parseResponseXml(espd)

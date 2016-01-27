@@ -11,7 +11,7 @@ import org.apache.commons.io.IOUtils
  */
 class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
 
-    def "27. should import all fields of 'Subcontracting proportion'"() {
+    def "28. should import all fields of 'Subcontracting proportion'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/subcontracting_proportion_import.xml")
 
@@ -20,6 +20,7 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
 
         then:
         espd.subcontractingProportion.exists == true
+        espd.subcontractingProportion.answer == false // has no answer criterion
         espd.subcontractingProportion.percentage == 66.6
 
         then: "info electronically"
@@ -30,7 +31,7 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 percentage: 66.6,
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "SUBCONTRACTING")))
         //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

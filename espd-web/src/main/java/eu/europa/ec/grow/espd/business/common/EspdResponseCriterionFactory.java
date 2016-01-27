@@ -79,8 +79,10 @@ class EspdResponseCriterionFactory {
             return CriminalConvictionsCriterion.buildWithExists(false);
         }
 
+        CriminalConvictionsCriterion criterion = CriminalConvictionsCriterion.buildWithExists(true);
+
         boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-        CriminalConvictionsCriterion criterion = CriminalConvictionsCriterion.buildWithExists(yourAnswer);
+        criterion.setAnswer(yourAnswer);
 
         Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
         criterion.setDateOfConviction(dateOfConviction);
@@ -104,9 +106,10 @@ class EspdResponseCriterionFactory {
             return TaxesCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        TaxesCriterion criterion = TaxesCriterion.buildWithExists(true);
 
-        TaxesCriterion criterion = TaxesCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
 
         Country country = readRequirementValue(ExclusionCriterionRequirement.COUNTRY_MS, criterionType);
         criterion.setCountry(country);
@@ -150,9 +153,10 @@ class EspdResponseCriterionFactory {
             return LawCriterion.buildWithExists(false);
         }
 
+        LawCriterion criterion = LawCriterion.buildWithExists(true);
         boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
 
-        LawCriterion criterion = LawCriterion.buildWithExists(yourAnswer);
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
@@ -167,9 +171,11 @@ class EspdResponseCriterionFactory {
             return BankruptcyCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        BankruptcyCriterion criterion = BankruptcyCriterion.buildWithExists(true);
 
-        BankruptcyCriterion criterion = BankruptcyCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
+
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
         String reasonContract = readRequirementValue(ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT,
@@ -188,9 +194,11 @@ class EspdResponseCriterionFactory {
             return MisconductDistortionCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        MisconductDistortionCriterion criterion = MisconductDistortionCriterion.buildWithExists(true);
 
-        MisconductDistortionCriterion criterion = MisconductDistortionCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
+
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
@@ -207,9 +215,11 @@ class EspdResponseCriterionFactory {
             return ConflictInterestCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        ConflictInterestCriterion criterion = ConflictInterestCriterion.buildWithExists(true);
 
-        ConflictInterestCriterion criterion = ConflictInterestCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
+
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
@@ -225,10 +235,11 @@ class EspdResponseCriterionFactory {
         if (criterionType == null) {
             return PurelyNationalGrounds.buildWithExists(false);
         }
+        PurelyNationalGrounds criterion = PurelyNationalGrounds.buildWithExists(true);
 
         boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
 
-        PurelyNationalGrounds criterion = PurelyNationalGrounds.buildWithExists(yourAnswer);
         String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
 
@@ -243,9 +254,12 @@ class EspdResponseCriterionFactory {
             return SatisfiesAllCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        SatisfiesAllCriterion criterion =  SatisfiesAllCriterion.buildWithExists(true);
 
-        return SatisfiesAllCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
+
+        return criterion;
     }
 
     private SuitabilityCriterion buildSuitabilityCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
@@ -254,9 +268,11 @@ class EspdResponseCriterionFactory {
             return SuitabilityCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(true);
 
-        SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
+
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
@@ -270,9 +286,10 @@ class EspdResponseCriterionFactory {
             return EconomicFinancialStandingCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        EconomicFinancialStandingCriterion criterion = EconomicFinancialStandingCriterion.buildWithExists(true);
 
-        EconomicFinancialStandingCriterion criterion = EconomicFinancialStandingCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
 
         addMultipleYears(criterionType, criterion);
         addMultipleAmounts(criterionType, criterion);
@@ -335,9 +352,18 @@ class EspdResponseCriterionFactory {
             return TechnicalProfessionalCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+        TechnicalProfessionalCriterion criterion = TechnicalProfessionalCriterion.buildWithExists(true);
 
-        TechnicalProfessionalCriterion criterion = TechnicalProfessionalCriterion.buildWithExists(yourAnswer);
+        // because of allow checks requirement we are overloading the 'answer' field
+        // this is a workaround in order to not add one additional boolean field 'allowChecks' that is used by only technical professional criterion
+        Boolean allowChecks = readRequirementValue(SelectionCriterionRequirement.ALLOW_CHECKS, criterionType);
+        if (allowChecks != null) {
+            criterion.setAnswer(allowChecks);
+        }
+        Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
+        if (yourAnswer != null) {
+            criterion.setAnswer(yourAnswer);
+        }
 
         addMultipleDescriptions(criterionType, criterion);
         addMultipleAmounts(criterionType, criterion);
@@ -480,12 +506,7 @@ class EspdResponseCriterionFactory {
     }
 
     private boolean readCriterionAnswer(CriterionType criterionType, CcvCriterionRequirement answerReq) {
-        Boolean yourAnswer = readRequirementValue(answerReq, criterionType);
-        if (yourAnswer == null) {
-            // could come from a ESPD Request where we only have the criterion present without any response
-            return criterionType != null;
-        }
-        return yourAnswer;
+        return Boolean.TRUE.equals(readRequirementValue(answerReq, criterionType));
     }
 
     private SelfCleaning buildSelfCleaningMeasures(CriterionType criterionType) {
@@ -532,9 +553,10 @@ class EspdResponseCriterionFactory {
             return AwardCriterion.buildWithExists(false);
         }
 
-        boolean yourAnswer = readAwardCriterionAnswer(criterionType);
+        AwardCriterion criterion = AwardCriterion.buildWithExists(true);
 
-        AwardCriterion criterion = AwardCriterion.buildWithExists(yourAnswer);
+        boolean yourAnswer = readAwardCriterionAnswer(criterionType);
+        criterion.setAnswer(yourAnswer);
 
         // description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
         String detailsCategory = readRequirementValue(AwardRequirement.DETAILS_EMPLOYEES_CATEGORY, criterionType);

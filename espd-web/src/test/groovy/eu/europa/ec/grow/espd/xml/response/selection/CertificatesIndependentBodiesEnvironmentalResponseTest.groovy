@@ -55,7 +55,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -67,7 +67,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'If not, please explain why and state which other means of proof can be provided:' requirements response"() {

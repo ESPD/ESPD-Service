@@ -60,7 +60,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true))
+        def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

@@ -18,6 +18,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
 
         then:
         espd.numberManagerialStaff.exists == true
+        espd.numberManagerialStaff.answer == false // has no answer criterion
 
         then:
         espd.numberManagerialStaff.year1 == 2016
@@ -39,7 +40,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 year1: 2016, number1: 11,
                 year2: 2015, number2: 22,
                 year3: 2014, number3: 33,

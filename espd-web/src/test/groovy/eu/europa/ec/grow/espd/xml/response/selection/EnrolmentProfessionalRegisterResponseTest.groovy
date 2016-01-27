@@ -53,7 +53,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: false))
 
         when:
         def request = parseResponseXml(espd)
@@ -65,7 +65,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
+        req.Response[0].Indicator.text() == "false"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

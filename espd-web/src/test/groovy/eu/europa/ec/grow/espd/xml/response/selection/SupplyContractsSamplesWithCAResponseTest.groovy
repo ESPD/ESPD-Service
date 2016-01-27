@@ -52,7 +52,7 @@ class SupplyContractsSamplesWithCAResponseTest extends AbstractSelectionCriteria
 
     def "check the 'Your naswer' requirements response"() {
         given:
-        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

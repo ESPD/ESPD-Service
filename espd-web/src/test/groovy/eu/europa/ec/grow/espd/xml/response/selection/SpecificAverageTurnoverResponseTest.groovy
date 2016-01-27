@@ -59,7 +59,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true))
+        def espd = new EspdDocument(specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

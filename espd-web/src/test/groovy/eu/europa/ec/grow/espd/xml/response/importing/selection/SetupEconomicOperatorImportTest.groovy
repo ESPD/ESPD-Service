@@ -18,12 +18,13 @@ class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
 
         then:
         espd.setupEconomicOperator.exists == true
+        espd.setupEconomicOperator.answer == false // has no answer criterion
         espd.setupEconomicOperator.year1 == 2016
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true,
+        def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true, answer: true,
                 year1: 2016))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

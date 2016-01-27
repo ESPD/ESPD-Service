@@ -66,7 +66,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             return;
         }
         if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
         } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
             ConvictionHolder exclusionCriterion = (ConvictionHolder) espdCriterion;
             responseType.setDate(buildDateType(exclusionCriterion.getDateOfConviction()));
@@ -134,7 +134,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         }
         if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
                 SelectionCriterionRequirement.ALLOW_CHECKS.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
         } else if (SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
             SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
             responseType.setIndicator(buildIndicatorType(selectionCriterion.getInfoElectronicallyAnswer()));
@@ -268,9 +268,11 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             return;
         }
 
-        if (AwardRequirement.INDICATOR.equals(ccvRequirement) ||
-                AwardRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getExists()));
+        if (AwardRequirement.INDICATOR.equals(ccvRequirement)) {
+            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
+        } else if (AwardRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA.equals(ccvRequirement)) {
+            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
+            responseType.setIndicator(buildIndicatorType(awardCriterion.getBooleanValue1()));
         } else if (AwardRequirement.CORRESPONDING_PERCENTAGE.equals(ccvRequirement)) {
             AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
             responseType.setPercent(buildPercentType(awardCriterion.getDoubleValue1()));

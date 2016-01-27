@@ -18,6 +18,7 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
 
         then:
         espd.purelyNationalGrounds.exists == true
+        espd.purelyNationalGrounds.answer == true
         espd.purelyNationalGrounds.description == "Hodor is national"
 
         then: "info electronically"
@@ -28,7 +29,8 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true, description: "Hodor is national",
+        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true,  answer: true,
+                description: "Hodor is national",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "NATIONAL")))
 
         expect:

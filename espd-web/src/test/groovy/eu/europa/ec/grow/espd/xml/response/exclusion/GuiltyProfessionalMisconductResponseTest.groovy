@@ -56,7 +56,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true))
+        def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

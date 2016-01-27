@@ -18,6 +18,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
 
         then:
         espd.bankruptcy.exists == true
+        espd.bankruptcy.answer == false
         espd.bankruptcy.description == "Bankruptcy description"
         espd.bankruptcy.reason == "We lost all our money at poker."
 
@@ -30,7 +31,8 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, description: "Bankruptcy description",
+        def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, answer: false,
+                description: "Bankruptcy description",
                 reason: "We lost all our money at poker.",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))
 

@@ -60,7 +60,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true))
+        def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

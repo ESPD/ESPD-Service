@@ -30,7 +30,7 @@
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID>
                 <cbc:Description>Your answer?</cbc:Description>
                 <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                    <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">

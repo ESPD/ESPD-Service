@@ -19,6 +19,7 @@ class EconomicOperatorRegisteredImportTest extends AbstractXmlFileImport {
 
         then:
         espd.eoRegistered.exists == true
+        espd.eoRegistered.answer == false
         espd.eoRegistered.booleanValue1 == true
         espd.eoRegistered.description1 == "descr 1"
         espd.eoRegistered.description2 == "descr 2"
@@ -29,7 +30,7 @@ class EconomicOperatorRegisteredImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true,
+        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, answer: false,
                 description1: "descr 1", description2: "descr 2", description3: "descr 3", description4: "descr 4", description5: "descr 5",
                 booleanValue1: true))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")

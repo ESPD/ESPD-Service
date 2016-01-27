@@ -56,7 +56,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
+        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)

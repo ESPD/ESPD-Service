@@ -56,7 +56,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true))
+        def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)
