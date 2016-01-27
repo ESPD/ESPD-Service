@@ -58,48 +58,45 @@ class WelcomeController {
     public String getPage(@PathVariable String page) {
         return page;
     }
-
-    @RequestMapping(value = "/filter", params = "ca_create_espd_request", method = POST)
-    public String caCreateEspdRequest(@ModelAttribute("espd") EspdDocument espd, @RequestParam("authority.country") Country country) throws IOException {
-    	espd.getAuthority().setCountry(country);
-    	return "redirect:/request/ca/procedure";
-    }
-
-    @RequestMapping(value = "/filter", params = "ca_reuse_espd_request", method = POST)
-    public String caReuseEspdRequest(Map<String, Object> model, @Valid @RequestPart MultipartFile attachment, @ModelAttribute("espd") EspdDocument doc, BindingResult result) throws IOException {
-    	EspdDocument espd = loadESPDRequest(attachment);
-    	if(espd != null) {
-    		model.put("espd", espd);
+    
+    @RequestMapping(value = "/filter", params = "action", method = POST)
+    public String caCreateEspdRequest(Map<String, Object> model, @RequestParam("authority.country") Country country, @RequestParam String action, @Valid @RequestPart MultipartFile attachment, @ModelAttribute("espd") EspdDocument document, BindingResult result) throws IOException {
+    	if("ca_create_espd_request".equals(action)) {
+    		document.getAuthority().setCountry(country);
     		return "redirect:/request/ca/procedure";
     	}
-	   	result.rejectValue("attachment", "espd_upload_request_error");
-    	return "filter";
-    }
-
-    @RequestMapping(value = "/filter", params = "ca_review_espd_response", method = POST)
-    public String caReviewEspdResponse(Map<String, Object> model, @Valid @RequestPart MultipartFile attachment, @ModelAttribute("espd") EspdDocument doc, BindingResult result) throws IOException {
-    	EspdDocument espd = loadESPDResponse(attachment);
-    	if(espd != null) {
-    		model.put("espd", espd);
-        	return "redirect:/response/ca/procedure";
+    	else if("ca_reuse_espd_request".equals(action)) {
+        	EspdDocument espd = loadESPDRequest(attachment);
+        	if(espd != null) {
+        		model.put("espd", espd);
+        		return "redirect:/request/ca/procedure";
+        	}
+    	   	result.rejectValue("attachment", "espd_upload_request_error");
+        	return "filter";
     	}
-	   	result.rejectValue("attachment", "espd_upload_response_error");
+    	else if("ca_review_espd_response".equals(action)) {
+        	EspdDocument espd = loadESPDResponse(attachment);
+        	if(espd != null) {
+        		model.put("espd", espd);
+            	return "redirect:/response/ca/procedure";
+        	}
+    	   	result.rejectValue("attachment", "espd_upload_response_error");
+        	return "filter";
+    	}
+    	else if("eo_import_espd".equals(action)) {
+    	   	EspdDocument espd = loadESPD(attachment);
+    	   	if(espd != null) {
+    	   		if (espd.getEconomicOperator() == null) {
+    	   			espd.setEconomicOperator(new EconomicOperatorImpl());
+    	   		}
+    	   		espd.getEconomicOperator().setCountry(country);
+    	   		model.put("espd", espd);
+    	   		return "redirect:/response/eo/procedure";
+    	   	}
+    	   	result.rejectValue("attachment", "espd_upload_error");
+    	   	return "filter";
+    	}
     	return "filter";
-    }
-
-    @RequestMapping(value = "/filter", params = "eo_import_espd", method = POST)
-    public String eoImportEspd(@RequestParam("authority.country") Country country, Map<String, Object> model, @Valid @RequestPart MultipartFile attachment, @ModelAttribute("espd") EspdDocument doc, BindingResult result) throws IOException {
-	   	EspdDocument espd = loadESPD(attachment);
-	   	if(espd != null) {
-	   		if (espd.getEconomicOperator() == null) {
-	   			espd.setEconomicOperator(new EconomicOperatorImpl());
-	   		}
-	   		espd.getEconomicOperator().setCountry(country);
-	   		model.put("espd", espd);
-	   		return "redirect:/response/eo/procedure";
-	   	}
-	   	result.rejectValue("attachment", "espd_upload_error");
-	   	return "filter";
     }
 
     @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}")
@@ -157,18 +154,36 @@ class WelcomeController {
         return null;
     }
 
+    /**
+     * Import ESPD from request with fast check for ESPDRequest
+     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
+     */
     private EspdDocument loadESPDRequest(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDRequest(?s).*");
-    }
-    
-    private EspdDocument loadESPDResponse(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDResponse(?s).*");
-    }
-    
-    private EspdDocument loadESPD(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*(ESPDRequest|ESPDResponse)(?s).*");
+    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDRequest(?s).*");// regexp for: "... xml ... ESPDRequest ... "
     }
 
+    /**
+     * Import ESPD from request with fast check for ESPDResponse
+     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
+     */
+    private EspdDocument loadESPDResponse(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
+    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDResponse(?s).*");// regexp for: "... xml ... ESPDResponse ... "
+    }
+    
+    /**
+     * Import ESPD from request with fast check for ESPDRequest or ESPDResponse
+     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
+     */
+    private EspdDocument loadESPD(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
+    	return loadESPD(attachment, "(?s).*xml(?s).*(ESPDRequest|ESPDResponse)(?s).*");// regexp for: "... xml ... ESPDRequest ... or ... xml ... ESPDResponse ..."
+    }
+
+    /**
+     * Imports ESPD document from request attachment.
+     * @param attachment byte array container from request
+     * @param matches contains regular expression to perform fast match for first bytes of uploaded file
+     * @return parced ESPD document or null
+     */
     private EspdDocument loadESPD(MultipartFile attachment, String matches) throws UnsupportedEncodingException, IOException {
     	try (InputStream is = attachment.getInputStream()) {
     		String firstBytes = new String(Arrays.copyOfRange(attachment.getBytes(), 0, 80), "UTF-8");// peek at the first bytes in the file to see if it is a ESPD Request or Response
