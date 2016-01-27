@@ -2,11 +2,12 @@ package eu.europa.ec.grow.espd.xml.response.award
 
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
+
 /**
  * Created by ratoico on 1/20/16 at 11:57 AM.
  */
-class EconomicOperatorParticipatingProcurementProcedureResponseTest extends AbstractAwardCriteriaFixture {
+class EconomicOperatorParticipatingProcurementProcedureResponseTest extends AbstractCriteriaFixture {
 
     def "03. should contain the 'Is the economic operator participating in the procurement procedure together with others?' criterion"() {
         given:
@@ -17,7 +18,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        response.Criterion.size() == getTotalNumberOfCriteria()
+        response.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(response, idx, "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2")
 
         then: "CriterionTypeCode element"

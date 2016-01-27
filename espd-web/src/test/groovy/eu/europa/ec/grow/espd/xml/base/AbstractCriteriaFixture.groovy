@@ -61,7 +61,8 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
     protected static int getResponseNumberOfCriteria() {
         // response has economic operator criteria plus meets objectives (reduction of candidates) which is common
 //        return getRequestNumberOfCriteria() + AwardCriterion.values().size() - 1
-        ExclusionCriterion.values().size() + SelectionCriterion.values().size() + AwardCriterion.values().size()
+//        ExclusionCriterion.values().size() + SelectionCriterion.values().size() + AwardCriterion.values().size()
+        return 1
     }
 
     protected static void checkEvidence(def evidenceElement, String url) {
@@ -103,7 +104,8 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
      * @return
      */
     protected static int getResponseCriterionIndex(ExclusionCriterion criterion) {
-        return criterion.ordinal()
+//        return criterion.ordinal()
+        return 0
     }
 
     /**
@@ -113,7 +115,8 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
      * @return
      */
     protected static int getResponseCriterionIndex(SelectionCriterion criterion) {
-        return ExclusionCriterion.values().size() + criterion.ordinal()
+//        return ExclusionCriterion.values().size() + criterion.ordinal()
+        return 0
     }
 
     /**
@@ -123,6 +126,7 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
      * @return
      */
     protected static int getResponseCriterionIndex(AwardCriterion criterion) {
-        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
+//        return ExclusionCriterion.values().size() + SelectionCriterion.values().size() + criterion.ordinal()
+        return 0
     }
 }

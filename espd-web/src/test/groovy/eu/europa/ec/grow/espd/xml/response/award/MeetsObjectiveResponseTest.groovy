@@ -1,13 +1,12 @@
 package eu.europa.ec.grow.espd.xml.response.award
-
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 1/20/16 at 1:26 PM.
  */
-class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
+class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
 
     def "05. should contain the 'If applicable, is the economic operator registered' criterion"() {
         given:
@@ -18,7 +17,7 @@ class MeetsObjectiveResponseTest extends AbstractAwardCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
-        response.Criterion.size() == getTotalNumberOfCriteria()
+        response.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(response, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
 
         then: "CriterionTypeCode element"

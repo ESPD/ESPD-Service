@@ -3,7 +3,6 @@ package eu.europa.ec.grow.espd.business.response;
 import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.business.common.UblCriterionTypeTemplate;
 import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
-import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 
@@ -38,8 +37,4 @@ class UblResponseCriteriaTransformer extends UblCriteriaTemplate {
         return Collections.unmodifiableList(criterionTypes);
     }
 
-    @Override
-    protected boolean isCriterionSelected(Criterion espdCriterion) {
-        return true;
-    }
 }

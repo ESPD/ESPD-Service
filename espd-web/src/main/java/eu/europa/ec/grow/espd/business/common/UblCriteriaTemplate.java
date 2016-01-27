@@ -169,9 +169,13 @@ public abstract class UblCriteriaTemplate {
 
     protected final void addUblCriterion(CcvCriterion ccvCriterion, Criterion espdCriterion,
             List<CriterionType> ublCriteria) {
-        if (isCriterionSelected(espdCriterion)) {
+        if (isCriterionSelectedByTheCA(espdCriterion)) {
             ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
         }
+    }
+
+    private boolean isCriterionSelectedByTheCA(Criterion espdCriterion) {
+        return espdCriterion != null && espdCriterion.getExists();
     }
 
     /**
@@ -190,13 +194,5 @@ public abstract class UblCriteriaTemplate {
      */
     protected abstract List<CriterionType> buildAwardCriteria(EspdDocument espdDocument);
 
-    /**
-     * See if the specific criterion was selected in ESPD in order to know if we need to add it on the
-     * ESPD Request or Response.
-     *
-     * @param espdCriterion
-     *
-     * @return
-     */
-    protected abstract boolean isCriterionSelected(Criterion espdCriterion);
+
 }

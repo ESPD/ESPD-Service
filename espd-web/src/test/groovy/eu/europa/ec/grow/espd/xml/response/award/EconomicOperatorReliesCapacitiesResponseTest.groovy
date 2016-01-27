@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.award
-
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 1/20/16 at 1:24 PM.
  */
-class EconomicOperatorReliesCapacitiesResponseTest extends AbstractAwardCriteriaFixture {
+class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixture {
 
     def "04. should contain the 'Does the economic operator rely on the capacities of other entities' criterion"() {
         given:
@@ -17,7 +16,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractAwardCriteria
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
-        response.Criterion.size() == getTotalNumberOfCriteria()
+        response.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(response, idx, "0d62c6ed-f074-4fcf-8e9f-f691351d52ad")
 
         then: "CriterionTypeCode element"

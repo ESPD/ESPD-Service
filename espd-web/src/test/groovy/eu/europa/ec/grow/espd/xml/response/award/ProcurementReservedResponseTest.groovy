@@ -1,12 +1,11 @@
 package eu.europa.ec.grow.espd.xml.response.award
-
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 1/20/16 at 10:48 AM.
  */
-class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
+class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
 
     def "01. should contain the 'Only in case the procurement is reserved' criterion"() {
         given:
@@ -17,7 +16,7 @@ class ProcurementReservedResponseTest extends AbstractAwardCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
-        response.Criterion.size() == getTotalNumberOfCriteria()
+        response.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(response, idx, "2043338f-a38a-490b-b3ec-2607cb25a017")
 
         then: "CriterionTypeCode element"

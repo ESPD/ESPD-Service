@@ -2,12 +2,12 @@ package eu.europa.ec.grow.espd.xml.request.award
 
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.base.AbstractAwardCriteriaFixture
+import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 
 /**
  * Created by ratoico on 1/20/16 at 2:19 PM.
  */
-class MeetsObjectiveRequestTest extends AbstractAwardCriteriaFixture {
+class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
 
     def "05. should contain the 'If applicable, is the economic operator registered' criterion"() {
         given:
