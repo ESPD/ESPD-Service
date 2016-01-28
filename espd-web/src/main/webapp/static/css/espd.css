@@ -250,8 +250,7 @@ option:disabled {
 #footer {
     text-align: center;
     padding: 20px;
-<!-- background : #4d4d4a;
---> color: #FFF;
+	color: #FFF;
 }
 
 #footer a {
@@ -391,4 +390,16 @@ a.splashLangBox {
     border-left: 1px solid lightgray;
     left: -1px;
     padding: 20px 20px 0;
+}
+
+/* RESET ANY ORDER LIST: language selector, additionnal tools ... */
+
+.reset-list,
+.reset-list ul,
+.reset-list li {
+	list-style-type:none;
+}
+	
+.reset-list li + li:before {
+	content: " | ";
 }

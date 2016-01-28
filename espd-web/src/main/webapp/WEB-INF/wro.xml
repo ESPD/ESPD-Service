@@ -9,7 +9,6 @@
         <css minimize="false">/static/bootstrap-plugins/fileupload/css/fileinput.min.css</css>
         <css minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css</css>
         <css>/static/css/nav-wizard.bootstrap.css</css>
-        <css>/static/css/ec.css</css>
         <css>/static/css/espd.css</css>
         <css>/static/css/simple-sidebar.css</css>
         <css>/static/css/scrolling-nav.css</css>
