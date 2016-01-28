@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
@@ -48,6 +49,18 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setDefaultLocale(Locale.ENGLISH);
         return resolver;
+    }
+
+    /**
+     * If the template engine you are using calls the response encodeURL() method, the version information
+     * will be automatically added to the URL. This will work in JSPs in conjunction with spring:url tag.
+     * <p>It needs to be mapped on '/*'.</p>
+     *
+     * @return
+     */
+    @Bean
+    ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
+        return new ResourceUrlEncodingFilter();
     }
 
     @Bean

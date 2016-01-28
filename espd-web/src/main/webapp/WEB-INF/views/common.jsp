@@ -21,8 +21,8 @@ request.setAttribute("span18n", inst.span());
 <title>ESPD</title>
 
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
-<script src="${pageContext.request.contextPath}/static/js/all.js"></script>
-<link href="${pageContext.request.contextPath}/static/css/all.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/all.css"/>">
+<script src="<s:url value="/static/js/all.js"/>"></script>
 
 <script>
     <%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
