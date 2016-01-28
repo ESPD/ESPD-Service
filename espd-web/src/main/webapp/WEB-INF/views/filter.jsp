@@ -82,7 +82,7 @@ $(function() {
 						
 					</div>
 					<div class="radio">
-						<label><input name="action" value="ca_reuse_espd_request" disabled class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_reuse_espd']}</label>
+						<label><input name="action" value="ca_reuse_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_reuse_espd']}</label>
 						<span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_import_espd']}"/>
 					</div>
 					<div class="radio">

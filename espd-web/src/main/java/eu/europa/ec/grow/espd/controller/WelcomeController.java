@@ -4,14 +4,14 @@ import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindException;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -20,25 +20,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @SessionAttributes("espd")
+@Slf4j
 class WelcomeController {
 
     private final EspdExchangeMarshaller exchangeMarshaller;
-    
+
     @Autowired
     WelcomeController(EspdExchangeMarshaller exchangeMarshaller) {
         this.exchangeMarshaller = exchangeMarshaller;
@@ -50,7 +47,7 @@ class WelcomeController {
     }
 
     @RequestMapping("/")
-    public String getWelcome() {
+    public String index() {
         return "welcome";
     }
 
@@ -58,45 +55,115 @@ class WelcomeController {
     public String getPage(@PathVariable String page) {
         return page;
     }
-    
+
     @RequestMapping(value = "/filter", params = "action", method = POST)
-    public String caCreateEspdRequest(Map<String, Object> model, @RequestParam("authority.country") Country country, @RequestParam String action, @Valid @RequestPart MultipartFile attachment, @ModelAttribute("espd") EspdDocument document, BindingResult result) throws IOException {
-    	if("ca_create_espd_request".equals(action)) {
-    		document.getAuthority().setCountry(country);
-    		return "redirect:/request/ca/procedure";
-    	}
-    	else if("ca_reuse_espd_request".equals(action)) {
-        	EspdDocument espd = loadESPDRequest(attachment);
-        	if(espd != null) {
-        		model.put("espd", espd);
-        		return "redirect:/request/ca/procedure";
-        	}
-    	   	result.rejectValue("attachment", "espd_upload_request_error");
-        	return "filter";
-    	}
-    	else if("ca_review_espd_response".equals(action)) {
-        	EspdDocument espd = loadESPDResponse(attachment);
-        	if(espd != null) {
-        		model.put("espd", espd);
-            	return "redirect:/response/ca/procedure";
-        	}
-    	   	result.rejectValue("attachment", "espd_upload_response_error");
-        	return "filter";
-    	}
-    	else if("eo_import_espd".equals(action)) {
-    	   	EspdDocument espd = loadESPD(attachment);
-    	   	if(espd != null) {
-    	   		if (espd.getEconomicOperator() == null) {
-    	   			espd.setEconomicOperator(new EconomicOperatorImpl());
-    	   		}
-    	   		espd.getEconomicOperator().setCountry(country);
-    	   		model.put("espd", espd);
-    	   		return "redirect:/response/eo/procedure";
-    	   	}
-    	   	result.rejectValue("attachment", "espd_upload_error");
-    	   	return "filter";
-    	}
-    	return "filter";
+    public String whoAreYouScreen(
+            @RequestParam("authority.country") Country country,
+            @RequestParam String action,
+            @Valid @RequestPart MultipartFile attachment,
+            @ModelAttribute("espd") EspdDocument document,
+            Model model,
+            BindingResult result) throws IOException {
+        if ("ca_create_espd_request".equals(action)) {
+            return createNewRequestAsCA(country, document);
+        } else if ("ca_reuse_espd_request".equals(action)) {
+            return reuseRequestAsCA(attachment, model, result);
+        } else if ("ca_review_espd_response".equals(action)) {
+            return reviewResponseAsCA(attachment, model, result);
+        } else if ("eo_import_espd".equals(action)) {
+            return importEspdAsEo(country, attachment, model, result);
+        }
+        return "filter";
+    }
+
+    private String createNewRequestAsCA(@RequestParam("authority.country") Country country,
+            @ModelAttribute("espd") EspdDocument document) {
+        document.getAuthority().setCountry(country);
+        return "redirect:/request/ca/procedure";
+    }
+
+    private String reuseRequestAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
+            BindingResult result) throws IOException {
+        EspdDocument espd = readEspdRequest(attachment.getInputStream());
+        if (espd != null) {
+            model.addAttribute("espd", espd);
+            return "redirect:/request/ca/procedure";
+        }
+        result.rejectValue("attachment", "espd_upload_request_error");
+        return "filter";
+    }
+
+    private String reviewResponseAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
+            BindingResult result) throws IOException {
+        EspdDocument espd = readEspdResponse(attachment.getInputStream());
+        if (espd != null) {
+            model.addAttribute("espd", espd);
+            return "redirect:/response/ca/procedure";
+        }
+        result.rejectValue("attachment", "espd_upload_response_error");
+        return "filter";
+    }
+
+    private String importEspdAsEo(@RequestParam("authority.country") Country country,
+            @Valid @RequestPart MultipartFile attachment, Model model, BindingResult result) throws IOException {
+        EspdDocument espd = importXmlFile(attachment.getInputStream());
+        if (espd != null) {
+            if (espd.getEconomicOperator() == null) {
+                espd.setEconomicOperator(new EconomicOperatorImpl());
+            }
+            espd.getEconomicOperator().setCountry(country);
+            model.addAttribute("espd", espd);
+            return "redirect:/response/eo/procedure";
+        }
+        result.rejectValue("attachment", "espd_upload_error");
+        return "filter";
+    }
+
+    private EspdDocument importXmlFile(InputStream is) throws IOException {
+        // peek at the first bytes in the file to see if it is a ESPD Request or Response
+        try (BufferedInputStream bis = new BufferedInputStream(is)) {
+            int peekReadLimit = 80;
+            bis.mark(peekReadLimit);
+            byte[] peek = new byte[peekReadLimit];
+            int bytesRead = bis.read(peek, 0, peekReadLimit - 1);
+            if (bytesRead < 0) {
+                return null;
+            }
+            bis.reset(); // need to read from the beginning afterwards
+            String firstBytes = new String(peek, "UTF-8");
+
+            // decide how to read the uploaded file
+            if (firstBytes.contains("ESPDResponse")) {
+                return readEspdResponse(bis);
+            } else if (firstBytes.contains("ESPDRequest")) {
+                return readEspdRequest(bis);
+            }
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
+        return null;
+    }
+
+    private EspdDocument readEspdResponse(InputStream is) {
+        try {
+            return exchangeMarshaller.importEspdResponse(is);
+        } catch (Exception e) {
+            log.warn(e.getMessage(), e);
+            return null;
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
+    }
+
+    private EspdDocument readEspdRequest(InputStream is) {
+        try {
+            return exchangeMarshaller.importEspdRequest(is);
+        } catch (Exception e) {
+            log.warn(e.getMessage(), e);
+            return null;
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
     }
 
     @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}")
@@ -109,7 +176,7 @@ class WelcomeController {
     }
 
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", method = POST, params = "prev")
-    public String prev(
+    public String previous(
             @PathVariable String flow,
             @PathVariable String agent,
             @PathVariable String step,
@@ -152,46 +219,6 @@ class WelcomeController {
             status.setComplete();
         }
         return null;
-    }
-
-    /**
-     * Import ESPD from request with fast check for ESPDRequest
-     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
-     */
-    private EspdDocument loadESPDRequest(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDRequest(?s).*");// regexp for: "... xml ... ESPDRequest ... "
-    }
-
-    /**
-     * Import ESPD from request with fast check for ESPDResponse
-     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
-     */
-    private EspdDocument loadESPDResponse(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*ESPDResponse(?s).*");// regexp for: "... xml ... ESPDResponse ... "
-    }
-    
-    /**
-     * Import ESPD from request with fast check for ESPDRequest or ESPDResponse
-     * @see eu.europa.ec.grow.espd.controller.WelcomeController#loadESPD(MultipartFile, String)
-     */
-    private EspdDocument loadESPD(MultipartFile attachment) throws UnsupportedEncodingException, IOException {
-    	return loadESPD(attachment, "(?s).*xml(?s).*(ESPDRequest|ESPDResponse)(?s).*");// regexp for: "... xml ... ESPDRequest ... or ... xml ... ESPDResponse ..."
-    }
-
-    /**
-     * Imports ESPD document from request attachment.
-     * @param attachment byte array container from request
-     * @param matches contains regular expression to perform fast match for first bytes of uploaded file
-     * @return parced ESPD document or null
-     */
-    private EspdDocument loadESPD(MultipartFile attachment, String matches) throws UnsupportedEncodingException, IOException {
-    	try (InputStream is = attachment.getInputStream()) {
-    		String firstBytes = new String(Arrays.copyOfRange(attachment.getBytes(), 0, 80), "UTF-8");// peek at the first bytes in the file to see if it is a ESPD Request or Response
-    		if(firstBytes.matches(matches)) {
-    			return firstBytes.contains("ESPDRequest") ? exchangeMarshaller.importEspdRequest(is) : exchangeMarshaller.importEspdResponse(is);// decide how to read the uploaded file
-    		}
-    		return null;
-    	}
     }
 
     @InitBinder
