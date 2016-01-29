@@ -119,12 +119,14 @@
                         <tiles:putAttribute name="field" value="paymentTaxes"/>
                         <tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
                         <tiles:putAttribute name="description_code" value="crit_eu_text_payment_taxes"/>
+                        <tiles:putAttribute name="selfCleaning" value="false"/>
                     </tiles:insertDefinition>
 
                     <tiles:insertDefinition name="taxFormCriterion">
                         <tiles:putAttribute name="field" value="paymentSocialSecurity"/>
                         <tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
                         <tiles:putAttribute name="description_code" value="crit_eu_text_payment_social_security"/>
+                        <tiles:putAttribute name="selfCleaning" value="false"/>
                     </tiles:insertDefinition>
 
                 </div>
