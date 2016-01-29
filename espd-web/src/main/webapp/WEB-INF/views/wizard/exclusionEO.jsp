@@ -267,12 +267,11 @@
                         <s:message code='crit_eu_main_purely_national'/>
                     </span>
                     <c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
-                        <tiles:insertDefinition name="formCriterion">
+                        <tiles:insertDefinition name="simpleFormCriterion">
                             <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
                             <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
                             <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
-                            <tiles:putAttribute name="availableElectronically" value="true"/>
-                            <tiles:putAttribute name="selfCleaning" value="true"/>
+                            <tiles:putAttribute name="selfCleaning" value="false"/>
                         </tiles:insertDefinition>
                     </c:if>
                 </div>
