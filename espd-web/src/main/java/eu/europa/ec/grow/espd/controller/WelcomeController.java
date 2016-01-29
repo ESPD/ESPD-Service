@@ -98,7 +98,7 @@ class WelcomeController {
         EspdDocument espd = readEspdResponse(attachment.getInputStream());
         if (espd != null) {
             model.addAttribute("espd", espd);
-            return "redirect:/response/ca/procedure";
+            return "redirect:/print";
         }
         result.rejectValue("attachment", "espd_upload_response_error");
         return "filter";
