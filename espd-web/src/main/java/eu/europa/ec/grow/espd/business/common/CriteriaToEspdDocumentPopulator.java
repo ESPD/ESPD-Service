@@ -44,7 +44,7 @@ public class CriteriaToEspdDocumentPopulator {
     private void markSelectedExclusionCriteria(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         markExclusionSelectedCriminalConvictions(espdDocument, ublCriteria);
         markExclusionSelectedTaxes(espdDocument, ublCriteria);
-        markExclusionEnvironmental(espdDocument, ublCriteria);
+        markExclusionBreaching(espdDocument, ublCriteria);
         markExclusionBankruptcyInsolvency(espdDocument, ublCriteria);
         markExclusionMisconductDistortion(espdDocument, ublCriteria);
         markExclusionConflictOfInterest(espdDocument, ublCriteria);
@@ -73,9 +73,13 @@ public class CriteriaToEspdDocumentPopulator {
                 ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY, ublCriteria));
     }
 
-    private void markExclusionEnvironmental(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
+    private void markExclusionBreaching(EspdDocument espdDocument, List<CriterionType> ublCriteria) {
         espdDocument.setBreachingObligationsEnvironmental(criterionFactory.<LawCriterion>buildEspdCriterion(
                 ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL, ublCriteria));
+        espdDocument.setBreachingObligationsSocial(criterionFactory.<LawCriterion>buildEspdCriterion(
+                ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL, ublCriteria));
+        espdDocument.setBreachingObligationsLabour(criterionFactory.<LawCriterion>buildEspdCriterion(
+                ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR, ublCriteria));
     }
 
     private void markExclusionBankruptcyInsolvency(EspdDocument espdDocument, List<CriterionType> ublCriteria) {

@@ -55,6 +55,7 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
                 decisionFinalAndBinding: true, dateOfConviction: new Date(), periodLength: "Till the end of the year 2013.",
                 eoFulfilledObligations: true, obligationsDescription: "This debt was the result of a miscalculation by our accountability department.",
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf", code: "HODOR")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

@@ -35,6 +35,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
                 description: "Bankruptcy description",
                 reason: "We lost all our money at poker.",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

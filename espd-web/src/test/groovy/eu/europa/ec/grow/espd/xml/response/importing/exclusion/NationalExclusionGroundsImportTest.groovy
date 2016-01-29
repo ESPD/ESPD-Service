@@ -32,6 +32,7 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true,  answer: true,
                 description: "Hodor is national",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "NATIONAL")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

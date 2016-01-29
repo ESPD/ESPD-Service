@@ -39,7 +39,7 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
                 description: "Hodor is conflicted",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "HODOR?")))
-//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

@@ -10,9 +10,9 @@ import org.apache.commons.io.IOUtils
  */
 class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImport {
 
-    def "09. should import all fields of 'Breaching of obligations in the fields of environmental, social and labour law'"() {
+    def "09. should import all fields of 'Breaching of obligations in the fields of environmental law'"() {
         given:
-        def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_import.xml")
+        def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_environmental_import.xml")
 
         when:
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
@@ -33,6 +33,7 @@ class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImpor
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true,  answer: true,
                 description: "Hodor description",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is very clean")))
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

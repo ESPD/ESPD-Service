@@ -37,7 +37,7 @@ class MisconductImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true,  answer: true,
                 description: "Hodor is misbehaving",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean")))
-//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1
