@@ -71,9 +71,8 @@ $(function() {
                         <div class="col-md-4">
                             <form:input path="tedReceptionId" id="tedReceptionId" cssClass="form-control small" placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
                         </div>
-                        <div class="col-md-offset-5"></div>
+                        <div class="col-md-offset-5">&nbsp;</div>
                     </div>
-                    <div>
                     <div class="row">
                         <div class="radio col-md-3">
                             <label><input name="action" value="ca_reuse_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_reuse_espd']}</label>
@@ -86,7 +85,7 @@ $(function() {
                             <label><input name="action" value="ca_review_espd_response" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_review_espd']}</label>
                             <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="${i18n['tooltip_review_espd']}"/>
                         </div>
-                        <div class="col-md-offset-9"></div>
+                        <div class="col-md-offset-9">&nbsp;</div>
                     </div>
 				</div>
 				<div class="tab-pane" id="tab_eo">

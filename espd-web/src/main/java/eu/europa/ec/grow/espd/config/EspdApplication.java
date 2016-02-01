@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan("eu.europa.ec.grow.espd")
 public class EspdApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
 
-    @Value("${http.client.connect.timeout.millis:60000}")
+    @Value("${http.client.connect.timeout.millis:30000}")
     private int connectTimeout;
 
     @Override

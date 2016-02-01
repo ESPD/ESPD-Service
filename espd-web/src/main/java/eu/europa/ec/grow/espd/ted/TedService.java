@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -19,8 +18,14 @@ public class TedService {
 
     private final RestTemplate restTemplate;
 
-    @Value("ted.api.base.url")
+    @Value("${ted.api.base.url}")
     private String tedUrl;
+
+    @Value("${ted.api.user}")
+    private String tedUser;
+
+    @Value("${ted.api.password}")
+    private String tedPassword;
 
     @Autowired
     TedService(RestTemplate restTemplate) {
@@ -31,12 +36,14 @@ public class TedService {
         if (StringUtils.isBlank(tedRequest.getReceptionId())) {
             return new TedResponse();
         }
-        HttpEntity<String> request = new HttpEntity<String>(createHeaders("user", "pass"));
+
+        log.info("--- Calling TED  with reception id: '{}'.", tedRequest.getReceptionId());
+        HttpEntity<String> request = new HttpEntity<>(createHeaders(tedUser, tedPassword));
         try {
             ResponseEntity<TedResponse> response = restTemplate
                     .exchange(tedUrl + "/" + tedRequest.getReceptionId(), HttpMethod.GET, request, TedResponse.class);
             return response.getBody();
-        } catch (RestClientException e) {
+        } catch (Exception e) {
             log.warn(e.getMessage(), e);
             return new TedResponse();
         }
