@@ -1,13 +1,9 @@
-package eu.europa.ec.grow.espd.business.ted;
+package eu.europa.ec.grow.espd.ted;
 
-import eu.europa.ec.grow.espd.domain.TedResponse;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,7 +23,7 @@ public class TedService {
         this.restTemplate = restTemplate;
     }
 
-    public TedResponse getContractNoticeInformation(String contractNoticeId) {
+    public TedResponse getContractNoticeInformation(TedRequest tedRequest) {
         HttpEntity<String> request = new HttpEntity<String>(createHeaders("user", "pass"));
         ResponseEntity<TedResponse> response = restTemplate
                 .exchange(tedUrl, HttpMethod.GET, request, TedResponse.class);
@@ -42,7 +38,8 @@ public class TedService {
         String base64Creds = new String(base64CredsBytes);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic " + base64Creds);
+        headers.add(HttpHeaders.AUTHORIZATION, "Basic " + base64Creds);
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         return headers;
     }
 }

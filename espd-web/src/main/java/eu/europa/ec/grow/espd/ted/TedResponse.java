@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.domain;
+package eu.europa.ec.grow.espd.ted;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
