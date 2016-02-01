@@ -20,6 +20,11 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
     private Double doubleValue1;
     private Boolean booleanValue1;
 
+    public AwardCriterion() {
+        // !! award criteria should always exist (be present in a ESPD Response)
+        setExists(true);
+    }
+
     public final boolean getInfoElectronicallyAnswer() {
         return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
     }
@@ -38,9 +43,8 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
         return null;
     }
 
-    public static AwardCriterion buildWithExists(boolean exists) {
+    public static AwardCriterion build() {
         AwardCriterion criterion = new AwardCriterion();
-        criterion.setExists(exists);
         return criterion;
     }
 

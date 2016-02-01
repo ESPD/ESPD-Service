@@ -549,11 +549,11 @@ class EspdResponseCriterionFactory {
 
     private AwardCriterion buildAwardCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
-        if (criterionType == null) {
-            return AwardCriterion.buildWithExists(false);
-        }
+        AwardCriterion criterion = AwardCriterion.build();
 
-        AwardCriterion criterion = AwardCriterion.buildWithExists(true);
+        if (criterionType == null) {
+            return criterion;
+        }
 
         boolean yourAnswer = readAwardCriterionAnswer(criterionType);
         criterion.setAnswer(yourAnswer);

@@ -26,14 +26,14 @@ class UblResponseCriteriaTransformer extends UblCriteriaTemplate {
     @Override
     protected List<CriterionType> buildAwardCriteria(EspdDocument espdDocument) {
         List<CriterionType> criterionTypes = new ArrayList<>(AwardCriterion.values().length + 1);
-        addUblCriterion(AwardCriterion.PROCUREMENT_RESERVED, espdDocument.getProcurementReserved(),
+        addAlwaysUblCriterion(AwardCriterion.PROCUREMENT_RESERVED, espdDocument.getProcurementReserved(),
                 criterionTypes);
-        addUblCriterion(AwardCriterion.EO_REGISTERED, espdDocument.getEoRegistered(), criterionTypes);
-        addUblCriterion(AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE,
+        addAlwaysUblCriterion(AwardCriterion.EO_REGISTERED, espdDocument.getEoRegistered(), criterionTypes);
+        addAlwaysUblCriterion(AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE,
                 espdDocument.getEoParticipatingProcurementProcedure(), criterionTypes);
-        addUblCriterion(AwardCriterion.EO_RELIES_CAPACITIES, espdDocument.getEoReliesCapacities(),
+        addAlwaysUblCriterion(AwardCriterion.EO_RELIES_CAPACITIES, espdDocument.getEoReliesCapacities(),
                 criterionTypes);
-        addUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
+        addAlwaysUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
         return Collections.unmodifiableList(criterionTypes);
     }
 

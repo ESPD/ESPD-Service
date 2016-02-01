@@ -9,14 +9,15 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
 
     def "01. should contain the 'Only in case the procurement is reserved' criterion"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true))
+        // exists is false but award criteria should always be present
+        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: false))
 
         when:
         def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
-        response.Criterion.size() == getResponseNumberOfCriteria()
+        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "2043338f-a38a-490b-b3ec-2607cb25a017")
 
         then: "CriterionTypeCode element"

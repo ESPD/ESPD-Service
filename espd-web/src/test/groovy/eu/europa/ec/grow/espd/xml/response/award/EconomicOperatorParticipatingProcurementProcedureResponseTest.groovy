@@ -11,14 +11,15 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
 
     def "03. should contain the 'Is the economic operator participating in the procurement procedure together with others?' criterion"() {
         given:
-        def espd = new EspdDocument(eoParticipatingProcurementProcedure: new AwardCriterion(exists: true))
+        // exists is false but award criteria should always be present
+        def espd = new EspdDocument(eoParticipatingProcurementProcedure: new AwardCriterion(exists: false))
 
         when:
         def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        response.Criterion.size() == getResponseNumberOfCriteria()
+        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2")
 
         then: "CriterionTypeCode element"

@@ -10,14 +10,15 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
 
     def "05. should contain the 'If applicable, is the economic operator registered' criterion"() {
         given:
-        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: true))
+        // exists is false but award criteria should always be present
+        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: false))
 
         when:
         def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
-        response.Criterion.size() == getResponseNumberOfCriteria()
+        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
 
         then: "CriterionTypeCode element"

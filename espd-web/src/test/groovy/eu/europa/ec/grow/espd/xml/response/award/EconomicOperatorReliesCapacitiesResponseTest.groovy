@@ -9,14 +9,15 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
 
     def "04. should contain the 'Does the economic operator rely on the capacities of other entities' criterion"() {
         given:
-        def espd = new EspdDocument(eoReliesCapacities: new AwardCriterion(exists: true))
+        // exists is false but award criteria should always be present
+        def espd = new EspdDocument(eoReliesCapacities: new AwardCriterion(exists: false))
 
         when:
         def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
-        response.Criterion.size() == getResponseNumberOfCriteria()
+        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "0d62c6ed-f074-4fcf-8e9f-f691351d52ad")
 
         then: "CriterionTypeCode element"

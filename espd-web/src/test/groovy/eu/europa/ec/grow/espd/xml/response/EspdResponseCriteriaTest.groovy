@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response
 
+import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
@@ -20,7 +21,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def result = parseResponseXml(espd)
 
         then:
-        result.Criterion.size() == 2
+        result.Criterion.size() == 2 + AwardCriterion.values().size()
         checkCriterionId(result, 0, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
         checkCriterionId(result, 1, "074f6031-55f9-4e99-b9a4-c4363e8bc315")
     }

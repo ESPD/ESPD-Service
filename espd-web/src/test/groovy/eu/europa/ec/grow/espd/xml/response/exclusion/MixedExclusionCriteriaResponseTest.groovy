@@ -20,7 +20,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then:
-        request.Criterion.size() == 2
+        request.Criterion.size() == 2 + eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
 
         then: "check who has been convicted requirement in participation criterion"
         def idx1 = 0

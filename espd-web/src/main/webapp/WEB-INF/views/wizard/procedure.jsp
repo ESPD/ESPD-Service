@@ -227,7 +227,7 @@
 	                            	${span18n['createeo_percentage_disworkers']}
 	                            </label>
 	                            <div class="col-md-6" >
-	                                <form:input cssClass="form-control" path="procurementReserved.doubleValue1" placeholder="${i18n['createeo_percentage_disworkers_placeholder']}" data-i18n="createeo_percentage_disworkers_placeholder"/>
+	                                <form:input cssClass="form-control" path="procurementReserved.doubleValue1" number="true" placeholder="${i18n['createeo_percentage_disworkers_placeholder']}" data-i18n="createeo_percentage_disworkers_placeholder"/>
 	                            </div>
 	                       </div>
 	                       <div class="form-group">
