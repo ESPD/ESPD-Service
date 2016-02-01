@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.importing
 import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -19,9 +20,9 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
     static def espdResponseMinimalXml
 
     @Shared
-    static def espdFull
+    static EspdDocument espdFull
     @Shared
-    static def espdMinimal
+    static EspdDocument espdMinimal
 
     void setupSpec() {
         // init objects run before the first feature method
@@ -43,6 +44,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.economicOperator.name == "ACME Corp."
         espdFull.economicOperator.website == "www.hodor.com"
         espdFull.economicOperator.vatNumber == "B207781243"
+        espdFull.economicOperator.anotherNationalId == "eo another national identification number"
         espdFull.economicOperator.street == "Vitruvio"
         espdFull.economicOperator.postalCode == "28006"
         espdFull.economicOperator.city == "Madrid"
@@ -58,6 +60,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdMinimal.economicOperator.name == null
         espdMinimal.economicOperator.website == null
         espdMinimal.economicOperator.vatNumber == null
+        espdMinimal.economicOperator.anotherNationalId == null
         espdMinimal.economicOperator.street == null
         espdMinimal.economicOperator.postalCode == null
         espdMinimal.economicOperator.city == null

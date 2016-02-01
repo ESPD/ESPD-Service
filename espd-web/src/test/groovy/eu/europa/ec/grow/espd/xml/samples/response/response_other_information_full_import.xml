@@ -52,6 +52,9 @@
             <cac:PartyIdentification>
                 <cbc:ID schemeAgencyID="AEAT" schemeName="Agencia Tributaria Española">B207781243</cbc:ID>
             </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID>eo another national identification number</cbc:ID>
+            </cac:PartyIdentification>
             <cac:PartyName>
                 <cbc:Name>ACME Corp.</cbc:Name>
             </cac:PartyName>

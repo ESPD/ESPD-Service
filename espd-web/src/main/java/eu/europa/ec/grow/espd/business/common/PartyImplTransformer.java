@@ -59,11 +59,16 @@ public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
             return;
         }
 
-        PartyIdentificationType partyIdentificationType = input.getPartyIdentification().get(0);
-        if (partyIdentificationType.getID() == null) {
-            return;
+        PartyIdentificationType vat1Type = input.getPartyIdentification().get(0);
+        if (vat1Type.getID() != null) {
+            authority.setVatNumber(trimToEmpty(vat1Type.getID().getValue()));
         }
-        authority.setVatNumber(trimToEmpty(partyIdentificationType.getID().getValue()));
+        if (input.getPartyIdentification().size() > 1) {
+            PartyIdentificationType vat2Type = input.getPartyIdentification().get(1);
+            if (vat2Type.getID() != null) {
+                authority.setAnotherNationalId(trimToEmpty(vat2Type.getID().getValue()));
+            }
+        }
     }
 
     private void addAddressInformation(PartyType input, PartyImpl authority) {
