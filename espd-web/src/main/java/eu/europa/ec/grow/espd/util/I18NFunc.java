@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.util;
 
 import org.springframework.context.MessageSource;
+import org.springframework.context.NoSuchMessageException;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -26,7 +27,7 @@ public class I18NFunc {
                 if (key == null) {
                     return "";
                 }
-                return ms.getMessage(key.toString(), null, locale);
+                return loadMessageValue(key, ms, locale);
             }
         };
         spanMessageMap = new HashMap<String, String>() {
@@ -38,7 +39,7 @@ public class I18NFunc {
                 return new StringBuilder("<span data-i18n=\"")
                         .append((String) key)
                         .append("\">")
-                        .append(ms.getMessage(key.toString(), null, locale))
+                        .append(loadMessageValue(key, ms, locale))
                         .append("</span>")
                         .toString();
             }
@@ -52,11 +53,19 @@ public class I18NFunc {
                 return new StringBuilder("<div data-i18n=\"")
                         .append((String) key)
                         .append("\">")
-                        .append(ms.getMessage(key.toString(), null, locale))
+                        .append(loadMessageValue(key, ms, locale))
                         .append("</div>")
                         .toString();
             }
         };
+    }
+
+    private static String loadMessageValue(Object key, MessageSource ms, Locale locale) {
+        try {
+            return ms.getMessage(key.toString(), null, locale);
+        } catch (NoSuchMessageException e) {
+            return "? " + key;
+        }
     }
 
     public HashMap<String, String> message() {

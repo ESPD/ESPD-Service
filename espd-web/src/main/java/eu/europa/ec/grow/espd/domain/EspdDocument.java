@@ -22,7 +22,9 @@ public class EspdDocument {
 
     private EspdRequestMetadata requestMetadata;
 
-    // Economic operator criteria
+    private String tedReceptionId;
+
+    // Award criteria
     private AwardCriterion procurementReserved;
     private AwardCriterion eoRegistered;
     private AwardCriterion eoParticipatingProcurementProcedure;

@@ -4,6 +4,9 @@ import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.ted.TedRequest;
+import eu.europa.ec.grow.espd.ted.TedResponse;
+import eu.europa.ec.grow.espd.ted.TedService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.CountingOutputStream;
@@ -36,9 +39,12 @@ class WelcomeController {
 
     private final EspdExchangeMarshaller exchangeMarshaller;
 
+    private final TedService tedService;
+
     @Autowired
-    WelcomeController(EspdExchangeMarshaller exchangeMarshaller) {
+    WelcomeController(EspdExchangeMarshaller exchangeMarshaller, TedService tedService) {
         this.exchangeMarshaller = exchangeMarshaller;
+        this.tedService = tedService;
     }
 
     @ModelAttribute("espd")
@@ -79,7 +85,14 @@ class WelcomeController {
     private String createNewRequestAsCA(@RequestParam("authority.country") Country country,
             @ModelAttribute("espd") EspdDocument document) {
         document.getAuthority().setCountry(country);
+        TedResponse tedResponse = tedService
+                .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
+        copyTedInformation(document, tedResponse);
         return "redirect:/request/ca/procedure";
+    }
+
+    private void copyTedInformation(EspdDocument document, TedResponse tedResponse) {
+        document.setOjsNumber(tedResponse.getNoDocOjs());
     }
 
     private String reuseRequestAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
