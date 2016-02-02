@@ -53,11 +53,11 @@ $(function() {
 				<span data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip" title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>
 			</h3>
 			<div class="radio" >
-				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca">${span18n['filter_i_am_ca']}</label>
+				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca"/>${span18n['filter_i_am_ca']}</label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
 			<div class="radio">
-				<label><input id="whoareyou_eo" name="agent" value="eo" class="radiotab" type="radio" href="#tab_eo">${span18n['filter_i_am_eop']}</label>
+				<label><input id="whoareyou_eo" name="agent" value="eo" class="radiotab" type="radio" href="#tab_eo"/>${span18n['filter_i_am_eop']}</label>
 				<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip" title="${i18n['tooltip_eo_ref_suppl']}"></span>
 			</div>
 			<div class="tab-content" >
@@ -65,8 +65,8 @@ $(function() {
 					<h3>${span18n['filter_what_you_do']}</h3>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_create_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-country-selection">${span18n['filter_create_espd']}</label>
-                            <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_create_espd']}"/>
+                            <label><input name="action" value="ca_create_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"/>${span18n['filter_create_espd']}</label>
+                            <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_create_espd']}"></span>
                         </div>
                         <div class="col-md-4">
                             <form:input path="tedReceptionId" id="tedReceptionId" cssClass="form-control small" placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
@@ -75,15 +75,15 @@ $(function() {
                     </div>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_reuse_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_reuse_espd']}</label>
-                            <span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_import_espd']}"/>
+                            <label><input name="action" value="ca_reuse_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-upload"/>${span18n['filter_reuse_espd']}</label>
+                            <span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_import_espd']}"></span>
                         </div>
                         <div class="col-md-offset-9"></div>
                     </div>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_review_espd_response" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_review_espd']}</label>
-                            <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="${i18n['tooltip_review_espd']}"/>
+                            <label><input name="action" value="ca_review_espd_response" class="radiotab radioCa" type="radio" data-target="#tab-upload"/>${span18n['filter_review_espd']}</label>
+                            <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="${i18n['tooltip_review_espd']}"></span>
                         </div>
                         <div class="col-md-offset-9">&nbsp;</div>
                     </div>
@@ -92,8 +92,8 @@ $(function() {
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
 					<div class="radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload">${span18n['filter_import_espd']}</label>
-						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_filter_eo_can_import_espd']}"/>
+						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-upload"/>${span18n['filter_import_espd']}</label>
+						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_filter_eo_can_import_espd']}"></span>
 					</div>
 				</div>
 			</div>
