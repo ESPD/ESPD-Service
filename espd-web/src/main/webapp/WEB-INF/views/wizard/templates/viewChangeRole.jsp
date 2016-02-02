@@ -13,7 +13,6 @@
         <c:if test="${agent == 'ca'}">
         	<span data-i18n="role_ca"><s:message code="role_ca"/></span>
         </c:if>
-        
         <a href="${pageContext.request.contextPath}/${page}">
 	        <c:if test="${agent == 'eo'}">
 	        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>

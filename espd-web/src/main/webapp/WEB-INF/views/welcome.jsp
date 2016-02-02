@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="languages" class="java.util.LinkedHashMap" scope="request"/>
 <c:set target="${languages}" property="bg" value="български"/>
@@ -29,17 +29,15 @@
 <c:set target="${languages}" property="fi" value="Suomi"/>
 <c:set target="${languages}" property="sv" value="Svenska"/>
 
-	<div class="row" style="padding:50px">
-	
-		<fmt:formatNumber var="colLen" value="6"  maxFractionDigits="0" />
-
-		<div class="col-lg-3 col-sm-6">
-		<c:forEach var="lang" items="${languages}" varStatus="i">
-			${((i.index % colLen) == 0 && !i.first && !i.last) ? "</div><div class='col-lg-3 col-sm-6 langBoxBorder'>" : ""}
-			<div class="splashLangDiv">
-				<a href="${pageContext.request.contextPath}/filter?lang=${lang.key}" class="splashLangBox" >${lang.key}</a>
-				<a href="${pageContext.request.contextPath}/filter?lang=${lang.key}">${lang.value}</a>
-			</div>
-		</c:forEach>
-		</div>
-	</div>
+<div class="row" style="padding:50px">
+    <fmt:formatNumber var="colLen" value="6" maxFractionDigits="0"/>
+    <div class="col-lg-3 col-sm-6">
+        <c:forEach var="lang" items="${languages}" varStatus="i">
+            ${((i.index % colLen) == 0 && !i.first && !i.last) ? "</div><div class='col-lg-3 col-sm-6 langBoxBorder'>" : ""}
+            <div class="splashLangDiv">
+                <a href="${pageContext.request.contextPath}/filter?lang=${lang.key}" class="splashLangBox">${lang.key}</a>
+                <a href="${pageContext.request.contextPath}/filter?lang=${lang.key}">${lang.value}</a>
+            </div>
+        </c:forEach>
+    </div>
+</div>
