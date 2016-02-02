@@ -27,7 +27,7 @@ class UblRequestCriteriaTransformer extends UblCriteriaTemplate {
     protected List<CriterionType> buildAwardCriteria(EspdDocument espdDocument) {
         List<CriterionType> criterionTypes = new ArrayList<>(1);
         // meets objective (reduction of numbers) is common to request and response
-        addSelectedUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument.getMeetsObjective(), criterionTypes);
+        addSelectedUblCriterion(AwardCriterion.MEETS_OBJECTIVE, espdDocument, criterionTypes);
         return Collections.unmodifiableList(criterionTypes);
     }
 
