@@ -33,15 +33,17 @@ public class TedService {
     }
 
     public TedResponse getContractNoticeInformation(TedRequest tedRequest) {
-        if (StringUtils.isBlank(tedRequest.getReceptionId())) {
+        String receptionId = StringUtils.trimToEmpty(tedRequest.getReceptionId());
+        if (StringUtils.isBlank(receptionId)) {
             return new TedResponse();
         }
 
-        log.info("--- Calling TED  with reception id: '{}'.", tedRequest.getReceptionId());
+        log.info("--- Calling TED  with reception id: '{}'.", receptionId);
         HttpEntity<String> request = new HttpEntity<>(createHeaders(tedUser, tedPassword));
         try {
             ResponseEntity<TedResponse> response = restTemplate
-                    .exchange(tedUrl + "/" + tedRequest.getReceptionId(), HttpMethod.GET, request, TedResponse.class);
+                    .exchange(tedUrl + "/" + receptionId, HttpMethod.GET, request, TedResponse.class);
+            log.info("Got response from TED: '{}'.", response);
             return response.getBody();
         } catch (Exception e) {
             log.warn(e.getMessage(), e);

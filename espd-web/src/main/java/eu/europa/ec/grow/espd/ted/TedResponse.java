@@ -2,6 +2,7 @@ package eu.europa.ec.grow.espd.ted;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.apache.commons.collections.MapUtils;
 
 import java.util.Map;
 
@@ -30,5 +31,12 @@ public class TedResponse {
 
         private String tedUrl;
 
+    }
+
+    public TedNotice getFirstNotice() {
+        if (MapUtils.isEmpty(info)) {
+            return new TedNotice();
+        }
+        return info.entrySet().iterator().next().getValue();
     }
 }

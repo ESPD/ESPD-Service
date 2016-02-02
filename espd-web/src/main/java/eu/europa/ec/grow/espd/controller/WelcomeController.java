@@ -93,6 +93,11 @@ class WelcomeController {
 
     private void copyTedInformation(EspdDocument document, TedResponse tedResponse) {
         document.setOjsNumber(tedResponse.getNoDocOjs());
+        TedResponse.TedNotice notice = tedResponse.getFirstNotice();
+        document.getAuthority().setName(notice.getOfficialName());
+        document.setProcedureTitle(notice.getTitle());
+        document.setProcedureShortDesc(notice.getShortDescription());
+        document.setFileRefByCA(notice.getReferenceNumber());
     }
 
     private String reuseRequestAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
