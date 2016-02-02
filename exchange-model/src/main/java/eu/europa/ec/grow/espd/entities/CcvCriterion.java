@@ -23,4 +23,11 @@ public interface CcvCriterion {
     List<? extends CcvCriterionGroup> getGroups();
 
     CcvCriterionType getCriterionType();
+
+    /**
+     * The name of the field in the ESPD model to which the criterion maps.
+     *
+     * @return
+     */
+    String getEspdDocumentField();
 }
