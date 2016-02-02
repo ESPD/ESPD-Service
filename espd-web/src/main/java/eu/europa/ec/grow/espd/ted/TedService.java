@@ -1,8 +1,8 @@
 package eu.europa.ec.grow.espd.ted;
 
+import com.google.common.io.BaseEncoding;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -39,8 +39,8 @@ public class TedService {
         }
 
         log.info("--- Calling TED  with reception id: '{}'.", receptionId);
-        HttpEntity<String> request = new HttpEntity<>(createHeaders(tedUser, tedPassword));
         try {
+            HttpEntity<String> request = new HttpEntity<>(createHeaders(tedUser, tedPassword));
             ResponseEntity<TedResponse> response = restTemplate
                     .exchange(tedUrl + "/" + receptionId, HttpMethod.GET, request, TedResponse.class);
             log.info("Got response from TED: '{}'.", response);
@@ -53,8 +53,7 @@ public class TedService {
 
     private HttpHeaders createHeaders(final String username, final String password) {
         String plainCreds = username + ":" + password;
-        byte[] base64CredsBytes = Base64.encodeBase64(plainCreds.getBytes());
-        String base64Creds = new String(base64CredsBytes);
+        String base64Creds = BaseEncoding.base64().encode(plainCreds.getBytes());
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.AUTHORIZATION, "Basic " + base64Creds);
