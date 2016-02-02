@@ -125,12 +125,13 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdMinimal.requestMetadata.issueDate == null
     }
 
-    def "should parse procurement procedure information"() {
+    def "should parse TED procurement procedure information"() {
         expect:
         espdFull.fileRefByCA == "SMART 2015/0065"
         espdFull.ojsNumber == "6d48f751-53cc-4d7f-9dfb-21c3e802b2e0"
         espdFull.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         espdFull.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
+        espdFull.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
     }
 
 }

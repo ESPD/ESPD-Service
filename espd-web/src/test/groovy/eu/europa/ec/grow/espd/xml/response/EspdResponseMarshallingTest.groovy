@@ -1,4 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response
+
 import eu.europa.ec.grow.espd.constants.enums.Country
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
@@ -6,6 +7,7 @@ import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractEspdXmlMarshalling
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
+
 /**
  * Created by ratoico on 11/26/15.
  */
@@ -229,7 +231,8 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
-                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.")
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.",
+                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
 
         when:
         def result = parseResponseXml(espd)
@@ -250,6 +253,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
     def "should contain ContractFolderID element information"() {
@@ -268,7 +272,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         given:
         def now = new Date()
         def espd = new EspdDocument(requestMetadata: new EspdRequestMetadata(id: "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec",
-            issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
+                issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
 
         when:
         def result = parseResponseXml(espd)

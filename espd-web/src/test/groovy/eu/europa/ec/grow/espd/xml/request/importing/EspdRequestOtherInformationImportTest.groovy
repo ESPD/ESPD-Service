@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.importing
 
 import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -20,9 +21,9 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
     static def espdRequestMinimalXml
 
     @Shared
-    static def espdFull
+    static EspdDocument espdFull
     @Shared
-    static def espdMinimal
+    static EspdDocument espdMinimal
 
     void setupSpec() {
         // init objects run before the first feature method
@@ -73,6 +74,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.ojsNumber == "S206|2015-10-23|PN33|2015/S206-373035"
         espdFull.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         espdFull.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
+        espdFull.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
     }
 
     def "should import espd request full information"() {

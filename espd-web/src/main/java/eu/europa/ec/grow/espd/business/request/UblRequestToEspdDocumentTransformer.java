@@ -123,6 +123,7 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
             espdDocument.setOjsNumber(ublDocumentReferences.readIdValue(procurementInfo));
             espdDocument.setProcedureTitle(ublDocumentReferences.readFileNameValue(procurementInfo));
             espdDocument.setProcedureShortDesc(ublDocumentReferences.readDescriptionValue(procurementInfo));
+            espdDocument.setTedUrl(ublDocumentReferences.readUrlValue(procurementInfo));
         }
     }
 

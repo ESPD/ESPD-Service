@@ -107,7 +107,8 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
-                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services."
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.",
+                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
         )
 
         when:
@@ -129,6 +130,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
     def "should contain ContractingParty element information"() {

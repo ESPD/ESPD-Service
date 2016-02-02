@@ -123,6 +123,7 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
             espdDocument.setOjsNumber(ublDocumentReferences.readIdValue(procurementInfo));
             espdDocument.setProcedureTitle(ublDocumentReferences.readFileNameValue(procurementInfo));
             espdDocument.setProcedureShortDesc(ublDocumentReferences.readDescriptionValue(procurementInfo));
+            espdDocument.setTedUrl(ublDocumentReferences.readUrlValue(procurementInfo));
         } else {
             log.warn("No TED information found for response '{}'.", getResponseId(input));
         }

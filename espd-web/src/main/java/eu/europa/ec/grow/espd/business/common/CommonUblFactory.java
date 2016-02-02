@@ -158,7 +158,8 @@ public class CommonUblFactory {
         // A reference to a Contract Notice published in the TeD platform (European Commission, Office of Publications).
         documentReferenceType.setDocumentTypeCode(buildDocumentTypeCode(DocumentTypeCode.TED_CN));
         documentReferenceType.setAttachment(
-                buildAttachmentType(null, espdDocument.getProcedureTitle(), espdDocument.getProcedureShortDesc()));
+                buildAttachmentType(espdDocument.getTedUrl(), espdDocument.getProcedureTitle(),
+                        espdDocument.getProcedureShortDesc()));
 
         return documentReferenceType;
     }

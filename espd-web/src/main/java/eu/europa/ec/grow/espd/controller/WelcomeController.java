@@ -98,6 +98,7 @@ class WelcomeController {
         document.setProcedureTitle(notice.getTitle());
         document.setProcedureShortDesc(notice.getShortDescription());
         document.setFileRefByCA(notice.getReferenceNumber());
+        document.setTedUrl(notice.getTedUrl());
     }
 
     private String reuseRequestAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
