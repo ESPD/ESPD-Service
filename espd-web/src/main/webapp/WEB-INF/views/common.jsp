@@ -123,7 +123,7 @@ request.setAttribute("span18n", inst.span());
 
         $.ajax({
             type: "POST",
-            url: '<s:url value="/translate"/>?lang=' + code,
+            url: "translate?lang=" + code,
             data: {
                 labels: codes
             },
