@@ -88,7 +88,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(req, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "COUNTRY")
+        checkRequirement(req, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "CODE_COUNTRY")
         req.Response.size() == 1
         req.Response[0].Code.text() == "RO"
         req.Response[0].Code.@listAgencyID.text() == "ISO"

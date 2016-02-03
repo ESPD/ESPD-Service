@@ -15,7 +15,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert r0.ID.@schemeVersionID.text() == "1.0"
 
         def r1 = infoElectronicallyRequirementGroup.Requirement[1]
-        checkRequirement(r1, "03bb1954-13ae-47d8-8ef8-b7fe0f22d700", "URL", "URL")
+        checkRequirement(r1, "03bb1954-13ae-47d8-8ef8-b7fe0f22d700", "URL", "EVIDENCE_URL")
         assert r1.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r1.ID.@schemeVersionID.text() == "1.0"
 
@@ -29,7 +29,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearAmountCurrencyGroup.ID.text() == "1689194b-6ecf-4ab4-ab38-7656610c25bb"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY_YEAR")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
     }
 
@@ -37,7 +37,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearAmountCurrencyGroup.ID.text() == "c628dd27-8016-4d80-8660-7461f2e3ee0f"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "49a57870-7fb8-451f-a7af-fa0e7f8b97e7", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "49a57870-7fb8-451f-a7af-fa0e7f8b97e7", "Year", "QUANTITY_YEAR")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
     }
 
@@ -45,7 +45,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearAmountCurrencyGroup.ID.text() == "9dd09f9f-3326-4865-9d5a-f0836076fb19"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY_YEAR")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
     }
 
@@ -53,7 +53,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearAmountCurrencyGroup.ID.text() == "962011c9-9e2e-4e7b-818e-30e8506e874f"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3", "Year", "QUANTITY_YEAR")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "9f278e42-aa1d-4b2e-97cd-832248aa5393", "Amount", "AMOUNT")
     }
 
@@ -61,7 +61,7 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearAmountCurrencyGroup.ID.text() == "343795e2-98e9-4cc9-8ef2-8817cec8f49a"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
 
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "34825634-5151-4e31-af1b-7eafadcf15be", "Year", "QUANTITY")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "34825634-5151-4e31-af1b-7eafadcf15be", "Year", "QUANTITY_YEAR")
         checkRequirement(yearAmountCurrencyGroup.Requirement[1], "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b", "Amount", "AMOUNT")
     }
 
@@ -159,24 +159,24 @@ class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
         assert yearNumberGroup.ID.text() == "96defecc-7d32-4957-82e9-aad5f3c5b736"
         assert yearNumberGroup.Requirement.size() == 2
 
-        checkRequirement(yearNumberGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY")
-        checkRequirement(yearNumberGroup.Requirement[1], "42037f41-53af-44df-b6b8-2395cee98087", "Number", "QUANTITY")
+        checkRequirement(yearNumberGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY_YEAR")
+        checkRequirement(yearNumberGroup.Requirement[1], "42037f41-53af-44df-b6b8-2395cee98087", "Number", "QUANTITY_INTEGER")
     }
 
     protected static void checkYearNumberGroup2(def yearNumberGroup) {
         assert yearNumberGroup.ID.text() == "dac727d8-2cd2-43e0-8561-6f17e25870a4"
         assert yearNumberGroup.Requirement.size() == 2
 
-        checkRequirement(yearNumberGroup.Requirement[0], "49a57870-7fb8-451f-a7af-fa0e7f8b97e7", "Year", "QUANTITY")
-        checkRequirement(yearNumberGroup.Requirement[1], "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30", "Number", "QUANTITY")
+        checkRequirement(yearNumberGroup.Requirement[0], "49a57870-7fb8-451f-a7af-fa0e7f8b97e7", "Year", "QUANTITY_YEAR")
+        checkRequirement(yearNumberGroup.Requirement[1], "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30", "Number", "QUANTITY_INTEGER")
     }
 
     protected static void checkYearNumberGroup3(def yearNumberGroup) {
         assert yearNumberGroup.ID.text() == "b799d324-358c-48b0-bd5e-6d205969b4a5"
         assert yearNumberGroup.Requirement.size() == 2
 
-        checkRequirement(yearNumberGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY")
-        checkRequirement(yearNumberGroup.Requirement[1], "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a", "Number", "QUANTITY")
+        checkRequirement(yearNumberGroup.Requirement[0], "9d0cf1cb-27bc-4747-8579-47dce4d8d490", "Year", "QUANTITY_YEAR")
+        checkRequirement(yearNumberGroup.Requirement[1], "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a", "Number", "QUANTITY_INTEGER")
     }
 
 }

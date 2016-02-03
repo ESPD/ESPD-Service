@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.util.Collections;
 import java.util.List;
 
-import static eu.europa.ec.grow.espd.criteria.enums.AwardRequirement.*;
+import static eu.europa.ec.grow.espd.criteria.enums.AwardCriterionRequirement.*;
 import static eu.europa.ec.grow.espd.criteria.enums.ListUtil.list;
 
 /**

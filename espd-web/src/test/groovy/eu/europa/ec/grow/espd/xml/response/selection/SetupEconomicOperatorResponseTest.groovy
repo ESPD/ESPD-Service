@@ -42,7 +42,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
 
         then: "main sub group requirements"
         def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "a18b2c98-8552-45ca-9751-d4c94c05847a", "Please specify", "QUANTITY")
+        checkRequirement(r1_0, "a18b2c98-8552-45ca-9751-d4c94c05847a", "Please specify", "QUANTITY_YEAR")
     }
 
     def "check the 'Please specify year' requirements response"() {

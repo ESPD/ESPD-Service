@@ -3,22 +3,23 @@ package eu.europa.ec.grow.espd.business.response;
 import eu.europa.ec.grow.espd.business.common.UblRequirementTypeTemplate;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.constants.enums.Country;
-import eu.europa.ec.grow.espd.criteria.enums.AwardRequirement;
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterionRequirement;
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterionRequirement;
-import eu.europa.ec.grow.espd.domain.*;
+import eu.europa.ec.grow.espd.criteria.enums.ExpectedResponseType;
+import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonbasiccomponents_1.IndicatorType;
 import isa.names.specification.ubl.schema.xsd.cev_commonaggregatecomponents_1.EvidenceType;
+import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.AttachmentType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.PeriodType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.joda.time.LocalDate;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
@@ -28,6 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 /**
  * Created by ratoico on 12/22/15 at 4:07 PM.
  */
+@Slf4j
 class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
     @Override
@@ -53,269 +55,99 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
     private ResponseType buildResponse(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion) {
         ResponseType responseType = new ResponseType();
 
-        fillExclusionCriteria(ccvRequirement, espdCriterion, responseType);
-        fillSelectionCriteria(ccvRequirement, espdCriterion, responseType);
-        fillAwardCriteria(ccvRequirement, espdCriterion, responseType);
+        addRequirementValueOnResponse(ccvRequirement, espdCriterion, responseType);
 
         return responseType;
     }
 
-    private void fillExclusionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
+    private void addRequirementValueOnResponse(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
             ResponseType responseType) {
         if (espdCriterion == null) {
             return;
         }
-        if (ExclusionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
-        } else if (ExclusionCriterionRequirement.DATE_OF_CONVICTION.equals(ccvRequirement)) {
-            ConvictionHolder exclusionCriterion = (ConvictionHolder) espdCriterion;
-            responseType.setDate(buildDateType(exclusionCriterion.getDateOfConviction()));
-        } else if (ExclusionCriterionRequirement.REASON.equals(ccvRequirement)) {
-            CriminalConvictionsCriterion exclusionCriterion = (CriminalConvictionsCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(exclusionCriterion.getReason()));
-        } else if (ExclusionCriterionRequirement.WHO_CONVICTED.equals(ccvRequirement)) {
-            CriminalConvictionsCriterion crit = (CriminalConvictionsCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(crit.getConvicted()));
-        } else if (ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION.equals(ccvRequirement)) {
-            ConvictionHolder exclusionCriterion = (ConvictionHolder) espdCriterion;
-            responseType.setPeriod(buildPeriodType(exclusionCriterion.getPeriodLength()));
-        } else if (ExclusionCriterionRequirement.MEASURES_SELF_CLEANING.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(exclusionCriterion.getSelfCleaningAnswer()));
-        } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE_SELF_CLEANING.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(exclusionCriterion.getSelfCleaningDescription()));
-        } else if (ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(exclusionCriterion.getInfoElectronicallyAnswer()));
-        } else if (ExclusionCriterionRequirement.URL.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            EvidenceType evidenceType = buildEvidenceType(exclusionCriterion.getInfoElectronicallyUrl());
-            responseType.getEvidence().add(evidenceType);
-        } else if (ExclusionCriterionRequirement.URL_CODE.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            responseType.setCode(buildCodeType(exclusionCriterion.getInfoElectronicallyCode()));
-        } else if (ExclusionCriterionRequirement.COUNTRY_MS.equals(ccvRequirement)) {
-            TaxesCriterion exclusionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setCode(buildCountryType(exclusionCriterion.getCountry()));
-        } else if (ExclusionCriterionRequirement.AMOUNT.equals(ccvRequirement)) {
-            TaxesCriterion exclusionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setAmount(buildAmountType(exclusionCriterion.getAmount(), exclusionCriterion.getCurrency()));
-        } else if (ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN.equals(ccvRequirement)) {
-            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
-            responseType
-                    .setIndicator(
-                            buildIndicatorType(taxesCriterionCriterion.isBreachEstablishedOtherThanJudicialDecision()));
-        } else if (ExclusionCriterionRequirement.DESCRIBE_MEANS.equals(ccvRequirement)) {
-            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(taxesCriterionCriterion.getMeansDescription()));
-        } else if (ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING.equals(ccvRequirement)) {
-            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(taxesCriterionCriterion.isDecisionFinalAndBinding()));
-        } else if (ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION.equals(ccvRequirement)) {
-            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(taxesCriterionCriterion.isEoFulfilledObligations()));
-        } else if (ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS.equals(ccvRequirement)) {
-            TaxesCriterion taxesCriterionCriterion = (TaxesCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(taxesCriterionCriterion.getObligationsDescription()));
-        } else if (ExclusionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
-            ExclusionCriterion exclusionCriterion = (ExclusionCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(exclusionCriterion.getDescription()));
-        } else if (ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT.equals(ccvRequirement)) {
-            BankruptcyCriterion exclusionCriterion = (BankruptcyCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(exclusionCriterion.getReason()));
+
+        ExpectedResponseType type = (ExpectedResponseType) ccvRequirement.getResponseType();
+        switch (type) {
+        case INDICATOR:
+            Boolean answer = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setIndicator(buildIndicatorType(answer));
+            break;
+        case DATE:
+            Date date = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setDate(buildDateType(date));
+            break;
+        case DESCRIPTION:
+            String description = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setDescription(buildDescriptionType(description));
+            break;
+        case EVIDENCE_URL:
+            String url = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.getEvidence().add(buildEvidenceType(url));
+            break;
+        case QUANTITY:
+            Double quantity = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setQuantity(buildQuantityType(quantity));
+            break;
+        case QUANTITY_YEAR:
+            Integer year = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setQuantity(buildYearType(year));
+            break;
+        case QUANTITY_INTEGER:
+            Integer value = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setQuantity(buildQuantityIntegerType(value));
+            break;
+        case AMOUNT:
+            Double amount = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            String currency = readRequirementSecondValue(ccvRequirement, espdCriterion);
+            responseType.setAmount(buildAmountType(amount, currency));
+            break;
+        case CODE_COUNTRY:
+            Country country = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setCode(buildCountryType(country));
+            break;
+        case PERCENTAGE:
+            Double percentage = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setPercent(buildPercentType(percentage));
+            break;
+        case PERIOD:
+            String period = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setPeriod(buildPeriodType(period));
+            break;
+        case CODE:
+            String code = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            responseType.setCode(buildCodeType(code));
+            break;
+        default:
+            throw new IllegalArgumentException(String.format(
+                    "Could not save the requirement '%s' with id '%s' and expected response type '%s' on the ESPD Response.",
+                    ccvRequirement, ccvRequirement.getId(), type));
         }
+
     }
 
-    private void fillSelectionCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
-            ResponseType responseType) {
-        if (espdCriterion == null) {
-            return;
-        }
-        if (SelectionCriterionRequirement.YOUR_ANSWER.equals(ccvRequirement) ||
-                SelectionCriterionRequirement.ALLOW_CHECKS.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
-        } else if (SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(selectionCriterion.getInfoElectronicallyAnswer()));
-        } else if (SelectionCriterionRequirement.URL.equals(ccvRequirement)) {
-            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
-            EvidenceType evidenceType = buildEvidenceType(selectionCriterion.getInfoElectronicallyUrl());
-            responseType.getEvidence().add(evidenceType);
-        } else if (SelectionCriterionRequirement.URL_CODE.equals(ccvRequirement)) {
-            SelectionCriterion selectionCriterion = (SelectionCriterion) espdCriterion;
-            responseType.setCode(buildCodeType(selectionCriterion.getInfoElectronicallyCode()));
-        } else if (SelectionCriterionRequirement.YEAR_1.equals(ccvRequirement)) {
-            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear1()));
-        } else if (SelectionCriterionRequirement.YEAR_2.equals(ccvRequirement)) {
-            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear2()));
-        } else if (SelectionCriterionRequirement.YEAR_3.equals(ccvRequirement)) {
-            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear3()));
-        } else if (SelectionCriterionRequirement.YEAR_4.equals(ccvRequirement)) {
-            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear4()));
-        } else if (SelectionCriterionRequirement.YEAR_5.equals(ccvRequirement)) {
-            MultipleYearHolder selectionCriterion = (MultipleYearHolder) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear5()));
-        } else if (SelectionCriterionRequirement.AMOUNT_1.equals(ccvRequirement)) {
-            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
-            responseType.setAmount(buildAmountType(selectionCriterion.getAmount1(), selectionCriterion.getCurrency1()));
-        } else if (SelectionCriterionRequirement.AMOUNT_2.equals(ccvRequirement)) {
-            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
-            responseType.setAmount(buildAmountType(selectionCriterion.getAmount2(), selectionCriterion.getCurrency2()));
-        } else if (SelectionCriterionRequirement.AMOUNT_3.equals(ccvRequirement)) {
-            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
-            responseType.setAmount(buildAmountType(selectionCriterion.getAmount3(), selectionCriterion.getCurrency3()));
-        } else if (SelectionCriterionRequirement.AMOUNT_4.equals(ccvRequirement)) {
-            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
-            responseType.setAmount(buildAmountType(selectionCriterion.getAmount4(), selectionCriterion.getCurrency4()));
-        } else if (SelectionCriterionRequirement.AMOUNT_5.equals(ccvRequirement)) {
-            MultipleAmountHolder selectionCriterion = (MultipleAmountHolder) espdCriterion;
-            responseType.setAmount(buildAmountType(selectionCriterion.getAmount5(), selectionCriterion.getCurrency5()));
-        } else if (SelectionCriterionRequirement.PLEASE_DESCRIBE.equals(ccvRequirement) ||
-                SelectionCriterionRequirement.EXPLAIN_SUPPLY_CONTRACTS_QC.equals(ccvRequirement) ||
-                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA.equals(ccvRequirement) ||
-                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL.equals(ccvRequirement)) {
-            DescriptionHolder selectionCriterion = (DescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription()));
-        } else if (SelectionCriterionRequirement.PLEASE_SPECIFY.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getSpecify()));
-        } else if (SelectionCriterionRequirement.DESCRIPTION_1.equals(ccvRequirement)) {
-            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription1()));
-        } else if (SelectionCriterionRequirement.DESCRIPTION_2.equals(ccvRequirement)) {
-            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription2()));
-        } else if (SelectionCriterionRequirement.DESCRIPTION_3.equals(ccvRequirement)) {
-            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription3()));
-        } else if (SelectionCriterionRequirement.DESCRIPTION_4.equals(ccvRequirement)) {
-            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription4()));
-        } else if (SelectionCriterionRequirement.DESCRIPTION_5.equals(ccvRequirement)) {
-            MultipleDescriptionHolder selectionCriterion = (MultipleDescriptionHolder) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getDescription5()));
-        } else if (SelectionCriterionRequirement.RATIO_1.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio1()));
-        } else if (SelectionCriterionRequirement.RATIO_2.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio2()));
-        } else if (SelectionCriterionRequirement.RATIO_3.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio3()));
-        } else if (SelectionCriterionRequirement.RATIO_4.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio4()));
-        } else if (SelectionCriterionRequirement.RATIO_5.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildQuantityType(selectionCriterion.getRatio5()));
-        } else if (SelectionCriterionRequirement.DATE_1.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDate(buildDateType(selectionCriterion.getDate1()));
-        } else if (SelectionCriterionRequirement.DATE_2.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDate(buildDateType(selectionCriterion.getDate2()));
-        } else if (SelectionCriterionRequirement.DATE_3.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDate(buildDateType(selectionCriterion.getDate3()));
-        } else if (SelectionCriterionRequirement.DATE_4.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDate(buildDateType(selectionCriterion.getDate4()));
-        } else if (SelectionCriterionRequirement.DATE_5.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDate(buildDateType(selectionCriterion.getDate5()));
-        } else if (SelectionCriterionRequirement.RECIPIENTS_1.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients1()));
-        } else if (SelectionCriterionRequirement.RECIPIENTS_2.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients2()));
-        } else if (SelectionCriterionRequirement.RECIPIENTS_3.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients3()));
-        } else if (SelectionCriterionRequirement.RECIPIENTS_4.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients4()));
-        } else if (SelectionCriterionRequirement.RECIPIENTS_5.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(selectionCriterion.getRecipients5()));
-        } else if (SelectionCriterionRequirement.PERCENTAGE.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setPercent(buildPercentType(selectionCriterion.getPercentage()));
-        } else if (SelectionCriterionRequirement.NUMBER_1.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber1()));
-        } else if (SelectionCriterionRequirement.NUMBER_2.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber2()));
-        } else if (SelectionCriterionRequirement.NUMBER_3.equals(ccvRequirement)) {
-            TechnicalProfessionalCriterion selectionCriterion = (TechnicalProfessionalCriterion) espdCriterion;
-            responseType.setQuantity(buildNumberType(selectionCriterion.getNumber3()));
-        } else if (SelectionCriterionRequirement.SPECIFY_YEAR.equals(ccvRequirement)) {
-            EconomicFinancialStandingCriterion selectionCriterion = (EconomicFinancialStandingCriterion) espdCriterion;
-            responseType.setQuantity(buildYearType(selectionCriterion.getYear1()));
-        }
+    private <T> T readRequirementFirstValue(CcvCriterionRequirement requirement, Criterion espdCriterion) {
+        // most requirements are mapped to only one ESPD field
+        return readRequirementValueAtPosition(requirement, espdCriterion, 0);
     }
 
-    private void fillAwardCriteria(CcvCriterionRequirement ccvRequirement, Criterion espdCriterion,
-            ResponseType responseType) {
-        if (espdCriterion == null) {
-            return;
-        }
+    private <T> T readRequirementSecondValue(CcvCriterionRequirement requirement, Criterion espdCriterion) {
+        // this method is needed by requirements of type AMOUNT which are mapped to two fields (amount and currency)
+        return readRequirementValueAtPosition(requirement, espdCriterion, 1);
+    }
 
-        if (AwardRequirement.INDICATOR.equals(ccvRequirement)) {
-            responseType.setIndicator(buildIndicatorType(espdCriterion.getAnswer()));
-        } else if (AwardRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(awardCriterion.getBooleanValue1()));
-        } else if (AwardRequirement.CORRESPONDING_PERCENTAGE.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setPercent(buildPercentType(awardCriterion.getDoubleValue1()));
-        } else if (AwardRequirement.DETAILS_EMPLOYEES_CATEGORY.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription1()));
-        } else if (AwardRequirement.PROVIDE_REGISTRATION_NUMBER.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription1()));
-        } else if (AwardRequirement.REG_NO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription2()));
-        } else if (AwardRequirement.REFERENCES_REGISTRATION.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription3()));
-        } else if (AwardRequirement.EO_ABLE_PROVIDE_CERTIFICATE.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription4()));
-        } else if (AwardRequirement.DOC_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription5()));
-        } else if (AwardRequirement.ECONOMIC_OPERATOR_ROLE.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription1()));
-        } else if (AwardRequirement.OTHER_ECONOMIC_OPERATORS.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription2()));
-        } else if (AwardRequirement.PARTICIPANT_GROUP_NAME.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription3()));
-        } else if (AwardRequirement.PLEASE_DESCRIBE.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setDescription(buildDescriptionType(awardCriterion.getDescription1()));
-        } else if (AwardRequirement.INFO_AVAILABLE_ELECTRONICALLY.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setIndicator(buildIndicatorType(awardCriterion.getInfoElectronicallyAnswer()));
-        } else if (AwardRequirement.URL.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            EvidenceType evidenceType = buildEvidenceType(awardCriterion.getInfoElectronicallyUrl());
-            responseType.getEvidence().add(evidenceType);
-        } else if (AwardRequirement.URL_CODE.equals(ccvRequirement)) {
-            AwardCriterion awardCriterion = (AwardCriterion) espdCriterion;
-            responseType.setCode(buildCodeType(awardCriterion.getInfoElectronicallyCode()));
+    @SuppressWarnings("unchecked")
+    private <T> T readRequirementValueAtPosition(CcvCriterionRequirement requirement, Criterion espdCriterion,
+            int position) {
+        if (requirement.getEspdCriterionFields().get(position) == null) {
+            // there is one criterion which is not mapped to any field (3a6fefd4-f458-4d43-97fb-0725fce5dce2) financial ratio
+            return null;
+        }
+        try {
+            // all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
+            return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
     }
 
@@ -366,7 +198,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         return quantityType;
     }
 
-    private QuantityType buildNumberType(Integer number) {
+    private QuantityType buildQuantityIntegerType(Integer number) {
         if (number == null) {
             return null;
         }

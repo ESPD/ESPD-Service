@@ -1,5 +1,7 @@
 package eu.europa.ec.grow.espd.entities;
 
+import java.util.List;
+
 /**
  *
  *
@@ -12,4 +14,6 @@ public interface CcvCriterionRequirement {
     String getDescription();
 
     CcvResponseType getResponseType();
+
+    List<String> getEspdCriterionFields();
 }

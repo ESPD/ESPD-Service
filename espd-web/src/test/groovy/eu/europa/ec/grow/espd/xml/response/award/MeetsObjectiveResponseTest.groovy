@@ -56,7 +56,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
                 "Is this information available electronically?", "INDICATOR")
 
         def r2_1 = response.Criterion[idx].RequirementGroup[1].Requirement[1]
-        checkRequirement(r2_1, "ee1ee1cd-3791-4855-8b8b-28d4f4c5c007", "URL", "URL")
+        checkRequirement(r2_1, "ee1ee1cd-3791-4855-8b8b-28d4f4c5c007", "URL", "EVIDENCE_URL")
 
         def r2_2 = response.Criterion[idx].RequirementGroup[1].Requirement[2]
         checkRequirement(r2_2, "1e55ff14-c643-4abc-91d7-2f4dfcdf2409", "Code", "CODE")

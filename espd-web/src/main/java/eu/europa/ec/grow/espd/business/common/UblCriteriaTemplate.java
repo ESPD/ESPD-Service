@@ -45,7 +45,6 @@ public abstract class UblCriteriaTemplate {
     }
 
     private List<CriterionType> addExclusionCriteria(EspdDocument espdDocument) {
-        // we need to do it in a hard coded way right now, unfortunately
         // THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS
         List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
         for (ExclusionCriterion criterion : ExclusionCriterion.values()) {

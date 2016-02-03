@@ -9,14 +9,13 @@ public enum ExpectedResponseType implements CcvResponseType {
 
     INDICATOR,
     DATE,
-    TEXT,
     DESCRIPTION,
-    BOOLEAN,
-    URL,
+    EVIDENCE_URL,
     QUANTITY,
+    QUANTITY_YEAR,
+    QUANTITY_INTEGER,
     AMOUNT,
-    CURRENCY,
-    COUNTRY,
+    CODE_COUNTRY,
     PERCENTAGE,
     PERIOD,
     CODE;

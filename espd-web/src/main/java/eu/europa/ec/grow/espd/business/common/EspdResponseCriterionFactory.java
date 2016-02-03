@@ -63,8 +63,8 @@ class EspdResponseCriterionFactory {
             return (T) buildEconomicFinancialStandingCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
-        } else if (AwardTypeCode.DATA_ON_ECONOMIC_OPERATOR.equals(ccvCriterion.getCriterionType()) ||
-                AwardTypeCode.REDUCTION_OF_CANDIDATES.equals(ccvCriterion.getCriterionType())) {
+        } else if (AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.equals(ccvCriterion.getCriterionType()) ||
+                AwardCriterionTypeCode.REDUCTION_OF_CANDIDATES.equals(ccvCriterion.getCriterionType())) {
             return (T) buildAwardCriterion(ccvCriterion, ublCriteria);
         }
         throw new IllegalArgumentException(
@@ -299,9 +299,9 @@ class EspdResponseCriterionFactory {
         String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         criterion.setDescription(description);
         // year 1 is overloaded because of criterion 10. Set up of economic operator
-        Double year1 = readRequirementValue(SelectionCriterionRequirement.SPECIFY_YEAR, criterionType);
+        Integer year1 = readRequirementValue(SelectionCriterionRequirement.SPECIFY_YEAR, criterionType);
         if (year1 != null) {
-            criterion.setYear1(year1.intValue());
+            criterion.setYear1(year1);
         }
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
@@ -310,25 +310,25 @@ class EspdResponseCriterionFactory {
     }
 
     private void addMultipleYears(CriterionType criterionType, MultipleYearHolder criterion) {
-        Double year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
+        Integer year1 = readRequirementValue(SelectionCriterionRequirement.YEAR_1, criterionType);
         if (year1 != null) {
-            criterion.setYear1(year1.intValue());
+            criterion.setYear1(year1);
         }
-        Double year2 = readRequirementValue(SelectionCriterionRequirement.YEAR_2, criterionType);
+        Integer year2 = readRequirementValue(SelectionCriterionRequirement.YEAR_2, criterionType);
         if (year2 != null) {
-            criterion.setYear2(year2.intValue());
+            criterion.setYear2(year2);
         }
-        Double year3 = readRequirementValue(SelectionCriterionRequirement.YEAR_3, criterionType);
+        Integer year3 = readRequirementValue(SelectionCriterionRequirement.YEAR_3, criterionType);
         if (year3 != null) {
-            criterion.setYear3(year3.intValue());
+            criterion.setYear3(year3);
         }
-        Double year4 = readRequirementValue(SelectionCriterionRequirement.YEAR_4, criterionType);
+        Integer year4 = readRequirementValue(SelectionCriterionRequirement.YEAR_4, criterionType);
         if (year4 != null) {
-            criterion.setYear4(year4.intValue());
+            criterion.setYear4(year4);
         }
-        Double year5 = readRequirementValue(SelectionCriterionRequirement.YEAR_5, criterionType);
+        Integer year5 = readRequirementValue(SelectionCriterionRequirement.YEAR_5, criterionType);
         if (year5 != null) {
-            criterion.setYear5(year5.intValue());
+            criterion.setYear5(year5);
         }
     }
 
@@ -411,17 +411,17 @@ class EspdResponseCriterionFactory {
     }
 
     private void addMultipleNumbers(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {
-        Double number1 = readRequirementValue(SelectionCriterionRequirement.NUMBER_1, criterionType);
+        Integer number1 = readRequirementValue(SelectionCriterionRequirement.NUMBER_1, criterionType);
         if (number1 != null) {
-            criterion.setNumber1(number1.intValue());
+            criterion.setNumber1(number1);
         }
-        Double number2 = readRequirementValue(SelectionCriterionRequirement.NUMBER_2, criterionType);
+        Integer number2 = readRequirementValue(SelectionCriterionRequirement.NUMBER_2, criterionType);
         if (number2 != null) {
-            criterion.setNumber2(number2.intValue());
+            criterion.setNumber2(number2);
         }
-        Double number3 = readRequirementValue(SelectionCriterionRequirement.NUMBER_3, criterionType);
+        Integer number3 = readRequirementValue(SelectionCriterionRequirement.NUMBER_3, criterionType);
         if (number3 != null) {
-            criterion.setNumber3(number3.intValue());
+            criterion.setNumber3(number3);
         }
 
     }
@@ -502,7 +502,7 @@ class EspdResponseCriterionFactory {
     }
 
     private boolean readAwardCriterionAnswer(CriterionType criterionType) {
-        return readCriterionAnswer(criterionType, AwardRequirement.INDICATOR);
+        return readCriterionAnswer(criterionType, AwardCriterionRequirement.INDICATOR);
     }
 
     private boolean readCriterionAnswer(CriterionType criterionType, CcvCriterionRequirement answerReq) {
@@ -531,8 +531,8 @@ class EspdResponseCriterionFactory {
     }
 
     private AvailableElectronically buildAwardAvailableElectronically(CriterionType criterionType) {
-        return buildAvailableElectronically(criterionType, AwardRequirement.INFO_AVAILABLE_ELECTRONICALLY,
-                AwardRequirement.URL, AwardRequirement.URL_CODE);
+        return buildAvailableElectronically(criterionType, AwardCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
+                AwardCriterionRequirement.URL, AwardCriterionRequirement.URL_CODE);
     }
 
     private AvailableElectronically buildAvailableElectronically(CriterionType criterionType,
@@ -559,55 +559,55 @@ class EspdResponseCriterionFactory {
         criterion.setAnswer(yourAnswer);
 
         // description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
-        String detailsCategory = readRequirementValue(AwardRequirement.DETAILS_EMPLOYEES_CATEGORY, criterionType);
+        String detailsCategory = readRequirementValue(AwardCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY, criterionType);
         if (isNotBlank(detailsCategory)) {
             criterion.setDescription1(detailsCategory);
         }
-        String regNumber = readRequirementValue(AwardRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
+        String regNumber = readRequirementValue(AwardCriterionRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
         if (isNotBlank(regNumber)) {
             criterion.setDescription1(regNumber);
         }
-        String eoRole = readRequirementValue(AwardRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
+        String eoRole = readRequirementValue(AwardCriterionRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
         if (isNotBlank(eoRole)) {
             criterion.setDescription1(eoRole);
         }
-        String describe = readRequirementValue(AwardRequirement.PLEASE_DESCRIBE, criterionType);
+        String describe = readRequirementValue(AwardCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         if (isNotBlank(describe)) {
             criterion.setDescription1(describe);
         }
 
-        String regNumberElectronically = readRequirementValue(AwardRequirement.REG_NO_AVAILABLE_ELECTRONICALLY, criterionType);
+        String regNumberElectronically = readRequirementValue(AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY, criterionType);
         if (isNotBlank(regNumberElectronically)) {
             criterion.setDescription2(regNumberElectronically);
         }
-        String otherEos = readRequirementValue(AwardRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
+        String otherEos = readRequirementValue(AwardCriterionRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
         if (isNotBlank(otherEos)) {
             criterion.setDescription2(otherEos);
         }
 
-        String referencesRegistration = readRequirementValue(AwardRequirement.REFERENCES_REGISTRATION, criterionType);
+        String referencesRegistration = readRequirementValue(AwardCriterionRequirement.REFERENCES_REGISTRATION, criterionType);
         if (isNotBlank(referencesRegistration)) {
             criterion.setDescription3(referencesRegistration);
         }
-        String participantGroupName = readRequirementValue(AwardRequirement.PARTICIPANT_GROUP_NAME, criterionType);
+        String participantGroupName = readRequirementValue(AwardCriterionRequirement.PARTICIPANT_GROUP_NAME, criterionType);
         if (isNotBlank(participantGroupName)) {
             criterion.setDescription3(participantGroupName);
         }
 
 
-        String eoProvideCertificate = readRequirementValue(AwardRequirement.EO_ABLE_PROVIDE_CERTIFICATE, criterionType);
+        String eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE, criterionType);
         if (isNotBlank(eoProvideCertificate)) {
             criterion.setDescription4(eoProvideCertificate);
         }
-        String docElectronically = readRequirementValue(AwardRequirement.DOC_AVAILABLE_ELECTRONICALLY, criterionType);
+        String docElectronically = readRequirementValue(AwardCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY, criterionType);
         if (isNotBlank(docElectronically)) {
             criterion.setDescription5(docElectronically);
         }
 
         boolean coversAllSelectionCriteria = readBooleanRequirement(
-                AwardRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
+                AwardCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
         criterion.setBooleanValue1(coversAllSelectionCriteria);
-        Double percentage = readRequirementValue(AwardRequirement.CORRESPONDING_PERCENTAGE, criterionType);
+        Double percentage = readRequirementValue(AwardCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
         criterion.setDoubleValue1(percentage);
 
         criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));

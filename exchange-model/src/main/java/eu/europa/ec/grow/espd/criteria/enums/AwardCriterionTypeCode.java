@@ -7,7 +7,7 @@ import lombok.Getter;
  * Created by ratoico on 1/15/16 at 3:11 PM.
  */
 @Getter
-public enum AwardTypeCode implements CcvCriterionType {
+public enum AwardCriterionTypeCode implements CcvCriterionType {
 
     DATA_ON_ECONOMIC_OPERATOR("Date on economic operator"),
 
@@ -15,7 +15,7 @@ public enum AwardTypeCode implements CcvCriterionType {
 
     private final String description;
 
-    AwardTypeCode(final String description) {
+    AwardCriterionTypeCode(final String description) {
         this.description = description;
     }
 

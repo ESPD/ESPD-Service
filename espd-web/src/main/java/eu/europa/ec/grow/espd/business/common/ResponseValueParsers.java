@@ -31,12 +31,14 @@ final class ResponseValueParsers {
         PARSERS.put(ExpectedResponseType.DATE, new DateValueParser());
         PARSERS.put(ExpectedResponseType.DESCRIPTION, new DescriptionValueParser());
         PARSERS.put(ExpectedResponseType.PERIOD, new PeriodValueParser());
-        PARSERS.put(ExpectedResponseType.URL, new UrlValueParser());
+        PARSERS.put(ExpectedResponseType.EVIDENCE_URL, new UrlValueParser());
         PARSERS.put(ExpectedResponseType.CODE, new CodeValueParser());
-        PARSERS.put(ExpectedResponseType.COUNTRY, new CountryValueParser());
+        PARSERS.put(ExpectedResponseType.CODE_COUNTRY, new CountryValueParser());
         PARSERS.put(ExpectedResponseType.AMOUNT, new AmountValueParser());
         PARSERS.put(ExpectedResponseType.PERCENTAGE, new PercentageValueParser());
         PARSERS.put(ExpectedResponseType.QUANTITY, new QuantityValueParser());
+        PARSERS.put(ExpectedResponseType.QUANTITY_INTEGER, new QuantityIntegerValueParser());
+        PARSERS.put(ExpectedResponseType.QUANTITY_YEAR, new QuantityIntegerValueParser());
     }
 
     private ResponseValueParsers() {
@@ -178,6 +180,17 @@ final class ResponseValueParsers {
                 return null;
             }
             return responseType.getQuantity().getValue().doubleValue();
+        }
+    }
+
+    private static class QuantityIntegerValueParser implements ResponseValueParser<Integer> {
+
+        @Override
+        public Integer parseValue(ResponseType responseType) {
+            if (responseType.getQuantity() == null || responseType.getQuantity().getValue() == null) {
+                return null;
+            }
+            return responseType.getQuantity().getValue().intValue();
         }
     }
 }

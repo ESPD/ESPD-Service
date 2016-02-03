@@ -31,7 +31,7 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
         assert r0.ID.@schemeVersionID.text() == "1.0"
 
         def r1 = infoElectronicallyRequirementGroup.Requirement[1]
-        checkRequirement(r1, "f4313bb6-21b6-499e-bdff-debe10e11d2c", "URL", "URL")
+        checkRequirement(r1, "f4313bb6-21b6-499e-bdff-debe10e11d2c", "URL", "EVIDENCE_URL")
         assert r1.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r1.ID.@schemeVersionID.text() == "1.0"
 
