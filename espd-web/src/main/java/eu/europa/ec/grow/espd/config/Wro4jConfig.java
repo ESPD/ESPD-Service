@@ -60,8 +60,7 @@ class Wro4jConfig {
     @ConditionalOnMissingBean(WroManagerFactory.class)
     @Bean(destroyMethod = "destroy")
     WroManagerFactory fallbackWroManagerFactory() {
-        SimpleWroManagerFactory factory = new SimpleWroManagerFactory(wroManagerFactoryProperties());
-        return factory;
+        return new SimpleWroManagerFactory(wroManagerFactoryProperties());
     }
 
     private Properties wroManagerFactoryProperties() {

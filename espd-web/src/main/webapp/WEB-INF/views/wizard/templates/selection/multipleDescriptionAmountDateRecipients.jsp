@@ -25,12 +25,12 @@
 </div>
 
 <c:forEach begin="1" end="5" varStatus="loop">
-	<div class="form-group form-group-sm" style="margin-bottom: 0px;">
+	<div class="form-group form-group-sm" style="margin-bottom: 0;">
 		<div class="col-xs-3" style="padding:1px;">
 			<form:input path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" placeholder="${i18n['crit_description_placeholder']}"/>
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
-			<form:input path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+			<form:input path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
 	        <tiles:insertDefinition name="currencies">

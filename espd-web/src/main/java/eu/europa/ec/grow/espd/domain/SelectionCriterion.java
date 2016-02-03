@@ -14,10 +14,7 @@ public abstract class SelectionCriterion extends Criterion {
     private String description;
 
     public final boolean getInfoElectronicallyAnswer() {
-        if (availableElectronically != null) {
-            return Boolean.TRUE.equals(availableElectronically.getAnswer());
-        }
-        return false;
+        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
     }
 
     public final String getInfoElectronicallyUrl() {

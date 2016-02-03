@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class LawCriterion extends ExclusionCriterion implements DescriptionHolder {
+public class LawCriterion extends ExclusionCriterion {
 
     public static LawCriterion buildWithExists(boolean exists) {
         LawCriterion criterion = new LawCriterion();

@@ -40,7 +40,7 @@
         <c:if test="${has_your_answer}">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label small" style="padding-top: 0px;">
+                    <label class="control-label small" style="padding-top: 0;">
                         <c:choose>
                             <c:when test="${allows_checks != null && allows_checks}">
                                 <s:message code='crit_do_you_allow_checks'/>

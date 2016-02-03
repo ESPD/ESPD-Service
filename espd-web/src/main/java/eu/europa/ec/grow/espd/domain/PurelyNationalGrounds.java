@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class PurelyNationalGrounds extends ExclusionCriterion {
 
-    public static final PurelyNationalGrounds buildWithExists(Boolean exists) {
+    public static PurelyNationalGrounds buildWithExists(Boolean exists) {
         PurelyNationalGrounds criminalConvictions = new PurelyNationalGrounds();
         criminalConvictions.setExists(exists);
         return criminalConvictions;

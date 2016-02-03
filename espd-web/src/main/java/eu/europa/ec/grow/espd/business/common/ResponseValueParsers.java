@@ -45,6 +45,7 @@ final class ResponseValueParsers {
 
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T parse(CcvCriterionRequirement requirement, ResponseType responseType) {
         ResponseValueParser<T> parser = PARSERS.get(requirement.getResponseType());
         checkArgument(parser != null,

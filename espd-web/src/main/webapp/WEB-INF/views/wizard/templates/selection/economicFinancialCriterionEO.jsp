@@ -36,7 +36,7 @@
         <c:if test="${has_your_answer}">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label small" style="padding-top: 0px;">
+                    <label class="control-label small" style="padding-top: 0;">
                         <s:message code='crit_your_answer'/>
                     </label>
                     <form:checkbox path="${field}.answer" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control"/>

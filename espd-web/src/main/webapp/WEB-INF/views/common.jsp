@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@page import="org.springframework.context.i18n.LocaleContextHolder" %>
-<%@page import="java.text.DateFormat" %>
-<%@page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -56,10 +53,7 @@ request.setAttribute("span18n", inst.span());
     validator(defaultValidators, "min", "${i18n['validator_min']}");
 
     $(function () {
-        //$(".filecontrol").fileinput();
         $("input.datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
-        //$(".selectfilter").select2();
-        //$(":input").inputmask(); // seems it is too heavy to apply on criterias forms
 
         jQuery.extend(jQuery.validator.messages, defaultValidators);
         $('span[data-toggle="tooltip"]').tooltip({
@@ -68,10 +62,10 @@ request.setAttribute("span18n", inst.span());
             trigger: "hover"
         }).addClass("fa").addClass("fa-info-circle");
 
-        $('input.radiotab').click(function () {
+        $('.radiotab').click(function () {
             $(this).tab('show');
         });
-        $('input.checktoggle:checkbox').change(function () {
+        $('.checktoggle').change(function () {
             if ($(this).prop('checked')) {
                 $($(this).attr("data-target")).show();
                 $($(this).attr("data-target-invert")).hide();
@@ -81,16 +75,16 @@ request.setAttribute("span18n", inst.span());
                 $($(this).attr("data-target-invert")).show();
             }
         });
-        $('input.checktoggle:checkbox:checked').each(function (index) {
+        $('.checktoggle:checked').each(function (index) {
             $($(this).attr("data-target")).show();
             $($(this).attr("data-target-invert")).hide();
         });
-        $('input.checktoggle:checkbox:not(:checked)').each(function (index) {
+        $('.checktoggle:not(:checked)').each(function (index) {
             $($(this).attr("data-target")).hide();
             $($(this).attr("data-target-invert")).show();
         });
        
-        $('input.radioslide:checkbox').bootstrapToggle({
+        $('.radioslide').bootstrapToggle({
             style: "ios",
             width: "57",
             size: "mini",
@@ -102,7 +96,6 @@ request.setAttribute("span18n", inst.span());
     });
 
     var pageLanguageCode = '${pageContext.response.locale}';
-    //var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
 
     function language(code) {
         var flags = [];
@@ -138,7 +131,7 @@ request.setAttribute("span18n", inst.span());
 	                    var elem = $("*[data-i18n='" + codes[i] + "']");
 	                    var tagName = elem.prop("tagName").toLowerCase();
 	                    if(tagName == "input" || tagName == "textarea") {
-	                    	$("*[data-i18n='" + codes[i] + "']").attr('placeholder', array[i]);
+	                    	elem.attr('placeholder', array[i]);
 	                    }
 	                    else if (elem.attr("data-toggle") == "tooltip") {
 	                        elem.attr("title", array[i]);
@@ -151,13 +144,6 @@ request.setAttribute("span18n", inst.span());
                 }
                 pageLanguageCode = code;
                 jQuery.extend(jQuery.validator.messages, validators);
-
-                //$(".datefmt").each(function() {
-                //	$(this).html(Date.parse($(this).html()).toLocaleDateString(code))
-                //});
-                //pageDateFormat = array.datefmt;
-                
-                
             }
         });
     }

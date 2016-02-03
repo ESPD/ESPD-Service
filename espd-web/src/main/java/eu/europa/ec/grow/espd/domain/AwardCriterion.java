@@ -44,8 +44,7 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
     }
 
     public static AwardCriterion build() {
-        AwardCriterion criterion = new AwardCriterion();
-        return criterion;
+        return new AwardCriterion();
     }
 
     public Boolean getBooleanValue1() {

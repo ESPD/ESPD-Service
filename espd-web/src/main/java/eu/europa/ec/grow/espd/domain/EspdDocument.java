@@ -3,7 +3,6 @@ package eu.europa.ec.grow.espd.domain;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 @Data
@@ -105,7 +104,7 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
     
     //trick to use MultipartFile as @RequestParam
-    public void setAttachment(MultipartFile attachment) throws IOException, JAXBException {
+    public void setAttachment(MultipartFile attachment) throws IOException {
     }
 
     public MultipartFile getAttachment() {

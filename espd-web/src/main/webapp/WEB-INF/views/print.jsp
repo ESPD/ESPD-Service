@@ -16,11 +16,8 @@
         $("#ojsNumber").inputmask("9999/S 999-9999999");
         $('input').attr('readonly', true).removeAttr('placeholder');
         $('textarea').attr('readonly', true).removeAttr('placeholder');
-        $('checkbox').attr('readonly', true).removeAttr('placeholder');
-        $('select').attr('readonly', true).removeAttr('placeholder');
-        $('select').attr("disabled", true);
-         $("checkbox").attr("disabled", true);
-        
+        $('checkbox').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
+        $('select').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
     });
 </script>
 
@@ -938,7 +935,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
 	    </div>
 		<div class="col-xs-6">
-			<form:input path="workContractsPerformanceOfWorks.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+			<form:input path="workContractsPerformanceOfWorks.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 		</div>
 		<div class="col-xs-3">
 			<tiles:insertDefinition name="currencies">
@@ -1036,7 +1033,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
 	    </div>
 		<div class="col-xs-6">
-			<form:input path="supplyContractsPerformanceDeliveries.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+			<form:input path="supplyContractsPerformanceDeliveries.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 		</div>
 		<div class="col-xs-3">
 			<tiles:insertDefinition name="currencies">
@@ -1143,7 +1140,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
 	    </div>
 		<div class="col-xs-6">
-			<form:input path="serviceContractsPerformanceServices.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0px;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+			<form:input path="serviceContractsPerformanceServices.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 		</div>
 		<div class="col-xs-3">
 			<tiles:insertDefinition name="currencies">

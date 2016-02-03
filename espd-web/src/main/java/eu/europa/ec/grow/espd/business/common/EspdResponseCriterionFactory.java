@@ -36,6 +36,7 @@ class EspdResponseCriterionFactory {
      *
      * @throws IllegalArgumentException If the criterion type is not recognized
      */
+    @SuppressWarnings("unchecked")
     <T extends Criterion> T buildEspdCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
         if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.equals(ccvCriterion.getCriterionType())) {
             return (T) buildCriminalConvictionsCriterion(ccvCriterion, ublCriteria);
