@@ -4,8 +4,7 @@
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap-theme.min.css</css>
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
         <css minimize="false">/static/bootstrap-plugins/select2/css/select2.ajax.min.css</css>
-        <css>/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css</css>
-        <css minimize="false">/static/bootstrap-plugins/select2/css/select2.ajax.min.css</css>
+        <css minimize="true">/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css</css>
         <css minimize="false">/static/bootstrap-plugins/fileupload/css/fileinput.min.css</css>
         <css minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css</css>
         <css minimize="true">/static/css/espd.css</css>
@@ -17,7 +16,6 @@
         <js minimize="false">/static/bootstrap-3.2.0/js/bootstrap.min.js</js>
         <js minimize="false">/static/bootstrap-plugins/select2/js/select2.full.ajax.min.js</js>
         <js minimize="false">/static/bootstrap-plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js</js>
-        <js minimize="false">/static/bootstrap-plugins/select2/js/select2.full.ajax.min.js</js>
         <js minimize="false">/static/bootstrap-plugins/fileupload/js/fileinput.url.min.js</js>
         <js minimize="false">/static/bootstrap-plugins/confirmation/bootstrap-confirmation.min.js</js>
         <js minimize="false">/static/jquery-plugins/validate/jquery.validate.min.js</js>
