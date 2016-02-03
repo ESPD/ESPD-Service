@@ -56,7 +56,7 @@
                 <div id="ca-suitability-section" class="collapse in">
                     <div class="espd-panel-body panel-body">
                         ${span18n['crit_selection_suitability_article']}
-                        <span data-i18n="crit_selection_ca_suitability_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_suitability_article_tooltip']}"></span>
+                        <span data-i18n="crit_selection_suitability_article_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_suitability_article_tooltip']}"></span>
 
                         <tiles:insertDefinition name="requestCriterion">
                             <tiles:putAttribute name="field" value="enrolmentProfessionalRegister"/>

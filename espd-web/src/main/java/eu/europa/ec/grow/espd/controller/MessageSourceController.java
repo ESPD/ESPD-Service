@@ -2,9 +2,11 @@ package eu.europa.ec.grow.espd.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +33,8 @@ class MessageSourceController {
 
     @RequestMapping(value = "/translate", method = RequestMethod.POST)
     @ResponseBody
-    public String translate(@RequestParam(value = "labels[]") String[] labels, @RequestParam String lang)
+    public String translate(
+            @RequestParam(value = "labels[]") String[] labels, @RequestParam String lang)
             throws JsonProcessingException {
         Locale locale = Locale.forLanguageTag(lang);
         for (int i = 0; i < labels.length; i++) {

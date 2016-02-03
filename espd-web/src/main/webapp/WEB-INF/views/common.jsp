@@ -56,22 +56,22 @@ request.setAttribute("span18n", inst.span());
     validator(defaultValidators, "min", "${i18n['validator_min']}");
 
     $(function () {
-        $(".filecontrol").fileinput();
-        $(".datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
-        $(".selectfilter").select2();
+        //$(".filecontrol").fileinput();
+        $("input.datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
+        //$(".selectfilter").select2();
         //$(":input").inputmask(); // seems it is too heavy to apply on criterias forms
 
         jQuery.extend(jQuery.validator.messages, defaultValidators);
-        $('[data-toggle="tooltip"]').tooltip({
+        $('span[data-toggle="tooltip"]').tooltip({
             placement: "top",
             html: true,
             trigger: "hover"
         }).addClass("fa").addClass("fa-info-circle");
 
-        $('.radiotab').click(function () {
+        $('input.radiotab').click(function () {
             $(this).tab('show');
         });
-        $('.checktoggle').change(function () {
+        $('input.checktoggle:checkbox').change(function () {
             if ($(this).prop('checked')) {
                 $($(this).attr("data-target")).show();
                 $($(this).attr("data-target-invert")).hide();
@@ -81,16 +81,16 @@ request.setAttribute("span18n", inst.span());
                 $($(this).attr("data-target-invert")).show();
             }
         });
-        $('.checktoggle:checked').each(function (index) {
+        $('input.checktoggle:checkbox:checked').each(function (index) {
             $($(this).attr("data-target")).show();
             $($(this).attr("data-target-invert")).hide();
         });
-        $('.checktoggle:not(:checked)').each(function (index) {
+        $('input.checktoggle:checkbox:not(:checked)').each(function (index) {
             $($(this).attr("data-target")).hide();
             $($(this).attr("data-target-invert")).show();
         });
-
-        $('.radioslide').bootstrapToggle({
+        
+        $('input.radioslide:checkbox').bootstrapToggle({
             style: "ios",
             width: "57",
             size: "mini",
@@ -123,7 +123,7 @@ request.setAttribute("span18n", inst.span());
 
         $.ajax({
             type: "POST",
-            url: "/espd/translate?lang=" + code,
+            url: '<s:url value="/translate"/>?lang=' + code,
             data: {
                 labels: codes
             },
