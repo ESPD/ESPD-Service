@@ -39,7 +39,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label class="control-label small" style="padding-top: 0px;" for="${field}-field6">
+                <label class="control-label small" data-i18n="crit_your_answer" style="padding-top: 0px;" for="${field}-field6">
                     <s:message code="crit_your_answer"></s:message>
                 </label>
                 <form:checkbox path="${field}.answer" data-target="${'#'}${field}-form"

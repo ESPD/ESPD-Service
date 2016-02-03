@@ -89,7 +89,7 @@ request.setAttribute("span18n", inst.span());
             $($(this).attr("data-target")).hide();
             $($(this).attr("data-target-invert")).show();
         });
-        
+       
         $('input.radioslide:checkbox').bootstrapToggle({
             style: "ios",
             width: "57",
