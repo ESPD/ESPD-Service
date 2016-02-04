@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -18,9 +19,47 @@ request.setAttribute("span18n", inst.span());
 <title>ESPD</title>
 
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+
+<%--WRO--%>
 <link rel="stylesheet" type="text/css" href="<s:url value="/static/css/all.css"/>">
 <script src="<s:url value="/static/js/all.js"/>"></script>
 
+<%--RELEASE
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-3.2.0/css/bootstrap-theme.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-3.2.0/css/bootstrap.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/espd.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/nav-wizard.bootstrap.css"/>">
+
+<script src="<s:url value="/static/jquery/jquery.min.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-3.2.0/js/bootstrap.min.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/validate/jquery.validate.min.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/validate/additional-methods.min.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/inputmask/min/jquery.inputmask.bundle.min.js"/>"></script>
+--%>
+
+<%--DEBUG
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-3.2.0/css/bootstrap-theme.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-3.2.0/css/bootstrap.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/espd.css"/>">
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/nav-wizard.bootstrap.css"/>">
+
+<script src="<s:url value="/static/jquery/jquery-2.1.3.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-3.2.0/js/bootstrap.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/validate/jquery.validate.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/validate/additional-methods.js"/>"></script>
+<script src="<s:url value="/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.js"/>"></script>
+<script src="<s:url value="/static/jquery-plugins/inputmask/jquery.inputmask.bundle.js"/>"></script>
+--%>
+ 
 <script>
     <%-- Pseudo console for f**g IE9, otherwise it makes undefined error --%>
     window.console = window.console || (function () {
@@ -35,13 +74,15 @@ request.setAttribute("span18n", inst.span());
 
     var defaultValidators = {};
     validator(defaultValidators, "required", "${i18n['validator_required']}");
+    validator(defaultValidators, "number", "${i18n['validator_number']}");
+    validator(defaultValidators, "digits", "${i18n['validator_digits']}");
+    
+<%-- Standard jQuery form validators. Uncomment when needed
     validator(defaultValidators, "remote", "${i18n['validator_remote']}");
     validator(defaultValidators, "email", "${i18n['validator_email']}");
     validator(defaultValidators, "url", "${i18n['validator_url']}");
     validator(defaultValidators, "date", "${i18n['validator_date']}");
     validator(defaultValidators, "dateISO", "${i18n['validator_dateISO']}");
-    validator(defaultValidators, "number", "${i18n['validator_number']}");
-    validator(defaultValidators, "digits", "${i18n['validator_digits']}");
     validator(defaultValidators, "creditcard", "${i18n['validator_creditcard']}");
     validator(defaultValidators, "equalTo", "${i18n['validator_equalTo']}");
     validator(defaultValidators, "accept", "${i18n['validator_accept']}");
@@ -51,6 +92,7 @@ request.setAttribute("span18n", inst.span());
     validator(defaultValidators, "range", "${i18n['validator_range']}");
     validator(defaultValidators, "max", "${i18n['validator_max']}");
     validator(defaultValidators, "min", "${i18n['validator_min']}");
+--%>
 
     $(function () {
         $("input.datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
@@ -62,10 +104,10 @@ request.setAttribute("span18n", inst.span());
             trigger: "hover"
         }).addClass("fa").addClass("fa-info-circle");
 
-        $('.radiotab').click(function () {
+        $('input.radiotab').click(function () {
             $(this).tab('show');
         });
-        $('.checktoggle').change(function () {
+        $('input.checktoggle:checkbox').change(function () {
             if ($(this).prop('checked')) {
                 $($(this).attr("data-target")).show();
                 $($(this).attr("data-target-invert")).hide();
@@ -75,16 +117,16 @@ request.setAttribute("span18n", inst.span());
                 $($(this).attr("data-target-invert")).show();
             }
         });
-        $('.checktoggle:checked').each(function (index) {
+        $('input.checktoggle:checkbox:checked').each(function (index) {
             $($(this).attr("data-target")).show();
             $($(this).attr("data-target-invert")).hide();
         });
-        $('.checktoggle:not(:checked)').each(function (index) {
+        $('input.checktoggle:checkbox:not(:checked)').each(function (index) {
             $($(this).attr("data-target")).hide();
             $($(this).attr("data-target-invert")).show();
         });
-       
-        $('.radioslide').bootstrapToggle({
+
+        $('input.radioslide:checkbox').bootstrapToggle({
             style: "ios",
             width: "57",
             size: "mini",
@@ -93,9 +135,14 @@ request.setAttribute("span18n", inst.span());
             onstyle: "primary ios-toggle-on",
             offstyle: "default ios-toggle-off"
         });
+
     });
 
     var pageLanguageCode = '${pageContext.response.locale}';
+    
+	<%-- Proto for date format localisation
+    var pageDateFormat = '<%=((SimpleDateFormat)DateFormat.getDateInstance(DateFormat.MEDIUM, LocaleContextHolder.getLocale() )).toLocalizedPattern()%>';
+	--%>
 
     function language(code) {
         var flags = [];
@@ -144,6 +191,13 @@ request.setAttribute("span18n", inst.span());
                 }
                 pageLanguageCode = code;
                 jQuery.extend(jQuery.validator.messages, validators);
+
+				<%-- Proto for date format localisation
+                $(".datefmt").each(function() {
+                	$(this).html(Date.parse($(this).html()).toLocaleDateString(code))
+                });
+                pageDateFormat = array.datefmt;
+				--%> 
             }
         });
     }

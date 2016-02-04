@@ -188,6 +188,10 @@
                     </execution>
                 </executions>
                 <configuration>
+                <!--
+                    <targetGroups>all, debug</targetGroups>
+                    <minimize>false</minimize>
+                   -->
                     <targetGroups>all</targetGroups>
                     <minimize>true</minimize>
                     <cssDestinationFolder>${basedir}/src/main/webapp/static/css/</cssDestinationFolder>
@@ -228,6 +232,21 @@
         								<ignore></ignore>
         							</action>
         						</pluginExecution>
+        						<!-- 
+			                    <pluginExecution>  
+			                        <pluginExecutionFilter>  
+			                            <groupId>ro.isdc.wro4j</groupId>
+			                            <artifactId>wro4j-maven-plugin</artifactId>  
+			                            <versionRange>[1.0,)</versionRange>  
+			                            <goals>  
+			                                <goal>run</goal>  
+			                            </goals>  
+			                        </pluginExecutionFilter>  
+			                        <action>  
+			                            <execute/>  
+			                        </action>  
+			                    </pluginExecution>
+			                     -->
         					</pluginExecutions>
         				</lifecycleMappingMetadata>
         			</configuration>

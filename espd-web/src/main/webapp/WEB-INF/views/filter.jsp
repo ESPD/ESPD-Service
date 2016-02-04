@@ -7,6 +7,9 @@
 $(function() { 
 	var country = $("select[name='authority.country']");
 
+    $('input.radiotab').click(function () {
+        $(this).tab('show');
+    });
     $("*[name='agent']").click(function () {
     	$('#nextBtn').prop('disabled', true);
     	$('#tab-country-selection').removeClass('active');

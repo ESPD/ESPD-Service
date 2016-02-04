@@ -3,24 +3,24 @@
         <css minimize="false">/static/font-awesome-4.2.0/css/font-awesome.min.css</css>
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap-theme.min.css</css>
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
-        <css minimize="false">/static/bootstrap-plugins/select2/css/select2.ajax.min.css</css>
-        <css minimize="true">/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css</css>
-        <css minimize="false">/static/bootstrap-plugins/fileupload/css/fileinput.min.css</css>
+    <!--<css minimize="false">/static/bootstrap-plugins/select2/css/select2.ajax.min.css</css>-->
+        <css minimize="false">/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.min.css</css>
+    <!--<css minimize="false">/static/bootstrap-plugins/fileupload/css/fileinput.min.css</css>-->
         <css minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css</css>
         <css minimize="true">/static/css/espd.css</css>
         <css minimize="true">/static/css/nav-wizard.bootstrap.css</css>
-        <css minimize="true">/static/css/simple-sidebar.css</css>
-        <css minimize="true">/static/css/scrolling-nav.css</css>
+    <!--<css minimize="true">/static/css/simple-sidebar.css</css>
+        <css minimize="true">/static/css/scrolling-nav.css</css>-->
 
         <js minimize="false">/static/jquery/jquery.min.js</js>
         <js minimize="false">/static/bootstrap-3.2.0/js/bootstrap.min.js</js>
-        <js minimize="false">/static/bootstrap-plugins/select2/js/select2.full.ajax.min.js</js>
+    <!--<js minimize="false">/static/bootstrap-plugins/select2/js/select2.full.ajax.min.js</js>-->
         <js minimize="false">/static/bootstrap-plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js</js>
-        <js minimize="false">/static/bootstrap-plugins/fileupload/js/fileinput.url.min.js</js>
-        <js minimize="false">/static/bootstrap-plugins/confirmation/bootstrap-confirmation.min.js</js>
+    <!--<js minimize="false">/static/bootstrap-plugins/fileupload/js/fileinput.url.min.js</js>-->
+    <!--<js minimize="false">/static/bootstrap-plugins/confirmation/bootstrap-confirmation.min.js</js>-->
         <js minimize="false">/static/jquery-plugins/validate/jquery.validate.min.js</js>
         <js minimize="false">/static/jquery-plugins/validate/additional-methods.min.js</js>
-        <js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js</js>
+		<js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js</js>
         <js minimize="false">/static/jquery-plugins/inputmask/min/jquery.inputmask.bundle.min.js</js>
     </group>
 </groups>  
