@@ -2,7 +2,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-
 <script>
 $(function() { 
 	var country = $("select[name='authority.country']");
@@ -10,8 +9,9 @@ $(function() {
     $('input.radiotab').click(function () {
         $(this).tab('show');
     });
+    var nextBtn = $('#nextBtn');
     $("*[name='agent']").click(function () {
-    	$('#nextBtn').prop('disabled', true);
+        nextBtn.prop('disabled', true);
     	$('#tab-country-selection').removeClass('active');
     	$('#tab-upload').removeClass('active');
     	$('.radioCa').removeAttr('checked');
@@ -21,19 +21,18 @@ $(function() {
 	$("input:file").change(function (){
 		if($(this).val() != '') {
 			$('#tab-country-selection').addClass('active');
-			$('#nextBtn').prop('disabled', country.val() === '');
+			nextBtn.prop('disabled', country.val() === '');
 		}
 	});
 	country.change(function() {
-    	$('#nextBtn').prop('disabled', $(this).val() === '');
+    	nextBtn.prop('disabled', $(this).val() === '');
     });
     $("[name=action]").click(function () {
-    	$('#nextBtn').prop('disabled', country.val() === '');
+    	nextBtn.prop('disabled', country.val() === '');
     }); 
-    $('#nextBtn').prop('disabled', true);
+    nextBtn.prop('disabled', true);
 });
 </script>
-
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
@@ -116,6 +115,8 @@ $(function() {
 			</div>
 		</div>
 	</div>
+    <div class="form-group">
+    </div>
     <tiles:insertDefinition name="footerButtons">
     	<tiles:putAttribute name="prev" value="/welcome"/>
     	<tiles:putAttribute name="next" value="procedure"/>

@@ -16,22 +16,19 @@
                 $element.parent().append($error);
             }
         });
-        $("#ojsNumber").inputmask("9999/S 999-9999999");
+        $("#ojsNumber").inputmask("9999/S 999-999999");
     });
 </script>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
-
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="${agent}"/>
         <tiles:putAttribute name="page" value="${flow}/${agent == 'ca' ? 'eo' : 'ca'}/procedure"/>
     </tiles:insertDefinition>
-
     <div class="panel-default">
         <tiles:insertDefinition name="progress">
             <tiles:putAttribute name="procedure" value="true"/>
         </tiles:insertDefinition>
-
         <div class="errorContainer alert alert-danger" style="display: none">
             <ul class="fa-ul">
                 <li>
@@ -41,11 +38,9 @@
                 </li>
             </ul>
         </div>
-
         <div class="paragraph">
             <h2>${span18n['createca_header']}</h2>
         </div>
-
         <div class="espd-panel panel panel-default">
             <div class="espd-panel-heading" data-toggle="collapse" data-target="#ojsdiv">
                     ${span18n['createca_info_pub']}
@@ -58,10 +53,16 @@
 
                         <div class="col-md-8">
                             <form:input cssClass="form-control" path="ojsNumber"
-                                        placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ][ ]"/>
+                                        placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ]"/>
                         </div>
                     </div>
-                        ${span18n['createca_official_journal_alert']}
+                    <div class="form-group">
+                        <label class="control-label col-md-4">${span18n['createca_ojs_url']}</label>
+                        <div class="col-md-8">
+                            <form:input cssClass="form-control" path="tedUrl" placeholder="${i18n['createca_ojs_url']}"/>
+                        </div>
+                    </div>
+                    ${span18n['createca_official_journal_alert']}
                 </div>
             </div>
         </div>

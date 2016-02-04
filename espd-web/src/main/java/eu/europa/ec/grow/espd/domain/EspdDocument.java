@@ -18,7 +18,7 @@ public class EspdDocument {
     private String procedureShortDesc;
     private String lotConcerned;
     private String fileRefByCA;
-    private String tedUrl;
+    private String tedUrl; // aka ojsUrl
 
     private EspdRequestMetadata requestMetadata;
 
