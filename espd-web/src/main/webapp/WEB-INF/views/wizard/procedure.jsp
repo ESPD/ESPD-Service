@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">${span18n['createca_ojs_url']}</label>
                         <div class="col-md-8">
-                            <form:input cssClass="form-control" path="tedUrl" placeholder="${i18n['createca_ojs_url']}"/>
+                            <a href="${espd.tedUrl}" target="_blank" class="btn btn-link">${espd.tedUrl}</a>
                         </div>
                     </div>
                     ${span18n['createca_official_journal_alert']}
