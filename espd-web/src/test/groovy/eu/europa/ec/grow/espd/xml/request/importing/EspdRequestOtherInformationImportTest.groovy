@@ -52,6 +52,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.authority.contactName == "gogu"
         espdFull.authority.contactPhone == "+43435543"
         espdFull.authority.contactEmail == "gogu@gogu.com"
+        espdFull.lotConcerned == "hodor lot"
     }
 
     def "should parse minimal authority information"() {
@@ -66,6 +67,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdMinimal.authority.contactName == null
         espdMinimal.authority.contactPhone == null
         espdMinimal.authority.contactEmail == null
+        espdMinimal.lotConcerned == null
     }
 
     def "should parse procurement procedure information"() {

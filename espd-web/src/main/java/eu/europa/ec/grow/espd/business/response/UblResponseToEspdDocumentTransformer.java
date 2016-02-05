@@ -90,7 +90,8 @@ public class UblResponseToEspdDocumentTransformer implements Function<ESPDRespon
         }
 
         ProcurementProjectLotType lotType = input.getProcurementProjectLot().get(0);
-        if (lotType.getID() != null) {
+        // 0 means no lots
+        if (lotType.getID() != null && !"0".equals(lotType.getID().getValue())) {
             espdDocument.setLotConcerned(lotType.getID().getValue());
         }
     }

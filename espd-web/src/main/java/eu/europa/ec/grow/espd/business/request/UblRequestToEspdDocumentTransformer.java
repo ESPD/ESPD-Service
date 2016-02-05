@@ -10,6 +10,7 @@ import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.List;
 
+import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -58,6 +60,7 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
         addCriteriaInformation(input, espdDocument);
         addTedInformation(input, espdDocument);
         addEspdRequestInformation(input, espdDocument);
+        addProjectLotInformation(input, espdDocument);
 
         return espdDocument;
     }
@@ -129,6 +132,17 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
 
     private void addCriteriaInformation(ESPDRequestType input, EspdDocument espdDocument) {
         criteriaToEspdDocumentPopulator.addCriteriaToEspdDocument(espdDocument, input.getCriterion());
+    }
+
+    private void addProjectLotInformation(ESPDRequestType input, EspdDocument espdDocument) {
+        if (isEmpty(input.getProcurementProjectLot())) {
+            return;
+        }
+
+        ProcurementProjectLotType lotType = input.getProcurementProjectLot().get(0);
+        if (lotType.getID() != null && !"0".equals(lotType.getID().getValue())) {
+            espdDocument.setLotConcerned(lotType.getID().getValue());
+        }
     }
 
 }
