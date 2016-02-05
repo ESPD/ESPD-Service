@@ -8,9 +8,6 @@ import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -103,15 +100,8 @@ public class UblResponseTypeTransformer implements Function<EspdDocument, ESPDRe
     }
 
     private void addProcurementProjectLots(EspdDocument espdDocument, ESPDResponseType responseType) {
-        ProcurementProjectLotType procurementProjectLotType = new ProcurementProjectLotType();
-        IDType idType = new IDType();
-        if (StringUtils.isNotBlank(espdDocument.getLotConcerned())) {
-            idType.setValue(espdDocument.getLotConcerned());
-        } else {
-            idType.setValue("0");
-        }
-        procurementProjectLotType.setID(idType);
-        responseType.getProcurementProjectLot().add(procurementProjectLotType);
+        responseType.getProcurementProjectLot().add(commonUblFactory.buildProcurementProjectLot(
+                espdDocument.getLotConcerned()));
     }
 
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDResponseType responseType) {

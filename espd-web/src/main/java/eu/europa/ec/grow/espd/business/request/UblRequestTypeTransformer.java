@@ -7,8 +7,6 @@ import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -47,7 +45,7 @@ public class UblRequestTypeTransformer implements Function<EspdDocument, ESPDReq
         addIssueDateAndTimeInformation(espdRequestType);
         addContractFolderIdInformation(espdDocument, espdRequestType);
         addContractingPartyInformation(espdDocument, espdRequestType);
-        addProcurementProjectLots(espdRequestType);
+        addProcurementProjectLots(espdDocument, espdRequestType);
         addAdditionalDocumentReference(espdDocument, espdRequestType);
         addCriteria(espdDocument, espdRequestType);
 
@@ -90,12 +88,9 @@ public class UblRequestTypeTransformer implements Function<EspdDocument, ESPDReq
         espdRequestType.setContractingParty(contractingPartyType);
     }
 
-    private void addProcurementProjectLots(ESPDRequestType espdRequestType) {
-        ProcurementProjectLotType procurementProjectLotType = new ProcurementProjectLotType();
-        IDType idType = new IDType();
-        idType.setValue("0");
-        procurementProjectLotType.setID(idType);
-        espdRequestType.getProcurementProjectLot().add(procurementProjectLotType);
+    private void addProcurementProjectLots(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
+        espdRequestType.getProcurementProjectLot()
+                .add(commonUblFactory.buildProcurementProjectLot(espdDocument.getLotConcerned()));
     }
 
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDRequestType espdRequestType) {

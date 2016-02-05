@@ -177,6 +177,20 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ProcurementProjectLot.ID.text() == "0"
     }
 
+    def "should contain ProcurementProjectLot element information with lots"() {
+        given:
+        def espd = new EspdDocument(lotConcerned: "hodor lot")
+
+        when:
+        def result = parseRequestXml(espd)
+
+        then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
+        result.ProcurementProjectLot.size() == 1
+
+        then: "The identifier for this single ProcurementProjectLot MUST be the number 0"
+        result.ProcurementProjectLot.ID.text() == "hodor lot"
+    }
+
     def "should contain no Criterion elements information when none of them is selected from ESPD"() {
         when:
         def result = parseRequestXml()

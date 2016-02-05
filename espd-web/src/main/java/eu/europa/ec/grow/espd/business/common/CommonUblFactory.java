@@ -9,7 +9,9 @@ import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.AttachmentType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.springframework.stereotype.Component;
@@ -236,5 +238,17 @@ public class CommonUblFactory {
         attachmentType.setExternalReference(externalReferenceType);
 
         return attachmentType;
+    }
+
+    public ProcurementProjectLotType buildProcurementProjectLot(String lotConcerned) {
+        ProcurementProjectLotType lotType = new ProcurementProjectLotType();
+        IDType idType = new IDType();
+        if (StringUtils.isNotBlank(lotConcerned)) {
+            idType.setValue(lotConcerned);
+        } else {
+            idType.setValue("0");
+        }
+        lotType.setID(idType);
+        return  lotType;
     }
 }
