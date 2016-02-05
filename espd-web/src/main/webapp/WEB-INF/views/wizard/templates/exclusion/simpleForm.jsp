@@ -5,12 +5,12 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
-<tiles:importAttribute name="descriptionField"/>
 
 <div class="form-group">
-	<label class="control-label col-md-4 small" for="${field}-field-describe" data-i18n="crit_please_describe_them"><s:message code='crit_please_describe_them'/></label>
+	<label class="control-label col-md-4 small">
+		${span18n["crit_please_describe_them"]}
+	</label>
 	<div class="col-md-8">
-        <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
-		<form:textarea path="${field}.${descriptionField}" id="${field}-field-describe" class="form-control" placeholder="${describePlaceholder}"></form:textarea>
+		<form:textarea path="${field}.description" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
 	</div>
 </div> 

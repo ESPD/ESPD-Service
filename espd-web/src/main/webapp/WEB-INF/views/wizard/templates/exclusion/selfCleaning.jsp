@@ -7,15 +7,17 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-		<label class="control-label small" data-i18n="crit_taken_self_cleaning_measures"><s:message code='crit_taken_self_cleaning_measures'/></label>
-		<form:checkbox path="${field}.selfCleaning.answer" id="${field}-field5" data-target="${'#'}${field}-reliability" cssClass="radioslide checktoggle" />
+	${span18n["crit_taken_self_cleaning_measures"]}
+	<form:radiobutton path="${field}.selfCleaning.answer" value="true" data-target-show="${'#'}${field}-reliability"/>${span18n["yes"]}
+	<form:radiobutton path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-reliability"/>${span18n["no"]}
 </div>
-<div class="tab-pane" id="${field}-reliability" style="display:none">
+<div id="${field}-reliability" class="tab-pane ${espd[field].selfCleaning.answer ? '' : 'collapse'}">
 	<div class="form-group">
-		<label class="control-label col-md-4 small" for="${field}-field6" data-i18n="crit_please_describe_them"><s:message code='crit_please_describe_them'/></label>
+		<label class="control-label col-md-4 small">
+			${span18n["crit_please_describe_them"]}
+		</label>
 		<div class="col-md-8">
-            <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
-			<form:textarea path="${field}.selfCleaning.description" cssClass="form-control" id="${field}-field6" placeholder="${describePlaceholder}"></form:textarea>
+			<form:textarea path="${field}.selfCleaning.description" cssClass="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"/>
 		</div>
 	</div>
 </div>

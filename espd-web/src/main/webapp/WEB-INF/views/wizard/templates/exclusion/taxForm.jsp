@@ -7,24 +7,23 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field-country"
-           data-i18n="crit_country_member_state"><s:message code='crit_country_member_state'/></label>
-
-    <div class="col-md-8">
+    <label class="control-label col-xs-4 small">
+		${span18n["crit_country_member_state"]}
+	</label>
+    <div class="col-xs-8">
         <tiles:insertDefinition name="countries">
             <tiles:putAttribute name="field" value="${field}.country"/>
         </tiles:insertDefinition>
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field-amount" data-i18n="crit_amount_concerned"><s:message
-            code='crit_amount_concerned'/></label>
-    <div class="col-md-5">
-        <s:message code="crit_amount_concerned_placeholder" var="amountPlaceholder"/>
-        <form:input path="${field}.amount" cssClass="form-control" number="true" id="${field}-field-amount"
-                    placeholder="${amountPlaceholder}"/>
+	<label class="control-label col-xs-4 small">
+		${span18n["crit_amount_concerned"]}
+	</label>
+    <div class="col-xs-5">
+        <form:input path="${field}.amount" cssClass="form-control" number="true" data-i18n="crit_amount_concerned_placeholder" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
     </div>
-    <div class="col-md-3">
+    <div class="col-xs-3">
         <tiles:insertDefinition name="currencies">
             <tiles:putAttribute name="currencyField" value="${field}.currency"/>
             <tiles:putAttribute name="currencyHtmlId" value="${field}.currency"/>

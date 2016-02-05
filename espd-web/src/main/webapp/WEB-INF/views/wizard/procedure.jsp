@@ -21,10 +21,12 @@
 </script>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="${agent}"/>
         <tiles:putAttribute name="page" value="${flow}/${agent == 'ca' ? 'eo' : 'ca'}/procedure"/>
     </tiles:insertDefinition>
+    
     <div class="panel-default">
         <tiles:insertDefinition name="progress">
             <tiles:putAttribute name="procedure" value="true"/>
@@ -218,13 +220,12 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-6">
                                             ${span18n['createeo_is_eo_sized']}
-                                    <span data-i18n="createeo_is_eo_sized_tooltip"
-                                          title="${i18n['createeo_is_eo_sized_tooltip']}" data-toggle="tooltip"></span>
+                                    <span data-i18n="createeo_is_eo_sized_tooltip" title="${i18n['createeo_is_eo_sized_tooltip']}" data-toggle="tooltip"></span>
                                     </label>
 
                                     <div class="col-md-6">
-                                        <form:checkbox path="economicOperator.isSmallSizedEnterprise"
-                                                       cssClass="radioslide checktoggle form-control"/>
+										<form:radiobutton path="economicOperator.isSmallSizedEnterprise" value="true"/>${span18n["yes"]}
+										<form:radiobutton path="economicOperator.isSmallSizedEnterprise" value="false"/>${span18n["no"]}
                                     </div>
                                 </div>
                             </div>
@@ -233,12 +234,12 @@
                                     <label class="control-label col-md-6">${span18n['createeo_if_proc_reserved']}</label>
 
                                     <div class="col-md-6">
-                                        <form:checkbox path="procurementReserved.answer" data-target="#disworkers-form"
-                                                       cssClass="radioslide checktoggle form-control"/>
+										<form:radiobutton path="procurementReserved.answer" value="true" data-target-show="#disworkers-form"/>${span18n["yes"]}
+										<form:radiobutton path="procurementReserved.answer" value="false" data-target-hide="#disworkers-form"/>${span18n["no"]}
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12" id="disworkers-form" style="display:none">
+                            <div id="disworkers-form" class="col-md-12 ${espd['procurementReserved'].answer ? '' : 'collapse'}">
                                 <div class=" form-group">
                                     <label class="control-label col-md-6">${span18n['createeo_percentage_disworkers']}</label>
 
@@ -264,13 +265,12 @@
                                     <label class="control-label col-md-6">${span18n['createeo_eo_approved_cert']}</label>
 
                                     <div class="col-md-6">
-                                        <form:checkbox path="eoRegistered.answer" data-target="#reg-official-yes"
-                                                       data-target-invert="#reg-official-no"
-                                                       cssClass="radioslide checktoggle form-control"/>
+										<form:radiobutton path="eoRegistered.answer" value="true" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
+										<form:radiobutton path="eoRegistered.answer" value="false" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
                                     </div>
                                 </div>
                             </div>
-                            <div id="reg-official-yes" style="display:none"><%-- [IF YES] --%>
+                            <div id="reg-official-yes" class="${espd['eoRegistered'].answer ? '' : 'collapse'}"><%-- [IF YES] --%>
                                 <div class="col-md-12 alert alert-espd-info"
                                      style="border: 1px dotted blue; background-color: #D8D8D8;">${span18n['createeo_answer_following_parts']}</div>
                                 <div class="col-md-12">
@@ -311,13 +311,13 @@
                                         <label class="control-label col-md-6">${span18n['createeo_all_selection_covered']}</label>
 
                                         <div class="col-md-6">
-                                            <form:checkbox path="eoRegistered.booleanValue1"
-                                                           cssClass="radioslide checktoggle form-control"/>
+											<form:radiobutton path="eoRegistered.booleanValue1" value="true"/>${span18n["yes"]}
+											<form:radiobutton path="eoRegistered.booleanValue1" value="false"/>${span18n["no"]}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="reg-official-no" style="display:none"><%-- [IF NO] --%>
+                            <div id="reg-official-no" class="${espd['eoRegistered'].answer ? 'collapse' : ''}"><%-- [IF NO] --%>
                                 <div class="col-md-12 alert alert-espd-info"
                                      style="border: 1px dotted blue; background-color: #D8D8D8;">
                                     <span data-i18n="createeo_add_complete_missing">${i18n['createeo_add_complete_missing']}</span>
@@ -350,13 +350,12 @@
                                     <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
 
                                     <div class="col-md-6">
-                                        <form:checkbox path="eoParticipatingProcurementProcedure.answer"
-                                                       data-target="#group-form"
-                                                       cssClass="radioslide checktoggle form-control"/>
+										<form:radiobutton path="eoParticipatingProcurementProcedure.answer" value="true" data-target-show="#group-form"/>${span18n["yes"]}
+										<form:radiobutton path="eoParticipatingProcurementProcedure.answer" value="false" data-target-hide="#group-form"/>${span18n["no"]}     
                                     </div>
                                 </div>
                             </div>
-                            <div id="group-form" style="display:none"><%-- [IF YES] --%>
+                            <div id="group-form" class="${espd['eoParticipatingProcurementProcedure'].answer ? '' : 'collapse'}"><%-- [IF YES] --%>
                                 <div class="col-md-12 alert alert-espd-info"
                                      style="border: 1px dotted blue; background-color: #D8D8D8;">${span18n['createeo_ensure_others_espd']}</div>
                                 <div class="col-md-12">
@@ -534,11 +533,11 @@
                                 </label>
 
                                 <div class="col-md-6">
-                                    <form:checkbox path="eoReliesCapacities.answer" data-target="#separate_espd_div"
-                                                   cssClass="radioslide checktoggle form-control"/>
+									<form:radiobutton path="eoReliesCapacities.answer" value="true" data-target-show="#separate_espd_div"/>${span18n["yes"]}
+									<form:radiobutton path="eoReliesCapacities.answer" value="false" data-target-hide="#separate_espd_div"/>${span18n["no"]}
                                 </div>
                             </div>
-                            <div id="separate_espd_div" class="col-md-12 alert alert-espd-info"
+                            <div id="separate_espd_div" class="col-md-12 alert alert-espd-info ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}"
                                  style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px; display: none;">
                                     ${span18n['createeo_separate_espd_sections_a_b']}
                             </div>

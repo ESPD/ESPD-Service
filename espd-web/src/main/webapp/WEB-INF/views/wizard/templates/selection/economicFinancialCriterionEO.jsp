@@ -5,57 +5,24 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
-<tiles:importAttribute name="number"/>
-<tiles:importAttribute name="title_code"/>
-<tiles:importAttribute name="tooltip_text"/>
-<tiles:importAttribute name="tooltip_code"/>
-<tiles:importAttribute name="has_your_answer"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="lastYearsAmount"/>
 <tiles:importAttribute name="has_multiple_description_ratio"/>
 <tiles:importAttribute name="has_multiple_year_amount"/>
 <tiles:importAttribute name="has_single_amount"/>
 <tiles:importAttribute name="has_specify_year"/>
-<tiles:importAttribute name="has_info_electronically"/>
 
-<div class="row criteria-row">
-    <div class="col-md-5 criteria-cell-left">
-        <div class="form-group">
-            <div class="col-md-12">
-                <strong data-i18n="${title_code}"><s:message code='${title_code}'/></strong>
-            </div>
-            <div class="col-md-12">
-                <c:if test="${not empty tooltip_code}">
-                    <s:message var="tooltip_text" code='${tooltip_code}'/><span
-                        data-i18n="${tooltip_code}">${tooltip_text}</span>
-                </c:if>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-7 criteria-cell-right">
-        <c:if test="${has_your_answer}">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label class="control-label small" style="padding-top: 0;">
-                        <s:message code='crit_your_answer'/>
-                    </label>
-                    <form:checkbox path="${field}.answer" data-target="${'#'}${field}-form" class="radioslide checktoggle form-control"/>
-                </div>
-            </div>
-        </c:if>
-       
-        <div id="${field}-form" style='${has_your_answer?"display:none":""}'>
         
 	        <c:if test="${has_please_describe_them}">
 	            <div class="col-md-12" id="${field}-form">
 	                <div class="form-group">
 	                    <div class="tab-pane" id="${field}-reliability">
 	                        <div class="form-group">
-	                            <label class="control-label col-md-4 small" for="${field}-description"><s:message
-	                                    code='crit_please_describe_them'/></label>
+	                            <label class="control-label col-md-4 small">
+	                            	${span18n["crit_please_describe_them"]}
+	                            </label>
 	                            <div class="col-md-8">
-                                    <s:message code="crit_please_describe_them_placeholder" var="describePlaceholder"/>
-	                                <form:textarea path="${field}.description" cssClass="form-control" id="${field}-description" placeholder="${describePlaceholder}"></form:textarea>
+	                                <form:textarea path="${field}.description" cssClass="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -76,9 +43,11 @@
 	        </c:if>
 	        <c:if test="${has_single_amount}">
 	            <div class="form-group">
-	                <label class="control-label col-xs-4 small" data-i18n="crit_amount"><s:message code='crit_amount'/></label>
+	                <label class="control-label col-xs-4 small">
+	                	${span18n["crit_amount"]}
+	                </label>
 	                <div class="col-xs-5">
-	                    <form:input path="${field}.amount1" cssClass="form-control" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+	                    <form:input path="${field}.amount1" cssClass="form-control" data-i18n="crit_amount_concerned_placeholder" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
 	                </div>
 	                <div class="col-xs-3">
 	                    <tiles:insertDefinition name="currencies">
@@ -102,11 +71,3 @@
 
                 </div>
             </c:if>
-            <c:if test="${has_info_electronically}">
-                <tiles:insertDefinition name="availableElectronically">
-                    <tiles:putAttribute name="field" value="${field}"/>
-                </tiles:insertDefinition>
-            </c:if>
-        </div>
-    </div>
-</div>

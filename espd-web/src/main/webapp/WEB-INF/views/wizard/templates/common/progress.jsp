@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-
 <tiles:importAttribute name="start"/>
 <tiles:importAttribute name="procedure"/>
 <tiles:importAttribute name="exclusion"/>

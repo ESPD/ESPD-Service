@@ -5,21 +5,22 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
-<tiles:importAttribute name="descriptionField"/>
-
-<tiles:insertTemplate template="/WEB-INF/views/wizard/templates/simpleForm.jsp" flush="true">
-    <tiles:putAttribute name="field" value="${field}"/>
-    <tiles:putAttribute name="descriptionField" value="${descriptionField}"/>
-</tiles:insertTemplate>
 
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field-nevertheless"
-           data-i18n="crit_reasons_nevertheless_contract"><s:message
-            code='crit_reasons_nevertheless_contract'/> </label>
+	<label class="control-label col-md-4 small">
+		${span18n["crit_please_describe_them"]}
+	</label>
+	<div class="col-md-8">
+		<form:textarea path="${field}.description" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
+	</div>
+</div> 
+
+<div class="form-group">
+	<label class="control-label col-md-4 small">
+			${span18n["crit_reasons_nevertheless_contract"]}
+	</label>
     <div class="col-md-8">
-        <s:message code="crit_reasons_nevertheless_contract_placeholder" var="reasonPlaceholder"/>
-        <form:textarea path="${field}.reason" if="${field}-field-nevertheless" cssClass="form-control"
-                       placeholder="${reasonPlaceholder}"></form:textarea>
+        <form:textarea path="${field}.reason" cssClass="form-control" data-i18n="crit_reasons_nevertheless_contract_placeholder" placeholder="${i18n['crit_reasons_nevertheless_contract_placeholder']}"></form:textarea>
     </div>
 </div>
 

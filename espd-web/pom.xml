@@ -181,19 +181,29 @@
                 <version>${wro4j.version}</version>
                 <executions>
                     <execution>
+						<id>all</id>
                         <phase>compile</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
+                         <configuration>
+                    		<targetGroups>all</targetGroups>
+                   			<minimize>true</minimize>
+                    	</configuration>
+                    </execution>
+                    <execution>
+						<id>debug</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                         <configuration>
+                    		<targetGroups>debug</targetGroups>
+                   			<minimize>false</minimize>
+                    	</configuration>
                     </execution>
                 </executions>
                 <configuration>
-                <!--
-                    <targetGroups>all, debug</targetGroups>
-                    <minimize>false</minimize>
-                   -->
-                    <targetGroups>all</targetGroups>
-                    <minimize>true</minimize>
                     <cssDestinationFolder>${basedir}/src/main/webapp/static/css/</cssDestinationFolder>
                     <jsDestinationFolder>${basedir}/src/main/webapp/static/js/</jsDestinationFolder>
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>

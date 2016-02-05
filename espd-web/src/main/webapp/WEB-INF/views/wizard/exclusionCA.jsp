@@ -5,6 +5,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<%
+request.setAttribute("criminalListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.criminalListCA);
+request.setAttribute("taxesListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.taxesListCA);
+request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.insolvencyListCA);
+%>
+
 <tiles:importAttribute name="flow"/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
@@ -21,203 +27,31 @@
                 <span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
             </h2>
         </div>
-        <div class="panel panel-default espd-panel">
-            <div data-i18n="crit_top_title_grounds_criminal_conv" class="espd-panel-heading" data-toggle="collapse"
-                 data-target="#ca-criminal-convictions-section">
-                <s:message code="crit_top_title_grounds_criminal_conv"/>
-            </div>
-            <div id="ca-criminal-convictions-section" class="espd-panel-body panel-body collapse in">
-                        <span data-i18n="crit_eu_main_title_grounds_criminal_conv" style="font-weight: bold;">
-                            <s:message code='crit_eu_main_title_grounds_criminal_conv'/>
-                        </span>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="criminalConvictions"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_grounds_criminal_conv"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_grounds_criminal_conv"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="corruption"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_corruption"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_corruption"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="fraud"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_fraud"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_fraud"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="terroristOffences"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_terrorist"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_terrorist"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="moneyLaundering"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_money_laundering"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_money_laundering"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="childLabour"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_child_labour"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_child_labour"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-            </div>
-        </div>
-        <div class="panel panel-default espd-panel">
-			<span data-i18n="crit_top_title_grounds_payment_taxes" class="espd-panel-heading" data-toggle="collapse"
-                  data-target="#ca-payment-of-taxes-section">
-				<s:message code="crit_top_title_grounds_payment_taxes"/>
-			</span>
+        
+		<tiles:insertDefinition name="panelTemplate">
+			<tiles:putAttribute name="id" value="ca-criminal-convictions-section"/>
+			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
+			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv"/>
+			<tiles:putAttribute name="tooltip_code" value=""/>
+			<tiles:putAttribute name="criteriaList" value="${criminalListCA}"/>
+		</tiles:insertDefinition>
+        
+		<tiles:insertDefinition name="panelTemplate">
+			<tiles:putAttribute name="id" value="ca-payment-of-taxes-section"/>
+			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
+			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes"/>
+			<tiles:putAttribute name="tooltip_code" value=""/>
+			<tiles:putAttribute name="criteriaList" value="${taxesListCA}"/>
+		</tiles:insertDefinition>
+        
+		<tiles:insertDefinition name="panelTemplate">
+			<tiles:putAttribute name="id" value="ca-insolvency-section"/>
+			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
+			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations"/>
+			<tiles:putAttribute name="tooltip_code" value=""/>
+			<tiles:putAttribute name="criteriaList" value="${insolvencyListCA}"/>
+		</tiles:insertDefinition>
 
-            <div id="ca-payment-of-taxes-section" class="espd-panel-body panel-body collapse in">
-                    <span data-i18n="crit_eu_main_title_payment_taxes" class="aligned" style="font-weight: bold;">
-                            <s:message code='crit_eu_main_title_payment_taxes'/>
-                    </span>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="paymentTaxes"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_payment_taxes"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_payment_taxes"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="paymentSocialSecurity"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_payment_social_security"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_payment_social_security"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-            </div>
-        </div>
-        <div class="panel panel-default espd-panel">
-            <div data-i18n="crit_top_title_insolvency_conflicts" class="espd-panel-heading" data-toggle="collapse"
-                 data-target="#ca-insolvency-section">
-                <s:message code="crit_top_title_insolvency_conflicts"/>
-            </div>
-            <div id="ca-insolvency-section" class="espd-panel-body panel-body collapse in">
-                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
-                        <s:message code='crit_eu_main_breaching_obligations'/>
-                    </span>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="breachingObligationsEnvironmental"/>
-                    <tiles:putAttribute name="title_code"
-                                        value="crit_eu_title_breaching_obligations_environmental"/>
-                    <tiles:putAttribute name="description_code"
-                                        value="crit_eu_text_breaching_obligations_environmental"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="breachingObligationsSocial"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_social"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_social"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="breachingObligationsLabour"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_breaching_obligations_labour"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_breaching_obligations_labour"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="bankruptcy"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_bankrupt"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_bankrupt"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="insolvency"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_insolvency"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_insolvency"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="arrangementWithCreditors"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_arrangement_creditors"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_arrangement_creditors"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="analogousSituation"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_national_bankruptcy"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_national_bankruptcy"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="assetsAdministeredByLiquidator"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_liquidator"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_liquidator"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="businessActivitiesSuspended"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_suspended_business"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_suspended_business"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="guiltyGrave"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misconduct"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misconduct"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="agreementsWithOtherEO"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_agreement_economic"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_agreement_economic"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="conflictInterest"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_conflict_interest"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_conflict_interest"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="involvementPreparationProcurement"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_involvement"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_involvement"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="earlyTermination"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_early_termination"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_early_termination"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="guiltyMisinterpretation"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_guilty_misinterpretation"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_guilty_misinterpretation"/>
-                    <tiles:putAttribute name="is_always_checked" value="true"/>
-                    <tiles:putAttribute name="is_disabled" value="true"/>
-                </tiles:insertDefinition>
-            </div>
-        </div>
         <div class="panel panel-default espd-panel">
             <div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse"
                  data-target="#ca-national-section">
@@ -227,11 +61,11 @@
                     <span data-i18n="crit_eu_main_purely_national" class="aligned" style="font-weight: bold;">
                         <s:message code='crit_eu_main_purely_national'/>
                     </span>
-                <tiles:insertDefinition name="requestCriterion">
-                    <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
-                    <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
-                    <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
-                </tiles:insertDefinition>
+	                <tiles:insertDefinition name="checkTemplate">
+	                    <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
+	                    <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
+	                    <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
+	                </tiles:insertDefinition>
             </div>
         </div>
         <tiles:insertDefinition name="footerButtons">
