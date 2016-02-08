@@ -19,7 +19,6 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "90a2e100-44cc-45d3-9970-69d6714f1596")
 
         then: "CriterionTypeCode element"

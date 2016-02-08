@@ -24,7 +24,6 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
 
         then: "CriterionTypeCode element"

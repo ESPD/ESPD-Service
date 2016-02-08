@@ -18,7 +18,6 @@ class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaF
         def idx = getRequestCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3")
 
         then: "CriterionTypeCode element"

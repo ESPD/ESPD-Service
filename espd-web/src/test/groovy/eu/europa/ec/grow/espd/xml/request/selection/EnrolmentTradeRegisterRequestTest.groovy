@@ -18,7 +18,6 @@ class EnrolmentTradeRegisterRequestTest extends AbstractSelectionCriteriaFixture
         def idx = getRequestCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7")
 
         then: "CriterionTypeCode element"

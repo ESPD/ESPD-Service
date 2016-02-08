@@ -20,7 +20,6 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         def idx = getResponseCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "b1b5ac18-f393-4280-9659-1367943c1a2e")
 
         then: "CriterionTypeCode element"

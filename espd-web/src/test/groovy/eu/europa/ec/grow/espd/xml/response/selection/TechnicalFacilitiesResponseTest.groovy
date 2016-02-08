@@ -19,7 +19,6 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "4bf996d9-439c-40c6-9ab9-980a48cb55a1")
 
         then: "CriterionTypeCode element"

@@ -17,7 +17,6 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
-        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "0d62c6ed-f074-4fcf-8e9f-f691351d52ad")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,6 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
         def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "61874050-5130-4f1c-a174-720939c7b483")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,6 @@ class SpecificYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture
         def idx = getRequestCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "074f6031-55f9-4e99-b9a4-c4363e8bc315")
 
         then: "CriterionTypeCode element"

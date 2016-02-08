@@ -19,7 +19,6 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "daffa2a9-9f8f-4568-8be8-7b8bf306d096")
 
         then: "CriterionTypeCode element"

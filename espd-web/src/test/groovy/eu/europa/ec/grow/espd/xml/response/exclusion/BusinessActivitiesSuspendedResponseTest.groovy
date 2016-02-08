@@ -19,7 +19,6 @@ class BusinessActivitiesSuspendedResponseTest extends AbstractExclusionCriteriaF
         def idx = getResponseCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "166536e2-77f7-455c-b018-70582474e4f6")
 
         then: "CriterionTypeCode element"

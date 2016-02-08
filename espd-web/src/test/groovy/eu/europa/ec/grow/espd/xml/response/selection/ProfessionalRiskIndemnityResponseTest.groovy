@@ -19,7 +19,6 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "7604bd40-4462-4086-8763-a50da51a869c")
 
         then: "CriterionTypeCode element"

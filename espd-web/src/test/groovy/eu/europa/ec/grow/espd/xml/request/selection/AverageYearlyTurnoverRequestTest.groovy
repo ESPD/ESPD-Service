@@ -18,7 +18,6 @@ class AverageYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         def idx = getRequestCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "b16cb9fc-6cb7-4585-9302-9533b415cf48")
 
         then: "CriterionTypeCode element"

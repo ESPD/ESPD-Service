@@ -1,9 +1,9 @@
 package eu.europa.ec.grow.espd.xml.response
 
 import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion
-import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
+import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 
 /**
@@ -11,19 +11,34 @@ import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
  */
 class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
 
-    def "criteria which were not selected by the CA (exists is false) should not appear in a ESPD Response"() {
+    def "should contain mandatory exclusion criteria plus all selection criteria plus all award criteria"() {
         given:
-        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
-                enrolmentTradeRegister: new SuitabilityCriterion(exists: false), generalYearlyTurnover: null,
-                specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true))
+        def espd = new EspdDocument()
+        def idx
 
         when:
         def result = parseResponseXml(espd)
 
         then:
-        result.Criterion.size() == 2 + AwardCriterion.values().size()
-        checkCriterionId(result, 0, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
-        checkCriterionId(result, 1, "074f6031-55f9-4e99-b9a4-c4363e8bc315")
-    }
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + AwardCriterion.values().length
 
+        then: "all exclusion criteria are mandatory (except 'purely national'"
+        for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
+            idx = getRequestCriterionIndex(criterion)
+            if (ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(criterion)) {
+                continue
+            }
+            checkCriterionId(result, idx, criterion.getUuid())
+        }
+
+        then: "all selection criteria must be present since there were none selected"
+        for (SelectionCriterion criterion : SelectionCriterion.values()) {
+            checkCriterionId(result, idx++, criterion.getUuid())
+        }
+
+        then: "all award criteria must be present"
+        for (AwardCriterion criterion : AwardCriterion.values()) {
+            checkCriterionId(result, idx++, criterion.getUuid())
+        }
+    }
 }

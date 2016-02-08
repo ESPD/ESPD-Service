@@ -18,7 +18,6 @@ class EducationalProfessionalQualificationsRequestTest extends AbstractSelection
         def idx = getRequestCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "07301031-2270-41af-8e7e-66fe0c777107")
 
         then: "CriterionTypeCode element"

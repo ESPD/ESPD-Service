@@ -20,7 +20,6 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"

@@ -19,7 +19,6 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "73f10e36-ed7a-412e-995c-aa76463e3776")
 
         then: "CriterionTypeCode element"

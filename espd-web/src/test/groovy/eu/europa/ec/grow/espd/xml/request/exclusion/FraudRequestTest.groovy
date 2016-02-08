@@ -18,7 +18,6 @@ class FraudRequestTest extends AbstractExclusionCriteriaFixture {
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"

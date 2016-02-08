@@ -19,7 +19,6 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
 
         then: "CriterionID element"
-        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "9b19e869-6c89-4cc4-bd6c-ac9ca8602165")
 
         then: "CriterionTypeCode element"

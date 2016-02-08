@@ -3,23 +3,20 @@ package eu.europa.ec.grow.espd.xml.request.award
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
-
 /**
  * Created by ratoico on 1/20/16 at 2:19 PM.
  */
 class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
 
-    def "05. should contain the 'If applicable, is the economic operator registered' criterion"() {
+    def "05. should contain the 'If applicable, is the economic operator registered' criterion for request even if it was not selected by the CA"() {
         given:
-        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: true))
+        def espd = new EspdDocument(meetsObjective: new AwardCriterion(exists: false))
 
         when:
         def request = parseRequestXml(espd)
-        // we need a dirty workaround to get the proper index since the request only contains one award criterion we specify the criterion with ordinal 0
-        def idx = getRequestCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
+        def idx = getTotalMandatoryCriteriaNoSelectionCriteriaPresent()
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
 
         then: "CriterionTypeCode element"

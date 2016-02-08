@@ -17,7 +17,6 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
-        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "2043338f-a38a-490b-b3ec-2607cb25a017")
 
         then: "CriterionTypeCode element"

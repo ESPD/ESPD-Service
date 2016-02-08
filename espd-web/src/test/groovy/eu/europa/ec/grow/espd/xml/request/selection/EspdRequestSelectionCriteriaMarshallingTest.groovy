@@ -1,28 +1,28 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 
+import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.*
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
 class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCriteriaFixture {
 
-    def "should contain all selection Criterion elements even if the economic operator claims that it satisfies all the criteria"() {
+    def "CA selects 'All section criteria' -> EO sees only 'All selection criteria' and not the individual ones"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true),
                 enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
                 enrolmentTradeRegister: new SuitabilityCriterion(exists: true),
                 serviceContractsAuthorisation: new SuitabilityCriterion(exists: true),
-                serviceContractsMembership: new SuitabilityCriterion(exists: true),)
-        def idx = 0
+                serviceContractsMembership: new SuitabilityCriterion(exists: true))
+        def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
         def request = parseRequestXml(espd)
 
-        then: "one and only one selection criteria"
-        request.Criterion.size() == 5
+        then: "all mandatory exclusion criteria (minus 'purely national') plus 'satisifes all' plus the only request award criterion"
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + 1
 
         then: "check the CriterionID"
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
@@ -44,49 +44,70 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         checkRequirement(request.Criterion[idx].RequirementGroup[0].Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
     }
 
-    def "all selection criteria should be in the correct order"() {
+    def "CA select individual selection criteria -> EO sees only the selected ones (and even not the 'All selection criteria')"() {
         given:
-        def espd = new EspdDocument(
-                selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true),
+        def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: false),
                 enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
-                enrolmentTradeRegister: new SuitabilityCriterion(exists: true),
-                serviceContractsAuthorisation: new SuitabilityCriterion(exists: true),
-                serviceContractsMembership: new SuitabilityCriterion(exists: true),
                 generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
-                averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
-                specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true),
-                specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true),
-                setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true),
-                financialRatio: new EconomicFinancialStandingCriterion(exists: true),
-                professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true),
-                otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true),
-                workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true),
-                supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true),
-                serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true),
-                techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true),
-                workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true),
-                technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true),
-                studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true),
-                supplyChainManagement: new TechnicalProfessionalCriterion(exists: true),
-                allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true),
-                educationalProfessionalQualifications: new TechnicalProfessionalCriterion(exists: true),
-                environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true),
-                numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true),
-                averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true),
-                toolsPlantTechnicalEquipment: new TechnicalProfessionalCriterion(exists: true),
-                subcontractingProportion: new TechnicalProfessionalCriterion(exists: true),
-                supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true),
-                supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true),
-                supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true),
-                certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true),
-                certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
+                workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
 
-        then:
-        request.Criterion.size() == SelectionCriterion.values().size()
-        int idx = 0;
+        then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + 1
+
+        then: "check the CriterionID"
+        // satisfies all is not selected by the CA so the index of the first selection criterion is one position lower
+        def idx = getRequestCriterionIndex(ENROLMENT_PROFESSIONAL_REGISTER)
+        checkCriterionId(request, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
+        checkCriterionId(request, idx + 1, "499efc97-2ac1-4af2-9e84-323c2ca67747")
+        checkCriterionId(request, idx + 2, "cdd3bb3e-34a5-43d5-b668-2aab86a73822")
+    }
+
+    def "CA selects no selection criteria -> EO sees all selection criteria (including 'All selection criteria')"() {
+        given:
+        def espd = new EspdDocument(
+                selectionSatisfiesAll: null,
+                enrolmentProfessionalRegister: new SuitabilityCriterion(exists: false),
+                enrolmentTradeRegister: null,
+                serviceContractsAuthorisation: null,
+                serviceContractsMembership: null,
+                generalYearlyTurnover: null,
+                averageYearlyTurnover: null,
+                specificYearlyTurnover: null,
+                specificAverageTurnover: null,
+                setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: false),
+                financialRatio: null,
+                professionalRiskInsurance: null,
+                otherEconomicFinancialRequirements: null,
+                workContractsPerformanceOfWorks: null,
+                supplyContractsPerformanceDeliveries: null,
+                serviceContractsPerformanceServices: null,
+                techniciansTechnicalBodies: null,
+                workContractsTechnicians: null,
+                technicalFacilitiesMeasures: null,
+                studyResearchFacilities: null,
+                supplyChainManagement: null,
+                allowanceOfChecks: null,
+                educationalProfessionalQualifications: null,
+                environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: false),
+                numberManagerialStaff: null,
+                averageAnnualManpower: null,
+                toolsPlantTechnicalEquipment: null,
+                subcontractingProportion: null,
+                supplyContractsSamplesDescriptionsWithoutCa: null,
+                supplyContractsSamplesDescriptionsWithCa: null,
+                supplyContractsCertificatesQc: null,
+                certificateIndependentBodiesAboutQa: null,
+                certificateIndependentBodiesAboutEnvironmental: null)
+
+        when:
+        def request = parseRequestXml(espd)
+
+        then: "all mandatory exclusion plus all selection plus the only award criterion"
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
+        int idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
             checkCriterionId(request, idx++, criterion.getUuid())
         }

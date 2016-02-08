@@ -19,7 +19,6 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
         def idx = getRequestCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
 
         then: "CriterionTypeCode element"

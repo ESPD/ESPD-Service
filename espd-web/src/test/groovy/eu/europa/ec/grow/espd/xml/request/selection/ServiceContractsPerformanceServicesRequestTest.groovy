@@ -18,7 +18,6 @@ class ServiceContractsPerformanceServicesRequestTest extends AbstractSelectionCr
         def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "5e506c16-26ab-4e32-bb78-b27f87dc0565")
 
         then: "CriterionTypeCode element"

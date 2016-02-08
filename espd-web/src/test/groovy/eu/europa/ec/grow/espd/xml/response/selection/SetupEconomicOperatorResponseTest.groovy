@@ -17,7 +17,6 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "CriterionID element"
-        response.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(response, idx, "77f481ce-ffb6-483f-8e2b-c78db5e68292")
 
         then: "CriterionTypeCode element"

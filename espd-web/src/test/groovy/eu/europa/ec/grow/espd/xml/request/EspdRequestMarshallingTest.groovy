@@ -1,6 +1,8 @@
 package eu.europa.ec.grow.espd.xml.request
 import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.domain.*
+import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.PartyImpl
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  *  Created by vigi on 11/11/15:3:31 PM:11:56 AM.
@@ -191,12 +193,12 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ProcurementProjectLot.ID.text() == "hodor lot"
     }
 
-    def "should contain no Criterion elements information when none of them is selected from ESPD"() {
+    def "should contain mandatory Criterion elements information when none of them is selected from ESPD"() {
         when:
         def result = parseRequestXml()
 
-        then:
-        result.Criterion.size() == 0
+        then: "mandatory exclusion plus all selection plus the only request award criterion"
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
     }
 
 }

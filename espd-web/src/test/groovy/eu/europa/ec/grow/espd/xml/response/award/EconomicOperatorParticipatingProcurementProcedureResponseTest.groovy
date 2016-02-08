@@ -19,7 +19,6 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
-        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2")
 
         then: "CriterionTypeCode element"

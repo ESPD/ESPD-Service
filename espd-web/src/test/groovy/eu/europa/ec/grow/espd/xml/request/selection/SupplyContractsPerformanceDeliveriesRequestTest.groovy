@@ -18,7 +18,6 @@ class SupplyContractsPerformanceDeliveriesRequestTest extends AbstractSelectionC
         def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "3a18a175-1863-4b1d-baef-588ce61960ca")
 
         then: "CriterionTypeCode element"

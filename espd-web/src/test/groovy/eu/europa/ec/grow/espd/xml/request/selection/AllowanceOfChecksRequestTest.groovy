@@ -18,7 +18,6 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
         def idx = getRequestCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "c8809aa1-29b6-4f27-ae2f-27e612e394db")
 
         then: "CriterionTypeCode element"

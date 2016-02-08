@@ -1,27 +1,14 @@
 package eu.europa.ec.grow.espd.xml.request
-
 import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
-import eu.europa.ec.grow.espd.domain.AwardCriterion
-import eu.europa.ec.grow.espd.domain.BankruptcyCriterion
-import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
-import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
-import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
-import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.LawCriterion
-import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
-import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
-import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion
-import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
-import eu.europa.ec.grow.espd.domain.TaxesCriterion
-import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 1/26/16 at 10:54 AM.
  */
 class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
 
-    def "should contain all exclusion and selection criteria"() {
+    def "should contain all exclusion and selection criteria and the only request award criterion"() {
         given:
         def espd = new EspdDocument(
                 // exclusion
@@ -49,8 +36,8 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
                 earlyTermination: new ConflictInterestCriterion(exists: true),
                 guiltyMisinterpretation: new ConflictInterestCriterion(exists: true),
                 purelyNationalGrounds: new PurelyNationalGrounds(exists: true),
-                // selection
-                selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true),
+                // selection satisfies all has special meaning
+                selectionSatisfiesAll: new SatisfiesAllCriterion(exists: false),
                 enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true),
                 enrolmentTradeRegister: new SuitabilityCriterion(exists: true),
                 serviceContractsAuthorisation: new SuitabilityCriterion(exists: true),
@@ -89,33 +76,37 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
         when:
         def result = parseRequestXml(espd)
 
-        then: "all eclusion and selection criteria, plus meets objective criterion"
-        result.Criterion.size() == ExclusionCriterion.values().size() + SelectionCriterion.values().size() + 1
+        then: "all eclusion and selection criteria (minus satsifies all), plus meets objective criterion"
+        result.Criterion.size() == ExclusionCriterion.values().size() + SelectionCriterion.values().size()
     }
 
-    def "should not fail when a criterion has a null exists flag"() {
+    def "should contain mandatory exclusion criteria plus all selection criteria plus the only request award criterion"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: null))
+        def espd = new EspdDocument()
+        def idx
 
         when:
         def result = parseRequestXml(espd)
 
         then:
-        result.Criterion.size() == 0
-    }
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
 
-    def "only selected criteria should appear in the request xml"() {
-        given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true),
-                enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
+        then: "all exclusion criteria are mandatory (except 'purely national'"
+        for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
+            idx = getRequestCriterionIndex(criterion)
+            if (ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(criterion)) {
+                continue
+            }
+            checkCriterionId(result, idx, criterion.getUuid())
+        }
 
-        when:
-        def result = parseRequestXml(espd)
+        then: "all selection criteria must be present since there were none selected"
+        for (SelectionCriterion criterion : SelectionCriterion.values()) {
+            checkCriterionId(result, idx++, criterion.getUuid())
+        }
 
-        then:
-        result.Criterion.size() == 2
-        checkCriterionId(result, 0, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
-        checkCriterionId(result, 1, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
+        then: "and the only request award criterion"
+        checkCriterionId(result, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
     }
 
 }

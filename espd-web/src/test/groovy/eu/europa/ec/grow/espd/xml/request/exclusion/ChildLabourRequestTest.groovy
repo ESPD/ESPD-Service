@@ -18,7 +18,6 @@ class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
         def idx = getRequestCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "d789d01a-fe03-4ccd-9898-73f9cfa080d1")
 
         then: "CriterionTypeCode element"

@@ -18,7 +18,6 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
-        response.Criterion.size() == eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.values().size()
         checkCriterionId(response, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
 
         then: "CriterionTypeCode element"

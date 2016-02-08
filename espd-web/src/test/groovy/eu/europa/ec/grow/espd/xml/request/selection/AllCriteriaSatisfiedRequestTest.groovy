@@ -9,7 +9,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
  */
 class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
 
-    def "01. should contain the 'All selection criteria will be satisfied' criterion"() {
+    def "01. 'All selection criteria satisfied' criterion"() {
         given:
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true))
         def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
@@ -18,7 +18,6 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         def request = parseRequestXml(espd)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "CriterionTypeCode element"

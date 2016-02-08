@@ -18,7 +18,6 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         def idx = getRequestCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"

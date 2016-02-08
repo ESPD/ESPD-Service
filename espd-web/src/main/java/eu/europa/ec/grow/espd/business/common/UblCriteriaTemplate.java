@@ -7,9 +7,7 @@ import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.beanutils.PropertyUtils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +36,7 @@ public abstract class UblCriteriaTemplate {
     public List<CriterionType> apply(EspdDocument espdDocument) {
         List<CriterionType> criterionTypes = new ArrayList<>(
                 ExclusionCriterion.values().length + SelectionCriterion.values().length + 1);
+        // THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS!!!
         criterionTypes.addAll(addExclusionCriteria(espdDocument));
         criterionTypes.addAll(addSelectionCriteria(espdDocument));
         criterionTypes.addAll(buildAwardCriteria(espdDocument));
@@ -45,18 +44,40 @@ public abstract class UblCriteriaTemplate {
     }
 
     private List<CriterionType> addExclusionCriteria(EspdDocument espdDocument) {
-        // THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS
         List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
+        // All exclusion criteria except 'Purely national grounds' must be present no matter the existence
         for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
-            addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
+            if (ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(criterion)) {
+                addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
+            } else {
+                addAlwaysUblCriterion(criterion, espdDocument, criterionTypes);
+            }
         }
         return criterionTypes;
     }
 
     private List<CriterionType> addSelectionCriteria(EspdDocument espdDocument) {
+
         List<CriterionType> criterionTypes = new ArrayList<>(SelectionCriterion.values().length + 1);
-        for (SelectionCriterion criterion : SelectionCriterion.values()) {
-            addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
+        if (!espdDocument.atLeastOneSelectionCriterionWasSelected()) {
+            // Option 3:
+            // CA selects no selection criteria -> EO sees all selection criteria (including "All selection criteria")
+            for (SelectionCriterion criterion : SelectionCriterion.values()) {
+                addAlwaysUblCriterion(criterion, espdDocument, criterionTypes);
+            }
+        } else if (isCriterionSelectedByTheCA(espdDocument.getSelectionSatisfiesAll())) {
+            // Option 1:
+            // CA selects "All section criteria" -> EO sees only "All selection criteria" and not the individual ones.
+            addSelectedUblCriterion(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED, espdDocument, criterionTypes);
+        } else {
+            // Option 2:
+            // CA select individual selection criteria -> EO sees only the selected ones (and even not the "All selection criteria")
+            for (SelectionCriterion criterion : SelectionCriterion.values()) {
+                if (SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED.equals(criterion)) {
+                    continue;
+                }
+                addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
+            }
         }
         return criterionTypes;
     }
@@ -64,12 +85,13 @@ public abstract class UblCriteriaTemplate {
     /**
      * Add a UBL criterion only if it was selected (exists) by the CA.
      *
-     * @param ccvCriterion
-     * @param ublCriteria
+     * @param ccvCriterion The criterion metadata
+     * @param espdDocument The model coming from ESPD
+     * @param ublCriteria  The list of UBL criteria on which we add the ESPD criteria
      */
     protected final void addSelectedUblCriterion(CcvCriterion ccvCriterion, EspdDocument espdDocument,
             List<CriterionType> ublCriteria) {
-        Criterion espdCriterion = getCriterionFromEspd(ccvCriterion, espdDocument);
+        Criterion espdCriterion = espdDocument.readCriterionFromEspd(ccvCriterion);
         if (isCriterionSelectedByTheCA(espdCriterion)) {
             ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
         }
@@ -82,22 +104,13 @@ public abstract class UblCriteriaTemplate {
     /**
      * Add a UBL criterion no matter the exists flag (needed by award criteria which always need to be present).
      *
-     * @param ccvCriterion
-     * @param ublCriteria
+     * @param ccvCriterion The criterion metadata
+     * @param ublCriteria  The list of UBL criteria on which we add the ESPD criteria
      */
     protected final void addAlwaysUblCriterion(CcvCriterion ccvCriterion, EspdDocument espdDocument,
             List<CriterionType> ublCriteria) {
-        Criterion espdCriterion = getCriterionFromEspd(ccvCriterion, espdDocument);
+        Criterion espdCriterion = espdDocument.readCriterionFromEspd(ccvCriterion);
         ublCriteria.add(ublCriterionTypeTransformer.buildCriterionType(ccvCriterion, espdCriterion));
-    }
-
-    private Criterion getCriterionFromEspd(CcvCriterion ccvCriterion, EspdDocument espdDocument) {
-        try {
-            return (Criterion) PropertyUtils.getSimpleProperty(espdDocument, ccvCriterion.getEspdDocumentField());
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            log.error(e.getMessage(), e);
-            return null;
-        }
     }
 
     /**

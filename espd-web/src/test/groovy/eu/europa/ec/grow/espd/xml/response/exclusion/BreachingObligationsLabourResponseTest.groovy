@@ -19,7 +19,6 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "a34b70d6-c43d-4726-9a88-8e2b438424bf")
 
         then: "CriterionTypeCode element"

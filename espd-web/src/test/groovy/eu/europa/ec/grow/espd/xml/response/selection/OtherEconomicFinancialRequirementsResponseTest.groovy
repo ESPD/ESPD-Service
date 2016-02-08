@@ -19,7 +19,6 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then: "CriterionID element"
-        request.Criterion.size() == getResponseNumberOfCriteria()
         checkCriterionId(request, idx, "ab0e7f2e-6418-40e2-8870-6713123e41ad")
 
         then: "CriterionTypeCode element"

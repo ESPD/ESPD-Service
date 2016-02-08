@@ -18,7 +18,6 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
         def idx = getRequestCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"
-        request.Criterion.size() == getRequestNumberOfCriteria()
         checkCriterionId(request, idx, "d3dfb714-f558-4512-bbc5-e456fa2339de")
 
         then: "CriterionTypeCode element"

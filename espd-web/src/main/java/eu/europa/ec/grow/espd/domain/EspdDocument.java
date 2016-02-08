@@ -1,9 +1,12 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.entities.CcvCriterion;
 import lombok.Data;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 @Data
 public class EspdDocument {
@@ -102,7 +105,7 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion supplyContractsCertificatesQc;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
     private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
-    
+
     //trick to use MultipartFile as @RequestParam
     public void setAttachment(MultipartFile attachment) throws IOException {
     }
@@ -111,4 +114,21 @@ public class EspdDocument {
         return null;
     }
 
+    public final boolean atLeastOneSelectionCriterionWasSelected() {
+        boolean atLeastOnePresent = false;
+        for (eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion ccvCriterion :
+                eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.values()) {
+            Criterion espdCriterion = readCriterionFromEspd(ccvCriterion);
+            atLeastOnePresent = atLeastOnePresent | (espdCriterion != null && espdCriterion.getExists());
+        }
+        return atLeastOnePresent;
+    }
+
+    public final Criterion readCriterionFromEspd(CcvCriterion ccvCriterion) {
+        try {
+            return (Criterion) PropertyUtils.getSimpleProperty(this, ccvCriterion.getEspdDocumentField());
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            return null;
+        }
+    }
 }
