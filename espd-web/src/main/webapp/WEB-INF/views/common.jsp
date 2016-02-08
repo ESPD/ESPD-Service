@@ -71,8 +71,6 @@ request.setAttribute("span18n", inst.span());
         $("span[data-toggle='tooltip']").tooltip({placement: "top", html: true, trigger: "hover"}).addClass("fa").addClass("fa-info-circle");
         $("input:radio[data-target-show]").change(dataShow);
         $("input:radio[data-target-hide]").change(dataHide);
-       <%-- $("input:radio[data-target-show]:checked").each(dataShow);
-        $("input:radio[data-target-hide]:checked").each(dataHide); --%>
     });
 
     var pageLanguageCode = '${pageContext.response.locale}';

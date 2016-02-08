@@ -11,7 +11,7 @@
 
 <c:set var="prevUrl" value="${fn:startsWith(prev,'/')}"/>
 <c:set var="nextUrl" value="${fn:startsWith(next,'/')}"/>
-<div class="row hidden-print">
+<div class="hidden-print">
     <div class="col-md-offset-3 col-md-6 hidden-print">
         <div class="btn-group btn-group-justified" role="group">
             <c:if test="${!prevUrl}">

@@ -32,7 +32,6 @@ request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="ca-criminal-convictions-section"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${criminalListCA}"/>
 		</tiles:insertDefinition>
         
@@ -40,7 +39,6 @@ request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="ca-payment-of-taxes-section"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${taxesListCA}"/>
 		</tiles:insertDefinition>
         
@@ -48,7 +46,6 @@ request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="ca-insolvency-section"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${insolvencyListCA}"/>
 		</tiles:insertDefinition>
 
@@ -58,7 +55,7 @@ request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.Criteri
                 <s:message code='crit_top_title_purely_national'/>
             </div>
             <div id="ca-national-section" class="espd-panel-body panel-body collapse in">
-                    <span data-i18n="crit_eu_main_purely_national" class="aligned" style="font-weight: bold;">
+                    <span data-i18n="crit_eu_main_purely_national" style="font-weight: bold;">
                         <s:message code='crit_eu_main_purely_national'/>
                     </span>
 	                <tiles:insertDefinition name="checkTemplate">

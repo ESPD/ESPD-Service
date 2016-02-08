@@ -57,7 +57,6 @@ request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="criminal_conv"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${criminalListEO}"/>
 		</tiles:insertDefinition>
         
@@ -65,7 +64,6 @@ request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="payment_taxes"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${taxesListEO}"/>
 		</tiles:insertDefinition>
         
@@ -73,7 +71,6 @@ request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.business.Criteri
 			<tiles:putAttribute name="id" value="insolvency_conflicts"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="criteriaList" value="${insolvencyListEO}"/>
 		</tiles:insertDefinition>
 

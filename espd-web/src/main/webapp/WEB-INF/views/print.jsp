@@ -70,7 +70,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                     ${span18n['createca_contact_details_ca']}
             </div>
             <div id="cadiv" class="panel-body collapse in">
-                <div class="row">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label col-md-4">${span18n['createca_name']}</label>
@@ -99,14 +99,14 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
         <div class="espd-panel panel panel-default">
             <div class="espd-panel-heading" data-toggle="collapse"
                  data-target="#ppdiv">${span18n['createca_info_procurement_proc']}</div>
             <div id="ppdiv" class="panel-body collapse in">
-                <div class="row">
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label col-md-4">${span18n['createca_procurer_name']}</label>
@@ -143,7 +143,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
         
@@ -155,7 +155,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                      data-target="#createeo_info_eo_div">${span18n['createeo_info_eo']}</div>
                 <div id="createeo_info_eo_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label col-md-4">${span18n['createeo_name']}</label>
@@ -402,7 +402,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                 </div>
                 <div id="createeo_info_respresent_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
+
                             <div class="col-md-12 alert alert-espd-info"
                                  style="border: 1px dotted blue; background-color: #D8D8D8;">
                                     ${span18n['createeo_person_empowered']}
@@ -512,7 +512,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -522,7 +522,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                 </div>
                 <div id="createeo_info_reliance_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="control-label col-md-6">
                                         ${span18n['createeo_eo_rely_other_entities']}
@@ -537,7 +536,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
                                  style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px; display: none;">
                                     ${span18n['createeo_separate_espd_sections_a_b']}
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -555,7 +553,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 			<tiles:putAttribute name="id" value="criminal_conv"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="disableTooltips" value="true"/>
 			<tiles:putAttribute name="criteriaList" value="${criminalListEO}"/>
 		</tiles:insertDefinition>
@@ -564,7 +561,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 			<tiles:putAttribute name="id" value="payment_taxes"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="disableTooltips" value="true"/>
 			<tiles:putAttribute name="criteriaList" value="${taxesListEO}"/>
 		</tiles:insertDefinition>
@@ -573,7 +569,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 			<tiles:putAttribute name="id" value="insolvency_conflicts"/>
 			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
 			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations_eo"/>
-			<tiles:putAttribute name="tooltip_code" value=""/>
 			<tiles:putAttribute name="disableTooltips" value="true"/>
 			<tiles:putAttribute name="criteriaList" value="${insolvencyListEO}"/>
 		</tiles:insertDefinition>
@@ -585,7 +580,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
             </div>
             <div id="ca-insolvency-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_breaching_obligations" class="aligned" style="font-weight: bold;">
+                    <span data-i18n="crit_eu_main_breaching_obligations" style="font-weight: bold;">
                         <s:message code='crit_eu_main_purely_national'/>
                     </span>
                     <c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
@@ -648,8 +643,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 				<tiles:putAttribute name="id" value="eo-suitability-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_suitability_article"/>
-				<tiles:putAttribute name="tooltip_code" value=""/>
-			<tiles:putAttribute name="disableTooltips" value="true"/>
+				<tiles:putAttribute name="disableTooltips" value="true"/>
 				<tiles:putAttribute name="criteriaList" value="${suitabilityListEO}"/>
 			</tiles:insertDefinition>
 
@@ -657,7 +651,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 				<tiles:putAttribute name="id" value="eo-economic-financial-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_economic_article"/>
-				<tiles:putAttribute name="tooltip_code" value=""/>
 				<tiles:putAttribute name="disableTooltips" value="true"/>
 				<tiles:putAttribute name="criteriaList" value="${economicListEO}"/>
 			</tiles:insertDefinition>
@@ -666,7 +659,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 				<tiles:putAttribute name="id" value="eo-technical-professional-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>
-				<tiles:putAttribute name="tooltip_code" value=""/>
 				<tiles:putAttribute name="disableTooltips" value="true"/>
 				<tiles:putAttribute name="criteriaList" value="${technicalListEO}"/>
 			</tiles:insertDefinition>
@@ -676,10 +668,6 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 
 	<%-- FINISH --%>
 	<div class="panel-default">
-	
-        <tiles:insertDefinition name="progress">
-			<tiles:putAttribute name="finish" value="true"/>
-        </tiles:insertDefinition>
 
 		<div class="paragraph">
 			<h2>
@@ -703,7 +691,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 						</ul>
 					</div>
 					
-					<span data-i18n="createcafinish_reduction_question" class="aligned" style="font-weight: bold;">
+					<span data-i18n="createcafinish_reduction_question" style="font-weight: bold;">
                         <s:message code='createcafinish_reduction_question'/>
                     </span>
 
@@ -723,12 +711,12 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.Criteria
 			</div>
             <div id="finish-statements-signature-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="createcafinish_concl_statements_text" class="aligned" style="">
+                    <span data-i18n="createcafinish_concl_statements_text">
                         <s:message code='createcafinish_concl_statements_text'/>
                     </span>
                     
                     <p>
-	                    <span data-i18n="createcafinish_concl_statements_signature" class="aligned" style="">
+	                    <span data-i18n="createcafinish_concl_statements_signature">
 	                        <s:message code='createcafinish_concl_statements_signature'/>
 	                    </span>
                     </p>

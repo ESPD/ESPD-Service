@@ -56,6 +56,7 @@
     
     <definition name="panelTemplate" template="/WEB-INF/views/wizard/templates/panelTemplate.jsp">
     	<put-attribute name="disableTooltips" value="false"/>
+    	<put-attribute name="tooltip_code" value=""/>
     </definition>
 
      <!-- progress -->
@@ -74,7 +75,6 @@
     <definition name="checkTemplate" template="/WEB-INF/views/wizard/templates/checkTemplate.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="title_code" value=""/>
-        <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="description_code" value=""/>
         <put-attribute name="is_always_checked" value="false"/>
         <put-attribute name="is_disabled" value="false"/>
@@ -87,7 +87,6 @@
 		<put-attribute name="invert_answer" value="false"/>
 		<put-attribute name="allows_checks" value="false"/>
         <put-attribute name="title_code" value=""/>
-        <put-attribute name="tooltip_code" value=""/>
         <put-attribute name="description_code" value=""/>
     	<put-attribute name="form" value=""/>
     	<put-attribute name="selfCleaning" value="false"/>

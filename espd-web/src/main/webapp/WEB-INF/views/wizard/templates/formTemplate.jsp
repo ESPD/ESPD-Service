@@ -14,7 +14,6 @@
 	<tiles:importAttribute name="invert_answer"/>
 	<tiles:importAttribute name="allows_checks"/>
 	<tiles:importAttribute name="title_code"/>
-	<tiles:importAttribute name="tooltip_code"/>
 	<tiles:importAttribute name="description_code"/>
 	<tiles:importAttribute name="availableElectronically" />
 	<tiles:importAttribute name="disableTooltips" />
@@ -26,9 +25,6 @@
 	            	<strong>
 	                	${span18n[title_code]}
 	                </strong>
-	                <c:if test="${!disableTooltips && tooltip_code != ''}">
-	                    <span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${i18n[tooltip_code]}"></span>
-	                </c:if>
 	            </div>
 	            <c:if test="${not empty description_code}">
 	                <div class="col-md-12">

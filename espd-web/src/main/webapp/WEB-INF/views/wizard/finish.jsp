@@ -37,7 +37,7 @@
 						</ul>
 					</div>
 					
-					<span data-i18n="createcafinish_reduction_question" class="aligned" style="font-weight: bold;">
+					<span data-i18n="createcafinish_reduction_question" style="font-weight: bold;">
                         <s:message code='createcafinish_reduction_question'/>
                     </span>
 
@@ -57,12 +57,12 @@
 			</div>
             <div id="finish-statements-signature-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="createcafinish_concl_statements_text" class="aligned" style="">
+                    <span data-i18n="createcafinish_concl_statements_text" style="">
                         <s:message code='createcafinish_concl_statements_text'/>
                     </span>
                     
                     <p>
-	                    <span data-i18n="createcafinish_concl_statements_signature" class="aligned" style="">
+	                    <span data-i18n="createcafinish_concl_statements_signature">
 	                        <s:message code='createcafinish_concl_statements_signature'/>
 	                    </span>
                     </p>
@@ -77,7 +77,7 @@
 			</div>
             <div id="finish-statements-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
-                    <span data-i18n="createcafinish_export_content" class="aligned">
+                    <span data-i18n="createcafinish_export_content">
                         <s:message code='createcafinish_export_content'/>
                     </span>
                 </div>

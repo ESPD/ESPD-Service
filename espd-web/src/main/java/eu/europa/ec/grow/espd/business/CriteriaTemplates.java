@@ -1,9 +1,11 @@
 package eu.europa.ec.grow.espd.business;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 
+@SuppressWarnings("unchecked")
 public class CriteriaTemplates {
 
     public static final int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
@@ -665,159 +667,6 @@ public class CriteriaTemplates {
 		put("description_code","crit_selection_economic_other_financial_requirements_description").
 		put("has_please_describe_them","true").build()
     };
-    
-
-    @SuppressWarnings("rawtypes")
-    public static final Map[] technicalListEO_UglyPrintVersion = new Map[]{
-		ImmutableMap.<String, Object>builder().
-		put("template","uglyPrintTemplate").
-		put("field","workContractsPerformanceOfWorks").
-		put("has_multiple_description_amount_date_recipients","true").
-		put("title_code","crit_selection_technical_work_contracts_performance_works_main").
-		put("description_code","crit_selection_technical_work_contracts_performance_works_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","uglyPrintTemplate").
-		put("field","supplyContractsPerformanceDeliveries").
-		put("has_multiple_description_amount_date_recipients","true").
-		put("title_code","crit_selection_technical_supply_contracts_performance_deliveries_main").
-		put("description_code","crit_selection_technical_supply_contracts_performance_deliveries_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","uglyPrintTemplate").
-		put("field","serviceContractsPerformanceServices").
-		put("has_multiple_description_amount_date_recipients","true").
-		put("title_code","crit_selection_technical_service_contracts_performance_services_main").
-		put("description_code","crit_selection_technical_service_contracts_performance_services_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","techniciansTechnicalBodies").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_technicians_technical_bodies_main").
-		put("description_code","crit_selection_technical_technicians_technical_bodies_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","workContractsTechnicians").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_work_contracts_technicians_main").
-		put("description_code","crit_selection_technical_work_contracts_technicians_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","technicalFacilitiesMeasures").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_technical_facilities_measures_main").
-		put("description_code","crit_selection_technical_technical_facilities_measures_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","studyResearchFacilities").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_study_research_facilities_main").
-		put("description_code","crit_selection_technical_study_research_facilities_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","supplyChainManagement").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_supply_chain_management_main").
-		put("description_code","crit_selection_technical_supply_chain_management_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","allowanceOfChecks").
-		put("has_your_answer","true").
-		put("allows_checks","true").
-		put("availableElectronically","false").
-		put("title_code","crit_selection_technical_allowance_of_checks_main").
-		put("description_code","crit_selection_technical_allowance_of_checks_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","educationalProfessionalQualifications").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_educational_professional_qualifications_main").
-		put("description_code","crit_selection_technical_educational_professional_qualifications_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","environmentalManagementFeatures").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_environment_management_features_main").
-		put("description_code","crit_selection_technical_environment_management_features_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","numberManagerialStaff").
-		put("lastYearsNumber",lastYearsNumber).
-		put("title_code","crit_selection_technical_number_managerial_staff_main").
-		put("description_code","crit_selection_technical_number_managerial_staff_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","averageAnnualManpower").
-		put("lastYearsNumber",lastYearsNumber).
-		put("title_code","crit_selection_technical_average_annual_manpower_main").
-		put("description_code","crit_selection_technical_average_annual_manpower_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","toolsPlantTechnicalEquipment").
-		put("has_please_describe_them","true").
-		put("title_code","crit_selection_technical_tools_plant_main").
-		put("description_code","crit_selection_technical_tools_plant_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","subcontractingProportion").
-		put("has_please_specify","true").
-		put("availableElectronically","false").
-		put("title_code","crit_selection_technical_subcontracting_proportion_main").
-		put("description_code","crit_selection_technical_subcontracting_proportion_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","supplyContractsSamplesDescriptionsWithoutCa").
-		put("has_your_answer","true").
-		put("title_code","crit_selection_technical_supply_contracts_without_ca_main").
-		put("description_code","crit_selection_technical_supply_contracts_without_ca_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","supplyContractsSamplesDescriptionsWithCa").
-		put("has_your_answer","true").
-		put("title_code","crit_selection_technical_supply_contracts_with_ca_main").
-		put("description_code","crit_selection_technical_supply_contracts_with_ca_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","supplyContractsCertificatesQc").
-		put("has_your_answer","true").
-		put("has_please_describe_them","true").
-		put("has_explain_supply_contracts_quality","true").
-		put("title_code","crit_selection_technical_supply_contracts_certificate_quality_main").
-		put("description_code","crit_selection_technical_supply_contracts_certificate_quality_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","certificateIndependentBodiesAboutQa").
-		put("has_your_answer","true").
-		put("has_please_describe_them","true").
-		put("has_explain_certificates_independent_quality","true").
-		put("title_code","crit_selection_technical_certificate_independent_bodies_quality_main").
-		put("description_code","crit_selection_technical_certificate_independent_bodies_quality_description").build(),
-		
-		ImmutableMap.<String, Object>builder().
-		put("template","technicalProfessionalCriterionEO").
-		put("field","certificateIndependentBodiesAboutEnvironmental").
-		put("has_your_answer","true").
-		put("has_please_describe_them","true").
-		put("has_explain_certificates_independent_environmental","true").
-		put("title_code","crit_selection_technical_certificate_independent_bodies_environmental_main").
-		put("description_code","crit_selection_technical_certificate_independent_bodies_environmental_description").build()
-    };
 
     @SuppressWarnings("rawtypes")
     public static final Map[] technicalListEO = new Map[]{
@@ -970,5 +819,18 @@ public class CriteriaTemplates {
 		put("title_code","crit_selection_technical_certificate_independent_bodies_environmental_main").
 		put("description_code","crit_selection_technical_certificate_independent_bodies_environmental_description").build()
 	};
+
+    @SuppressWarnings("rawtypes")
+    public static Map[] technicalListEO_UglyPrintVersion = new Map[technicalListEO.length];
+    static {
+    	for(int i = 0 ; i < technicalListEO_UglyPrintVersion.length; i++) {
+    		Map<String, Object> map = new HashMap<String, Object>();
+    		map.putAll(technicalListEO[i]);
+    		if(i == 0 || i == 1 || i == 2) {
+    			map.put("template","uglyPrintTemplate");
+    		}
+    		technicalListEO_UglyPrintVersion[i] = map;
+    	}
+    };
 
 }

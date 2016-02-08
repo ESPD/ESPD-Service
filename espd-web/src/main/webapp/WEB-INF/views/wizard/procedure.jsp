@@ -73,7 +73,7 @@
                     ${span18n['createca_contact_details_ca']}
             </div>
             <div id="cadiv" class="panel-body collapse in">
-                <div class="row">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label col-md-4">${span18n['createca_name']}</label>
@@ -102,14 +102,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
         <div class="espd-panel panel panel-default">
             <div class="espd-panel-heading" data-toggle="collapse"
                  data-target="#ppdiv">${span18n['createca_info_procurement_proc']}</div>
             <div id="ppdiv" class="panel-body collapse in">
-                <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label col-md-4">${span18n['createca_procurer_name']}</label>
@@ -146,7 +145,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
         <c:if test="${agent == 'eo'}">
@@ -158,7 +156,6 @@
                      data-target="#createeo_info_eo_div">${span18n['createeo_info_eo']}</div>
                 <div id="createeo_info_eo_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label col-md-4">${span18n['createeo_name']}</label>
@@ -406,7 +403,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -416,7 +413,6 @@
                 </div>
                 <div id="createeo_info_respresent_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
                             <div class="col-md-12 alert alert-espd-info"
                                  style="border: 1px dotted blue; background-color: #D8D8D8;">
                                     ${span18n['createeo_person_empowered']}
@@ -517,7 +513,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="espd-panel panel panel-default">
@@ -526,7 +522,6 @@
                 </div>
                 <div id="createeo_info_reliance_div" class="collapse in">
                     <div class="panel-body">
-                        <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="control-label col-md-6">
                                         ${span18n['createeo_eo_rely_other_entities']}
@@ -541,7 +536,6 @@
                                  style="border: 1px dotted blue; background-color: #D8D8D8;margin-top: 15px; display: none;">
                                     ${span18n['createeo_separate_espd_sections_a_b']}
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
