@@ -1,19 +1,13 @@
 package eu.europa.ec.grow.espd.xml.base
 
-import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller
-import eu.europa.ec.grow.espd.business.common.CommonUblFactory
-import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator
-import eu.europa.ec.grow.espd.business.common.EconomicOperatorImplTransformer
-import eu.europa.ec.grow.espd.business.common.PartyImplTransformer
-import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer
-import eu.europa.ec.grow.espd.business.common.UblDocumentReferences
-import eu.europa.ec.grow.espd.business.common.UblEconomicOperatorPartyTypeTransformer
-import eu.europa.ec.grow.espd.business.request.UblRequestToEspdDocumentTransformer
-import eu.europa.ec.grow.espd.business.request.UblRequestTypeTransformer
-import eu.europa.ec.grow.espd.business.response.UblResponseToEspdDocumentTransformer
-import eu.europa.ec.grow.espd.business.response.UblResponseTypeTransformer
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller
+import eu.europa.ec.grow.espd.xml.common.*
+import eu.europa.ec.grow.espd.xml.request.UblRequestToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.request.UblRequestTypeTransformer
+import eu.europa.ec.grow.espd.xml.response.UblResponseToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.response.UblResponseTypeTransformer
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
