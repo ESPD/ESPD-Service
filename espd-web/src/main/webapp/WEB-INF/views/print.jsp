@@ -548,7 +548,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
         </div>
         
 		<tiles:insertDefinition name="topLevelCriteriaTemplate">
-			<tiles:putAttribute name="panelsList" value="${exclusionEO}"/>
+			<tiles:putAttribute name="topLevelCriteriaList" value="${exclusionEO}"/>
 		</tiles:insertDefinition>
 
         <div class="panel panel-default espd-panel">

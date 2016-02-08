@@ -2,7 +2,7 @@
 
 <tiles-definitions>
 
-    <definition name="defaultTemplate" template="/WEB-INF/views/template.jsp">
+    <definition name="espdTemplate" template="/WEB-INF/views/espdTemplate.jsp">
         <put-attribute name="common" value="/WEB-INF/views/common.jsp" />
         <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
 		<put-attribute name="breadcrumb" value="/WEB-INF/views/breadcrumb.jsp" />
@@ -12,28 +12,30 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
     </definition>
 
-    <definition name="request_ca" extends="defaultTemplate">
-    	<put-attribute name="agent" value="ca" />
-    	<put-attribute name="flow" value="request" />
-    </definition>
-    <definition name="request_eo" extends="defaultTemplate">
-    	<put-attribute name="agent" value="eo" />
-    	<put-attribute name="flow" value="request" />
-    </definition>
-    <definition name="response_ca" extends="defaultTemplate">
-    	<put-attribute name="agent" value="ca" />
-    	<put-attribute name="flow" value="response" />
-    </definition>
-    <definition name="response_eo" extends="defaultTemplate">
-    	<put-attribute name="agent" value="eo" />
-    	<put-attribute name="flow" value="response" />
-    </definition>
+    <definition name="welcome" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/></definition>
+	<definition name="filter" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp"/></definition>
+    <definition name="about" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp"/></definition>
+    <definition name="error" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp"/></definition>
+    <definition name="print" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/print.jsp"/></definition>
+    
+    <!-- wizard -->
 
-    <definition name="welcome" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/></definition>
-	<definition name="filter" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp"/></definition>
-    <definition name="about" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp"/></definition>
-    <definition name="error" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp"/></definition>
-    <definition name="print" extends="defaultTemplate"><put-attribute name="body" value="/WEB-INF/views/print.jsp"/></definition>
+    <definition name="request_ca" extends="espdTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="request" />
+    </definition>
+    <definition name="request_eo" extends="espdTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="request" />
+    </definition>
+    <definition name="response_ca" extends="espdTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="response" />
+    </definition>
+    <definition name="response_eo" extends="espdTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="response" />
+    </definition>
 
     <definition name="request_ca_procedure" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
     <definition name="request_eo_procedure" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
@@ -53,31 +55,36 @@
     <definition name="response_ca_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
-    
-    <definition name="euCriteriaListTemplate" template="/WEB-INF/views/wizard/templates/euCriteriaListTemplate.jsp">
-    	<put-attribute name="disableTooltips" value="false"/>
-    	<put-attribute name="tooltip_code" value=""/>
+	<definition name="viewChangeRole" template="/WEB-INF/views/wizard/viewChangeRole.jsp"><!-- page, agent --></definition>
+
+    <definition name="progress" template="/WEB-INF/views/wizard/progress.jsp">
+        <!-- start, procedure, exclusion, selection, finish -->
     </definition>
 
-    <definition name="topLevelCriteriaTemplate" template="/WEB-INF/views/wizard/templates/topLevelCriteriaTemplate.jsp">
-    	<put-attribute name="disableTooltips" value="false"/>
-    	<!-- topLevelCriteriaList -->
-    </definition>
-
-     <!-- progress -->
-
-    <definition name="partyInfo" template="/WEB-INF/views/wizard/templates/procedure/partyAddress.jsp">
-        <put-attribute name="field" value=""/>
+    <definition name="partyInfo" template="/WEB-INF/views/wizard/partyInfo.jsp">
+        <!-- field -->
         <put-attribute name="address" value="false"/>
         <put-attribute name="vatNumber" value="false"/>
         <put-attribute name="contacts" value="false"/>
     </definition>
+
+    <!-- ~ wizard -->
     
-    <!-- ~ progress -->
+    <!-- criteria structure -->
+    
+    <definition name="topLevelCriteriaTemplate" template="/WEB-INF/views/criteriaTemplates/topLevelCriteriaTemplate.jsp">
+    	<put-attribute name="disableTooltips" value="false"/>
+    	<!-- topLevelCriteriaList -->
+    </definition>
+    
+    <definition name="euCriteriaListTemplate" template="/WEB-INF/views/criteriaTemplates/euCriteriaListTemplate.jsp">
+    	<put-attribute name="disableTooltips" value="false"/>
+    	<put-attribute name="tooltip_code" value=""/>
+    </definition>
     
     <!-- exclusion -->
 
-    <definition name="checkTemplate" template="/WEB-INF/views/wizard/templates/checkTemplate.jsp">
+    <definition name="checkTemplate" template="/WEB-INF/views/criteriaTemplates/checkTemplate.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="title_code" value=""/>
         <put-attribute name="description_code" value=""/>
@@ -85,7 +92,7 @@
         <put-attribute name="is_disabled" value="false"/>
     </definition>
 
-    <definition name="formTemplate" template="/WEB-INF/views/wizard/templates/formTemplate.jsp">
+    <definition name="formTemplate" template="/WEB-INF/views/criteriaTemplates/formTemplate.jsp">
 		<put-attribute name="field" value=""/>
 		<put-attribute name="checkExistanse" value="false"/>
 		<put-attribute name="has_your_answer" value="true"/>
@@ -103,27 +110,27 @@
     <definition name="exclusionFormTemplate" extends="formTemplate">
     	<put-attribute name="selfCleaning" value="true"/>
     	<put-attribute name="availableElectronically" value="true"/>
-    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/exclusion/exclusionTemplate.jsp"/>
-    	<put-attribute name="exclusionForm" value="/WEB-INF/views/wizard/templates/exclusion/simpleForm.jsp"/>
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/exclusion/exclusionTemplate.jsp"/>
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/simpleForm.jsp"/>
     </definition>
 
     <definition name="reasonsNeverlessPerformForm" extends="exclusionFormTemplate">
-    	<put-attribute name="exclusionForm" value="/WEB-INF/views/wizard/templates/exclusion/reasonsNeverlessPerform.jsp"/>
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/reasonsNeverlessPerform.jsp"/>
     </definition>
 
     <definition name="criminalFormTemplate" extends="exclusionFormTemplate">
-    	<put-attribute name="exclusionForm" value="/WEB-INF/views/wizard/templates/exclusion/criminalForm.jsp"/>
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/criminalForm.jsp"/>
     </definition>
 
     <definition name="taxFormTemplate" extends="exclusionFormTemplate">
-    	<put-attribute name="exclusionForm" value="/WEB-INF/views/wizard/templates/exclusion/taxForm.jsp"/>
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/taxForm.jsp"/>
     	<put-attribute name="breachOfObligations" value="true"/>
     </definition>
     
-    <definition name="selfCleaning" template="/WEB-INF/views/wizard/templates/exclusion/selfCleaning.jsp">
+    <definition name="selfCleaning" template="/WEB-INF/views/criteriaTemplates/exclusion/selfCleaning.jsp">
     </definition>
 
-    <definition name="breachOfObligations" template="/WEB-INF/views/wizard/templates/exclusion/breachOfObligations.jsp">
+    <definition name="breachOfObligations" template="/WEB-INF/views/criteriaTemplates/exclusion/breachOfObligations.jsp">
     </definition>
     
     <!-- ~ exclusion -->
@@ -132,7 +139,7 @@
     
     <definition name="selectionFormTemplate" extends="formTemplate">
 		<put-attribute name="checkExistanse" value="true"/>
-    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/selection/selectionTemplate.jsp"/>
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/selection/selectionTemplate.jsp"/>
     	<put-attribute name="selectionForm" value=""/>
 		<put-attribute name="availableElectronically" value="true"/>
     	<put-attribute name="lastYearsAmount" value=""/>
@@ -141,7 +148,7 @@
 
     <definition name="economicFinancialCriterionEO" extends="selectionFormTemplate">
     	<put-attribute name="has_your_answer" value="false"/>
-		<put-attribute name="selectionForm" value="/WEB-INF/views/wizard/templates/selection/economicFinancialCriterionEO.jsp"/>
+		<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/selection/economicFinancialCriterionEO.jsp"/>
         <put-attribute name="has_please_describe_them" value="false"/>
         <put-attribute name="has_multiple_description_ratio" value="false"/>
         <put-attribute name="has_single_amount" value="false"/>
@@ -152,7 +159,7 @@
     <definition name="technicalProfessionalCriterionEO" extends="selectionFormTemplate">
         <put-attribute name="has_your_answer" value="false"/>
 		<put-attribute name="invert_answer" value="true"/>
-		<put-attribute name="selectionForm" value="/WEB-INF/views/wizard/templates/selection/technicalProfessionalCriterionEO.jsp"/>
+		<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/selection/technicalProfessionalCriterionEO.jsp"/>
         <put-attribute name="has_please_describe_them" value="false"/>
         <put-attribute name="has_multiple_description_amount_date_recipients" value="false"/>
         <put-attribute name="has_explain_supply_contracts_quality" value="false"/>
@@ -161,17 +168,17 @@
         <put-attribute name="has_please_specify" value="false"/>
     </definition>
 
-    <definition name="multipleYearAmount" template="/WEB-INF/views/wizard/templates/selection/multipleYearAmount.jsp"><!-- field, lastYears --></definition>
-    <definition name="multipleYearNumber" template="/WEB-INF/views/wizard/templates/selection/multipleYearNumber.jsp"><!-- field, lastYears --></definition>
-    <definition name="multipleDescriptionRatio" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionRatio.jsp"><!-- field --></definition>
-    <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/wizard/templates/selection/multipleDescriptionAmountDateRecipients.jsp"><!-- field --></definition>
+    <definition name="multipleYearAmount" template="/WEB-INF/views/criteriaTemplates/selection/multipleYearAmount.jsp"><!-- field, lastYears --></definition>
+    <definition name="multipleYearNumber" template="/WEB-INF/views/criteriaTemplates/selection/multipleYearNumber.jsp"><!-- field, lastYears --></definition>
+    <definition name="multipleDescriptionRatio" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionRatio.jsp"><!-- field --></definition>
+    <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionAmountDateRecipients.jsp"><!-- field --></definition>
 
     <!-- ~ selection -->
     
     <!-- finish -->
     
     <definition name="objectiveFormTemplate" extends="formTemplate">
-    	<put-attribute name="form" value="/WEB-INF/views/wizard/templates/finish/objectiveForm.jsp"/>
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/finish/objectiveForm.jsp"/>
     	<put-attribute name="selfCleaning" value="false"/>
     	<put-attribute name="availableElectronically" value="true"/>
     </definition>
@@ -182,38 +189,28 @@
     
     <definition name="uglyPrintTemplate" extends="selectionFormTemplate">
         <put-attribute name="has_your_answer" value="false"/>
-    	<put-attribute name="selectionForm" value="/WEB-INF/views/wizard/templates/uglyPrintTemplate.jsp"/>
+    	<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/uglyPrintTemplate.jsp"/>
     </definition>
     
     <!-- ~ print -->
     
     <!-- common -->
     
-    <definition name="currencies" template="/WEB-INF/views/wizard/templates/common/currencies.jsp">
+    <definition name="currencies" template="/WEB-INF/views/criteriaTemplates/common/currencies.jsp">
     	<!-- currencyField -->
     	<put-attribute name="style" value=""/>
     </definition>
     
-    <definition name="availableElectronically" template="/WEB-INF/views/wizard/templates/common/availableElectronically.jsp">
+    <definition name="availableElectronically" template="/WEB-INF/views/criteriaTemplates/common/availableElectronically.jsp">
     	<put-attribute name="field" value=""/>
     </definition>
 
-    <definition name="countries" template="/WEB-INF/views/wizard/templates/common/countries.jsp">
+    <definition name="countries" template="/WEB-INF/views/criteriaTemplates/common/countries.jsp">
         <put-attribute name="field" value=""/>
         <put-attribute name="cssClass" value="form-control"/>
     </definition>
 
-    <definition name="progress" template="/WEB-INF/views/wizard/templates/common/progress.jsp">
-        <put-attribute name="start" value=""/>
-        <put-attribute name="procedure" value=""/>
-        <put-attribute name="exclusion" value=""/>
-        <put-attribute name="selection" value=""/>
-        <put-attribute name="finish" value=""/>
-    </definition>
-
-    <definition name="viewChangeRole" template="/WEB-INF/views/wizard/templates/common/viewChangeRole.jsp"><!-- page, agent --></definition>
-
-    <definition name="footerButtons" template="/WEB-INF/views/wizard/templates/common/footerButtons.jsp">
+    <definition name="footerButtons" template="/WEB-INF/views/criteriaTemplates/common/footerButtons.jsp">
         <put-attribute name="prevCode" value="previous"/>
         <put-attribute name="nextCode" value="next"/>
         <put-attribute name="prev" value=""/>
