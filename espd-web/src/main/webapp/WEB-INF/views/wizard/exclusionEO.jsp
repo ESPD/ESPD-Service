@@ -5,11 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-<%
-	request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.criminalListEO);
-request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.taxesListEO);
-request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.insolvencyListEO);
-%>
+<%request.setAttribute("exclusionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionEO);%>
 
 <tiles:importAttribute name="flow"/>
 
@@ -52,28 +48,11 @@ request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.xml.CriteriaTemp
         <div class="paragraph">
             <h2>${span18n["createcaexcl_header"]}</h2>
         </div>
-        
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="criminal_conv"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv_eo"/>
-			<tiles:putAttribute name="criteriaList" value="${criminalListEO}"/>
-		</tiles:insertDefinition>
-        
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="payment_taxes"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes_eo"/>
-			<tiles:putAttribute name="criteriaList" value="${taxesListEO}"/>
-		</tiles:insertDefinition>
-        
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="insolvency_conflicts"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations_eo"/>
-			<tiles:putAttribute name="criteriaList" value="${insolvencyListEO}"/>
-		</tiles:insertDefinition>
 
+		<tiles:insertDefinition name="topLevelCriteriaTemplate">
+			<tiles:putAttribute name="topLevelCriteriaList" value="${exclusionEO}"/>
+		</tiles:insertDefinition>
+		
         <div class="panel panel-default espd-panel">
             <div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse"
                  data-target="#ca-insolvency-section">

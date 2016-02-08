@@ -5,11 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-<%
-	request.setAttribute("suitabilityListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListCA);
-request.setAttribute("economicListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListCA);
-request.setAttribute("technicalListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListCA);
-%>
+<%request.setAttribute("selectionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.selectionCA);%>
 
 <tiles:importAttribute name="flow"/>
 
@@ -54,28 +50,8 @@ request.setAttribute("technicalListCA", eu.europa.ec.grow.espd.xml.CriteriaTempl
         </div>
         <div class="tab-pane active" id="ca-selection-criteria">
         
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="ca-suitability-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_suitability_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_suitability_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${suitabilityListCA}"/>
-			</tiles:insertDefinition>
-			
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="ca-economic-financial-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_ca_economic_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_economic_financial_standing_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${economicListCA}"/>
-			</tiles:insertDefinition>
-			
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="ca-technical_professional_ability-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_technical_professional_ability_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${technicalListCA}"/>
+			<tiles:insertDefinition name="topLevelCriteriaTemplate">
+				<tiles:putAttribute name="topLevelCriteriaList" value="${selectionCA}"/>
 			</tiles:insertDefinition>
 
         </div>

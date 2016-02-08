@@ -54,9 +54,14 @@
     <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     
     
-    <definition name="panelTemplate" template="/WEB-INF/views/wizard/templates/panelTemplate.jsp">
+    <definition name="euCriteriaListTemplate" template="/WEB-INF/views/wizard/templates/euCriteriaListTemplate.jsp">
     	<put-attribute name="disableTooltips" value="false"/>
     	<put-attribute name="tooltip_code" value=""/>
+    </definition>
+
+    <definition name="topLevelCriteriaTemplate" template="/WEB-INF/views/wizard/templates/topLevelCriteriaTemplate.jsp">
+    	<put-attribute name="disableTooltips" value="false"/>
+    	<!-- topLevelCriteriaList -->
     </definition>
 
      <!-- progress -->

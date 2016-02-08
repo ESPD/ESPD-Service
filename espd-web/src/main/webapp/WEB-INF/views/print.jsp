@@ -7,9 +7,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <%
-	request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.criminalListEO);
-request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.taxesListEO);
-request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.insolvencyListEO);
+request.setAttribute("exclusionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionEO);
 
 request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListEO);
 request.setAttribute("economicListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListEO);
@@ -549,28 +547,8 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
             <h2>${span18n["createcaexcl_header"]}</h2>
         </div>
         
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="criminal_conv"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_criminal_conv"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_grounds_criminal_conv_eo"/>
-			<tiles:putAttribute name="disableTooltips" value="true"/>
-			<tiles:putAttribute name="criteriaList" value="${criminalListEO}"/>
-		</tiles:insertDefinition>
-        
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="payment_taxes"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_grounds_payment_taxes"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_title_payment_taxes_eo"/>
-			<tiles:putAttribute name="disableTooltips" value="true"/>
-			<tiles:putAttribute name="criteriaList" value="${taxesListEO}"/>
-		</tiles:insertDefinition>
-        
-		<tiles:insertDefinition name="panelTemplate">
-			<tiles:putAttribute name="id" value="insolvency_conflicts"/>
-			<tiles:putAttribute name="title_code" value="crit_top_title_insolvency_conflicts"/>
-			<tiles:putAttribute name="subtitle_code" value="crit_eu_main_breaching_obligations_eo"/>
-			<tiles:putAttribute name="disableTooltips" value="true"/>
-			<tiles:putAttribute name="criteriaList" value="${insolvencyListEO}"/>
+		<tiles:insertDefinition name="topLevelCriteriaTemplate">
+			<tiles:putAttribute name="panelsList" value="${exclusionEO}"/>
 		</tiles:insertDefinition>
 
         <div class="panel panel-default espd-panel">
@@ -639,7 +617,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
        
         <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
         
-			<tiles:insertDefinition name="panelTemplate">
+			<tiles:insertDefinition name="euCriteriaListTemplate">
 				<tiles:putAttribute name="id" value="eo-suitability-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_suitability_article"/>
@@ -647,7 +625,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
 				<tiles:putAttribute name="criteriaList" value="${suitabilityListEO}"/>
 			</tiles:insertDefinition>
 
-			<tiles:insertDefinition name="panelTemplate">
+			<tiles:insertDefinition name="euCriteriaListTemplate">
 				<tiles:putAttribute name="id" value="eo-economic-financial-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_economic_article"/>
@@ -655,7 +633,7 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
 				<tiles:putAttribute name="criteriaList" value="${economicListEO}"/>
 			</tiles:insertDefinition>
 			
-			<tiles:insertDefinition name="panelTemplate">
+			<tiles:insertDefinition name="euCriteriaListTemplate">
 				<tiles:putAttribute name="id" value="eo-technical-professional-section"/>
 				<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
 				<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>

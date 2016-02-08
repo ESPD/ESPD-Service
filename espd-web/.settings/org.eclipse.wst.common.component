@@ -6,7 +6,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/classes"/>
+        <dependent-module archiveName="exchange-model-0.0.18-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/exchange-model/exchange-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/espd-web/build/classes"/>
-        <property name="context-root" value="espd"/>
+        <property name="context-root" value="espd-web"/>
     </wb-module>
 </project-modules>

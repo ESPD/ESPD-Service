@@ -45,9 +45,11 @@ $(function() {
 			<ul class="fa-ul">
 			<li>
 				<i class="info-label fa fa-info-circle fa-lg fa-li"></i>${span18n['filter_alert']}
+				${span18n['faq_text']} <a href="<s:url value="/static/documents/espd_faq.pdf"/>">${span18n['faq_link']}</a>
 			</li>
 			</ul>
 		</div>
+
         <form:errors path="attachment" cssClass="errorContainer alert alert-danger"/>
 		<div class="paragraph">
 			<h3>

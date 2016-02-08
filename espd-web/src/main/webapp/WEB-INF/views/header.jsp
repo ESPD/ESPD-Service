@@ -48,9 +48,9 @@
     <span id="banner-sub-title-text" class="hidden-print" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
     <div id="top-lang-selector" class="hidden-print">
         <ul class="reset-list">
-            <li><a href="#" data-i18n="legal_notice"><s:message code="legal_notice"/></a></li>
-            <li><a href="#" data-i18n="cookies"><s:message code="cookies"/></a></li>
-            <li><a href="#" data-i18n="search"><s:message code="search"/></a></li>
+            <li><a target="_blank" href="http://ec.europa.eu/growth/legal-notice/index_en.htm" data-i18n="legal_notice"><s:message code="legal_notice"/></a></li>
+            <li><a target="_blank" href="http://ec.europa.eu/growth/cookies/index_en.htm" data-i18n="cookies"><s:message code="cookies"/></a></li>
+            <li><a target="_blank" href="http://ec.europa.eu/geninfo/query/index.do?swlang=${pageContext.response.locale}" data-i18n="search"><s:message code="search"/></a></li>
             <li>
                 <label for="language"></label><select id="language">
                 <c:forEach var="lang" items="${languages}">

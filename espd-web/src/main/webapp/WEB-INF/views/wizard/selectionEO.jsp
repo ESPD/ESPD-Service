@@ -4,12 +4,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-      
-<%
-      	request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListEO);
-      request.setAttribute("economicListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListEO);
-      request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListEO);
-      %>
+
+<%request.setAttribute("selectionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.selectionEO);%>
 
 <tiles:importAttribute name="flow"/>
 
@@ -89,28 +85,8 @@
 
         <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
   
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="eo-suitability-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_suitability_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_eo_suitability_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${suitabilityListEO}"/>
-			</tiles:insertDefinition>
-
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="eo-economic-financial-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_economic_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_eo_economic_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${economicListEO}"/>
-			</tiles:insertDefinition>
-			
-			<tiles:insertDefinition name="panelTemplate">
-				<tiles:putAttribute name="id" value="eo-technical-professional-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>
-				<tiles:putAttribute name="tooltip_code" value="crit_selection_technical_professional_ability_article_tooltip"/>
-				<tiles:putAttribute name="criteriaList" value="${technicalListEO}"/>
+			<tiles:insertDefinition name="topLevelCriteriaTemplate">
+				<tiles:putAttribute name="topLevelCriteriaList" value="${selectionEO}"/>
 			</tiles:insertDefinition>
 
 		</div>

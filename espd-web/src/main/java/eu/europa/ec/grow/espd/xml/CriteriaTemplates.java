@@ -2,19 +2,16 @@ package eu.europa.ec.grow.espd.xml;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.google.common.collect.ImmutableMap;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class CriteriaTemplates {
 
     public static final int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
     public static final Integer[] lastYearsAmount = new Integer[]{year, year-1, year-2, year-3, year-4};
     public static final Integer[] lastYearsNumber = new Integer[]{year, year-1, year-2};
-    
+
     /* EXCLUSION CA */
-    
-    @SuppressWarnings("rawtypes")
 	public static final Map[] criminalListCA = new Map[]{
 	    ImmutableMap.<String, Object>builder().
 	    put("template","checkTemplate").
@@ -65,7 +62,6 @@ public class CriteriaTemplates {
 	    put("is_disabled","true").build()
     };
 
-    @SuppressWarnings("rawtypes")
 	public static final Map[] taxesListCA = new Map[]{
 	    ImmutableMap.<String, Object>builder().
 	    put("template","checkTemplate").
@@ -84,7 +80,6 @@ public class CriteriaTemplates {
 	    put("is_disabled","true").build()
     };
 
-    @SuppressWarnings("rawtypes")
    	public static final Map[] insolvencyListCA = new Map[]{
 	    ImmutableMap.<String, Object>builder().
 	    put("template","checkTemplate").
@@ -208,8 +203,6 @@ public class CriteriaTemplates {
     };
     
     /* EXCLUSION EO */
-    
-    @SuppressWarnings("rawtypes")
     public static final Map[] criminalListEO = new Map[]{
     	ImmutableMap.<String,String>builder().
     	put("template","criminalFormTemplate").
@@ -247,8 +240,7 @@ public class CriteriaTemplates {
     	put("title_code","crit_eu_title_child_labour").
     	put("description_code","crit_eu_text_child_labour").build()
     };
-    
-    @SuppressWarnings("rawtypes")
+
     public static final Map[] taxesListEO = new Map[]{
     	ImmutableMap.<String,String>builder().
     	put("template","taxFormTemplate").
@@ -264,8 +256,7 @@ public class CriteriaTemplates {
     	put("description_code","crit_eu_text_payment_social_security").
     	put("selfCleaning","false").build(),
     };
-    
-    @SuppressWarnings("rawtypes")
+
     public static final Map[] insolvencyListEO = new Map[]{
 		ImmutableMap.<String,String>builder().
 		put("template","exclusionFormTemplate").
@@ -375,8 +366,6 @@ public class CriteriaTemplates {
     };
 
     /* SELECTION CA */
-    
-    @SuppressWarnings("rawtypes")
 	public static final Map[] suitabilityListCA = new Map[]{
 	    ImmutableMap.<String, Object>builder().
 	    put("template","checkTemplate").
@@ -403,7 +392,6 @@ public class CriteriaTemplates {
 	    put("description_code","crit_selection_suitability_service_contracts_membership_description").build()
     };
 
-    @SuppressWarnings("rawtypes")
    	public static final Map[] economicListCA = new Map[]{
 	    ImmutableMap.<String, Object>builder().
 	    put("template","checkTemplate").
@@ -453,8 +441,7 @@ public class CriteriaTemplates {
 	    put("title_code","crit_selection_economic_other_financial_requirements_main").
 	    put("description_code","crit_selection_economic_other_financial_requirements_description").build()
     };
-    
-    @SuppressWarnings("rawtypes")
+
    	public static final Map[] technicalListCA = new Map[]{
     	ImmutableMap.<String, Object>builder().
     	put("template","checkTemplate").
@@ -578,8 +565,6 @@ public class CriteriaTemplates {
     };
 
     /* SELECTION EO */
-
-    @SuppressWarnings("rawtypes")
 	public static final Map[] suitabilityListEO = new Map[]{
 		ImmutableMap.<String, Object>builder().
 		put("template", "selectionFormTemplate").
@@ -606,7 +591,6 @@ public class CriteriaTemplates {
 		put("description_code", "crit_selection_suitability_service_contracts_membership_description").build()
 	};
 
-    @SuppressWarnings("rawtypes")
     public static final Map[] economicListEO = new Map[]{
 		ImmutableMap.<String,Object>builder().
 		put("template","economicFinancialCriterionEO").
@@ -668,7 +652,7 @@ public class CriteriaTemplates {
 		put("has_please_describe_them","true").build()
     };
 
-    @SuppressWarnings("rawtypes")
+
     public static final Map[] technicalListEO = new Map[]{
 		ImmutableMap.<String, Object>builder().
 		put("template","technicalProfessionalCriterionEO").
@@ -820,7 +804,7 @@ public class CriteriaTemplates {
 		put("description_code","crit_selection_technical_certificate_independent_bodies_environmental_description").build()
 	};
 
-    @SuppressWarnings("rawtypes")
+    /** only for HTML version of pronting some templates are replaced with "css-print friendly" */
     public static Map[] technicalListEO_UglyPrintVersion = new Map[technicalListEO.length];
     static {
     	for(int i = 0 ; i < technicalListEO_UglyPrintVersion.length; i++) {
@@ -833,4 +817,106 @@ public class CriteriaTemplates {
     	}
     };
 
+   	/** TOP LEVEL EXCLUSION CA */
+    public static final Map[] exclusionCA = new Map[] {
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-criminal-convictions-section").
+    	put("title_code","crit_top_title_grounds_criminal_conv").
+    	put("subtitle_code","crit_eu_main_title_grounds_criminal_conv").
+    	put("criteriaList",criminalListCA).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-payment-of-taxes-section").
+    	put("title_code","crit_top_title_grounds_payment_taxes").
+    	put("subtitle_code","crit_eu_main_title_payment_taxes").
+    	put("criteriaList",taxesListCA).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-insolvency-section").
+    	put("title_code","crit_top_title_insolvency_conflicts").
+    	put("subtitle_code","crit_eu_main_breaching_obligations").
+    	put("criteriaList",insolvencyListCA).build(),
+    };
+	
+    /** TOP LEVEL EXCLUSION EO */
+    public static final Map[] exclusionEO = new Map[] {
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","criminal_conv").
+    	put("title_code","crit_top_title_grounds_criminal_conv").
+    	put("subtitle_code","crit_eu_main_title_grounds_criminal_conv_eo").
+    	put("criteriaList",criminalListEO).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","payment_taxes").
+    	put("title_code","crit_top_title_grounds_payment_taxes").
+    	put("subtitle_code","crit_eu_main_title_payment_taxes_eo").
+    	put("criteriaList",taxesListEO).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","insolvency_conflicts").
+    	put("title_code","crit_top_title_insolvency_conflicts").
+    	put("subtitle_code","crit_eu_main_breaching_obligations_eo").
+    	put("criteriaList",insolvencyListEO).build()
+    };
+    
+    /** TOP LEVEL SELECTION CA */
+    public static final Map[] selectionCA = new Map[] {
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-suitability-section").
+    	put("title_code","createcasel_suitability").
+    	put("subtitle_code","crit_selection_suitability_article").
+    	put("tooltip_code","crit_selection_suitability_article_tooltip").
+    	put("criteriaList",suitabilityListCA).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-economic-financial-section").
+    	put("title_code","crit_top_title_grounds_payment_taxes").
+    	put("subtitle_code","crit_eu_main_title_payment_taxes_eo").
+    	put("tooltip_code","crit_selection_economic_financial_standing_article_tooltip").
+    	put("criteriaList",economicListCA).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","ca-technical_professional_ability-section").
+    	put("title_code","createcasel_technical_professional_ability").
+    	put("subtitle_code","crit_selection_technical_professional_ability_article").
+    	put("tooltip_code","crit_selection_technical_professional_ability_article_tooltip").
+    	put("criteriaList",technicalListCA).build()
+    };
+    
+    /** TOP LEVEL SELECTION EO */
+    public static final Map[] selectionEO = new Map[] {
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","eo-suitability-section").
+    	put("title_code","createcasel_suitability").
+    	put("subtitle_code","crit_selection_eo_suitability_article").
+    	put("tooltip_code","crit_selection_eo_suitability_article_tooltip").
+    	put("criteriaList",suitabilityListEO).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","eo-economic-financial-section").
+    	put("title_code","createcasel_economic_and_financial_standing").
+    	put("subtitle_code","crit_selection_eo_economic_article").
+    	put("tooltip_code","crit_selection_eo_economic_article_tooltip").
+    	put("criteriaList",economicListEO).build(),
+    	
+        ImmutableMap.<String, Object>builder().
+    	put("template","euCriteriaListTemplate").
+    	put("id","eo-technical-professional-section").
+    	put("title_code","createcasel_technical_professional_ability").
+    	put("subtitle_code","crit_selection_technical_professional_ability_article").
+    	put("tooltip_code","crit_selection_technical_professional_ability_article_tooltip").
+    	put("criteriaList",technicalListEO).build()
+    };
+   
 }
