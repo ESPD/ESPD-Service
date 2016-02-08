@@ -1,10 +1,10 @@
-package eu.europa.ec.grow.espd.business.response;
+package eu.europa.ec.grow.espd.xml.response;
 
-import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
-import eu.europa.ec.grow.espd.business.common.UblCriterionTypeTemplate;
 import eu.europa.ec.grow.espd.criteria.enums.AwardCriterion;
 import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.xml.common.UblCriteriaTemplate;
+import eu.europa.ec.grow.espd.xml.common.UblCriterionTypeTemplate;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 

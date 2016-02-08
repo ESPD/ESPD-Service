@@ -1,12 +1,14 @@
-package eu.europa.ec.grow.espd.business.request;
+package eu.europa.ec.grow.espd.xml.request;
 
 import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.business.common.CommonUblFactory;
-import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer;
-import eu.europa.ec.grow.espd.business.common.UblCriteriaTemplate;
+
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.xml.common.CommonUblFactory;
+import eu.europa.ec.grow.espd.xml.common.UblContractingPartyTypeTransformer;
+import eu.europa.ec.grow.espd.xml.common.UblCriteriaTemplate;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

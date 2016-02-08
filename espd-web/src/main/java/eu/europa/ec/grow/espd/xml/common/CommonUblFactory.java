@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business.common;
+package eu.europa.ec.grow.espd.xml.common;
 
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.constants.enums.DocumentTypeCode;

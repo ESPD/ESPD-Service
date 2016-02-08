@@ -6,18 +6,20 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <%
-request.setAttribute("criminalListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.criminalListCA);
-request.setAttribute("taxesListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.taxesListCA);
-request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.insolvencyListCA);
+	request.setAttribute("criminalListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.criminalListCA);
+request.setAttribute("taxesListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.taxesListCA);
+request.setAttribute("insolvencyListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.insolvencyListCA);
 %>
 
 <tiles:importAttribute name="flow"/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="ca"/>
         <tiles:putAttribute name="page" value="${flow}/eo/exclusion"/>
     </tiles:insertDefinition>
+    
     <div class="panel-default">
         <tiles:insertDefinition name="progress">
             <tiles:putAttribute name="exclusion" value="true"/>

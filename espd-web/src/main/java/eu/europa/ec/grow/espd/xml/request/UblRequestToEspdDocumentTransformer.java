@@ -1,16 +1,18 @@
-package eu.europa.ec.grow.espd.business.request;
+package eu.europa.ec.grow.espd.xml.request;
 
 import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator;
-import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
-import eu.europa.ec.grow.espd.business.common.UblDocumentReferences;
+
 import eu.europa.ec.grow.espd.constants.enums.DocumentTypeCode;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
+import eu.europa.ec.grow.espd.xml.common.CriteriaToEspdDocumentPopulator;
+import eu.europa.ec.grow.espd.xml.common.PartyImplTransformer;
+import eu.europa.ec.grow.espd.xml.common.UblDocumentReferences;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;

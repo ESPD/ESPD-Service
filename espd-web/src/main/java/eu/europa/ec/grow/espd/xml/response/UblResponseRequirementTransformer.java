@@ -1,11 +1,11 @@
-package eu.europa.ec.grow.espd.business.response;
+package eu.europa.ec.grow.espd.xml.response;
 
-import eu.europa.ec.grow.espd.business.common.UblRequirementTypeTemplate;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.criteria.enums.ExpectedResponseType;
 import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.xml.common.UblRequirementTypeTemplate;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonbasiccomponents_1.IndicatorType;
@@ -16,6 +16,7 @@ import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.Docu
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.PeriodType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.joda.time.LocalDate;
 

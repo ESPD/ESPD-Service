@@ -1,6 +1,6 @@
-package eu.europa.ec.grow.espd.business.request;
+package eu.europa.ec.grow.espd.xml.request;
 
-import eu.europa.ec.grow.espd.business.common.UblCriterionTypeTemplate;
+import eu.europa.ec.grow.espd.xml.common.UblCriterionTypeTemplate;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 
 /**
@@ -11,7 +11,7 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 class UblRequestCriterionTransformer extends UblCriterionTypeTemplate {
 
     @Override
-    protected eu.europa.ec.grow.espd.business.common.UblRequirementTypeTemplate buildRequirementTransformer() {
+    protected eu.europa.ec.grow.espd.xml.common.UblRequirementTypeTemplate buildRequirementTransformer() {
         return new UblRequestRequirementTransformer();
     }
 }

@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.xml;
 
 import java.util.HashMap;
 import java.util.Map;

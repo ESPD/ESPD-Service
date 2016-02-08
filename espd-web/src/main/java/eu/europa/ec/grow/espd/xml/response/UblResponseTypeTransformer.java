@@ -1,13 +1,15 @@
-package eu.europa.ec.grow.espd.business.response;
+package eu.europa.ec.grow.espd.xml.response;
 
 import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.business.common.CommonUblFactory;
-import eu.europa.ec.grow.espd.business.common.UblContractingPartyTypeTransformer;
-import eu.europa.ec.grow.espd.business.common.UblEconomicOperatorPartyTypeTransformer;
+
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.xml.common.CommonUblFactory;
+import eu.europa.ec.grow.espd.xml.common.UblContractingPartyTypeTransformer;
+import eu.europa.ec.grow.espd.xml.common.UblEconomicOperatorPartyTypeTransformer;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

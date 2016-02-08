@@ -1,12 +1,13 @@
-package eu.europa.ec.grow.espd.business;
+package eu.europa.ec.grow.espd.xml;
 
-import eu.europa.ec.grow.espd.business.request.UblRequestToEspdDocumentTransformer;
-import eu.europa.ec.grow.espd.business.request.UblRequestTypeTransformer;
-import eu.europa.ec.grow.espd.business.response.UblResponseToEspdDocumentTransformer;
-import eu.europa.ec.grow.espd.business.response.UblResponseTypeTransformer;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.xml.request.UblRequestToEspdDocumentTransformer;
+import eu.europa.ec.grow.espd.xml.request.UblRequestTypeTransformer;
+import eu.europa.ec.grow.espd.xml.response.UblResponseToEspdDocumentTransformer;
+import eu.europa.ec.grow.espd.xml.response.UblResponseTypeTransformer;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.xml.bind.JAXBElement;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;

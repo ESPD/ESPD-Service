@@ -1,18 +1,20 @@
-package eu.europa.ec.grow.espd.business.response;
+package eu.europa.ec.grow.espd.xml.response;
 
 import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.business.common.CriteriaToEspdDocumentPopulator;
-import eu.europa.ec.grow.espd.business.common.EconomicOperatorImplTransformer;
-import eu.europa.ec.grow.espd.business.common.PartyImplTransformer;
-import eu.europa.ec.grow.espd.business.common.UblDocumentReferences;
+
 import eu.europa.ec.grow.espd.constants.enums.DocumentTypeCode;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
+import eu.europa.ec.grow.espd.xml.common.CriteriaToEspdDocumentPopulator;
+import eu.europa.ec.grow.espd.xml.common.EconomicOperatorImplTransformer;
+import eu.europa.ec.grow.espd.xml.common.PartyImplTransformer;
+import eu.europa.ec.grow.espd.xml.common.UblDocumentReferences;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

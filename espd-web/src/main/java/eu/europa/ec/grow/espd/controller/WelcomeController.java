@@ -33,13 +33,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
-import eu.europa.ec.grow.espd.business.EspdExchangeMarshaller;
 import eu.europa.ec.grow.espd.constants.enums.Country;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.ted.TedRequest;
 import eu.europa.ec.grow.espd.ted.TedResponse;
 import eu.europa.ec.grow.espd.ted.TedService;
+import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 
 @Controller
 @SessionAttributes("espd")
@@ -91,8 +91,7 @@ class WelcomeController {
         return "filter";
     }
 
-    private String createNewRequestAsCA(@RequestParam("authority.country") Country country,
-            @ModelAttribute("espd") EspdDocument document) {
+    private String createNewRequestAsCA(Country country, EspdDocument document) {
         document.getAuthority().setCountry(country);
         TedResponse tedResponse = tedService
                 .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
@@ -110,7 +109,7 @@ class WelcomeController {
         document.setTedUrl(notice.getTedUrl());
     }
 
-    private String reuseRequestAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
+    private String reuseRequestAsCA(MultipartFile attachment, Model model,
             BindingResult result) throws IOException {
         EspdDocument espd = readEspdRequest(attachment.getInputStream());
         if (espd != null) {
@@ -121,7 +120,7 @@ class WelcomeController {
         return "filter";
     }
 
-    private String reviewResponseAsCA(@Valid @RequestPart MultipartFile attachment, Model model,
+    private String reviewResponseAsCA(MultipartFile attachment, Model model,
             BindingResult result) throws IOException {
         EspdDocument espd = readEspdResponse(attachment.getInputStream());
         if (espd != null) {
@@ -132,8 +131,7 @@ class WelcomeController {
         return "filter";
     }
 
-    private String importEspdAsEo(@RequestParam("authority.country") Country country,
-            @Valid @RequestPart MultipartFile attachment, Model model, BindingResult result) throws IOException {
+    private String importEspdAsEo(Country country, MultipartFile attachment, Model model, BindingResult result) throws IOException {
         EspdDocument espd = importXmlFile(attachment.getInputStream());
         if (espd != null) {
             if (espd.getEconomicOperator() == null) {

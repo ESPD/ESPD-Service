@@ -1,12 +1,13 @@
-package eu.europa.ec.grow.espd.business.request;
+package eu.europa.ec.grow.espd.xml.request;
 
-import eu.europa.ec.grow.espd.business.common.UblRequirementTypeTemplate;
 import eu.europa.ec.grow.espd.constants.enums.Agency;
 import eu.europa.ec.grow.espd.domain.Criterion;
 import eu.europa.ec.grow.espd.entities.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.xml.common.UblRequirementTypeTemplate;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.DescriptionType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
+
 import org.springframework.stereotype.Component;
 
 /**

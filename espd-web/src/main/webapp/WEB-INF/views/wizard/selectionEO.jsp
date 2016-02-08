@@ -6,10 +6,10 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
       
 <%
-request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.suitabilityListEO);
-request.setAttribute("economicListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.economicListEO);
-request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.technicalListEO);
-%>
+      	request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListEO);
+      request.setAttribute("economicListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListEO);
+      request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListEO);
+      %>
 
 <tiles:importAttribute name="flow"/>
 

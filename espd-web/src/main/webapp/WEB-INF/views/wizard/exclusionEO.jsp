@@ -6,9 +6,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <%
-request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.criminalListEO);
-request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.taxesListEO);
-request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.insolvencyListEO);
+	request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.criminalListEO);
+request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.taxesListEO);
+request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.insolvencyListEO);
 %>
 
 <tiles:importAttribute name="flow"/>

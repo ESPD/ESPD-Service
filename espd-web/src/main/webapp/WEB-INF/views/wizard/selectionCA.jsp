@@ -6,9 +6,9 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <%
-request.setAttribute("suitabilityListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.suitabilityListCA);
-request.setAttribute("economicListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.economicListCA);
-request.setAttribute("technicalListCA", eu.europa.ec.grow.espd.business.CriteriaTemplates.technicalListCA);
+	request.setAttribute("suitabilityListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListCA);
+request.setAttribute("economicListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListCA);
+request.setAttribute("technicalListCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListCA);
 %>
 
 <tiles:importAttribute name="flow"/>

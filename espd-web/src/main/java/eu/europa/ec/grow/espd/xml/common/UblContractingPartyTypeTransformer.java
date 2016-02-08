@@ -1,4 +1,4 @@
-package eu.europa.ec.grow.espd.business.common;
+package eu.europa.ec.grow.espd.xml.common;
 
 import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.entities.CacParty;

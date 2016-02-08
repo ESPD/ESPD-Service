@@ -7,13 +7,13 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <%
-request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.criminalListEO);
-request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.taxesListEO);
-request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.insolvencyListEO);
+	request.setAttribute("criminalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.criminalListEO);
+request.setAttribute("taxesListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.taxesListEO);
+request.setAttribute("insolvencyListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.insolvencyListEO);
 
-request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.suitabilityListEO);
-request.setAttribute("economicListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.economicListEO);
-request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.business.CriteriaTemplates.technicalListEO_UglyPrintVersion);
+request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListEO);
+request.setAttribute("economicListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListEO);
+request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListEO_UglyPrintVersion);
 %>
 
 <script>
