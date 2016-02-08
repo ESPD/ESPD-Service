@@ -58,7 +58,11 @@
 	<definition name="viewChangeRole" template="/WEB-INF/views/wizard/viewChangeRole.jsp"><!-- page, agent --></definition>
 
     <definition name="progress" template="/WEB-INF/views/wizard/progress.jsp">
-        <!-- start, procedure, exclusion, selection, finish -->
+        <put-attribute name="start" value="false"/>
+        <put-attribute name="procedure" value="false"/>
+        <put-attribute name="exclusion" value="false"/>
+        <put-attribute name="selection" value="false"/>
+        <put-attribute name="finish" value="false"/>
     </definition>
 
     <definition name="partyInfo" template="/WEB-INF/views/wizard/partyInfo.jsp">
