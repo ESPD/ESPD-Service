@@ -3,7 +3,6 @@
 <tiles-definitions>
 
     <definition name="espdTemplate" template="/WEB-INF/views/espdTemplate.jsp">
-        <put-attribute name="common" value="/WEB-INF/views/common.jsp" />
         <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
 		<put-attribute name="breadcrumb" value="/WEB-INF/views/breadcrumb.jsp" />
         <put-attribute name="body" value="" />
