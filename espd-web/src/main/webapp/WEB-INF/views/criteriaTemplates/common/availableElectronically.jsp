@@ -17,7 +17,7 @@
 		${span18n["crit_url"]}
 	</label>
 	<div class="col-md-5">
-		<form:input type="text" path="${field}.availableElectronically.url" class="form-control input-sm" data-18n="crit_url_placeholder" placeholder="${i18n['crit_url_placeholder']}"/>
+		<form:input type="text" path="${field}.availableElectronically.url" class="form-control input-sm" data-18n="crit_url_placeholder" placeholder="${i18n['crit_url_placeholder']}" url="true"/>
 	</div>
 	<label class="control-label col-md-1 small">
 		${span18n["crit_code"]}
