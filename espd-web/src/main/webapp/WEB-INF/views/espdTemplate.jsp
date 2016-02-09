@@ -28,6 +28,22 @@
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 		<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/all.css"/>">
 		<script src="<s:url value="/static/js/all.js"/>"></script>
+		
+		<script>
+			$(function () {
+				validator(defaultValidators, "required", "${i18n['validator_required']}");
+				validator(defaultValidators, "number", "${i18n['validator_number']}");
+				validator(defaultValidators, "digits", "${i18n['validator_digits']}");
+				validator(defaultValidators, "url", "${i18n['validator_url']}");
+	
+				jQuery.extend(jQuery.validator.messages, defaultValidators);
+			            
+				$("input.datepicker").datepicker({format: "dd-mm-yyyy", clearBtn: true, todayHighlight: true});
+				$("span[data-toggle='tooltip']").tooltip({placement: "top", html: true, trigger: "hover"}).addClass("fa").addClass("fa-info-circle");
+				$("input:radio[data-target-show]").change(dataShow);
+				$("input:radio[data-target-hide]").change(dataHide);
+			});
+		</script>
     </head>
     <body>
     	<div class="container panel" style="padding:0; border-color: #396ea2 !important;">
