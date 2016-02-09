@@ -11,6 +11,7 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
     </definition>
 
+    <definition name="contact" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/contact.jsp"/></definition>
     <definition name="welcome" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/></definition>
 	<definition name="filter" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp"/></definition>
     <definition name="about" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp"/></definition>

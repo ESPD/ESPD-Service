@@ -66,7 +66,7 @@ class WelcomeController {
         return "welcome";
     }
 
-    @RequestMapping("/{page:welcome|filter|print}")
+    @RequestMapping("/{page:welcome|filter|print|contact}")
     public String getPage(@PathVariable String page) {
         return page;
     }
