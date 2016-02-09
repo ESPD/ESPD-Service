@@ -1,8 +1,5 @@
 package eu.europa.ec.grow.espd.config;
 
-import net.bull.javamelody.MonitoringFilter;
-import net.bull.javamelody.Parameter;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -63,20 +60,20 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
         return new ResourceUrlEncodingFilter();
     }
 
-    @Bean
-    MonitoringFilter melodyMonitoringFilter() {
-        return new MonitoringFilter();
-    }
-
-    @Bean
-    FilterRegistrationBean melodyFilterRegistration(MonitoringFilter melodyFilter) {
-        FilterRegistrationBean frb = new FilterRegistrationBean(melodyFilter);
-        frb.addInitParameter(Parameter.NO_DATABASE.getCode(), "true");
-        frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
-                "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
-        frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
-        return frb;
-    }
+//    @Bean
+//    MonitoringFilter melodyMonitoringFilter() {
+//        return new MonitoringFilter();
+//    }
+//
+//    @Bean
+//    FilterRegistrationBean melodyFilterRegistration(MonitoringFilter melodyFilter) {
+//        FilterRegistrationBean frb = new FilterRegistrationBean(melodyFilter);
+//        frb.addInitParameter(Parameter.NO_DATABASE.getCode(), "true");
+//        frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
+//                "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
+//        frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
+//        return frb;
+//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

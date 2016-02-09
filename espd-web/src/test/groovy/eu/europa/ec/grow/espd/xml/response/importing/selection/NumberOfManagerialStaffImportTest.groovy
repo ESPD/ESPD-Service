@@ -18,7 +18,9 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
 
         then:
         espd.numberManagerialStaff.exists == true
-        espd.numberManagerialStaff.answer == false // has no answer criterion
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.numberManagerialStaff.answer == true
 
         then:
         espd.numberManagerialStaff.year1 == 2016

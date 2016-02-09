@@ -31,4 +31,12 @@ public abstract class SelectionCriterion extends Criterion {
         return null;
     }
 
+    @Override
+    public Boolean getAnswer() {
+        if (this.answer == null) {
+            // selection criteria with no answer have a default value of TRUE
+            return Boolean.TRUE;
+        }
+        return this.answer;
+    }
 }

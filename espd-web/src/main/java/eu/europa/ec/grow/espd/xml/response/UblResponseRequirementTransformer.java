@@ -71,7 +71,9 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
         switch (type) {
         case INDICATOR:
             Boolean answer = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setIndicator(buildIndicatorType(answer));
+            if (answer != null) {
+                responseType.setIndicator(buildIndicatorType(answer));
+            }
             break;
         case DATE:
             Date date = readRequirementFirstValue(ccvRequirement, espdCriterion);

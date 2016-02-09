@@ -50,4 +50,9 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
     public Boolean getBooleanValue1() {
         return Boolean.TRUE.equals(this.booleanValue1);
     }
+
+    @Override
+    public Boolean getAnswer() {
+        return this.answer;
+    }
 }

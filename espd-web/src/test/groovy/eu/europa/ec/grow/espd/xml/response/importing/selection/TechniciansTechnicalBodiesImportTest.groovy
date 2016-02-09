@@ -18,7 +18,9 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
 
         then:
         espd.techniciansTechnicalBodies.exists == true
-        espd.techniciansTechnicalBodies.answer == false // has no answer criterion
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.techniciansTechnicalBodies.answer == true // has no answer criterion
         espd.techniciansTechnicalBodies.specify == "specify something"
 
         then: "info electronically"

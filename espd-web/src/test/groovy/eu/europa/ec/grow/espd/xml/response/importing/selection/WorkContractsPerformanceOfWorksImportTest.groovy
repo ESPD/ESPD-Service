@@ -19,7 +19,9 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
         then:
         espd.workContractsPerformanceOfWorks.exists == true
-        espd.workContractsPerformanceOfWorks.answer == false // has no answer criterion
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.workContractsPerformanceOfWorks.answer == true
 
         then:
         espd.workContractsPerformanceOfWorks.description1 == "description1"

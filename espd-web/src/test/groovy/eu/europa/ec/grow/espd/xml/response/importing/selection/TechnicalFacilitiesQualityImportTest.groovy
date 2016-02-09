@@ -20,7 +20,9 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
 
         then:
         espd.technicalFacilitiesMeasures.exists == true
-        espd.technicalFacilitiesMeasures.answer == false // has no answer criterion
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.technicalFacilitiesMeasures.answer == true
         espd.technicalFacilitiesMeasures.description == "Another description"
 
         then: "info electronically"

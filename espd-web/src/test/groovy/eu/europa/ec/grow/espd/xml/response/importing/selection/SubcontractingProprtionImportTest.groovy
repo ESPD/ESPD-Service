@@ -20,7 +20,9 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
 
         then:
         espd.subcontractingProportion.exists == true
-        espd.subcontractingProportion.answer == false // has no answer criterion
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.subcontractingProportion.answer == true
         espd.subcontractingProportion.percentage == 66.6
 
         then: "info electronically"

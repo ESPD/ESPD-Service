@@ -40,4 +40,13 @@ public abstract class ExclusionCriterion extends Criterion {
         return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getAnswer());
     }
 
+    @Override
+    public Boolean getAnswer() {
+        if (this.answer == null) {
+            // exclusion criteria with no answer have a default value of FALSE
+            return Boolean.FALSE;
+        }
+        return this.answer;
+    }
+
 }

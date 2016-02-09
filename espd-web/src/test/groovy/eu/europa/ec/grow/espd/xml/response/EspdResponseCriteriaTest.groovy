@@ -41,4 +41,55 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
             checkCriterionId(result, idx++, criterion.getUuid())
         }
     }
+
+    def "exclusion criteria with no 'Your answer' must have a default value of FALSE"() {
+        given:
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, answer: null))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "selection criteria with no 'Your answer' must have a default value of TRUE"() {
+        given:
+        def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: null))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
+    def "Award criteria with no 'Indicator' don't have a response"() {
+        given:
+        def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.AwardCriterion(exists: true, answer: null))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(AwardCriterion.MEETS_OBJECTIVE)
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.size() == 0
+    }
 }

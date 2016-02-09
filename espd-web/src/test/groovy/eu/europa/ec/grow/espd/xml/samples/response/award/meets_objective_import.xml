@@ -21,9 +21,7 @@
             <ccv:Requirement responseDataType="INDICATOR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
                 <cbc:Description></cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                </ccv:Response>
+                <ccv:Response/>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">323f19b5-3308-4873-b2d1-767963cc81e9</cbc:ID>

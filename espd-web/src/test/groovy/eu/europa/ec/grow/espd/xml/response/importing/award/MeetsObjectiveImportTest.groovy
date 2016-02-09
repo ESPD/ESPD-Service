@@ -20,6 +20,9 @@ class MeetsObjectiveImportTest extends AbstractXmlFileImport {
 
         then:
         espd.meetsObjective.exists == true
+
+        then: "there is no answer"
+//        espd.meetsObjective.answer == "false"
         espd.meetsObjective.description1 == "please describe"
 
         then: "info electronically"
