@@ -18,7 +18,9 @@ class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
 
         then:
         espd.setupEconomicOperator.exists == true
-        espd.setupEconomicOperator.answer == false // has no answer criterion
+
+        then: "selection criteria with no answer have a default value of true"
+        espd.setupEconomicOperator.answer == true
         espd.setupEconomicOperator.year1 == 2016
     }
 

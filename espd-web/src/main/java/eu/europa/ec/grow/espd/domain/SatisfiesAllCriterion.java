@@ -15,4 +15,10 @@ public class SatisfiesAllCriterion extends SelectionCriterion {
         criterion.setExists(exists);
         return criterion;
     }
+
+    @Override
+    public Boolean getAnswer() {
+        // the satisfies all criterion has special behaviour so the default value should be null
+        return this.answer;
+    }
 }

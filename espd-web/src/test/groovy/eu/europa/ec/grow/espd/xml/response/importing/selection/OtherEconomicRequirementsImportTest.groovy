@@ -20,7 +20,9 @@ class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
 
         then:
         espd.otherEconomicFinancialRequirements.exists == true
-        espd.otherEconomicFinancialRequirements.answer == false
+
+        then: "selection criteria with no answer have a default value of true"
+        espd.otherEconomicFinancialRequirements.answer == true
         espd.otherEconomicFinancialRequirements.description == "Other economic Hodor"
 
         then: "info electronically"

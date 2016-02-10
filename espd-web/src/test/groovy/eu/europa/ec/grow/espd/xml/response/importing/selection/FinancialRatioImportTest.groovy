@@ -18,7 +18,9 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
 
         then:
         espd.financialRatio.exists == true
-        espd.financialRatio.answer == false // has no answer
+
+        then: "selection criteria with no answer have a default value of true"
+        espd.financialRatio.answer == true
 
         then:
         espd.financialRatio.description1 == "description1"

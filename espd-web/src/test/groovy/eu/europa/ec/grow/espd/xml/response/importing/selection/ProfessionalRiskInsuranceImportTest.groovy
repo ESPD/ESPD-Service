@@ -20,7 +20,9 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
 
         then:
         espd.professionalRiskInsurance.exists == true
-        espd.professionalRiskInsurance.answer == false // has no answer criterion
+
+        then: "selection criteria with no answer have a default value of true"
+        espd.professionalRiskInsurance.answer == true
 
         then:
         espd.professionalRiskInsurance.amount1 == 777.7

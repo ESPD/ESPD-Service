@@ -13,12 +13,12 @@ public class TaxesCriterion extends ExclusionCriterion {
     private Country country;
     private Double amount;
     private String currency;
-    private boolean breachEstablishedOtherThanJudicialDecision;
+    private Boolean breachEstablishedOtherThanJudicialDecision;
     private String meansDescription;
-    private boolean decisionFinalAndBinding;
+    private Boolean decisionFinalAndBinding;
     private Date dateOfConviction;
     private String periodLength;
-    private boolean eoFulfilledObligations;
+    private Boolean eoFulfilledObligations;
     private String obligationsDescription;
 
     public static TaxesCriterion buildWithExists(Boolean exists) {

@@ -14,41 +14,63 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
         when:
         def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
 
-        then: "should have all criminal convictions"
+        then: "should have all criminal convictions and their default answers should be false"
         espd.criminalConvictions.exists == true
+        espd.criminalConvictions.answer == false
         espd.corruption.exists == true
+        espd.corruption.answer == false
         espd.fraud.exists == true
+        espd.fraud.answer == false
         espd.terroristOffences.exists == true
+        espd.terroristOffences.answer == false
         espd.moneyLaundering.exists == true
+        espd.moneyLaundering.answer == false
         espd.childLabour.exists == true
+        espd.childLabour.answer == false
 
-        then: "should have all tax convictions"
+        then: "should have all tax convictions and their default answers should be false"
         espd.paymentTaxes.exists == true
+        espd.paymentTaxes.answer == false
         espd.paymentSocialSecurity.exists == true
+        espd.paymentSocialSecurity.answer == false
 
-        then: "should have all environmental"
+        then: "should have all environmental and their default answers should be false"
         espd.breachingObligationsEnvironmental.exists == true
+        espd.breachingObligationsEnvironmental.answer == false
 
-        then: "should have all insolvency"
+        then: "should have all insolvency and their default answers should be false"
         espd.bankruptcy.exists == true
+        espd.bankruptcy.answer == false
         espd.insolvency.exists == true
+        espd.insolvency.answer == false
         espd.arrangementWithCreditors.exists == true
+        espd.arrangementWithCreditors.answer == false
         espd.analogousSituation.exists == true
+        espd.analogousSituation.answer == false
         espd.assetsAdministeredByLiquidator.exists == true
+        espd.assetsAdministeredByLiquidator.answer == false
         espd.businessActivitiesSuspended.exists == true
+        espd.businessActivitiesSuspended.answer == false
 
-        then: "should have all misconduct"
+        then: "should have all misconduct and their default answers should be false"
         espd.guiltyGrave.exists == true
+        espd.guiltyGrave.answer == false
         espd.agreementsWithOtherEO.exists == true
+        espd.agreementsWithOtherEO.answer == false
 
-        then: "should have all conflict of interest"
+        then: "should have all conflict of interest and their default answers should be false"
         espd.conflictInterest.exists == true
+        espd.conflictInterest.answer == false
         espd.involvementPreparationProcurement.exists == true
+        espd.involvementPreparationProcurement.answer == false
         espd.earlyTermination.exists == true
+        espd.earlyTermination.answer == false
         espd.guiltyMisinterpretation.exists == true
+        espd.guiltyMisinterpretation.answer == false
 
-        then: "national"
+        then: "national and their default answers should be false"
         espd.purelyNationalGrounds.exists == true
+        espd.purelyNationalGrounds.answer == false
     }
 
     def "no exclusion criteria should appear as selected"() {
