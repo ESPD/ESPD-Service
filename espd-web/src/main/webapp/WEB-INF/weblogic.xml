@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app   http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
     <context-root>espd</context-root>
-    <session-descriptor>
-        <cookie-path>/espd</cookie-path>
-        <cookie-name>ESPD_APP</cookie-name>
-        <cookie-http-only>true</cookie-http-only>
-    </session-descriptor>
+    <!--<session-descriptor>-->
+        <!--<cookie-path>/espd</cookie-path>-->
+        <!--<cookie-name>ESPD_APP</cookie-name>-->
+        <!--<cookie-http-only>true</cookie-http-only>-->
+    <!--</session-descriptor>-->
     <container-descriptor>
         <!-- We want to allow some resources to be accessed by authenticated users who do not possess any role. Very important parameter. -->
         <allow-all-roles>true</allow-all-roles>
