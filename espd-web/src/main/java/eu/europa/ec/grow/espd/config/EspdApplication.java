@@ -1,6 +1,7 @@
 package eu.europa.ec.grow.espd.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.client.RestTemplate;
@@ -29,6 +31,14 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(EspdApplication.class, args);
+    }
+    
+    @Bean
+    ReloadableResourceBundleMessageSource messageSource() {
+    	ReloadableResourceBundleMessageSource r = new ReloadableResourceBundleMessageSource();
+    	r.setDefaultEncoding("UTF-8");
+    	r.setBasename("classpath:i18n/messages");
+    	return r;
     }
 
     @Bean
