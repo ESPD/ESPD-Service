@@ -8,5 +8,5 @@
 
 <tiles:importAttribute name="selectionForm"/>
 <c:if test="${selectionForm != ''}">
-	<c:import url="${selectionForm}"/>
+	<c:import url="${selectionForm}" charEncoding="UTF-8"/>
 </c:if>

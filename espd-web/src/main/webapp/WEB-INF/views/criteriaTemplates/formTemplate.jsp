@@ -50,7 +50,7 @@
 	
 	        <div class="col-md-12 ${(has_your_answer && ((invert_answer && espd[field].answer) || (!(invert_answer || espd[field].answer)))) ? 'collapse' : ''}" id="${field}-form" style="min-height: 0px;">
 	            <c:if test="${form != ''}">
-	                <c:import url="${form}"/>
+	                <c:import url="${form}" charEncoding="UTF-8"/>
 	            </c:if>
 	        </div>
 			<c:if test="${availableElectronically}">

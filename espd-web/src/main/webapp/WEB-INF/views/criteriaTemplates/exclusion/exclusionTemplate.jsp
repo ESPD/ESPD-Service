@@ -10,7 +10,7 @@
 <tiles:importAttribute name="breachOfObligations"/>
 
 <c:if test="${exclusionForm != ''}">
-	<c:import url="${exclusionForm}"/>
+	<c:import url="${exclusionForm}" charEncoding="UTF-8"/>
 </c:if>
 <c:if test="${breachOfObligations}">
 	<tiles:insertDefinition name="breachOfObligations">
