@@ -1,7 +1,6 @@
 package eu.europa.ec.grow.espd.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +8,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.client.RestTemplate;
