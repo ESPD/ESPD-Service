@@ -45,4 +45,7 @@ class Wro4jProperties {
 
     private boolean parallelProcessing = false;
 
+    private boolean minimizeEnabled = true;
+    
+
 }

@@ -47,6 +47,7 @@ class Wro4jConfig {
         properties.put(ConfigConstants.resourceWatcherUpdatePeriod.name(), String.valueOf(wro4jProperties.getResourceWatcherUpdatePeriod()));
         properties.put(ConfigConstants.cacheGzippedContent.name(), String.valueOf(wro4jProperties.isCacheGzippedContent()));
         properties.put(ConfigConstants.parallelPreprocessing.name(), String.valueOf(wro4jProperties.isParallelProcessing()));
+        properties.put(ConfigConstants.minimizeEnabled.name(), String.valueOf(wro4jProperties.isMinimizeEnabled()));
         return properties;
     }
 

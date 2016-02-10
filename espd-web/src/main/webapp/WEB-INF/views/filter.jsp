@@ -33,7 +33,7 @@ $(function() {
     nextBtn.prop('disabled', true);
 });
 </script>
-<form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
+<form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
 			<tiles:putAttribute name="start" value="true"/>
@@ -44,8 +44,16 @@ $(function() {
 		<div class="alert alert-espd-info">
 			<ul class="fa-ul">
 			<li>
-				<i class="info-label fa fa-info-circle fa-lg fa-li"></i>${span18n['filter_alert']}
-				${span18n['faq_text']} <a href="<s:url value="/static/documents/espd_faq.pdf"/>">${span18n['faq_link']}</a>
+				<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+				<div id="filter_text">
+					${span18n['filter_alert']}
+				</div>
+				<div id="filter_faq">
+					${span18n['faq_text']}
+					<a href="<s:url value="/static/documents/espd_faq.pdf"/>">
+						${span18n['faq_link']}
+					 </a>
+				</div>
 			</li>
 			</ul>
 		</div>
