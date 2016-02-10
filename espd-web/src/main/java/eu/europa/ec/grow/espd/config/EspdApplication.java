@@ -32,14 +32,6 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
     public static void main(String[] args) throws Exception {
         SpringApplication.run(EspdApplication.class, args);
     }
-    
-    @Bean
-    ReloadableResourceBundleMessageSource messageSource() {
-    	ReloadableResourceBundleMessageSource r = new ReloadableResourceBundleMessageSource();
-    	r.setDefaultEncoding("UTF-8");
-    	r.setBasename("classpath:i18n/messages");
-    	return r;
-    }
 
     @Bean
     ObjectMapper objectMapper() {
