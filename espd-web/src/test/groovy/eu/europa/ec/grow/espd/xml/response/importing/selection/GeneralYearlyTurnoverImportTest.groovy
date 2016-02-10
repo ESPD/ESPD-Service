@@ -53,6 +53,19 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         espd.generalYearlyTurnover.availableElectronically.code == "GENERAL_TURNOVER"
     }
 
+    def "a selection criterion with no answer will be treated as FALSE"() {
+        given:
+        def espdResponseXml = importXmlResponseFile("selection/selection_criterion_no_answer_import.xml")
+
+        when:
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+
+        then:
+        espd.generalYearlyTurnover.exists == true
+        espd.generalYearlyTurnover.answer == false
+
+    }
+
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: true,

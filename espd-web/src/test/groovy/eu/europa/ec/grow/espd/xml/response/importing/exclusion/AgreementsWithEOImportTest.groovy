@@ -32,6 +32,18 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
         espd.agreementsWithOtherEO.availableElectronically.code == null
     }
 
+    def "an exclusion criterion with no answer will have a value of FALSE"() {
+        given:
+        def espdResponseXml = importXmlResponseFile("exclusion/exclusion_criterion_no_answer_import.xml")
+
+        when:
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+
+        then:
+        espd.agreementsWithOtherEO.exists == true
+        espd.agreementsWithOtherEO.answer == false
+    }
+
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true,  answer: true,
