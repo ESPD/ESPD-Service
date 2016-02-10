@@ -26,8 +26,9 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field3" data-i18n="crit_who_convicted"><s:message
-            code='crit_who_convicted'/></label>
+    <label class="control-label col-md-4 small" for="${field}-field3" data-i18n="crit_who_convicted">
+            ${span18n["crit_who_convicted"]}
+    </label>
 
     <div class="col-md-8">
         <s:message code="crit_who_convicted_placeholder" var="whoConvictedPlaceholder"/>
