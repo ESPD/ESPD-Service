@@ -33,7 +33,6 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
     TilesConfigurer tilesConfigurer() {
         TilesConfigurer tilesConfig = new TilesConfigurer();
         tilesConfig.setDefinitions("/WEB-INF/tiles.xml");
-        tilesConfig.setCheckRefresh(true);
         return tilesConfig;
     }
 
