@@ -23517,5 +23517,4 @@ function language(code) {
 			jQuery.extend(jQuery.validator.messages, validators);
 		}
 	});
-}
-    ;
+};

@@ -20,9 +20,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="ESPD is an information system that will aid in the process of creating an electronic file used throughout the tendering process in the EU and will reduce the administrative burden by reusing key information on the Contracting Authority, Economical Operator, criteria and evidence description.">
-		<meta name="keywords" content="espd, public, procurement, europa, europe, european commission"/>
-		<meta name="author" content="European Commission">
+		<meta name="description" content="European Single Procurement Document (ESPD) is a self-declaration of the businesses' financial status, abilities and suitability for a public procurement procedure. It is used as a preliminary evidence of fulfilment of the exclusion and eligibility criteria required in EU public procurement procedures. The tenderers no longer have to provide full documentary evidence and different forms, which means a significant simplification of access to cross-border tendering opportunities. The European Commission provides a free online service for the buyers, bidders and other parties interested in filling in the ESPD electronically.">
+		<meta name="keywords" content=" European Single Procurement Document, ESPD, public, procurement, e-procurement, electronic procurement, tender, web service, online service, form, self-declaration, proof, evidence, exclusion, eligibility, selection, criteria, public buyer, contracting authority, bidder, tenderer, economic operator, Europe, European Union, European Commission"/>
+		<meta name="author" content="European Commission, DG GROW, DG Internal Market">
 		<title>ESPD</title>
 		
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">

@@ -68,4 +68,3 @@ function language(code) {
 		}
 	});
 }
-    
