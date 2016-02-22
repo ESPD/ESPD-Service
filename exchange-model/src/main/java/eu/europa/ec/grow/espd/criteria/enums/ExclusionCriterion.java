@@ -81,7 +81,7 @@ public enum ExclusionCriterion implements CcvCriterion {
      */
     BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL("a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
             "Breaching of obligations in the fields of environmental law",
-            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU.",
             ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             list(BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL_GROUP), "breachingObligationsEnvironmental"),
     /**
@@ -89,7 +89,7 @@ public enum ExclusionCriterion implements CcvCriterion {
      */
     BREACHING_OF_OBLIGATIONS_SOCIAL("a261a395-ed17-4939-9c75-b9ff1109ca6e",
             "Breaching of obligations in the fields of social law",
-            "Has the economic operator, to its knowledge, breached its obligations in the fields of social law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of social law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU.",
             ExclusionCriterionTypeCode.SOCIAL_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             list(BREACHING_OF_OBLIGATIONS_SOCIAL_GROUP), "breachingObligationsSocial"),
     /**
@@ -97,7 +97,7 @@ public enum ExclusionCriterion implements CcvCriterion {
      */
     BREACHING_OF_OBLIGATIONS_LABOUR("a34b70d6-c43d-4726-9a88-8e2b438424bf",
             "Breaching of obligations in the fields of labour law",
-            "Has the economic operator, to its knowledge, breached its obligations in the fields of labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU.",
+            "Has the economic operator, to its knowledge, breached its obligations in the fields of labour law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU.",
             ExclusionCriterionTypeCode.LABOUR_LAW, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
             list(BREACHING_OF_OBLIGATIONS_LABOUR_GROUP), "breachingObligationsLabour"),
     /**

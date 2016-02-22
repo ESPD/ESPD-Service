@@ -29,7 +29,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental law"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2004/18/EU."
+        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU."
 
         then: "CriterionLegislationReference element"
         checkLegislationReference(request, idx, "57(4)")

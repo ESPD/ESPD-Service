@@ -1,8 +1,9 @@
 package eu.europa.ec.grow.espd.xml;
 
+import com.google.common.collect.ImmutableMap;
+
 import java.util.HashMap;
 import java.util.Map;
-import com.google.common.collect.ImmutableMap;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class CriteriaTemplates {
@@ -878,8 +879,8 @@ public class CriteriaTemplates {
         ImmutableMap.<String, Object>builder().
     	put("template","euCriteriaListTemplate").
     	put("id","ca-economic-financial-section").
-    	put("title_code","crit_top_title_grounds_payment_taxes").
-    	put("subtitle_code","crit_eu_main_title_payment_taxes_eo").
+    	put("title_code","createcasel_economic_and_financial_standing").
+    	put("subtitle_code","crit_selection_eo_economic_article").
     	put("tooltip_code","crit_selection_economic_financial_standing_article_tooltip").
     	put("criteriaList",economicListCA).build(),
     	
