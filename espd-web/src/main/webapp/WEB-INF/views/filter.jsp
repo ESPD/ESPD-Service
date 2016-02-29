@@ -80,10 +80,13 @@ $(function() {
                             <label><input name="action" value="ca_create_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"/>${span18n['filter_create_espd']}</label>
                             <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_create_espd']}"></span>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <form:input path="tedReceptionId" id="tedReceptionId" cssClass="form-control small" placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
                         </div>
-                        <div class="col-md-offset-5">&nbsp;</div>
+                        <div class="col-md-4" style="padding-left: 0px;padding-right: 5px">
+                            <span data-i18n="tooltip_ted_reception_id" data-toggle="tooltip" title="${i18n['tooltip_ted_reception_id']}"></span>
+                        </div>
+                        <%--<div class="col-md-offset-3">&nbsp;</div>--%>
                     </div>
                     <div class="row">
                         <div class="radio col-md-3">
