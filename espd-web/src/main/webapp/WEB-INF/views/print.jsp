@@ -538,6 +538,46 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 </div>
             </div>
             
+            <div class="espd-panel panel panel-default">
+                <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_subcontractors">
+                        ${span18n['createeo_information_subcontractors']}
+                </div>
+                <div id="createeo_subcontractors" class="collapse in">
+                    <div class="panel-body">
+                    
+                            <div class="col-md-12 alert alert-espd-info"
+                                 style="border: 1px dotted blue; background-color: #D8D8D8;">
+                                    ${span18n['createeo_information_subcontractors_header']}
+                            </div>
+                            
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-6">
+                                        ${span18n['createeo_information_subcontractors_title']}
+                                </label>
+
+                                <div class="col-md-6">
+									<form:radiobutton path="subcontractingThirdParties.answer" value="true" data-target-show="#createeo_subcontractors_div"/>${span18n["yes"]}
+									<form:radiobutton path="subcontractingThirdParties.answer" value="false" data-target-hide="#createeo_subcontractors_div"/>${span18n["no"]}
+                                </div>
+                            </div>
+                            <div id="createeo_subcontractors_div" class="${espd['subcontractingThirdParties'].answer ? '' : 'collapse'}">
+								<div class="col-md-12 form-group">
+									<label class="control-label col-md-6">${span18n['createeo_information_subcontractors_description']}</label>
+		
+									<div class="col-md-6">
+										<form:input cssClass="form-control" path="subcontractingThirdParties.description1"
+											placeholder="${i18n['createeo_information_subcontractors_placeholder']}"
+											data-i18n="createeo_information_subcontractors_placeholder"/>
+									</div>
+								</div>
+                            </div>
+                            <div class="col-md-12 alert alert-espd-info"style="border: 1px dotted blue; background-color: #D8D8D8;">
+                            	${span18n['createeo_information_subcontractors_footer']}
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
     </div>
 
 	<%-- EXCLUSION --%>

@@ -48,7 +48,7 @@
         <div class="alert alert-espd-info">
             <ul class="fa-ul">
                 <li>
-                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>${span18n['createcasel_alert']}
+                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>${span18n['createeosel_alert']}
                 </li>
             </ul>
         </div>
