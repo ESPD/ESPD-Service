@@ -33,6 +33,7 @@ public class EspdDocument {
     private AwardCriterion eoParticipatingProcurementProcedure;
     private AwardCriterion eoReliesCapacities;
     private AwardCriterion meetsObjective;
+    private AwardCriterion subcontractingThirdParties;
 
     // Exclusion criteria
 
