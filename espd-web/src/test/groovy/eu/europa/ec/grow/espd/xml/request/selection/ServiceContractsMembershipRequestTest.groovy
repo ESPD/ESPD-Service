@@ -38,11 +38,13 @@ class ServiceContractsMembershipRequestTest extends AbstractSelectionCriteriaFix
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "84c72d9c-6372-4781-b957-afe97c503c6c"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

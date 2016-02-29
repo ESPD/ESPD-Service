@@ -39,11 +39,13 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "84c72d9c-6372-4781-b957-afe97c503c6c"
         request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(r1_1, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
@@ -64,6 +66,23 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Please describe' requirement response"() {
+        given:
+        def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true, answer: true, description: "hodor 2"))
+
+        when:
+        def request = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
+
+        then:
+        def subGroup = request.Criterion[idx].RequirementGroup[0]
+
+        def req = subGroup.Requirement[1]
+        checkRequirement(req, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "hodor 2"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

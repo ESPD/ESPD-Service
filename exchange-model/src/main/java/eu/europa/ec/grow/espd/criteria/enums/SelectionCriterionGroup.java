@@ -135,12 +135,12 @@ public enum SelectionCriterionGroup implements CcvCriterionGroup {
      *
      */
     SERVICE_CONTRACTS_AUTHORISATION_GROUP("a109e144-f65e-469d-bcda-220f1af34b6c",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
     SERVICE_CONTRACTS_MEMBERSHIP_GROUP("84c72d9c-6372-4781-b957-afe97c503c6c",
-            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER)),
+            Collections.<CcvCriterionGroup>emptyList(), list(YOUR_ANSWER, PLEASE_DESCRIBE)),
     /**
      *
      */
