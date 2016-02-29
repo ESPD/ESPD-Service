@@ -1,4 +1,4 @@
-<%@ page import="eu.europa.ec.grow.espd.constants.enums.Country" %>
+<%@ page import="eu.europa.ec.grow.espd.xml.CriteriaTemplates" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,10 +8,10 @@
 
 <%
 request.setAttribute("exclusionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionEO);
-
-request.setAttribute("suitabilityListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.suitabilityListEO);
-request.setAttribute("economicListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.economicListEO);
-request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.technicalListEO_UglyPrintVersion);
+request.setAttribute("suitabilityListEO", CriteriaTemplates.suitabilityListEO);
+request.setAttribute("economicListEO", CriteriaTemplates.economicListEO);
+request.setAttribute("technicalListEO", CriteriaTemplates.technicalListEO_UglyPrintVersion);
+request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranceListEO);
 %>
 
 <script>
@@ -640,6 +640,14 @@ request.setAttribute("technicalListEO", eu.europa.ec.grow.espd.xml.CriteriaTempl
 				<tiles:putAttribute name="disableTooltips" value="true"/>
 				<tiles:putAttribute name="criteriaList" value="${technicalListEO}"/>
 			</tiles:insertDefinition>
+
+            <tiles:insertDefinition name="euCriteriaListTemplate">
+                <tiles:putAttribute name="id" value="eo-quality-assurance-section"/>
+                <tiles:putAttribute name="title_code" value="createcasel_quality_assurance"/>
+                <tiles:putAttribute name="subtitle_code" value="crit_selection_quality_assurance_article"/>
+                <tiles:putAttribute name="disableTooltips" value="true"/>
+                <tiles:putAttribute name="criteriaList" value="${qualityAssuranceListEO}"/>
+            </tiles:insertDefinition>
         
 		</div>
     </div>
