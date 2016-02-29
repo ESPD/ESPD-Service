@@ -46,11 +46,20 @@ public enum AwardCriterion implements CcvCriterion {
     /**
      *
      */
+    SUBCONTRACTING_THIRD_PARTIES("72c0c4b1-ca50-4667-9487-461f3eed4ed7",
+            "Does the economic operator intend to subcontract any share of the contract to third parties?",
+            "",
+            AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
+            list(SUBCONTRACTING_THIRD_PARTIES_GROUP), "subcontractingThirdParties"),
+    /**
+     *
+     */
     MEETS_OBJECTIVE("9c70375e-1264-407e-8b50-b9736bc08901",
             "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:",
             "If some of these certificates or forms of documentary evidence are available electronically, please indicate for each:",
             AwardCriterionTypeCode.REDUCTION_OF_CANDIDATES, null,
-            list(MEETS_OBJECTIVE_GROUP, INFO_ELECTRONICALLY_GROUP), "meetsObjective"),;
+            list(MEETS_OBJECTIVE_GROUP, INFO_ELECTRONICALLY_GROUP), "meetsObjective"),
+    ;
 
     private final String uuid;
 

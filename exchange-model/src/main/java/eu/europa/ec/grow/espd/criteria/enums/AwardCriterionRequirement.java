@@ -101,6 +101,11 @@ public enum AwardCriterionRequirement implements CcvCriterionRequirement {
      */
     PLEASE_DESCRIBE("323f19b5-3308-4873-b2d1-767963cc81e9", CriterionText.PLEASE_DESCRIBE_TEXT,
             ExpectedResponseType.DESCRIPTION, "description1"),
+    /**
+     *
+     */
+    LIST_SUBCONTRACTORS("999c7fe2-61cd-4e86-b76f-e280304dc8c9", "If yes and in so far as known, please list the proposed subcontractors:",
+            ExpectedResponseType.DESCRIPTION, "description1"),
     ;
 
     private final String id;

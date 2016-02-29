@@ -608,6 +608,10 @@ class EspdResponseCriterionFactory {
         if (isNotBlank(describe)) {
             criterion.setDescription1(describe);
         }
+        String subcontractors = readRequirementValue(AwardCriterionRequirement.LIST_SUBCONTRACTORS, criterionType);
+        if (isNotBlank(subcontractors)) {
+            criterion.setDescription1(subcontractors);
+        }
 
         String regNumberElectronically = readRequirementValue(AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
                 criterionType);
