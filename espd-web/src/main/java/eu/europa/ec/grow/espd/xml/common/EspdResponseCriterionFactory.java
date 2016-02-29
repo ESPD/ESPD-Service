@@ -64,6 +64,8 @@ class EspdResponseCriterionFactory {
             return (T) buildEconomicFinancialStandingCriterion(ccvCriterion, ublCriteria);
         } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
             return (T) buildTechnicalProfessionalCriterion(ccvCriterion, ublCriteria);
+        } else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.equals(ccvCriterion.getCriterionType())) {
+            return (T) buildQualityAssuranceCriterion(ccvCriterion, ublCriteria);
         } else if (AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.equals(ccvCriterion.getCriterionType()) ||
                 AwardCriterionTypeCode.REDUCTION_OF_CANDIDATES.equals(ccvCriterion.getCriterionType())) {
             return (T) buildAwardCriterion(ccvCriterion, ublCriteria);
@@ -249,13 +251,14 @@ class EspdResponseCriterionFactory {
         return criterion;
     }
 
-    private SatisfiesAllCriterion buildSatisfiesAllCriterion(CcvCriterion ccvCriterion, List<CriterionType> ublCriteria) {
+    private SatisfiesAllCriterion buildSatisfiesAllCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
         CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
         if (criterionType == null) {
             return SatisfiesAllCriterion.buildWithExists(false);
         }
 
-        SatisfiesAllCriterion criterion =  SatisfiesAllCriterion.buildWithExists(true);
+        SatisfiesAllCriterion criterion = SatisfiesAllCriterion.buildWithExists(true);
 
         Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
         criterion.setAnswer(yourAnswer);
@@ -273,7 +276,6 @@ class EspdResponseCriterionFactory {
 
         Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
         criterion.setAnswer(yourAnswer);
-
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
@@ -380,6 +382,35 @@ class EspdResponseCriterionFactory {
 
         Double percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
         criterion.setPercentage(percentage);
+
+        criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+
+        return criterion;
+    }
+
+    private QualityAssuranceCriterion buildQualityAssuranceCriterion(CcvCriterion ccvCriterion,
+            List<CriterionType> ublCriteria) {
+        CriterionType criterionType = isCriterionPresent(ccvCriterion, ublCriteria);
+        if (criterionType == null) {
+            return QualityAssuranceCriterion.buildWithExists(false);
+        }
+
+        QualityAssuranceCriterion criterion = QualityAssuranceCriterion.buildWithExists(true);
+
+        Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
+        if (yourAnswer != null) {
+            criterion.setAnswer(yourAnswer);
+        }
+
+        String explainQa = readRequirementValue(SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA, criterionType);
+        if (isNotBlank(explainQa)) {
+            criterion.setDescription(explainQa);
+        }
+        String explainEnvironmental = readRequirementValue(
+                SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL, criterionType);
+        if (isNotBlank(explainEnvironmental)) {
+            criterion.setDescription(explainEnvironmental);
+        }
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
@@ -560,7 +591,8 @@ class EspdResponseCriterionFactory {
         criterion.setAnswer(yourAnswer);
 
         // description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
-        String detailsCategory = readRequirementValue(AwardCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY, criterionType);
+        String detailsCategory = readRequirementValue(AwardCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
+                criterionType);
         if (isNotBlank(detailsCategory)) {
             criterion.setDescription1(detailsCategory);
         }
@@ -577,7 +609,8 @@ class EspdResponseCriterionFactory {
             criterion.setDescription1(describe);
         }
 
-        String regNumberElectronically = readRequirementValue(AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY, criterionType);
+        String regNumberElectronically = readRequirementValue(AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
+                criterionType);
         if (isNotBlank(regNumberElectronically)) {
             criterion.setDescription2(regNumberElectronically);
         }
@@ -586,21 +619,24 @@ class EspdResponseCriterionFactory {
             criterion.setDescription2(otherEos);
         }
 
-        String referencesRegistration = readRequirementValue(AwardCriterionRequirement.REFERENCES_REGISTRATION, criterionType);
+        String referencesRegistration = readRequirementValue(AwardCriterionRequirement.REFERENCES_REGISTRATION,
+                criterionType);
         if (isNotBlank(referencesRegistration)) {
             criterion.setDescription3(referencesRegistration);
         }
-        String participantGroupName = readRequirementValue(AwardCriterionRequirement.PARTICIPANT_GROUP_NAME, criterionType);
+        String participantGroupName = readRequirementValue(AwardCriterionRequirement.PARTICIPANT_GROUP_NAME,
+                criterionType);
         if (isNotBlank(participantGroupName)) {
             criterion.setDescription3(participantGroupName);
         }
 
-
-        String eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE, criterionType);
+        String eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
+                criterionType);
         if (isNotBlank(eoProvideCertificate)) {
             criterion.setDescription4(eoProvideCertificate);
         }
-        String docElectronically = readRequirementValue(AwardCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY, criterionType);
+        String docElectronically = readRequirementValue(AwardCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
+                criterionType);
         if (isNotBlank(docElectronically)) {
             criterion.setDescription5(docElectronically);
         }

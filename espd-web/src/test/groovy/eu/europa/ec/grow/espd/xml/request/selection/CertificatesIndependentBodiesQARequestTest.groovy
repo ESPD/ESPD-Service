@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.QualityAssuranceCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
@@ -11,7 +10,7 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
 
     def "32. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -21,7 +20,7 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
         checkCriterionId(request, idx, "d726bac9-e153-4e75-bfca-c5385587766d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Certificates by independent bodies about quality assurance standards"

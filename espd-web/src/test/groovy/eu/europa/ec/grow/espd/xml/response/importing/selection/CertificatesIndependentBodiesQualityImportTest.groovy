@@ -1,11 +1,9 @@
 package eu.europa.ec.grow.espd.xml.response.importing.selection
-
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.QualityAssuranceCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/13/16 at 11:12 AM.
  */
@@ -31,7 +29,7 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 answer: true, description: "Another description",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")

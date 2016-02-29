@@ -68,8 +68,8 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
                 supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true),
                 supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true),
                 supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true),
-                certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true),
-                certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true),
+                certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true),
+                certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true),
                 meetsObjective: new AwardCriterion(exists: true)
         )
 

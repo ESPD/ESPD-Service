@@ -271,7 +271,7 @@ public enum SelectionCriterion implements CcvCriterion {
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA("d726bac9-e153-4e75-bfca-c5385587766d",
             "Certificates by independent bodies about quality assurance standards",
             "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
-            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
+            SelectionCriterionTypeCode.QUALITY_ASSURANCE, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
             list(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA_GROUP, INFO_ELECTRONICALLY_GROUP),
             "certificateIndependentBodiesAboutQa"),
     /**
@@ -280,7 +280,7 @@ public enum SelectionCriterion implements CcvCriterion {
     CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL("8ed65e48-fd0d-444f-97bd-4f58da632999",
             "Certificates by independent bodies about environmental management systems or standards",
             "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
-            SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
+            SelectionCriterionTypeCode.QUALITY_ASSURANCE, LegislationReference.DIRECTIVE_2014_24_EU_62_2,
             list(CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL_GROUP, INFO_ELECTRONICALLY_GROUP),
             "certificateIndependentBodiesAboutEnvironmental");
 

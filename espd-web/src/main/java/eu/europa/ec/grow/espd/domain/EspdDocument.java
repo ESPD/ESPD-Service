@@ -103,8 +103,9 @@ public class EspdDocument {
     private TechnicalProfessionalCriterion supplyContractsSamplesDescriptionsWithoutCa;
     private TechnicalProfessionalCriterion supplyContractsSamplesDescriptionsWithCa;
     private TechnicalProfessionalCriterion supplyContractsCertificatesQc;
-    private TechnicalProfessionalCriterion certificateIndependentBodiesAboutQa;
-    private TechnicalProfessionalCriterion certificateIndependentBodiesAboutEnvironmental;
+
+    private QualityAssuranceCriterion certificateIndependentBodiesAboutQa;
+    private QualityAssuranceCriterion certificateIndependentBodiesAboutEnvironmental;
 
     //trick to use MultipartFile as @RequestParam
     public void setAttachment(MultipartFile attachment) throws IOException {

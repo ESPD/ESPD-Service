@@ -1,9 +1,8 @@
 package eu.europa.ec.grow.espd.xml.response.selection
-
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.QualityAssuranceCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
@@ -12,7 +11,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "32. should contain the 'Certificates by independent bodies about quality assurance standards' criterion"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -22,7 +21,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
         checkCriterionId(request, idx, "d726bac9-e153-4e75-bfca-c5385587766d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Certificates by independent bodies about quality assurance standards"
@@ -54,7 +53,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Your answer' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true, answer: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true, answer: true))
 
         when:
         def request = parseResponseXml(espd)
@@ -71,7 +70,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'If not, please explain why and state which other means of proof can be provided:' requirements response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 description: "explain description"))
 
         when:
@@ -90,7 +89,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Is this information available electronically' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
@@ -107,7 +106,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Info electronically URL' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_31.com")))
 
         when:
@@ -124,7 +123,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
 
     def "check the 'Info electronically code' requirement response"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new TechnicalProfessionalCriterion(exists: true,
+        def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_31")))
 
         when:

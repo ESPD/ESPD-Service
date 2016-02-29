@@ -28,9 +28,10 @@ public enum SelectionCriterionTypeCode implements CcvCriterionType {
     ALL_CRITERIA_SATISFIED(
             "The economic operator declares that it will satisfy all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice"),
     /**
-     * Selection criteria relating to the reduction of the number of qualified candidates
+     * Selection criteria relating to the quality assurance schemes and environmental management standards
      */
-    REDUCTION_CANDIDATES("Selection criteria relating to the reduction of the number of qualified candidates");
+    QUALITY_ASSURANCE(
+            "Selection criteria relating to the quality assurance schemes and environmental management standards ");
 
     private final String description;
 

@@ -1,8 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-
 import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.QualityAssuranceCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
@@ -11,7 +10,7 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
 
     def "33. should contain the 'Certificates by independent bodies about environmental management systems or standards' criterion"() {
         given:
-        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new TechnicalProfessionalCriterion(exists: true))
+        def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true))
 
         when:
         def request = parseRequestXml(espd)
@@ -21,7 +20,7 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
         checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Certificates by independent bodies about environmental management systems or standards"
