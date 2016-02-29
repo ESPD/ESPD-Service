@@ -372,7 +372,7 @@ public class CriteriaTemplates {
                     put("template", "checkTemplate").
                     put("field", "enrolmentProfessionalRegister").
                     put("title_code", "crit_selection_suitability_enrolment_professional_register_main").
-                    put("description_code", "crit_eu_text_guilty_misinterpretation").build(),
+                    put("description_code", "crit_selection_suitability_enrolment_professional_register_description").build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "checkTemplate").
@@ -595,14 +595,20 @@ public class CriteriaTemplates {
                     put("description_code", "crit_selection_suitability_enrolment_trade_register_description").build(),
 
             ImmutableMap.<String, Object>builder().
-                    put("template", "selectionFormTemplate").
+                    put("template", "economicFinancialCriterionEO").
                     put("field", "serviceContractsAuthorisation").
+                    put("has_your_answer", "true").
+                    put("has_please_describe_them", "true").
+                    put("has_multiple_year_amount", "false").
                     put("title_code", "crit_selection_suitability_service_contracts_auth_main").
                     put("description_code", "crit_selection_suitability_service_contracts_auth_description").build(),
 
             ImmutableMap.<String, Object>builder().
-                    put("template", "selectionFormTemplate").
+                    put("template", "economicFinancialCriterionEO").
                     put("field", "serviceContractsMembership").
+                    put("has_your_answer", "true").
+                    put("has_please_describe_them", "true").
+                    put("has_multiple_year_amount", "false").
                     put("title_code", "crit_selection_suitability_service_contracts_membership_main").
                     put("description_code", "crit_selection_suitability_service_contracts_membership_description")
                     .build()

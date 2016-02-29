@@ -18,6 +18,7 @@
 			<form:textarea path="${field}.meansDescription" cssClass="form-control" data-i18n="crit_taxes_means_description" placeholder="${i18n['crit_taxes_means_description']}"/>
 		</div>
 	</div>
+</div>
 	<div class="form-group">
         ${span18n['crit_decision_final_and_binding']}
 		<form:radiobutton path="${field}.decisionFinalAndBinding" value="true" data-target-show="${'#'}${field}-breach-of-obligations-form-b"/>${span18n["yes"]}
@@ -50,5 +51,3 @@
             </div>
         </div>
     </div>
-</div>
-
