@@ -17,6 +17,18 @@
             }
         });
         $("#ojsNumber").inputmask("9999/S 999-999999");
+
+        // eo registered answer and not applicable are mutually exclusive
+        $("#eo_registered_answer_yes").click(function () {
+                $('#eo_registered_na').attr('checked', false);
+        });
+        $("#eo_registered_answer_no").click(function () {
+            $('#eo_registered_na').attr('checked', false);
+        });
+        $("#eo_registered_na").click(function () {
+            $('#eo_registered_answer_yes').attr('checked', false);
+            $('#eo_registered_answer_no').attr('checked', false);
+        });
     });
 </script>
 
@@ -262,10 +274,10 @@
                                     <label class="control-label col-md-6">${span18n['createeo_eo_approved_cert']}</label>
 
                                     <div class="col-md-6">
-										<form:radiobutton path="eoRegistered.answer" value="true" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
-										<form:radiobutton path="eoRegistered.answer" value="false" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
+										<form:radiobutton path="eoRegistered.answer" value="true" id="eo_registered_answer_yes" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
+										<form:radiobutton path="eoRegistered.answer" value="false" id="eo_registered_answer_no" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<form:checkbox path="eoRegistered.booleanValue2"/>${span18n['not_applicable']}
+										<form:checkbox path="eoRegistered.booleanValue2" id="eo_registered_na"/>${span18n['not_applicable']}
                                     </div>
                                 </div>
                             </div>
