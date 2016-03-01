@@ -36,21 +36,24 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         then: "main sub group"
         response.Criterion[idx].RequirementGroup[0].ID.text() == "64162276-7014-408f-a9af-080426bfe1fd"
         response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 4
+        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
 
         then: "first sub group requirements"
         def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
 
         def r1_1 = response.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "30064ad3-fc11-4579-8528-fdd0b9a5ba75", "a) Please provide the relevant registration or certification number, if applicable:", "DESCRIPTION")
+        checkRequirement(r1_1, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
 
         def r1_2 = response.Criterion[idx].RequirementGroup[0].Requirement[2]
-        checkRequirement(r1_2, "b3403349-cbc0-4d84-879e-fc0f2d90ecbd",
-                "b) If the certificate of registration or certification is available electronically, please state:", "DESCRIPTION")
+        checkRequirement(r1_2, "30064ad3-fc11-4579-8528-fdd0b9a5ba75", "a) Please provide the relevant registration or certification number, if applicable:", "DESCRIPTION")
 
         def r1_3 = response.Criterion[idx].RequirementGroup[0].Requirement[3]
-        checkRequirement(r1_3, "792ff522-6f3f-4a62-ab6e-a8b272bc290e",
+        checkRequirement(r1_3, "b3403349-cbc0-4d84-879e-fc0f2d90ecbd",
+                "b) If the certificate of registration or certification is available electronically, please state:", "DESCRIPTION")
+
+        def r1_4 = response.Criterion[idx].RequirementGroup[0].Requirement[4]
+        checkRequirement(r1_4, "792ff522-6f3f-4a62-ab6e-a8b272bc290e",
                 "c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:", "DESCRIPTION")
 
         then: "first sub group sub group"
@@ -90,6 +93,21 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         req.Response[0].Indicator.text() == "true"
     }
 
+    def "check the 'Not applicable' requirement response"() {
+        given:
+        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, answer: true, booleanValue2: true))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+
+        then:
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[1]
+        checkRequirement(req, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "true"
+    }
+
     def "check the 'a) Please provide the relevant registration or certification number' requirement response"() {
         given:
         def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, description1: "descr 1"))
@@ -101,7 +119,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[2]
         checkRequirement(req, "30064ad3-fc11-4579-8528-fdd0b9a5ba75", "a) Please provide the relevant registration or certification number, if applicable:", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "descr 1"
@@ -118,7 +136,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[3]
         checkRequirement(req, "b3403349-cbc0-4d84-879e-fc0f2d90ecbd",
                 "b) If the certificate of registration or certification is available electronically, please state:", "DESCRIPTION")
         req.Response.size() == 1
@@ -136,7 +154,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
 
-        def req = subGroup.Requirement[3]
+        def req = subGroup.Requirement[4]
         checkRequirement(req, "792ff522-6f3f-4a62-ab6e-a8b272bc290e",
                 "c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:", "DESCRIPTION")
         req.Response.size() == 1

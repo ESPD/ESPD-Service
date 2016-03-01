@@ -30,7 +30,8 @@ public enum AwardCriterionGroup implements CcvCriterionGroup {
      *
      */
     EO_REGISTERED_GROUP_1("64162276-7014-408f-a9af-080426bfe1fd", list(EO_REGISTERED_GROUP_1_1),
-            list(INDICATOR, PROVIDE_REGISTRATION_NUMBER, REG_NO_AVAILABLE_ELECTRONICALLY, REFERENCES_REGISTRATION)),
+            list(INDICATOR, NOT_APPLICABLE, PROVIDE_REGISTRATION_NUMBER, REG_NO_AVAILABLE_ELECTRONICALLY,
+                    REFERENCES_REGISTRATION)),
     /**
      *
      */
@@ -51,17 +52,16 @@ public enum AwardCriterionGroup implements CcvCriterionGroup {
      *
      */
     MEETS_OBJECTIVE_GROUP("3e5c2859-68a7-4312-92e4-01ae79c00cb8",
-            Collections.<CcvCriterionGroup>emptyList(), list(INDICATOR, PLEASE_DESCRIBE)),/**
+            Collections.<CcvCriterionGroup>emptyList(), list(INDICATOR, PLEASE_DESCRIBE)), /**
      *
      */
     SUBCONTRACTING_THIRD_PARTIES_GROUP("d5fe5a71-7fd3-4910-b6f4-5cd2a4d23524",
-            Collections.<CcvCriterionGroup>emptyList(), list(INDICATOR, LIST_SUBCONTRACTORS)),
+                    Collections.<CcvCriterionGroup>emptyList(), list(INDICATOR, LIST_SUBCONTRACTORS)),
     /**
      *
      */
     INFO_ELECTRONICALLY_GROUP("ab335516-73a4-41f7-977b-a98c13a51060", Collections.<CcvCriterionGroup>emptyList(),
-            list(INFO_AVAILABLE_ELECTRONICALLY, URL, URL_CODE)),
-    ;
+            list(INFO_AVAILABLE_ELECTRONICALLY, URL, URL_CODE)),;
 
     private final String id;
 

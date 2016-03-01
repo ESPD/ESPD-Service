@@ -25,6 +25,13 @@
                     <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">67fd1dde-2a0a-486e-9469-79c78796fc22</cbc:ID>
+                <cbc:Description>Not applicable</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30064ad3-fc11-4579-8528-fdd0b9a5ba75</cbc:ID>
                 <cbc:Description>a) Please provide the relevant registration or certification number, if applicable:</cbc:Description>

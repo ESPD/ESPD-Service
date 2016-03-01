@@ -106,6 +106,12 @@ public enum AwardCriterionRequirement implements CcvCriterionRequirement {
      */
     LIST_SUBCONTRACTORS("999c7fe2-61cd-4e86-b76f-e280304dc8c9", "If yes and in so far as known, please list the proposed subcontractors:",
             ExpectedResponseType.DESCRIPTION, "description1"),
+
+    /**
+     *
+     */
+    NOT_APPLICABLE("67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable",
+            ExpectedResponseType.INDICATOR, "booleanValue2"),
     ;
 
     private final String id;
