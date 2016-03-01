@@ -264,6 +264,8 @@
                                     <div class="col-md-6">
 										<form:radiobutton path="eoRegistered.answer" value="true" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
 										<form:radiobutton path="eoRegistered.answer" value="false" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<form:checkbox path="eoRegistered.booleanValue2"/>Not applicable
                                     </div>
                                 </div>
                             </div>
