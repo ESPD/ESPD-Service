@@ -19,6 +19,7 @@ public class AwardCriterion extends Criterion implements MultipleDescriptionHold
     private String description5;
     private Double doubleValue1;
     private Boolean booleanValue1;
+    private Boolean booleanValue2;// is not applicable
 
     public AwardCriterion() {
         // !! award criteria should always exist (be present in a ESPD Response)
