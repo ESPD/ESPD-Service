@@ -81,7 +81,7 @@ $(function() {
                             <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_create_espd']}"></span>
                         </div>
                         <div class="col-md-5">
-                            <form:input path="tedReceptionId" id="tedReceptionId" cssClass="form-control small" placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
+                            <form:input path="tedReceptionId" id="tedReceptionId" cssClass="form-control small" data-i18n="filter_ted_reception_id_placeholder" placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
                         </div>
                         <div class="col-md-4" style="padding-left: 0px;padding-right: 5px">
                             <span data-i18n="tooltip_ted_reception_id" data-toggle="tooltip" title="${i18n['tooltip_ted_reception_id']}"></span>
