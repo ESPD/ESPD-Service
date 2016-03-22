@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 $(function() { 
 	var country = $("select[name='authority.country']");
@@ -50,7 +51,8 @@ $(function() {
 				</div>
 				<div id="filter_faq">
 					${span18n['faq_text']}
-					<a href="<s:url value="/static/documents/espd_faq.pdf"/>">
+                    <c:set var="faqLinkHref" value="http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/${pageContext.response.locale}/renditions/native"/>
+					<a id="faq_link" href="${faqLinkHref}">
 						${span18n['faq_link']}
 					 </a>
 				</div>

@@ -30,6 +30,10 @@
     $(function () {
         $('#language').on('change', function () {
             language(this.value);
+            var faqLink = $('#faq_link');
+            if (faqLink && this.value) {
+                faqLink.attr('href', 'http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/' + this.value.substr(0, 2) + '/renditions/native');
+            }
         });
     });
 </script>
