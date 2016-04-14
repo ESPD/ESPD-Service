@@ -14,7 +14,7 @@ class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/setup_economic_operator_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.setupEconomicOperator.exists == true

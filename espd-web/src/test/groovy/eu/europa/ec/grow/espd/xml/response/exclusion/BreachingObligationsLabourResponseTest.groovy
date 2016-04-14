@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.LawCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning

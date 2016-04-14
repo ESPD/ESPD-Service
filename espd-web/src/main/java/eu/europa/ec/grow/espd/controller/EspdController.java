@@ -1,14 +1,14 @@
 package eu.europa.ec.grow.espd.controller;
 
-import eu.europa.ec.grow.espd.constants.enums.Country;
+import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.ted.TedRequest;
 import eu.europa.ec.grow.espd.ted.TedResponse;
 import eu.europa.ec.grow.espd.ted.TedService;
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -22,13 +22,14 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -57,40 +58,51 @@ class EspdController {
         return "welcome";
     }
 
-    @RequestMapping("/{page:welcome|filter|print|contact}")
+    @RequestMapping("/{page:filter|print|contact}")
     public String getPage(@PathVariable String page) {
         return page;
+    }
+
+    @RequestMapping(value = "/welcome")
+    public String cancel(SessionStatus status) {
+        try {
+            return "welcome";
+        } finally {
+            status.setComplete();
+        }
     }
 
     @RequestMapping(value = "/filter", params = "action", method = POST)
     public String whoAreYouScreen(
             @RequestParam("authority.country") Country country,
             @RequestParam String action,
-            @Valid @RequestPart MultipartFile attachment,
+            @RequestPart List<MultipartFile> attachments,
             @ModelAttribute("espd") EspdDocument document,
             Model model,
             BindingResult result) throws IOException {
         if ("ca_create_espd_request".equals(action)) {
             return createNewRequestAsCA(country, document);
         } else if ("ca_reuse_espd_request".equals(action)) {
-            return reuseRequestAsCA(attachment, model, result);
+            return reuseRequestAsCA(attachments.get(0), model, result);
         } else if ("ca_review_espd_response".equals(action)) {
-            return reviewResponseAsCA(attachment, model, result);
+            return reviewResponseAsCA(attachments.get(0), model, result);
         } else if ("eo_import_espd".equals(action)) {
-            return importEspdAsEo(country, attachment, model, result);
+            return importEspdAsEo(country, attachments.get(0), model, result);
+        } else if ("eo_merge_espds".equals(action)) {
+            return mergeTwoEspds(attachments, model, result);
         }
         return "filter";
     }
 
     private String createNewRequestAsCA(Country country, EspdDocument document) {
         document.getAuthority().setCountry(country);
-        TedResponse tedResponse = tedService
-                .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
-        copyTedInformation(document, tedResponse);
+        copyTedInformation(document);
         return "redirect:/request/ca/procedure";
     }
 
-    private void copyTedInformation(EspdDocument document, TedResponse tedResponse) {
+    private void copyTedInformation(EspdDocument document) {
+        TedResponse tedResponse = tedService
+                .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
         document.setOjsNumber(tedResponse.getNoDocOjs());
         TedResponse.TedNotice notice = tedResponse.getFirstNotice();
         document.getAuthority().setName(notice.getOfficialName());
@@ -102,85 +114,73 @@ class EspdController {
 
     private String reuseRequestAsCA(MultipartFile attachment, Model model,
             BindingResult result) throws IOException {
-        EspdDocument espd = readEspdRequest(attachment.getInputStream());
-        if (espd != null) {
-            model.addAttribute("espd", espd);
-            return "redirect:/request/ca/procedure";
+        try (InputStream is = attachment.getInputStream()) {
+            Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
+            if (espd.isPresent()) {
+                model.addAttribute("espd", espd.get());
+                return "redirect:/request/ca/procedure";
+            }
         }
-        result.rejectValue("attachment", "espd_upload_request_error");
+
+        result.rejectValue("attachments", "espd_upload_request_error");
         return "filter";
     }
 
     private String reviewResponseAsCA(MultipartFile attachment, Model model,
             BindingResult result) throws IOException {
-        EspdDocument espd = readEspdResponse(attachment.getInputStream());
-        if (espd != null) {
-            model.addAttribute("espd", espd);
-            return "redirect:/print";
+        try (InputStream is = attachment.getInputStream()) {
+            Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
+            if (espd.isPresent()) {
+                model.addAttribute("espd", espd.get());
+                return "redirect:/print";
+            }
         }
-        result.rejectValue("attachment", "espd_upload_response_error");
+
+        result.rejectValue("attachments", "espd_upload_response_error");
         return "filter";
     }
 
-    private String importEspdAsEo(Country country, MultipartFile attachment, Model model, BindingResult result) throws IOException {
-        EspdDocument espd = importXmlFile(attachment.getInputStream());
-        if (espd != null) {
-            if (espd.getEconomicOperator() == null) {
-                espd.setEconomicOperator(new EconomicOperatorImpl());
+    private String importEspdAsEo(Country country, MultipartFile attachment, Model model, BindingResult result)
+            throws IOException {
+        try (InputStream is = attachment.getInputStream()) {
+            Optional<EspdDocument> wrappedEspd = exchangeMarshaller.importAmbiguousEspdFile(is);
+
+            if (wrappedEspd.isPresent()) {
+                EspdDocument espd = wrappedEspd.get();
+                if (espd.getEconomicOperator() == null) {
+                    espd.setEconomicOperator(new EconomicOperatorImpl());
+                }
+                if (needsToLoadProcurementProcedureInformation(espd)) {
+                    // in this case we need to contact TED again to load the procurement information
+                    copyTedInformation(espd);
+                }
+                espd.getEconomicOperator().setCountry(country);
+                model.addAttribute("espd", espd);
+                return "redirect:/response/eo/procedure";
             }
-            espd.getEconomicOperator().setCountry(country);
-            model.addAttribute("espd", espd);
-            return "redirect:/response/eo/procedure";
         }
-        result.rejectValue("attachment", "espd_upload_error");
+
+        result.rejectValue("attachments", "espd_upload_error");
         return "filter";
     }
 
-    private EspdDocument importXmlFile(InputStream is) throws IOException {
-        // peek at the first bytes in the file to see if it is a ESPD Request or Response
-        try (BufferedInputStream bis = new BufferedInputStream(is)) {
-            int peekReadLimit = 80;
-            bis.mark(peekReadLimit);
-            byte[] peek = new byte[peekReadLimit];
-            int bytesRead = bis.read(peek, 0, peekReadLimit - 1);
-            if (bytesRead < 0) {
-                return null;
+    private String mergeTwoEspds(List<MultipartFile> attachments, Model model, BindingResult result)
+            throws IOException {
+        try (InputStream reqIs = attachments.get(1).getInputStream();
+                InputStream respIs = attachments.get(2).getInputStream()) {
+            Optional<EspdDocument> wrappedEspd = exchangeMarshaller.mergeEspdRequestAndResponse(reqIs, respIs);
+            if (wrappedEspd.isPresent()) {
+                model.addAttribute("espd", wrappedEspd.get());
+                return "redirect:/response/eo/procedure";
             }
-            bis.reset(); // need to read from the beginning afterwards
-            String firstBytes = new String(peek, "UTF-8");
-
-            // decide how to read the uploaded file
-            if (firstBytes.contains("ESPDResponse")) {
-                return readEspdResponse(bis);
-            } else if (firstBytes.contains("ESPDRequest")) {
-                return readEspdRequest(bis);
-            }
-        } finally {
-            IOUtils.closeQuietly(is);
         }
-        return null;
+
+        result.rejectValue("attachments", "espd_upload_error");
+        return "filter";
     }
 
-    private EspdDocument readEspdResponse(InputStream is) {
-        try {
-            return exchangeMarshaller.importEspdResponse(is);
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-            return null;
-        } finally {
-            IOUtils.closeQuietly(is);
-        }
-    }
-
-    private EspdDocument readEspdRequest(InputStream is) {
-        try {
-            return exchangeMarshaller.importEspdRequest(is);
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-            return null;
-        } finally {
-            IOUtils.closeQuietly(is);
-        }
+    private boolean needsToLoadProcurementProcedureInformation(EspdDocument espdDocument) {
+        return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
     }
 
     @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}")
@@ -212,22 +212,22 @@ class EspdController {
             @RequestParam String next,
             @ModelAttribute("espd") EspdDocument espd,
             HttpServletResponse response,
-            SessionStatus status,
             BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return flow + "_" + agent + "_" + step;
         }
+
         if (!"generate".equals(next)) {
             return "redirect:/" + flow + "/" + agent + "/" + next;
         }
 
-        downloadEspdFile(agent, espd, response, status);
+        downloadEspdFile(agent, espd, response);
 
         return null;
     }
 
     private void downloadEspdFile(@PathVariable String agent, @ModelAttribute("espd") EspdDocument espd,
-            HttpServletResponse response, SessionStatus status) throws IOException {
+            HttpServletResponse response) throws IOException {
         try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
             response.setContentType(APPLICATION_XML_VALUE);
             if ("eo".equals(agent)) {
@@ -239,8 +239,6 @@ class EspdController {
             }
             response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
             out.flush();
-        } finally {
-            status.setComplete();
         }
     }
 

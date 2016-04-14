@@ -46,13 +46,20 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setCookieName("ESPD_LOCALE");
         resolver.setDefaultLocale(Locale.ENGLISH);
         return resolver;
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
     /**
      * If the template engine you are using calls the response encodeURL() method, the version information
-     * will be automatically added to the URL. This will work in JSPs in conjunction with spring:url tag.
+     * will be automatically added to the URL of the static resources that will be cached.
+     * This will work in JSPs in conjunction with spring:url tag.
      * <p>It needs to be mapped on '/*'.</p>
      *
      * @return
@@ -77,9 +84,5 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
         return frb;
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-    }
 
 }

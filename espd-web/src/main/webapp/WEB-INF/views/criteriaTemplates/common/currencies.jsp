@@ -1,3 +1,4 @@
+<%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Currency" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -9,7 +10,7 @@
 
 <form:select path="${currencyField}" cssClass="form-control" cssStyle="${style}">
     <form:option value="${null}" label="---"/>
-    <c:forEach items="<%=eu.europa.ec.grow.espd.constants.enums.Currency.values()%>" var="curr">
+    <c:forEach items="<%=Currency.values()%>" var="curr">
         <form:option value="${curr}">${curr} (${curr.description})</form:option>
     </c:forEach>
 </form:select>

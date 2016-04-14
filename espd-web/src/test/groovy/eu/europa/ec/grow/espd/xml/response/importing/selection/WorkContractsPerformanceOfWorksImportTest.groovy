@@ -15,7 +15,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.workContractsPerformanceOfWorks.exists == true

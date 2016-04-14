@@ -1,0 +1,531 @@
+== Configuration
+
+The following points will be tackled.
+
+=== Spring
+==== Configuration files
+
+=== Spring MVC
+
+The web configuration part is found in the `WebConfiguration` class in conjunction with the following {springBoot} properties:
+
+[source,properties]
+.application-dev.properties
+----
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+# Default locale to use
+spring.mvc.locale=en
+----
+
+The `WebConfiguration` contains the definition of various Spring beans: view resolvers, tiles configuration, locale
+interceptors, monitoring filter.
+
+[source,java]
+.WebConfiguration.java
+----
+@Bean
+UrlBasedViewResolver viewResolver() {
+    UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+    viewResolver.setViewClass(TilesView.class);
+    return viewResolver;
+}
+
+@Bean
+TilesConfigurer tilesConfigurer() {
+    TilesConfigurer tilesConfig = new TilesConfigurer();
+    tilesConfig.setDefinitions("/WEB-INF/tiles.xml");
+    return tilesConfig;
+}
+----
+
+=== Web Resources Optimization
+
+==== Static resources
+
+{espd} uses advanced resource handling features provided by http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-config-static-resources[Spring MVC] and http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-static-content[Spring Boot].
+We have chosen a path that relies on optimizing resources at build-time using {wro4j} and leveraging Spring MVC
+Resolvers and Transformers and {wro4j} filter at run-time.
+
+The static resources of the application (Javascript and CSS files) are versioned using a content-based hashing strategy
+and handled with the idea of `cache busting` where resources are served with aggressive HTTP cache directives
+(e.g. 1 year into the future) and relying on version-related changes in the URL to "bust" the cache when necessary.
+The content-based hash version changes whenever the content of the file changes and this happens at build time.
+
+[source,properties]
+.application-dev.properties
+----
+# Cache period for the resources served by the resource handler, in seconds (1 year).
+spring.resources.cache-period=31622400
+
+# Enable the Spring Resource Handling chain.
+spring.resources.chain.enabled=true
+
+# Enable the content Version Strategy.
+spring.resources.chain.strategy.content.enabled=true
+
+# Comma-separated list of patterns to apply to the Version Strategy.
+spring.resources.chain.strategy.content.paths=/static/bundle/**
+----
+
+Links to resources are rewritten at runtime in template, thanks to a `ResourceUrlEncodingFilter`.
+
+[source,java]
+.WebConfiguration.java
+----
+import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
+import org.springframework.context.annotation.Bean;
+
+/**
+* If the template engine you are using calls the response encodeURL() method, the version information
+* will be automatically added to the URL of the static resources that will be cached.
+* This will work in JSPs in conjunction with spring:url tag.
+* <p>It needs to be mapped on '/*'.</p>
+*
+* @return
+*/
+@Bean
+ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
+    return new ResourceUrlEncodingFilter();
+}
+----
+
+And this is how the static resources are referenced in the view part:
+
+[source,html]
+.espdTemplate.jsp
+----
+<link rel="stylesheet" type="text/css" href="<s:url value="/static/bundle/all.css"/>">
+<script src="<s:url value="/static/bundle/all.js"/>"></script>
+----
+
+==== WRO4J
+
+Another set of static resources optimizations are handled with {wro4j} using a simple Java filter at run-time and the
+http://wro4j.readthedocs.org/en/stable/MavenPlugin/[Maven plugin] at build-time.
+
+===== Run-time solution
+The Java filter configuration makes use of {springBoot} auto-configuration provided by the https://github.com/michael-simons/wro4j-spring-boot-starter[wro4j-spring-boot-starter] library.
+[NOTE]
+This is only used by the `default` {springBoot} profile which should be active only at development time.
+
+[source,java]
+.Wroj4Config.java
+----
+import ac.simons.spring.boot.wro4j.Wro4jAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Profile("default")
+@Configuration
+class Wro4jConfig extends Wro4jAutoConfiguration {
+
+    // only used for development ('default' profile) when we need the Wro4J Filter
+
+}
+----
+
+The run-time properties are defined in the `application.properties` file.
+
+[source,properties]
+.application.properties
+----
+# Integer value for specifying how often (in seconds) the resource changes should be checked. When this value is 0,
+# the cache is never refreshed. When a resource change is detected, the cached group containing changed resource
+# will be invalidated. This is useful during development, when resources are changed often.
+wro4j.resourceWatcherUpdatePeriod=3
+
+# Integer value for specifying how often (in seconds) the cache should be refreshed.
+# When this value is 0, the cache is never refreshed.
+wro4j.cacheUpdatePeriod=3
+
+wro4j.disableCache=true
+
+wro4j.debug=true
+
+wro4j.filterUrl=/static/bundle
+
+# A comma separated values describing pre processor aliases to be used during processing.
+wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImport, semicolonAppender, cssMinJawr, jsMin
+----
+
+===== Build-time solution
+
+The build-time solution needs two {wro4j} configuration files placed under the `src/main/resources` folder.
+
+[source,xml]
+.wro.xml
+----
+<groups xmlns="http://www.isdc.ro/wro">
+    <group name="all">
+        <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
+        <css minimize="true">/static/css/espd.css</css>
+
+        <js minimize="false">/static/jquery/jquery.min.js</js>
+        <js minimize="false">/static/bootstrap-3.2.0/js/bootstrap.min.js</js>
+        <js minimize="true">/static/js/init.js</js>
+    </group>
+</groups>
+----
+
+[source,properties]
+.wro.properties
+----
+###############################################################################
+#####     THIS FILE IS USED AT BUILD TIME BY THE WRO4J MAVEN PLUGIN      ######
+###############################################################################
+
+#If true, it is DEVELOPMENT mode, by default this value is true.
+debug=false
+
+# A comma separated values describing pre processor aliases to be used during processing.
+preProcessors=fallbackCssDataUri,cssUrlRewriting,cssImport,semicolonAppender
+
+postProcessors=cssVariables,cssMinJawr,jsMin
+
+# The alias of the HashStrategy used to compute ETags & cache keys.
+hashStrategy=MD5
+
+# The alias of the NamingStrategy used to rename bundles.
+namingStrategy=noOp
+----
+
+The Maven plugin bundles all the Javascript and CSS files into the `src/main/webapp/static/bundle` folder,
+applying minimization where necessary and creating a `all.js` and a `all.css` file.
+
+[source,xml]
+.espd-web.pom.xml
+----
+<configuration>
+	<wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
+	<extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+	<cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
+	<jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
+	<wroManagerFactory>ro.isdc...factory.ConfigurableWroManagerFactory</wroManagerFactory>
+	<ignoreMissingResources>false</ignoreMissingResources>
+	<incrementalBuildEnabled>true</incrementalBuildEnabled>
+</configuration>
+----
+
+=== Lombok
+
+To reduce some of the `boilerplate` inherent to the Java language, the project uses the {lombok} library to try to
+reduce some of the annoyances of the language by using Java annotations.
+
+The library is usable in {eclipse} by double clicking the `lombok.jar` and in {intellij} by installing the https://plugins.jetbrains.com/plugin/6317[Lombok plugin].
+
+If you don't like the basic idea behind {lombok} you can https://projectlombok.org/features/delombok.html[delombok] the source code and
+go back to standard Java source code.
+
+Here are is a very simple example of how {lombok} might be used inside the {espd} project.
+
+[source,java]
+.TedRequest.java
+----
+import lombok.Builder;
+import lombok.Getter;
+
+@Builder
+@Getter
+public class TedRequest {
+
+    private String receptionId;
+}
+----
+
+[source,java]
+.LombokExample.java
+----
+public TedRequest prepare() {
+    TedRequest request = TedRequest.builder()
+                    .receptionId("16-000136-001")
+                    .build();
+    log.debug("This is the reception id: '{}'.", request.getReceptionId());
+    return request;
+}
+----
+
+=== Logging
+
+Logging in the application is handled using the http://www.slf4j.org/[SLF4J] API and the chosen implementation is provided
+by the {logback} library.
+
+Since the *espd-web* module depends on `spring-boot-starter-web` and this one transitively depends on `spring-boot-starter-logging`,
+the default logging implementation chosen by {springBoot} is {logback}.
+
+The `application-${profile}.properties` files declare the path to the {logback} configuration. The logging configuration
+files are stored in the `espd-web/src/main/resources/logback` folder.
+
+[source,properties]
+.application-dev.properties
+----
+# The path to the logback configuration file depending on the profile
+logging.config=classpath:logback/logback-dev.xml
+----
+
+To use logging in the code, you can take advantage of the facilities provided by {lombok}.
+
+[source,java]
+.Logging.java
+----
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+class Logging {
+
+    void logSomething(String parameter) {
+        log.info("Logging the following value '{}'.", parameter);
+    }
+}
+----
+
+=== Monitoring
+
+Basic monitoring of the {espd} application is handled using the {javaMelody} library by registering a Java filter
+inside the Spring application context.
+
+[source,java]
+.WebConfiguration.java
+----
+import org.springframework.context.annotation.Bean;
+import net.bull.javamelody.MonitoringFilter;
+import net.bull.javamelody.Parameter;
+
+@Bean
+MonitoringFilter melodyMonitoringFilter() {
+    return new MonitoringFilter();
+}
+
+@Bean
+FilterRegistrationBean melodyFilterRegistration(MonitoringFilter melodyFilter) {
+    FilterRegistrationBean frb = new FilterRegistrationBean(melodyFilter);
+    frb.addInitParameter(Parameter.NO_DATABASE.getCode(), "true");
+    frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
+            "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
+    frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
+    return frb;
+}
+----
+
+The filter configuration makes the monitoring accessible only to a certain range of IP addresses, excludes requests
+pointing to static resources and specifies that no database monitoring should be active.
+
+Additional monitoring capabilities could be added by activating the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[Spring Boot actuator] features.
+
+=== JAXB
+
+The marshalling and unmarshalling of the XML files produced by the application is handled by a http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb[Spring Jaxb2Marshaller].
+
+The {jaxb} configuration declares the packages to be scanned for potential {jaxb} annotated classes which are located in the
+`exchange-model` Maven module.
+
+[source,java]
+.JaxbConfiguration.java
+----
+import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
+import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import javax.xml.bind.Marshaller;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+public class JaxbConfiguration {
+
+    @Bean
+    public Jaxb2Marshaller jaxb2Marshaller() {
+        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+        jaxb2Marshaller.setPackagesToScan(ESPDRequestType.class.getPackage().getName(),
+                ESPDResponseType.class.getPackage().getName());
+        Map<String, Object> map = new HashMap<>(2);
+        map.put(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxb2Marshaller.setMarshallerProperties(map);
+        return jaxb2Marshaller;
+    }
+}
+----
+
+==== Joda-Time
+
+Date and time objects are handled with the {jodaTime} library. There are two adapters that are used to populate the Date
+objects inside the {jaxb} POJOs. These adapters convert and parse `String` objects into `LocalDate` or `LocalTime`
+{jodaTime} objects.
+
+[source,java]
+.LocalDateAdapter.java
+----
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+public final class LocalDateAdapter {
+
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-MM-dd");
+
+    private LocalDateAdapter() {
+
+    }
+
+    public static LocalDate unmarshal(String v) {
+        return LocalDate.parse(v, DATE_FORMAT);
+    }
+
+    public static String marshal(LocalDate v) {
+        return v.toString(DATE_FORMAT);
+    }
+}
+----
+
+The mapping of the date adapters is done in the {jaxb} `bindings.xjb` configuration file inside the `exchange-model` module.
+
+[source,xml]
+.bindings.xjb
+----
+<jxb:globalBindings>
+	<jxb:javaType name="org.joda.time.LocalDate" xmlType="xs:date"
+              parseMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal"
+              printMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal"/>
+	<jxb:javaType name="org.joda.time.LocalTime" xmlType="xs:time"
+              parseMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal"
+              printMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal"/>
+	<jxb:serializable uid="100"/>
+</jxb:globalBindings>
+----
+
+=== REST
+
+The interaction with external RESTful APIs (e.g. TED) is done with the http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#rest-client-access[Spring RestTemplate].
+
+There is one global Spring bean of type `RestTemplate` defined in the application.
+
+[source,java]
+.EspdApplication.java
+----
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+@ComponentScan("eu.europa.ec.grow.espd")
+public class EspdApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
+
+    @Value("${http.client.connect.timeout.millis:30000}")
+    private int connectTimeout;
+
+    @Bean
+    ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
+
+    @Bean
+    RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        SimpleClientHttpRequestFactory rf = (SimpleClientHttpRequestFactory) restTemplate.getRequestFactory();
+        rf.setReadTimeout(connectTimeout);
+        rf.setConnectTimeout(connectTimeout);
+
+        return restTemplate;
+    }
+}
+----
+
+=== Internationalization (i18n)
+
+Concerning internationalization (i18n), the {espd} application takes advantage of the auto-configuration provided
+by {springBoot} in the `MessageSourceAutoConfiguration` class.
+
+[source,properties]
+.application.properties
+----
+# The location to the resource bundles needed by i18n
+spring.messages.basename=i18n/messages
+
+# Loaded resource bundle files cache expiration, in seconds. When set to -1, bundles are cached forever.
+spring.messages.cache-seconds=3
+----
+
+The message files are located in the `src/main/resources/i18n` folder and follow a very simple naming convention of
+`messages_${locale language}`.
+[NOTE]
+The `application.properties` file which is used only for local development is able to
+refresh potential changes in the message files without requiring a server restart by specifying the
+`spring.messages.cache-seconds` property.
+
+The corresponding Java configuration is summarized below.
+
+[source,java]
+.WebConfiguration.java
+----
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
+@Bean
+LocaleChangeInterceptor localeChangeInterceptor() {
+	LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+    lci.setParamName("lang");
+    return lci;
+}
+
+@Bean
+LocaleResolver localeResolver() {
+    CookieLocaleResolver resolver = new CookieLocaleResolver();
+    resolver.setCookieName("ESPD_LOCALE");
+    resolver.setDefaultLocale(Locale.ENGLISH);
+    return resolver;
+}
+
+@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(localeChangeInterceptor());
+}
+----
+
+The `LocaleResolver` enables the application to automatically resolve messages files using the client’s locale which
+is stored in a `ESPD_LOCALE` `cookie`.
+
+The `LocaleChangeInterceptor` uses an HTTP request parameter called `lang` to detect the language changes on the server side.
+
+=== TED
+
+[source,properties]
+.application-dev.properties
+----
+# The base URL of the TED contract notice REST service
+ted.api.base.url=https://esentool.ted.europa.eu/api/espd/v1.0/notice
+
+# Timeout in milliseconds for the Spring RestTemplate client
+rest.template.connect.timeout.millis=30000
+
+# user for TED API
+ted.api.user=passed as server startup parameter
+
+# Password for TED API
+ted.api.password=passed as server startup parameter
+----
+
+=== Piwik
+
+[source,properties]
+.application-dev.properties
+----
+# Piwik id for ESPD project
+piwik.id=2
+
+# Piwik server for ESPD project
+piwik.server=https://webgate.ec.europa.eu/pwar/piwik.php
+----

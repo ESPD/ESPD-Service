@@ -1,5 +1,8 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.domain.intf.MultipleAmountHolder;
+import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
+import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

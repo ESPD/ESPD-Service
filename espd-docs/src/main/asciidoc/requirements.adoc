@@ -1,0 +1,7 @@
+== System requirements
+
+By default, {homepage} version {appVersion} requires the following tools to run:
+
+* http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html[Java Development Kit 7+]
+* {maven}
+* {tomcat} or other Servlet 3+ container

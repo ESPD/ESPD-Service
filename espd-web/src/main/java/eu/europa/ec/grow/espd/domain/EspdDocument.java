@@ -1,17 +1,18 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.entities.CcvCriterion;
+import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion;
+import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.Data;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 @Data
 public class EspdDocument {
-
-    //private String action;// "ca_create_espd" or "eo_import_espd"
 
     private PartyImpl authority;
     private EconomicOperatorImpl economicOperator;
@@ -108,27 +109,28 @@ public class EspdDocument {
     private QualityAssuranceCriterion certificateIndependentBodiesAboutQa;
     private QualityAssuranceCriterion certificateIndependentBodiesAboutEnvironmental;
 
-    //trick to use MultipartFile as @RequestParam
-    public void setAttachment(MultipartFile attachment) throws IOException {
-    }
+    private List<CriterionType> ublCriteria;
 
-    public MultipartFile getAttachment() {
+    //trick to use List of MultipartFile as @RequestParam
+    public void setAttachments(List<MultipartFile> attachments) throws IOException {}
+
+    public List<MultipartFile> getAttachments() {
         return null;
     }
 
     public final boolean atLeastOneSelectionCriterionWasSelected() {
         boolean atLeastOnePresent = false;
-        for (eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion ccvCriterion :
-                eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.values()) {
-            Criterion espdCriterion = readCriterionFromEspd(ccvCriterion);
+        for (SelectionCriterion ccvCriterion :
+                SelectionCriterion.values()) {
+            EspdCriterion espdCriterion = readCriterionFromEspd(ccvCriterion);
             atLeastOnePresent = atLeastOnePresent | (espdCriterion != null && espdCriterion.getExists());
         }
         return atLeastOnePresent;
     }
 
-    public final Criterion readCriterionFromEspd(CcvCriterion ccvCriterion) {
+    public final EspdCriterion readCriterionFromEspd(CcvCriterion ccvCriterion) {
         try {
-            return (Criterion) PropertyUtils.getSimpleProperty(this, ccvCriterion.getEspdDocumentField());
+            return (EspdCriterion) PropertyUtils.getSimpleProperty(this, ccvCriterion.getEspdDocumentField());
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             return null;
         }

@@ -16,7 +16,7 @@ class BreachingOfObligationsSocialImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_social_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.breachingObligationsSocial.exists == true

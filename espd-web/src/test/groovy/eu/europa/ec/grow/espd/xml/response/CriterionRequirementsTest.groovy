@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response
 
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 
@@ -118,7 +118,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -134,7 +134,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
         def subGroup1 = request.Criterion[idx].RequirementGroup[0]
@@ -150,7 +150,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.FINANCIAL_RATIO)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.FINANCIAL_RATIO)
 
         then:
         def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -166,7 +166,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.PROCUREMENT_RESERVED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.PROCUREMENT_RESERVED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]

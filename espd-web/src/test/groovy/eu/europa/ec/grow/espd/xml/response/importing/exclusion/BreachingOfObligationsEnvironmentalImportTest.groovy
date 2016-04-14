@@ -15,7 +15,7 @@ class BreachingOfObligationsEnvironmentalImportTest extends AbstractXmlFileImpor
         def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_environmental_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.breachingObligationsEnvironmental.exists == true

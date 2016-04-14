@@ -14,7 +14,7 @@ class SucontractingThirdPartiesImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("award/subcontracting_third_parties.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.subcontractingThirdParties.exists == true

@@ -1,5 +1,8 @@
-/* document layout */
-
+/* document layout label-control, commented because it breaks other labels
+.form-horizontal .control-label {
+    padding-top: 0px !important;
+}
+*/
 .espd-container {
     color: #04498a;
     padding-bottom: 15px;

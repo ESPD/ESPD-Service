@@ -20,14 +20,14 @@
 
         // eo registered answer and not applicable are mutually exclusive
         $("#eo_registered_answer_yes").click(function () {
-                $('#eo_registered_na').attr('checked', false);
+			$('#eo_registered_na').attr('checked', false);
         });
         $("#eo_registered_answer_no").click(function () {
-            $('#eo_registered_na').attr('checked', false);
+			$('#eo_registered_na').attr('checked', false);
         });
         $("#eo_registered_na").click(function () {
-            $('#eo_registered_answer_yes').attr('checked', false);
-            $('#eo_registered_answer_no').attr('checked', false);
+			$('#eo_registered_answer_yes').attr('checked', false);
+			$('#eo_registered_answer_no').attr('checked', false);
         });
     });
 </script>
@@ -37,6 +37,7 @@
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="${agent}"/>
         <tiles:putAttribute name="page" value="${flow}/${agent == 'ca' ? 'eo' : 'ca'}/procedure"/>
+        <tiles:putAttribute name="showLink" value="${flow == 'request'}"/>
     </tiles:insertDefinition>
     
     <div class="panel-default">

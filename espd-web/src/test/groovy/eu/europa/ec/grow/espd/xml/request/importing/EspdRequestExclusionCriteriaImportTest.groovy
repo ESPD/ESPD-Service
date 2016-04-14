@@ -12,7 +12,7 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
         def espdRequestXml = importXmlRequestFile("all_exclusion_criteria_selected.xml")
 
         when:
-        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
 
         then: "should have all criminal convictions and their default answers should be false"
         espd.criminalConvictions.exists == true
@@ -78,43 +78,43 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
         def espdRequestXml = importXmlRequestFile("no_exclusion_criteria_selected.xml")
 
         when:
-        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
 
         then: "criminal convictions"
-        espd.criminalConvictions.exists == false
-        espd.corruption.exists == false
-        espd.fraud.exists == false
-        espd.terroristOffences.exists == false
-        espd.moneyLaundering.exists == false
-        espd.childLabour.exists == false
+        espd.criminalConvictions == null
+        espd.corruption == null
+        espd.fraud == null
+        espd.terroristOffences == null
+        espd.moneyLaundering == null
+        espd.childLabour == null
 
         then: "tax convictions"
-        espd.paymentTaxes.exists == false
-        espd.paymentSocialSecurity.exists == false
+        espd.paymentTaxes == null
+        espd.paymentSocialSecurity == null
 
         then: "environmental"
-        espd.breachingObligationsEnvironmental.exists == false
+        espd.breachingObligationsEnvironmental == null
 
         then: "insolvency"
-        espd.bankruptcy.exists == false
-        espd.insolvency.exists == false
-        espd.arrangementWithCreditors.exists == false
-        espd.analogousSituation.exists == false
-        espd.assetsAdministeredByLiquidator.exists == false
-        espd.businessActivitiesSuspended.exists == false
+        espd.bankruptcy == null
+        espd.insolvency == null
+        espd.arrangementWithCreditors == null
+        espd.analogousSituation == null
+        espd.assetsAdministeredByLiquidator == null
+        espd.businessActivitiesSuspended == null
 
         then: "misconduct"
-        espd.guiltyGrave.exists == false
-        espd.agreementsWithOtherEO.exists == false
+        espd.guiltyGrave == null
+        espd.agreementsWithOtherEO == null
 
         then: "conflict of interest"
-        espd.conflictInterest.exists == false
-        espd.involvementPreparationProcurement.exists == false
-        espd.earlyTermination.exists == false
-        espd.guiltyMisinterpretation.exists == false
+        espd.conflictInterest == null
+        espd.involvementPreparationProcurement == null
+        espd.earlyTermination == null
+        espd.guiltyMisinterpretation == null
 
         then: "national"
-        espd.purelyNationalGrounds.exists == false
+        espd.purelyNationalGrounds == null
     }
 
 }

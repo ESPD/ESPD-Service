@@ -14,7 +14,7 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/purely_national_grounds_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.purelyNationalGrounds.exists == true

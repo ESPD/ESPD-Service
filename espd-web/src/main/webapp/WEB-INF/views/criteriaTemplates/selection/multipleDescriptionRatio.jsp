@@ -14,13 +14,13 @@
 		<div class="col-md-4">
 		    <label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
 		    <div class="col-md-9">
-		        <form:input path="${field}.ratio${loop.index}" number="true" cssClass="form-control" placeholder="${ratioPlaceholder}"/>
+		        <form:input path="${field}.ratio${loop.index}" number="true" cssClass="form-control" data-i18n="ratioPlaceholder" placeholder="${ratioPlaceholder}"/>
 		    </div>
 	    </div>
 		<div class="col-md-8">
 		    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
 		    <div class="col-md-9">
-		        <form:input path="${field}.description${loop.index}" cssClass="form-control" placeholder="${descriptionPlaceholder}"/>
+		        <form:input path="${field}.description${loop.index}" cssClass="form-control" data-i18n="descriptionPlaceholder" placeholder="${descriptionPlaceholder}"/>
 		    </div>
 	    </div>
 	</div>

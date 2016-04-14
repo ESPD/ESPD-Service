@@ -13,7 +13,7 @@ class SatisfiesAllImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/satisfies_all_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.selectionSatisfiesAll.exists == true

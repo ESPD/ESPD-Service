@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.constants.enums.Country;
+import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import lombok.Data;
 
 import java.util.Date;

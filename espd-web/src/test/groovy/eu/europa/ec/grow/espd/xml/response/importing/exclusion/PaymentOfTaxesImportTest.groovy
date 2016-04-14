@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
-import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TaxesCriterion
@@ -18,7 +18,7 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/payment_of_taxes_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.paymentTaxes.exists == true

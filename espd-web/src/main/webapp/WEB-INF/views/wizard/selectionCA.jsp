@@ -13,6 +13,7 @@
 	<tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="ca"/>
         <tiles:putAttribute name="page" value="${flow}/eo/selection"/>
+        <tiles:putAttribute name="showLink" value="${flow == 'request'}"/>
     </tiles:insertDefinition>
     <div class="panel-default">
         <tiles:insertDefinition name="progress">
@@ -38,7 +39,7 @@
             <div id="ca-satisfies-all-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
                         ${span18n['crit_selection_ca_declares_that']}
-                        <span data-i18n="crit_selection_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_declares_that_tooltip']}'/>"></span>
+                        <span data-i18n="crit_selection_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_declares_that_tooltip']}"></span>
 	                    <div class="checkbox">
 	                        <label>
 	                            <form:checkbox path="selectionSatisfiesAll.exists" class="checktoggle" value="true"/>

@@ -5,10 +5,11 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.4</version>
+    <version>2016.04</version>
     <modules>
         <module>exchange-model</module>
         <module>espd-web</module>
+        <module>espd-docs</module>
     </modules>
     <name>ESPD web application</name>
     <url>https://www.ec.europa.eu/growth/tools-databases/espd</url>
@@ -35,7 +36,9 @@
         <joda-time.version>2.9</joda-time.version>
         <jaxb.version>2.2.11</jaxb.version>
         <wro4j.version>1.7.9</wro4j.version>
-        <javamelody.version>1.58.0</javamelody.version>
+        <javamelody.version>1.59.0</javamelody.version>
+        <asciidoctorj.diagram.version>1.3.1</asciidoctorj.diagram.version>
+        <asciidoctorj.pdf.version>1.5.0-alpha.11</asciidoctorj.pdf.version>
     </properties>
 
     <scm>

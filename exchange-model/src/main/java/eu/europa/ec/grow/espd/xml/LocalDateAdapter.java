@@ -16,10 +16,16 @@ public final class LocalDateAdapter {
     }
 
     public static LocalDate unmarshal(String v) {
+        if (v == null) {
+            return null;
+        }
         return LocalDate.parse(v, DATE_FORMAT);
     }
 
     public static String marshal(LocalDate v) {
+        if (v == null) {
+            return null;
+        }
         return v.toString(DATE_FORMAT);
     }
 }

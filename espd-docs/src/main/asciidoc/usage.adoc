@@ -1,0 +1,48 @@
+== Using the ESPD application
+
+This section goes into detail about how you can use the {homepage} application.
+
+=== Build system
+
+The {homepage} uses {maven} as the primary build system and is structured as a multi-module Maven project.
+There are currently three {maven} modules defined:
+
+* *espd-docs* contains the documentation of the application
+* *espd-web* holds the deployable web part of the application
+* *exchange-model* is where the XML schemas and JAXB bindings are defined
+
+Since the application is using {springBoot} extensively by inheriting from `spring-boot-starter-parent`, this provides it
+with the following features:
+
+* Default Java compiler level
+* UTF-8 source encoding
+* A Dependency Management section, allowing you to omit `<version>` tags for common dependencies, inherited from the
+`spring-boot-dependencies` POM.
+* Sensible resource filtering, including `application.properties` and `application.yml` type of files
+* Sensible plugin configuration
+
+For more information about the {springBoot} project, you can check the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle[official documentation].
+
+=== Running from an IDE
+
+You can run the {homepage} application from your IDE by importing the project as a multi-module Maven project first.
+You also need to install the Lombok plugin for your particular IDE.
+
+The application can be deployed as an exploded WAR file on different Servlet 3 containers. For example, you can
+check the following links on how to deploy it on a Tomcat container:
+
+* https://www.jetbrains.com/help/idea/2016.1/configuring-web-application-deployment.html?origin=old_help[IntelliJ IDEA]
+
+* https://www.mulesoft.com/tcat/tomcat-eclipse[Eclipse Tomcat]
+
+=== Deploying on an external Servlet container
+
+If you want to deploy the application on an external Servlet container, you need to package it as a WAR and provide
+some startup parameters on your server.
+
+. Perform a `mvn clean package` from the root folder of the project:
+.. The build should generate a WAR file at ${baseDir}/espd-web/target/espd-web.war
+. Add the following startup parameters to you server:
+.. `-Dspring.profiles.active=${your desired profile}` specifies the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties[Spring Boot profile] to be used
+.. `-Dted.api.user=${your TED user}` where `${your TED user}` is replaced by the TED API username
+.. `-Dted.api.password=${your TED password}` where `${your TED password}` must be replaced by the TED API password

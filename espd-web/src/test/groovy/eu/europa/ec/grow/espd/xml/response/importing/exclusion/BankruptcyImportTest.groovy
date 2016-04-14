@@ -14,7 +14,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/bankruptcy_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.bankruptcy.exists == true

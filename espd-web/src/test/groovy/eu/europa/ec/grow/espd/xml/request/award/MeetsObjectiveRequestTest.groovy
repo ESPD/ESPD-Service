@@ -14,7 +14,7 @@ class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseRequestXml(espd)
-        def idx = getTotalMandatoryCriteriaNoSelectionCriteriaPresent()
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "9c70375e-1264-407e-8b50-b9736bc08901")

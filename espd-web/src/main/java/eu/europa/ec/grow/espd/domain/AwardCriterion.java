@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,7 +9,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AwardCriterion extends Criterion implements MultipleDescriptionHolder {
+public class AwardCriterion extends EspdCriterion implements MultipleDescriptionHolder {
 
     private AvailableElectronically availableElectronically;
 

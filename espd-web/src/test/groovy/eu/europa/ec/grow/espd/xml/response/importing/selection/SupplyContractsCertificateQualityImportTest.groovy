@@ -16,7 +16,7 @@ class SupplyContractsCertificateQualityImportTest extends AbstractXmlFileImport 
         def espdResponseXml = importXmlResponseFile("selection/supply_contracts_certificates_quality_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.supplyContractsCertificatesQc.exists == true

@@ -1,0 +1,3 @@
+== License
+
+The {espd} project is licensed under the link:++https://joinup.ec.europa.eu/sites/default/files/ckeditor_files/files/EUPL 1_1 Guidelines EN Joinup.pdf++[European Union Public Licence].

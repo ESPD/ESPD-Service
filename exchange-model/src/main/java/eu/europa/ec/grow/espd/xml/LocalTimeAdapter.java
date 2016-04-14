@@ -16,10 +16,16 @@ public final class LocalTimeAdapter {
     }
 
     public static LocalTime unmarshal(String v) {
+        if (v == null) {
+            return null;
+        }
         return LocalTime.parse(v, TIME_FORMAT);
     }
 
     public static String marshal(LocalTime v) {
+        if (v == null) {
+            return null;
+        }
         return v.toString(TIME_FORMAT);
     }
 }

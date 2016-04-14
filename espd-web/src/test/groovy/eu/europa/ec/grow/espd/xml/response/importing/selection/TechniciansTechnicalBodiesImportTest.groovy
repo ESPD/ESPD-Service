@@ -14,7 +14,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/technicians_technical_bodies_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.techniciansTechnicalBodies.exists == true

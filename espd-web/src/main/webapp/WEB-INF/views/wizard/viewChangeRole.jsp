@@ -4,6 +4,7 @@
 
 <tiles:importAttribute name="page"/>
 <tiles:importAttribute name="agent"/>
+<tiles:importAttribute name="showLink"/>
 
 <div class="row">
     <strong class="col-md-4 col-md-offset-8">
@@ -13,14 +14,17 @@
         <c:if test="${agent == 'ca'}">
         	<span data-i18n="role_ca"><s:message code="role_ca"/></span>
         </c:if>
-        <a href="${pageContext.request.contextPath}/${page}">
-	        <c:if test="${agent == 'eo'}">
-	        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>
-	        </c:if>
-	        <c:if test="${agent == 'ca'}">
-	        	<span data-i18n="view_eo"><s:message code="view_eo"/></span>
-	        </c:if>
-        </a>
+        
+        <c:if test="${showLink != 'false'}">
+	        <a href="${pageContext.request.contextPath}/${page}">
+		        <c:if test="${agent == 'eo'}">
+		        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>
+		        </c:if>
+		        <c:if test="${agent == 'ca'}">
+		        	<span data-i18n="view_eo"><s:message code="view_eo"/></span>
+		        </c:if>
+	        </a>
+        </c:if>
 	</strong>
 </div>
 

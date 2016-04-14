@@ -1,5 +1,5 @@
 package eu.europa.ec.grow.espd.xml.response.importing
-import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
@@ -28,8 +28,8 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         // init objects run before the first feature method
         espdResponseFullXml = importXmlResponseFile("response_other_information_full_import.xml")
         espdResponseMinimalXml = importXmlResponseFile("response_other_information_minimal_import.xml")
-        espdFull = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseFullXml))
-        espdMinimal = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseMinimalXml))
+        espdFull = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseFullXml)).get()
+        espdMinimal = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseMinimalXml)).get()
     }
 
     void cleanupSpec() {
@@ -81,8 +81,8 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.economicOperator.representative.placeOfBirth == "València, Spain"
         espdFull.economicOperator.representative.street == "Vitruvio"
         espdFull.economicOperator.representative.postalCode == "28006"
-        espdFull.economicOperator.representative.city == "Madrid"
-        espdFull.economicOperator.representative.country == Country.SPAIN
+        espdFull.economicOperator.representative.city == "Edinborough"
+        espdFull.economicOperator.representative.country == Country.UNITED_KINGDOM_SCOTLAND
         espdFull.economicOperator.representative.email == "emilio.garcia3torres@acme.com"
         espdFull.economicOperator.representative.phone == "+34 96 123 456"
         espdFull.economicOperator.representative.position == "Empowered to represent the Consortium"

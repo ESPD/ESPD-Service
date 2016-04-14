@@ -12,7 +12,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
@@ -58,7 +58,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -74,7 +74,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -91,7 +91,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]
@@ -108,7 +108,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -125,7 +125,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]
@@ -142,7 +142,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion.BANKRUPTCY)
+        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[1]

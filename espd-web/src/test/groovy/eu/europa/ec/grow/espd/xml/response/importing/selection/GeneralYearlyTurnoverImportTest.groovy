@@ -16,7 +16,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/general_yearly_turnover_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.generalYearlyTurnover.exists == true
@@ -58,7 +58,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/selection_criterion_no_answer_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.generalYearlyTurnover.exists == true

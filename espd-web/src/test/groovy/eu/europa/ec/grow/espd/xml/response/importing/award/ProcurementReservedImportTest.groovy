@@ -15,7 +15,7 @@ class ProcurementReservedImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("award/procurement_reserved_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.procurementReserved.exists == true

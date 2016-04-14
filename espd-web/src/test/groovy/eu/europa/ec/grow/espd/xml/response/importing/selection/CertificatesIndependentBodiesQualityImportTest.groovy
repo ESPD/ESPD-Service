@@ -14,7 +14,7 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
         def espdResponseXml = importXmlResponseFile("selection/certificates_independent_bodies_quality_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.certificateIndependentBodiesAboutQa.exists == true

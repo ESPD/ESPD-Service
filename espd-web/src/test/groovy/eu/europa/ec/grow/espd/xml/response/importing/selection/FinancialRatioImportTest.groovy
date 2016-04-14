@@ -14,7 +14,7 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/financial_ratio_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.financialRatio.exists == true

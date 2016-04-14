@@ -16,7 +16,7 @@ class MeetsObjectiveImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("award/meets_objective_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.meetsObjective.exists == true

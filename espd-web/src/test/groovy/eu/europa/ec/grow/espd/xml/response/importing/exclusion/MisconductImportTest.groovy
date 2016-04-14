@@ -15,7 +15,7 @@ class MisconductImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/guilty_of_grave_professional_misconduct_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.guiltyGrave.exists == true

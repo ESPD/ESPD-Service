@@ -25,6 +25,7 @@
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="eo"/>
         <tiles:putAttribute name="page" value="${flow}/ca/selection"/>
+        <tiles:putAttribute name="showLink" value="${flow == 'request'}"/>
     </tiles:insertDefinition>
     
     <div class="panel-default">
@@ -52,36 +53,37 @@
                 </li>
             </ul>
         </div>
-        
-        <div class="panel panel-default espd-panel">
-            <div class="espd-panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
-            	${span18n["all_selection_switch"]}
-            </div>
-            <div id="eo-satisfies-all-section" class="collapse in">
-                <div class="espd-panel-body panel-body">
-					<strong>${span18n['crit_selection_eo_declares_that']}</strong>
-					<span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_satisfies_all_criteria']}"></span>
+        <c:if test="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}">
+            <div class="panel panel-default espd-panel">
+                <div class="espd-panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
+                    ${span18n["all_selection_switch"]}
                 </div>
-                <div class="row criteria-row">
-                    <div class="col-md-5 criteria-cell-left">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
-                            </div>
-                        </div>
+                <div id="eo-satisfies-all-section" class="collapse in">
+                    <div class="espd-panel-body panel-body">
+                        <strong>${span18n['crit_selection_eo_declares_that']}</strong>
+                        <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_satisfies_all_criteria']}"></span>
                     </div>
-                    <div class="col-md-7 criteria-cell-right">
-                        <div class="col-md-12">
+                    <div class="row criteria-row">
+                        <div class="col-md-5 criteria-cell-left">
                             <div class="form-group">
-							 	${span18n["crit_your_answer"]}
-								<form:radiobutton path="selectionSatisfiesAll.answer" value="true" data-target-hide="${'#'}eo-satisfies-all-form"/>${span18n["yes"]}
-								<form:radiobutton path="selectionSatisfiesAll.answer" value="false" data-target-show="${'#'}eo-satisfies-all-form"/>${span18n["no"]}
+                                <div class="col-md-12">
+                                    <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 criteria-cell-right">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    ${span18n["crit_your_answer"]}
+                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="true" data-target-hide="${'#'}eo-satisfies-all-form"/>${span18n["yes"]}
+                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="false" data-target-show="${'#'}eo-satisfies-all-form"/>${span18n["no"]}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </c:if>
 
         <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
   

@@ -1,0 +1,6 @@
+== View
+
+=== JSP
+=== Tiles
+=== Javascript
+=== i18n

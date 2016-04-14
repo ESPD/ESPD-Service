@@ -16,7 +16,7 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/conflict_of_interest_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.conflictInterest.exists == true

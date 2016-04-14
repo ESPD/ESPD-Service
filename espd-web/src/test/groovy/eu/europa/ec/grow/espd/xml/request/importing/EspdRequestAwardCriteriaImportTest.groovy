@@ -12,7 +12,7 @@ class EspdRequestAwardCriteriaImportTest extends AbstractXmlFileImport {
         def espdRequestXml = importXmlRequestFile("all_award_criteria_selected.xml")
 
         when:
-        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
 
         then: "should have all award criteria"
         espd.meetsObjective.exists == true

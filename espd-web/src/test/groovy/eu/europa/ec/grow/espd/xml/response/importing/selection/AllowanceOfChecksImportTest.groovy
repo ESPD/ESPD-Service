@@ -13,7 +13,7 @@ class AllowanceOfChecksImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/allowance_of_checks_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.allowanceOfChecks.exists == true

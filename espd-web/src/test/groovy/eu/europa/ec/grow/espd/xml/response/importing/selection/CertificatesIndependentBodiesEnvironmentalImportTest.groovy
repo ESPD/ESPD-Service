@@ -14,7 +14,7 @@ class CertificatesIndependentBodiesEnvironmentalImportTest extends AbstractXmlFi
         def espdResponseXml = importXmlResponseFile("selection/certificates_independent_bodies_environmental_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.certificateIndependentBodiesAboutEnvironmental.exists == true

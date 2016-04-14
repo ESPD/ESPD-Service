@@ -6,11 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class CriteriaTemplates {
+public final class CriteriaTemplates {
 
     public static final int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
     public static final Integer[] lastYearsAmount = new Integer[] { year, year - 1, year - 2, year - 3, year - 4 };
     public static final Integer[] lastYearsNumber = new Integer[] { year, year - 1, year - 2 };
+
+    private CriteriaTemplates() {
+
+    }
 
     /* EXCLUSION CA */
     public static final Map[] criminalListCA = new Map[] {
@@ -87,7 +91,8 @@ public class CriteriaTemplates {
                     put("field", "breachingObligationsEnvironmental").
                     put("title_code", "crit_eu_title_breaching_obligations_environmental").
                     put("description_code", "crit_eu_text_breaching_obligations_environmental").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -95,7 +100,8 @@ public class CriteriaTemplates {
                     put("field", "breachingObligationsSocial").
                     put("title_code", "crit_eu_title_breaching_obligations_social").
                     put("description_code", "crit_eu_text_breaching_obligations_social").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -103,7 +109,8 @@ public class CriteriaTemplates {
                     put("field", "breachingObligationsLabour").
                     put("title_code", "crit_eu_title_breaching_obligations_labour").
                     put("description_code", "crit_eu_text_breaching_obligations_labour").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -111,7 +118,8 @@ public class CriteriaTemplates {
                     put("field", "bankruptcy").
                     put("title_code", "crit_eu_title_bankrupt").
                     put("description_code", "crit_eu_text_bankrupt").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -119,7 +127,8 @@ public class CriteriaTemplates {
                     put("field", "insolvency").
                     put("title_code", "crit_eu_title_insolvency").
                     put("description_code", "crit_eu_text_insolvency").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -127,7 +136,8 @@ public class CriteriaTemplates {
                     put("field", "arrangementWithCreditors").
                     put("title_code", "crit_eu_title_arrangement_creditors").
                     put("description_code", "crit_eu_text_arrangement_creditors").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -135,7 +145,8 @@ public class CriteriaTemplates {
                     put("field", "analogousSituation").
                     put("title_code", "crit_eu_title_national_bankruptcy").
                     put("description_code", "crit_eu_text_national_bankruptcy").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -143,7 +154,8 @@ public class CriteriaTemplates {
                     put("field", "assetsAdministeredByLiquidator").
                     put("title_code", "crit_eu_title_liquidator").
                     put("description_code", "crit_eu_text_liquidator").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -151,7 +163,8 @@ public class CriteriaTemplates {
                     put("field", "businessActivitiesSuspended").
                     put("title_code", "crit_eu_title_suspended_business").
                     put("description_code", "crit_eu_text_suspended_business").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -159,7 +172,8 @@ public class CriteriaTemplates {
                     put("field", "guiltyGrave").
                     put("title_code", "crit_eu_title_guilty_misconduct").
                     put("description_code", "crit_eu_text_guilty_misconduct").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -167,7 +181,8 @@ public class CriteriaTemplates {
                     put("field", "agreementsWithOtherEO").
                     put("title_code", "crit_eu_title_agreement_economic").
                     put("description_code", "crit_eu_text_agreement_economic").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -175,7 +190,8 @@ public class CriteriaTemplates {
                     put("field", "conflictInterest").
                     put("title_code", "crit_eu_title_conflict_interest").
                     put("description_code", "crit_eu_text_conflict_interest").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -183,7 +199,8 @@ public class CriteriaTemplates {
                     put("field", "involvementPreparationProcurement").
                     put("title_code", "crit_eu_title_involvement").
                     put("description_code", "crit_eu_text_involvement").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -191,7 +208,8 @@ public class CriteriaTemplates {
                     put("field", "earlyTermination").
                     put("title_code", "crit_eu_title_early_termination").
                     put("description_code", "crit_eu_text_early_termination").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build(),
 
             ImmutableMap.<String, Object>builder().
@@ -199,7 +217,8 @@ public class CriteriaTemplates {
                     put("field", "guiltyMisinterpretation").
                     put("title_code", "crit_eu_title_guilty_misinterpretation").
                     put("description_code", "crit_eu_text_guilty_misinterpretation").
-                    put("is_always_checked", "true").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
                     put("is_disabled", "true").build()
     };
 
@@ -841,11 +860,11 @@ public class CriteriaTemplates {
     /**
      * only for HTML version of pronting some templates are replaced with "css-print friendly"
      */
-    public static Map[] technicalListEO_UglyPrintVersion = new Map[technicalListEO.length];
+    public static final Map[] technicalListEO_UglyPrintVersion = new Map[technicalListEO.length];
 
     static {
         for (int i = 0; i < technicalListEO_UglyPrintVersion.length; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
+            Map<String, Object> map = new HashMap<>();
             map.putAll(technicalListEO[i]);
             if (i == 0 || i == 1 || i == 2) {
                 map.put("template", "uglyPrintTemplate");
@@ -853,8 +872,6 @@ public class CriteriaTemplates {
             technicalListEO_UglyPrintVersion[i] = map;
         }
     }
-
-    ;
 
     /**
      * TOP LEVEL EXCLUSION CA

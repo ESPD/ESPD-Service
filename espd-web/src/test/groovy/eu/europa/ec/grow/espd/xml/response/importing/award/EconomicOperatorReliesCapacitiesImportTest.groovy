@@ -15,7 +15,7 @@ class EconomicOperatorReliesCapacitiesImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("award/eo_relies_capacities_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.eoReliesCapacities.exists == true

@@ -2,12 +2,20 @@ package eu.europa.ec.grow.espd.xml.base
 
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.util.EspdConfiguration
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller
-import eu.europa.ec.grow.espd.xml.common.*
-import eu.europa.ec.grow.espd.xml.request.UblRequestToEspdDocumentTransformer
-import eu.europa.ec.grow.espd.xml.request.UblRequestTypeTransformer
-import eu.europa.ec.grow.espd.xml.response.UblResponseToEspdDocumentTransformer
-import eu.europa.ec.grow.espd.xml.response.UblResponseTypeTransformer
+import eu.europa.ec.grow.espd.xml.common.exporting.UblContractingPartyTypeTransformer
+import eu.europa.ec.grow.espd.xml.common.exporting.UblEconomicOperatorPartyTypeTransformer
+import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulator
+import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer
+import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer
+import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestCriteriaTransformer
+import eu.europa.ec.grow.espd.xml.request.importing.UblRequestToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestTypeTransformer
+import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseCriteriaTransformer
+import eu.europa.ec.grow.espd.xml.response.importing.UblRequestResponseMerger
+import eu.europa.ec.grow.espd.xml.response.importing.UblResponseToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
@@ -36,19 +44,19 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     }
 
     private static void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
-        def commonUblFactory = new CommonUblFactory()
         def ublContractingPartyTypeTransformer = new UblContractingPartyTypeTransformer()
         def economicOperatorPartyTypeTransformer = new UblEconomicOperatorPartyTypeTransformer()
-        def ublRequestTypeTransformer = new UblRequestTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer)
+        def espdConfig = new EspdConfiguration(buildVersion: "2016.4")
+        def ublRequestTypeTransformer = new UblRequestTypeTransformer(ublContractingPartyTypeTransformer, new UblRequestCriteriaTransformer(), espdConfig)
         def partyImplTransformer = new PartyImplTransformer()
         def criteriaToEspdDocumentPopulator = new CriteriaToEspdDocumentPopulator()
-        def ublDocumentReferences = new UblDocumentReferences()
-        def requestToEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer, criteriaToEspdDocumentPopulator, ublDocumentReferences)
+        def requestToEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer, criteriaToEspdDocumentPopulator)
         def economicOperatorImplTransformer = new EconomicOperatorImplTransformer(partyImplTransformer)
-        def responseToEspdDocumentTransformer = new UblResponseToEspdDocumentTransformer(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator, ublDocumentReferences)
-        def ublResponseTypeTransformer = new UblResponseTypeTransformer(commonUblFactory, ublContractingPartyTypeTransformer, economicOperatorPartyTypeTransformer)
+        def responseToEspdDocumentTransformer = new UblResponseToEspdDocumentTransformer(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
+        def ublResponseTypeTransformer = new UblResponseTypeTransformer(ublContractingPartyTypeTransformer, economicOperatorPartyTypeTransformer, new UblResponseCriteriaTransformer(), espdConfig)
+        def requestResponseMerger = new UblRequestResponseMerger(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
         marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, requestToEspdDocumentTransformer,
-                responseToEspdDocumentTransformer, ublResponseTypeTransformer)
+                responseToEspdDocumentTransformer, ublResponseTypeTransformer, requestResponseMerger)
     }
 
     void cleanupSpec() {

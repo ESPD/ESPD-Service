@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
 
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 
@@ -10,7 +10,7 @@ import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
  */
 class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCriteriaFixture {
 
-    def "All exclusion criteria except 'Purely national grounds' must be present"() {
+    def "exclusion criteria are no longer mandatory so if none are selected then none should appear"() {
         given: "if the exists flag is either false or the criterion is not present at all"
         def espd = new EspdDocument(criminalConvictions: null,
                 corruption: new CriminalConvictionsCriterion(exists: false),
@@ -41,12 +41,9 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         def request = parseRequestXml(espd)
         def idx = 0
 
-        then: "we should see the mandatory exclusion criteria (all of them minus 'purely national') plus all the selection criteria (since none of them are selected) plus the only award criterion"
-        request.Criterion.size() == ExclusionCriterion.values().length - 1 + SelectionCriterion.values().length + 1
-        for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
-            if (ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(criterion)) {
-                continue
-            }
+        then: "we should see the mandatory exclusion criteria (all of them minus 'purely national') plus all the selection criteria (since none of them are selected) plus the eo criteria"
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
+        for (SelectionCriterion criterion : SelectionCriterion.values()) {
             checkCriterionId(request, idx++, criterion.getUuid())
         }
     }
@@ -84,7 +81,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
         def idx = 0
 
         then: "we should see all exclusion criteria ('purely national' is selected) plus all the selection criteria (since none of them are selected) plus the only award criterion"
-        request.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length + 1
+        request.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
         for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
             checkCriterionId(request, idx++, criterion.getUuid())
         }

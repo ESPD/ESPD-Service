@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public abstract class ExclusionCriterion extends Criterion {
+public abstract class ExclusionCriterion extends EspdCriterion {
 
     private AvailableElectronically availableElectronically;
     private SelfCleaning selfCleaning;

@@ -16,7 +16,7 @@ class EnrolmentProfessionalRegisterImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/enrolment_professional_register_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.enrolmentProfessionalRegister.exists == true

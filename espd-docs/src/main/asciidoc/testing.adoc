@@ -1,0 +1,21 @@
+== Testing
+
+Here goes the testing part
+
+[source,groovy]
+.MyFirstSpecification.groovy
+----
+class MyFirstSpecification extends Specification {
+
+  def "computing the maximum of two numbers"() {
+    expect:
+    Math.max(a, b) == c
+
+    where:
+    a << [5, 3]
+    b << [1, 9]
+    c << [5, 9]
+  }
+}
+----
+

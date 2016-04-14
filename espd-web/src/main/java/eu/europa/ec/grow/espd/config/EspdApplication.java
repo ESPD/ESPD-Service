@@ -1,5 +1,6 @@
 package eu.europa.ec.grow.espd.config;
 
+import ac.simons.spring.boot.wro4j.Wro4jAutoConfiguration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by vigi on 10/20/15:5:17 PM.
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = { Wro4jAutoConfiguration.class})
 @ComponentScan("eu.europa.ec.grow.espd")
 public class EspdApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
 
@@ -46,5 +47,4 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
 
         return restTemplate;
     }
-
 }

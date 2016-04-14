@@ -16,7 +16,7 @@ class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/other_economic_requirements_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.otherEconomicFinancialRequirements.exists == true

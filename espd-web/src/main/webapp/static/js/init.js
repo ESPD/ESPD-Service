@@ -65,6 +65,28 @@ function language(code) {
 				}
 			}
 			jQuery.extend(jQuery.validator.messages, validators);
+			optsort();
 		}
+	});
+}
+
+function optsort() {
+	$("select.optsorted").each(function() {
+		var $select = $(this);
+		var $groups = $select.find("optgroup");
+		//$groups.remove();
+		//$groups = $groups.sort(function(g1, g2) {
+		//    return g1.label.localeCompare(g2.label);      
+		//});      
+		//$select.append($groups);
+		$groups.each(function() {
+			var $group = $(this);
+            var options = $group.find("option");
+            options.remove();
+            options = options.sort(function(a, b) {
+            	return a.innerHTML.localeCompare(b.innerHTML);
+            });
+           	$group.append(options);
+		});
 	});
 }

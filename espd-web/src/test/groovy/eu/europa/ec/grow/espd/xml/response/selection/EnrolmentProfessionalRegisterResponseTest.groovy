@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion

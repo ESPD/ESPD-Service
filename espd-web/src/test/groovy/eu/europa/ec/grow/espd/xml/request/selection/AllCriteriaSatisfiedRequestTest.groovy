@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.selection
 
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture

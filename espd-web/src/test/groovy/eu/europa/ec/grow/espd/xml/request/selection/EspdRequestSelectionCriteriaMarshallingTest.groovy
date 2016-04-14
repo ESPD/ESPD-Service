@@ -1,9 +1,8 @@
 package eu.europa.ec.grow.espd.xml.request.selection
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 
-import static eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion.*
 /**
  *  Created by vigi on 11/19/15:3:32 PM.
  */
@@ -21,8 +20,8 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         when:
         def request = parseRequestXml(espd)
 
-        then: "all mandatory exclusion criteria (minus 'purely national') plus 'satisifes all' plus the only request award criterion"
-        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + 1
+        then: "all mandatory exclusion criteria (minus 'purely national') plus 'satisifes all' plus the eo criteria"
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
 
         then: "check the CriterionID"
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
@@ -55,11 +54,11 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         def request = parseRequestXml(espd)
 
         then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
-        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + 1
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
 
         then: "check the CriterionID"
         // satisfies all is not selected by the CA so the index of the first selection criterion is one position lower
-        def idx = getRequestCriterionIndex(ENROLMENT_PROFESSIONAL_REGISTER)
+        def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
         checkCriterionId(request, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
         checkCriterionId(request, idx + 1, "499efc97-2ac1-4af2-9e84-323c2ca67747")
         checkCriterionId(request, idx + 2, "cdd3bb3e-34a5-43d5-b668-2aab86a73822")
@@ -106,7 +105,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         def request = parseRequestXml(espd)
 
         then: "all mandatory exclusion plus all selection plus the only award criterion"
-        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
         int idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
             checkCriterionId(request, idx++, criterion.getUuid())

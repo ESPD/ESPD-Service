@@ -15,7 +15,7 @@ class EconomicOperatorParticipatingProcurementProcedureImportTest extends Abstra
         def espdResponseXml = importXmlResponseFile("award/eo_participating_procurement_procedure_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.eoParticipatingProcurementProcedure.exists == true

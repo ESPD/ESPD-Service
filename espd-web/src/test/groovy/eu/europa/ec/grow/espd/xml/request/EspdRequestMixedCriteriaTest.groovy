@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
@@ -76,37 +76,8 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
         when:
         def result = parseRequestXml(espd)
 
-        then: "all eclusion and selection criteria (minus satsifies all), plus meets objective criterion"
-        result.Criterion.size() == ExclusionCriterion.values().size() + SelectionCriterion.values().size()
-    }
-
-    def "should contain mandatory exclusion criteria plus all selection criteria plus the only request award criterion"() {
-        given:
-        def espd = new EspdDocument()
-        def idx
-
-        when:
-        def result = parseRequestXml(espd)
-
-        then:
-        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
-
-        then: "all exclusion criteria are mandatory (except 'purely national'"
-        for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
-            idx = getRequestCriterionIndex(criterion)
-            if (ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(criterion)) {
-                continue
-            }
-            checkCriterionId(result, idx, criterion.getUuid())
-        }
-
-        then: "all selection criteria must be present since there were none selected"
-        for (SelectionCriterion criterion : SelectionCriterion.values()) {
-            checkCriterionId(result, idx++, criterion.getUuid())
-        }
-
-        then: "and the only request award criterion"
-        checkCriterionId(result, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
+        then: "all exclusion and selection criteria (minus satisfies all), plus all economic operator criteria"
+        result.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length - 1 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
     }
 
 }

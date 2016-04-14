@@ -16,7 +16,7 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/technical_facilities_quality_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.technicalFacilitiesMeasures.exists == true

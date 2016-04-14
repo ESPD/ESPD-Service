@@ -15,7 +15,7 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/agreements_with_eo_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.agreementsWithOtherEO.exists == true
@@ -37,7 +37,7 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/exclusion_criterion_no_answer_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.agreementsWithOtherEO.exists == true

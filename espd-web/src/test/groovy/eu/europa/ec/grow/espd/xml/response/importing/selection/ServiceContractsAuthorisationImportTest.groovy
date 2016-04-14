@@ -15,7 +15,7 @@ class ServiceContractsAuthorisationImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/service_contracts_authorisation_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.serviceContractsAuthorisation.exists == true

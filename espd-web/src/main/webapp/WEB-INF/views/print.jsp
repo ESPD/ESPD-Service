@@ -17,16 +17,56 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 <script>
     $(function () {
         $("#ojsNumber").inputmask("9999/S 999-9999999");
-        $('input').attr('readonly', true).removeAttr('placeholder');
-        $('textarea').attr('readonly', true).removeAttr('placeholder');
-        $('input:radio').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
-        $('select').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
+        //$('input').attr('readonly', true).removeAttr('placeholder');
+        //$('textarea').attr('readonly', true).removeAttr('placeholder');
+        //$('input:radio').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
+        //$('select').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
+      
+        if($('#eo_registered_na').attr('checked')){
+			$('#eo_registered_answer_yes').attr('checked', false);
+			$('#eo_registered_answer_no').attr('checked', false);
+			$('#eo_registered_answer_yes').val(false);
+			$('#eo_registered_answer_no').val(false);
+        } 
+
+        //replace inputs with spans
+		$('#espdform').find('input:not([type=hidden])').each(function() {
+			if($(this).attr('type') == "radio") {
+				$(this).replaceWith($("<i />").attr("class",
+					($(this).attr('checked') == "checked" || $(this).attr('checked') == "true") ? "fa fa-check-square-o" : "fa fa-square-o"
+				));
+			}
+			else if($(this).attr('type') == "checkbox") {
+				$(this).replaceWith($("<i />").attr("class",
+					($(this).attr('checked') == "checked" || $(this).attr('checked') == "true") ? "fa fa-check-square-o" : "fa fa-square-o"
+				));
+			}
+			else {
+				$(this).replaceWith($("<span />").text(this.value));
+			}
+		});
+        
+		$('#espdform').find('select').each(function() {
+			if($(this).find('option:selected').length == 1) {
+				$(this).replaceWith($("<span />").text($(this).find('option:selected')[0].label));
+			}
+			else {
+				$(this).replaceWith($("<span />").text(""));
+			}
+		});
+		$('#espdform').find('textarea').each(function() {
+			$(this).replaceWith($("<span />").text(this.value));
+		});
+		
     });
 </script>
 
 <style>
 	.espd-panel-heading:after {
 		content: "";
+	}
+	.form-horizontal .control-label {
+		padding-top: 0px;
 	}
 </style>
 
@@ -259,8 +299,10 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                                     <label class="control-label col-md-6">${span18n['createeo_eo_approved_cert']}</label>
 
                                     <div class="col-md-6">
-										<form:radiobutton path="eoRegistered.answer" value="true" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
-										<form:radiobutton path="eoRegistered.answer" value="false" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
+										<form:radiobutton path="eoRegistered.answer" value="true" id="eo_registered_answer_yes" data-target-show="#reg-official-yes" data-target-hide="#reg-official-no"/>${span18n["yes"]}
+										<form:radiobutton path="eoRegistered.answer" value="false" id="eo_registered_answer_no" data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<form:checkbox path="eoRegistered.booleanValue2" id="eo_registered_na"/>${span18n['not_applicable']}
                                     </div>
                                 </div>
                             </div>

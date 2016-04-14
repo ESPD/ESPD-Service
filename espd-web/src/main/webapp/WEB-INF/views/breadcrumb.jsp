@@ -5,9 +5,9 @@
 
 <div id="breadbar" class="hidden-print">
 	<ul class="breadcrumbs">
-		<li><a href="#" data-i18n="europa" class="breadcrumElement"><s:message code="europa"/></a></li>
-		<li><a href="#" data-i18n="ec" class="breadcrumElement"><s:message code="ec"/></a></li>
-		<li><a href="#" data-i18n="grow" class="breadcrumElement"><s:message code="grow"/></a></li>
+		<%--<li><a href="#" data-i18n="europa" class="breadcrumElement"><s:message code="europa"/></a></li>--%>
+		<li><a target="_blank" href="http://ec.europa.eu/index_en.htm" data-i18n="ec" class="breadcrumElement"><s:message code="ec"/></a></li>
+		<li><a target="_blank" href="http://ec.europa.eu/growth/index_en.htm" data-i18n="grow" class="breadcrumElement"><s:message code="grow"/></a></li>
 		<li><a href="#" data-i18n="espd" class="breadcrumElement"><s:message code="espd"/></a></li>
 	</ul>
 </div>

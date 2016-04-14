@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.exclusion
-import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.criteria.enums.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.other.Country
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TaxesCriterion
@@ -79,7 +79,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Country member state' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, country: Country.ROMANIA))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, country: Country.UNITED_KINGDOM_ENGLAND))
 
         when:
         def request = parseResponseXml(espd)
@@ -89,7 +89,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
         checkRequirement(req, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "CODE_COUNTRY")
         req.Response.size() == 1
-        req.Response[0].Code.text() == "RO"
+        req.Response[0].Code.text() == "GB-ENG"
         req.Response[0].Code.@listAgencyID.text() == "ISO"
         req.Response[0].Code.@listID.text() == "ISO 3166-2"
         req.Response[0].Code.@listVersionID.text() == "1.0"

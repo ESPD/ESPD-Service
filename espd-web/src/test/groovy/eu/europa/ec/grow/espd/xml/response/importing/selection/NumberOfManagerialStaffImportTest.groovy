@@ -14,7 +14,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/number_of_managerial_staff_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.numberManagerialStaff.exists == true

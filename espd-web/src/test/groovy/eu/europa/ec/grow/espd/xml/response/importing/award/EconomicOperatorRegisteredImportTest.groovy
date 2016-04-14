@@ -15,7 +15,7 @@ class EconomicOperatorRegisteredImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("award/eo_registered_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.eoRegistered.exists == true

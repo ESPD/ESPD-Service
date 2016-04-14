@@ -1,31 +1,7 @@
+<%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Language" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
-<jsp:useBean id="languages" class="java.util.LinkedHashMap" scope="request"/>
-<c:set target="${languages}" property="bg" value="български"/>
-<c:set target="${languages}" property="cs" value="čeština"/>
-<c:set target="${languages}" property="da" value="Dansk"/>
-<c:set target="${languages}" property="de" value="Deutsch"/>
-<c:set target="${languages}" property="et" value="Eesti keel"/>
-<c:set target="${languages}" property="el" value="ελληνικά"/>
-<c:set target="${languages}" property="en" value="English"/>
-<c:set target="${languages}" property="es" value="Español"/>
-<c:set target="${languages}" property="fr" value="Français"/>
-<c:set target="${languages}" property="ga" value="Gaeilge"/>
-<c:set target="${languages}" property="hr" value="Hrvatski"/>
-<c:set target="${languages}" property="it" value="Italiano"/>
-<c:set target="${languages}" property="lv" value="Latviešu valoda"/>
-<c:set target="${languages}" property="lt" value="Lietuvių kalba"/>
-<c:set target="${languages}" property="hu" value="Magyar"/>
-<c:set target="${languages}" property="mt" value="Malti"/>
-<c:set target="${languages}" property="nl" value="Nederlands"/>
-<c:set target="${languages}" property="pl" value="Polski"/>
-<c:set target="${languages}" property="pt" value="Português"/>
-<c:set target="${languages}" property="ro" value="Română"/>
-<c:set target="${languages}" property="sk" value="Slovenčina"/>
-<c:set target="${languages}" property="sl" value="Slovenščina"/>
-<c:set target="${languages}" property="fi" value="Suomi"/>
-<c:set target="${languages}" property="sv" value="Svenska"/>
 <script>
     $(function () {
         $('#language').on('change', function () {
@@ -54,11 +30,11 @@
         <ul class="reset-list">
             <li><a target="_blank" href="http://ec.europa.eu/growth/legal-notice/index_en.htm">${span18n["legal_notice"]}</a></li>
             <li><a target="_blank" href="http://ec.europa.eu/growth/cookies/index_en.htm">${span18n["cookies"]}</a></li>
-            <li><a href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
+            <li><a target="_blank" href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
             <li>
                 <label for="language"></label><select id="language">
-                <c:forEach var="lang" items="${languages}">
-                    <option value="${lang.key}" ${(lang.key eq pageContext.response.locale)?"selected":""}>${lang.value}</option>
+                <c:forEach var="lang" items="<%=Language.values()%>">
+                    <option value="${lang.code}" ${(lang.code eq pageContext.response.locale)?"selected":""}>${lang.sourceLanguage}</option>
                 </c:forEach>
             </select>
             </li>

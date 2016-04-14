@@ -26,9 +26,9 @@
 		<title>ESPD</title>
 		
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
-		<link rel="stylesheet" type="text/css" href="<s:url value="/static/css/all.css"/>">
-		<script src="<s:url value="/static/js/all.js"/>"></script>
-		
+		<link rel="stylesheet" type="text/css" href="<s:url value="/static/bundle/all.css"/>">
+		<script src="<s:url value="/static/bundle/all.js"/>"></script>
+
 		<script>
 			$(function () {
 				validator(defaultValidators, "required", "${i18n['validator_required']}");
@@ -42,6 +42,7 @@
 				$("span[data-toggle='tooltip']").tooltip({placement: "top", html: true, trigger: "hover"}).addClass("fa").addClass("fa-info-circle");
 				$("input:radio[data-target-show]").change(dataShow);
 				$("input:radio[data-target-hide]").change(dataHide);
+				optsort();
 			});
 		</script>
     </head>

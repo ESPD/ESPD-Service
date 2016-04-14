@@ -38,9 +38,9 @@
                         <cac:ResidenceAddress>
                             <cbc:Postbox>28006</cbc:Postbox>
                             <cbc:StreetName>Vitruvio</cbc:StreetName>
-                            <cbc:CityName>Madrid</cbc:CityName>
+                            <cbc:CityName>Edinborough</cbc:CityName>
                             <cac:Country>
-                                <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">ES</cbc:IdentificationCode>
+                                <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-2" listVersionID="1.0">GB-SCT</cbc:IdentificationCode>
                             </cac:Country>
                         </cac:ResidenceAddress>
                     </cac:Person>

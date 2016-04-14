@@ -25,6 +25,7 @@
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="eo"/>
         <tiles:putAttribute name="page" value="${flow}/ca/exclusion"/>
+        <tiles:putAttribute name="showLink" value="${flow == 'request'}"/>
     </tiles:insertDefinition>
 
     <div class="panel-default">

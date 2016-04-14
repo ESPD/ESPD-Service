@@ -12,11 +12,10 @@ class EspdRequestSelectionCriteriaImportTest extends AbstractXmlFileImport {
         def espdRequestXml = importXmlRequestFile("all_selection_criteria_selected.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
 
         then: "all criteria satisfied has no default answer value"
-        espd.selectionSatisfiesAll.exists == false
-        espd.selectionSatisfiesAll.answer == null
+        espd.selectionSatisfiesAll == null
 
         then: "should have all suitability and their default answers should be true"
         espd.enrolmentProfessionalRegister.exists == true
@@ -92,47 +91,47 @@ class EspdRequestSelectionCriteriaImportTest extends AbstractXmlFileImport {
         def espdRequestXml = importXmlRequestFile("no_selection_criteria_selected.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml))
+        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
 
         then: "all criteria satisfied"
-        espd.selectionSatisfiesAll.exists == false
+        espd.selectionSatisfiesAll == null
 
         then: "should have all suitability"
-        espd.enrolmentProfessionalRegister.exists == false
-        espd.enrolmentTradeRegister.exists == false
-        espd.serviceContractsAuthorisation.exists == false
-        espd.serviceContractsMembership.exists == false
+        espd.enrolmentProfessionalRegister == null
+        espd.enrolmentTradeRegister == null
+        espd.serviceContractsAuthorisation == null
+        espd.serviceContractsMembership == null
 
         then: "should have all economic financial standing"
-        espd.generalYearlyTurnover.exists == false
-        espd.averageYearlyTurnover.exists == false
-        espd.specificYearlyTurnover.exists == false
-        espd.specificAverageTurnover.exists == false
-        espd.financialRatio.exists == false
-        espd.professionalRiskInsurance.exists == false
-        espd.otherEconomicFinancialRequirements.exists == false
+        espd.generalYearlyTurnover == null
+        espd.averageYearlyTurnover == null
+        espd.specificYearlyTurnover == null
+        espd.specificAverageTurnover == null
+        espd.financialRatio == null
+        espd.professionalRiskInsurance == null
+        espd.otherEconomicFinancialRequirements == null
 
         then: "should have all technical professional ability"
-        espd.workContractsPerformanceOfWorks.exists == false
-        espd.supplyContractsPerformanceDeliveries.exists == false
-        espd.serviceContractsPerformanceServices.exists == false
-        espd.techniciansTechnicalBodies.exists == false
-        espd.workContractsTechnicians.exists == false
-        espd.technicalFacilitiesMeasures.exists == false
-        espd.studyResearchFacilities.exists == false
-        espd.supplyChainManagement.exists == false
-        espd.allowanceOfChecks.exists == false
-        espd.educationalProfessionalQualifications.exists == false
-        espd.environmentalManagementFeatures.exists == false
-        espd.numberManagerialStaff.exists == false
-        espd.averageAnnualManpower.exists == false
-        espd.toolsPlantTechnicalEquipment.exists == false
-        espd.subcontractingProportion.exists == false
-        espd.supplyContractsSamplesDescriptionsWithoutCa.exists == false
-        espd.supplyContractsSamplesDescriptionsWithCa.exists == false
-        espd.supplyContractsCertificatesQc.exists == false
-        espd.certificateIndependentBodiesAboutQa.exists == false
-        espd.certificateIndependentBodiesAboutEnvironmental.exists == false
+        espd.workContractsPerformanceOfWorks == null
+        espd.supplyContractsPerformanceDeliveries == null
+        espd.serviceContractsPerformanceServices == null
+        espd.techniciansTechnicalBodies == null
+        espd.workContractsTechnicians == null
+        espd.technicalFacilitiesMeasures == null
+        espd.studyResearchFacilities == null
+        espd.supplyChainManagement == null
+        espd.allowanceOfChecks == null
+        espd.educationalProfessionalQualifications == null
+        espd.environmentalManagementFeatures == null
+        espd.numberManagerialStaff == null
+        espd.averageAnnualManpower == null
+        espd.toolsPlantTechnicalEquipment == null
+        espd.subcontractingProportion == null
+        espd.supplyContractsSamplesDescriptionsWithoutCa == null
+        espd.supplyContractsSamplesDescriptionsWithCa == null
+        espd.supplyContractsCertificatesQc == null
+        espd.certificateIndependentBodiesAboutQa == null
+        espd.certificateIndependentBodiesAboutEnvironmental == null
     }
 
 }

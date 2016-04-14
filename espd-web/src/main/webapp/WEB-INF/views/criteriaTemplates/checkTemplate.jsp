@@ -8,6 +8,7 @@
 <tiles:importAttribute name="title_code"/>
 <tiles:importAttribute name="description_code"/>
 <tiles:importAttribute name="is_always_checked"/>
+<tiles:importAttribute name="default_value"/>
 
 <div class="checkbox" style="border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px;padding-bottom: 5px;">
     <label>
@@ -17,13 +18,18 @@
             <form:checkbox path="${field}.exists" checked="checked" onclick="return false"/>
         </c:if>
         <c:if test="${!is_always_checked}">
-            <form:checkbox path="${field}.exists"/>
+            <c:choose>
+                <c:when test="${default_value}">
+                    <form:checkbox path="${field}.exists" checked="checked"/>
+                </c:when>
+                <c:otherwise>
+                    <form:checkbox path="${field}.exists"/>
+                </c:otherwise>
+            </c:choose>
         </c:if>
-		
-		<span style="font-weight: bold;" data-i18n="${title_code}">  
+		<span style="font-weight: bold;" data-i18n="${title_code}">
 			<s:message code='${title_code}'/> 
 		</span>
-
     </label>
     <c:if test="${not empty description_code}">
         <br>

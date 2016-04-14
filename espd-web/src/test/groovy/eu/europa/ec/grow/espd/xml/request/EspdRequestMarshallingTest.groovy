@@ -1,6 +1,8 @@
 package eu.europa.ec.grow.espd.xml.request
-import eu.europa.ec.grow.espd.constants.enums.Country
-import eu.europa.ec.grow.espd.criteria.enums.SelectionCriterion
+
+import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.other.Country
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PartyImpl
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
@@ -73,7 +75,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = parseRequestXml()
 
         then:
-        result.VersionID.text() == "1"
+        result.VersionID.text() == "2016.4"
         result.VersionID.@schemeAgencyID.text() == "EU-COM-GROW"
     }
 
@@ -110,7 +112,8 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
                 procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.",
-                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML",
+                tedReceptionId: "16-000136-001"
         )
 
         when:
@@ -132,7 +135,22 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[1].text() == "16-000136-001"
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+    }
+
+    def "AdditionalDocumentReference element should contain a default description so that we can read tedReceptionId as a second description"() {
+        given:
+        def espd = new EspdDocument(procedureShortDesc: "    ",
+                tedReceptionId: "16-000136-001"
+        )
+
+        when:
+        def result = parseRequestXml(espd)
+
+        then:
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "-"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[1].text() == "16-000136-001"
     }
 
     def "should contain ContractingParty element information"() {
@@ -197,8 +215,8 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         when:
         def result = parseRequestXml()
 
-        then: "mandatory exclusion plus all selection plus the only request award criterion"
-        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + 1
+        then: "mandatory exclusion plus all selection plus the award criteria (eo criteria)"
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + AwardCriterion.values().length
     }
 
 }

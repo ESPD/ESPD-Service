@@ -16,7 +16,7 @@ class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/professional_risk_insurance_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.professionalRiskInsurance.exists == true

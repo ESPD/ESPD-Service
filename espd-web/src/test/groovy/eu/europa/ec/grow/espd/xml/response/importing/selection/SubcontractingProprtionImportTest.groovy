@@ -16,7 +16,7 @@ class SubcontractingProprtionImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("selection/subcontracting_proportion_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.subcontractingProportion.exists == true

@@ -149,6 +149,7 @@
                 <cbc:FileName>Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</cbc:FileName>
                 <!-- Short description of the Procurement Project -->
                 <cbc:Description>Service category No 11: Management consulting services [6] and related services.</cbc:Description>
+                <cbc:Description>16-000136-001</cbc:Description>
             </cac:ExternalReference>
         </cac:Attachment>
     </cac:AdditionalDocumentReference>

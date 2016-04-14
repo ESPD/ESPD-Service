@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.response
 
-import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
@@ -77,7 +77,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = parseResponseXml()
 
         then:
-        result.VersionID.text() == "1"
+        result.VersionID.text() == "2016.4"
         result.VersionID.@schemeAgencyID.text() == "EU-COM-GROW"
     }
 
@@ -133,7 +133,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
     def "should contain EconomicOperatorParty element information"() {
         given:
         def economicOperator = new EconomicOperatorImpl(name: "  ACME Corp.  ", vatNumber: "  B207781243  ", anotherNationalId: "B66666",
-                street: "  Vitruvio  ", postalCode: "  28006  ", city: "  Madrid  ", country: Country.SPAIN,
+                street: "  Vitruvio  ", postalCode: "  28006  ", city: "  Edinborough  ", country: Country.UNITED_KINGDOM_SCOTLAND,
                 contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  +34 96 123 456  ",
                 website: "  www.hodor.com  ", isSmallSizedEnterprise: true)
         def espd = new EspdDocument(economicOperator: economicOperator)
@@ -150,11 +150,11 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.EconomicOperatorParty.Party.PartyIdentification.ID[1].text() == "B66666"
 
         then: "check address information"
-        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.text() == "ES"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.text() == "GB-SCT"
         result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "ISO"
-        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-1"
+        result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-2"
         result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
-        result.EconomicOperatorParty.Party.PostalAddress.CityName.text() == "Madrid"
+        result.EconomicOperatorParty.Party.PostalAddress.CityName.text() == "Edinborough"
         result.EconomicOperatorParty.Party.PostalAddress.StreetName.text() == "Vitruvio"
         result.EconomicOperatorParty.Party.PostalAddress.Postbox.text() == "28006"
 

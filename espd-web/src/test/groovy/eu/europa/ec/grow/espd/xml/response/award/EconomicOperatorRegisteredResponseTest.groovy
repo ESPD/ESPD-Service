@@ -16,7 +16,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "9b19e869-6c89-4cc4-bd6c-ac9ca8602165")
@@ -84,7 +84,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -99,7 +99,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[1]
@@ -114,7 +114,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -131,7 +131,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -149,7 +149,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]
@@ -167,7 +167,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
@@ -185,7 +185,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]
@@ -204,7 +204,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.criteria.enums.AwardCriterion.EO_REGISTERED)
+        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[1]

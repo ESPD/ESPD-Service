@@ -22,6 +22,12 @@ public class EspdConfiguration {
     @Value("${last.build.date:N/A}")
     private String lastBuildDate;
 
+    @Value("${piwik.id:2}")
+    private Integer piwikId;
+
+    @Value("${piwik.server:https://webgate.ec.europa.eu/pwar/piwik.php}")
+    private String piwikServer;
+
     @Autowired
     private Environment environment;
 

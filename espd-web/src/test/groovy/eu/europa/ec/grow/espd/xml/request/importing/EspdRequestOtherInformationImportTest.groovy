@@ -1,6 +1,6 @@
 package eu.europa.ec.grow.espd.xml.request.importing
 
-import eu.europa.ec.grow.espd.constants.enums.Country
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
@@ -29,8 +29,8 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         // init objects run before the first feature method
         espdRequestFullXml = importXmlRequestFile("request_other_information_full_import.xml")
         espdRequestMinimalXml = importXmlRequestFile("request_other_information_minimal_import.xml")
-        espdFull = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestFullXml))
-        espdMinimal = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestMinimalXml))
+        espdFull = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestFullXml)).get()
+        espdMinimal = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestMinimalXml)).get()
     }
 
     void cleanupSpec() {
@@ -77,6 +77,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         espdFull.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
         espdFull.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
+        espdFull.tedReceptionId == "16-000136-001"
     }
 
     def "should import espd request full information"() {

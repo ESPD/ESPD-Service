@@ -17,7 +17,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
         def espdResponseXml = importXmlResponseFile("exclusion/participation_criminal_organisation_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.criminalConvictions.exists == true

@@ -93,6 +93,7 @@
         <put-attribute name="title_code" value=""/>
         <put-attribute name="description_code" value=""/>
         <put-attribute name="is_always_checked" value="false"/>
+        <put-attribute name="default_value" value="false"/>
         <put-attribute name="is_disabled" value="false"/>
     </definition>
 

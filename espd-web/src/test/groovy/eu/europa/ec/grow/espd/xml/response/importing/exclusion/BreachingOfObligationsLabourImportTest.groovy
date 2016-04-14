@@ -16,7 +16,7 @@ class BreachingOfObligationsLabourImportTest extends AbstractXmlFileImport {
         def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_labour_import.xml")
 
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml))
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
 
         then:
         espd.breachingObligationsLabour.exists == true

@@ -1,7 +1,7 @@
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.constants.enums.Country;
-import eu.europa.ec.grow.espd.entities.CacParty;
+import eu.europa.ec.grow.espd.domain.enums.other.Country;
+import eu.europa.ec.grow.espd.domain.ubl.CacParty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

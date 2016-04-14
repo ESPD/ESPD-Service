@@ -1,0 +1,43 @@
+= European Single Procurement Document (ESPD)
+
+Alexey Lukashov +
+Virgiliu Ratoi
+
+v1.1.0, 22-03-2016
+
+:sourcedir: ../java/eu/europa/ec/grow/espd
+:homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:appVersion: 1.1.0
+:maven: https://maven.apache.org[Maven 3]
+:tomcat: https://tomcat.apache.org[Tomcat 7+]
+:springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
+:logback: http://logback.qos.ch/[Logback]
+:lombok: https://projectlombok.org/features/index.html[Lombok]
+:wro4j: https://github.com/wro4j/wro4j[WRO4J]
+:intellij: https://www.jetbrains.com/idea[IntelliJ]
+:eclipse: https://eclipse.org/downloads[Eclipse]
+:javaMelody: https://github.com/javamelody/javamelody/wiki[Java Melody]
+:jaxb: https://jaxb.java.net[JAXB]
+:jodaTime: http://www.joda.org/joda-time/[Joda-Time]
+
+include::about.adoc[]
+
+include::requirements.adoc[]
+
+include::installation.adoc[]
+
+include::overview.adoc[]
+
+include::usage.adoc[]
+
+include::configuration.adoc[]
+
+include::dataModel.adoc[]
+
+include::testing.adoc[]
+
+include::view.adoc[]
+
+include::license.adoc[]
+

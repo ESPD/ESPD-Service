@@ -3,7 +3,7 @@
     <parent>
         <artifactId>espd</artifactId>
         <groupId>eu.europa.ec.grow.espd</groupId>
-        <version>1.0.4</version>
+        <version>2016.04</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>espd-web</artifactId>
@@ -71,6 +71,17 @@
         <dependency>
             <groupId>net.bull.javamelody</groupId>
             <artifactId>javamelody-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>eu.michael-simons</groupId>
+            <artifactId>wro4j-spring-boot-starter</artifactId>
+            <version>0.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -204,8 +215,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <cssDestinationFolder>${basedir}/src/main/webapp/static/css/</cssDestinationFolder>
-                    <jsDestinationFolder>${basedir}/src/main/webapp/static/js/</jsDestinationFolder>
+                    <wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
+                    <extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+                    <cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
+                    <jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
                     <ignoreMissingResources>false</ignoreMissingResources>
                     <incrementalBuildEnabled>true</incrementalBuildEnabled>
@@ -242,21 +255,6 @@
         								<ignore></ignore>
         							</action>
         						</pluginExecution>
-        						<!-- 
-			                    <pluginExecution>  
-			                        <pluginExecutionFilter>  
-			                            <groupId>ro.isdc.wro4j</groupId>
-			                            <artifactId>wro4j-maven-plugin</artifactId>  
-			                            <versionRange>[1.0,)</versionRange>  
-			                            <goals>  
-			                                <goal>run</goal>  
-			                            </goals>  
-			                        </pluginExecutionFilter>  
-			                        <action>  
-			                            <execute/>  
-			                        </action>  
-			                    </pluginExecution>
-			                     -->
         					</pluginExecutions>
         				</lifecycleMappingMetadata>
         			</configuration>
