@@ -58,7 +58,7 @@ class EspdController {
         return "welcome";
     }
 
-    @RequestMapping("/{page:filter|print|contact}")
+    @RequestMapping("/{page:filter|contact}")
     public String getPage(@PathVariable String page) {
         return page;
     }
@@ -183,7 +183,7 @@ class EspdController {
         return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
     }
 
-    @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}")
+    @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
     public String view(
             @PathVariable String flow,
             @PathVariable String agent,
@@ -192,7 +192,7 @@ class EspdController {
         return flow + "_" + agent + "_" + step;
     }
 
-    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", method = POST, params = "prev")
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}", method = POST, params = "prev")
     public String previous(
             @PathVariable String flow,
             @PathVariable String agent,
@@ -204,7 +204,20 @@ class EspdController {
                 flow + "_" + agent + "_" + step : "redirect:/" + flow + "/" + agent + "/" + prev;
     }
 
-    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}", method = POST, params = "next")
+
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", method = POST, params = "print")
+    public String print(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam String print,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
+        return bindingResult.hasErrors() ?
+                flow + "_" + agent + "_" + step : "redirect:/" + flow + "/" + agent + "/print";
+    }
+    
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print}", method = POST, params = "next")
     public String next(
             @PathVariable String flow,
             @PathVariable String agent,

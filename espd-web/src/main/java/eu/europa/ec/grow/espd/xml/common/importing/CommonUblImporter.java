@@ -26,12 +26,12 @@ public final class CommonUblImporter {
     }
 
     public static Date readIssueDate(IssueDateType issueDateType, IssueTimeType issueTimeType) {
-        if (issueDateType == null) {
+        if (issueDateType == null || issueDateType.getValue() == null) {
             return null;
         }
 
         LocalDate localDate = issueDateType.getValue();
-        if (issueTimeType != null) {
+        if (issueTimeType != null && issueTimeType.getValue() != null) {
             LocalTime localTime = issueTimeType.getValue();
             return new LocalDateTime(localDate.getYear(), localDate.getMonthOfYear(),
                     localDate.getDayOfMonth(), localTime.getHourOfDay(), localTime.getMinuteOfHour(),

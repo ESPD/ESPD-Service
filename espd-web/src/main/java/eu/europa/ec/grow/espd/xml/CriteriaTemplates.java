@@ -283,6 +283,7 @@ public final class CriteriaTemplates {
                     put("field", "breachingObligationsEnvironmental").
                     put("title_code", "crit_eu_title_breaching_obligations_environmental").
                     put("description_code", "crit_eu_text_breaching_obligations_environmental").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -290,6 +291,7 @@ public final class CriteriaTemplates {
                     put("field", "breachingObligationsSocial").
                     put("title_code", "crit_eu_title_breaching_obligations_social").
                     put("description_code", "crit_eu_text_breaching_obligations_social").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -297,6 +299,7 @@ public final class CriteriaTemplates {
                     put("field", "breachingObligationsLabour").
                     put("title_code", "crit_eu_title_breaching_obligations_labour").
                     put("description_code", "crit_eu_text_breaching_obligations_labour").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -304,6 +307,7 @@ public final class CriteriaTemplates {
                     put("field", "bankruptcy").
                     put("title_code", "crit_eu_title_bankrupt").
                     put("description_code", "crit_eu_text_bankrupt").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -311,6 +315,7 @@ public final class CriteriaTemplates {
                     put("field", "insolvency").
                     put("title_code", "crit_eu_title_insolvency").
                     put("description_code", "crit_eu_text_insolvency").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -318,6 +323,7 @@ public final class CriteriaTemplates {
                     put("field", "arrangementWithCreditors").
                     put("title_code", "crit_eu_title_arrangement_creditors").
                     put("description_code", "crit_eu_text_arrangement_creditors").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -325,6 +331,7 @@ public final class CriteriaTemplates {
                     put("field", "analogousSituation").
                     put("title_code", "crit_eu_title_national_bankruptcy").
                     put("description_code", "crit_eu_text_national_bankruptcy").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -332,6 +339,7 @@ public final class CriteriaTemplates {
                     put("field", "assetsAdministeredByLiquidator").
                     put("title_code", "crit_eu_title_liquidator").
                     put("description_code", "crit_eu_text_liquidator").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -339,6 +347,7 @@ public final class CriteriaTemplates {
                     put("field", "businessActivitiesSuspended").
                     put("title_code", "crit_eu_title_suspended_business").
                     put("description_code", "crit_eu_text_suspended_business").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -346,6 +355,7 @@ public final class CriteriaTemplates {
                     put("field", "agreementsWithOtherEO").
                     put("title_code", "crit_eu_title_agreement_economic").
                     put("description_code", "crit_eu_text_agreement_economic").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -353,12 +363,14 @@ public final class CriteriaTemplates {
                     put("field", "guiltyGrave").
                     put("title_code", "crit_eu_title_guilty_misconduct").
                     put("description_code", "crit_eu_text_guilty_misconduct").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
                     put("template", "exclusionFormTemplate").
                     put("field", "conflictInterest").
                     put("title_code", "crit_eu_title_conflict_interest").
+                    put("checkExistanse", "true").
                     put("description_code", "crit_eu_text_conflict_interest").build(),
 
             ImmutableMap.<String, String>builder().
@@ -367,6 +379,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_eu_title_involvement").
                     put("description_code", "crit_eu_text_involvement").
                     put("availableElectronically", "false").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -374,6 +387,7 @@ public final class CriteriaTemplates {
                     put("field", "earlyTermination").
                     put("title_code", "crit_eu_title_early_termination").
                     put("description_code", "crit_eu_text_early_termination").
+                    put("checkExistanse", "true").
                     put("availableElectronically", "false").build(),
 
             ImmutableMap.<String, String>builder().
@@ -381,6 +395,7 @@ public final class CriteriaTemplates {
                     put("field", "guiltyMisinterpretation").
                     put("title_code", "crit_eu_title_guilty_misinterpretation").
                     put("description_code", "crit_eu_text_guilty_misinterpretation").
+                    put("checkExistanse", "true").
                     put("selfCleaning", "false").build()
 
     };
