@@ -99,6 +99,12 @@ buildNumber.properties
 
 # Package Files #
 *.jar
+/espd.iml
+/.idea
+/espd-docs/espd-docs.iml
+/espd-web/espd-web.iml
+/exchange-model/exchange-model.iml
+/.idea/.name
 *.war
 *.ear
 
