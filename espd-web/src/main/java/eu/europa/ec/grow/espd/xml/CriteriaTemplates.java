@@ -8,9 +8,9 @@ import java.util.Map;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public final class CriteriaTemplates {
 
-    public static final int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
-    public static final Integer[] lastYearsAmount = new Integer[] { year, year - 1, year - 2, year - 3, year - 4 };
-    public static final Integer[] lastYearsNumber = new Integer[] { year, year - 1, year - 2 };
+    public static final int YEAR = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+    public static final Integer[] LAST_YEARS_AMOUNT = new Integer[] { YEAR - 1, YEAR - 2, YEAR - 3, YEAR - 4, YEAR - 5 };
+    public static final Integer[] LAST_YEARS_NUMBER = new Integer[] { YEAR - 1, YEAR - 2, YEAR - 3 };
 
     private CriteriaTemplates() {
 
@@ -654,28 +654,28 @@ public final class CriteriaTemplates {
                     put("field", "generalYearlyTurnover").
                     put("title_code", "crit_selection_economic_general_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_general_yearly_turnover_description").
-                    put("lastYearsAmount", lastYearsAmount).build(),
+                    put("lastYearsAmount", LAST_YEARS_AMOUNT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
                     put("field", "averageYearlyTurnover").
                     put("title_code", "crit_selection_economic_average_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_average_yearly_turnover_description").
-                    put("lastYearsAmount", lastYearsAmount).build(),
+                    put("lastYearsAmount", LAST_YEARS_AMOUNT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
                     put("field", "specificYearlyTurnover").
                     put("title_code", "crit_selection_economic_specific_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_specific_yearly_turnover_description").
-                    put("lastYearsAmount", lastYearsAmount).build(),
+                    put("lastYearsAmount", LAST_YEARS_AMOUNT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
                     put("field", "specificAverageTurnover").
                     put("title_code", "crit_selection_economic_specific_average_turnover_main").
                     put("description_code", "crit_selection_economic_specific_average_turnover_description").
-                    put("lastYearsAmount", lastYearsAmount).build(),
+                    put("lastYearsAmount", LAST_YEARS_AMOUNT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -685,7 +685,7 @@ public final class CriteriaTemplates {
                     put("has_specify_year", "true").
                     put("availableElectronically", "false").
                     put("has_multiple_year_amount", "false").
-                    put("lastYearsAmount", lastYearsAmount).build(),
+                    put("lastYearsAmount", LAST_YEARS_AMOUNT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -799,14 +799,14 @@ public final class CriteriaTemplates {
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
                     put("field", "numberManagerialStaff").
-                    put("lastYearsNumber", lastYearsNumber).
+                    put("lastYearsNumber", LAST_YEARS_NUMBER).
                     put("title_code", "crit_selection_technical_number_managerial_staff_main").
                     put("description_code", "crit_selection_technical_number_managerial_staff_description").build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
                     put("field", "averageAnnualManpower").
-                    put("lastYearsNumber", lastYearsNumber).
+                    put("lastYearsNumber", LAST_YEARS_NUMBER).
                     put("title_code", "crit_selection_technical_average_annual_manpower_main").
                     put("description_code", "crit_selection_technical_average_annual_manpower_description").build(),
 
