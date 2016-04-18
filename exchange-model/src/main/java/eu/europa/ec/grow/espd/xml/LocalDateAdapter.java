@@ -16,7 +16,7 @@ public final class LocalDateAdapter {
     }
 
     public static LocalDate unmarshal(String v) {
-        if (v == null) {
+        if (v == null || v.trim().isEmpty()) {
             return null;
         }
         return LocalDate.parse(v, DATE_FORMAT);

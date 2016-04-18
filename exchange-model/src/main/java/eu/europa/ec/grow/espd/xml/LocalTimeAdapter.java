@@ -16,7 +16,7 @@ public final class LocalTimeAdapter {
     }
 
     public static LocalTime unmarshal(String v) {
-        if (v == null) {
+        if (v == null || v.trim().isEmpty()) {
             return null;
         }
         return LocalTime.parse(v, TIME_FORMAT);

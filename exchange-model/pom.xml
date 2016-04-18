@@ -28,10 +28,11 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.glassfish.jaxb</groupId> -->
-<!--             <artifactId>jaxb-runtime</artifactId> -->
-<!--         </dependency> -->
+        <!-- Consider using this if we want to override the JAXB runtime -->
+        <!--<dependency>-->
+            <!--<groupId>org.glassfish.jaxb</groupId>-->
+            <!--<artifactId>jaxb-runtime</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
