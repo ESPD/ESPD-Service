@@ -189,7 +189,7 @@ public enum ExclusionRequirementGroup implements CcvRequirementGroup {
      */
     GUILTY_OF_MISINTERPRETATION_GROUP("ddea7091-f238-4fcb-9d93-eacb13190243",
             Collections.<CcvRequirementGroup>emptyList(), ListUtil
-            .list(ExclusionCriterionRequirement.YOUR_ANSWER, ExclusionCriterionRequirement.PLEASE_DESCRIBE)),
+            .list(ExclusionCriterionRequirement.YOUR_ANSWER)),
     /**
      *
      */

@@ -5,12 +5,16 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
+<tiles:importAttribute name="hasDescription"/>
 
-<div class="form-group">
-	<label class="control-label col-md-4 small">
-		${span18n["crit_please_describe_them"]}
-	</label>
-	<div class="col-md-8">
-		<form:textarea path="${field}.description" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
-	</div>
-</div> 
+<c:if test="${hasDescription}">
+    <div class="form-group">
+        <label class="control-label col-md-4 small">
+            ${span18n["crit_please_describe_them"]}
+        </label>
+        <div class="col-md-8">
+            <form:textarea path="${field}.description" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
+        </div>
+    </div>
+</c:if>
+

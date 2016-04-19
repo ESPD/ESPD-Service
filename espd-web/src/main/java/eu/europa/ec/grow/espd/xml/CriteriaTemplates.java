@@ -396,7 +396,9 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_eu_title_guilty_misinterpretation").
                     put("description_code", "crit_eu_text_guilty_misinterpretation").
                     put("checkExistanse", "true").
-                    put("selfCleaning", "false").build()
+                    put("selfCleaning", "false").
+                    put("hasDescription", "false").
+                    put("availableElectronically", "false").build()
 
     };
 

@@ -118,6 +118,7 @@
     <definition name="exclusionFormTemplate" extends="formTemplate">
     	<put-attribute name="selfCleaning" value="true"/>
     	<put-attribute name="availableElectronically" value="true"/>
+    	<put-attribute name="hasDescription" value="true"/>
     	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/exclusion/exclusionTemplate.jsp"/>
     	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/simpleForm.jsp"/>
     </definition>
