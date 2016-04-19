@@ -1,6 +1,5 @@
 package eu.europa.ec.grow.espd.xml.request.importing;
 
-import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
@@ -25,7 +24,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
  * Created by ratoico on 11/25/15 11:28 AM.
  */
 @Component
-public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequestType, EspdDocument> {
+public class UblRequestToEspdDocumentTransformer {
 
     private final PartyImplTransformer partyImplTransformer;
     private final CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator;
@@ -40,12 +39,11 @@ public class UblRequestToEspdDocumentTransformer implements Function<ESPDRequest
     /**
      * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
      *
-     * @param input
+     * @param input The XML object structure of an ESPD Request
      *
-     * @return
+     * @return An {@link EspdDocument} entity containing the information coming from the XML request file.
      */
-    @Override
-    public EspdDocument apply(ESPDRequestType input) {
+    public EspdDocument buildRequest(ESPDRequestType input) {
         EspdDocument espdDocument = new EspdDocument();
 
         addPartyInformation(input, espdDocument);

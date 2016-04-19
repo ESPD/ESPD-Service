@@ -122,9 +122,9 @@ public class EspdExchangeMarshaller {
             JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
                     .unmarshal(new StreamSource(espdRequestStream));
             ESPDRequestType requestType = element.getValue();
-            return Optional.of(requestToEspdDocumentTransformer.apply(requestType));
+            return Optional.of(requestToEspdDocumentTransformer.buildRequest(requestType));
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.warn(e.getMessage(), e);
             return Optional.absent();
         }
     }
@@ -144,9 +144,9 @@ public class EspdExchangeMarshaller {
             JAXBElement<ESPDResponseType> element = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
                     .unmarshal(new StreamSource(espdResponseStream));
             ESPDResponseType responseType = element.getValue();
-            return Optional.of(responseToEspdDocumentTransformer.importResponse(responseType));
+            return Optional.of(responseToEspdDocumentTransformer.buildResponse(responseType));
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.warn(e.getMessage(), e);
             return Optional.absent();
         }
     }
@@ -214,7 +214,7 @@ public class EspdExchangeMarshaller {
             ESPDResponseType responseType = responseElement.getValue();
             return Optional.of(requestResponseMerger.mergeRequestAndResponse(requestType, responseType));
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            log.warn(e.getMessage(), e);
             return Optional.absent();
         }
     }

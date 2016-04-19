@@ -32,11 +32,11 @@ public class UblResponseToEspdDocumentTransformer extends UblResponseImporter {
     /**
      * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDResponseType}.
      *
-     * @param input
+     * @param input The XML object structure of an ESPD Response
      *
-     * @return
+     * @return An {@link EspdDocument} entity containing the information coming from the XML response file.
      */
-    public EspdDocument importResponse(ESPDResponseType input) {
+    public EspdDocument buildResponse(ESPDResponseType input) {
         return buildEspdDocument(null, input);
     }
 
