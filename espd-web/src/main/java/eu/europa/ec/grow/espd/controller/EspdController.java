@@ -38,6 +38,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Slf4j
 class EspdController {
 
+    private static final String WELCOME_PAGE = "welcome";
+    private static final String REQUEST_CA_PROCEDURE_PAGE = "request/ca/procedure";
+    private static final String RESPONSE_EO_PROCEDURE_PAGE = "response/eo/procedure";
+    private static final String PRINT_PAGE = "response/eo/print";
+
     private final EspdExchangeMarshaller exchangeMarshaller;
 
     private final TedService tedService;
@@ -55,7 +60,7 @@ class EspdController {
 
     @RequestMapping("/")
     public String index() {
-        return "welcome";
+        return WELCOME_PAGE;
     }
 
     @RequestMapping("/{page:filter|contact}")
@@ -66,7 +71,7 @@ class EspdController {
     @RequestMapping(value = "/welcome")
     public String cancel(SessionStatus status) {
         try {
-            return "welcome";
+            return WELCOME_PAGE;
         } finally {
             status.setComplete();
         }
@@ -97,7 +102,7 @@ class EspdController {
     private String createNewRequestAsCA(Country country, EspdDocument document) {
         document.getAuthority().setCountry(country);
         copyTedInformation(document);
-        return "redirect:/request/ca/procedure";
+        return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
     }
 
     private void copyTedInformation(EspdDocument document) {
@@ -118,7 +123,7 @@ class EspdController {
             Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
             if (espd.isPresent()) {
                 model.addAttribute("espd", espd.get());
-                return "redirect:/request/ca/procedure";
+                return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
             }
         }
 
@@ -132,7 +137,7 @@ class EspdController {
             Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
             if (espd.isPresent()) {
                 model.addAttribute("espd", espd.get());
-                return "redirect:/print";
+                return redirectToPage(PRINT_PAGE);
             }
         }
 
@@ -156,7 +161,7 @@ class EspdController {
                 }
                 espd.getEconomicOperator().setCountry(country);
                 model.addAttribute("espd", espd);
-                return "redirect:/response/eo/procedure";
+                return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
             }
         }
 
@@ -171,7 +176,7 @@ class EspdController {
             Optional<EspdDocument> wrappedEspd = exchangeMarshaller.mergeEspdRequestAndResponse(reqIs, respIs);
             if (wrappedEspd.isPresent()) {
                 model.addAttribute("espd", wrappedEspd.get());
-                return "redirect:/response/eo/procedure";
+                return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
             }
         }
 
@@ -201,7 +206,7 @@ class EspdController {
             @ModelAttribute("espd") EspdDocument espd,
             BindingResult bindingResult) {
         return bindingResult.hasErrors() ?
-                flow + "_" + agent + "_" + step : "redirect:/" + flow + "/" + agent + "/" + prev;
+                flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/" + prev);
     }
 
 
@@ -214,7 +219,7 @@ class EspdController {
             @ModelAttribute("espd") EspdDocument espd,
             BindingResult bindingResult) {
         return bindingResult.hasErrors() ?
-                flow + "_" + agent + "_" + step : "redirect:/" + flow + "/" + agent + "/print";
+                flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
     }
     
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print}", method = POST, params = "next")
@@ -231,12 +236,16 @@ class EspdController {
         }
 
         if (!"generate".equals(next)) {
-            return "redirect:/" + flow + "/" + agent + "/" + next;
+            return redirectToPage(flow + "/" + agent + "/" + next);
         }
 
         downloadEspdFile(agent, espd, response);
 
         return null;
+    }
+
+    private static String redirectToPage(String pageName) {
+        return "redirect:/" + pageName;
     }
 
     private void downloadEspdFile(@PathVariable String agent, @ModelAttribute("espd") EspdDocument espd,
