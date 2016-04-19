@@ -56,7 +56,7 @@ public enum AwardCriterionRequirement implements CcvCriterionRequirement {
      */
     EO_ABLE_PROVIDE_CERTIFICATE("0e71abd3-198e-49c5-8128-5708617bb191",
             "e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
-            ExpectedResponseType.DESCRIPTION, "description4"),
+            ExpectedResponseType.INDICATOR, "booleanValue3"),
     /**
      *
      */

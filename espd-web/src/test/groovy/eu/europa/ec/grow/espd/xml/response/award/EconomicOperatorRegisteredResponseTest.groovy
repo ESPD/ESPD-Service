@@ -71,7 +71,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         def r2_0 = response.Criterion[idx].RequirementGroup[1].Requirement[0]
         checkRequirement(r2_0, "0e71abd3-198e-49c5-8128-5708617bb191",
                 "e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
-                "DESCRIPTION")
+                "INDICATOR")
 
         def r2_1 = response.Criterion[idx].RequirementGroup[1].Requirement[1]
         checkRequirement(r2_1, "caa72cea-5443-49fb-84ba-ab6c64427f77",
@@ -181,7 +181,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
     def "check the 'e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions' requirement response"() {
         given:
-        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, description4: "descr 4"))
+        def espd = new EspdDocument(eoRegistered: new AwardCriterion(exists: true, booleanValue3: true))
 
         when:
         def response = parseResponseXml(espd)
@@ -193,9 +193,9 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         def req = subGroup.Requirement[0]
         checkRequirement(req, "0e71abd3-198e-49c5-8128-5708617bb191",
                 "e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
-                "DESCRIPTION")
+                "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Description.text() == "descr 4"
+        req.Response[0].Indicator.text() == "true"
     }
 
     def "check the 'If the relevant documentation is available electronically, please indicate:' requirement response"() {

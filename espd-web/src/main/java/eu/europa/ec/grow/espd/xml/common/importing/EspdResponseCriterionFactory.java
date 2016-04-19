@@ -622,11 +622,10 @@ class EspdResponseCriterionFactory {
             criterion.setDescription3(participantGroupName);
         }
 
-        String eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
+        // this field used to contain 'description4' but has become an indicator
+        Boolean eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
                 criterionType);
-        if (isNotBlank(eoProvideCertificate)) {
-            criterion.setDescription4(eoProvideCertificate);
-        }
+        criterion.setBooleanValue3(eoProvideCertificate);
         String docElectronically = readRequirementValue(AwardCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
                 criterionType);
         if (isNotBlank(docElectronically)) {

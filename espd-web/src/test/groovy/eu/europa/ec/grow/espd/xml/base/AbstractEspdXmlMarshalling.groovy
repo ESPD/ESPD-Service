@@ -97,6 +97,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         parseResponseXml(espd)
         def file = new File(filePath)
         file.text = xmlOutput
+        println("--------------- created ESPD Response at ${file.absolutePath}")
     }
 
 }

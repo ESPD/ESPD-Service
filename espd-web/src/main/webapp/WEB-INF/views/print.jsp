@@ -363,9 +363,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                                         <label class="control-label col-md-6"> ${span18n['createeo_eo_has_cert_soc']}</label>
 
                                         <div class="col-md-6">
-                                            <form:input cssClass="form-control" path="eoRegistered.description4"
-                                                        placeholder="${i18n['createeo_eo_has_cert_soc_placeholder']}"
-                                                        data-i18n="createeo_eo_has_cert_soc_placeholder"/>
+                                            <form:radiobutton path="eoRegistered.booleanValue3" value="true"/>${span18n["yes"]}
+                                            <form:radiobutton path="eoRegistered.booleanValue3" value="false"/>${span18n["no"]}
                                         </div>
                                     </div>
                                 </div>
