@@ -227,7 +227,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "hodor lot"
     }
 
-    def "should contain AdditionalDocumentReference element information"() {
+    def "should contain AdditionalDocumentReference element with TED information"() {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
@@ -254,6 +254,20 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+    }
+
+    def "response should not contain AdditionalDocumentReference if the TED OJS number && tedRecepetionId are missing"() {
+        given:
+        def espd = new EspdDocument(ojsNumber: "     ", tedReceptionId: "     ",
+                procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.",
+                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.AdditionalDocumentReference.size() == 0
     }
 
     def "should contain ContractFolderID element information"() {
@@ -300,6 +314,32 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
+    }
+
+    def "response should not contain ESPD Request information if the metadata is missing"() {
+        given:
+        def now = new Date()
+        def espd = new EspdDocument(requestMetadata: new EspdRequestMetadata(id: " ",
+                issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.AdditionalDocumentReference.size() == 0
+    }
+
+    def "ESPD Request information should not contain empty IssueDate and IssueTime elements if this information is not present in the metadata"() {
+        given:
+        def espd = new EspdDocument(requestMetadata: new EspdRequestMetadata(id: "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec",
+                issueDate: null))
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.AdditionalDocumentReference[0].IssueDate.size() == 0
+        result.AdditionalDocumentReference[0].IssueTime.size() == 0
     }
 
 }

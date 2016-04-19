@@ -16,6 +16,7 @@ import org.joda.time.LocalTime;
 import java.util.Date;
 import java.util.UUID;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
@@ -112,10 +113,11 @@ public final class CommonUblFactory {
      * @return The corresponding UBL element
      */
     public static IssueDateType buildIssueDateType(Date when) {
-        IssueDateType issueDateType = new IssueDateType();
-        if (when != null) {
-            issueDateType.setValue(new LocalDate(when));
+        if (when == null) {
+            return null;
         }
+        IssueDateType issueDateType = new IssueDateType();
+        issueDateType.setValue(new LocalDate(when));
         return issueDateType;
     }
 
@@ -127,10 +129,11 @@ public final class CommonUblFactory {
      * @return The corresponding UBL element
      */
     public static IssueTimeType buildIssueTimeType(Date when) {
-        IssueTimeType issueTimeType = new IssueTimeType();
-        if (when != null) {
-            issueTimeType.setValue(new LocalTime(when));
+        if (when == null) {
+            return null;
         }
+        IssueTimeType issueTimeType = new IssueTimeType();
+        issueTimeType.setValue(new LocalTime(when));
         return issueTimeType;
     }
 
@@ -154,6 +157,10 @@ public final class CommonUblFactory {
      * @return A UBL document reference element
      */
     public static DocumentReferenceType buildProcurementProcedureType(EspdDocument espdDocument) {
+        if (isBlank(espdDocument.getOjsNumber()) && isBlank(espdDocument.getTedReceptionId())) {
+            return null;
+        }
+
         DocumentReferenceType documentReferenceType = new DocumentReferenceType();
         documentReferenceType.setID(buildDocumentIdType(espdDocument.getOjsNumber()));
 
@@ -175,6 +182,10 @@ public final class CommonUblFactory {
      * @return A UBL document reference element
      */
     public static DocumentReferenceType buildEspdRequestReferenceType(EspdRequestMetadata metadata) {
+        if (isBlank(metadata.getId())) {
+            return null;
+        }
+
         DocumentReferenceType documentReferenceType = new DocumentReferenceType();
 
         documentReferenceType.setID(buildDocumentIdType(metadata.getId()));

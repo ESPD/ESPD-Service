@@ -141,7 +141,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "AdditionalDocumentReference element should contain a default description so that we can read tedReceptionId as a second description"() {
         given:
-        def espd = new EspdDocument(procedureShortDesc: "    ",
+        def espd = new EspdDocument(ojsNumber: "433", procedureShortDesc: "    ",
                 tedReceptionId: "16-000136-001"
         )
 
