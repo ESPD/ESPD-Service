@@ -14,6 +14,7 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementGroupType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -325,15 +326,15 @@ class EspdResponseCriterionFactory {
     }
 
     private void addMultipleRatios(CriterionType criterionType, EconomicFinancialStandingCriterion criterion) {
-        Double ratio1 = readRequirementValue(SelectionCriterionRequirement.RATIO_1, criterionType);
+        BigDecimal ratio1 = readRequirementValue(SelectionCriterionRequirement.RATIO_1, criterionType);
         criterion.setRatio1(ratio1);
-        Double ratio2 = readRequirementValue(SelectionCriterionRequirement.RATIO_2, criterionType);
+        BigDecimal ratio2 = readRequirementValue(SelectionCriterionRequirement.RATIO_2, criterionType);
         criterion.setRatio2(ratio2);
-        Double ratio3 = readRequirementValue(SelectionCriterionRequirement.RATIO_3, criterionType);
+        BigDecimal ratio3 = readRequirementValue(SelectionCriterionRequirement.RATIO_3, criterionType);
         criterion.setRatio3(ratio3);
-        Double ratio4 = readRequirementValue(SelectionCriterionRequirement.RATIO_4, criterionType);
+        BigDecimal ratio4 = readRequirementValue(SelectionCriterionRequirement.RATIO_4, criterionType);
         criterion.setRatio4(ratio4);
-        Double ratio5 = readRequirementValue(SelectionCriterionRequirement.RATIO_5, criterionType);
+        BigDecimal ratio5 = readRequirementValue(SelectionCriterionRequirement.RATIO_5, criterionType);
         criterion.setRatio5(ratio5);
     }
 
@@ -367,7 +368,7 @@ class EspdResponseCriterionFactory {
         String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
         criterion.setSpecify(specify);
 
-        Double percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
+        BigDecimal percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
         criterion.setPercentage(percentage);
 
         criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
@@ -635,7 +636,7 @@ class EspdResponseCriterionFactory {
         Boolean coversAllSelectionCriteria = readBooleanRequirement(
                 AwardCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
         criterion.setBooleanValue1(coversAllSelectionCriteria);
-        Double percentage = readRequirementValue(AwardCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
+        BigDecimal percentage = readRequirementValue(AwardCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
         criterion.setDoubleValue1(percentage);
 
         criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));

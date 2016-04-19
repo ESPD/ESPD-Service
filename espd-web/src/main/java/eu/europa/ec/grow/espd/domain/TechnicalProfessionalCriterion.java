@@ -6,6 +6,7 @@ import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -22,11 +23,11 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
     private String description4;
     private String description5;
 
-    private Double amount1;
-    private Double amount2;
-    private Double amount3;
-    private Double amount4;
-    private Double amount5;
+    private BigDecimal amount1;
+    private BigDecimal amount2;
+    private BigDecimal amount3;
+    private BigDecimal amount4;
+    private BigDecimal amount5;
 
     private String currency1;
     private String currency2;
@@ -54,7 +55,7 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
     private Integer number2;
     private Integer number3;
 
-    private Double percentage;
+    private BigDecimal percentage;
     private String specify;
 
     public static TechnicalProfessionalCriterion buildWithExists(boolean exists) {

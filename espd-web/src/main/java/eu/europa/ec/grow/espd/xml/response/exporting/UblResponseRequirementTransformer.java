@@ -14,6 +14,7 @@ import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import org.apache.commons.beanutils.PropertyUtils;
 
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -77,7 +78,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             responseType.getEvidence().add(UblRequirementFactory.buildEvidenceType(url));
             break;
         case QUANTITY:
-            Double quantity = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            BigDecimal quantity = readRequirementFirstValue(ccvRequirement, espdCriterion);
             responseType.setQuantity(UblRequirementFactory.buildQuantityType(quantity));
             break;
         case QUANTITY_YEAR:
@@ -89,7 +90,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             responseType.setQuantity(UblRequirementFactory.buildQuantityIntegerType(value));
             break;
         case AMOUNT:
-            Double amount = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            BigDecimal amount = readRequirementFirstValue(ccvRequirement, espdCriterion);
             String currency = readRequirementSecondValue(ccvRequirement, espdCriterion);
             responseType.setAmount(UblRequirementFactory.buildAmountType(amount, currency));
             break;
@@ -98,7 +99,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
             responseType.setCode(UblRequirementFactory.buildCountryType(country));
             break;
         case PERCENTAGE:
-            Double percentage = readRequirementFirstValue(ccvRequirement, espdCriterion);
+            BigDecimal percentage = readRequirementFirstValue(ccvRequirement, espdCriterion);
             responseType.setPercent(UblRequirementFactory.buildPercentType(percentage));
             break;
         case PERIOD:

@@ -1,15 +1,16 @@
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
-import eu.europa.ec.grow.espd.util.Amount;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.ubl.CcvResponseType;
 import eu.europa.ec.grow.espd.domain.ubl.ResponseValueParser;
+import eu.europa.ec.grow.espd.util.Amount;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
 import isa.names.specification.ubl.schema.xsd.cev_commonaggregatecomponents_1.EvidenceType;
 import lombok.Getter;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
@@ -146,30 +147,29 @@ public enum ExpectedResponseType implements CcvResponseType {
             if (responseType.getAmount() == null || responseType.getAmount().getValue() == null) {
                 return null;
             }
-            return new Amount(responseType.getAmount().getValue().doubleValue(),
-                    responseType.getAmount().getCurrencyID());
+            return new Amount(responseType.getAmount().getValue(), responseType.getAmount().getCurrencyID());
         }
     }
 
-    private static class PercentageValueParser implements ResponseValueParser<Double> {
+    private static class PercentageValueParser implements ResponseValueParser<BigDecimal> {
 
         @Override
-        public Double parseValue(ResponseType responseType) {
+        public BigDecimal parseValue(ResponseType responseType) {
             if (responseType.getPercent() == null || responseType.getPercent().getValue() == null) {
                 return null;
             }
-            return responseType.getPercent().getValue().doubleValue();
+            return responseType.getPercent().getValue();
         }
     }
 
-    private static class QuantityValueParser implements ResponseValueParser<Double> {
+    private static class QuantityValueParser implements ResponseValueParser<BigDecimal> {
 
         @Override
-        public Double parseValue(ResponseType responseType) {
+        public BigDecimal parseValue(ResponseType responseType) {
             if (responseType.getQuantity() == null || responseType.getQuantity().getValue() == null) {
                 return null;
             }
-            return responseType.getQuantity().getValue().doubleValue();
+            return responseType.getQuantity().getValue();
         }
     }
 

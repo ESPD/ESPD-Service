@@ -63,12 +63,12 @@ public final class UblRequirementFactory {
         return quantityType;
     }
 
-    public static QuantityType buildQuantityType(Double quantity) {
+    public static QuantityType buildQuantityType(BigDecimal quantity) {
         if (quantity == null) {
             return null;
         }
         QuantityType quantityType = new QuantityType();
-        quantityType.setValue(BigDecimal.valueOf(quantity));
+        quantityType.setValue(quantity);
         return quantityType;
     }
 
@@ -82,12 +82,12 @@ public final class UblRequirementFactory {
         return quantityType;
     }
 
-    public static AmountType buildAmountType(Double amount, String currency) {
+    public static AmountType buildAmountType(BigDecimal amount, String currency) {
         if (amount == null) {
             return null;
         }
         AmountType amountType = new AmountType();
-        amountType.setValue(BigDecimal.valueOf(amount));
+        amountType.setValue(amount);
         amountType.setCurrencyID(currency);
         return amountType;
     }
@@ -113,12 +113,12 @@ public final class UblRequirementFactory {
         return dateType;
     }
 
-    public static PercentType buildPercentType(Double percentage) {
+    public static PercentType buildPercentType(BigDecimal percentage) {
         if (percentage == null) {
             return null;
         }
         PercentType percentType = new PercentType();
-        percentType.setValue(BigDecimal.valueOf(percentage));
+        percentType.setValue(percentage);
         return percentType;
     }
 

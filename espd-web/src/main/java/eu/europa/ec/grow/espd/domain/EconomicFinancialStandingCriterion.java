@@ -6,6 +6,8 @@ import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
+
 /**
  * Created by ratoico on 1/4/16 at 5:03 PM.
  */
@@ -20,11 +22,11 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion
     private Integer year4;
     private Integer year5;
 
-    private Double amount1;
-    private Double amount2;
-    private Double amount3;
-    private Double amount4;
-    private Double amount5;
+    private BigDecimal amount1;
+    private BigDecimal amount2;
+    private BigDecimal amount3;
+    private BigDecimal amount4;
+    private BigDecimal amount5;
 
     private String currency1;
     private String currency2;
@@ -38,11 +40,11 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion
     private String description4;
     private String description5;
 
-    private Double ratio1;
-    private Double ratio2;
-    private Double ratio3;
-    private Double ratio4;
-    private Double ratio5;
+    private BigDecimal ratio1;
+    private BigDecimal ratio2;
+    private BigDecimal ratio3;
+    private BigDecimal ratio4;
+    private BigDecimal ratio5;
 
     public static EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
         EconomicFinancialStandingCriterion criterion = new EconomicFinancialStandingCriterion();

@@ -1,21 +1,23 @@
 package eu.europa.ec.grow.espd.domain.intf;
 
+import java.math.BigDecimal;
+
 /**
  * Created by ratoico on 1/5/16 at 2:47 PM.
  */
 public interface MultipleAmountHolder {
 
-    Double getAmount1();
-    Double getAmount2();
-    Double getAmount3();
-    Double getAmount4();
-    Double getAmount5();
+    BigDecimal getAmount1();
+    BigDecimal getAmount2();
+    BigDecimal getAmount3();
+    BigDecimal getAmount4();
+    BigDecimal getAmount5();
 
-    void setAmount1(Double amount1);
-    void setAmount2(Double amount2);
-    void setAmount3(Double amount3);
-    void setAmount4(Double amount4);
-    void setAmount5(Double amount5);
+    void setAmount1(BigDecimal amount1);
+    void setAmount2(BigDecimal amount2);
+    void setAmount3(BigDecimal amount3);
+    void setAmount4(BigDecimal amount4);
+    void setAmount5(BigDecimal amount5);
 
     String getCurrency1();
     String getCurrency2();

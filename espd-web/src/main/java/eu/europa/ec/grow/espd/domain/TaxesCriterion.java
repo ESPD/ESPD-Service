@@ -4,6 +4,7 @@ import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -11,7 +12,7 @@ import java.util.Date;
 public class TaxesCriterion extends ExclusionCriterion {
 
     private Country country;
-    private Double amount;
+    private BigDecimal amount;
     private String currency;
     private Boolean breachEstablishedOtherThanJudicialDecision;
     private String meansDescription;

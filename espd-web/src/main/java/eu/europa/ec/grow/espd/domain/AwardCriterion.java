@@ -4,6 +4,8 @@ import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
+
 /**
  * Created by ratoico on 1/20/16 at 10:39 AM.
  */
@@ -18,7 +20,7 @@ public class AwardCriterion extends EspdCriterion implements MultipleDescription
     private String description3;
     private String description4;
     private String description5;
-    private Double doubleValue1;
+    private BigDecimal doubleValue1;
     private Boolean booleanValue1;
     private Boolean booleanValue2;// is not applicable
 

@@ -21,7 +21,7 @@
 		<div class="col-md-7">
 		    <label class="control-label col-md-3 small">${span18n['crit_number']}</label>
 		    <div class="col-md-9">
-		         <form:input path="${field}.number${loop.count}" digits="true" cssClass="form-control" placeholder="${i18n['crit_number_placeholder']}" data-i18n="crit_number_placeholder"/>
+		         <form:input path="${field}.number${loop.count}" digits="true" max="1000000" cssClass="form-control" placeholder="${i18n['crit_number_placeholder']}" data-i18n="crit_number_placeholder"/>
 		    </div>
 	    </div>
 	</div>
