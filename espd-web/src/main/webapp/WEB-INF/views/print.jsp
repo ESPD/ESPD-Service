@@ -17,17 +17,18 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 <script>
     $(function () {
         $("#ojsNumber").inputmask("9999/S 999-9999999");
-        //$('input').attr('readonly', true).removeAttr('placeholder');
-        //$('textarea').attr('readonly', true).removeAttr('placeholder');
-        //$('input:radio').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
-        //$('select').attr('readonly', true).removeAttr('placeholder').attr("disabled", true);
-      
+        <c:if test="${agent == 'ca'}">
+            // CA only needs to see the labels but not the values
+            $(":radio").attr('checked', false);
+            $("input:radio[data-target-show]").each(dataShow);
+        </c:if>
+
         if($('#eo_registered_na').attr('checked')){
 			$('#eo_registered_answer_yes').attr('checked', false);
 			$('#eo_registered_answer_no').attr('checked', false);
 			$('#eo_registered_answer_yes').val(false);
 			$('#eo_registered_answer_no').val(false);
-        } 
+        }
 
         //replace inputs with spans
 		$('#espdform').find('input:not([type=hidden])').each(function() {
@@ -45,7 +46,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 				$(this).replaceWith($("<span />").text(this.value));
 			}
 		});
-        
+
 		$('#espdform').find('select').each(function() {
 			if($(this).find('option:selected').length == 1) {
 				$(this).replaceWith($("<span />").text($(this).find('option:selected')[0].label));
@@ -57,7 +58,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		$('#espdform').find('textarea').each(function() {
 			$(this).replaceWith($("<span />").text(this.value));
 		});
-		
+
+
     });
 </script>
 

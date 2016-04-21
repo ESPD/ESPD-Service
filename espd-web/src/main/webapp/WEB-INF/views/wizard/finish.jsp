@@ -88,7 +88,7 @@
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="selection"/>
             <tiles:putAttribute name="next" value="generate"/>
-            <tiles:putAttribute name="print" value="${agent=='eo'}"/>
+            <tiles:putAttribute name="print" value="${true}"/>
         </tiles:insertDefinition>
 	</div>
 

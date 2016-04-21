@@ -35,13 +35,6 @@
                 </a>
             </div>
             <c:if test="${print}">
-				<%--
-                <div class="btn-group" role="group">
-                    <a id="printBtn" target="_blank" class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/print" role="button">
-                        <i class="fa fa-print"></i> <span data-i18n="print"><s:message code="print"/></span>
-                    </a>
-                </div>
-				--%>
                 <div class="btn-group" role="group">
                     <button id="printBtn" type="submit" class="btn btn-default btn-lg" name="print" value="true">
                         <i class="fa fa-print"></i><span data-i18n="print"><s:message code="print"/></span>
