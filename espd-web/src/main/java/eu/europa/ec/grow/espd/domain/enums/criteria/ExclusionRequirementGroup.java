@@ -171,8 +171,7 @@ public enum ExclusionRequirementGroup implements CcvRequirementGroup {
      *
      */
     CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE_GROUP("30450436-f559-4dfa-98ba-f0842ed9d2a0",
-            ListUtil.list(SELF_CLEANING_GROUP), ListUtil
-            .list(ExclusionCriterionRequirement.YOUR_ANSWER, ExclusionCriterionRequirement.PLEASE_DESCRIBE)),
+            Collections.<CcvRequirementGroup>emptyList(), ListUtil.list(ExclusionCriterionRequirement.YOUR_ANSWER)),
     /**
      *
      */

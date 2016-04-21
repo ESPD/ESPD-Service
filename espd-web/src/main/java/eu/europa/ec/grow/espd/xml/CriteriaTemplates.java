@@ -371,6 +371,9 @@ public final class CriteriaTemplates {
                     put("field", "conflictInterest").
                     put("title_code", "crit_eu_title_conflict_interest").
                     put("checkExistanse", "true").
+                    put("selfCleaning", "false").
+                    put("hasDescription", "false").
+                    put("availableElectronically", "false").
                     put("description_code", "crit_eu_text_conflict_interest").build(),
 
             ImmutableMap.<String, String>builder().

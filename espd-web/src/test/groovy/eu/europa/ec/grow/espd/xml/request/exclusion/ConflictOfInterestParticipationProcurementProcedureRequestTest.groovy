@@ -33,27 +33,16 @@ class ConflictOfInterestParticipationProcurementProcedureRequestTest extends Abs
         checkLegislationReference(request, idx, "57(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
         request.Criterion[idx].RequirementGroup[0].ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "main sub group requirements"
         def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
-
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
-
-        then: "self cleaninng"
-        def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        checkSelfCleaningRequirementGroup(sub1_1)
-
-        then: "info electronically"
-        def sub2 = request.Criterion[idx].RequirementGroup[1]
-        checkInfoAvailableElectronicallyRequirementGroup(sub2)
     }
 
 }

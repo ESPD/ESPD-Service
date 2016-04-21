@@ -171,8 +171,7 @@ public enum ExclusionCriterion implements CcvCriterion {
             "Conflict of interest due to its participation in the procurement procedure",
             "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?",
             ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST, LegislationReference.DIRECTIVE_2014_24_EU_57_4,
-            ListUtil.list(ExclusionRequirementGroup.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE_GROUP,
-                    ExclusionRequirementGroup.INFO_ELECTRONICALLY_GROUP), "conflictInterest"),
+            ListUtil.list(ExclusionRequirementGroup.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE_GROUP), "conflictInterest"),
     /**
      *
      */
