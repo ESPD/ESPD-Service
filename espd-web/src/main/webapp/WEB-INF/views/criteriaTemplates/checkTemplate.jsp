@@ -20,7 +20,7 @@
         <c:if test="${!is_always_checked}">
             <c:choose>
                 <c:when test="${default_value}">
-                    <form:checkbox path="${field}.exists" value="checked"/>
+                    <form:checkbox path="${field}.exists"/>
                 </c:when>
                 <c:otherwise>
                     <form:checkbox path="${field}.exists"/>
