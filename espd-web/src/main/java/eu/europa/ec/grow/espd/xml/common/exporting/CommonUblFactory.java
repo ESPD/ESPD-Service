@@ -5,6 +5,7 @@ import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.domain.enums.other.Agency;
 import eu.europa.ec.grow.espd.domain.enums.other.DocumentTypeCode;
 import eu.europa.ec.grow.espd.domain.ubl.CacCountry;
+import eu.europa.ec.grow.espd.xml.common.MarshallingConstants;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
@@ -157,12 +158,12 @@ public final class CommonUblFactory {
      * @return A UBL document reference element
      */
     public static DocumentReferenceType buildProcurementProcedureType(EspdDocument espdDocument) {
-        if (isBlank(espdDocument.getOjsNumber()) && isBlank(espdDocument.getTedReceptionId())) {
-            return null;
-        }
-
         DocumentReferenceType documentReferenceType = new DocumentReferenceType();
-        documentReferenceType.setID(buildDocumentIdType(espdDocument.getOjsNumber()));
+        if (isBlank(espdDocument.getOjsNumber())) {
+            documentReferenceType.setID(buildTemporaryDocumentIdType(MarshallingConstants.TEMPORARY_OJS_NUMBER));
+        } else {
+            documentReferenceType.setID(buildDocumentIdType(espdDocument.getOjsNumber()));
+        }
 
         // A reference to a Contract Notice published in the TeD platform (European Commission, Office of Publications).
         documentReferenceType.setDocumentTypeCode(buildDocumentTypeCode(DocumentTypeCode.TED_CN));
@@ -199,8 +200,16 @@ public final class CommonUblFactory {
     }
 
     private static IDType buildDocumentIdType(String id) {
+        return buildDocumentIdType(id, "ISO/IEC 9834-8:2008 - 4UUID");
+    }
+
+    private static IDType buildTemporaryDocumentIdType(String id) {
+        return buildDocumentIdType(id, MarshallingConstants.TEMPORARY_OJS_NUMBER_SCHEME_ID);
+    }
+
+    private static IDType buildDocumentIdType(String id, String schemeId) {
         IDType idType = new IDType();
-        idType.setSchemeID("ISO/IEC 9834-8:2008 - 4UUID");
+        idType.setSchemeID(schemeId);
         idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setSchemeAgencyName(Agency.EU_COM_GROW.getLongName());
         idType.setSchemeVersionID("1.1");
@@ -267,13 +276,13 @@ public final class CommonUblFactory {
         if (StringUtils.isNotBlank(lotConcerned)) {
             idType.setValue(lotConcerned);
         } else {
-            idType.setValue("0");
+            idType.setValue(MarshallingConstants.NO_LOTS);
         }
         lotType.setID(idType);
         return lotType;
     }
 
-    public static CountryType buildCountryType(CacCountry country) {
+    static CountryType buildCountryType(CacCountry country) {
         CountryType countryType = new CountryType();
         IdentificationCodeType identificationCodeType = new IdentificationCodeType();
         identificationCodeType.setValue(country.getIsoCode());

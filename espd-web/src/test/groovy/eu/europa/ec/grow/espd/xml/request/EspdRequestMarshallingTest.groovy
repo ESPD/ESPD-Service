@@ -139,6 +139,38 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
+    def "should contain AdditionalDocumentReference with default ID if the TED OJS number is missing"() {
+        given:
+        def espd = new EspdDocument(ojsNumber: "     ", tedReceptionId: "     ",
+                procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
+                procedureShortDesc: "Service category No 11: Management consulting services [6] and related services.",
+                tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
+
+        when:
+        def result = parseRequestXml(espd)
+
+        then:
+        result.AdditionalDocumentReference.size() == 1
+
+        then:
+        result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "COM-GROW-TEMPORARY-ID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
+
+        then:
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TED_CN"
+
+        then:
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+    }
+
     def "AdditionalDocumentReference element should contain a default description so that we can read tedReceptionId as a second description"() {
         given:
         def espd = new EspdDocument(ojsNumber: "433", procedureShortDesc: "    ",

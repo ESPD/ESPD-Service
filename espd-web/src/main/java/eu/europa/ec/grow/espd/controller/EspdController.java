@@ -150,7 +150,8 @@ class EspdController {
         try (InputStream is = attachment.getInputStream()) {
             Optional<EspdDocument> wrappedEspd = exchangeMarshaller.importAmbiguousEspdFile(is);
 
-            if (wrappedEspd.isPresent()) {
+            // how can wrappedEspd be null???
+            if (wrappedEspd != null && wrappedEspd.isPresent()) {
                 EspdDocument espd = wrappedEspd.get();
                 if (espd.getEconomicOperator() == null) {
                     espd.setEconomicOperator(new EconomicOperatorImpl());

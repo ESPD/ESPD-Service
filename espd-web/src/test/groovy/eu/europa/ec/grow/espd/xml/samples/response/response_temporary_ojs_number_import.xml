@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<espd:ESPDResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-res="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns070:ver3.0</cbc:CustomizationID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">ce72f076-8767-4e72-95db-9b7c0848e386</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
+    <cbc:IssueDate>2015-11-25</cbc:IssueDate>
+    <cbc:IssueTime>13:19:20</cbc:IssueTime>
+    <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
+
+    <cac:ContractingParty>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name>hodor</cbc:Name>
+            </cac:PartyName>
+        </cac:Party>
+    </cac:ContractingParty>
+
+    <espd-cac:EconomicOperatorParty>
+        <!-- Main Tenderer -->
+        <!-- This economic operator is not an SME, as defined in http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition/index_en.htm -->
+        <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
+        <espd-cac:RepresentativeNaturalPerson>
+            <espd-cbc:NaturalPersonRoleDescription>Empowered to represent the Consortium</espd-cbc:NaturalPersonRoleDescription>
+            <cac:PowerOfAttorney>
+                <cbc:Description>Can represent ACME, Corp. and the Consortia to which ACME, Corp</cbc:Description>
+                <cac:AgentParty>
+                    <cac:Person>
+                        <cbc:FirstName>Emilio</cbc:FirstName>
+                        <cbc:FamilyName>García De Tres Torres</cbc:FamilyName>
+                        <cbc:BirthDate>1960-01-19</cbc:BirthDate>
+                        <cbc:BirthplaceName>València, Spain</cbc:BirthplaceName>
+                        <cac:Contact>
+                            <cbc:Telephone>+34 96 123 456</cbc:Telephone>
+                            <cbc:ElectronicMail>emilio.garcia3torres@acme.com</cbc:ElectronicMail>
+                        </cac:Contact>
+                        <cac:ResidenceAddress>
+                            <cbc:Postbox>28006</cbc:Postbox>
+                            <cbc:StreetName>Vitruvio</cbc:StreetName>
+                            <cbc:CityName>Edinborough</cbc:CityName>
+                            <cac:Country>
+                                <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-2" listVersionID="1.0">GB-SCT</cbc:IdentificationCode>
+                            </cac:Country>
+                        </cac:ResidenceAddress>
+                    </cac:Person>
+                </cac:AgentParty>
+            </cac:PowerOfAttorney>
+        </espd-cac:RepresentativeNaturalPerson>
+        <cac:Party>
+            <cbc:WebsiteURI>www.hodor.com</cbc:WebsiteURI>
+            <cac:PartyIdentification>
+                <cbc:ID schemeAgencyID="AEAT" schemeName="Agencia Tributaria Española">B207781243</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID>eo another national identification number</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>ACME Corp.</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:Postbox>28006</cbc:Postbox>
+                <cbc:StreetName>Vitruvio</cbc:StreetName>
+                <cbc:BuildingNumber>48</cbc:BuildingNumber>
+                <cbc:CityName>Madrid</cbc:CityName>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">ES</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact>
+                <cbc:Name>hodor</cbc:Name>
+                <cbc:Telephone>+666</cbc:Telephone>
+                <cbc:ElectronicMail>hodor@hodor.com</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </espd-cac:EconomicOperatorParty>
+
+    <cac:ProcurementProjectLot>
+        <cbc:ID>hodor lot</cbc:ID>
+    </cac:ProcurementProjectLot>
+
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">BOGUS_CODE</cbc:TypeCode>
+        <cbc:Name>BOGUS_NAME</cbc:Name>
+        <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+                <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="COM-GROW-TEMPORARY-ID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">aaff3234</cbc:ID>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
+        <cbc:DocumentDescription>Contract Notice as published in TeD</cbc:DocumentDescription>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML</cbc:URI>
+                <!-- Title of the Contract Notice -->
+                <cbc:FileName>Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</cbc:FileName>
+                <!-- Short description of the Procurement Project -->
+                <cbc:Description>Service category No 11: Management consulting services [6] and related services.</cbc:Description>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">4a1a633c-25fa-4c4d-abd8-89c623f9e9ec</cbc:ID>
+        <!-- Date and Time were automatically captured from the ESPDRequest -->
+        <cbc:IssueDate>2015-12-18</cbc:IssueDate>
+        <cbc:IssueTime>17:46:54</cbc:IssueTime>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">ESPD_REQUEST</cbc:DocumentTypeCode>
+        <cbc:DocumentDescription>ESPDRequest SMART 2015/0065</cbc:DocumentDescription>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec</cbc:URI>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+</espd:ESPDResponse>

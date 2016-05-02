@@ -136,4 +136,18 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
     }
 
+    def "we should not load the ojs number if it is marked as a temporary one in the scheme id attribute of the id"() {
+        given:
+        def espdXml = importXmlResponseFile("response_temporary_ojs_number_import.xml")
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdXml)).get()
+
+        expect:
+        espd.fileRefByCA == "SMART 2015/0065"
+        espd.ojsNumber == null
+        espd.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        espd.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
+        espd.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
+
+    }
+
 }

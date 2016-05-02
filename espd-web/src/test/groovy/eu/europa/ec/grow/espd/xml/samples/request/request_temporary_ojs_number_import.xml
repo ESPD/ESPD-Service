@@ -1,0 +1,157 @@
+<espd-req:ESPDRequest xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                      xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                      xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1"
+                      xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1"
+                      xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1">
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW"
+            schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">c0b5454f-c8bf-465f-afe7-6ba3f50c6589</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:UUID>3de29d72-bbfe-480f-9a67-56b4134ec744</cbc:UUID>
+    <cbc:VersionID>1</cbc:VersionID>
+    <cbc:IssueDate>2015-01-13</cbc:IssueDate>
+    <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2016/0069</cbc:ContractFolderID>
+    <cac:ContractingParty>
+        <cac:Party>
+            <cbc:WebsiteURI>www.hodor.com</cbc:WebsiteURI>
+            <cac:PartyIdentification>
+                <cbc:ID>43354d43323</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>hodor</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:Postbox>1500</cbc:Postbox>
+                <cbc:StreetName>elm street</cbc:StreetName>
+                <cbc:CityName>drubetis</cbc:CityName>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">RO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact>
+                <cbc:Name>gogu</cbc:Name>
+                <cbc:Telephone>+43435543</cbc:Telephone>
+                <cbc:ElectronicMail>gogu@gogu.com</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:ContractingParty>
+
+    <cac:ProcurementProjectLot>
+        <cbc:ID>hodor lot</cbc:ID>
+    </cac:ProcurementProjectLot>
+
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</cbc:ID>
+        <!-- This EO was convicted -->
+        <!-- true implies See data -->
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">
+            EXCLUSION.CRIMINAL_CONVICTIONS
+        </cbc:TypeCode>
+        <cbc:Name>Participation in a criminal organisation</cbc:Name>
+        <cbc:Description>Has the economic operator itself or any person who is a member of its administrative,
+            management or supervisory body or has powers of representation, decision or control therein been the subject
+            of a conviction by final judgment for participation in a criminal orgnisation, by a conviction rendered at
+            the most five years ago or in which an exclusion period set out directly in the conviction continues to be
+            applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the
+            fight against organised crime (OJ L 300, 11.11.2008, p. 42).
+        </cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on
+                public procurement and repealing Directive 2004/18/EC
+            </ccv-cbc:Title>
+            <cbc:Description>Directive 2014/24/EU</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW"
+                                           listVersionID="1.0">EU_DIRECTIVE
+            </ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>57(1)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c637c0c-7703-4389-ba52-02997a055bd7</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeAgencyID="EU-COM-GROW">4157c56b-754b-4f92-b4b1-0256b9a472d1</cbc:ID>
+                <cbc:Description>Your Answer?</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    ecf40999-7b64-4e10-b960-7f8ff8674cf6
+                </cbc:ID>
+                <cbc:Description>Date of conviction</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    7d35fb7c-da5b-4830-b598-4f347a04dceb
+                </cbc:ID>
+                <cbc:Description>Reason</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    c5012430-14da-454c-9d01-34cedc6a7ded
+                </cbc:ID>
+                <cbc:Description>Who has been convicted</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="PERIOD_DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8
+                </cbc:ID>
+                <cbc:Description>Length of the period of exclusion</cbc:Description>
+            </ccv:Requirement>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="INDICATOR">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                        20c5361b-7599-4ee6-b030-7f8323174d1e
+                    </cbc:ID>
+                    <cbc:Description>Have you taken measures to demonstrate your reliability ("Self-Cleaning")
+                    </cbc:Description>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                        7b07904f-e080-401a-a3a1-9a3efeeda54b
+                    </cbc:ID>
+                    <cbc:Description>Please describe them</cbc:Description>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    c1347b74-1872-4060-a6db-f4044edcd7c4
+                </cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="URL">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    f4313bb6-21b6-499e-bdff-debe10e11d2c
+                </cbc:ID>
+                <cbc:Description>URL</cbc:Description>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="CODE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">
+                    1f1cd18e-3e01-4ca2-af4c-e2981924ba8d
+                </cbc:ID>
+                <cbc:Description>Code</cbc:Description>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+
+    <!-- Global-scope references -->
+    <!-- Reference to the Contract Notice in TeD -->
+    <!-- For procurement projects above the threshold it is compulsory to specify the following data, by means of an AdditionalDocumentReference element, about the Contract Notice published in TeD: the OJEU S number[], date[], page[], Notice number in OJS: YYYY/S [][][]-[][][][][][], Title and Description of the Procurement Project -->
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="other scheme" schemeAgencyID="EU-COM-GROW"
+                schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">0000/S 000-000000</cbc:ID>
+        <cbc:DocumentTypeCode listAgencyID="EU-COM-GROW" listID="ReferencesTypeCodes" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML</cbc:URI>
+                <!-- Title of the Contract Notice -->
+                <cbc:FileName>Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</cbc:FileName>
+                <!-- Short description of the Procurement Project -->
+                <cbc:Description>Service category No 11: Management consulting services [6] and related services.</cbc:Description>
+                <cbc:Description>16-000136-001</cbc:Description>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+
+</espd-req:ESPDRequest>

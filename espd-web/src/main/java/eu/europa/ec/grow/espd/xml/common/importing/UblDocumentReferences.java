@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
 import eu.europa.ec.grow.espd.domain.enums.other.DocumentTypeCode;
+import eu.europa.ec.grow.espd.xml.common.MarshallingConstants;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ExternalReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.DescriptionType;
@@ -36,11 +37,16 @@ public final class UblDocumentReferences {
     }
 
     public static String readIdValue(DocumentReferenceType input) {
-        if (input == null || input.getID() == null) {
+        if (input == null || input.getID() == null || hasTemporaryOjsNumber(input)) {
             return null;
         }
 
         return input.getID().getValue();
+    }
+
+    private static boolean hasTemporaryOjsNumber(DocumentReferenceType input) {
+        return MarshallingConstants.TEMPORARY_OJS_NUMBER_SCHEME_ID.equals(input.getID().getSchemeID()) ||
+                MarshallingConstants.TEMPORARY_OJS_NUMBER.equals(input.getID().getValue());
     }
 
     public static String readFileNameValue(DocumentReferenceType input) {
