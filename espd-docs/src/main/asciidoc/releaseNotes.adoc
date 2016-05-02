@@ -1,0 +1,80 @@
+== Release notes
+
+=== 2016.04.02 (2nd of May 2016)
+
+==== Bug
+
+* [ESPD-93] - Part 1 - title and short description are not exported
+
+=== 2016.04.01 (25th of April 2016)
+
+==== Bug
+
+* [ESPD-73] - Missing translation
+* [ESPD-78] - Modification of exclusion criterion 'Guilty of misinterpretation'
+* [ESPD-80] - Numbers are handled wrongly
+* [ESPD-81] - Number of years should be calculated automatically
+* [ESPD-83] - EO not able to import a previously created ESPD
+* [ESPD-84] - Textfield into Yes/No
+* [ESPD-85] - Review ESPD as CA goes to non existent page
+* [ESPD-88] - Modification of exclusion ground conflict of interest
+
+==== Deploy
+
+* [ESPD-56] - Configure GIT
+
+==== Improvement
+
+* [ESPD-86] - Printing possibility for CA
+
+=== 2016.04 (15th of April 2016)
+
+==== Bug
+
+* [ESPD-62] - Tooltip bug (Amount concerned box)
+* [ESPD-63] - Results of testing (Editorial Issues)
+* [ESPD-69] - Part 2 > question e) on the Procedure page
+* [ESPD-74] - Tooltip strange symbol
+* [ESPD-75] - Breadcrumb links
+
+==== Improvement
+
+* [ESPD-47] - Translation file
+* [ESPD-72] - Exclusion Grounds de-selectable Part C
+
+==== New Feature
+
+* [ESPD-52] - Statistics
+
+=== 1.1 (10th of February 2016)
+
+==== Test Sub-task
+
+* [ESPD-38] - Test of Tests from Application support
+* [ESPD-39] - Test of Tests from Application support
+
+==== Bug
+
+* [ESPD-64] - Results of testing (Translation issues)
+
+==== Improvement
+
+* [ESPD-37] - Information from TED to make ESPD easier
+* [ESPD-45] - Improve metadata
+* [ESPD-46] - Merge two ESPD files
+* [ESPD-49] - New EN version
+
+==== Task
+
+* [ESPD-44] - Test from the application support
+* [ESPD-60] - Upload all translations
+* [ESPD-61] - Leaflet in all languages
+
+==== Testing Issue
+
+* [ESPD-55] - Check ESPD service
+
+=== 1.0 (6th of November 2015)
+
+First version of the application
+
