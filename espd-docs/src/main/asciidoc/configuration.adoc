@@ -1,9 +1,44 @@
 == Configuration
 
-The following points will be tackled.
+This section will describe the basic configuration for the most important responsibilities of the application.
 
 === Spring
-==== Configuration files
+
+The {espd} application is built from the ground-up with {springBoot}, allowing us to simplify the project configuration
+and the management of third party libraries.
+
+It does so by specifying in the main `pom.xml` of the project a parent POM pointing to the {springBoot} starter.
+
+[source,xml]
+.pom.xml
+----
+<parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-parent</artifactId>
+  <version>1.3.2.RELEASE</version>
+</parent>
+----
+
+Since the application is using {springBoot} extensively by inheriting from `spring-boot-starter-parent`, this provides it
+with the following features:
+
+* Default Java compiler level
+* UTF-8 source encoding
+* A Dependency Management section, allowing you to omit `<version>` tags for common dependencies, inherited from the
+`spring-boot-dependencies` POM.
+* Sensible resource filtering, including `application.properties` and `application.yml` type of files
+* Sensible plugin configuration
+
+For more information about the {springBoot} project, you can check the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle[official documentation].
+
+The `eu.europa.ec.grow.espd.config` package contains the {spring} configuration files. The main class of the application
+is `EspdApplication` which makes use of the `@SpringBootApplication` annotation in order to enable the {springBoot}
+auto configuration. The package also contains the web, {JAXB} and web resources configuration files.
+
+Most of the configuration properties of the web application are specified in properties files which can be found
+inside the `src/main/resources` folder of the `espd-web` {maven} module. There are different files for each profile
+under which the application can be started, for example the `application-prod.properties` file will be used for the
+`prod` profile which must be specified as a startup parameter for the application `-Dspring.profiles.active=prod`.
 
 === Spring MVC
 
@@ -27,16 +62,16 @@ interceptors, monitoring filter.
 ----
 @Bean
 UrlBasedViewResolver viewResolver() {
-    UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-    viewResolver.setViewClass(TilesView.class);
-    return viewResolver;
+  UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+  viewResolver.setViewClass(TilesView.class);
+  return viewResolver;
 }
 
 @Bean
 TilesConfigurer tilesConfigurer() {
-    TilesConfigurer tilesConfig = new TilesConfigurer();
-    tilesConfig.setDefinitions("/WEB-INF/tiles.xml");
-    return tilesConfig;
+  TilesConfigurer tilesConfig = new TilesConfigurer();
+  tilesConfig.setDefinitions("/WEB-INF/tiles.xml");
+  return tilesConfig;
 }
 ----
 
@@ -69,7 +104,7 @@ spring.resources.chain.strategy.content.enabled=true
 spring.resources.chain.strategy.content.paths=/static/bundle/**
 ----
 
-Links to resources are rewritten at runtime in template, thanks to a `ResourceUrlEncodingFilter`.
+Links to resources are rewritten at run-time using a `ResourceUrlEncodingFilter`.
 
 [source,java]
 .WebConfiguration.java
@@ -87,7 +122,7 @@ import org.springframework.context.annotation.Bean;
 */
 @Bean
 ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
-    return new ResourceUrlEncodingFilter();
+  return new ResourceUrlEncodingFilter();
 }
 ----
 
@@ -100,10 +135,15 @@ And this is how the static resources are referenced in the view part:
 <script src="<s:url value="/static/bundle/all.js"/>"></script>
 ----
 
+For example, a request made to the `all.js` file would be translated into a request made to a Javascript file with a hash:
+`https://ec.europa.eu/growth/tools-databases/espd/static/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js`.
+
 ==== WRO4J
 
 Another set of static resources optimizations are handled with {wro4j} using a simple Java filter at run-time and the
-http://wro4j.readthedocs.org/en/stable/MavenPlugin/[Maven plugin] at build-time.
+http://wro4j.readthedocs.org/en/stable/MavenPlugin/[Maven plugin] at build-time. {wro4j} concatenates and minifies
+the static resources like Javascript or CSS files into a single file per each type of resource so that the number of HTTP
+requests made by the clients that load the application is reduced drastically.
 
 ===== Run-time solution
 The Java filter configuration makes use of {springBoot} auto-configuration provided by the https://github.com/michael-simons/wro4j-spring-boot-starter[wro4j-spring-boot-starter] library.
@@ -121,7 +161,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 class Wro4jConfig extends Wro4jAutoConfiguration {
 
-    // only used for development ('default' profile) when we need the Wro4J Filter
+  // only used for development ('default' profile) when we need the Wro4J Filter
 
 }
 ----
@@ -158,14 +198,14 @@ The build-time solution needs two {wro4j} configuration files placed under the `
 .wro.xml
 ----
 <groups xmlns="http://www.isdc.ro/wro">
-    <group name="all">
-        <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
-        <css minimize="true">/static/css/espd.css</css>
+  <group name="all">
+    <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
+    <css minimize="true">/static/css/espd.css</css>
 
-        <js minimize="false">/static/jquery/jquery.min.js</js>
-        <js minimize="false">/static/bootstrap-3.2.0/js/bootstrap.min.js</js>
-        <js minimize="true">/static/js/init.js</js>
-    </group>
+    <js minimize="false">/static/jquery/jquery.min.js</js>
+    <js minimize="false">/static/bootstrap-3.2.0/js/bootstrap.min.js</js>
+    <js minimize="true">/static/js/init.js</js>
+  </group>
 </groups>
 ----
 
@@ -198,13 +238,13 @@ applying minimization where necessary and creating a `all.js` and a `all.css` fi
 .espd-web.pom.xml
 ----
 <configuration>
-	<wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
-	<extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
-	<cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
-	<jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
-	<wroManagerFactory>ro.isdc...factory.ConfigurableWroManagerFactory</wroManagerFactory>
-	<ignoreMissingResources>false</ignoreMissingResources>
-	<incrementalBuildEnabled>true</incrementalBuildEnabled>
+  <wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
+  <extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+  <cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
+  <jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
+  <wroManagerFactory>ro.isdc...factory.ConfigurableWroManagerFactory</wroManagerFactory>
+  <ignoreMissingResources>false</ignoreMissingResources>
+  <incrementalBuildEnabled>true</incrementalBuildEnabled>
 </configuration>
 ----
 
@@ -215,10 +255,10 @@ reduce some of the annoyances of the language by using Java annotations.
 
 The library is usable in {eclipse} by double clicking the `lombok.jar` and in {intellij} by installing the https://plugins.jetbrains.com/plugin/6317[Lombok plugin].
 
-If you don't like the basic idea behind {lombok} you can https://projectlombok.org/features/delombok.html[delombok] the source code and
+If you do not like the basic idea behind {lombok} you can https://projectlombok.org/features/delombok.html[delombok] the source code and
 go back to standard Java source code.
 
-Here are is a very simple example of how {lombok} might be used inside the {espd} project.
+Here is a very simple example of how {lombok} might be used inside the {espd} project.
 
 [source,java]
 .TedRequest.java
@@ -230,7 +270,8 @@ import lombok.Getter;
 @Getter
 public class TedRequest {
 
-    private String receptionId;
+  private String receptionId;
+
 }
 ----
 
@@ -238,11 +279,11 @@ public class TedRequest {
 .LombokExample.java
 ----
 public TedRequest prepare() {
-    TedRequest request = TedRequest.builder()
+  TedRequest request = TedRequest.builder()
                     .receptionId("16-000136-001")
                     .build();
-    log.debug("This is the reception id: '{}'.", request.getReceptionId());
-    return request;
+  log.debug("This is the reception id: '{}'.", request.getReceptionId());
+  return request;
 }
 ----
 
@@ -252,7 +293,7 @@ Logging in the application is handled using the http://www.slf4j.org/[SLF4J] API
 by the {logback} library.
 
 Since the *espd-web* module depends on `spring-boot-starter-web` and this one transitively depends on `spring-boot-starter-logging`,
-the default logging implementation chosen by {springBoot} is {logback}.
+the default logging implementation configured by {springBoot} is {logback}.
 
 The `application-${profile}.properties` files declare the path to the {logback} configuration. The logging configuration
 files are stored in the `espd-web/src/main/resources/logback` folder.
@@ -274,9 +315,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 class Logging {
 
-    void logSomething(String parameter) {
-        log.info("Logging the following value '{}'.", parameter);
-    }
+  void logSomething(String parameter) {
+    log.info("Logging the following value '{}'.", parameter);
+  }
 }
 ----
 
@@ -294,17 +335,17 @@ import net.bull.javamelody.Parameter;
 
 @Bean
 MonitoringFilter melodyMonitoringFilter() {
-    return new MonitoringFilter();
+  return new MonitoringFilter();
 }
 
 @Bean
 FilterRegistrationBean melodyFilterRegistration(MonitoringFilter melodyFilter) {
-    FilterRegistrationBean frb = new FilterRegistrationBean(melodyFilter);
-    frb.addInitParameter(Parameter.NO_DATABASE.getCode(), "true");
-    frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
-            "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
-    frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
-    return frb;
+  FilterRegistrationBean frb = new FilterRegistrationBean(melodyFilter);
+  frb.addInitParameter(Parameter.NO_DATABASE.getCode(), "true");
+  frb.addInitParameter(Parameter.ALLOWED_ADDR_PATTERN.getCode(),
+        "(158\\.16[6-8]\\..*)|(127\\.0\\.0\\.1)|(localhost)");
+  frb.addInitParameter(Parameter.URL_EXCLUDE_PATTERN.getCode(), "(/img/.*)|(/js/.*)|(/css/.*)|(.*/.woff)");
+  return frb;
 }
 ----
 
@@ -335,20 +376,20 @@ import java.util.Map;
 @Configuration
 public class JaxbConfiguration {
 
-    @Bean
-    public Jaxb2Marshaller jaxb2Marshaller() {
-        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setPackagesToScan(ESPDRequestType.class.getPackage().getName(),
-                ESPDResponseType.class.getPackage().getName());
-        Map<String, Object> map = new HashMap<>(2);
-        map.put(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        jaxb2Marshaller.setMarshallerProperties(map);
-        return jaxb2Marshaller;
-    }
+@Bean
+public Jaxb2Marshaller jaxb2Marshaller() {
+    Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+    jaxb2Marshaller.setPackagesToScan(ESPDRequestType.class.getPackage().getName(),
+            ESPDResponseType.class.getPackage().getName());
+    Map<String, Object> map = new HashMap<>(2);
+    map.put(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    jaxb2Marshaller.setMarshallerProperties(map);
+    return jaxb2Marshaller;
+  }
 }
 ----
 
-==== Joda-Time
+==== Date and time
 
 Date and time objects are handled with the {jodaTime} library. There are two adapters that are used to populate the Date
 objects inside the {jaxb} POJOs. These adapters convert and parse `String` objects into `LocalDate` or `LocalTime`
@@ -363,19 +404,19 @@ import org.joda.time.format.DateTimeFormatter;
 
 public final class LocalDateAdapter {
 
-    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-MM-dd");
+  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-MM-dd");
 
-    private LocalDateAdapter() {
+  private LocalDateAdapter() {
 
-    }
+  }
 
-    public static LocalDate unmarshal(String v) {
-        return LocalDate.parse(v, DATE_FORMAT);
-    }
+  public static LocalDate unmarshal(String v) {
+      return LocalDate.parse(v, DATE_FORMAT);
+  }
 
-    public static String marshal(LocalDate v) {
-        return v.toString(DATE_FORMAT);
-    }
+  public static String marshal(LocalDate v) {
+      return v.toString(DATE_FORMAT);
+  }
 }
 ----
 
@@ -385,13 +426,13 @@ The mapping of the date adapters is done in the {jaxb} `bindings.xjb` configurat
 .bindings.xjb
 ----
 <jxb:globalBindings>
-	<jxb:javaType name="org.joda.time.LocalDate" xmlType="xs:date"
-              parseMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal"
-              printMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal"/>
-	<jxb:javaType name="org.joda.time.LocalTime" xmlType="xs:time"
-              parseMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal"
-              printMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal"/>
-	<jxb:serializable uid="100"/>
+  <jxb:javaType name="org.joda.time.LocalDate" xmlType="xs:date"
+    parseMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal"
+    printMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal"/>
+  <jxb:javaType name="org.joda.time.LocalTime" xmlType="xs:time"
+    parseMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal"
+    printMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal"/>
+  <jxb:serializable uid="100"/>
 </jxb:globalBindings>
 ----
 
@@ -420,26 +461,28 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan("eu.europa.ec.grow.espd")
 public class EspdApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
 
-    @Value("${http.client.connect.timeout.millis:30000}")
-    private int connectTimeout;
+  @Value("${http.client.connect.timeout.millis:30000}")
+  private int connectTimeout;
 
-    @Bean
-    ObjectMapper objectMapper() {
-        return new ObjectMapper();
-    }
+  @Bean
+  ObjectMapper objectMapper() {
+    return new ObjectMapper();
+  }
 
-    @Bean
-    RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
+  @Bean
+  RestTemplate restTemplate() {
+    RestTemplate restTemplate = new RestTemplate();
 
-        SimpleClientHttpRequestFactory rf = (SimpleClientHttpRequestFactory) restTemplate.getRequestFactory();
-        rf.setReadTimeout(connectTimeout);
-        rf.setConnectTimeout(connectTimeout);
+    SimpleClientHttpRequestFactory rf = (SimpleClientHttpRequestFactory) restTemplate.getRequestFactory();
+    rf.setReadTimeout(connectTimeout);
+    rf.setConnectTimeout(connectTimeout);
 
-        return restTemplate;
-    }
+    return restTemplate;
+  }
 }
 ----
+
+You can find an example of how to use the `RestTemplate` in the `eu.europa.ec.grow.espd.ted.TedService` class.
 
 === Internationalization (i18n)
 
@@ -476,31 +519,34 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 @Bean
 LocaleChangeInterceptor localeChangeInterceptor() {
-	LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-    lci.setParamName("lang");
-    return lci;
+  LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+  lci.setParamName("lang");
+  return lci;
 }
 
 @Bean
 LocaleResolver localeResolver() {
-    CookieLocaleResolver resolver = new CookieLocaleResolver();
-    resolver.setCookieName("ESPD_LOCALE");
-    resolver.setDefaultLocale(Locale.ENGLISH);
-    return resolver;
+  CookieLocaleResolver resolver = new CookieLocaleResolver();
+  resolver.setCookieName("ESPD_LOCALE");
+  resolver.setDefaultLocale(Locale.ENGLISH);
+  return resolver;
 }
 
 @Override
 public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(localeChangeInterceptor());
+  registry.addInterceptor(localeChangeInterceptor());
 }
 ----
 
 The `LocaleResolver` enables the application to automatically resolve messages files using the client’s locale which
 is stored in a `ESPD_LOCALE` `cookie`.
 
-The `LocaleChangeInterceptor` uses an HTTP request parameter called `lang` to detect the language changes on the server side.
+The `LocaleChangeInterceptor` uses an HTTP request parameter named `lang` to detect the language changes on the server side.
 
 === TED
+
+Information about the procurement procedure can be provided by the publication office via the TED REST service.
+In order to be able to retrieve the information from their remote service we need to provide four parameters.
 
 [source,properties]
 .application-dev.properties
@@ -517,6 +563,8 @@ ted.api.user=passed as server startup parameter
 # Password for TED API
 ted.api.password=passed as server startup parameter
 ----
+
+The part of the code that handles the TED service can be found in the `eu.europa.ec.grow.espd.ted` package.
 
 === Piwik
 

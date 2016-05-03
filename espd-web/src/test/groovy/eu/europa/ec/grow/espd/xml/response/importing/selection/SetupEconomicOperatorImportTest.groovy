@@ -27,18 +27,14 @@ package eu.europa.ec.grow.espd.xml.response.importing.selection
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/25/16 at 10:42 AM.
  */
 class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
 
     def "10. should import all fields of 'Set up of economic operator'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/setup_economic_operator_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/setup_economic_operator_import.xml")
 
         then:
         espd.setupEconomicOperator.exists == true

@@ -1,4 +1,36 @@
 == Installation
-* https://git-scm.com/downloads[Git]
 
-Git fork
+=== Configure the Git repository
+
+. Fork the {espdGitRepo} by clicking on the `Fork` button on the top-right corner of the repository page. Forking a
+repository allows you to freely experiment with changes without affecting the original project. Most commonly, forks
+are used to either propose changes to someone else's project or to use someone else's project as a starting point for
+your own idea.
+. Create a local clone of your fork
+.. On GitHub, navigate to your fork of the {espdGitRepo}.
+.. Under your repository name, click the `Copy to clipboard` button to clone the URL for the repository.
+.. Run the `git clone https://github.com/YOUR-USERNAME/espd` command on your computer. Now, you have a local copy of
+your fork of the {espdGitRepo}.
+. Configure Git to sync your fork with the original {espdGitRepo}. When you fork a project in order to propose
+changes to the original repository, you can configure Git to pull changes from the original, or _upstream_, repository
+into the local clone of your fork.
+.. On GitHub, navigate to the {espdGitRepo} repository.
+.. Under your repository name, click the `Copy to clipboard` button to clone the URL for the repository.
+.. Change directories to the location of the fork you cloned in the previous step.
+.. Execute `git remote -v` to see the current configured remote repository for your fork.
+.. Type `git remote add upstream https://github.com/ESPD/espd.git` by pasting the URL you copied in Step 2.
+.. To verify the new upstream repository you've specified for your fork, type `git remote -v` again. You should see
+the URL for your fork as `origin`, and the URL for the original repository as `upstream`.
+
+[source,bash]
+----
+$ git remote -v
+origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+----
+
+Now, you can keep your fork synced with the `upstream` repository with a few Git commands. For more information,
+please see the https://help.github.com/articles/syncing-a-fork/[Syncing a fork] page.
+

@@ -1,15 +1,15 @@
 == Data model
 
 The ESPD-EDM model was designed to implement the data requirements expressed in the `Annex 2` of the `COMMISSION IMPLEMENTING
-REGULATION (EU) 2016/7 of 5 January 2016`, establishing the standard form for the `European Single Document`.
-Additionally to these requirements, the model took also into account the `Information Requirements Model` specified by the
+REGULATION (EU) 2016/7 of 5 January 2016`, establishing the standard form for the `European Single Procurement Document`.
+Additionally to these requirements, the model also took into account the `Information Requirements Model` specified in the
 http://www.cenbii.eu/[CEN/BII-Workshops] (namely Workshop 3), and the latest developments relating to the `Virtual Company
 Dossier (VCD)` in http://www.esens.eu/[e-Sens].
 
 === The ESPD Request XML document overview
 
 The UML Diagram below provides a simplified view of the `ESPD Request` document. Notice that the classes herein represented
-belong to 4 different data-packages. Therefore each class name is preceded by one of the following prefixes representing
+belong to 4 different data-packages. Consequently, each class name is preceded by one of the following prefixes representing
 different namespaces: `espd`, `ccv`, `cev`, and `cac`.
 
 [[img-espd-request]]
@@ -27,12 +27,12 @@ The UML diagram can be read as follows:
 * One Criterion contains one or more Groups of Requirements
 * One Criterion MAY have sub-Criteria
 * One Criterion MAY be linked to a specific Legislation.
-* One Group of Requirements contains one or More Requirements
+* One Group of Requirements contains one or more Requirements
 
-In the ESPD documents a `Criterion` takes the form of a
+In the ESPD documents a `Criterion` takes the form of
 ____
-question or statement about a specific subject that may lead to the exclusion or selection of an `Economic Operator` in a
-`Procurement Project`.
+a question or statement about a specific subject that may lead to the exclusion or selection of an `Economic Operator`
+in a `Procurement Project`.
 ____
 Thus, in the case of grounds for exclusion related to possible convictions, the question
 ____
@@ -43,9 +43,10 @@ most five years ago or in which an exclusion period set out directly in the conv
 ____
 is to be considered a `Criterion`.
 
-`Requirements`, in turn, relates to the way the `Economic Operator` has to answer one specific `Criterion`. In the case of
-the exclusion `Criterion` above mentioned, the `Contracting Authority` requires the `Economic Operator (EO)` to answer if
-`yes or no`, and in the case of an affirmative answer the `EO` is required to provide some more specific data about the conviction.
+`Requirements`, on the other hand, relates to the way the `Economic Operator` has to answer one specific `Criterion`.
+In the case of the exclusion `Criterion` mentioned above, the `Contracting Authority` requires the `Economic Operator (EO)`
+to answer `YES` or `NO`, and if the `EO` answers `YES`, he is further required to provide additional details about
+the conviction.
 
 === Java packages
 

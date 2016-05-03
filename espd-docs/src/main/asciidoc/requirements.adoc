@@ -1,7 +1,10 @@
 == System requirements
 
-By default, {homepage} version {appVersion} requires the following tools to run:
+The {homepage} application requires the following tools to run so please make sure that you have them installed
+prior to proceeding with the installation of the project.
 
-* http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html[Java Development Kit 7+]
+* http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java Development Kit 7+]
 * {maven}
-* {tomcat} or other Servlet 3+ container
+* https://git-scm.com/downloads[Git]
+* {tomcat} or other Servlet 3+ container (optional)
+* No database is necessary

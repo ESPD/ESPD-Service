@@ -23,6 +23,10 @@
  */
 
 package eu.europa.ec.grow.espd.xml.base
+
+import eu.europa.ec.grow.espd.domain.EspdDocument
+import org.apache.commons.io.IOUtils
+
 /**
  * Created by ratoico on 1/7/16 at 10:51 AM.
  */
@@ -34,6 +38,11 @@ class AbstractXmlFileImport extends AbstractEspdXmlMarshalling {
 
     protected String importXmlResponseFile(String fileName) {
         return new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/response/${fileName}").getText('UTF-8')
+    }
+
+    protected EspdDocument parseXmlResponseFile(String fileName) {
+        def espdResponseXml = importXmlResponseFile(fileName)
+        return marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
     }
 
 }

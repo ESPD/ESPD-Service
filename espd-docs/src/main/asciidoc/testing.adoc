@@ -1,21 +1,202 @@
 == Testing
 
-Here goes the testing part
+Making sure that an application behaves correctly is a difficult job and {espd} is no exception from this rule, that's
+why we have an extensive test suite of more than 600 automated unit tests. These tests try to focus on the domain model
+marshalling/unmarshalling logic of ESPD Requests and Responses and go into very detailed checks for each criterion,
+requirement or other domain entity of the application.
+
+The unit tests are written using the {spock} in the {groovy} programming language and we take advantage of its beautiful
+and highly expressive specification language.
+
+The {maven} configuration for running the tests at build time is defined in the `espd-web/pom.xml` file. It uses the
+`gmavenplus-plugin` to compile the {groovy} test files and the `maven-surefire-plugin` to specify the file naming pattern
+of the tests that are supposed to be run.
+
+[source,xml]
+.espd-web/pom.xml
+----
+<plugin>
+<!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+visit https://github.com/groovy/GMavenPlus/wiki -->
+  <groupId>org.codehaus.gmavenplus</groupId>
+  <artifactId>gmavenplus-plugin</artifactId>
+  <version>1.5</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>compile</goal>
+        <goal>testCompile</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
+<!-- Optional plugins for using Spock -->
+<!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
+<plugin>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+    <useFile>false</useFile>
+    <includes>
+      <include>**/*Spec.java</include>
+      <include>**/*Test.java</include>
+    </includes>
+  </configuration>
+</plugin>
+----
+
+The tests can be run by invoking a `mvn clean package` or `mvn clean verify` command or from the IDE of your choice.
+[NOTE]
+If you are using {eclipse} you will have to install the https://github.com/groovy/groovy-eclipse/wiki[Groovy Eclipse plugin].
+[NOTE]
+If you are using {intellij} you need to enable the {groovy} plugin and it might also be useful to install the https://plugins.jetbrains.com/plugin/7114?pr=[IntelliJ Spock plugin]
+for improved working experience.
+
+The location of the tests is under the `espd-web/src/test/groovy` folder. Inside the `eu.europa.ec.grow.espd.xml`
+package you will find the following sub-packages:
+
+* the *base* package contains some basic infrastructure for the unit tests
+* the *request* package contains the tests that handle an ESPD Request
+* the *response* package contains the tests that handle an ESPD Response
+* the *samples* folder contains the XML sample files that are used by the tests that handle the importing of an
+ESPD Request or Response
+
+=== Anatomy of a test specification
+
+Spock specification classes are derived from `spock.lang.Specification`. A concrete specification class might consist
+of fields, fixture methods, features methods and helper methods.
 
 [source,groovy]
-.MyFirstSpecification.groovy
+.ListSpec.groovy
 ----
-class MyFirstSpecification extends Specification {
+class ListSpec extends Specification {
 
-  def "computing the maximum of two numbers"() {
-    expect:
-    Math.max(a, b) == c
+  def "adding an element to a list leads to size increase"() { <1>
+    given: "a new list instance is created" <2>
+    def lst = new ArrayList()
 
-    where:
-    a << [5, 3]
-    b << [1, 9]
-    c << [5, 9]
+    when:
+    lst.add(666) <3>
+
+    then:
+    lst.size() == 1 <4>
   }
 }
 ----
+<1> Feature method, is by convention named with a descriptive `String` literal.
+<2> `Given` block, here is where any setup work for this feature needs to be done.
+<3> `When` block describes a stimulus, a certain action under target by this feature specification.
+<4> `Then` block contains any expressions that can be used to validate the result of the code that
+was triggered by the when block.
+
+Spock feature specifications are defined as methods inside a `spock.lang.Specification` class. They describe the
+feature by using a `String` literal instead of a method name.
+
+A feature method holds multiple blocks, in our example we used `given`, `when` and `then`. The `given` block is special
+in that it is optional and allows us to configure local variables visible inside the feature method. The `when` block
+defines the stimulus and is a companion of the `then` block which describes the response to the stimulus.
+
+[NOTE]
+The `given` block is just an alias for the `setup` block.
+
+Note that the `given` method in the SpockSpec above additionally has a description `String`. Description Strings are
+optional and can be added after block labels (like `given`, `when`, `then`).
+
+=== Testing the generation of an XML file
+
+The code sample below represents a unit test that checks the XML output of an ESPD Response generation, more
+specifically the `Reason` requirement of the `Fraud` exclusion criterion.
+
+[source,groovy]
+.FraudResponseTest.groovy
+----
+class FraudResponseTest extends AbstractExclusionCriteriaFixture {
+
+  def "check the 'Reason' requirement response"() {
+    given:
+    def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, reason: "Reason_03 here")) <1>
+
+    when:
+    def response = parseResponseXml(espd) <2>
+    def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
+
+    then:
+    def subGroup = response.Criterion[idx].RequirementGroup[0] <3>
+    def req = subGroup.Requirement[2] <4>
+    checkRequirement(req, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION") <5>
+    req.Response.size() == 1 <6>
+    req.Response[0].Description.text() == "Reason_03 here" <7>
+  }
+}
+----
+<1> The `given` clause initializes the ESPD domain object with the `Fraud` criterion which contains a `Reason` with the
+text `Reason_03 here` because the `exists` flag is set to `true` on the criterion.
+<2> The `when` clause delegates to the `parseResponseXml` method from the `AbstractEspdXmlMarshalling` class which
+generates the XML representation of an ESPD Response.
+<3> We get the first `requirement group` of the `Fraud` criterion
+<4> The `Reason` requirement is the third requirement of the group
+<5> Check the requirement id, description text and response type
+<6> We should have only a `Response` XML element
+<7> Make sure that the description text of the response has the actual value that was supplied in the `given` clause
+
+The most common way of querying XML in Groovy is using `GPath` which is similar to `XPath` expressions but you can use
+it not only with XML but also with POJO classes. More information and examples of using `GPath` can be found in the
+{groovy} programming language documentation on http://groovy-lang.org/processing-xml.html#_gpath[XML processing].
+
+The `parseResponseXml` method uses a {groovy} XmlSlurper object which returns GPathResult instances when parsing XML.
+
+The `then` clause makes the business assertions about the expected requirement id, description text, response type
+and finally .
+
+=== Testing the parsing of an XML file
+
+The following example will show a test that reads an `ESPD Response` XML file and converts it into an ESPD domain
+object that is used by the user interface code. The XML sample contains the `Setup of economic operator` criterion
+with the `Year` requirement value set in the response.
+
+[source,groovy]
+.SetupEconomicOperatorImportTest.groovy
+----
+class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
+
+  def "10. should import all fields of 'Set up of economic operator'"() {
+    when:
+    def espd = parseXmlResponseFile("selection/setup_economic_operator_import.xml") <1>
+
+    then:
+    espd.setupEconomicOperator.exists == true <2>
+
+    then: "selection criteria with no answer have a default value of true"
+    espd.setupEconomicOperator.year1 == 2016 <3>
+  }
+}
+----
+<1> Load the XML sample from `selection/setup_economic_operator_import.xml` and parse it into an `EspdDocument`
+domain object
+<2> Check that the `exists` indicator has been set for this criterion
+<3> Verify that the `Quantity` requirement response value stored in `year1` is `2016`
+
+The XML file contains the `Setup of economic operator` criterion with the `Quantity` requirement (some of the data
+has been removed for clarity):
+
+[source,xml]
+.setup_economic_operator_import.xml
+----
+<ccv:Criterion>
+  <ccv:RequirementGroup>
+    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e9aa7763-c167-4352-8060-1a3d7d3e2662</cbc:ID>
+    <ccv:Requirement responseDataType="QUANTITY">
+      <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a18b2c98-8552-45ca-9751-d4c94c05847a</cbc:ID>
+      <cbc:Description>Please specify</cbc:Description>
+      <ccv:Response>
+        <cbc:Quantity unitCode="YEAR">2016</cbc:Quantity>
+      </ccv:Response>
+    </ccv:Requirement>
+  </ccv:RequirementGroup>
+</ccv:Criterion>
+----
+
+
+
+
+
 

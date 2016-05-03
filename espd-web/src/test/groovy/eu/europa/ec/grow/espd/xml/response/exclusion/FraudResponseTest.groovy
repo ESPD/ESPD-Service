@@ -44,36 +44,36 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
+        checkCriterionId(response, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Fraud"
+        response.Criterion[idx].Name.text() == "Fraud"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? Within the meaning of Article 1 of the Convention on the protection of the European Communities' financial interests (OJ C 316, 27.11.1995, p. 48)."
+        response.Criterion[idx].Description.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for fraud, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? Within the meaning of Article 1 of the Convention on the protection of the European Communities' financial interests (OJ C 316, 27.11.1995, p. 48)."
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(1)")
+        checkLegislationReference(response, idx, "57(1)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "94ff6812-b9a6-40c7-9676-d9fb83b51d51"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
+        response.Criterion[idx].RequirementGroup[0].ID.text() == "94ff6812-b9a6-40c7-9676-d9fb83b51d51"
+        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
+        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
 
         then: "check the self-cleaning sub group"
-        checkSelfCleaningRequirementGroup(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        checkSelfCleaningRequirementGroup(response.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -81,11 +81,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, answer: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
@@ -99,11 +99,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[1]
         checkRequirement(req, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
@@ -116,11 +116,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, reason: "Reason_03 here"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[2]
         checkRequirement(req, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION")
@@ -133,11 +133,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_03 was convicted"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[3]
         checkRequirement(req, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
@@ -150,11 +150,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[4]
         checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
@@ -168,11 +168,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -185,11 +185,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_03 is clean")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
@@ -202,11 +202,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -219,11 +219,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_03.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
@@ -236,11 +236,11 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_03")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[2]
         req.Response.size() == 1
