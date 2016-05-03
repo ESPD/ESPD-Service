@@ -1,50 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.1 OS
-                     http://docs.oasis-open.org/ubl/os-UBL-2.1/
-  Release Date:      04 November 2013
-  Module:            UBL-UnqualifiedDataTypes-2.1.xsd
-  Generated on:      2013-04-20 18:40(UTC)
-  Copyright (c) OASIS Open 2013. All Rights Reserved.
-
-  This schema fragment implements UBL unqualified datatypes using core
-  component types with all supplementary components as described in
-  CCTS 2.01 http://www.unece.org/cefact/ebxml/CCTS_V2-01_Final.pdf tables
-  8-1, 8-2 and 8-3.
-
-  Per table 8-3, the graphic, picture, sound and video types are based on
-  "Binary Object. Type" as they are secondary representation terms.
-
-  Per table 8-3, the value, rate and percentage types are based on
-  "Numeric. Type" as they are secondary representation terms.
-
-  Per table 8-3, the name type is based on "Text. Type" as it is a 
-  secondary representation term.
-
-  Per XSD lexical constraints, the following unqualified data types 
-  corresponding to core component types and secondary representation terms 
-  are based on XSD types (accordingly, the supplementary component "format" 
-  is not made available for these types):
-
-        Date Time. Type  on  xsd:dateTime
-        Date. Type       on  xsd:date
-        Time. Type       on  xsd:time
-        Indicator. Type  on  xsd:boolean
-
-  Per UBL 2.0 the following supplementary components are restricted to be
-  required rather than optional:
-
-   Amount. Currency. Identifier  as  (AmountType)/@currencyID
-   Binary Object. Mime. Code     as  (BinaryObjectType)/@mimeCode
-   Graphic. Mime. Code           as  (GraphicType)/@mimeCode
-   Picture. Mime. Code           as  (PictureType)/@mimeCode
-   Sound. Mime. Code             as  (SoundType)/@mimeCode
-   Video. Mime. Code             as  (VideoType)/@mimeCode
-   Measure. Unit. Code           as  (MeasureType)/@unitCode
-
-  All other unqualified data types inherit the core component types complete
-  with their supplementary components.
--->
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
 targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" 
 xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"

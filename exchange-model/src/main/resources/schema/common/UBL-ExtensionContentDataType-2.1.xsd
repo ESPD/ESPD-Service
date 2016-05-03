@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.1 OS
-                     http://docs.oasis-open.org/ubl/os-UBL-2.1/
-  Release Date:      04 November 2013
-  Module:            UBL-ExtensionContentDataType-2.1.xsd
-  Generated on:      2013-04-20 18:40(UTC)
-  Copyright (c) OASIS Open 2013. All Rights Reserved.
--->
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ns1="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2" targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1">
 	<!--import here all extension schemas-->
 	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2" schemaLocation="UBL-CommonSignatureComponents-2.1.xsd"/>
