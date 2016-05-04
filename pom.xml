@@ -41,40 +41,10 @@
         <asciidoctorj.pdf.version>1.5.0-alpha.11</asciidoctorj.pdf.version>
     </properties>
 
-    <scm>
-        <connection>scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ESPD/
-        </connection>
-        <developerConnection>
-            scm:svn:https://webgate.ec.europa.eu/CITnet/svn/ESPD/
-        </developerConnection>
-    </scm>
-
-    <ciManagement>
-        <system>Jenkins</system>
-        <url>http://jenkins.entr.cec.eu.int:8080/</url>
-    </ciManagement>
-
     <organization>
         <name>DG GROW</name>
         <url>http://ec.europa.eu/dgs/internal_market/index_en.htm</url>
     </organization>
-
-    <repositories>
-        <repository>
-            <id>Libs-ext-releases</id>
-            <url>http://jenkins.entr.cec.eu.int:9081/artifactory/ext-release-local/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>Libs-releases</id>
-            <url>http://jenkins.entr.cec.eu.int:9081/artifactory/libs-release</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
