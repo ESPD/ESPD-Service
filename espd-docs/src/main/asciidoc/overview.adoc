@@ -1,3 +1,98 @@
 == Overview
 
-Most important concepts here
+The {espd} application is composed of three {maven} modules:
+
+* *espd-docs* contains the documentation of the application
+* *espd-web* holds the deployable web part of the application
+* *exchange-model* is where the XML schemas and JAXB bindings are defined
+
+The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (coming soon) or as
+a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.
+
+The main responsibilities of the application are handled as follows:
+
+* Infrastructural support at the application level and dependency injection via the {spring} framework
+* Configuration of the application via {springBoot}
+* Logging with the {slf4j} API and {logback} as implementation
+* The view part uses {springMvc}, JSP files, {tiles}, Javascript, {jquery} and {bootstrap}
+* The XML model uses {jaxb} to marshal/unmarshal the ESPD generated XML files
+* REST calls to external services are handled with the https://spring.io/guides/gs/consuming-rest/[Spring Rest Template] client
+* Monitoring and analytics via {javaMelody} and {piwik}
+* Optimization of static resources with https://spring.io/blog/2014/07/24/spring-framework-4-1-handling-static-web-resources[Spring asset pipeline] and {wro4j}
+
+=== Java packages overview
+
+The main {java} package of the web application is 'eu.europa.ec.grow.espd` found in the `espd-web` module. It is further
+subdivided into the following important packages:
+
+* config
+* controller
+* domain
+* ted
+* util
+* xml
+
+==== Config package
+
+The `config` package contains the Java classes which are supposed to provide the configuration for the global project
+(`EspdApplication`), {springMvc} web configuration (`WebConfiguration`), the {jaxb} configuration etc. You will
+notice that these classes are annotated with `@Configuration` and they generally define {spring} beans that can be
+injected in other {spring} managed classes of the application.
+
+==== Controller package
+
+The `controller` package consists of the {springMvc} controllers which are responsible for processing user requests,
+building an appropriate model and passing it to the view for rendering or which can act as {rest} controllers.
+
+The most important one is `EspdController` and its responsibilities include dealing with the generation of the {espd}
+requests and responses, uploading files, printing and error handling. The main flow of the application is handled by
+this class.
+
+Other controllers which are present in this package are the `AboutController` that is used to populate the `/about`
+page of the application and `MessageSourceController` which is responsible for loading the i18n messages needed
+by the client-side i18n engine.
+
+==== Domain package
+
+The `domain` package contains the pieces involved in the representation of an ESPD request or response in the model
+(the `M` part of the MVC architectural pattern) of the web application. An ESPD request/response is represented
+internally as an `EspdDocument` which in turn contains fields for all the possible criteria, authority and economic
+operator information or procurement procedure data.
+
+In the `domain.enums` sub-package you can find the enumerations holding the criteria, requirement groups, requirements,
+countries, languages, currencies etc which are used by the application.
+
+==== TED package
+
+The `ted` package is responsible for the interaction with the TED {rest} service which provides the procurement
+procedure information for an {espd} request or response.
+
+==== Util package
+
+The `util` package contains various utility classes, for example, some of the application properties that are needed
+by the user interface are loaded by {spring} in the `EspdConfiguration` class. The `I18NFunc` class loads the i18n
+messages needed by the client-side internationalization engine.
+
+==== XML package
+
+The `xml` package takes care of the marshalling/unmarshalling of the ESPD request and response XML files. It is further
+divided into a package for `request`, one for `response` and a `common` package with shared functionality between the
+other two. The classes from this package make use of the https://en.wikipedia.org/wiki/Template_method_pattern[Template method design pattern] to share common
+behaviour and design.
+
+The `request` and `response` packages contain each an `exporting` and an `importing` sub-package. The `exporting` package
+is responsible for generating the ESPD request/response XML files while the `importing` package knows how to parse XML
+files representing ESPD request or response and convert them into the internal ESPD domain objects.
+
+The `EspdExchangeMarshaller` is the main class that aggregates all of the classes from this package together and is
+injected in the `EspdController` to perform the marshalling/unmarshalling logic.
+
+`CriteriaTemplates` serves as configuration for the user interface components of the criteria and requirements that
+are defined in the JSP and {tiles} files.
+
+=== Web overview
+
+The web packages can be found in the standard Maven location, i.e. `src/main/webapp`. The `static` folder contains the
+CSS and Javascript files referenced by the web application. The JSP files are located in the `WEB-INF/views` folder where
+they are subsequently grouped in sub-folders. The `src/main/resources` folder contains the configuration files relating
+to internationalization, logging, web resource optimizations and general application properties.

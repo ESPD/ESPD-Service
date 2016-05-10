@@ -34,3 +34,67 @@ upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
 Now, you can keep your fork synced with the `upstream` repository with a few Git commands. For more information,
 please see the https://help.github.com/articles/syncing-a-fork/[Syncing a fork] page.
 
+[NOTE]
+Quite often people working in a team and using the same repository or upstream prefer different operating systems.
+This may result in problems with line endings because Unix, Linux, and OS X use LF and Windows uses CRLF to denote
+the end of a line. To have Git solve such problems automatically, you need to set the `core.autocrlf` attribute to
+`true` on Windows and to `input` on Linux and OS X. For more details on the meaning of the `core.autocrlf` attribute,
+see the article https://help.github.com/articles/dealing-with-line-endings[Dealing with Line Endings]. You can change the configuration manually by running
+`git config --global core.autocrlf true` on Windows or `git config --global core.autocrlf input` on Linux and OS X.
+
+=== Running and deploying the ESPD application
+
+This section goes into detail about how you can build and run the {homepage} application.
+
+==== Building the application
+
+The {homepage} uses {maven} as the primary build system and is structured as a multi-module Maven project.
+
+After getting access to the source code and copying it on your computer, you can now build the project with {maven}.
+
+. Change directories to the location of the cloned Git repository on your machine.
+. Perform a `mvn clean package` and now the project dependencies should be downloaded and the `exchange-model`,
+`espd-web` and `espd-docs` modules should be built.
+
+==== Running from an IDE
+
+You can run the {homepage} application from your IDE by importing the project as a multi-module Maven project first.
+You also need to install the Lombok plugin for your particular IDE.
+
+[NOTE]
+Before running the application you need to generate the {jaxb} classes by invoking a `mvn clean package` command
+and then add the `src/main/generated` folder on the application classpath of the `exchange-model` Maven module.
+
+==== Run with an embedded Tomcat container (coming soon)
+
+The easiest way to start the application is with an embedded {tomcat} container by invoking the `main` method from
+the `eu.europa.ec.grow.espd.config.EspdApplication` class in the same way as you would start a normal Java non-web
+application.
+
+==== Run as an exploded WAR file on a Servlet container
+
+The application can be deployed as an exploded WAR file on different Servlet 3 containers. For example, you can
+check the following links on how to deploy it on a Tomcat container:
+
+* https://www.jetbrains.com/help/idea/2016.1/configuring-web-application-deployment.html?origin=old_help[IntelliJ IDEA]
+
+* https://www.mulesoft.com/tcat/tomcat-eclipse[Eclipse Tomcat]
+
+==== Deploying on an external Servlet container
+
+If you want to deploy the application on an external Servlet container, you need to package it as a WAR and provide
+some startup parameters on your server.
+
+. Perform a `mvn clean package` from the root folder of the project:
+.. The build should generate a WAR file at `${baseDir}/espd-web/target/espd-web.war`
+. Add the following startup parameters to you server:
+.. `-Dspring.profiles.active=${your desired profile}` specifies the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties[Spring Boot profile] to be used
+.. `-Dted.api.user=${your TED user}` where `${your TED user}` is replaced by the TED API username
+.. `-Dted.api.password=${your TED password}` where `${your TED password}` must be replaced by the TED API password
+. The version that uses the embedded {tomcat} container can be run with `java -Dspring.profiles.active=prod -jar
+espd-web.war`.
+
+Other application parameters can also be specified in exactly the same way, i.e. by prefixing them with a `-D` followed
+by the name of the parameter. You can consult the `application.properties` files for finding out the available options
+but please note that the ones specified at start-up have higher precedence than the ones specified in the `.properties`
+files.

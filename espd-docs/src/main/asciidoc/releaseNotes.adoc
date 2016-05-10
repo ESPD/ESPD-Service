@@ -1,5 +1,19 @@
 == Release notes
 
+=== 2016.05 (12th of May 2016)
+
+The main purpose of this release was to make public the open source version of the ESPD application on Github.
+
+==== Bug
+
+* [ESPD-90] - IE does not allow to copy text with paragraphs in textfield
+* [ESPD-93] - Part 1 - title and short description are not exported
+
+==== Task
+
+* [ESPD-91] - Read proof
+
+
 === 2016.04.02 (2nd of May 2016)
 
 ==== Bug

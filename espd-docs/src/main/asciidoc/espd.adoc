@@ -12,7 +12,10 @@ v1.1.0, 22-03-2016
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
+:spring: https://projects.spring.io/spring-framework/[Spring]
+:springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
 :logback: http://logback.qos.ch/[Logback]
+:slf4j: http://www.slf4j.org/[SLF4J]
 :lombok: https://projectlombok.org/features/index.html[Lombok]
 :wro4j: https://github.com/wro4j/wro4j[WRO4J]
 :intellij: https://www.jetbrains.com/idea[IntelliJ]
@@ -23,6 +26,11 @@ v1.1.0, 22-03-2016
 :spock: http://spockframework.github.io/spock/docs/1.0/index.html[Spock Framework]
 :groovy: http://www.groovy-lang.org/[Groovy]
 :espdGitRepo: https://github.com/ESPD/espd.git[ESPD Git repository]
+:tiles: https://tiles.apache.org/[Apache Tiles]
+:bootstrap: http://getbootstrap.com/[Twitter Bootstrap]
+:piwik: http://piwik.org/[Piwik]
+:jquery: https://jquery.com/[jQuery]
+:rest: https://en.wikipedia.org/wiki/Representational_state_transfer[REST]
 
 include::about.adoc[]
 
@@ -30,17 +38,15 @@ include::requirements.adoc[]
 
 include::installation.adoc[]
 
-include::running.adoc[]
-
 include::overview.adoc[]
 
 include::configuration.adoc[]
 
-include::dataModel.adoc[]
+include::view.adoc[]
 
 include::testing.adoc[]
 
-include::view.adoc[]
+include::dataModel.adoc[]
 
 include::releaseNotes.adoc[]
 

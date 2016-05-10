@@ -14,6 +14,12 @@ In addition, it will become part of the [Connecting European Facility (CEF)](htt
 The CEF will help the Member States to implement an [ESPD service](https://ec.europa.eu/growth/tools-databases/espd) in their own country and provide additional 
 services to their users.
 
+## System requirements
+
+* Java Development Kit 7
+* Maven 3
+* Tomcat or other Servlet 3 container
+
 ## Documentation
 
 * [Installation](https://github.com/ESPD/espd/espd-docs/installation.adoc)
@@ -21,6 +27,4 @@ services to their users.
 * [Overview](https://github.com/ESPD/espd/espd-docs/overview.adoc)
 * [Release notes](https://github.com/ESPD/espd/espd-docs/releaseNotes.adoc)
 * [Full documentation](https://github.com/ESPD/espd/espd-docs/espd.adoc)
-
-## Community
 

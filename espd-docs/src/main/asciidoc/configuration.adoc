@@ -2,6 +2,15 @@
 
 This section will describe the basic configuration for the most important responsibilities of the application.
 
+=== Configuration files
+
+Most of the configuration properties of the web application are specified in `properties` files which can be found
+inside the `src/main/resources` folder of the `espd-web` {maven} module. There are different files for each profile
+under which the application can be started, for example the `application-prod.properties` file will be used for the
+`prod` profile which must be specified as a startup parameter as `-Dspring.profiles.active=prod`. If no profile is
+specified, then a `default` one will be used by {springBoot} and the corresponding configuration file would be just
+`application.properties`.
+
 === Spring
 
 The {espd} application is built from the ground-up with {springBoot}, allowing us to simplify the project configuration
@@ -34,11 +43,6 @@ For more information about the {springBoot} project, you can check the http://do
 The `eu.europa.ec.grow.espd.config` package contains the {spring} configuration files. The main class of the application
 is `EspdApplication` which makes use of the `@SpringBootApplication` annotation in order to enable the {springBoot}
 auto configuration. The package also contains the web, {JAXB} and web resources configuration files.
-
-Most of the configuration properties of the web application are specified in properties files which can be found
-inside the `src/main/resources` folder of the `espd-web` {maven} module. There are different files for each profile
-under which the application can be started, for example the `application-prod.properties` file will be used for the
-`prod` profile which must be specified as a startup parameter for the application `-Dspring.profiles.active=prod`.
 
 === Spring MVC
 
@@ -74,6 +78,65 @@ TilesConfigurer tilesConfigurer() {
   return tilesConfig;
 }
 ----
+
+=== Internationalization (i18n)
+
+Concerning internationalization (i18n), the {espd} application takes advantage of the auto-configuration provided
+by {springBoot} in the `MessageSourceAutoConfiguration` class.
+
+[source,properties]
+.application.properties
+----
+# The location to the resource bundles needed by i18n
+spring.messages.basename=i18n/messages
+
+# Loaded resource bundle files cache expiration, in seconds. When set to -1, bundles are cached forever.
+spring.messages.cache-seconds=3
+----
+
+The message files are located in the `src/main/resources/i18n` folder and follow a very simple naming convention of
+`messages_${locale language}`.
+[NOTE]
+The `application.properties` file which is used only for local development is able to
+refresh potential changes in the message files without requiring a server restart by specifying the
+`spring.messages.cache-seconds` property.
+
+The corresponding Java configuration is summarized below.
+
+[source,java]
+.WebConfiguration.java
+----
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
+@Bean
+LocaleChangeInterceptor localeChangeInterceptor() {
+  LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+  lci.setParamName("lang");
+  return lci;
+}
+
+@Bean
+LocaleResolver localeResolver() {
+  CookieLocaleResolver resolver = new CookieLocaleResolver();
+  resolver.setCookieName("ESPD_LOCALE");
+  resolver.setDefaultLocale(Locale.ENGLISH);
+  return resolver;
+}
+
+@Override
+public void addInterceptors(InterceptorRegistry registry) {
+  registry.addInterceptor(localeChangeInterceptor());
+}
+----
+
+The `LocaleResolver` enables the application to automatically resolve messages files using the client’s locale which
+is stored in a `ESPD_LOCALE` `cookie`.
+
+The `LocaleChangeInterceptor` uses an HTTP request parameter named `lang` to detect the language changes on the server side.
 
 === Web Resources Optimization
 
@@ -192,7 +255,8 @@ wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImpor
 
 ===== Build-time solution
 
-The build-time solution needs two {wro4j} configuration files placed under the `src/main/resources` folder.
+The build-time solution uses a {maven} plugin and needs two {wro4j} configuration files placed under the
+`src/main/resources` folder.
 
 [source,xml]
 .wro.xml
@@ -321,7 +385,9 @@ class Logging {
 }
 ----
 
-=== Monitoring
+=== Monitoring and analytics
+
+==== Java Melody
 
 Basic monitoring of the {espd} application is handled using the {javaMelody} library by registering a Java filter
 inside the Spring application context.
@@ -353,6 +419,20 @@ The filter configuration makes the monitoring accessible only to a certain range
 pointing to static resources and specifies that no database monitoring should be active.
 
 Additional monitoring capabilities could be added by activating the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[Spring Boot actuator] features.
+
+==== Piwik
+
+Analytics capabilities for the application are provided via the {piwik} server of DG Growth.
+
+[source,properties]
+.application-dev.properties
+----
+# Piwik id for ESPD project
+piwik.id=2
+
+# Piwik server for ESPD project
+piwik.server=https://webgate.ec.europa.eu/pwar/piwik.php
+----
 
 === JAXB
 
@@ -436,7 +516,7 @@ The mapping of the date adapters is done in the {jaxb} `bindings.xjb` configurat
 </jxb:globalBindings>
 ----
 
-=== REST
+=== REST template
 
 The interaction with external RESTful APIs (e.g. TED) is done with the http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#rest-client-access[Spring RestTemplate].
 
@@ -484,66 +564,7 @@ public class EspdApplication extends SpringBootServletInitializer implements Web
 
 You can find an example of how to use the `RestTemplate` in the `eu.europa.ec.grow.espd.ted.TedService` class.
 
-=== Internationalization (i18n)
-
-Concerning internationalization (i18n), the {espd} application takes advantage of the auto-configuration provided
-by {springBoot} in the `MessageSourceAutoConfiguration` class.
-
-[source,properties]
-.application.properties
-----
-# The location to the resource bundles needed by i18n
-spring.messages.basename=i18n/messages
-
-# Loaded resource bundle files cache expiration, in seconds. When set to -1, bundles are cached forever.
-spring.messages.cache-seconds=3
-----
-
-The message files are located in the `src/main/resources/i18n` folder and follow a very simple naming convention of
-`messages_${locale language}`.
-[NOTE]
-The `application.properties` file which is used only for local development is able to
-refresh potential changes in the message files without requiring a server restart by specifying the
-`spring.messages.cache-seconds` property.
-
-The corresponding Java configuration is summarized below.
-
-[source,java]
-.WebConfiguration.java
-----
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-
-@Bean
-LocaleChangeInterceptor localeChangeInterceptor() {
-  LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-  lci.setParamName("lang");
-  return lci;
-}
-
-@Bean
-LocaleResolver localeResolver() {
-  CookieLocaleResolver resolver = new CookieLocaleResolver();
-  resolver.setCookieName("ESPD_LOCALE");
-  resolver.setDefaultLocale(Locale.ENGLISH);
-  return resolver;
-}
-
-@Override
-public void addInterceptors(InterceptorRegistry registry) {
-  registry.addInterceptor(localeChangeInterceptor());
-}
-----
-
-The `LocaleResolver` enables the application to automatically resolve messages files using the client’s locale which
-is stored in a `ESPD_LOCALE` `cookie`.
-
-The `LocaleChangeInterceptor` uses an HTTP request parameter named `lang` to detect the language changes on the server side.
-
-=== TED
+=== TED REST service
 
 Information about the procurement procedure can be provided by the publication office via the TED REST service.
 In order to be able to retrieve the information from their remote service we need to provide four parameters.
@@ -565,15 +586,3 @@ ted.api.password=passed as server startup parameter
 ----
 
 The part of the code that handles the TED service can be found in the `eu.europa.ec.grow.espd.ted` package.
-
-=== Piwik
-
-[source,properties]
-.application-dev.properties
-----
-# Piwik id for ESPD project
-piwik.id=2
-
-# Piwik server for ESPD project
-piwik.server=https://webgate.ec.europa.eu/pwar/piwik.php
-----
