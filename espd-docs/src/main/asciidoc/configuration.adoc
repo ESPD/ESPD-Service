@@ -9,7 +9,7 @@ inside the `src/main/resources` folder of the `espd-web` {maven} module. There a
 under which the application can be started, for example the `application-prod.properties` file will be used for the
 `prod` profile which must be specified as a startup parameter as `-Dspring.profiles.active=prod`. If no profile is
 specified, then a `default` one will be used by {springBoot} and the corresponding configuration file would be just
-`application.properties`.
+`application.properties`. Here you can find https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html[more information about properties and configuration with Spring Boot].
 
 === Spring
 
@@ -427,12 +427,18 @@ Analytics capabilities for the application are provided via the {piwik} server o
 [source,properties]
 .application-dev.properties
 ----
+# Enable or disable the Piwik integration
+piwik.enabled=false
+
 # Piwik id for ESPD project
 piwik.id=2
 
 # Piwik server for ESPD project
 piwik.server=https://webgate.ec.europa.eu/pwar/piwik.php
 ----
+
+[NOTE] You might want to disable the integration with the Piwik server of DG Growth by setting the `piwik.enabled`
+parameter to `false` in the corresponding `application.properties` file.
 
 === JAXB
 
