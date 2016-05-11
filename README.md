@@ -23,8 +23,8 @@ services to their users.
 ## Documentation
 
 * [Installation](https://github.com/ESPD/espd/espd-docs/installation.adoc)
-* [Running the application](https://github.com/ESPD/espd/espd-docs/running.adoc)
 * [Overview](https://github.com/ESPD/espd/espd-docs/overview.adoc)
+* [Data model](https://github.com/ESPD/espd/espd-docs/dataModel.adoc)
 * [Release notes](https://github.com/ESPD/espd/espd-docs/releaseNotes.adoc)
 * [Full documentation](https://github.com/ESPD/espd/espd-docs/espd.adoc)
 
