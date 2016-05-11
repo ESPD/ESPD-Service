@@ -40,11 +40,15 @@
 		</div>
 	</div>
 </footer>
+<spring:eval var="piwikEnabled" scope="page" expression='@espdConfiguration.piwikEnabled' />
 <spring:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer' />
 <spring:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId' />
-<script type="text/javascript">
-	var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});
-	piwik.enableLinkTracking(true);
-	piwik.trackPageView();
-</script>
-<noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt="" /></p></noscript>
+<c:out value="${piwikEnabled}"/>
+<c:if test="${piwikEnabled == true}">
+    <script type="text/javascript">
+        var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});
+        piwik.enableLinkTracking(true);
+        piwik.trackPageView();
+    </script>
+    <noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt="" /></p></noscript>
+</c:if>

@@ -40,11 +40,15 @@ import java.util.Arrays;
 @Component
 public class EspdConfiguration {
 
+
     @Value("${info.build.version:N/A}")
     private String buildVersion;
 
     @Value("${last.build.date:N/A}")
     private String lastBuildDate;
+
+    @Value("${piwik.enabled:false}")
+    private boolean piwikEnabled;
 
     @Value("${piwik.id:2}")
     private Integer piwikId;
