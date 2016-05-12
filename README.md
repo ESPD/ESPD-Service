@@ -22,9 +22,17 @@ services to their users.
 
 ## Documentation
 
-* [Installation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/html/installation.html)
-* [Overview](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/html/overview.html)
-* [Data model](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/html/dataModel.html)
-* [Release notes](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/html/releaseNotes.html)
-* [Full documentation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/html/espd.html)
+* [Requirements](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/requirements.adoc)
+* [Installation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/installation.adoc)
+* [Overview](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/overview.adoc)
+* [Configuration](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/configuration.adoc)
+* [View](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/view.adoc)
+* [Testing](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/testing.adoc)
+* [Data model](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/dataModel.adoc)
+* [Release notes](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/releaseNotes.adoc)
+* [Full documentation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/espd.adoc)
+
+## License
+
+[License](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/license.adoc)
 
