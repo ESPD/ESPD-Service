@@ -52,12 +52,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -181,6 +179,12 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <warName>${project.artifactId}</warName>
+                    <webResources>
+                        <resource>
+                            <!-- copy these files in the WAR so that Apache Tiles is able to load its definitions correctly -->
+                            <directory>src/main/resources/META-INF/resources/</directory>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
             <plugin>
@@ -241,6 +245,7 @@
                 <configuration>
                     <wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
                     <extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+                    <contextFolder>${basedir}/src/main/resources/META-INF/resources</contextFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
                     <jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
@@ -286,4 +291,26 @@
         	</plugins>
         </pluginManagement>
     </build>
+    <profiles>
+        <profile>
+            <id>non-embedded</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-jasper</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-el</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>

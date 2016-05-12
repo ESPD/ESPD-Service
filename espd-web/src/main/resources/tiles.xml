@@ -1,0 +1,256 @@
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="espdTemplate" template="/WEB-INF/views/espdTemplate.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="breadcrumb" value="/WEB-INF/views/breadcrumb.jsp" />
+        <put-attribute name="body" value="" />
+    	<put-attribute name="agent" value="" />
+    	<put-attribute name="flow" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+    </definition>
+
+    <definition name="contact" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/contact.jsp"/></definition>
+    <definition name="welcome" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/></definition>
+	<definition name="filter" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/filter.jsp"/></definition>
+    <definition name="about" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/about.jsp"/></definition>
+    <definition name="error" extends="espdTemplate"><put-attribute name="body" value="/WEB-INF/views/error.jsp"/></definition>
+    
+    <!-- wizard -->
+
+    <definition name="request_ca" extends="espdTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="request" />
+    </definition>
+    <definition name="request_eo" extends="espdTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="request" />
+    </definition>
+    <definition name="response_ca" extends="espdTemplate">
+    	<put-attribute name="agent" value="ca" />
+    	<put-attribute name="flow" value="response" />
+    </definition>
+    <definition name="response_eo" extends="espdTemplate">
+    	<put-attribute name="agent" value="eo" />
+    	<put-attribute name="flow" value="response" />
+    </definition>
+
+    <definition name="request_ca_procedure" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="request_eo_procedure" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="request_ca_exclusion" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionCA.jsp" /></definition>
+    <definition name="request_eo_exclusion" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
+    <definition name="request_ca_selection" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionCA.jsp" /></definition>
+    <definition name="request_eo_selection" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
+    <definition name="request_ca_finish" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="request_eo_finish" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="request_ca_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="request_eo_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    
+    <definition name="response_ca_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="response_eo_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
+    <definition name="response_ca_exclusion" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
+    <definition name="response_eo_exclusion" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/exclusionEO.jsp" /></definition>
+    <definition name="response_ca_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
+    <definition name="response_eo_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
+    <definition name="response_ca_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
+    <definition name="response_ca_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="response_eo_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    
+	<definition name="viewChangeRole" template="/WEB-INF/views/wizard/viewChangeRole.jsp"><!-- page, agent --></definition>
+
+    <definition name="progress" template="/WEB-INF/views/wizard/progress.jsp">
+        <put-attribute name="start" value="false"/>
+        <put-attribute name="procedure" value="false"/>
+        <put-attribute name="exclusion" value="false"/>
+        <put-attribute name="selection" value="false"/>
+        <put-attribute name="finish" value="false"/>
+    </definition>
+
+    <definition name="partyInfo" template="/WEB-INF/views/wizard/partyInfo.jsp">
+        <!-- field -->
+        <put-attribute name="address" value="false"/>
+        <put-attribute name="vatNumber" value="false"/>
+        <put-attribute name="contacts" value="false"/>
+    </definition>
+
+    <!-- ~ wizard -->
+    
+    <!-- criteria structure -->
+    
+    <definition name="topLevelCriteriaTemplate" template="/WEB-INF/views/criteriaTemplates/topLevelCriteriaTemplate.jsp">
+    	<put-attribute name="disableTooltips" value="false"/>
+    	<!-- topLevelCriteriaList -->
+    </definition>
+    
+    <definition name="euCriteriaListTemplate" template="/WEB-INF/views/criteriaTemplates/euCriteriaListTemplate.jsp">
+    	<put-attribute name="disableTooltips" value="false"/>
+    	<put-attribute name="tooltip_code" value=""/>
+    </definition>
+    
+    <!-- exclusion -->
+
+    <definition name="checkTemplate" template="/WEB-INF/views/criteriaTemplates/checkTemplate.jsp">
+        <put-attribute name="field" value=""/>
+        <put-attribute name="title_code" value=""/>
+        <put-attribute name="description_code" value=""/>
+        <put-attribute name="is_always_checked" value="false"/>
+        <put-attribute name="default_value" value="false"/>
+        <put-attribute name="is_disabled" value="false"/>
+    </definition>
+
+    <definition name="formTemplate" template="/WEB-INF/views/criteriaTemplates/formTemplate.jsp">
+		<put-attribute name="field" value=""/>
+		<put-attribute name="checkExistanse" value="false"/>
+		<put-attribute name="has_your_answer" value="true"/>
+		<put-attribute name="invert_answer" value="false"/>
+		<put-attribute name="allows_checks" value="false"/>
+        <put-attribute name="title_code" value=""/>
+        <put-attribute name="description_code" value=""/>
+    	<put-attribute name="form" value=""/>
+    	<put-attribute name="selfCleaning" value="false"/>
+    	<put-attribute name="breachOfObligations" value="false"/>
+    	<put-attribute name="availableElectronically" value="false"/>
+    	<put-attribute name="disableTooltips" value="false"/>
+    </definition>
+    
+    <definition name="exclusionFormTemplate" extends="formTemplate">
+    	<put-attribute name="selfCleaning" value="true"/>
+    	<put-attribute name="availableElectronically" value="true"/>
+    	<put-attribute name="hasDescription" value="true"/>
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/exclusion/exclusionTemplate.jsp"/>
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/simpleForm.jsp"/>
+    </definition>
+
+    <definition name="reasonsNeverlessPerformForm" extends="exclusionFormTemplate">
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/reasonsNeverlessPerform.jsp"/>
+    </definition>
+
+    <definition name="criminalFormTemplate" extends="exclusionFormTemplate">
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/criminalForm.jsp"/>
+    </definition>
+
+    <definition name="taxFormTemplate" extends="exclusionFormTemplate">
+    	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/taxForm.jsp"/>
+    	<put-attribute name="breachOfObligations" value="true"/>
+    </definition>
+    
+    <definition name="selfCleaning" template="/WEB-INF/views/criteriaTemplates/exclusion/selfCleaning.jsp">
+    </definition>
+
+    <definition name="breachOfObligations" template="/WEB-INF/views/criteriaTemplates/exclusion/breachOfObligations.jsp">
+    </definition>
+    
+    <!-- ~ exclusion -->
+    
+    <!-- selection -->
+    
+    <definition name="selectionFormTemplate" extends="formTemplate">
+		<put-attribute name="checkExistanse" value="true"/>
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/selection/selectionTemplate.jsp"/>
+    	<put-attribute name="selectionForm" value=""/>
+		<put-attribute name="availableElectronically" value="true"/>
+    	<put-attribute name="lastYearsAmount" value=""/>
+    	<put-attribute name="lastYearsNumber" value=""/>
+    </definition>
+
+    <definition name="economicFinancialCriterionEO" extends="selectionFormTemplate">
+    	<put-attribute name="has_your_answer" value="false"/>
+		<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/selection/economicFinancialCriterionEO.jsp"/>
+        <put-attribute name="has_please_describe_them" value="false"/>
+        <put-attribute name="has_multiple_description_ratio" value="false"/>
+        <put-attribute name="has_single_amount" value="false"/>
+        <put-attribute name="has_specify_year" value="false"/>
+        <put-attribute name="has_multiple_year_amount" value="true"/>
+    </definition>
+
+    <definition name="technicalProfessionalCriterionEO" extends="selectionFormTemplate">
+        <put-attribute name="has_your_answer" value="false"/>
+		<put-attribute name="invert_answer" value="true"/>
+		<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/selection/technicalProfessionalCriterionEO.jsp"/>
+        <put-attribute name="has_please_describe_them" value="false"/>
+        <put-attribute name="has_multiple_description_amount_date_recipients" value="false"/>
+        <put-attribute name="has_explain_supply_contracts_quality" value="false"/>
+        <put-attribute name="has_explain_certificates_independent_quality" value="false"/>
+        <put-attribute name="has_explain_certificates_independent_environmental" value="false"/>
+        <put-attribute name="has_please_specify" value="false"/>
+    </definition>
+
+    <definition name="multipleYearAmount" template="/WEB-INF/views/criteriaTemplates/selection/multipleYearAmount.jsp"><!-- field, lastYears --></definition>
+    <definition name="multipleYearNumber" template="/WEB-INF/views/criteriaTemplates/selection/multipleYearNumber.jsp"><!-- field, lastYears --></definition>
+    <definition name="multipleDescriptionRatio" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionRatio.jsp"><!-- field --></definition>
+    <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionAmountDateRecipients.jsp"><!-- field --></definition>
+
+    <!-- ~ selection -->
+    
+    <!-- finish -->
+    
+    <definition name="objectiveFormTemplate" extends="formTemplate">
+    	<put-attribute name="form" value="/WEB-INF/views/criteriaTemplates/finish/objectiveForm.jsp"/>
+    	<put-attribute name="selfCleaning" value="false"/>
+    	<put-attribute name="availableElectronically" value="true"/>
+    </definition>
+    
+    <!-- ~ finish -->
+    
+    <!-- print -->
+    
+    <definition name="uglyPrintTemplate" extends="selectionFormTemplate">
+        <put-attribute name="has_your_answer" value="false"/>
+    	<put-attribute name="selectionForm" value="/WEB-INF/views/criteriaTemplates/uglyPrintTemplate.jsp"/>
+    </definition>
+    
+    <!-- ~ print -->
+    
+    <!-- common -->
+    
+    <definition name="currencies" template="/WEB-INF/views/criteriaTemplates/common/currencies.jsp">
+    	<!-- currencyField -->
+    	<put-attribute name="style" value=""/>
+    </definition>
+    
+    <definition name="availableElectronically" template="/WEB-INF/views/criteriaTemplates/common/availableElectronically.jsp">
+    	<put-attribute name="field" value=""/>
+    </definition>
+
+    <definition name="countries" template="/WEB-INF/views/criteriaTemplates/common/countries.jsp">
+        <put-attribute name="field" value=""/>
+        <put-attribute name="cssClass" value="form-control"/>
+    </definition>
+
+    <definition name="footerButtons" template="/WEB-INF/views/criteriaTemplates/common/footerButtons.jsp">
+        <put-attribute name="prevCode" value="previous"/>
+        <put-attribute name="nextCode" value="next"/>
+        <put-attribute name="prev" value=""/>
+        <put-attribute name="next" value=""/>
+        <put-attribute name="print" value="false"/>
+    </definition>
+
+    <!-- ~ common-->
+
+</tiles-definitions>

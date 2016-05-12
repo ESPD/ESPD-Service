@@ -1,0 +1,100 @@
+/*
+ *
+ * Copyright 2016 EUROPEAN COMMISSION
+ *
+ * Licensed under the EUPL, Version 1.1 or – as soon they
+ * will be approved by the European Commission - subsequent
+ * versions of the EUPL (the "Licence");
+ *
+ * You may not use this work except in compliance with the Licence.
+ *
+ * You may obtain a copy of the Licence at:
+ *
+ * https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+ *
+ * Unless required by applicable law or agreed to in
+ * writing, software distributed under the Licence is
+ * distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied.
+ * See the Licence for the specific language governing
+ * permissions and limitations under the Licence.
+ *
+ */
+
+
+/* 
+	http://benjii.me/2014/03/wizard-style-navigation-tabs-for-bootstrap/ 
+*/
+
+.nav-pills.nav-wizard > li > a {
+	padding: 20px 15px;
+}
+	
+.nav-pills.nav-wizard > li {
+  position: relative;
+  overflow: visible;
+  border-right: 20px solid #fff;
+  border-left: 20px solid #fff;
+}
+.nav-pills.nav-wizard > li:first-child {
+  border-left: 0;
+}
+.nav-pills.nav-wizard > li:first-child a {
+  /*border-radius: 5px 0 0 5px;*/
+  border-radius: 0;
+}
+.nav-pills.nav-wizard > li:last-child {
+  border-right: 0;
+}
+.nav-pills.nav-wizard > li:last-child a {
+  /*border-radius: 0 5px 5px 0;*/
+  border-radius: 0;
+}
+.nav-pills.nav-wizard > li a {
+  border-radius: 0;
+  background-color: #eee;
+  color: #04498a;
+}
+.nav-pills.nav-wizard > li .nav-arrow {
+  position: absolute;
+  top: 0px;
+  right: -30px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 30px 0 30px 30px;
+  border-color: transparent transparent transparent #eee;
+  z-index: 150;
+}
+.nav-pills.nav-wizard > li .nav-wedge {
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 30px 0 30px 30px;
+  border-color: #eee #eee #eee transparent;
+  z-index: 150;
+}
+.nav-pills.nav-wizard > li:hover .nav-arrow {
+  border-color: transparent transparent transparent #aaa;
+}
+.nav-pills.nav-wizard > li:hover .nav-wedge {
+  border-color: #aaa #aaa #aaa transparent;
+}
+.nav-pills.nav-wizard > li:hover a {
+  background-color: #aaa;
+  color: #fff;
+}
+.nav-pills.nav-wizard > li.active .nav-arrow {
+  border-color: transparent transparent transparent #04498A;
+}
+.nav-pills.nav-wizard > li.active .nav-wedge {
+  border-color: #04498A #04498A #04498A transparent;
+}
+.nav-pills.nav-wizard > li.active a {
+  background-color: #04498A;
+  color: white;
+}
