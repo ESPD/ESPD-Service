@@ -1,6 +1,126 @@
 == View
 
-=== JSP
-=== Tiles
-=== Javascript
-=== i18n
+Client interface is based on Spring 4 MVC integrated with Apache Tiles 3.0 working as a template system for JSP files.
+All the HTML forms are css styling with Bootstrap framework 3.0, and using Spring form tags to do the display and form binding.
+
+Every JSP implements responsive Bootstrap grid layout and some Bootstrap styles to make it look better.
+
+Apache Tiles and View Resolvers are configured in WebConfiguration.java 
+
+=== Forms
+
+Client web form submission and validation is performed by Spring MVC Form Binding.
+
+Spring Validator is added by annotation @InitBinder in EspdController.
+[source,java]
+.EspdController.java
+----
+    @InitBinder
+    private void dateBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        binder.registerCustomEditor(Date.class, editor);
+    }
+----
+
+HTML form is implemented by spring:form tag to bind the controller object via @ModelAttribute.
+[source,java]
+.EspdController.java
+----
+    @ModelAttribute("espd")
+    public EspdDocument newDocument() {
+        return new EspdDocument();
+    }
+----
+
+=== Internationalization
+
+Any web application with users all around the world, internationalization (i18n) is very important for better user interaction.
+ESPD i18n is organized through the use of Spring interceptors, Locale Resolver and Resource Bundle for different locales.
+
+LocaleChangeInterceptor and LocaleResolver are configured in WebConfiguration.java
+
+MessageSource bean is provided by Spring Boot and configured in properties file to enable i18n for ESPD application.
+[source,properties]
+.application.properties
+----
+# The location to the resource bundles needed by i18n
+spring.messages.basename=i18n/messages 
+----
+
+Translated messages could be retrieved with the given code by Jsp Tag spring:message.
+[source,html]
+.example.jsp
+----
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<s:message code="createca_postcode"/><%-- by static code --%>
+<s:message code="${cty.i18nCode}"/><%-- code from variable --%>
+----
+
+The only part worth mentioning is the use of custom classes providing more efficient use of MessageSource bean in JSP.
+Class I18NFunc provides html code generating methods to use in JSP's for translated fields.
+
+[source,java]
+.espdTemplate.jsp
+----
+	<%-- Initialization of request objects --%>
+	eu.europa.ec.grow.espd.util.I18NFunc inst = 
+		new eu.europa.ec.grow.espd.util.I18NFunc(pageContext);
+	request.setAttribute("i18n", inst.message());
+	request.setAttribute("div18n", inst.div());
+	request.setAttribute("span18n", inst.span());
+----
+
+Using these classes is more concisely, besides the generated code supports translation without page reload.
+
+[source,html]
+.example.jsp
+----
+	${i18n['createca_procurer_name']}
+	${div18n['createca_procurer_name']}
+	${span18n['createca_procurer_name']}
+----
+
+JSP code above generated following html.
+[source,html]
+.example.html
+----
+	Title:
+	<div data-i18n="createca_procurer_name">Title:</div>
+	<span data-i18n="createca_procurer_name">Title:</span>
+----
+
+Different combinations of custom i18n code generators provide translation labels, tooltips and placeholders without page reload.
+
+[source,html]
+.example.jsp
+----
+	<!-- label example -->
+	<label class="control-label">
+		${span18n['crit_year']
+	</label>
+	<!-- tooltip example -->
+	<span data-toggle="tooltip"data-i18n="${tooltip_code}" title="${tooltip_text}">
+	</span>
+	<!-- placeholder example -->
+	<form:input path="field" 
+		cssClass="form-control"
+		data-i18n="crit_ratio_placeholder"
+		placeholder="${i18n['crit_ratio_placeholder']}"/>
+----
+
+=== Dynamic Web Page Translation 
+
+ESPD web content is translated to another language automatically without page refresh.
+
+Dynamic translation is implemented in Java Script with jQuery.
+
+Java Script file init.js contains translation routine.
+
+
+
+
+
+
+
+
