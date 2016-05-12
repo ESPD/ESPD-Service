@@ -22,17 +22,17 @@ services to their users.
 
 ## Documentation
 
-* [Requirements](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/requirements.adoc)
-* [Installation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/installation.adoc)
-* [Overview](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/overview.adoc)
-* [Configuration](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/configuration.adoc)
-* [View](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/view.adoc)
-* [Testing](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/testing.adoc)
-* [Data model](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/dataModel.adoc)
-* [Release notes](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/releaseNotes.adoc)
-* [Full documentation](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/espd.adoc)
+* [Requirements](http://espd.github.io/espd/docs/html/requirements.html)
+* [Installation](http://espd.github.io/espd/docs/html/installation.html)
+* [Overview](http://espd.github.io/espd/docs/html/overview.html)
+* [Configuration](http://espd.github.io/espd/docs/html/configuration.html)
+* [View](http://espd.github.io/espd/docs/html/view.html)
+* [Testing](http://espd.github.io/espd/docs/html/testing.html)
+* [Data model](http://espd.github.io/espd/docs/html/dataModel.html)
+* [Release notes](http://espd.github.io/espd/docs/html/releaseNotes.html)
+* [Full documentation](http://espd.github.io/espd/docs/html/espd.html)
 
 ## License
 
-[License](https://github.com/ESPD/espd/blob/master/espd-docs/src/main/asciidoc/license.adoc)
+[License](http://espd.github.io/espd/docs/html/license.html)
 

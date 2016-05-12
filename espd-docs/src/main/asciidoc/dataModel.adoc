@@ -15,14 +15,14 @@ belong to 4 different data-packages. Consequently, each class name is preceded b
 different namespaces: `espd`, `ccv`, `cev`, and `cac`.
 
 [[img-espd-request]]
-image::images/espd_request.png[title="espd::ESPDRequest UML class diagram", alt="espd::ESPDRequest UML class diagram"]
+image::espd_request.png[title="espd::ESPDRequest UML class diagram", alt="espd::ESPDRequest UML class diagram"]
 
 The figure above provides a high level view of the main concepts used in the ESPD Request relating to the `Criterion`
 entity. The UML diagram below, in turn, shows in detail the classes and attributes of the Core Criterion Data Model
 used in the `ESPD Request` XML document.
 
 [[img-criterion]]
-image::images/criterion.png[title="UML representation of the parts of the Core Criterion Data Model used in the ESPD Request XML documents", alt="UML representation of the parts of the Core Criterion Data Model used in the ESPD Request XML documents"]
+image::criterion.png[title="UML representation of the parts of the Core Criterion Data Model used in the ESPD Request XML documents", alt="UML representation of the parts of the Core Criterion Data Model used in the ESPD Request XML documents"]
 
 The UML diagram can be read as follows:
 
