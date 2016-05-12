@@ -1,3 +1,10 @@
+:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:maven: https://maven.apache.org[Maven 3]
+:intellij: https://www.jetbrains.com/idea[IntelliJ]
+:eclipse: https://eclipse.org/downloads[Eclipse]
+:spock: http://spockframework.github.io/spock/docs/1.0/index.html[Spock Framework]
+:groovy: http://www.groovy-lang.org/[Groovy]
+
 == Testing
 
 Making sure that an application behaves correctly is a difficult job and {espd} is no exception from this rule, that's

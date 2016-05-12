@@ -1,3 +1,12 @@
+:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:maven: https://maven.apache.org[Maven 3]
+:springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
+:spring: https://projects.spring.io/spring-framework/[Spring]
+:springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
+:tiles: https://tiles.apache.org/[Apache Tiles]
+:bootstrap: http://getbootstrap.com/[Twitter Bootstrap]
+:jquery: https://jquery.com/[jQuery]
+
 == View
 
 The client interface is based on the {springMvc} integration with {tiles} working as a template system for the JSP files.

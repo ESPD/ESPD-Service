@@ -1,3 +1,5 @@
+:jaxb: https://jaxb.java.net[JAXB]
+
 == Data model
 
 The ESPD-EDM model was designed to implement the data requirements expressed in the `Annex 2` of the `COMMISSION IMPLEMENTING

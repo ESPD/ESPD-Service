@@ -1,3 +1,7 @@
+:homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:maven: https://maven.apache.org[Maven 3]
+:tomcat: https://tomcat.apache.org[Tomcat 7+]
+
 == System requirements
 
 The {homepage} application requires the following tools to run so please make sure that you have them installed

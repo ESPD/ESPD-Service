@@ -1,3 +1,5 @@
+:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+
 == License
 
 The {espd} project is https://github.com/ESPD/espd/LICENSE[licensed] under the link:++https://joinup.ec.europa.eu/community/eupl/og_page/eupl++[European Union Public Licence].

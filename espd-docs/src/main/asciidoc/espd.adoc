@@ -3,12 +3,12 @@
 Alexey Lukashov +
 Virgiliu Ratoi
 
-v1.1.0, 22-03-2016
+v2016.05, 12-05-2016
 
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
 :espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
-:appVersion: 1.1.0
+:appVersion: 2016.05
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
