@@ -59,7 +59,7 @@ subdivided into the following important packages:
 ==== Config package
 
 The `config` package contains the Java classes which are supposed to provide the configuration for the global project
-(`EspdApplication`), {springMvc} web configuration (`WebConfiguration`), the {jaxb} configuration etc. You will
+`EspdApplication`, {springMvc} web configuration `WebConfiguration`, the {jaxb} configuration etc. You will
 notice that these classes are annotated with `@Configuration` and they generally define {spring} beans that can be
 injected in other {spring} managed classes of the application.
 
