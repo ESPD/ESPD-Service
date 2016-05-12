@@ -1,46 +1,49 @@
 == View
 
-Client interface is based on Spring 4 MVC integrated with Apache Tiles 3.0 working as a template system for JSP files.
-All the HTML forms are css styling with Bootstrap framework 3.0, and using Spring form tags to do the display and form binding.
+The client interface is based on the {springMvc} integration with {tiles} working as a template system for the JSP files.
+All of the HTML forms are CSS styled with {bootstrap} and use Spring form tags to do the display and form binding.
 
-Every JSP implements responsive Bootstrap grid layout and some Bootstrap styles to make it look better.
+Every JSP implements a responsive {bootstrap} grid layout and some {bootstrap} styles to make it look better.
 
-Apache Tiles and View Resolvers are configured in WebConfiguration.java 
+{tiles} and the corresponding `view resolvers` are configured in the `WebConfiguration.java` file while `tiles.xml`
+contains the configuration for the {tiles} template definitions.
 
 === Forms
 
-Client web form submission and validation is performed by Spring MVC Form Binding.
+Client web form submission and validation is performed by {springMvc} Form Binding.
 
-Spring Validator is added by annotation @InitBinder in EspdController.
 [source,java]
 .EspdController.java
 ----
-    @InitBinder
-    private void dateBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-        binder.registerCustomEditor(Date.class, editor);
-    }
+@InitBinder
+private void dateBinder(WebDataBinder binder) {
+  SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+  CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+  binder.registerCustomEditor(Date.class, editor);
+}
 ----
 
-HTML form is implemented by spring:form tag to bind the controller object via @ModelAttribute.
+The HTML form is implemented by the `spring:form` tag to bind the controller object via `@ModelAttribute`. An
+`EspdDocument` object will be attached to each HTTP session via the `@SessionAttributes("espd")` declaration and is
+reset on each page access to the `/welcome` page.
+
 [source,java]
 .EspdController.java
 ----
-    @ModelAttribute("espd")
-    public EspdDocument newDocument() {
-        return new EspdDocument();
-    }
+@ModelAttribute("espd")
+public EspdDocument newDocument() {
+  return new EspdDocument();
+}
 ----
 
-=== Internationalization
+=== Internationalization (i18n)
 
 Any web application with users all around the world, internationalization (i18n) is very important for better user interaction.
-ESPD i18n is organized through the use of Spring interceptors, Locale Resolver and Resource Bundle for different locales.
+ESPD i18n is implemented through the use of Spring `interceptors`, `locale resolvers` and `resource bundles` for different locales.
 
-LocaleChangeInterceptor and LocaleResolver are configured in WebConfiguration.java
+`LocaleChangeInterceptor` and `LocaleResolver` are configured in the `WebConfiguration` class.
 
-MessageSource bean is provided by Spring Boot and configured in properties file to enable i18n for ESPD application.
+A `MessageSource` bean is provided by {springBoot} and configured in properties file to enable i18n for the ESPD application.
 [source,properties]
 .application.properties
 ----
@@ -48,7 +51,8 @@ MessageSource bean is provided by Spring Boot and configured in properties file 
 spring.messages.basename=i18n/messages 
 ----
 
-Translated messages could be retrieved with the given code by Jsp Tag spring:message.
+Translated messages could be retrieved with the given code by the Jsp tag `spring:message`.
+
 [source,html]
 .example.jsp
 ----
@@ -57,37 +61,37 @@ Translated messages could be retrieved with the given code by Jsp Tag spring:mes
 <s:message code="${cty.i18nCode}"/><%-- code from variable --%>
 ----
 
-The only part worth mentioning is the use of custom classes providing more efficient use of MessageSource bean in JSP.
-Class I18NFunc provides html code generating methods to use in JSP's for translated fields.
+The only part worth mentioning is the use of custom classes providing more efficient use of the `MessageSource` bean in JSP.
+The class `I18NFunc` provides HTML code generating methods to use in JSPs for translated fields.
 
 [source,java]
 .espdTemplate.jsp
 ----
-	<%-- Initialization of request objects --%>
-	eu.europa.ec.grow.espd.util.I18NFunc inst = 
-		new eu.europa.ec.grow.espd.util.I18NFunc(pageContext);
-	request.setAttribute("i18n", inst.message());
-	request.setAttribute("div18n", inst.div());
-	request.setAttribute("span18n", inst.span());
+<%-- Initialization of request objects --%>
+eu.europa.ec.grow.espd.util.I18NFunc inst =
+	new eu.europa.ec.grow.espd.util.I18NFunc(pageContext);
+request.setAttribute("i18n", inst.message());
+request.setAttribute("div18n", inst.div());
+request.setAttribute("span18n", inst.span());
 ----
 
-Using these classes is more concisely, besides the generated code supports translation without page reload.
+Using these classes is more concise and the generated code supports translation without page reload.
 
 [source,html]
 .example.jsp
 ----
-	${i18n['createca_procurer_name']}
-	${div18n['createca_procurer_name']}
-	${span18n['createca_procurer_name']}
+${i18n['createca_procurer_name']}
+${div18n['createca_procurer_name']}
+${span18n['createca_procurer_name']}
 ----
 
-JSP code above generated following html.
+The JSP code above would generate the following HTML output:
 [source,html]
 .example.html
 ----
-	Title:
-	<div data-i18n="createca_procurer_name">Title:</div>
-	<span data-i18n="createca_procurer_name">Title:</span>
+Title:
+<div data-i18n="createca_procurer_name">Title:</div>
+<span data-i18n="createca_procurer_name">Title:</span>
 ----
 
 Different combinations of custom i18n code generators provide translation labels, tooltips and placeholders without page reload.
@@ -95,32 +99,23 @@ Different combinations of custom i18n code generators provide translation labels
 [source,html]
 .example.jsp
 ----
-	<!-- label example -->
-	<label class="control-label">
-		${span18n['crit_year']
-	</label>
-	<!-- tooltip example -->
-	<span data-toggle="tooltip"data-i18n="${tooltip_code}" title="${tooltip_text}">
-	</span>
-	<!-- placeholder example -->
-	<form:input path="field" 
-		cssClass="form-control"
-		data-i18n="crit_ratio_placeholder"
-		placeholder="${i18n['crit_ratio_placeholder']}"/>
+<!-- label example -->
+<label class="control-label">
+  ${span18n['crit_year']
+</label>
+<!-- tooltip example -->
+<span data-toggle="tooltip"data-i18n="${tooltip_code}" title="${tooltip_text}">
+</span>
+<!-- placeholder example -->
+<form:input path="field"
+  cssClass="form-control"
+  data-i18n="crit_ratio_placeholder"
+  placeholder="${i18n['crit_ratio_placeholder']}"/>
 ----
 
-=== Dynamic Web Page Translation 
+=== Dynamic web page translation
 
-ESPD web content is translated to another language automatically without page refresh.
-
-Dynamic translation is implemented in Java Script with jQuery.
-
-Java Script file init.js contains translation routine.
-
-
-
-
-
-
-
-
+The {espd} web content is translated to another language automatically without page refresh. The dynamic translation is
+implemented in Javascript with {jquery} and the translation routine is found in the `init.js` file. The Javascript client
+makes an HTTP call to the `/translate` mapping defined inside the `MessageSourceController` class to fetch the required
+message labels and afterwards updates the DOM elements containing the `data-i18n` attribute.
