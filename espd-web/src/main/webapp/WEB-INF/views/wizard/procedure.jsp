@@ -118,7 +118,7 @@
                             <div class="col-md-8">
                                 <form:input cssClass="form-control" path="authority.name"
                                             placeholder="${i18n['createca_name_placeholder']}"
-                                            data-i18n="createca_name_placeholder" required="true"/>
+                                            data-i18n="createca_name_placeholder"/>
                                 <span class="error"></span>
                             </div>
                         </div>
