@@ -52,7 +52,7 @@ public enum AwardRequirementGroup implements CcvRequirementGroup {
      *
      */
     EO_REGISTERED_GROUP_1("64162276-7014-408f-a9af-080426bfe1fd", ListUtil.list(EO_REGISTERED_GROUP_1_1),
-            ListUtil.list(AwardCriterionRequirement.INDICATOR, AwardCriterionRequirement.NOT_APPLICABLE,
+            ListUtil.list(AwardCriterionRequirement.NOT_APPLICABLE, AwardCriterionRequirement.INDICATOR,
                     AwardCriterionRequirement.PROVIDE_REGISTRATION_NUMBER,
                     AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
                     AwardCriterionRequirement.REFERENCES_REGISTRATION)),

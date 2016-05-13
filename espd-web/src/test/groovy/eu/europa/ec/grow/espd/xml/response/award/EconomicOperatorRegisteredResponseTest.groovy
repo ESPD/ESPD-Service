@@ -64,10 +64,11 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
 
         then: "first sub group requirements"
         def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        checkRequirement(r1_0, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
 
         def r1_1 = response.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
+        checkRequirement(r1_1, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+
 
         def r1_2 = response.Criterion[idx].RequirementGroup[0].Requirement[2]
         checkRequirement(r1_2, "30064ad3-fc11-4579-8528-fdd0b9a5ba75", "a) Please provide the relevant registration or certification number, if applicable:", "DESCRIPTION")
@@ -111,7 +112,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
-        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[1]
         checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "true"
@@ -126,7 +127,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_REGISTERED)
 
         then:
-        def req = response.Criterion[idx].RequirementGroup[0].Requirement[1]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "true"
