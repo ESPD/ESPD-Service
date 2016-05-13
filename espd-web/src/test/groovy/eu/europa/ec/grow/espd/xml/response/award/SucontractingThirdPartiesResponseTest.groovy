@@ -48,10 +48,10 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
         checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
 
         then: "CriterionName element"
-        response.Criterion[idx].Name.text() == "Does the economic operator intend to subcontract any share of the contract to third parties?"
+        response.Criterion[idx].Name.text() == "Subcontracting third parties"
 
         then: "CriterionDescription element"
-        response.Criterion[idx].Description.text() == ""
+        response.Criterion[idx].Description.text() == "Does the economic operator intend to subcontract any share of the contract to third parties?"
 
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 1

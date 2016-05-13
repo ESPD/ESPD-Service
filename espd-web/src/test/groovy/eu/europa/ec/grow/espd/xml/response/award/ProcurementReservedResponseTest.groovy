@@ -47,10 +47,10 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
 
         then: "CriterionName element"
-        response.Criterion[idx].Name.text() == "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?"
+        response.Criterion[idx].Name.text() == "Procurement reserved"
 
         then: "CriterionDescription element"
-        response.Criterion[idx].Description.text() == ""
+        response.Criterion[idx].Description.text() == "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?"
 
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 1

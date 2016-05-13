@@ -49,10 +49,10 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
 
         then: "CriterionName element"
-        response.Criterion[idx].Name.text() == "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?"
+        response.Criterion[idx].Name.text() == "EO registered"
 
         then: "CriterionDescription element"
-        response.Criterion[idx].Description.text() == ""
+        response.Criterion[idx].Description.text() == "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?"
 
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 2

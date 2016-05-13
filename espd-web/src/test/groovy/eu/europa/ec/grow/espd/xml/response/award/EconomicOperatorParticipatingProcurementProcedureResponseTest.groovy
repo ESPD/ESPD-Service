@@ -49,10 +49,10 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
 
         then: "CriterionName element"
-        response.Criterion[idx].Name.text() == "Is the economic operator participating in the procurement procedure together with others?"
+        response.Criterion[idx].Name.text() == "EO participating in procurement procedure"
 
         then: "CriterionDescription element"
-        response.Criterion[idx].Description.text() == ""
+        response.Criterion[idx].Description.text() == "Is the economic operator participating in the procurement procedure together with others?"
 
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 1

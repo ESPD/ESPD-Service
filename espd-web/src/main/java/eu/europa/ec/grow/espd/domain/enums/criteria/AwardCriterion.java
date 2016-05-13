@@ -42,36 +42,36 @@ public enum AwardCriterion implements CcvCriterion {
      *
      */
     PROCUREMENT_RESERVED("2043338f-a38a-490b-b3ec-2607cb25a017",
-            "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?",
-            "", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, ListUtil
+            "Procurement reserved",
+            "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, ListUtil
             .list(AwardRequirementGroup.PROCUREMENT_RESERVED_GROUP), "procurementReserved"),
     /**
      *
      */
     EO_REGISTERED("9b19e869-6c89-4cc4-bd6c-ac9ca8602165",
-            "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?",
-            "", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
+            "EO registered",
+            "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
             ListUtil.list(AwardRequirementGroup.EO_REGISTERED_GROUP_1, AwardRequirementGroup.EO_REGISTERED_GROUP_2), "eoRegistered"),
     /**
      *
      */
     EO_PARTICIPATING_PROCUREMENT_PROCEDURE("ee51100f-8e3e-40c9-8f8b-57d5a15be1f2",
-            "Is the economic operator participating in the procurement procedure together with others?",
-            "", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
+            "EO participating in procurement procedure",
+            "Is the economic operator participating in the procurement procedure together with others?", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
             ListUtil.list(AwardRequirementGroup.EO_PARTICIPATING_PROCUREMENT_PROCEDURE_GROUP), "eoParticipatingProcurementProcedure"),
     /**
      *
      */
     EO_RELIES_CAPACITIES("0d62c6ed-f074-4fcf-8e9f-f691351d52ad",
-            "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?",
-            "", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, ListUtil
+            "EO relies capacities",
+            "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?", AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null, ListUtil
             .list(AwardRequirementGroup.EO_RELIES_CAPACITIES_GROUP), "eoReliesCapacities"),
     /**
      *
      */
     SUBCONTRACTING_THIRD_PARTIES("72c0c4b1-ca50-4667-9487-461f3eed4ed7",
+            "Subcontracting third parties",
             "Does the economic operator intend to subcontract any share of the contract to third parties?",
-            "",
             AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR, null,
             ListUtil.list(AwardRequirementGroup.SUBCONTRACTING_THIRD_PARTIES_GROUP), "subcontractingThirdParties"),
     /**

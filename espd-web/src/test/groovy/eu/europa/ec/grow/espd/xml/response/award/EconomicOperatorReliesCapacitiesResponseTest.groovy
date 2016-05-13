@@ -47,10 +47,10 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
 
         then: "CriterionName element"
-        response.Criterion[idx].Name.text() == "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?"
+        response.Criterion[idx].Name.text() == "EO relies capacities"
 
         then: "CriterionDescription element"
-        response.Criterion[idx].Description.text() == ""
+        response.Criterion[idx].Description.text() == "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?"
 
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 1
