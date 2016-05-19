@@ -65,7 +65,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						${span18n[allows_checks?"crit_do_you_allow_checks":"crit_your_answer"]}
-						<c:set var="checktarget" value="${'#'.concat(field).concat('-form')}"/>
+						<c:set var="checktarget" value="#${field}-form"/>
 						<form:radiobutton path="${field}.answer" value="true" data-target-show="${invert_answer?'':checktarget}" data-target-hide="${invert_answer?checktarget:''}"/>${span18n["yes"]}
 						<form:radiobutton path="${field}.answer" value="false" data-target-show="${invert_answer?checktarget:''}" data-target-hide="${invert_answer?'':checktarget}"/>${span18n["no"]}
 					</div>

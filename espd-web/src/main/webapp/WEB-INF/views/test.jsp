@@ -1,3 +1,5 @@
+<%@page import="eu.europa.ec.grow.espd.domain.enums.other.Currency"%>
+<%@page import="eu.europa.ec.grow.espd.domain.enums.other.Language"%>
 <%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Country" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
@@ -77,7 +79,7 @@
                 <li><a href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
                 <li>
                     <label for="language"></label><select id="language">
-                    <c:forEach items="<%=eu.eeu.europa.ec.grow.espd.xml.enums.other.Languageues()%>" var="lang">
+                    <c:forEach items="<%=Language.values()%>" var="lang">
                         <option value="${lang.code}" ${(lang.code eq pageContext.response.locale)?"selected":""}>${lang.sourceLanguage}</option>
                     </c:forEach>
                 </select>
@@ -279,7 +281,7 @@
                                                                             cssClass="form-control" cssStyle="${style}">
                                                                         <form:option value="${null}" label="---"/>
                                                                         <c:forEach
-                                                                                items="<%=eu.eeu.europa.ec.grow.espd.xml.enums.other.Currencyues()%>"
+                                                                                items="<%=Currency.values()%>"
                                                                                 var="curr">
                                                                             <form:option
                                                                                     value="${curr}">${curr} (${curr.description})</form:option>
@@ -290,7 +292,7 @@
                                                             <c:when test="${req.responseDataType == 'QUANTITY_YEAR'}">
                                                                 <div class="col-md-8">
                                                                     <c:set var="lastYears"
-                                                                           value="${[2016, 2015, 2014, 2013, 2012]}"/>
+                                                                           value="${\[2016, 2015, 2014, 2013, 2012\]}"/>
                                                                     <form:select
                                                                             path="${req.response[0].quantity.value}"
                                                                             cssClass="form-control">
@@ -312,6 +314,7 @@
                                                                                         code="${cty.i18nCode}"/></form:option>
                                                                             </c:forEach>
                                                                         </optgroup>
+                                                                        <%--
                                                                         <optgroup label="EU+">
                                                                             <c:forEach
                                                                                     items="<%=Country.EU_PLUS_COUNTRIES%>"
@@ -321,6 +324,7 @@
                                                                                         code="${cty.i18nCode}"/></form:option>
                                                                             </c:forEach>
                                                                         </optgroup>
+                                                                        --%>
                                                                         <optgroup label="EFTA">
                                                                             <c:forEach
                                                                                     items="<%=Country.EFTA_COUNTRIES%>"
