@@ -248,4 +248,16 @@
             </plugins>
         </pluginManagement>
     </build>
+    <profiles>
+        <profile>
+            <id>embedded</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- Profile to be used when deploying the application without an embedded Tomcat server -->
+            <id>non-embedded</id>
+        </profile>
+    </profiles>
 </project>
