@@ -92,10 +92,10 @@ You also need to install the Lombok plugin for your particular IDE.
 Before running the application you need to generate the {jaxb} classes by invoking a `mvn clean package` command
 and then add the `src/main/generated` folder on the application classpath of the `exchange-model` Maven module.
 
-==== Run with an embedded Tomcat container (coming soon)
+==== Run with an embedded Tomcat container
 
-The easiest way to start the application is with an embedded {tomcat} container by invoking the `main` method from
-the `eu.europa.ec.grow.espd.config.EspdApplication` class in the same way as you would start a normal Java non-web
+The easiest way to start the application is with an embedded Tomcat 8 (default) container by invoking the `main` method
+from the `eu.europa.ec.grow.espd.config.EspdApplication` class in the same way as you would start a normal Java non-web
 application.
 
 ==== Run as an exploded WAR file on a Servlet container
@@ -107,10 +107,9 @@ check the following links on how to deploy it on a Tomcat container:
 
 * https://www.mulesoft.com/tcat/tomcat-eclipse[Eclipse Tomcat]
 
-==== Deploying on an external Servlet container
+==== Deploying with the embedded Tomcat container
 
-If you want to deploy the application on an external Servlet container, you need to package it as a WAR and provide
-some startup parameters on your server.
+The fastest way to deploy the application is by using an embedded Tomcat container.
 
 . Perform a `mvn clean package` from the root folder of the project:
 .. The build should generate a WAR file at `${baseDir}/espd-web/target/espd-web.war`
@@ -118,10 +117,34 @@ some startup parameters on your server.
 .. `-Dspring.profiles.active=${your desired profile}` specifies the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties[Spring Boot profile] to be used
 .. `-Dted.api.user=${your TED user}` where `${your TED user}` is replaced by the TED API username
 .. `-Dted.api.password=${your TED password}` where `${your TED password}` must be replaced by the TED API password
-. The version that uses the embedded {tomcat} container can be run with `java -Dspring.profiles.active=prod -jar
-espd-web.war`.
+
+The application can be started with a shell script that can contain the following minimum configuration:
+
+[source,bash]
+.start.sh
+----
+java -Dspring.profiles.active=prod -Xms768m -Xmx768m -jar espd-web.war
+----
 
 Other application parameters can also be specified in exactly the same way, i.e. by prefixing them with a `-D` followed
 by the name of the parameter. You can consult the `application.properties` files for finding out the available options
 but please note that the ones specified at start-up have higher precedence than the ones specified in the `.properties`
 files.
+
+[NOTE]
+It is recommended to set up the context path of the application when running in the embedded mode.
+[source,properties]
+.application.properties
+----
+# Context path of the application
+server.context-path=/espd
+----
+
+==== Deploying on an external Servlet container
+
+If you want to deploy the application on an external Servlet container, you need to package it as a WAR for the
+`non-embedded` Maven profile and provide some startup parameters on your server.
+
+. Perform a `mvn clean package -Pnon-embedded` from the root folder of the project:
+.. The build should generate a WAR file at `${baseDir}/espd-web/target/espd-web.war`
+. The other steps are similar to the embedded server deployment mode

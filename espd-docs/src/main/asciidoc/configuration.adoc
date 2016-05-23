@@ -235,7 +235,7 @@ http://wro4j.readthedocs.org/en/stable/MavenPlugin/[Maven plugin] at build-time.
 the static resources like Javascript or CSS files into a single file per each type of resource so that the number of HTTP
 requests made by the clients that load the application is reduced drastically.
 
-===== Run-time solution
+===== Run-time solution with a Servlet filter
 The Java filter configuration makes use of {springBoot} auto-configuration provided by the https://github.com/michael-simons/wro4j-spring-boot-starter[wro4j-spring-boot-starter] library.
 [NOTE]
 This is only used by the `default` {springBoot} profile which should be active only at development time.
@@ -280,7 +280,7 @@ wro4j.filterUrl=/static/bundle
 wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImport, semicolonAppender, cssMinJawr, jsMin
 ----
 
-===== Build-time solution
+===== Build-time solution with Maven
 
 The build-time solution uses a {maven} plugin and needs two {wro4j} configuration files placed under the
 `src/main/resources` folder.

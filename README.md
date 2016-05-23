@@ -2,7 +2,7 @@
 ---
 
 [![Java Version](https://img.shields.io/badge/Java%20Development%20Kit-7%2B-blue.svg?style=flat)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-1.3.2-green.svg?style=flat)](http://projects.spring.io/spring-boot) 
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-1.3.3-green.svg?style=flat)](http://projects.spring.io/spring-boot) 
 [![Maven](https://img.shields.io/badge/Maven-3.0%2B-blue.svg?style=flat)](https://maven.apache.org) 
 
 The [ESPD service](https://ec.europa.eu/growth/tools-databases/espd) is a web-based solution which allows the [European Member States](http://europa.eu/about-eu/countries/index_en.htm) and [European Institutions](http://europa.eu/about-eu/institutions-bodies/)

@@ -40,7 +40,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.2.RELEASE</version>
+        <version>1.3.3.RELEASE</version>
     </parent>
 
     <properties>
@@ -63,7 +63,6 @@
         <javamelody.version>1.59.0</javamelody.version>
         <asciidoctorj.diagram.version>1.3.1</asciidoctorj.diagram.version>
         <asciidoctorj.pdf.version>1.5.0-alpha.11</asciidoctorj.pdf.version>
-        <tomcat.version>7.0.59</tomcat.version>
     </properties>
 
     <organization>
