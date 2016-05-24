@@ -42,71 +42,85 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
+        checkCriterionId(response, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.PAYMENT_OF_SOCIAL_SECURITY")
+        checkCriterionTypeCode(response, idx, "EXCLUSION.PAYMENT_OF_SOCIAL_SECURITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Payment of social security contributions"
+        response.Criterion[idx].Name.text() == "Payment of social security contributions"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator breached its obligations relating to the payment social security contributions, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
+        response.Criterion[idx].Description.text() == "Has the economic operator breached its obligations relating to the payment social security contributions, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(2)")
+        checkLegislationReference(response, idx, "57(2)")
 
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "e0b0dedc-19d7-4d12-9542-1ca656b6f4f8"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 3
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 3
+        then: "G1"
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "098fd3cc-466e-4233-af1a-affe09471bce"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "f8499787-f9f8-4355-95e2-9784426f4d7b"
+        g1_1.RequirementGroup.size() == 3
+        g1_1.Requirement.size() == 2
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
 
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "CODE_COUNTRY")
+        then: "G1.1.1"
+        def g1_1_1 = g1_1.RequirementGroup[0]
+        g1_1_1.ID.text() == "7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02"
+        g1_1_1.@pi.text() == ""
+        g1_1_1.Requirement.size() == 1
+        g1_1_1.RequirementGroup.size() == 1
 
-        def r1_2 = request.Criterion[idx].RequirementGroup[0].Requirement[2]
-        checkRequirement(r1_2, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
+        then: "G1.1.1.1"
+        def g1_1_1_1 = g1_1_1.RequirementGroup[0]
+        g1_1_1_1.ID.text() == "3cb7abf1-662a-4756-b61c-7bc716c1fafc"
+        g1_1_1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1_1_1.RequirementGroup.size() == 0
 
-        then: "check first sub group"
-        def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        sub1_1.ID.text() == "7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02"
-        sub1_1.Requirement.size() == 2
+        then: "G1.1.2"
+        def g1_1_2 = g1_1.RequirementGroup[1]
+        g1_1_2.ID.text() == "c882afa4-6971-4b00-8970-0c283eb122cc"
+        g1_1_2.@pi.text() == ""
+        g1_1_2.Requirement.size() == 1
+        g1_1_2.RequirementGroup.size() == 1
 
-        checkRequirement(sub1_1.Requirement[0], "9b4497e6-a166-46f9-8581-7fc39ff975c4", "Has this breach of obligations been established by means other than a judicial or administrative decision?", "INDICATOR")
-        checkRequirement(sub1_1.Requirement[1], "201f11c3-1fa2-4464-acc0-f021266fd881", "Please describe which means were used", "DESCRIPTION")
+        then: "G1.1.2.1"
+        def g1_1_2_1 = g1_1_2.RequirementGroup[0]
+        g1_1_2_1.ID.text() == "815422d6-f8a1-418a-8bf0-3524f7c8f721"
+        g1_1_2_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1_2_1.RequirementGroup.size() == 0
+        g1_1_2_1.Requirement.size() == 2
 
-        then: "check second sub group"
-        def sub1_2 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
-        sub1_2.ID.text() == "c882afa4-6971-4b00-8970-0c283eb122cc"
-        sub1_2.Requirement.size() == 3
+        then: "G1.1.3"
+        def g1_1_3 = g1_1.RequirementGroup[2]
+        g1_1_3.ID.text() == "fc57e473-d63e-4a04-b589-dcf81cab8052"
+        g1_1_3.@pi.text() == ""
+        g1_1_3.Requirement.size() == 1
+        g1_1_3.RequirementGroup.size() == 1
 
-        checkRequirement(sub1_2.Requirement[0], "08b0c984-c5e6-4143-8493-868c39745637", "If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?", "INDICATOR")
-        checkRequirement(sub1_2.Requirement[1], "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
-        checkRequirement(sub1_2.Requirement[2], "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
-
-        then: "check third sub group"
-        def sub1_3 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
-        sub1_3.ID.text() == "fc57e473-d63e-4a04-b589-dcf81cab8052"
-        sub1_3.Requirement.size() == 2
-
-        checkRequirement(sub1_3.Requirement[0], "70f8697b-8953-411a-a489-4ff62e5250d2",
-                "Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?", "INDICATOR")
-        checkRequirement(sub1_3.Requirement[1], "55905dd0-38f0-4f93-8c74-5ae05a21afc5", "Please describe them", "DESCRIPTION")
+        then: "G1.1.3.1"
+        def g1_1_3_1 = g1_1_3.RequirementGroup[0]
+        g1_1_3_1.ID.text() == "6c3609e1-9add-4fa9-9409-62ce72ae4548"
+        g1_1_3_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1_3_1.RequirementGroup.size() == 0
+        g1_1_3_1.Requirement.size() == 1
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -114,11 +128,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -133,7 +147,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def req = response.Criterion[idx].RequirementGroup[0].Requirement[1]
+        def req = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "CODE_COUNTRY")
         req.Response.size() == 1
         req.Response[0].Code.text() == "RO"
@@ -147,11 +161,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, amount: BigDecimal.valueOf(445.322), currency: "RON"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
+        def req = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].Requirement[1]
         checkRequirement(req, "9052cc59-cfe5-41c6-a314-02a7f378ffe8", "Amount concerned", "AMOUNT")
         req.Response.size() == 1
         req.Response.Amount.text() == "445.322"
@@ -163,11 +177,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, breachEstablishedOtherThanJudicialDecision: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
         checkRequirement(subGroup.Requirement[0], "9b4497e6-a166-46f9-8581-7fc39ff975c4", "Has this breach of obligations been established by means other than a judicial or administrative decision?", "INDICATOR")
         subGroup.Requirement[0].Response[0].Indicator.text() == "true"
     }
@@ -177,13 +191,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, meansDescription: "Other means were used"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        checkRequirement(subGroup.Requirement[1], "201f11c3-1fa2-4464-acc0-f021266fd881", "Please describe which means were used", "DESCRIPTION")
-        subGroup.Requirement[1].Response[0].Description.text() == "Other means were used"
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+        checkRequirement(subGroup.Requirement[0], "201f11c3-1fa2-4464-acc0-f021266fd881", "Please describe which means were used", "DESCRIPTION")
+        subGroup.Requirement[0].Response[0].Description.text() == "Other means were used"
     }
 
     def "check the 'If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding' requirement response"() {
@@ -191,11 +205,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, decisionFinalAndBinding: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "08b0c984-c5e6-4143-8493-868c39745637",
@@ -210,13 +224,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
         req.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(now.getTime()))
     }
@@ -226,13 +240,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, periodLength: "Till the end of the year 2013."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response[0].Period.Description.text() == "Till the end of the year 2013."
     }
@@ -242,11 +256,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, eoFulfilledObligations: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[2]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "70f8697b-8953-411a-a489-4ff62e5250d2",
@@ -260,13 +274,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, obligationsDescription: "This debt was the result of a miscalculation by our accountability department."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[2]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[2].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "55905dd0-38f0-4f93-8c74-5ae05a21afc5", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "This debt was the result of a miscalculation by our accountability department."
     }
@@ -276,11 +290,11 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response[0].Indicator.text() == "true"
@@ -291,13 +305,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_08.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkEvidence(req.Response[0].Evidence, "http://hodor_08.com")
     }
 
@@ -306,13 +320,13 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_08")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response[0].Code.text() == "HODOR_08"
     }
 

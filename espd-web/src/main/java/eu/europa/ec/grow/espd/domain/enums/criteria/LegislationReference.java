@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvLegislation;
 import lombok.Getter;
 
@@ -31,6 +32,7 @@ import lombok.Getter;
  * Created by vigi on 11/18/15:11:26 AM.
  */
 @Getter
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum LegislationReference implements CcvLegislation {
 
     /**

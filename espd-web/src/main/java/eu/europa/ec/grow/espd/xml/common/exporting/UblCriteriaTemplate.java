@@ -26,7 +26,7 @@ package eu.europa.ec.grow.espd.xml.common.exporting;
 
 import eu.europa.ec.grow.espd.domain.EspdCriterion;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion;
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
@@ -98,9 +98,9 @@ public abstract class UblCriteriaTemplate {
     }
 
     private List<CriterionType> addAwardCriteria(EspdDocument espdDocument) {
-        List<CriterionType> criterionTypes = new ArrayList<>(AwardCriterion.values().length + 1);
+        List<CriterionType> criterionTypes = new ArrayList<>(OtherCriterion.values().length + 1);
         // All exclusion criteria except 'Purely national grounds' must be present no matter the existence
-        for (AwardCriterion criterion : AwardCriterion.values()) {
+        for (OtherCriterion criterion : OtherCriterion.values()) {
             addAlwaysUblCriterion(criterion, espdDocument, criterionTypes);
         }
         return criterionTypes;

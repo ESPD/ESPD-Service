@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.request
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
@@ -101,7 +102,7 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
         def result = parseRequestXml(espd)
 
         then: "all exclusion and selection criteria (minus satisfies all), plus all economic operator criteria"
-        result.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length - 1 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
+        result.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length - 1 + OtherCriterion.values().length
     }
 
 }

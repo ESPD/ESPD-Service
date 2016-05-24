@@ -35,44 +35,50 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
+        checkCriterionId(response, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(response, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Bankruptcy"
+        response.Criterion[idx].Name.text() == "Bankruptcy"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
+        response.Criterion[idx].Description.text() == "Is the economic operator bankrupt? This information needs not be given if exclusion of economic operators in this case has been made mandatory under the applicable national law without any possibility of derogation where the economic operator is nevertheless able to perform the contract."
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(4)")
+        checkLegislationReference(response, idx, "57(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "d91c11a1-f19e-4b83-8ade-c4be2bf00555"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 3
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "d91c11a1-f19e-4b83-8ade-c4be2bf00555"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "aeef523b-c8fc-4dba-9c34-03e34812567b"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        def r1_1 = g1_1.Requirement[0]
         checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
-        def r1_2 = request.Criterion[idx].RequirementGroup[0].Requirement[2]
+        def r1_2 = g1_1.Requirement[1]
         checkRequirement(r1_2, "4e3f468a-86c4-4c99-bd15-c8b221229348", "Indicate reasons for being nevertheless to perform the contract", "DESCRIPTION")
 
         then: "check second sub group"
-        def sub2 = request.Criterion[idx].RequirementGroup[1]
+        def sub2 = response.Criterion[idx].RequirementGroup[1]
         checkInfoAvailableElectronicallyRequirementGroup(sub2)
     }
 
@@ -81,11 +87,11 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -97,13 +103,13 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "bogus description."
     }
@@ -114,13 +120,13 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 reason: "Reason here."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         checkRequirement(req, "4e3f468a-86c4-4c99-bd15-c8b221229348", "Indicate reasons for being nevertheless to perform the contract", "DESCRIPTION")
         req.Response[0].Description.text() == "Reason here."
     }
@@ -131,11 +137,11 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -148,13 +154,13 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_12.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_12.com")
     }
@@ -165,13 +171,13 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_12")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_12"
     }

@@ -25,7 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.importing;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion;
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion;
 import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulator;
 import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer;
 import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer;
@@ -94,7 +94,7 @@ public class UblRequestResponseMerger extends UblResponseImporter {
     	}
     	
     	// economic operator criteria are not part of the request but we will get them from the response
-    	for (AwardCriterion awardCrit : AwardCriterion.values()) {
+    	for (OtherCriterion awardCrit : OtherCriterion.values()) {
     		for (CriterionType respCrit : responseType.getCriterion()) {
     			if (awardCrit.getUuid().equals(respCrit.getID().getValue())) {
     				toKeep.add(respCrit);

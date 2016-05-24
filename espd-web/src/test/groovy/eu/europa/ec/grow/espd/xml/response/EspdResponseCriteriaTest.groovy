@@ -24,7 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response
 
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
@@ -44,7 +44,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def result = parseResponseXml(espd)
 
         then: "there are no mandatory exclusion criteria anymore"
-        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + AwardCriterion.values().length
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length
 
         then: "all selection criteria must be present since there were none selected"
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
@@ -52,7 +52,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         }
 
         then: "all award criteria must be present"
-        for (AwardCriterion criterion : AwardCriterion.values()) {
+        for (OtherCriterion criterion : OtherCriterion.values()) {
             checkCriterionId(result, idx++, criterion.getUuid())
         }
     }
@@ -97,7 +97,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(AwardCriterion.MEETS_OBJECTIVE)
+        def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

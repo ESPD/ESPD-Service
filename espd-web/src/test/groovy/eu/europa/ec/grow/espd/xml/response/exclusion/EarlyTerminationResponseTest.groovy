@@ -61,20 +61,24 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "72f29e01-d0be-4e33-90f3-954c26fd0899"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "67362ec7-cec3-4cb8-a38e-5d7a2a31e6d8"
+        g1.@pid.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "2cbcf978-765c-40aa-996b-b1d082485cef"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 1
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
-
-        then: "self cleanining"
-        def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
-        checkSelfCleaningRequirementGroup(sub1_1)
+        then: "G1.1.1"
+        def g1_1_1 = g1_1.RequirementGroup[0]
+        checkSelfCleaningRequirementGroup(g1_1_1)
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -102,9 +106,9 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "bogus description."
     }
@@ -119,7 +123,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -136,9 +140,9 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_17 is clean"
     }

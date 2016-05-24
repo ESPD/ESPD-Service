@@ -33,7 +33,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import eu.europa.ec.grow.espd.domain.ubl.*;
-import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.ResponseType;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,10 +67,8 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     @Override
     public Criteria deserialize(JsonParser jp, DeserializationContext dc)
             throws IOException, JsonProcessingException {
-
         JsonNode node = jp.getCodec().readTree(jp);
         ArrayNode critNode = (ArrayNode) node.get("criteria");
-        System.out.println("--------- " + critNode);
 
         Criteria criteria = new Criteria(critNode.size());
         for (JsonNode nd : critNode) {
@@ -83,11 +80,15 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private CcvCriterion parseCcvCriterion(final JsonNode node) {
+        if (nodeHasValues(node)) {
+            return null;
+        }
+
         final String name = parseStringNode("name", node);
         final String uuid = parseStringNode("uuid", node);
         final String description = parseStringNode("description", node);
         final String espdDocumentField = parseStringNode("espdDocumentField", node);
-        final CcvCriterionType ccvCriterionType = parseCriterionTypeCode(node.get("criterionTypeCode"));
+        final CcvCriterionType ccvCriterionType = parseCriterionTypeCode(node.get("criterionType"));
 
         return new CcvCriterion() {
             @Override
@@ -112,7 +113,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 
             @Override
             public CcvLegislation getLegislation() {
-                return parseLegislation(node.get("legislation"));
+                return parseLegislation(node.get("legislationReference"));
             }
 
             @Override
@@ -142,7 +143,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvCriterionType parseCriterionTypeCode(final JsonNode parentNode) {
-        if (parentNode == null) {
+        if (nodeHasValues(parentNode)) {
             return null;
         }
         return new CcvCriterionType() {
@@ -154,7 +155,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvLegislation parseLegislation(final JsonNode parentNode) {
-        if (parentNode == null) {
+        if (nodeHasValues(parentNode)) {
             return null;
         }
         return new CcvLegislation() {
@@ -181,7 +182,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvRequirementGroup parseGroup(final JsonNode parentNode) {
-        if (parentNode == null) {
+        if (nodeHasValues(parentNode)) {
             return null;
         }
 
@@ -192,8 +193,19 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
             }
 
             @Override
+            public Boolean fulfillmentIndicator() {
+                if (parentNode.get("fulfillmentIndicator") == null) {
+                    return null;
+                }
+                return parentNode.get("fulfillmentIndicator").asBoolean();
+            }
+
+            @Override
             public List<? extends CcvRequirementGroup> getSubgroups() {
                 ArrayNode subGroupNodes = (ArrayNode) parentNode.get("subgroups");
+                if (subGroupNodes == null) {
+                    return null;
+                }
                 List<CcvRequirementGroup> subgroups = new ArrayList<>(subGroupNodes.size());
                 for (JsonNode nd : subGroupNodes) {
                     subgroups.add(parseGroup(nd));
@@ -214,7 +226,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvCriterionRequirement parseRequirement(final JsonNode parentNode) {
-        if (parentNode == null) {
+        if (nodeHasValues(parentNode)) {
             return null;
         }
         return new CcvCriterionRequirement() {
@@ -230,17 +242,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 
             @Override
             public CcvResponseType getResponseType() {
-                return new CcvResponseType() {
-                    @Override
-                    public String getCode() {
-                        return parseStringNode("responseType", parentNode);
-                    }
-
-                    @Override
-                    public Object parseValue(ResponseType responseType) {
-                        return null;
-                    }
-                };
+                return ExpectedResponseType.valueOf(parseStringNode("responseType", parentNode));
             }
 
             @Override
@@ -253,6 +255,10 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
                 return fields;
             }
         };
+    }
+
+    private static boolean nodeHasValues(JsonNode parentNode) {
+        return parentNode == null || parentNode.size() <= 0;
     }
 
     private static Criteria parseJsonFile(String fileName) {

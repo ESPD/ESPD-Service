@@ -5,7 +5,7 @@
       "uuid": "2043338f-a38a-490b-b3ec-2607cb25a017",
       "shortName": "Procurement reserved",
       "description": "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Date on economic operator",
         "typeName": "DATA_ON_ECONOMIC_OPERATOR"
       },
@@ -42,43 +42,22 @@
           ]
         }
       ],
-      "espdDocumentField": "procurementReserved",
-      "typeCode": "DATA_ON_ECONOMIC_OPERATOR",
-      "legislation": null,
-      "criterionType": {
-        "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
-      }
+      "espdDocumentField": "procurementReserved"
     },
     {
       "name": "EO registered",
       "uuid": "9b19e869-6c89-4cc4-bd6c-ac9ca8602165",
       "shortName": "EO registered",
       "description": "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Date on economic operator",
         "typeName": "DATA_ON_ECONOMIC_OPERATOR"
       },
       "legislationReference": null,
       "groups": [
         {
+          "name": "G1",
           "id": "64162276-7014-408f-a9af-080426bfe1fd",
-          "subgroups": [
-            {
-              "id": "92e44d3b-af8e-4a29-91a8-24d27aa27fee",
-              "subgroups": [],
-              "requirements": [
-                {
-                  "id": "d9996ef5-49f9-4cf8-a2f5-31c9f4efd894",
-                  "description": "d) Does the registration or certification cover all of the required selection criteria?",
-                  "responseType": "INDICATOR",
-                  "espdCriterionFields": [
-                    "booleanValue1"
-                  ]
-                }
-              ]
-            }
-          ],
           "requirements": [
             {
               "id": "67fd1dde-2a0a-486e-9469-79c78796fc22",
@@ -95,70 +74,90 @@
               "espdCriterionFields": [
                 "answer"
               ]
-            },
-            {
-              "id": "30064ad3-fc11-4579-8528-fdd0b9a5ba75",
-              "description": "a) Please provide the relevant registration or certification number, if applicable:",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description1"
-              ]
-            },
-            {
-              "id": "b3403349-cbc0-4d84-879e-fc0f2d90ecbd",
-              "description": "b) If the certificate of registration or certification is available electronically, please state:",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description2"
-              ]
-            },
-            {
-              "id": "792ff522-6f3f-4a62-ab6e-a8b272bc290e",
-              "description": "c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description3"
-              ]
             }
-          ]
-        },
-        {
-          "id": "59e6f3ef-15cd-4e21-82ac-ea497ccd44e2",
-          "subgroups": [],
-          "requirements": [
+          ],
+          "subgroups": [
             {
-              "id": "0e71abd3-198e-49c5-8128-5708617bb191",
-              "description": "e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
-              "responseType": "INDICATOR",
-              "espdCriterionFields": [
-                "booleanValue3"
+              "name": "G1.1",
+              "id": "dc4acf0c-c761-40d0-b031-4ee1f224be5c",
+              "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "30064ad3-fc11-4579-8528-fdd0b9a5ba75",
+                  "description": "a) Please provide the relevant registration or certification number, if applicable:",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description1"
+                  ]
+                },
+                {
+                  "id": "b3403349-cbc0-4d84-879e-fc0f2d90ecbd",
+                  "description": "b) If the certificate of registration or certification is available electronically, please state:",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description2"
+                  ]
+                },
+                {
+                  "id": "792ff522-6f3f-4a62-ab6e-a8b272bc290e",
+                  "description": "c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description3"
+                  ]
+                }
+              ],
+              "subgroups": [
+                {
+                  "name": "G1.1.1",
+                  "id": "92e44d3b-af8e-4a29-91a8-24d27aa27fee",
+                  "requirements": [
+                    {
+                      "id": "d9996ef5-49f9-4cf8-a2f5-31c9f4efd894",
+                      "description": "d) Does the registration or certification cover all of the required selection criteria?",
+                      "responseType": "INDICATOR",
+                      "espdCriterionFields": [
+                        "booleanValue1"
+                      ]
+                    }
+                  ]
+                }
               ]
             },
             {
-              "id": "caa72cea-5443-49fb-84ba-ab6c64427f77",
-              "description": "If the relevant documentation is available electronically, please indicate:",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description5"
+              "name": "G1.2",
+              "id": "59e6f3ef-15cd-4e21-82ac-ea497ccd44e2",
+              "fulfillmentIndicator": "false",
+              "requirements": [
+                {
+                  "id": "0e71abd3-198e-49c5-8128-5708617bb191",
+                  "description": "e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
+                  "responseType": "INDICATOR",
+                  "espdCriterionFields": [
+                    "booleanValue3"
+                  ]
+                },
+                {
+                  "id": "caa72cea-5443-49fb-84ba-ab6c64427f77",
+                  "description": "If the relevant documentation is available electronically, please indicate:",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description5"
+                  ]
+                }
               ]
             }
           ]
         }
       ],
-      "espdDocumentField": "eoRegistered",
-      "typeCode": "DATA_ON_ECONOMIC_OPERATOR",
-      "legislation": null,
-      "criterionType": {
-        "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
-      }
+      "espdDocumentField": "eoRegistered"
     },
     {
       "name": "EO participating in procurement procedure",
       "uuid": "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2",
       "shortName": "EO participating in procurement procedure",
       "description": "Is the economic operator participating in the procurement procedure together with others?",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Date on economic operator",
         "typeName": "DATA_ON_ECONOMIC_OPERATOR"
       },
@@ -203,20 +202,14 @@
           ]
         }
       ],
-      "espdDocumentField": "eoParticipatingProcurementProcedure",
-      "typeCode": "DATA_ON_ECONOMIC_OPERATOR",
-      "legislation": null,
-      "criterionType": {
-        "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
-      }
+      "espdDocumentField": "eoParticipatingProcurementProcedure"
     },
     {
       "name": "EO relies capacities",
       "uuid": "0d62c6ed-f074-4fcf-8e9f-f691351d52ad",
       "shortName": "EO relies capacities",
       "description": "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Date on economic operator",
         "typeName": "DATA_ON_ECONOMIC_OPERATOR"
       },
@@ -237,20 +230,14 @@
           ]
         }
       ],
-      "espdDocumentField": "eoReliesCapacities",
-      "typeCode": "DATA_ON_ECONOMIC_OPERATOR",
-      "legislation": null,
-      "criterionType": {
-        "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
-      }
+      "espdDocumentField": "eoReliesCapacities"
     },
     {
       "name": "Subcontracting third parties",
       "uuid": "72c0c4b1-ca50-4667-9487-461f3eed4ed7",
       "shortName": "Subcontracting third parties",
       "description": "Does the economic operator intend to subcontract any share of the contract to third parties?",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Date on economic operator",
         "typeName": "DATA_ON_ECONOMIC_OPERATOR"
       },
@@ -279,20 +266,14 @@
           ]
         }
       ],
-      "espdDocumentField": "subcontractingThirdParties",
-      "typeCode": "DATA_ON_ECONOMIC_OPERATOR",
-      "legislation": null,
-      "criterionType": {
-        "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
-      }
+      "espdDocumentField": "subcontractingThirdParties"
     },
     {
       "name": "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:",
       "uuid": "9c70375e-1264-407e-8b50-b9736bc08901",
       "shortName": "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:",
       "description": "If some of these certificates or forms of documentary evidence are available electronically, please indicate for each:",
-      "criterionTypeCode": {
+      "criterionType": {
         "description": "Reduction of the number of qualified candidates",
         "typeName": "REDUCTION_OF_CANDIDATES"
       },
@@ -351,13 +332,7 @@
           ]
         }
       ],
-      "espdDocumentField": "meetsObjective",
-      "typeCode": "REDUCTION_OF_CANDIDATES",
-      "legislation": null,
-      "criterionType": {
-        "description": "Reduction of the number of qualified candidates",
-        "typeName": "REDUCTION_OF_CANDIDATES"
-      }
+      "espdDocumentField": "meetsObjective"
     }
   ]
 }

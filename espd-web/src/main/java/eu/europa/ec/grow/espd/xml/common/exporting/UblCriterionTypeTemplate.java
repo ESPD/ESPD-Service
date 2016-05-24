@@ -154,6 +154,9 @@ public abstract class UblCriterionTypeTemplate {
         RequirementGroupType groupType = new RequirementGroupType();
 
         addGroupId(ccvGroup, groupType);
+        if (ccvGroup.fulfillmentIndicator() != null) {
+            groupType.setPi("GROUP_FULFILLED.ON_" + String.valueOf(ccvGroup.fulfillmentIndicator()).toUpperCase());
+        }
         addRequirements(ccvGroup, espdCriterion, groupType);
         addSubGroups(ccvGroup, espdCriterion, groupType);
 

@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.xml.response
 
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.*
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 
 /**
@@ -190,7 +191,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.PROCUREMENT_RESERVED)
+        def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]

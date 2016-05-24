@@ -66,36 +66,54 @@ class EspdResponseCriterionFactory {
     @SuppressWarnings("unchecked")
     <T extends EspdCriterion> T buildEspdCriterion(CcvCriterion ccvCriterion, CriterionType ublCriterion) {
 
-        if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.equals(ccvCriterion.getCriterionType())) {
+        if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildCriminalConvictionsCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.equals(ccvCriterion.getCriterionType()) ||
-                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
+                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.getTypeName()
+                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildTaxesCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.equals(ccvCriterion.getCriterionType()) ||
-                ExclusionCriterionTypeCode.SOCIAL_LAW.equals(ccvCriterion.getCriterionType()) ||
-                ExclusionCriterionTypeCode.LABOUR_LAW.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
+                ExclusionCriterionTypeCode.SOCIAL_LAW.getTypeName()
+                        .equals(ccvCriterion.getCriterionType().getTypeName()) ||
+                ExclusionCriterionTypeCode.LABOUR_LAW.getTypeName()
+                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildLawCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildBankruptcyCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.MISCONDUCT.equals(ccvCriterion.getCriterionType()) ||
-                ExclusionCriterionTypeCode.DISTORTING_MARKET.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.MISCONDUCT.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
+                ExclusionCriterionTypeCode.DISTORTING_MARKET.getTypeName()
+                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildMisconductCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildConflictOfInterestCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.OTHER.equals(ccvCriterion.getCriterionType())) {
+        } else if (ExclusionCriterionTypeCode.OTHER.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildPurelyNationalGrounds(ublCriterion);
-        } else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.equals(ccvCriterion.getCriterionType())) {
+        } else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildSatisfiesAllCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.SUITABILITY.equals(ccvCriterion.getCriterionType())) {
+        } else if (SelectionCriterionTypeCode.SUITABILITY.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildSuitabilityCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.equals(ccvCriterion.getCriterionType())) {
+        } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildEconomicFinancialStandingCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.equals(ccvCriterion.getCriterionType())) {
+        } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildTechnicalProfessionalCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.equals(ccvCriterion.getCriterionType())) {
+        } else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildQualityAssuranceCriterion(ublCriterion);
-        } else if (AwardCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.equals(ccvCriterion.getCriterionType()) ||
-                AwardCriterionTypeCode.REDUCTION_OF_CANDIDATES.equals(ccvCriterion.getCriterionType())) {
+        } else if (OtherCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.getTypeName()
+                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
+                OtherCriterionTypeCode.REDUCTION_OF_CANDIDATES.getTypeName()
+                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
             return (T) buildAwardCriterion(ublCriterion);
         }
         throw new IllegalArgumentException(
@@ -544,7 +562,7 @@ class EspdResponseCriterionFactory {
     }
 
     private Boolean readAwardCriterionAnswer(CriterionType criterionType) {
-        return readCriterionAnswer(criterionType, AwardCriterionRequirement.INDICATOR);
+        return readCriterionAnswer(criterionType, OtherCriterionRequirement.INDICATOR);
     }
 
     private Boolean readCriterionAnswer(CriterionType criterionType, CcvCriterionRequirement answerReq) {
@@ -573,8 +591,8 @@ class EspdResponseCriterionFactory {
     }
 
     private AvailableElectronically buildAwardAvailableElectronically(CriterionType criterionType) {
-        return buildAvailableElectronically(criterionType, AwardCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
-                AwardCriterionRequirement.URL, AwardCriterionRequirement.URL_CODE);
+        return buildAvailableElectronically(criterionType, OtherCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
+                OtherCriterionRequirement.URL, OtherCriterionRequirement.URL_CODE);
     }
 
     private AvailableElectronically buildAvailableElectronically(CriterionType criterionType,
@@ -599,67 +617,67 @@ class EspdResponseCriterionFactory {
         Boolean yourAnswer = readAwardCriterionAnswer(criterionType);
         criterion.setAnswer(yourAnswer);
 
-        Boolean notApplicable = readBooleanRequirement(AwardCriterionRequirement.NOT_APPLICABLE, criterionType);
+        Boolean notApplicable = readBooleanRequirement(OtherCriterionRequirement.NOT_APPLICABLE, criterionType);
         criterion.setBooleanValue2(notApplicable);
 
         // description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
-        String detailsCategory = readRequirementValue(AwardCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
+        String detailsCategory = readRequirementValue(OtherCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
                 criterionType);
         if (isNotBlank(detailsCategory)) {
             criterion.setDescription1(detailsCategory);
         }
-        String regNumber = readRequirementValue(AwardCriterionRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
+        String regNumber = readRequirementValue(OtherCriterionRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
         if (isNotBlank(regNumber)) {
             criterion.setDescription1(regNumber);
         }
-        String eoRole = readRequirementValue(AwardCriterionRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
+        String eoRole = readRequirementValue(OtherCriterionRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
         if (isNotBlank(eoRole)) {
             criterion.setDescription1(eoRole);
         }
-        String describe = readRequirementValue(AwardCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+        String describe = readRequirementValue(OtherCriterionRequirement.PLEASE_DESCRIBE, criterionType);
         if (isNotBlank(describe)) {
             criterion.setDescription1(describe);
         }
-        String subcontractors = readRequirementValue(AwardCriterionRequirement.LIST_SUBCONTRACTORS, criterionType);
+        String subcontractors = readRequirementValue(OtherCriterionRequirement.LIST_SUBCONTRACTORS, criterionType);
         if (isNotBlank(subcontractors)) {
             criterion.setDescription1(subcontractors);
         }
 
-        String regNumberElectronically = readRequirementValue(AwardCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
+        String regNumberElectronically = readRequirementValue(OtherCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
                 criterionType);
         if (isNotBlank(regNumberElectronically)) {
             criterion.setDescription2(regNumberElectronically);
         }
-        String otherEos = readRequirementValue(AwardCriterionRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
+        String otherEos = readRequirementValue(OtherCriterionRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
         if (isNotBlank(otherEos)) {
             criterion.setDescription2(otherEos);
         }
 
-        String referencesRegistration = readRequirementValue(AwardCriterionRequirement.REFERENCES_REGISTRATION,
+        String referencesRegistration = readRequirementValue(OtherCriterionRequirement.REFERENCES_REGISTRATION,
                 criterionType);
         if (isNotBlank(referencesRegistration)) {
             criterion.setDescription3(referencesRegistration);
         }
-        String participantGroupName = readRequirementValue(AwardCriterionRequirement.PARTICIPANT_GROUP_NAME,
+        String participantGroupName = readRequirementValue(OtherCriterionRequirement.PARTICIPANT_GROUP_NAME,
                 criterionType);
         if (isNotBlank(participantGroupName)) {
             criterion.setDescription3(participantGroupName);
         }
 
         // this field used to contain 'description4' but has become an indicator
-        Boolean eoProvideCertificate = readRequirementValue(AwardCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
+        Boolean eoProvideCertificate = readRequirementValue(OtherCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
                 criterionType);
         criterion.setBooleanValue3(eoProvideCertificate);
-        String docElectronically = readRequirementValue(AwardCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
+        String docElectronically = readRequirementValue(OtherCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
                 criterionType);
         if (isNotBlank(docElectronically)) {
             criterion.setDescription5(docElectronically);
         }
 
         Boolean coversAllSelectionCriteria = readBooleanRequirement(
-                AwardCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
+                OtherCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
         criterion.setBooleanValue1(coversAllSelectionCriteria);
-        BigDecimal percentage = readRequirementValue(AwardCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
+        BigDecimal percentage = readRequirementValue(OtherCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
         criterion.setDoubleValue1(percentage);
 
         criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));

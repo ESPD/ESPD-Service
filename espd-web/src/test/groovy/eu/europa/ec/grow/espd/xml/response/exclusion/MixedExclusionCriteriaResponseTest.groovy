@@ -24,7 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion
@@ -46,7 +46,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def request = parseResponseXml(espd)
 
         then:
-        request.Criterion.size() == 2 + SelectionCriterion.values().length + AwardCriterion.values().length
+        request.Criterion.size() == 2 + SelectionCriterion.values().length + OtherCriterion.values().length
 
         then: "check who has been convicted requirement in participation criterion"
         def idx1 = 0

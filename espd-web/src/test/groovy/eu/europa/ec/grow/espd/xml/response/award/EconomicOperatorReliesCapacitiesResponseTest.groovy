@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.award
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 1/20/16 at 1:24 PM.
@@ -38,7 +39,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_RELIES_CAPACITIES)
+        def idx = getEoCriterionIndex(OtherCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "0d62c6ed-f074-4fcf-8e9f-f691351d52ad")
@@ -71,7 +72,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.EO_RELIES_CAPACITIES)
+        def idx = getEoCriterionIndex(OtherCriterion.EO_RELIES_CAPACITIES)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]

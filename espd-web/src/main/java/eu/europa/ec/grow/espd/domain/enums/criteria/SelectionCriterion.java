@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
@@ -38,6 +39,7 @@ import static eu.europa.ec.grow.espd.domain.enums.criteria.ListUtil.list;
  * Created by vigi on 11/17/15:3:11 PM.
  */
 @Getter
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SelectionCriterion implements CcvCriterion {
 
     /**

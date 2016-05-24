@@ -44,38 +44,38 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
+        checkCriterionId(response, idx, "47112079-6fec-47a3-988f-e561668c3aef")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Money laundering or terrorist financing"
+        response.Criterion[idx].Name.text() == "Money laundering or terrorist financing"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for money laundering or terrorist financing, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council of 26 October 2005 on the prevention of the use of the financial system for the purpose of money laundering and terrorist financing (OJ L 309, 25.11.2005, p. 15)."
+        response.Criterion[idx].Description.text() == "Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for money laundering or terrorist financing, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 1 of Directive 2005/60/EC of the European Parliament and of the Council of 26 October 2005 on the prevention of the use of the financial system for the purpose of money laundering and terrorist financing (OJ L 309, 25.11.2005, p. 15)."
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(1)")
+        checkLegislationReference(response, idx, "57(1)")
 
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "7a866000-53f4-47a9-a4b7-f9f4a81392bf"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
+        response.Criterion[idx].RequirementGroup[0].ID.text() == "7c637c0c-7703-4389-ba52-02997a055bd7"
+        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
+        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "check the self-cleaning sub group"
-        checkSelfCleaningRequirementGroup(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        checkSelfCleaningRequirementGroup(response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -83,11 +83,11 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
@@ -101,13 +101,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
         req.Response.size() == 1
         req.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(now.time))
@@ -118,13 +118,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, reason: "Reason_05 here"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         checkRequirement(req, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "Reason_05 here"
@@ -135,13 +135,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_05 was convicted"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[3]
+        def req = subGroup.Requirement[2]
         checkRequirement(req, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_05 was convicted"
@@ -152,13 +152,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[4]
+        def req = subGroup.Requirement[3]
         checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response.size() == 1
         req.Response[0].Period.Description[0].text() == "7 years"
@@ -170,11 +170,11 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -187,13 +187,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_05 is clean")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_05 is clean"
     }
@@ -204,11 +204,11 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -221,13 +221,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_05.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_05.com")
     }
@@ -238,13 +238,13 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_05"
     }

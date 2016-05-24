@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
 import lombok.Getter;
@@ -37,6 +38,7 @@ import static eu.europa.ec.grow.espd.domain.enums.criteria.ListUtil.list;
  * Created by ratoico on 12/7/15 at 3:44 PM.
  */
 @Getter
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SelectionRequirementGroup implements CcvRequirementGroup {
 
     /**
@@ -297,6 +299,11 @@ public enum SelectionRequirementGroup implements CcvRequirementGroup {
         this.id = id;
         this.subgroups = subgroups;
         this.requirements = requirements;
+    }
+
+    @Override
+    public Boolean fulfillmentIndicator() {
+        return null;
     }
 
 }

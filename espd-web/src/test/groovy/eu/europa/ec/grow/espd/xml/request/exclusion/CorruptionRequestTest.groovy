@@ -60,28 +60,37 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "fc0c436c-f10c-401b-9ac2-25247ce886c0"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "7c637c0c-7703-4389-ba52-02997a055bd7"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.Requirement.size() == 4
+
+        def r1_1 = g1_1.Requirement[0]
         checkRequirement(r1_1, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
 
-        def r1_2 = request.Criterion[idx].RequirementGroup[0].Requirement[2]
+        def r1_2 = g1_1.Requirement[1]
         checkRequirement(r1_2, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION")
 
-        def r1_3 = request.Criterion[idx].RequirementGroup[0].Requirement[3]
+        def r1_3 = g1_1.Requirement[2]
         checkRequirement(r1_3, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
 
-        def r1_4 = request.Criterion[idx].RequirementGroup[0].Requirement[4]
+        def r1_4 = g1_1.Requirement[3]
         checkRequirement(r1_4, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
 
         then: "check the self-cleaning sub group"
-        checkSelfCleaningRequirementGroup(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        def g1_1_1 = g1_1.RequirementGroup[0]
+        g1_1_1.@pi.text() == ""
+        checkSelfCleaningRequirementGroup(g1_1_1)
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

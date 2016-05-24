@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
 import lombok.Getter;
 
@@ -31,7 +32,8 @@ import lombok.Getter;
  * Created by ratoico on 1/15/16 at 3:11 PM.
  */
 @Getter
-public enum AwardCriterionTypeCode implements CcvCriterionType {
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum OtherCriterionTypeCode implements CcvCriterionType {
 
     DATA_ON_ECONOMIC_OPERATOR("Date on economic operator"),
 
@@ -39,7 +41,7 @@ public enum AwardCriterionTypeCode implements CcvCriterionType {
 
     private final String description;
 
-    AwardCriterionTypeCode(final String description) {
+    OtherCriterionTypeCode(final String description) {
         this.description = description;
     }
 

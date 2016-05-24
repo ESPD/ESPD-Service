@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.xml.response.award
 
 import eu.europa.ec.grow.espd.domain.AwardCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
 /**
  * Created by ratoico on 2/29/16 at 11:53 AM.
@@ -39,7 +40,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.SUBCONTRACTING_THIRD_PARTIES)
+        def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "72c0c4b1-ca50-4667-9487-461f3eed4ed7")
@@ -75,7 +76,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.SUBCONTRACTING_THIRD_PARTIES)
+        def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
@@ -90,7 +91,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
 
         when:
         def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.SUBCONTRACTING_THIRD_PARTIES)
+        def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then:
         def subGroup = response.Criterion[idx].RequirementGroup[0]

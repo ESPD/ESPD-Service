@@ -29,8 +29,10 @@ package eu.europa.ec.grow.espd.xml.base
 class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkSelfCleaningRequirementGroup(def selfCleaningGroup) {
-        assert selfCleaningGroup.ID.text() == "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b"
-        assert selfCleaningGroup.Requirement.size() == 2
+        assert selfCleaningGroup.ID.text() == "5f9f09f7-f701-432c-9fdc-c22c124a74c9"
+        assert selfCleaningGroup.@pi.text() == ""
+        assert selfCleaningGroup.Requirement.size() == 1
+        assert selfCleaningGroup.RequirementGroup.size() == 1
 
         def r0 = selfCleaningGroup.Requirement[0]
         checkRequirement(r0, "20c5361b-7599-4ee6-b030-7f8323174d1e", "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?", "INDICATOR")
@@ -38,7 +40,12 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
         assert r0.ID.@schemeVersionID.text() == "1.0"
 
 
-        def r1 = selfCleaningGroup.Requirement[1]
+        def g1 = selfCleaningGroup.RequirementGroup[0]
+        assert g1.Requirement.size() == 1
+        assert g1.RequirementGroup.size() == 0
+        assert g1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+
+        def r1 = g1.Requirement[0]
         checkRequirement(r1, "7b07904f-e080-401a-a3a1-9a3efeeda54b", "Please describe them", "DESCRIPTION")
         assert r1.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r1.ID.@schemeVersionID.text() == "1.0"
@@ -46,20 +53,26 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkInfoAvailableElectronicallyRequirementGroup(def infoElectronicallyRequirementGroup) {
         assert infoElectronicallyRequirementGroup.ID.text() == "7458d42a-e581-4640-9283-34ceb3ad4345"
-        assert infoElectronicallyRequirementGroup.RequirementGroup.size() == 0
-        assert infoElectronicallyRequirementGroup.Requirement.size() == 3
+        assert infoElectronicallyRequirementGroup.RequirementGroup.size() == 1
+        assert infoElectronicallyRequirementGroup.Requirement.size() == 1
+        assert infoElectronicallyRequirementGroup.@pi.text() == ""
 
         def r0 = infoElectronicallyRequirementGroup.Requirement[0]
         checkRequirement(r0, "c1347b74-1872-4060-a6db-f4044edcd7c4", "Is this information available electronically?", "INDICATOR")
         assert r0.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r0.ID.@schemeVersionID.text() == "1.0"
 
-        def r1 = infoElectronicallyRequirementGroup.Requirement[1]
+        def g1 = infoElectronicallyRequirementGroup.RequirementGroup[0]
+        assert g1.Requirement.size() == 2
+        assert g1.RequirementGroup.size() == 0
+        assert g1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+
+        def r1 = g1.Requirement[0]
         checkRequirement(r1, "f4313bb6-21b6-499e-bdff-debe10e11d2c", "URL", "EVIDENCE_URL")
         assert r1.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r1.ID.@schemeVersionID.text() == "1.0"
 
-        def r2 = infoElectronicallyRequirementGroup.Requirement[2]
+        def r2 = g1.Requirement[1]
         checkRequirement(r2, "1f1cd18e-3e01-4ca2-af4c-e2981924ba8d", "Code", "CODE")
         assert r2.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r2.ID.@schemeVersionID.text() == "1.0"

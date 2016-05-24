@@ -44,7 +44,7 @@ public final class CriteriaList {
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
             CRITERIA.put(criterion.getUuid(), criterion);
         }
-        for (AwardCriterion criterion : AwardCriterion.values()) {
+        for (OtherCriterion criterion : OtherCriterion.values()) {
             CRITERIA.put(criterion.getUuid(), criterion);
         }
     }

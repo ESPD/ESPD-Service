@@ -23,7 +23,7 @@
  */
 
 package eu.europa.ec.grow.espd.xml.base
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 /**
@@ -129,7 +129,7 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
      * @param criterion
      * @return
      */
-    protected static int getEoCriterionIndex(AwardCriterion criterion) {
+    protected static int getEoCriterionIndex(OtherCriterion criterion) {
         getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + criterion.ordinal()
     }
 

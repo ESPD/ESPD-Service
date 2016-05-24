@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.*
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
@@ -91,11 +92,11 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def idx = getResponseCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         then:
-        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + OtherCriterion.values().length
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "the next criterion should be the first award criterion"
-        checkCriterionId(request, idx + 1, eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.PROCUREMENT_RESERVED.getUuid())
+        checkCriterionId(request, idx + 1, OtherCriterion.PROCUREMENT_RESERVED.getUuid())
     }
 
     def "CA select individual selection criteria -> EO sees only the selected ones (and even not the 'All selection criteria')"() {
@@ -109,7 +110,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def request = parseResponseXml(espd)
 
         then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
-        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion.values().length
+        request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + OtherCriterion.values().length
 
         then: "check the CriterionID"
         // satisfies all is not selected by the CA so the index of the first selection criterion is one position lower
