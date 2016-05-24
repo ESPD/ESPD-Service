@@ -1,0 +1,3579 @@
+{
+  "criteria": [
+    {
+      "name": "All selection criteria will be satisfied",
+      "uuid": "7e7db838-eeac-46d9-ab39-42927486f22d",
+      "shortName": "All selection criteria will be satisfied",
+      "description": "It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.",
+      "criterionTypeCode": {
+        "description": "The economic operator declares that it will satisfy all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice",
+        "typeName": "ALL_CRITERIA_SATISFIED"
+      },
+      "legislationReference": null,
+      "groups": [
+        {
+          "id": "f3a6836d-2de2-4cd1-81ca-fb06178d05c5",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "selectionSatisfiesAll",
+      "legislation": null,
+      "criterionType": {
+        "description": "The economic operator declares that it will satisfy all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice",
+        "typeName": "ALL_CRITERIA_SATISFIED"
+      },
+      "typeCode": "SELECTION.ALL_CRITERIA_SATISFIED"
+    },
+    {
+      "name": "Enrolment in a relevant professional register",
+      "uuid": "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f",
+      "shortName": "Enrolment in a relevant professional register",
+      "description": "It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "groups": [
+        {
+          "id": "1768de86-a6c8-48e4-bd8e-de2f2f7424d0",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "enrolmentProfessionalRegister",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "typeCode": "SELECTION.SUITABILITY"
+    },
+    {
+      "name": "Enrolment in a trade register",
+      "uuid": "87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7",
+      "shortName": "Enrolment in a trade register",
+      "description": "It is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "groups": [
+        {
+          "id": "8fe21e2c-5490-474b-90e6-fe25a7d8c538",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "enrolmentTradeRegister",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "typeCode": "SELECTION.SUITABILITY"
+    },
+    {
+      "name": "For service contracts: authorisation of particular organisation needed",
+      "uuid": "9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4",
+      "shortName": "For service contracts: authorisation of particular organisation needed",
+      "description": "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "groups": [
+        {
+          "id": "a109e144-f65e-469d-bcda-220f1af34b6c",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            },
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "serviceContractsAuthorisation",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "typeCode": "SELECTION.SUITABILITY"
+    },
+    {
+      "name": "For service contracts: membership of particular organisation needed",
+      "uuid": "73f10e36-ed7a-412e-995c-aa76463e3776",
+      "shortName": "For service contracts: membership of particular organisation needed",
+      "description": "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "groups": [
+        {
+          "id": "84c72d9c-6372-4781-b957-afe97c503c6c",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            },
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "serviceContractsMembership",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "Directive 2014/24/EU",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the suitability of the economic operator",
+        "typeName": "SUITABILITY"
+      },
+      "typeCode": "SELECTION.SUITABILITY"
+    },
+    {
+      "name": "General yearly turnover",
+      "uuid": "499efc97-2ac1-4af2-9e84-323c2ca67747",
+      "shortName": "General yearly turnover",
+      "description": "Its general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "e1886054-ada4-473c-9afc-2fde82c24cf4",
+          "subgroups": [
+            {
+              "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year1"
+                  ]
+                },
+                {
+                  "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount1",
+                    "currency1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year2"
+                  ]
+                },
+                {
+                  "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount2",
+                    "currency2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year3"
+                  ]
+                },
+                {
+                  "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount3",
+                    "currency3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year4"
+                  ]
+                },
+                {
+                  "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount4",
+                    "currency4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "34825634-5151-4e31-af1b-7eafadcf15be",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year5"
+                  ]
+                },
+                {
+                  "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount5",
+                    "currency5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "generalYearlyTurnover",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Average yearly turnover",
+      "uuid": "b16cb9fc-6cb7-4585-9302-9533b415cf48",
+      "shortName": "Average yearly turnover",
+      "description": "Its average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "08da0667-c7e3-445f-a548-1107794ef7d5",
+          "subgroups": [
+            {
+              "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year1"
+                  ]
+                },
+                {
+                  "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount1",
+                    "currency1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year2"
+                  ]
+                },
+                {
+                  "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount2",
+                    "currency2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year3"
+                  ]
+                },
+                {
+                  "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount3",
+                    "currency3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year4"
+                  ]
+                },
+                {
+                  "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount4",
+                    "currency4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "34825634-5151-4e31-af1b-7eafadcf15be",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year5"
+                  ]
+                },
+                {
+                  "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount5",
+                    "currency5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "averageYearlyTurnover",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Specific yearly turnover",
+      "uuid": "074f6031-55f9-4e99-b9a4-c4363e8bc315",
+      "shortName": "Specific yearly turnover",
+      "description": "Its specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "ee1fdbab-f54e-4579-bcb8-060fe45178e9",
+          "subgroups": [
+            {
+              "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year1"
+                  ]
+                },
+                {
+                  "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount1",
+                    "currency1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year2"
+                  ]
+                },
+                {
+                  "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount2",
+                    "currency2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year3"
+                  ]
+                },
+                {
+                  "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount3",
+                    "currency3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year4"
+                  ]
+                },
+                {
+                  "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount4",
+                    "currency4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "34825634-5151-4e31-af1b-7eafadcf15be",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year5"
+                  ]
+                },
+                {
+                  "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount5",
+                    "currency5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "specificYearlyTurnover",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Specific average turnover",
+      "uuid": "d3dfb714-f558-4512-bbc5-e456fa2339de",
+      "shortName": "Specific average turnover",
+      "description": "Its specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0",
+          "subgroups": [
+            {
+              "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year1"
+                  ]
+                },
+                {
+                  "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount1",
+                    "currency1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year2"
+                  ]
+                },
+                {
+                  "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount2",
+                    "currency2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year3"
+                  ]
+                },
+                {
+                  "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount3",
+                    "currency3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year4"
+                  ]
+                },
+                {
+                  "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount4",
+                    "currency4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "34825634-5151-4e31-af1b-7eafadcf15be",
+                  "description": "Year",
+                  "responseType": "QUANTITY_YEAR",
+                  "espdCriterionFields": [
+                    "year5"
+                  ]
+                },
+                {
+                  "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+                  "description": "Amount",
+                  "responseType": "AMOUNT",
+                  "espdCriterionFields": [
+                    "amount5",
+                    "currency5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "specificAverageTurnover",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Set up of economic operator",
+      "uuid": "77f481ce-ffb6-483f-8e2b-c78db5e68292",
+      "shortName": "Set up of economic operator",
+      "description": "In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "e9aa7763-c167-4352-8060-1a3d7d3e2662",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "a18b2c98-8552-45ca-9751-d4c94c05847a",
+              "description": "Please specify",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year1"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "setupEconomicOperator",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Financial ratio",
+      "uuid": "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46",
+      "shortName": "Financial ratio",
+      "description": "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f",
+          "subgroups": [
+            {
+              "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+                  "description": "Description",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description1"
+                  ]
+                },
+                {
+                  "id": "5461b973-7067-457e-93cc-8338da2c3eef",
+                  "description": "Ratio",
+                  "responseType": "QUANTITY",
+                  "espdCriterionFields": [
+                    "ratio1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+                  "description": "Description",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description2"
+                  ]
+                },
+                {
+                  "id": "295d82b7-5ee6-4977-8aea-bac4acf6ecdf",
+                  "description": "Ratio",
+                  "responseType": "QUANTITY",
+                  "espdCriterionFields": [
+                    "ratio2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+                  "description": "Description",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description3"
+                  ]
+                },
+                {
+                  "id": "2b792afb-87ba-47b5-a80c-aee76a6f2cc8",
+                  "description": "Ratio",
+                  "responseType": "QUANTITY",
+                  "espdCriterionFields": [
+                    "ratio3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4564d79e-5db6-4a31-93ee-ac1f0019bdcb",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
+                  "description": "Description",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description4"
+                  ]
+                },
+                {
+                  "id": "22dc4bef-182d-4b81-bddc-cc30b218f9bb",
+                  "description": "Ratio",
+                  "responseType": "QUANTITY",
+                  "espdCriterionFields": [
+                    "ratio4"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bc43685e-8473-40e3-b174-3233aead6207",
+              "subgroups": [],
+              "requirements": [
+                {
+                  "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
+                  "description": "Description",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description5"
+                  ]
+                },
+                {
+                  "id": "990eef0a-14c6-41af-8bf2-b8311332d152",
+                  "description": "Ratio",
+                  "responseType": "QUANTITY",
+                  "espdCriterionFields": [
+                    "ratio5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+              "description": "Please provide the requested data below",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                null
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "financialRatio",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Professional risk indemnity insurance",
+      "uuid": "7604bd40-4462-4086-8763-a50da51a869c",
+      "shortName": "Professional risk indemnity insurance",
+      "description": "The insured amount in its professional risk indemnity insurance is the following:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "42dc8062-974d-4201-91ba-7f2ea90338fd",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount1",
+                "currency1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "professionalRiskInsurance",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "Other economic or financial requirements",
+      "uuid": "ab0e7f2e-6418-40e2-8870-6713123e41ad",
+      "shortName": "Other economic or financial requirements",
+      "description": "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, the economic operator declares that:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "groups": [
+        {
+          "id": "488ca189-bcdb-4bf4-80c7-3ad507fd89fb",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "otherEconomicFinancialRequirements",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(3)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the economical and financial standing",
+        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+      },
+      "typeCode": "SELECTION.ECONOMIC_FINANCIAL_STANDING"
+    },
+    {
+      "name": "For works contracts: performance of works of the specified type",
+      "uuid": "cdd3bb3e-34a5-43d5-b668-2aab86a73822",
+      "shortName": "For works contracts: performance of works of the specified type",
+      "description": "For public works contracts only: During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description1"
+              ]
+            },
+            {
+              "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount1",
+                "currency1"
+              ]
+            },
+            {
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date1"
+              ]
+            },
+            {
+              "id": "a92536ab-6783-40bb-a037-5d31f421fd85",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description2"
+              ]
+            },
+            {
+              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount2",
+                "currency2"
+              ]
+            },
+            {
+              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date2"
+              ]
+            },
+            {
+              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description3"
+              ]
+            },
+            {
+              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount3",
+                "currency3"
+              ]
+            },
+            {
+              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date3"
+              ]
+            },
+            {
+              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description4"
+              ]
+            },
+            {
+              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount4",
+                "currency4"
+              ]
+            },
+            {
+              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date4"
+              ]
+            },
+            {
+              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "159fc086-cf34-48a4-a41b-afed62661383",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description5"
+              ]
+            },
+            {
+              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount5",
+                "currency5"
+              ]
+            },
+            {
+              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date5"
+              ]
+            },
+            {
+              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients5"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "workContractsPerformanceOfWorks",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For supply contracts: performance of deliveries of the specified type",
+      "uuid": "3a18a175-1863-4b1d-baef-588ce61960ca",
+      "shortName": "For supply contracts: performance of deliveries of the specified type",
+      "description": "For public supply contracts only: During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description1"
+              ]
+            },
+            {
+              "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount1",
+                "currency1"
+              ]
+            },
+            {
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date1"
+              ]
+            },
+            {
+              "id": "a92536ab-6783-40bb-a037-5d31f421fd85",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description2"
+              ]
+            },
+            {
+              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount2",
+                "currency2"
+              ]
+            },
+            {
+              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date2"
+              ]
+            },
+            {
+              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description3"
+              ]
+            },
+            {
+              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount3",
+                "currency3"
+              ]
+            },
+            {
+              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date3"
+              ]
+            },
+            {
+              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description4"
+              ]
+            },
+            {
+              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount4",
+                "currency4"
+              ]
+            },
+            {
+              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date4"
+              ]
+            },
+            {
+              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "159fc086-cf34-48a4-a41b-afed62661383",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description5"
+              ]
+            },
+            {
+              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount5",
+                "currency5"
+              ]
+            },
+            {
+              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date5"
+              ]
+            },
+            {
+              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients5"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "supplyContractsPerformanceDeliveries",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For service contracts: performance of services of the specified type",
+      "uuid": "5e506c16-26ab-4e32-bb78-b27f87dc0565",
+      "shortName": "For service contracts: performance of services of the specified type",
+      "description": "For public service contracts only: During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description1"
+              ]
+            },
+            {
+              "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount1",
+                "currency1"
+              ]
+            },
+            {
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date1"
+              ]
+            },
+            {
+              "id": "a92536ab-6783-40bb-a037-5d31f421fd85",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description2"
+              ]
+            },
+            {
+              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount2",
+                "currency2"
+              ]
+            },
+            {
+              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date2"
+              ]
+            },
+            {
+              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description3"
+              ]
+            },
+            {
+              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount3",
+                "currency3"
+              ]
+            },
+            {
+              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date3"
+              ]
+            },
+            {
+              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description4"
+              ]
+            },
+            {
+              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount4",
+                "currency4"
+              ]
+            },
+            {
+              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date4"
+              ]
+            },
+            {
+              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "159fc086-cf34-48a4-a41b-afed62661383",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
+              "description": "Description",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description5"
+              ]
+            },
+            {
+              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount5",
+                "currency5"
+              ]
+            },
+            {
+              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
+              "description": "Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "date5"
+              ]
+            },
+            {
+              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
+              "description": "Recipients",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "recipients5"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "serviceContractsPerformanceServices",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Technicians or technical bodies for quality control",
+      "uuid": "3aaca389-4a7b-406b-a4b9-080845d127e7",
+      "shortName": "Technicians or technical bodies for quality control",
+      "description": "It can call upon the following technicians or technical bodies, especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "9e2fd892-80e2-4c13-98bb-1515e56f45af",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "techniciansTechnicalBodies",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For works contracts: technicians or technical bodies to carry out the work",
+      "uuid": "c599c130-b29f-461e-a187-4e16c7d40db7",
+      "shortName": "For works contracts: technicians or technical bodies to carry out the work",
+      "description": "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "162843ae-aa63-47ab-9b05-e5e3e0f284ff",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "workContractsTechnicians",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Technical facilities and measures for ensuring quality",
+      "uuid": "4bf996d9-439c-40c6-9ab9-980a48cb55a1",
+      "shortName": "Technical facilities and measures for ensuring quality",
+      "description": "It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "33648fa9-9dc0-4b8e-8058-bfaa0eb08ab2",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "technicalFacilitiesMeasures",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Study and research facilities",
+      "uuid": "90a2e100-44cc-45d3-9970-69d6714f1596",
+      "shortName": "Study and research facilities",
+      "description": "It uses the following study and research facilities are as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "23775f16-a319-4d75-9f3c-eb3ab18d1e64",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "studyResearchFacilities",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Supply chain management",
+      "uuid": "dc12a151-7fdf-4733-a8f0-30f667292e66",
+      "shortName": "Supply chain management",
+      "description": "It will be able to apply the following supply chain management and tracking systems when performing the contract:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "2fd60f39-d484-4862-ba5f-0a8c46da11d8",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "supplyChainManagement",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Allowance of checks",
+      "uuid": "c8809aa1-29b6-4f27-ae2f-27e612e394db",
+      "shortName": "Allowance of checks",
+      "description": "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "d7721546-9106-43a7-8d31-2fe08a862b00",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7",
+              "description": "Do you allow checks?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "allowanceOfChecks",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Educational and professional qualifications",
+      "uuid": "07301031-2270-41af-8e7e-66fe0c777107",
+      "shortName": "Educational and professional qualifications",
+      "description": "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "094618e3-b243-49ce-9b12-6aab357f2f88",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "educationalProfessionalQualifications",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Environmental management measures",
+      "uuid": "9460457e-b43d-48a9-acd1-615de6ddd33e",
+      "shortName": "Environmental management measures",
+      "description": "The economic operator will be able to apply the following environmental management measures when performing the contract:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "environmentalManagementFeatures",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Number of managerial staff",
+      "uuid": "6346959b-e097-4ea1-89cd-d1b4c131ea4d",
+      "shortName": "Number of managerial staff",
+      "description": "The economic operator’s number of managerial staff for the last three years were as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year1"
+              ]
+            },
+            {
+              "id": "42037f41-53af-44df-b6b8-2395cee98087",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dac727d8-2cd2-43e0-8561-6f17e25870a4",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year2"
+              ]
+            },
+            {
+              "id": "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b799d324-358c-48b0-bd5e-6d205969b4a5",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year3"
+              ]
+            },
+            {
+              "id": "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "numberManagerialStaff",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Average annual manpower",
+      "uuid": "1f49b3f0-d50f-43f6-8b30-4bafab108b9b",
+      "shortName": "Average annual manpower",
+      "description": "The economic operator’s average annual manpower for the last three years were as follows:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year1"
+              ]
+            },
+            {
+              "id": "42037f41-53af-44df-b6b8-2395cee98087",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dac727d8-2cd2-43e0-8561-6f17e25870a4",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year2"
+              ]
+            },
+            {
+              "id": "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b799d324-358c-48b0-bd5e-6d205969b4a5",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+              "description": "Year",
+              "responseType": "QUANTITY_YEAR",
+              "espdCriterionFields": [
+                "year3"
+              ]
+            },
+            {
+              "id": "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a",
+              "description": "Number",
+              "responseType": "QUANTITY_INTEGER",
+              "espdCriterionFields": [
+                "number3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "averageAnnualManpower",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Tools, plant or technical equipment",
+      "uuid": "cc18c023-211d-484d-a32e-52f3f970285f",
+      "shortName": "Tools, plant or technical equipment",
+      "description": "The following tools, plant or technical equipment will be available to it for performing the contract:",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "eb18b241-7a11-415d-a04f-94fe0dae8e77",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "51391308-0bf6-423c-95e2-d5a54aa31fb8",
+              "description": "Please describe them",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "toolsPlantTechnicalEquipment",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Subcontracting proportion",
+      "uuid": "612a1625-118d-4ea4-a6db-413184e7c0a8",
+      "shortName": "Subcontracting proportion",
+      "description": "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "575f7550-8a2d-4bad-b9d8-be07ab570076",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "3aaca389-4a7b-406b-a4b9-080845d127e7",
+              "description": "Please specify",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "specify"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "subcontractingProportion",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For supply contracts: samples, descriptions or photographs without certification of authenticity",
+      "uuid": "bdf0601d-2480-4250-b870-658d0ee95be6",
+      "shortName": "For supply contracts: samples, descriptions or photographs without certification of authenticity",
+      "description": "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "cb73544d-e8bb-4cc6-819b-b8e04f1e240e",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "supplyContractsSamplesDescriptionsWithoutCa",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For supply contracts: samples, descriptions or photographs with certification of authenticity",
+      "uuid": "7662b7a9-bcb8-4763-a0a7-7505d8e8470d",
+      "shortName": "For supply contracts: samples, descriptions or photographs with certification of authenticity",
+      "description": "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable.",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "511ddbf6-2c53-4fea-a469-3edc9941e603",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "supplyContractsSamplesDescriptionsWithCa",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "For supply contracts: certificates by quality control institutes",
+      "uuid": "a7669d7d-9297-43e1-9d10-691a1660187c",
+      "shortName": "For supply contracts: certificates by quality control institutes",
+      "description": "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "groups": [
+        {
+          "id": "4887c3d7-05fc-4e3e-b066-f338910f0c4c",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            },
+            {
+              "id": "b9dec4cb-2f6f-47d7-a023-e9099b19b338",
+              "description": "If not, please explain why and state which other means of proof can be provided:",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "supplyContractsCertificatesQc",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "58(4)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the technical and professional ability",
+        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+      },
+      "typeCode": "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY"
+    },
+    {
+      "name": "Certificates by independent bodies about quality assurance standards",
+      "uuid": "d726bac9-e153-4e75-bfca-c5385587766d",
+      "shortName": "Certificates by independent bodies about quality assurance standards",
+      "description": "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
+        "typeName": "QUALITY_ASSURANCE"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "62(2)"
+      },
+      "groups": [
+        {
+          "id": "0e88f63c-5642-4a17-833b-ae5800e1750a",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            },
+            {
+              "id": "8c5d1e13-54f7-4895-a65c-b8e09253130c",
+              "description": "If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "certificateIndependentBodiesAboutQa",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "62(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
+        "typeName": "QUALITY_ASSURANCE"
+      },
+      "typeCode": "SELECTION.QUALITY_ASSURANCE"
+    },
+    {
+      "name": "Certificates by independent bodies about environmental management systems or standards",
+      "uuid": "8ed65e48-fd0d-444f-97bd-4f58da632999",
+      "shortName": "Certificates by independent bodies about environmental management systems or standards",
+      "description": "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
+      "criterionTypeCode": {
+        "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
+        "typeName": "QUALITY_ASSURANCE"
+      },
+      "legislationReference": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "62(2)"
+      },
+      "groups": [
+        {
+          "id": "82a59ce2-9c59-4075-af08-843ad89a45ec",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
+              "description": "Your answer?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "answer"
+              ]
+            },
+            {
+              "id": "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
+              "description": "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
+          "subgroups": [],
+          "requirements": [
+            {
+              "id": "9dae5670-cb75-4c97-901b-96ddac5a633a",
+              "description": "Is this information available electronically?",
+              "responseType": "INDICATOR",
+              "espdCriterionFields": [
+                "infoElectronicallyAnswer"
+              ]
+            },
+            {
+              "id": "03bb1954-13ae-47d8-8ef8-b7fe0f22d700",
+              "description": "URL",
+              "responseType": "EVIDENCE_URL",
+              "espdCriterionFields": [
+                "infoElectronicallyUrl"
+              ]
+            },
+            {
+              "id": "e2d863a0-60cb-4e58-8c14-4c1595af48b7",
+              "description": "Code",
+              "responseType": "CODE",
+              "espdCriterionFields": [
+                "infoElectronicallyCode"
+              ]
+            }
+          ]
+        }
+      ],
+      "espdDocumentField": "certificateIndependentBodiesAboutEnvironmental",
+      "legislation": {
+        "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+        "description": "On public procurement and repealing Directive 2004/18/EC",
+        "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+        "article": "62(2)"
+      },
+      "criterionType": {
+        "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
+        "typeName": "QUALITY_ASSURANCE"
+      },
+      "typeCode": "SELECTION.QUALITY_ASSURANCE"
+    }
+  ]
+}
