@@ -60,13 +60,12 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "d7721546-9106-43a7-8d31-2fe08a862b00"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", "Do you allow checks?", "INDICATOR")
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "d7721546-9106-43a7-8d31-2fe08a862b00"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", "Do you allow checks?", "INDICATOR")
     }
 
 }

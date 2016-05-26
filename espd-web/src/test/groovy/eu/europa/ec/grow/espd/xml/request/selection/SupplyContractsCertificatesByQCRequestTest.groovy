@@ -59,16 +59,21 @@ class SupplyContractsCertificatesByQCRequestTest extends AbstractSelectionCriter
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "4887c3d7-05fc-4e3e-b066-f338910f0c4c"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "4887c3d7-05fc-4e3e-b066-f338910f0c4c"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "b9dec4cb-2f6f-47d7-a023-e9099b19b338", "If not, please explain why and state which other means of proof can be provided:", "DESCRIPTION")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "83f2f79e-0455-4918-89ff-d7829e8bf758"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "b9dec4cb-2f6f-47d7-a023-e9099b19b338", "If not, please explain why and state which other means of proof can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

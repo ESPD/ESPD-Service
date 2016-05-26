@@ -60,12 +60,14 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractSelectionCriteriaFixt
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
 
         then: "info available electronically sub group"

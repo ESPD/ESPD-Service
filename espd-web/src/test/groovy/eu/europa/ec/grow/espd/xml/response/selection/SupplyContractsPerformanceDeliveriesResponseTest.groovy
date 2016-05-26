@@ -42,36 +42,36 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "3a18a175-1863-4b1d-baef-588ce61960ca")
+        checkCriterionId(response, idx, "3a18a175-1863-4b1d-baef-588ce61960ca")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "For supply contracts: performance of deliveries of the specified type"
+        response.Criterion[idx].Name.text() == "For supply contracts: performance of deliveries of the specified type"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "For public supply contracts only: During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
+        response.Criterion[idx].Description.text() == "For public supply contracts only: During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years."
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 6
+        response.Criterion[idx].RequirementGroup.size() == 6
 
         then: "check description amount date recipients"
-        checkDescriptionAmountDateRecipientsGroup1(request.Criterion[idx].RequirementGroup[0])
-        checkDescriptionAmountDateRecipientsGroup2(request.Criterion[idx].RequirementGroup[1])
-        checkDescriptionAmountDateRecipientsGroup3(request.Criterion[idx].RequirementGroup[2])
-        checkDescriptionAmountDateRecipientsGroup4(request.Criterion[idx].RequirementGroup[3])
-        checkDescriptionAmountDateRecipientsGroup5(request.Criterion[idx].RequirementGroup[4])
+        checkDescriptionAmountDateRecipientsGroup(response.Criterion[idx].RequirementGroup[0])
+        checkDescriptionAmountDateRecipientsGroup(response.Criterion[idx].RequirementGroup[1])
+        checkDescriptionAmountDateRecipientsGroup(response.Criterion[idx].RequirementGroup[2])
+        checkDescriptionAmountDateRecipientsGroup(response.Criterion[idx].RequirementGroup[3])
+        checkDescriptionAmountDateRecipientsGroup(response.Criterion[idx].RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[5])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[5])
     }
 
     def "check the 'Description' requirements response"() {
@@ -80,35 +80,35 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 description1: "desc1", description2: "desc2", description3: "desc3", description4: "desc4", description5: "desc5"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First description"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def subGroup1 = response.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[0]
         req1.Response.size() == 1
         req1.Response[0].Description.text() == "desc1"
 
         then: "Second description"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def subGroup2 = response.Criterion[idx].RequirementGroup[1]
         def req2 = subGroup2.Requirement[0]
         req2.Response.size() == 1
         req2.Response[0].Description.text() == "desc2"
 
         then: "Third description"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
         def req3 = subGroup3.Requirement[0]
         req3.Response.size() == 1
         req3.Response[0].Description.text() == "desc3"
 
         then: "Fourth description"
-        def subGroup4 = request.Criterion[idx].RequirementGroup[3]
+        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
         def req4 = subGroup4.Requirement[0]
         req4.Response.size() == 1
         req4.Response[0].Description.text() == "desc4"
 
         then: "Fifth description"
-        def subGroup5 = request.Criterion[idx].RequirementGroup[4]
+        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
         def req5 = subGroup5.Requirement[0]
         req5.Response.size() == 1
         req5.Response[0].Description.text() == "desc5"
@@ -121,39 +121,39 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 currency1: "EUR", currency2: "RON", currency3: "USD", currency4: "CHF", currency5: "YEN"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First amount"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def subGroup1 = response.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[1]
         req1.Response.size() == 1
         req1.Response.Amount.text() == "11.11"
         req1.Response.Amount.@currencyID.text() == "EUR"
 
         then: "Second amount"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def subGroup2 = response.Criterion[idx].RequirementGroup[1]
         def req2 = subGroup2.Requirement[1]
         req2.Response.size() == 1
         req2.Response.Amount.text() == "22.22"
         req2.Response.Amount.@currencyID.text() == "RON"
 
         then: "Third amount"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
         def req3 = subGroup3.Requirement[1]
         req3.Response.size() == 1
         req3.Response.Amount.text() == "33.33"
         req3.Response.Amount.@currencyID == "USD"
 
         then: "Fourth amount"
-        def subGroup4 = request.Criterion[idx].RequirementGroup[3]
+        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
         def req4 = subGroup4.Requirement[1]
         req4.Response.size() == 1
         req4.Response.Amount.text() == "44.44"
         req4.Response.Amount.@currencyID == "CHF"
 
         then: "Fifth amount"
-        def subGroup5 = request.Criterion[idx].RequirementGroup[4]
+        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
         def req5 = subGroup5.Requirement[1]
         req5.Response.size() == 1
         req5.Response.Amount.text() == "55.55"
@@ -171,35 +171,35 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 date1: date1, date2: date2, date3: date3, date4: date4, date5: date5))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First date"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def subGroup1 = response.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[2]
         req1.Response.size() == 1
         req1.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date1.time))
 
         then: "Second date"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def subGroup2 = response.Criterion[idx].RequirementGroup[1]
         def req2 = subGroup2.Requirement[2]
         req2.Response.size() == 1
         req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date2.time))
 
         then: "Third date"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
         def req3 = subGroup3.Requirement[2]
         req3.Response.size() == 1
         req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date3.time))
 
         then: "Fourth date"
-        def subGroup4 = request.Criterion[idx].RequirementGroup[3]
+        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
         def req4 = subGroup4.Requirement[2]
         req4.Response.size() == 1
         req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date4.time))
 
         then: "Fifth date"
-        def subGroup5 = request.Criterion[idx].RequirementGroup[4]
+        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
         def req5 = subGroup5.Requirement[2]
         req5.Response.size() == 1
         req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date5.time))
@@ -211,35 +211,35 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 recipients1: "rec1", recipients2: "rec2", recipients3: "rec3", recipients4: "rec4", recipients5: "rec5"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First recipients"
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
+        def subGroup1 = response.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[3]
         req1.Response.size() == 1
         req1.Response[0].Description.text() == "rec1"
 
         then: "Second recipients"
-        def subGroup2 = request.Criterion[idx].RequirementGroup[1]
+        def subGroup2 = response.Criterion[idx].RequirementGroup[1]
         def req2 = subGroup2.Requirement[3]
         req2.Response.size() == 1
         req2.Response[0].Description.text() == "rec2"
 
         then: "Third recipients"
-        def subGroup3 = request.Criterion[idx].RequirementGroup[2]
+        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
         def req3 = subGroup3.Requirement[3]
         req3.Response.size() == 1
         req3.Response[0].Description.text() == "rec3"
 
         then: "Fourth recipients"
-        def subGroup4 = request.Criterion[idx].RequirementGroup[3]
+        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
         def req4 = subGroup4.Requirement[3]
         req4.Response.size() == 1
         req4.Response[0].Description.text() == "rec4"
 
         then: "Fifth recipients"
-        def subGroup5 = request.Criterion[idx].RequirementGroup[4]
+        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
         def req5 = subGroup5.Requirement[3]
         req5.Response.size() == 1
         req5.Response[0].Description.text() == "rec5"
@@ -251,11 +251,11 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[5]
+        def subGroup = response.Criterion[idx].RequirementGroup[5]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -268,13 +268,13 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_14.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[5]
+        def subGroup = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_14.com")
     }
@@ -285,13 +285,13 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_14")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[5]
+        def subGroup = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_14"
     }

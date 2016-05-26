@@ -63,6 +63,7 @@ class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
         assert r0.ID.@schemeVersionID.text() == "1.0"
 
         def g1 = infoElectronicallyRequirementGroup.RequirementGroup[0]
+        assert g1.ID.text() == "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b"
         assert g1.Requirement.size() == 2
         assert g1.RequirementGroup.size() == 0
         assert g1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"

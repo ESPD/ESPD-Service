@@ -39,38 +39,38 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "9460457e-b43d-48a9-acd1-615de6ddd33e")
+        checkCriterionId(response, idx, "9460457e-b43d-48a9-acd1-615de6ddd33e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Environmental management measures"
+        response.Criterion[idx].Name.text() == "Environmental management measures"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract:"
+        response.Criterion[idx].Description.text() == "The economic operator will be able to apply the following environmental management measures when performing the contract:"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "96defecc-7d32-4957-82e9-aad5f3c5b736"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Please describe them' requirements response"() {
@@ -79,11 +79,11 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 description: "technical description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -96,11 +96,11 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -110,35 +110,35 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_23.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_24.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        checkEvidence(req.Response[0].Evidence, "http://hodor_23.com")
+        checkEvidence(req.Response[0].Evidence, "http://hodor_24.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_23")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_24")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_23"
+        req.Response[0].Code.text() == "HODOR_24"
     }
 
 }

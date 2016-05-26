@@ -60,16 +60,16 @@ class SupplyChainManagementRequestTest extends AbstractSelectionCriteriaFixture 
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "2fd60f39-d484-4862-ba5f-0a8c46da11d8"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

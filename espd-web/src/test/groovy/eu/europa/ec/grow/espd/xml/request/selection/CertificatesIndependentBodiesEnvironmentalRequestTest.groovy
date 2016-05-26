@@ -58,20 +58,26 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "82a59ce2-9c59-4075-af08-843ad89a45ec"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "82a59ce2-9c59-4075-af08-843ad89a45ec"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "d664788a-df88-49a0-9dfa-2dd217355724"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
                 "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

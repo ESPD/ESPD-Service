@@ -60,13 +60,12 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "575f7550-8a2d-4bad-b9d8-be07ab570076"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "575f7550-8a2d-4bad-b9d8-be07ab570076"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
     }
 
 }

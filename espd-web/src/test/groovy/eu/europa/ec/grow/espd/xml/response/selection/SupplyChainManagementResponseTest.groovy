@@ -39,38 +39,38 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(supplyChainManagement: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "dc12a151-7fdf-4733-a8f0-30f667292e66")
+        checkCriterionId(response, idx, "dc12a151-7fdf-4733-a8f0-30f667292e66")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Supply chain management"
+        response.Criterion[idx].Name.text() == "Supply chain management"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "It will be able to apply the following supply chain management and tracking systems when performing the contract:"
+        response.Criterion[idx].Description.text() == "It will be able to apply the following supply chain management and tracking systems when performing the contract:"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "2fd60f39-d484-4862-ba5f-0a8c46da11d8"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Please describe them' requirements response"() {
@@ -79,11 +79,11 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 description: "technical description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -96,12 +96,11 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -113,13 +112,12 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_20.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_20.com")
     }
@@ -130,13 +128,12 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_20")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[2]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_20"
     }

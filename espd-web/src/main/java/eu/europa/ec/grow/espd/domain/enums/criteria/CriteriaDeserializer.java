@@ -37,6 +37,7 @@ import eu.europa.ec.grow.espd.domain.ubl.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -80,7 +81,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private CcvCriterion parseCcvCriterion(final JsonNode node) {
-        if (nodeHasValues(node)) {
+        if (nodeHasNoValues(node)) {
             return null;
         }
 
@@ -143,7 +144,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvCriterionType parseCriterionTypeCode(final JsonNode parentNode) {
-        if (nodeHasValues(parentNode)) {
+        if (nodeHasNoValues(parentNode)) {
             return null;
         }
         return new CcvCriterionType() {
@@ -155,7 +156,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvLegislation parseLegislation(final JsonNode parentNode) {
-        if (nodeHasValues(parentNode)) {
+        if (nodeHasNoValues(parentNode)) {
             return null;
         }
         return new CcvLegislation() {
@@ -182,7 +183,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvRequirementGroup parseGroup(final JsonNode parentNode) {
-        if (nodeHasValues(parentNode)) {
+        if (nodeHasNoValues(parentNode)) {
             return null;
         }
 
@@ -216,6 +217,9 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
             @Override
             public List<? extends CcvCriterionRequirement> getRequirements() {
                 ArrayNode requirementNodes = (ArrayNode) parentNode.get("requirements");
+                if (nodeHasNoValues(requirementNodes)) {
+                    return Collections.emptyList();
+                }
                 List<CcvCriterionRequirement> requirements = new ArrayList<>(requirementNodes.size());
                 for (JsonNode nd : requirementNodes) {
                     requirements.add(parseRequirement(nd));
@@ -226,7 +230,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static CcvCriterionRequirement parseRequirement(final JsonNode parentNode) {
-        if (nodeHasValues(parentNode)) {
+        if (nodeHasNoValues(parentNode)) {
             return null;
         }
         return new CcvCriterionRequirement() {
@@ -257,7 +261,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
         };
     }
 
-    private static boolean nodeHasValues(JsonNode parentNode) {
+    private static boolean nodeHasNoValues(JsonNode parentNode) {
         return parentNode == null || parentNode.size() <= 0;
     }
 
@@ -276,7 +280,11 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     static CcvCriterion getSelectionCriterion(String uuid) {
-        return selectionCriteria.get(uuid);
+        CcvCriterion criterion = selectionCriteria.get(uuid);
+        if (criterion == null) {
+            throw new IllegalArgumentException(String.format("The criterion with id: '%s' could not be found.", uuid));
+        }
+        return criterion;
     }
 
     static CcvCriterion getOtherCriterion(String uuid) {
