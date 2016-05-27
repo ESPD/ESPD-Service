@@ -33,9 +33,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import eu.europa.ec.grow.espd.domain.ubl.*;
+import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -266,10 +267,8 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     }
 
     private static Criteria parseJsonFile(String fileName) {
-        try {
-            return mapper.readValue(
-                    new File("./src/main/java/eu/europa/ec/grow/espd/domain/enums/criteria/" + fileName),
-                    Criteria.class);
+        try (InputStream is = new ClassPathResource("criteria/" + fileName).getInputStream()){
+            return mapper.readValue(is, Criteria.class);
         } catch (IOException e) {
             throw new IllegalArgumentException(String.format("Could not read JSON file: '%s'.", fileName), e);
         }
