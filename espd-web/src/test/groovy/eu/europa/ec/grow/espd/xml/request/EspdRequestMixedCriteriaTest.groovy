@@ -95,7 +95,7 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
                 supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true),
                 certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true),
                 certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true),
-                meetsObjective: new AwardCriterion(exists: true)
+                meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true)
         )
 
         when:

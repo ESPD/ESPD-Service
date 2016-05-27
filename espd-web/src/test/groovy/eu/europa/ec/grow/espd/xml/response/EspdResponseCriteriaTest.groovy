@@ -93,7 +93,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
 
     def "Award criteria with no 'Indicator' don't have a response"() {
         given:
-        def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.AwardCriterion(exists: true, answer: null))
+        def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: null))
 
         when:
         def request = parseResponseXml(espd)

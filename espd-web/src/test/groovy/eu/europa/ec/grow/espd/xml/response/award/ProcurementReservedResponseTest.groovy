@@ -23,7 +23,7 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.award
-import eu.europa.ec.grow.espd.domain.AwardCriterion
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractCriteriaFixture
@@ -35,7 +35,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
     def "01. should contain the 'Only in case the procurement is reserved' criterion"() {
         given:
         // exists is false but award criteria should always be present
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: false))
+        def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
         def response = parseResponseXml(espd)
@@ -56,26 +56,28 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         then: "check all the sub groups"
         response.Criterion[idx].RequirementGroup.size() == 1
 
-        then: "main sub group"
-        response.Criterion[idx].RequirementGroup[0].ID.text() == "6febbe4a-e715-427c-a2b1-19cfabadaef0"
-        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 3
+        then: "G1"
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "6febbe4a-e715-427c-a2b1-19cfabadaef0"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
-
-        def r1_1 = response.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "4e552658-d532-4770-943b-b90efcc9788d", "What is the corresponding percentage of disabled or disadvantaged workers?", "PERCENTAGE")
-
-        def r1_2 = response.Criterion[idx].RequirementGroup[0].Requirement[2]
-        checkRequirement(r1_2, "e01d0929-c7a9-455a-aaf9-e1f7cd966336",
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "a5e33369-e2b5-45f7-9969-ddb1c3ae17c8"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 2
+        checkRequirement(g1_1.Requirement[0], "4e552658-d532-4770-943b-b90efcc9788d", "What is the corresponding percentage of disabled or disadvantaged workers?", "PERCENTAGE")
+        checkRequirement(g1_1.Requirement[1], "e01d0929-c7a9-455a-aaf9-e1f7cd966336",
                 "If required, please provide details on whether the employees concerned belong to a specific category of disabled or disadvantaged workers?", "DESCRIPTION")
     }
 
     def "check the 'Indicator' requirement response"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true, answer: true))
+        def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: true))
 
         when:
         def response = parseResponseXml(espd)
@@ -90,7 +92,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
 
     def "check the 'What is the corresponding percentage of disabled or disadvantaged workers?' requirement response"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true,
+        def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true,
                 doubleValue1: 33.11))
 
         when:
@@ -98,9 +100,9 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "4e552658-d532-4770-943b-b90efcc9788d", "What is the corresponding percentage of disabled or disadvantaged workers?", "PERCENTAGE")
         req.Response.size() == 1
         req.Response[0].Percent.text() == "33.11"
@@ -108,7 +110,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
 
     def "check the 'If required, please provide details' requirement response"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true,
+        def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true,
                 description1: "Here are some additional details"))
 
         when:
@@ -116,9 +118,9 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         checkRequirement(req, "e01d0929-c7a9-455a-aaf9-e1f7cd966336",
                 "If required, please provide details on whether the employees concerned belong to a specific category of disabled or disadvantaged workers?", "DESCRIPTION")
         req.Response.size() == 1

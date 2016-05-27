@@ -186,7 +186,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
 
     def "a Percent empty requirement should have empty response"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true,
+        def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true,
                 doubleValue1: null))
 
         when:

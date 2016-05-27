@@ -25,7 +25,7 @@
 package eu.europa.ec.grow.espd.xml.common.importing;
 
 import eu.europa.ec.grow.espd.domain.*;
-import eu.europa.ec.grow.espd.domain.AwardCriterion;
+import eu.europa.ec.grow.espd.domain.OtherCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.*;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.intf.MultipleAmountHolder;
@@ -607,8 +607,8 @@ class EspdResponseCriterionFactory {
         return electronically;
     }
 
-    private AwardCriterion buildAwardCriterion(CriterionType criterionType) {
-        AwardCriterion criterion = AwardCriterion.build();
+    private OtherCriterion buildAwardCriterion(CriterionType criterionType) {
+        OtherCriterion criterion = OtherCriterion.build();
 
         if (criterionType == null) {
             return criterion;

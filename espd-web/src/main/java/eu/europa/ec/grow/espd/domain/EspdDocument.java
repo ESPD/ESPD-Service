@@ -53,12 +53,12 @@ public class EspdDocument {
     private String tedReceptionId;
 
     // Award criteria
-    private AwardCriterion procurementReserved;
-    private AwardCriterion eoRegistered;
-    private AwardCriterion eoParticipatingProcurementProcedure;
-    private AwardCriterion eoReliesCapacities;
-    private AwardCriterion meetsObjective;
-    private AwardCriterion subcontractingThirdParties;
+    private OtherCriterion procurementReserved;
+    private OtherCriterion eoRegistered;
+    private OtherCriterion eoParticipatingProcurementProcedure;
+    private OtherCriterion eoReliesCapacities;
+    private OtherCriterion meetsObjective;
+    private OtherCriterion subcontractingThirdParties;
 
     // Exclusion criteria
 
