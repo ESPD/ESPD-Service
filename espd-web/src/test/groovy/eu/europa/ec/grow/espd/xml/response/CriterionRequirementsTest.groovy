@@ -46,7 +46,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[1]
         req.Response[0].Description.size() == 0
@@ -85,9 +85,8 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
-
-        def req = subGroup.Requirement[4]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def req = subGroup.Requirement[3]
         req.Response.size() == 1
         req.Response[0].Period.size() == 0
     }
@@ -101,9 +100,8 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
-
-        def req = subGroup.Requirement[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Date.size() == 0
     }
@@ -117,7 +115,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[1]
+        def req = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].Requirement[0]
         req.Response.size() == 1
         req.Response[0].Code.size() == 0
     }
@@ -131,7 +129,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[2]
+        def req = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].Requirement[1]
         req.Response.size() == 1
         req.Response.Amount.size() == 0
     }
@@ -146,7 +144,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
         def req1 = subGroup1.Requirement[0]
         req1.Response.size() == 1
         req1.Response[0].Quantity.size() == 0
@@ -194,7 +192,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1

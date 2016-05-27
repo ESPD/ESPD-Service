@@ -70,7 +70,6 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
 
         then: "check the self-cleaning sub group"
         def selfCleaning = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
-        selfCleaning.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
         checkSelfCleaningRequirementGroup(selfCleaning)
 
         then: "info available electronically sub group"

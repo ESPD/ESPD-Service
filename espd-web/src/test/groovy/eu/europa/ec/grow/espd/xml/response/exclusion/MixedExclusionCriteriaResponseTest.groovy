@@ -50,16 +50,16 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
 
         then: "check who has been convicted requirement in participation criterion"
         def idx1 = 0
-        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0]
-        def participationReq = participationSubGroup.Requirement[3]
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0].RequirementGroup[0]
+        def participationReq = participationSubGroup.Requirement[2]
         checkRequirement(participationReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         participationReq.Response.size() == 1
         participationReq.Response[0].Description.text() == "Hodor_01 was convicted"
 
         then: "check who has been convicted requirement in corruption criterion"
         def idx2 = 1
-        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0]
-        def corruptionReq = corruptionSubGroup.Requirement[3]
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0].RequirementGroup[0]
+        def corruptionReq = corruptionSubGroup.Requirement[2]
         checkRequirement(corruptionReq, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         corruptionReq.Response.size() == 1
         corruptionReq.Response[0].Description.text() == "Hodor_02 was convicted"
@@ -76,14 +76,14 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
 
         then: "check self cleaning description requirement in participation criterion"
         def idx1 = 0
-        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0].RequirementGroup[0]
-        def participationReq = participationSubGroup.Requirement[1]
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+        def participationReq = participationSubGroup.Requirement[0]
         participationReq.Response[0].Description.text() == "Hodor_01 is clean"
 
         then: "check who has been convicted requirement in corruption criterion"
         def idx2 = 1
-        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0].RequirementGroup[0]
-        def corruptionReq = corruptionSubGroup.Requirement[1]
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+        def corruptionReq = corruptionSubGroup.Requirement[0]
         corruptionReq.Response.size() == 1
         corruptionReq.Response[0].Description.text() == "Hodor_02 is clean"
     }
@@ -99,14 +99,14 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
 
         then: "check self cleaning description requirement in participation criterion"
         def idx1 = 0
-        def participationSubGroup = request.Criterion[idx1].RequirementGroup[1]
-        def participationReq = participationSubGroup.Requirement[1]
+        def participationSubGroup = request.Criterion[idx1].RequirementGroup[1].RequirementGroup[0]
+        def participationReq = participationSubGroup.Requirement[0]
         checkEvidence(participationReq.Response[0].Evidence, "http://hodor_01.com")
 
         then: "check who has been convicted requirement in corruption criterion"
         def idx2 = 1
-        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[1]
-        def corruptionReq = corruptionSubGroup.Requirement[1]
+        def corruptionSubGroup = request.Criterion[idx2].RequirementGroup[1].RequirementGroup[0]
+        def corruptionReq = corruptionSubGroup.Requirement[0]
         corruptionReq.Response.size() == 1
         checkEvidence(corruptionReq.Response[0].Evidence, "http://hodor_02.com")
     }
