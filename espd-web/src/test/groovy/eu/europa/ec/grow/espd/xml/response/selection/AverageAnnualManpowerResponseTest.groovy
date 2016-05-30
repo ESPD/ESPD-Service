@@ -61,9 +61,9 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         response.Criterion[idx].RequirementGroup.size() == 4
 
         then:
-        checkYearNumberGroup(response.Criterion[idx].RequirementGroup[0])
-        checkYearNumberGroup(response.Criterion[idx].RequirementGroup[1])
-        checkYearNumberGroup(response.Criterion[idx].RequirementGroup[2])
+        checkYearNumberGroup1(response.Criterion[idx].RequirementGroup[0])
+        checkYearNumberGroup2(response.Criterion[idx].RequirementGroup[1])
+        checkYearNumberGroup3(response.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[3])

@@ -70,11 +70,11 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
         checkRequirement(g1.Requirement[0], "3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below", "DESCRIPTION")
 
         then: "check description ratio subgroups"
-        checkDescriptionRatioGroup(g1.RequirementGroup[0])
-        checkDescriptionRatioGroup(g1.RequirementGroup[1])
-        checkDescriptionRatioGroup(g1.RequirementGroup[2])
-        checkDescriptionRatioGroup(g1.RequirementGroup[3])
-        checkDescriptionRatioGroup(g1.RequirementGroup[4])
+        checkDescriptionRatioGroup1(g1.RequirementGroup[0])
+        checkDescriptionRatioGroup2(g1.RequirementGroup[1])
+        checkDescriptionRatioGroup3(g1.RequirementGroup[2])
+        checkDescriptionRatioGroup4(g1.RequirementGroup[3])
+        checkDescriptionRatioGroup5(g1.RequirementGroup[4])
 
         then: "info available electronically sub group"
         def g2 = request.Criterion[idx].RequirementGroup[1]

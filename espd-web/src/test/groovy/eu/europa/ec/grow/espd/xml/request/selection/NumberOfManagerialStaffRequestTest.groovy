@@ -60,9 +60,9 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
         request.Criterion[idx].RequirementGroup.size() == 4
 
         then:
-        checkYearNumberGroup(request.Criterion[idx].RequirementGroup[0])
-        checkYearNumberGroup(request.Criterion[idx].RequirementGroup[1])
-        checkYearNumberGroup(request.Criterion[idx].RequirementGroup[2])
+        checkYearNumberGroup1(request.Criterion[idx].RequirementGroup[0])
+        checkYearNumberGroup2(request.Criterion[idx].RequirementGroup[1])
+        checkYearNumberGroup3(request.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[3])

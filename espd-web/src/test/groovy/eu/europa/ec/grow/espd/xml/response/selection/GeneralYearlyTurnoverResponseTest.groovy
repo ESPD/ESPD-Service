@@ -76,11 +76,11 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         g1_1.Requirement.size() == 0
 
         then: "check year amount currency subgroups"
-        checkYearAmountCurrencyGroup(g1_1.RequirementGroup[0])
-        checkYearAmountCurrencyGroup(g1_1.RequirementGroup[1])
-        checkYearAmountCurrencyGroup(g1_1.RequirementGroup[2])
-        checkYearAmountCurrencyGroup(g1_1.RequirementGroup[3])
-        checkYearAmountCurrencyGroup(g1_1.RequirementGroup[4])
+        checkYearAmountCurrencyGroup1(g1_1.RequirementGroup[0])
+        checkYearAmountCurrencyGroup2(g1_1.RequirementGroup[1])
+        checkYearAmountCurrencyGroup3(g1_1.RequirementGroup[2])
+        checkYearAmountCurrencyGroup4(g1_1.RequirementGroup[3])
+        checkYearAmountCurrencyGroup5(g1_1.RequirementGroup[4])
 
         then: "info available electronically sub group"
         def g2 = response.Criterion[idx].RequirementGroup[1]
