@@ -33,7 +33,7 @@ import org.apache.commons.io.IOUtils
  */
 class SucontractingThirdPartiesImportTest extends AbstractXmlFileImport {
 
-    def "06. should import all fields of 'SucontractingThirdParties'"() {
+    def "06. should import all fields of 'Subcontracting Third Parties'"() {
         given:
         def espdResponseXml = importXmlResponseFile("award/subcontracting_third_parties.xml")
 

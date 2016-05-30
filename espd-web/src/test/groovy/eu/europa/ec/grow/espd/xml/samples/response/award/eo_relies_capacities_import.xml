@@ -14,8 +14,8 @@
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0d62c6ed-f074-4fcf-8e9f-f691351d52ad</cbc:ID>
         <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">DATA_ON_ECONOMIC_OPERATOR</cbc:TypeCode>
-        <cbc:Name>Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?</cbc:Name>
-        <cbc:Description></cbc:Description>
+        <cbc:Name>EO relies capacities</cbc:Name>
+        <cbc:Description>Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?</cbc:Description>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e688f7d6-dcef-4726-bc61-052e63ead60f</cbc:ID>
             <ccv:Requirement responseDataType="INDICATOR">

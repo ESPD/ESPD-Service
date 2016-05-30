@@ -48,7 +48,7 @@ class EconomicOperatorReliesCapacitiesImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(eoReliesCapacities: new OtherCriterion(exists: true))
+        def espd = new EspdDocument(eoReliesCapacities: new OtherCriterion(exists: true, answer: true))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
