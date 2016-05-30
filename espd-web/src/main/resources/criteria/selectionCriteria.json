@@ -1186,6 +1186,16 @@
         {
           "name": "G1",
           "id": "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f",
+          "requirements": [
+            {
+              "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+              "description": "Please provide the requested data below",
+              "responseType": "DESCRIPTION",
+              "espdCriterionFields": [
+                null
+              ]
+            }
+          ],
           "subgroups": [
             {
               "name": "G1.1",
@@ -1295,16 +1305,6 @@
                     "ratio5"
                   ]
                 }
-              ]
-            }
-          ],
-          "requirements": [
-            {
-              "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
-              "description": "Please provide the requested data below",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                null
               ]
             }
           ]

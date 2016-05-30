@@ -26,8 +26,13 @@
         </ccv:LegislationReference>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cf00f7bb-c2cf-4565-91bb-221d78d8dd2f</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3a6fefd4-f458-4d43-97fb-0725fce5dce2</cbc:ID>
+                <cbc:Description>Please provide the requested data below</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
             <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1689194b-6ecf-4ab4-ab38-7656610c25bb</cbc:ID>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
                 <ccv:Requirement responseDataType="DESCRIPTION">
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
                     <cbc:Description>Description</cbc:Description>
@@ -44,7 +49,7 @@
                 </ccv:Requirement>
             </ccv:RequirementGroup>
             <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c628dd27-8016-4d80-8660-7461f2e3ee0f</cbc:ID>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ce5a61e7-0b0d-4c8b-ac55-2a457743022a</cbc:ID>
                 <ccv:Requirement responseDataType="DESCRIPTION">
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">927def36-1fa3-4018-8b45-7ee2c5b1e0af</cbc:ID>
                     <cbc:Description>Description</cbc:Description>
@@ -61,7 +66,7 @@
                 </ccv:Requirement>
             </ccv:RequirementGroup>
             <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dd09f9f-3326-4865-9d5a-f0836076fb19</cbc:ID>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3d0734f0-8f9b-4218-a245-c535e3773bc5</cbc:ID>
                 <ccv:Requirement responseDataType="DESCRIPTION">
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</cbc:ID>
                     <cbc:Description>Description</cbc:Description>
@@ -78,7 +83,7 @@
                 </ccv:Requirement>
             </ccv:RequirementGroup>
             <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4564d79e-5db6-4a31-93ee-ac1f0019bdcb</cbc:ID>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">87fda668-c758-4c54-af0a-0210e6ded32d</cbc:ID>
                 <ccv:Requirement responseDataType="DESCRIPTION">
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b1640c24-b405-443e-bf5e-d7771f66aab6</cbc:ID>
                     <cbc:Description>Description</cbc:Description>
@@ -95,7 +100,7 @@
                 </ccv:Requirement>
             </ccv:RequirementGroup>
             <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">bc43685e-8473-40e3-b174-3233aead6207</cbc:ID>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">637f9db3-ee53-48f7-8ee7-aefa58260730</cbc:ID>
                 <ccv:Requirement responseDataType="DESCRIPTION">
                     <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">587129bc-a5e1-43be-94ac-6e5366d30c67</cbc:ID>
                     <cbc:Description>Description</cbc:Description>
@@ -121,28 +126,32 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>www.hodor.com</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>PROF_REGISTER</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID>bbbc299e-dbe6-408f-b137-18c9b919a673</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>www.hodor.com</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>PROF_REGISTER</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

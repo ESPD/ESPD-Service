@@ -45,7 +45,7 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
 
         then: "answer is null and it is a selection criterion so the default value should be true"
         espd.techniciansTechnicalBodies.answer == true // has no answer criterion
-        espd.techniciansTechnicalBodies.specify == "specify something"
+        espd.techniciansTechnicalBodies.description == "specify something"
 
         then: "info electronically"
         espd.techniciansTechnicalBodies.availableElectronically.answer == true
@@ -56,9 +56,9 @@ class TechniciansTechnicalBodiesImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true, answer: true,
-                specify: "specify something",
+                description: "specify something",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_BODIES")))
-        //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

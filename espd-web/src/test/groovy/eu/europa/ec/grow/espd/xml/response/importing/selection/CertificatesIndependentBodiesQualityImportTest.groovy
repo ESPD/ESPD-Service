@@ -56,7 +56,7 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 answer: true, description: "Another description",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
-//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

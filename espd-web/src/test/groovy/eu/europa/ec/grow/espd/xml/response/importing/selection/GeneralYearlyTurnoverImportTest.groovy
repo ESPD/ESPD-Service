@@ -99,7 +99,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
                 year4: 2013, amount4: 444.4, currency4: "CHF",
                 year5: 2012, amount5: 555.5, currency5: "YEN",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
-//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

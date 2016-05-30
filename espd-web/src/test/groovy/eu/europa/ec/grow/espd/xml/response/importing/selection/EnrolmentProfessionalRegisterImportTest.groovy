@@ -56,7 +56,7 @@ class EnrolmentProfessionalRegisterImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: true,
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER")))
-        //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

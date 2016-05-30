@@ -25,7 +25,7 @@
         </ccv:LegislationReference>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e9aa7763-c167-4352-8060-1a3d7d3e2662</cbc:ID>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a18b2c98-8552-45ca-9751-d4c94c05847a</cbc:ID>
                 <cbc:Description>Please specify</cbc:Description>
                 <ccv:Response>
