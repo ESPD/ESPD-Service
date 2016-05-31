@@ -35,7 +35,7 @@ import org.apache.commons.io.IOUtils
  */
 class MeetsObjectiveImportTest extends AbstractXmlFileImport {
 
-    def "05. should import all fields of 'Meets objective'"() {
+    def "06. should import all fields of 'Meets objective'"() {
         given:
         def espdResponseXml = importXmlResponseFile("award/meets_objective_import.xml")
 

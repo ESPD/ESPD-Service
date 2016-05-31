@@ -33,7 +33,7 @@ import org.apache.commons.io.IOUtils
  */
 class FinancialRatioImportTest extends AbstractXmlFileImport {
 
-    def "10. should import all fields of 'Financial ratio'"() {
+    def "11. should import all fields of 'Financial ratio'"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/financial_ratio_import.xml")
 
