@@ -39,40 +39,44 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "73f10e36-ed7a-412e-995c-aa76463e3776")
+        checkCriterionId(response, idx, "73f10e36-ed7a-412e-995c-aa76463e3776")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.SUITABILITY.MEMBERSHIP")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "For service contracts: membership of particular organisation needed"
+        response.Criterion[idx].Name.text() == "For service contracts: membership of particular organisation needed"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?"
+        response.Criterion[idx].Description.text() == "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(2)")
+        checkLegislationReference(response, idx, "58(2)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "84c72d9c-6372-4781-b957-afe97c503c6c"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "a109e144-f65e-469d-bcda-220f1af34b6c"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "7696fb3f-9722-43b8-9b91-ad59bb4b8ad2"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        checkRequirement(g1_1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -80,11 +84,11 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true, answer: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
@@ -97,13 +101,13 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true, answer: true, description: "hodor 2"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "hodor 2"
@@ -115,11 +119,11 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -132,13 +136,13 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_05.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_05.com")
     }
@@ -149,13 +153,13 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_05"
     }

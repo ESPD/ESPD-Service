@@ -33,20 +33,23 @@
                     <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
-                <cbc:Description>Please describe them</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>Bankruptcy description</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
-                <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>We lost all our money at poker.</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">aeef523b-c8fc-4dba-9c34-03e34812567b</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
+                    <cbc:Description>Please describe them</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>Bankruptcy description</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
+                    <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>We lost all our money at poker.</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
@@ -57,28 +60,32 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>www.hodor.com</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>INTERNATIONAL</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID>bf791a24-a908-46e2-8535-fb654fa6a732</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>www.hodor.com</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>INTERNATIONAL</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

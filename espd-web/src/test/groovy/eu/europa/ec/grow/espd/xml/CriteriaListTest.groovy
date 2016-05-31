@@ -25,7 +25,7 @@
 package eu.europa.ec.grow.espd.xml
 
 import com.opencsv.CSVWriter
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion
@@ -56,7 +56,7 @@ class CriteriaListTest extends Specification {
         for (SelectionCriterion crit : SelectionCriterion.values()) {
             writeCrit(crit, writer);
         }
-        for (AwardCriterion crit : AwardCriterion.values()) {
+        for (OtherCriterion crit : OtherCriterion.values()) {
             writeCrit(crit, writer);
         }
 

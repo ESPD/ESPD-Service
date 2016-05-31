@@ -33,79 +33,91 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="COUNTRY">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6c87d3d4-e8eb-4253-b385-6373020ab886</cbc:ID>
-                <cbc:Description>Country or member state concerned</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code listID="ISO 3166-2" listAgencyID="ISO" listVersionID="1.0">RO</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="AMOUNT">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9052cc59-cfe5-41c6-a314-02a7f378ffe8</cbc:ID>
-                <cbc:Description>Amount concerned</cbc:Description>
-                <ccv:Response>
-                    <cbc:Amount currencyID="RON">445.0</cbc:Amount>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02</cbc:ID>
-                <ccv:Requirement responseDataType="INDICATOR">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b4497e6-a166-46f9-8581-7fc39ff975c4</cbc:ID>
-                    <cbc:Description>Has this breach of obligations been established by means other than a judicial or administrative decision?</cbc:Description>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f8499787-f9f8-4355-95e2-9784426f4d7b</cbc:ID>
+                <ccv:Requirement responseDataType="CODE_COUNTRY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6c87d3d4-e8eb-4253-b385-6373020ab886</cbc:ID>
+                    <cbc:Description>Country or member state concerned</cbc:Description>
                     <ccv:Response>
-                        <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        <ccv-cbc:Code listID="ISO 3166-1" listAgencyID="ISO" listVersionID="1.0">RO</ccv-cbc:Code>
                     </ccv:Response>
                 </ccv:Requirement>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">201f11c3-1fa2-4464-acc0-f021266fd881</cbc:ID>
-                    <cbc:Description>Please describe which means were used</cbc:Description>
+                <ccv:Requirement responseDataType="AMOUNT">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9052cc59-cfe5-41c6-a314-02a7f378ffe8</cbc:ID>
+                    <cbc:Description>Amount concerned</cbc:Description>
                     <ccv:Response>
-                        <cbc:Description>Other means were used</cbc:Description>
+                        <cbc:Amount currencyID="RON">445</cbc:Amount>
                     </ccv:Response>
                 </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c882afa4-6971-4b00-8970-0c283eb122cc</cbc:ID>
-                <ccv:Requirement responseDataType="INDICATOR">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">08b0c984-c5e6-4143-8493-868c39745637</cbc:ID>
-                    <cbc:Description>If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?</cbc:Description>
-                    <ccv:Response>
-                        <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="DATE">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
-                    <cbc:Description>Date of conviction</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Date>2016-01-17</cbc:Date>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="PERIOD">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
-                    <cbc:Description>Length of the period of exclusion</cbc:Description>
-                    <ccv:Response>
-                        <cac:Period>
-                            <cbc:Description>Till the end of the year 2013.</cbc:Description>
-                        </cac:Period>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">fc57e473-d63e-4a04-b589-dcf81cab8052</cbc:ID>
-                <ccv:Requirement responseDataType="INDICATOR">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">70f8697b-8953-411a-a489-4ff62e5250d2</cbc:ID>
-                    <cbc:Description>Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?</cbc:Description>
-                    <ccv:Response>
-                        <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">55905dd0-38f0-4f93-8c74-5ae05a21afc5</cbc:ID>
-                    <cbc:Description>Please describe them</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>This debt was the result of a miscalculation by our accountability department.</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b4497e6-a166-46f9-8581-7fc39ff975c4</cbc:ID>
+                        <cbc:Description>Has this breach of obligations been established by means other than a judicial or administrative decision?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3cb7abf1-662a-4756-b61c-7bc716c1fafc</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">201f11c3-1fa2-4464-acc0-f021266fd881</cbc:ID>
+                            <cbc:Description>Please describe which means were used</cbc:Description>
+                            <ccv:Response>
+                                <cbc:Description>Other means were used</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c882afa4-6971-4b00-8970-0c283eb122cc</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">08b0c984-c5e6-4143-8493-868c39745637</cbc:ID>
+                        <cbc:Description>If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">815422d6-f8a1-418a-8bf0-3524f7c8f721</cbc:ID>
+                        <ccv:Requirement responseDataType="DATE">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
+                            <cbc:Description>Date of conviction</cbc:Description>
+                            <ccv:Response>
+                                <cbc:Date>2016-01-17</cbc:Date>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                        <ccv:Requirement responseDataType="PERIOD">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
+                            <cbc:Description>Length of the period of exclusion</cbc:Description>
+                            <ccv:Response>
+                                <cac:Period>
+                                    <cbc:Description>Till the end of the year 2013.</cbc:Description>
+                                </cac:Period>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">fc57e473-d63e-4a04-b589-dcf81cab8052</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">70f8697b-8953-411a-a489-4ff62e5250d2</cbc:ID>
+                        <cbc:Description>Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6c3609e1-9add-4fa9-9409-62ce72ae4548</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">55905dd0-38f0-4f93-8c74-5ae05a21afc5</cbc:ID>
+                            <cbc:Description>Please describe them</cbc:Description>
+                            <ccv:Response>
+                                <cbc:Description>This debt was the result of a miscalculation by our accountability department.</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
@@ -117,28 +129,32 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>HODOR</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID>394b1551-9e44-48db-a194-b5d70896cf35</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>HODOR</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

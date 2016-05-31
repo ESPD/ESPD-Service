@@ -39,38 +39,40 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "7604bd40-4462-4086-8763-a50da51a869c")
+        checkCriterionId(response, idx, "7604bd40-4462-4086-8763-a50da51a869c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Professional risk indemnity insurance"
+        response.Criterion[idx].Name.text() == "Professional risk indemnity insurance"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "The insured amount in its professional risk indemnity insurance is the following:"
+        response.Criterion[idx].Description.text() == "The insured amount in its professional risk indemnity insurance is the following:"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(3)")
+        checkLegislationReference(response, idx, "58(3)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "42dc8062-974d-4201-91ba-7f2ea90338fd"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Amount' requirements response"() {
@@ -79,11 +81,11 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 amount1: 11.11, currency1: "EUR"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
         
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -97,11 +99,11 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 amount1: null, currency1: "EUR"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response.Amount.size() == 0
@@ -113,11 +115,11 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -130,13 +132,13 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_11.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_11.com")
     }
@@ -147,13 +149,13 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_11")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_11"
     }

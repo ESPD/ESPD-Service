@@ -38,34 +38,34 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "696a75b2-6107-428f-8b74-82affb67e184")
+        checkCriterionId(response, idx, "696a75b2-6107-428f-8b74-82affb67e184")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure"
+        response.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Can the economic operator confirm the four exclusion grounds, that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, that it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
+        response.Criterion[idx].Description.text() == "Can the economic operator confirm the four exclusion grounds, that it has not been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria, that it has not withheld such information, it has been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and it has not undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(4)")
+        checkLegislationReference(response, idx, "57(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 1
+        response.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "ddea7091-f238-4fcb-9d93-eacb13190243"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        response.Criterion[idx].RequirementGroup[0].ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
+        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
+        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
     }
 
@@ -74,11 +74,11 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"

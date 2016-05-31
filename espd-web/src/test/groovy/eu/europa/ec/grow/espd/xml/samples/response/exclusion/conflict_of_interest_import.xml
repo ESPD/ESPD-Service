@@ -33,62 +33,6 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
-                <cbc:Description>Please describe them</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>Hodor is conflicted</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
-                <ccv:Requirement responseDataType="INDICATOR">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
-                    <cbc:Description>Have you taken measures to demonstrate your reliability ("Self-Cleaning")?</cbc:Description>
-                    <ccv:Response>
-                        <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
-                    <cbc:Description>Please describe them</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>Hodor is clean</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-        </ccv:RequirementGroup>
-        <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
-            <ccv:Requirement responseDataType="INDICATOR">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c1347b74-1872-4060-a6db-f4044edcd7c4</cbc:ID>
-                <cbc:Description>Is this information available electronically?</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>www.hodor.com</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>HODOR?</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

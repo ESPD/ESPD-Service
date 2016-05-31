@@ -45,7 +45,7 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
         checkCriterionId(request, idx, "d3dfb714-f558-4512-bbc5-e456fa2339de")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Specific average turnover"
@@ -59,24 +59,31 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "fa29f9e1-dd24-4fe9-873d-1a6dbc720cb0"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 5
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        then: "G1"
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "e1886054-ada4-473c-9afc-2fde82c24cf4"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "abdfa003-d7f5-4375-b1d3-b3765a7c4beb"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 5
+        g1_1.Requirement.size() == 0
 
         then: "check year amount currency subgroups"
-        checkYearAmountCurrencyGroup1(request.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
-        checkYearAmountCurrencyGroup2(request.Criterion[idx].RequirementGroup[0].RequirementGroup[1])
-        checkYearAmountCurrencyGroup3(request.Criterion[idx].RequirementGroup[0].RequirementGroup[2])
-        checkYearAmountCurrencyGroup4(request.Criterion[idx].RequirementGroup[0].RequirementGroup[3])
-        checkYearAmountCurrencyGroup5(request.Criterion[idx].RequirementGroup[0].RequirementGroup[4])
+        checkYearAmountCurrencyGroup1(g1_1.RequirementGroup[0])
+        checkYearAmountCurrencyGroup2(g1_1.RequirementGroup[1])
+        checkYearAmountCurrencyGroup3(g1_1.RequirementGroup[2])
+        checkYearAmountCurrencyGroup4(g1_1.RequirementGroup[3])
+        checkYearAmountCurrencyGroup5(g1_1.RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

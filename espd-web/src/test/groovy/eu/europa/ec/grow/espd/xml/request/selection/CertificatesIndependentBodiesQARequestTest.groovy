@@ -44,7 +44,7 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
         checkCriterionId(request, idx, "d726bac9-e153-4e75-bfca-c5385587766d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INDEPENDENT_CERTIFICATE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Certificates by independent bodies about quality assurance standards"
@@ -58,20 +58,26 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "0e88f63c-5642-4a17-833b-ae5800e1750a"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "0e88f63c-5642-4a17-833b-ae5800e1750a"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "8c5d1e13-54f7-4895-a65c-b8e09253130c",
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "76c7cf31-be3a-4a7e-8c35-a65ae60cd674"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "8c5d1e13-54f7-4895-a65c-b8e09253130c",
                 "If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

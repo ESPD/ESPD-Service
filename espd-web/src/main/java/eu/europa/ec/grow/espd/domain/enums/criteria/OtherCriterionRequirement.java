@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
 import lombok.Getter;
 
@@ -33,7 +34,8 @@ import java.util.List;
  * Created by ratoico on 1/15/16 at 3:12 PM.
  */
 @Getter
-public enum AwardCriterionRequirement implements CcvCriterionRequirement {
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum OtherCriterionRequirement implements CcvCriterionRequirement {
 
     /**
      *
@@ -146,7 +148,7 @@ public enum AwardCriterionRequirement implements CcvCriterionRequirement {
 
     private final List<String> espdCriterionFields;
 
-    AwardCriterionRequirement(String id, String description, ExpectedResponseType responseType,
+    OtherCriterionRequirement(String id, String description, ExpectedResponseType responseType,
             String espdCriterionField) {
         this.id = id;
         this.description = description;

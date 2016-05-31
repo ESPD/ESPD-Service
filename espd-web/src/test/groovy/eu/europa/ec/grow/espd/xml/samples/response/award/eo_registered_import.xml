@@ -14,16 +14,10 @@
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b19e869-6c89-4cc4-bd6c-ac9ca8602165</cbc:ID>
         <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">DATA_ON_ECONOMIC_OPERATOR</cbc:TypeCode>
-        <cbc:Name>If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?</cbc:Name>
-        <cbc:Description></cbc:Description>
+        <cbc:Name>EO registered</cbc:Name>
+        <cbc:Description>If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?</cbc:Description>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">64162276-7014-408f-a9af-080426bfe1fd</cbc:ID>
-            <ccv:Requirement responseDataType="INDICATOR">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
-                <ccv:Response>
-                    <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
-                </ccv:Response>
-            </ccv:Requirement>
             <ccv:Requirement responseDataType="INDICATOR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">67fd1dde-2a0a-486e-9469-79c78796fc22</cbc:ID>
                 <cbc:Description>Not applicable</cbc:Description>
@@ -31,54 +25,66 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30064ad3-fc11-4579-8528-fdd0b9a5ba75</cbc:ID>
-                <cbc:Description>a) Please provide the relevant registration or certification number, if applicable:</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>descr 1</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b3403349-cbc0-4d84-879e-fc0f2d90ecbd</cbc:ID>
-                <cbc:Description>b) If the certificate of registration or certification is available electronically, please state:</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>descr 2</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">792ff522-6f3f-4a62-ab6e-a8b272bc290e</cbc:ID>
-                <cbc:Description>c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>descr 3</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">92e44d3b-af8e-4a29-91a8-24d27aa27fee</cbc:ID>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_FALSE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecb5127b-9018-4fb8-8327-a6a7a2c73195</cbc:ID>
                 <ccv:Requirement responseDataType="INDICATOR">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d9996ef5-49f9-4cf8-a2f5-31c9f4efd894</cbc:ID>
-                    <cbc:Description>d) Does the registration or certification cover all of the required selection criteria?</cbc:Description>
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
                     <ccv:Response>
-                        <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">dc4acf0c-c761-40d0-b031-4ee1f224be5c</cbc:ID>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30064ad3-fc11-4579-8528-fdd0b9a5ba75</cbc:ID>
+                        <cbc:Description>a) Please provide the relevant registration or certification number, if applicable:</cbc:Description>
+                        <ccv:Response>
+                            <cbc:Description>descr 1</cbc:Description>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b3403349-cbc0-4d84-879e-fc0f2d90ecbd</cbc:ID>
+                        <cbc:Description>b) If the certificate of registration or certification is available electronically, please state:</cbc:Description>
+                        <ccv:Response>
+                            <cbc:Description>descr 2</cbc:Description>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">792ff522-6f3f-4a62-ab6e-a8b272bc290e</cbc:ID>
+                        <cbc:Description>c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:</cbc:Description>
+                        <ccv:Response>
+                            <cbc:Description>descr 3</cbc:Description>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">92e44d3b-af8e-4a29-91a8-24d27aa27fee</cbc:ID>
+                        <ccv:Requirement responseDataType="INDICATOR">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d9996ef5-49f9-4cf8-a2f5-31c9f4efd894</cbc:ID>
+                            <cbc:Description>d) Does the registration or certification cover all of the required selection criteria?</cbc:Description>
+                            <ccv:Response>
+                                <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_FALSE">
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">59e6f3ef-15cd-4e21-82ac-ea497ccd44e2</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0e71abd3-198e-49c5-8128-5708617bb191</cbc:ID>
+                        <cbc:Description>e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">caa72cea-5443-49fb-84ba-ab6c64427f77</cbc:ID>
+                        <cbc:Description>If the relevant documentation is available electronically, please indicate:</cbc:Description>
+                        <ccv:Response>
+                            <cbc:Description>descr 5</cbc:Description>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                </ccv:RequirementGroup>
             </ccv:RequirementGroup>
-        </ccv:RequirementGroup>
-        <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">59e6f3ef-15cd-4e21-82ac-ea497ccd44e2</cbc:ID>
-            <ccv:Requirement responseDataType="INDICATOR">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0e71abd3-198e-49c5-8128-5708617bb191</cbc:ID>
-                <cbc:Description>e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">caa72cea-5443-49fb-84ba-ab6c64427f77</cbc:ID>
-                <cbc:Description>If the relevant documentation is available electronically, please indicate:</cbc:Description>
-                <ccv:Response>
-                    <cbc:Description>descr 5</cbc:Description>
-                </ccv:Response>
-            </ccv:Requirement>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

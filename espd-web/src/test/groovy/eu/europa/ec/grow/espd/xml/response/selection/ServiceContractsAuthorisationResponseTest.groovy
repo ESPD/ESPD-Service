@@ -46,7 +46,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         checkCriterionId(request, idx, "9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.SUITABILITY.AUTHORISATION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For service contracts: authorisation of particular organisation needed"
@@ -60,19 +60,23 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         then: "check all the sub groups"
         request.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "a109e144-f65e-469d-bcda-220f1af34b6c"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "a109e144-f65e-469d-bcda-220f1af34b6c"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "7696fb3f-9722-43b8-9b91-ad59bb4b8ad2"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        checkRequirement(g1_1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -101,9 +105,9 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "hodor"
@@ -136,9 +140,9 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_04.com")
     }
@@ -153,9 +157,9 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_04"
     }

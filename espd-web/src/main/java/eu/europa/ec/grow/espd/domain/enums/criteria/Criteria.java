@@ -24,27 +24,27 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
-import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
-import lombok.Getter;
+import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Created by ratoico on 1/15/16 at 3:11 PM.
+ * Created by ratoico on 5/23/16.
  */
-@Getter
-public enum AwardCriterionTypeCode implements CcvCriterionType {
+final class Criteria {
 
-    DATA_ON_ECONOMIC_OPERATOR("Date on economic operator"),
-
-    REDUCTION_OF_CANDIDATES("Reduction of the number of qualified candidates");
-
-    private final String description;
-
-    AwardCriterionTypeCode(final String description) {
-        this.description = description;
+    Criteria(int size) {
+        criteria = new HashMap<>(size);
     }
 
-    @Override
-    public String getTypeName() {
-        return name();
+    private Map<String, CcvCriterion> criteria;
+
+    void put(String uuid, CcvCriterion criterion) {
+        criteria.put(uuid, criterion);
+    }
+
+    CcvCriterion get(String uuid) {
+        return criteria.get(uuid);
     }
 }

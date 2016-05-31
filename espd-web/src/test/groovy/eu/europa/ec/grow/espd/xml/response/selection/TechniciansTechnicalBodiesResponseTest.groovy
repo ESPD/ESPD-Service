@@ -46,7 +46,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         checkCriterionId(request, idx, "3aaca389-4a7b-406b-a4b9-080845d127e7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Technicians or technical bodies for quality control"
@@ -61,16 +61,16 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "9e2fd892-80e2-4c13-98bb-1515e56f45af"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Please specify' requirements response"() {
@@ -117,9 +117,9 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_16.com")
     }
@@ -134,9 +134,9 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = request.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_16"
     }

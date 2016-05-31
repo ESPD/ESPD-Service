@@ -44,7 +44,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(response, idx, "77f481ce-ffb6-483f-8e2b-c78db5e68292")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Set up of economic operator"
@@ -59,13 +59,12 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
         response.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        response.Criterion[idx].RequirementGroup[0].ID.text() == "e9aa7763-c167-4352-8060-1a3d7d3e2662"
-        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "a18b2c98-8552-45ca-9751-d4c94c05847a", "Please specify", "QUANTITY_YEAR")
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "e9aa7763-c167-4352-8060-1a3d7d3e2662"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "a18b2c98-8552-45ca-9751-d4c94c05847a", "Please specify", "QUANTITY_YEAR")
     }
 
     def "check the 'Please specify year' requirements response"() {

@@ -45,7 +45,7 @@ class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriter
         checkCriterionId(request, idx, "bdf0601d-2480-4250-b870-658d0ee95be6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.ARTEFACTS.NO_AUTHENTICATED_ARTEFACTS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For supply contracts: samples, descriptions or photographs without certification of authenticity"
@@ -60,13 +60,12 @@ class SupplyContractsSamplesWithoutCARequestTest extends AbstractSelectionCriter
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "cb73544d-e8bb-4cc6-819b-b8e04f1e240e"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "cb73544d-e8bb-4cc6-819b-b8e04f1e240e"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])

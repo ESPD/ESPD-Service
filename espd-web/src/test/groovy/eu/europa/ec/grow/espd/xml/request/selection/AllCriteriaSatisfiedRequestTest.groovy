@@ -45,7 +45,7 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ALL_CRITERIA_SATISFIED")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ALL_SATISFIED")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "All selection criteria will be satisfied"
@@ -57,9 +57,11 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "f3a6836d-2de2-4cd1-81ca-fb06178d05c5"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "f3a6836d-2de2-4cd1-81ca-fb06178d05c5"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
     }
 
 }

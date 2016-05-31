@@ -39,38 +39,38 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "4bf996d9-439c-40c6-9ab9-980a48cb55a1")
+        checkCriterionId(response, idx, "4bf996d9-439c-40c6-9ab9-980a48cb55a1")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Technical facilities and measures for ensuring quality"
+        response.Criterion[idx].Name.text() == "Technical facilities and measures for ensuring quality"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:"
+        response.Criterion[idx].Description.text() == "It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "33648fa9-9dc0-4b8e-8058-bfaa0eb08ab2"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Please describe them' requirements response"() {
@@ -79,11 +79,11 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 description: "technical description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -96,11 +96,11 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -113,13 +113,13 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_18.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_18.com")
     }
@@ -130,13 +130,13 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_18")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_18"
     }

@@ -29,5 +29,18 @@ package eu.europa.ec.grow.espd.domain.ubl;
  */
 public interface CcvCriterionType {
 
-    String getTypeName();
+    /**
+     * ESPD specific type used to build different types of criteria.
+     *
+     * @return
+     */
+    String getEspdType();
+
+    /**
+     * Code used in the criterion taxonomies.
+     *
+     * @return
+     */
+    String getCode();
+
 }

@@ -45,7 +45,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
         checkCriterionId(request, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Enrolment in a relevant professional register"
@@ -60,16 +60,17 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "1768de86-a6c8-48e4-bd8e-de2f2f7424d0"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "1768de86-a6c8-48e4-bd8e-de2f2f7424d0"
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

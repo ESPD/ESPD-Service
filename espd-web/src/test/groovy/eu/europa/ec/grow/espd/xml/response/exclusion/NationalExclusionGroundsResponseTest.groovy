@@ -39,42 +39,46 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
+        checkCriterionId(response, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.OTHER")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.NATIONAL.OTHER")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Purely national exclusion grounds"
+        response.Criterion[idx].Name.text() == "Purely national exclusion grounds"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Other exclusion grounds that may be foreseen in the national legislation of the contracting authority’s or contracting entity’s Member State. Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?"
+        response.Criterion[idx].Description.text() == "Other exclusion grounds that may be foreseen in the national legislation of the contracting authority’s or contracting entity’s Member State. Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(4)")
+        checkLegislationReference(response, idx, "57(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "cff842a7-c95d-4445-8c89-84fcd53aa181"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "77ae3f29-7c5f-4afa-af97-24afec48c5bf"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
-
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
         then: "check second sub group"
-        def sub2 = request.Criterion[idx].RequirementGroup[1]
-        checkInfoAvailableElectronicallyRequirementGroup(sub2)
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -82,11 +86,11 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true, answer: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "true"
@@ -98,13 +102,13 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 description: "bogus description."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "bogus description."
     }
@@ -115,11 +119,11 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -132,13 +136,13 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_21.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_21.com")
     }
@@ -149,13 +153,13 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_21")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_21"
     }

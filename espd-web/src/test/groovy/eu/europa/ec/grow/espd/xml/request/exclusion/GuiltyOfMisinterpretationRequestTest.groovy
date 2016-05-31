@@ -45,7 +45,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
         checkCriterionId(request, idx, "696a75b2-6107-428f-8b74-82affb67e184")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure"
@@ -60,12 +60,14 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
         request.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "ddea7091-f238-4fcb-9d93-eacb13190243"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
     }
 

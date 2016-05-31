@@ -50,7 +50,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(response, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONVICTIONS.FRAUD")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Fraud"
@@ -65,12 +65,12 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        response.Criterion[idx].RequirementGroup[0].ID.text() == "94ff6812-b9a6-40c7-9676-d9fb83b51d51"
+        response.Criterion[idx].RequirementGroup[0].ID.text() == "7c637c0c-7703-4389-ba52-02997a055bd7"
         response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 5
+        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
 
         then: "check the self-cleaning sub group"
-        checkSelfCleaningRequirementGroup(response.Criterion[idx].RequirementGroup[0].RequirementGroup[0])
+        checkSelfCleaningRequirementGroup(response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
@@ -103,9 +103,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "ecf40999-7b64-4e10-b960-7f8ff8674cf6", "Date of conviction", "DATE")
         req.Response.size() == 1
         req.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(now.time))
@@ -120,9 +120,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         checkRequirement(req, "7d35fb7c-da5b-4830-b598-4f347a04dceb", "Reason", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "Reason_03 here"
@@ -137,9 +137,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[3]
+        def req = subGroup.Requirement[2]
         checkRequirement(req, "c5012430-14da-454c-9d01-34cedc6a7ded", "Who has been convicted", "DESCRIPTION")
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_03 was convicted"
@@ -154,9 +154,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[4]
+        def req = subGroup.Requirement[3]
         checkRequirement(req, "9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8", "Length of the period of exclusion", "PERIOD")
         req.Response.size() == 1
         req.Response[0].Period.Description[0].text() == "7 years"
@@ -172,7 +172,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -189,9 +189,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_03 is clean"
     }
@@ -223,9 +223,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_03.com")
     }
@@ -240,9 +240,9 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
-        def req = subGroup.Requirement[2]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_03"
     }

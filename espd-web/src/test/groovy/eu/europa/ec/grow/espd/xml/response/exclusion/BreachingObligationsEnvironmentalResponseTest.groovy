@@ -40,41 +40,41 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
+        checkCriterionId(response, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.ENVIRONMENTAL_LAW")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.SOCIAL.ENVIRONMENTAL_LAW")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental law"
+        response.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental law"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU."
+        response.Criterion[idx].Description.text() == "Has the economic operator, to its knowledge, breached its obligations in the fields of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU."
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "57(4)")
+        checkLegislationReference(response, idx, "57(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 1
+        response.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "976b5acb-c00f-46ca-8f83-5ce6abfdfe43"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 1
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "976b5acb-c00f-46ca-8f83-5ce6abfdfe43"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
-
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "64a2102c-4af1-4ecb-97b3-0c41907ec0f6"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
 
         then: "check first sub group"
-        def sub1_1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def sub1_1 = g1_1.RequirementGroup[0]
         checkSelfCleaningRequirementGroup(sub1_1)
     }
 
@@ -83,11 +83,11 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true, answer: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
-        def req = request.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "true"
@@ -99,13 +99,13 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 description: "bogus description."))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "bogus description."
     }
@@ -116,11 +116,11 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -133,13 +133,13 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 selfCleaning: new SelfCleaning(description: "Hodor_09 is clean")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Description.text() == "Hodor_09 is clean"
     }

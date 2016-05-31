@@ -38,41 +38,47 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
+        checkCriterionId(response, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.ENVIRONMENTAL_MANAGEMENT.ENV_INDEPENDENT_CERTIFICATE")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "Certificates by independent bodies about environmental management systems or standards"
+        response.Criterion[idx].Name.text() == "Certificates by independent bodies about environmental management systems or standards"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?"
+        response.Criterion[idx].Description.text() == "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "62(2)")
+        checkLegislationReference(response, idx, "62(2)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "82a59ce2-9c59-4075-af08-843ad89a45ec"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "82a59ce2-9c59-4075-af08-843ad89a45ec"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "d664788a-df88-49a0-9dfa-2dd217355724"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
                 "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -80,11 +86,11 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true, answer: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
@@ -98,13 +104,13 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 description: "explain description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
 
-        def req = subGroup.Requirement[1]
+        def req = subGroup.Requirement[0]
         checkRequirement(req, "b0aace10-fd73-46d1-ae78-289ee5cd42ca",
                 "If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:", "DESCRIPTION")
         req.Response.size() == 1
@@ -117,11 +123,11 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -131,35 +137,33 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_32.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_33.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        checkEvidence(req.Response[0].Evidence, "http://hodor_32.com")
+        checkEvidence(req.Response[0].Evidence, "http://hodor_33.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_32")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_33")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[2]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_32"
+        req.Response[0].Code.text() == "HODOR_33"
     }
 
 }

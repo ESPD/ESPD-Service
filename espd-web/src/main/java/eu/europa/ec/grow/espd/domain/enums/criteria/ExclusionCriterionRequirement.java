@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
 import lombok.Getter;
 
@@ -33,6 +34,7 @@ import java.util.List;
  * Created by vigi on 11/23/15:11:50 AM.
  */
 @Getter
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ExclusionCriterionRequirement implements CcvCriterionRequirement {
 
     /**

@@ -26,14 +26,14 @@
         </ccv:LegislationReference>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96defecc-7d32-4957-82e9-aad5f3c5b736</cbc:ID>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5aacceb3-280e-42f1-b2da-3d8ac7877fe9</cbc:ID>
                 <cbc:Description>Year</cbc:Description>
                 <ccv:Response>
                     <cbc:Quantity unitCode="YEAR">2016</cbc:Quantity>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42037f41-53af-44df-b6b8-2395cee98087</cbc:ID>
                 <cbc:Description>Number</cbc:Description>
                 <ccv:Response>
@@ -43,14 +43,14 @@
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">dac727d8-2cd2-43e0-8561-6f17e25870a4</cbc:ID>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">49a57870-7fb8-451f-a7af-fa0e7f8b97e7</cbc:ID>
                 <cbc:Description>Year</cbc:Description>
                 <ccv:Response>
                     <cbc:Quantity unitCode="YEAR">2015</cbc:Quantity>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0bb2d3bf-160f-4904-a4e8-ee672bd5cb30</cbc:ID>
                 <cbc:Description>Number</cbc:Description>
                 <ccv:Response>
@@ -60,14 +60,14 @@
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b799d324-358c-48b0-bd5e-6d205969b4a5</cbc:ID>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9d0cf1cb-27bc-4747-8579-47dce4d8d490</cbc:ID>
                 <cbc:Description>Year</cbc:Description>
                 <ccv:Response>
                     <cbc:Quantity unitCode="YEAR">2014</cbc:Quantity>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="QUANTITY">
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a</cbc:ID>
                 <cbc:Description>Number</cbc:Description>
                 <ccv:Response>
@@ -84,28 +84,32 @@
                     <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                 </ccv:Response>
             </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>www.hodor.com</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>GENERAL_TURNOVER</ccv-cbc:Code>
-                </ccv:Response>
-            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID>8d6ce8b8-e2ba-458e-b829-44b35cb6fe13</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>www.hodor.com</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>GENERAL_TURNOVER</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>
 </espd:ESPDResponse>

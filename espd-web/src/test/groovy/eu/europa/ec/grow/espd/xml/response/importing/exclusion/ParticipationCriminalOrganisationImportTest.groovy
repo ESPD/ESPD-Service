@@ -63,7 +63,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: false,  answer: true,
+        def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true,  answer: true,
                 dateOfConviction: new Date(),
                 reason: "Reason here", convicted: "Hodor was convicted", periodLength: "7 years",
                 selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),

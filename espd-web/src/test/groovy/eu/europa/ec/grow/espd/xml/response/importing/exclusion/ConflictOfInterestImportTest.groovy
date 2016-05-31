@@ -45,16 +45,6 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
         then:
         espd.conflictInterest.exists == true
         espd.conflictInterest.answer == true
-        espd.conflictInterest.description == "Hodor is conflicted"
-
-        then: "self cleaning"
-        espd.conflictInterest.selfCleaning.answer == true
-        espd.conflictInterest.selfCleaning.description == "Hodor is clean"
-
-        then: "info electronically"
-        espd.conflictInterest.availableElectronically.answer == true
-        espd.conflictInterest.availableElectronically.url == "www.hodor.com"
-        espd.conflictInterest.availableElectronically.code == "HODOR?"
     }
 
     def "all fields needed to generate a XML sample"() {

@@ -26,44 +26,10 @@
         </ccv:LegislationReference>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">575f7550-8a2d-4bad-b9d8-be07ab570076</cbc:ID>
-            <ccv:Requirement responseDataType="PERCENTAGE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">612a1625-118d-4ea4-a6db-413184e7c0a8</cbc:ID>
-                <cbc:Description>Please specify this percentage</cbc:Description>
-                <ccv:Response>
-                    <cbc:Percent>66.6</cbc:Percent>
-                </ccv:Response>
-            </ccv:Requirement>
-        </ccv:RequirementGroup>
-        <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
-            <ccv:Requirement responseDataType="INDICATOR">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
-                <cbc:Description>Is this information available electronically?</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="URL">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
-                <ccv:Response>
-                    <cev:Evidence>
-                        <cev:EvidenceDocumentReference>
-                            <cac:Attachment>
-                                <cac:ExternalReference>
-                                    <cbc:URI>www.hodor.com</cbc:URI>
-                                </cac:ExternalReference>
-                            </cac:Attachment>
-                        </cev:EvidenceDocumentReference>
-                    </cev:Evidence>
-                </ccv:Response>
-            </ccv:Requirement>
-            <ccv:Requirement responseDataType="CODE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
-                <cbc:Description>Code</cbc:Description>
-                <ccv:Response>
-                    <ccv-cbc:Code>SUBCONTRACTING</ccv-cbc:Code>
-                </ccv:Response>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3aaca389-4a7b-406b-a4b9-080845d127e7</cbc:ID>
+                <cbc:Description>Please specify</cbc:Description>
+                <ccv:Response/>
             </ccv:Requirement>
         </ccv:RequirementGroup>
     </ccv:Criterion>

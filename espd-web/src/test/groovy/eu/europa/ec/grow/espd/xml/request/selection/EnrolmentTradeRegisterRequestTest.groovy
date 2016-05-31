@@ -45,7 +45,7 @@ class EnrolmentTradeRegisterRequestTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(request, idx, "87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Enrolment in a trade register"
@@ -60,16 +60,17 @@ class EnrolmentTradeRegisterRequestTest extends AbstractSelectionCriteriaFixture
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "8fe21e2c-5490-474b-90e6-fe25a7d8c538"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "1768de86-a6c8-48e4-bd8e-de2f2f7424d0"
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

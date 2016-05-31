@@ -60,7 +60,7 @@ class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true, answer: false,
                 description: "Other economic Hodor",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "OTHER_ECONOMIC")))
-//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-request.xml")
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

@@ -22,7 +22,7 @@
  *
  */
 
-package eu.europa.ec.grow.espd.xml.request.selection
+package eu.europa.ec.grow.espd.xml.response.selection
 
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -38,38 +38,38 @@ class WorkContractsTechniciansRequestTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def response = parseRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "c599c130-b29f-461e-a187-4e16c7d40db7")
+        checkCriterionId(response, idx, "c599c130-b29f-461e-a187-4e16c7d40db7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "For works contracts: technicians or technical bodies to carry out the work"
+        response.Criterion[idx].Name.text() == "For works contracts: technicians or technical bodies to carry out the work"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work:"
+        response.Criterion[idx].Description.text() == "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work:"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "162843ae-aa63-47ab-9b05-e5e3e0f284ff"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
-
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "488ca189-bcdb-4bf4-80c7-3ad507fd89fb"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "51391308-0bf6-423c-95e2-d5a54aa31fb8", "Please describe them", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        def g2 = response.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

@@ -33,7 +33,10 @@ public interface CcvRequirementGroup {
 
     String getId();
 
-    List<? extends CcvRequirementGroup> getSubgroups();
+    Boolean fulfillmentIndicator();
 
     List<? extends CcvCriterionRequirement> getRequirements();
+
+    List<? extends CcvRequirementGroup> getSubgroups();
+
 }

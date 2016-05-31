@@ -86,7 +86,7 @@ public abstract class UblCriterionTypeTemplate {
 
     private void addTypeCode(CcvCriterion input, CriterionType criterionType) {
         TypeCodeType typeCodeType = new TypeCodeType();
-        typeCodeType.setValue(input.getTypeCode());
+        typeCodeType.setValue(input.getCriterionType().getCode());
         typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         typeCodeType.setListID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_ID);
         typeCodeType.setListVersionID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_VERSION_ID);
@@ -154,6 +154,9 @@ public abstract class UblCriterionTypeTemplate {
         RequirementGroupType groupType = new RequirementGroupType();
 
         addGroupId(ccvGroup, groupType);
+        if (ccvGroup.fulfillmentIndicator() != null) {
+            groupType.setPi("GROUP_FULFILLED.ON_" + String.valueOf(ccvGroup.fulfillmentIndicator()).toUpperCase());
+        }
         addRequirements(ccvGroup, espdCriterion, groupType);
         addSubGroups(ccvGroup, espdCriterion, groupType);
 

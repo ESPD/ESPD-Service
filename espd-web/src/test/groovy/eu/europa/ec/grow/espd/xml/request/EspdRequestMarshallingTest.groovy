@@ -24,7 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.request
 
-import eu.europa.ec.grow.espd.domain.enums.criteria.AwardCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.OtherCriterion
 import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -272,7 +272,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = parseRequestXml()
 
         then: "mandatory exclusion plus all selection plus the award criteria (eo criteria)"
-        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + AwardCriterion.values().length
+        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length
     }
 
 }

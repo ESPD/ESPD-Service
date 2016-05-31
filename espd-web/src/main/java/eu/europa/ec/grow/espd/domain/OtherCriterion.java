@@ -35,7 +35,7 @@ import java.math.BigDecimal;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AwardCriterion extends EspdCriterion implements MultipleDescriptionHolder {
+public class OtherCriterion extends EspdCriterion implements MultipleDescriptionHolder {
 
     private AvailableElectronically availableElectronically;
 
@@ -49,7 +49,7 @@ public class AwardCriterion extends EspdCriterion implements MultipleDescription
     private Boolean booleanValue2; // is not applicable
     private Boolean booleanValue3; // e) Will the economic operator... indicator
 
-    public AwardCriterion() {
+    public OtherCriterion() {
         // !! award criteria should always exist (be present in a ESPD Response)
         setExists(true);
     }
@@ -72,8 +72,8 @@ public class AwardCriterion extends EspdCriterion implements MultipleDescription
         return null;
     }
 
-    public static AwardCriterion build() {
-        return new AwardCriterion();
+    public static OtherCriterion build() {
+        return new OtherCriterion();
     }
 
     public Boolean getBooleanValue1() {

@@ -45,7 +45,7 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         checkCriterionId(request, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.OTHER")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.NATIONAL.OTHER")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Purely national exclusion grounds"
@@ -60,20 +60,24 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "cff842a7-c95d-4445-8c89-84fcd53aa181"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        def g1 = request.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "77ae3f29-7c5f-4afa-af97-24afec48c5bf"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
-
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
 
         then: "check second sub group"
-        def sub2 = request.Criterion[idx].RequirementGroup[1]
-        checkInfoAvailableElectronicallyRequirementGroup(sub2)
+        def g2 = request.Criterion[idx].RequirementGroup[1]
+        checkInfoAvailableElectronicallyRequirementGroup(g2)
     }
 
 }

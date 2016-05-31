@@ -39,40 +39,45 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then: "CriterionID element"
-        checkCriterionId(request, idx, "a7669d7d-9297-43e1-9d10-691a1660187c")
+        checkCriterionId(response, idx, "a7669d7d-9297-43e1-9d10-691a1660187c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INSTITUTES_CERTIFICATE")
 
         then: "CriterionName element"
-        request.Criterion[idx].Name.text() == "For supply contracts: certificates by quality control institutes"
+        response.Criterion[idx].Name.text() == "For supply contracts: certificates by quality control institutes"
 
         then: "CriterionDescription element"
-        request.Criterion[idx].Description.text() == "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?"
+        response.Criterion[idx].Description.text() == "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?"
 
         then: "CriterionLegislationReference element"
-        checkLegislationReference(request, idx, "58(4)")
+        checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 2
+        response.Criterion[idx].RequirementGroup.size() == 2
 
-        then: "main sub group"
-        request.Criterion[idx].RequirementGroup[0].ID.text() == "4887c3d7-05fc-4e3e-b066-f338910f0c4c"
-        request.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        request.Criterion[idx].RequirementGroup[0].Requirement.size() == 2
+        then: "G1"
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "4887c3d7-05fc-4e3e-b066-f338910f0c4c"
+        g1.@pi.text() == ""
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
+        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
 
-        then: "main sub group requirements"
-        def r1_0 = request.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(r1_0, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-        def r1_1 = request.Criterion[idx].RequirementGroup[0].Requirement[1]
-        checkRequirement(r1_1, "b9dec4cb-2f6f-47d7-a023-e9099b19b338", "If not, please explain why and state which other means of proof can be provided:", "DESCRIPTION")
+        then: "G1.1"
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "83f2f79e-0455-4918-89ff-d7829e8bf758"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "b9dec4cb-2f6f-47d7-a023-e9099b19b338", "If not, please explain why and state which other means of proof can be provided:", "DESCRIPTION")
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -80,11 +85,11 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
@@ -98,13 +103,12 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 description: "technical description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
-
-        def req = subGroup.Requirement[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Description.text() == "technical description"
     }
@@ -115,12 +119,11 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -129,35 +132,33 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
     def "check the 'Info electronically URL' requirement response"() {
         given:
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_30.com")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_31.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[1]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[0]
         req.Response.size() == 1
-        checkEvidence(req.Response[0].Evidence, "http://hodor_30.com")
+        checkEvidence(req.Response[0].Evidence, "http://hodor_31.com")
     }
 
     def "check the 'Info electronically code' requirement response"() {
         given:
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true,
-                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_30")))
+                availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_31")))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[1]
-
-        def req = subGroup.Requirement[2]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[1]
         req.Response.size() == 1
-        req.Response[0].Code.text() == "HODOR_30"
+        req.Response[0].Code.text() == "HODOR_31"
     }
 
 }

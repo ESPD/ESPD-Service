@@ -24,7 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.award
 
-import eu.europa.ec.grow.espd.domain.AwardCriterion
+import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
@@ -50,7 +50,7 @@ class ProcurementReservedImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(procurementReserved: new AwardCriterion(exists: true, description1: "Hodor",
+        def espd = new EspdDocument(procurementReserved: new OtherCriterion(exists: true, description1: "Hodor",
                 answer: true, doubleValue1: 11.11))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

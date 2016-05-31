@@ -24,7 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.award
 
-import eu.europa.ec.grow.espd.domain.AwardCriterion
+import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
@@ -33,7 +33,7 @@ import org.apache.commons.io.IOUtils
  */
 class SucontractingThirdPartiesImportTest extends AbstractXmlFileImport {
 
-    def "06. should import all fields of 'SucontractingThirdParties'"() {
+    def "06. should import all fields of 'Subcontracting Third Parties'"() {
         given:
         def espdResponseXml = importXmlResponseFile("award/subcontracting_third_parties.xml")
 
@@ -50,7 +50,7 @@ class SucontractingThirdPartiesImportTest extends AbstractXmlFileImport {
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(subcontractingThirdParties: new AwardCriterion(exists: true, answer: true,
+        def espd = new EspdDocument(subcontractingThirdParties: new OtherCriterion(exists: true, answer: true,
                 description1: "list of subcontractors"))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

@@ -45,7 +45,7 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
         checkCriterionId(request, idx, "6346959b-e097-4ea1-89cd-d1b4c131ea4d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Number of managerial staff"
