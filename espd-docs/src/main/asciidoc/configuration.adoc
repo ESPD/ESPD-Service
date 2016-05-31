@@ -467,6 +467,52 @@ piwik.server=https://webgate.ec.europa.eu/pwar/piwik.php
 [NOTE] You might want to disable the integration with the Piwik server of DG Growth by setting the `piwik.enabled`
 parameter to `false` in the corresponding `application.properties` file.
 
+=== Criteria definitions
+
+With the `2016.06` version, the criteria requirement groups have been restructured with regards to interoperability with
+the VCD application and three JSON files have been added under `src/main/resources/criteria`. These files contain the
+definitions for the exclusion, selection and other criteria used by the static version of {espd}.
+
+[source,javascript]
+.exclusionCriterion.json
+----
+{
+  "name": "Conflict of interest due to its participation in the procurement procedure",
+  "uuid": "b1b5ac18-f393-4280-9659-1367943c1a2e",
+  "shortName": "Conflict of interest due to its participation in the procurement procedure",
+  "description": "Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?",
+  "criterionType": {
+    "description": "Grounds for exclusion relating to possible conflicts of interests",
+    "espdType": "CONFLICT_OF_INTEREST",
+    "code": "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION"
+  },
+  "legislationReference": {
+     "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
+     "description": "Directive 2014/24/EU",
+     "url": "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024",
+     "article": "57(4)"
+  },
+  "groups": [
+    {
+    "name": "G1",
+    "id": "30450436-f559-4dfa-98ba-f0842ed9d2a0",
+    "requirements": [
+      {
+      "id": "974c8196-9d1c-419c-9ca9-45bb9f5fd59a",
+      "description": "Your answer?",
+      "responseType": "INDICATOR",
+      "espdCriterionFields": [
+          "answer"
+      ]
+      }
+    ]
+    }
+  ],
+  "espdDocumentField": "conflictInterest"
+}
+----
+
+
 === JAXB
 
 The marshalling and unmarshalling of the XML files produced by the application is handled by a http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb[Spring Jaxb2Marshaller].

@@ -84,7 +84,9 @@ internally as an `EspdDocument` which in turn contains fields for all the possib
 operator information or procurement procedure data.
 
 In the `domain.enums` sub-package you can find the enumerations holding the criteria, requirement groups, requirements,
-countries, languages, currencies etc which are used by the application.
+countries, languages, currencies etc which are used by the application. The criteria definitions load metadata coming
+from some JSON configuration files under `src/main/resources/criteria` and store the information dynamically in the
+criterion enumerations.
 
 ==== TED package
 
