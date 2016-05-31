@@ -45,7 +45,7 @@ class SupplyContractsSamplesWithCARequestTest extends AbstractSelectionCriteriaF
         checkCriterionId(request, idx, "7662b7a9-bcb8-4763-a0a7-7505d8e8470d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.ARTEFACTS.AUTHENTICATED_ARTEFACTS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For supply contracts: samples, descriptions or photographs with certification of authenticity"

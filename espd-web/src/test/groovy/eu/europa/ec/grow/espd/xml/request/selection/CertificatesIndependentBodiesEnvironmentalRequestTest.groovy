@@ -44,7 +44,7 @@ class CertificatesIndependentBodiesEnvironmentalRequestTest extends AbstractSele
         checkCriterionId(request, idx, "8ed65e48-fd0d-444f-97bd-4f58da632999")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.QUALITY_ASSURANCE")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.ENVIRONMENTAL_MANAGEMENT.ENV_INDEPENDENT_CERTIFICATE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Certificates by independent bodies about environmental management systems or standards"

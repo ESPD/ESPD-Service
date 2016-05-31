@@ -46,7 +46,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         checkCriterionId(response, idx, "6346959b-e097-4ea1-89cd-d1b4c131ea4d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Number of managerial staff"

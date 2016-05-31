@@ -45,7 +45,7 @@ class EconomicOperatorParticipatingProcurementProcedureRequestTest extends Abstr
         checkCriterionId(request, idx, "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(request, idx, "CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "EO participating in procurement procedure"

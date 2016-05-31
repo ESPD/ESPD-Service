@@ -49,7 +49,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
         checkCriterionId(response, idx, "3a18a175-1863-4b1d-baef-588ce61960ca")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SUPPLIES_DELIVERY_PERFORMANCE")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "For supply contracts: performance of deliveries of the specified type"

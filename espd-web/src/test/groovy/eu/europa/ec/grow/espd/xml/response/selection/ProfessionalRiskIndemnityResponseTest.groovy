@@ -46,7 +46,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         checkCriterionId(response, idx, "7604bd40-4462-4086-8763-a50da51a869c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Professional risk indemnity insurance"

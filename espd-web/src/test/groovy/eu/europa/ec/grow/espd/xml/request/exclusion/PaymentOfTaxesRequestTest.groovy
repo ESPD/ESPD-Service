@@ -46,7 +46,7 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.PAYMENT_OF_TAXES")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONTRIBUTIONS.PAYMENT_OF_TAXES")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Payment of taxes"

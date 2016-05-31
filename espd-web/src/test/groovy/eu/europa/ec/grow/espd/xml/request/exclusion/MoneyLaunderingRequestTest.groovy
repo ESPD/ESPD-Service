@@ -46,7 +46,7 @@ class MoneyLaunderingRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "47112079-6fec-47a3-988f-e561668c3aef")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONVICTIONS.MONEY_LAUNDERING")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Money laundering or terrorist financing"

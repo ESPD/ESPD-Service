@@ -7,7 +7,8 @@
       "description": "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?",
       "criterionType": {
         "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
+        "espdType": "DATA_ON_ECONOMIC_OPERATOR",
+        "code": "CRITERION.OTHER.EO_DATA.SHELTERED_WORKSHOP"
       },
       "legislationReference": null,
       "groups": [
@@ -60,7 +61,8 @@
       "description": "If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?",
       "criterionType": {
         "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
+        "espdType": "DATA_ON_ECONOMIC_OPERATOR",
+        "code": "CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST"
       },
       "legislationReference": null,
       "groups": [
@@ -177,7 +179,8 @@
       "description": "Is the economic operator participating in the procurement procedure together with others?",
       "criterionType": {
         "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
+        "espdType": "DATA_ON_ECONOMIC_OPERATOR",
+        "code": "CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS"
       },
       "legislationReference": null,
       "groups": [
@@ -238,7 +241,8 @@
       "description": "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?",
       "criterionType": {
         "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
+        "espdType": "DATA_ON_ECONOMIC_OPERATOR",
+        "code": "CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES"
       },
       "legislationReference": null,
       "groups": [
@@ -266,7 +270,8 @@
       "description": "Does the economic operator intend to subcontract any share of the contract to third parties?",
       "criterionType": {
         "description": "Date on economic operator",
-        "typeName": "DATA_ON_ECONOMIC_OPERATOR"
+        "espdType": "DATA_ON_ECONOMIC_OPERATOR",
+        "code": "CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES"
       },
       "legislationReference": null,
       "groups": [
@@ -311,7 +316,8 @@
       "description": "If some of these certificates or forms of documentary evidence are available electronically, please indicate for each:",
       "criterionType": {
         "description": "Reduction of the number of qualified candidates",
-        "typeName": "REDUCTION_OF_CANDIDATES"
+        "espdType": "REDUCTION_OF_CANDIDATES",
+        "code": "CRITERION.OTHER.EO_DATA.MEETS_THE_OBJECTIVE"
       },
       "legislationReference": null,
       "groups": [

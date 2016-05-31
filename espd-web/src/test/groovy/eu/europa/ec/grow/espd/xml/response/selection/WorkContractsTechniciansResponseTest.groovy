@@ -46,7 +46,7 @@ class WorkContractsTechniciansResponseTest extends AbstractSelectionCriteriaFixt
         checkCriterionId(request, idx, "c599c130-b29f-461e-a187-4e16c7d40db7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For works contracts: technicians or technical bodies to carry out the work"

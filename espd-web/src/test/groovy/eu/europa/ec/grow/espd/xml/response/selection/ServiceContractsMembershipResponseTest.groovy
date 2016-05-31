@@ -46,7 +46,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         checkCriterionId(response, idx, "73f10e36-ed7a-412e-995c-aa76463e3776")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.SUITABILITY.MEMBERSHIP")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "For service contracts: membership of particular organisation needed"

@@ -92,7 +92,7 @@ public enum ExclusionCriterion implements CcvCriterion {
 
     @Override
     public String getTypeCode() {
-        return CriterionType.EXCLUSION.name() + "." + this.getCriterionType().getTypeName();
+        return CriterionType.EXCLUSION.name() + "." + this.getCriterionType().getEspdType();
     }
 
     @Override

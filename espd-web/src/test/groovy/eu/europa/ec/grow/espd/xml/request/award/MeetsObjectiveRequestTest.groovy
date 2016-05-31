@@ -44,7 +44,7 @@ class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
         checkCriterionId(request, idx, "9c70375e-1264-407e-8b50-b9736bc08901")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "REDUCTION_OF_CANDIDATES")
+        checkCriterionTypeCode(request, idx, "CRITERION.OTHER.EO_DATA.MEETS_THE_OBJECTIVE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:"

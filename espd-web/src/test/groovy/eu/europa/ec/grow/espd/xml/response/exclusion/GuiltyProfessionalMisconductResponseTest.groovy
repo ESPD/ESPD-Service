@@ -46,7 +46,7 @@ class GuiltyProfessionalMisconductResponseTest extends AbstractExclusionCriteria
         checkCriterionId(response, idx, "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.MISCONDUCT")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.MISCONDUCT.MC_PROFESSIONAL")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Guilty of grave professional misconduct"

@@ -45,7 +45,7 @@ class BreachingObligationsLabourRequestTest extends AbstractExclusionCriteriaFix
         checkCriterionId(request, idx, "a34b70d6-c43d-4726-9a88-8e2b438424bf")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.LABOUR_LAW")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.SOCIAL.LABOUR_LAW")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of labour law"

@@ -45,7 +45,7 @@ class AverageYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         checkCriterionId(request, idx, "b16cb9fc-6cb7-4585-9302-9533b415cf48")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Average yearly turnover"

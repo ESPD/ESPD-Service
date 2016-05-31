@@ -45,7 +45,7 @@ class SpecificYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(request, idx, "074f6031-55f9-4e99-b9a4-c4363e8bc315")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Specific yearly turnover"

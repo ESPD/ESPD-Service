@@ -45,7 +45,7 @@ class WorkContractsPerformanceWorksRequestTest extends AbstractSelectionCriteria
         checkCriterionId(request, idx, "cdd3bb3e-34a5-43d5-b668-2aab86a73822")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.WORKS_PERFORMANCE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For works contracts: performance of works of the specified type"

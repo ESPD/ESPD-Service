@@ -45,7 +45,7 @@ class EconomicOperatorReliesCapacitiesRequestTest extends AbstractCriteriaFixtur
         checkCriterionId(request, idx, "0d62c6ed-f074-4fcf-8e9f-f691351d52ad")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(request, idx, "CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "EO relies capacities"

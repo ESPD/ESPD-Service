@@ -46,7 +46,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         checkCriterionId(request, idx, "9eeb6d5c-0eb8-48e8-a4c5-5087a7c095a4")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.SUITABILITY.AUTHORISATION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For service contracts: authorisation of particular organisation needed"

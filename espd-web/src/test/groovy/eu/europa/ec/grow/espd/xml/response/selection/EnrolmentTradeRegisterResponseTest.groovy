@@ -46,7 +46,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
         checkCriterionId(request, idx, "87b3fa26-3549-4f92-b8e0-3fd8f04bf5c7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Enrolment in a trade register"

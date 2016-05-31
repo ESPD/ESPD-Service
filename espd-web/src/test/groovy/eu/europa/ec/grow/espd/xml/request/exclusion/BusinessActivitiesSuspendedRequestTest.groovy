@@ -45,7 +45,7 @@ class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFi
         checkCriterionId(request, idx, "166536e2-77f7-455c-b018-70582474e4f6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.BUSINESS.ACTIVITIES_SUSPENDED")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Business activities are suspended"

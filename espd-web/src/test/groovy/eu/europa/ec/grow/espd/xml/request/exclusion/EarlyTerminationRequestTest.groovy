@@ -45,7 +45,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "3293e92b-7f3e-42f1-bee6-a7641bb04251")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.EARLY_TERMINATION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Early termination, damages or other comparable sanctions"

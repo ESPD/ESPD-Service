@@ -46,7 +46,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         checkCriterionId(response, idx, "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(response, idx, "CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "EO participating in procurement procedure"

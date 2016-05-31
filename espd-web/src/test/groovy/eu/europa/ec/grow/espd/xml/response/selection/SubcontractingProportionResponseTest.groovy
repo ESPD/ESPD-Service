@@ -44,7 +44,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
         checkCriterionId(response, idx, "612a1625-118d-4ea4-a6db-413184e7c0a8")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.SUBCONTRACTING_PROPORTION")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Subcontracting proportion"

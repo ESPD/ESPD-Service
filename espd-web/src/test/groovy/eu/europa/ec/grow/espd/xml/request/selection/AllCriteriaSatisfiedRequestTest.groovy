@@ -45,7 +45,7 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ALL_CRITERIA_SATISFIED")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ALL_SATISFIED")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "All selection criteria will be satisfied"

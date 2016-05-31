@@ -45,7 +45,7 @@ class BreachingObligationsSocialRequestTest extends AbstractExclusionCriteriaFix
         checkCriterionId(request, idx, "a261a395-ed17-4939-9c75-b9ff1109ca6e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.SOCIAL_LAW")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.SOCIAL.SOCIAL_LAW")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Breaching of obligations in the fields of social law"

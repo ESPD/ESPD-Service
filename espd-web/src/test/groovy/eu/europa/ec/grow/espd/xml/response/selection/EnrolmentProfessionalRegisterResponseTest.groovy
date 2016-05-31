@@ -47,7 +47,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
         checkCriterionId(response, idx, "6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.SUITABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Enrolment in a relevant professional register"

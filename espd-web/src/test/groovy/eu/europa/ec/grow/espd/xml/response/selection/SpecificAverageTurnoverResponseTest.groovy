@@ -46,7 +46,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
         checkCriterionId(response, idx, "d3dfb714-f558-4512-bbc5-e456fa2339de")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Specific average turnover"

@@ -46,7 +46,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
         checkCriterionId(response, idx, "bdf0601d-2480-4250-b870-658d0ee95be6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.ARTEFACTS.NO_AUTHENTICATED_ARTEFACTS")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "For supply contracts: samples, descriptions or photographs without certification of authenticity"

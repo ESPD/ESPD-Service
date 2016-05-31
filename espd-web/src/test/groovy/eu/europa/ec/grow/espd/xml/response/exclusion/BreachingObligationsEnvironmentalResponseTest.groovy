@@ -47,7 +47,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         checkCriterionId(response, idx, "a80ddb62-d25b-4e4e-ae22-3968460dc0a9")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.ENVIRONMENTAL_LAW")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.SOCIAL.ENVIRONMENTAL_LAW")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Breaching of obligations in the fields of environmental law"

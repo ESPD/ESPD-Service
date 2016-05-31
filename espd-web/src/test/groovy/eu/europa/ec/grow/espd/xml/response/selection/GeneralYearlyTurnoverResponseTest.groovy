@@ -46,7 +46,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(response, idx, "499efc97-2ac1-4af2-9e84-323c2ca67747")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.GENERAL_YEARLY")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "General yearly turnover"

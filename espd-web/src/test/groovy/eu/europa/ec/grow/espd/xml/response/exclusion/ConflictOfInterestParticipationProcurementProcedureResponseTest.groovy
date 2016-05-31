@@ -45,7 +45,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         checkCriterionId(response, idx, "b1b5ac18-f393-4280-9659-1367943c1a2e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Conflict of interest due to its participation in the procurement procedure"

@@ -7,7 +7,8 @@
       "description": "It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.",
       "criterionType": {
         "description": "The economic operator declares that it will satisfy all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice",
-        "typeName": "ALL_CRITERIA_SATISFIED"
+        "espdType": "ALL_CRITERIA_SATISFIED",
+        "code": "CRITERION.SELECTION.ALL_SATISFIED"
       },
       "legislationReference": null,
       "groups": [
@@ -35,7 +36,8 @@
       "description": "It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
       "criterionType": {
         "description": "Selection criteria relating to the suitability of the economic operator",
-        "typeName": "SUITABILITY"
+        "espdType": "SUITABILITY",
+        "code": "CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -107,7 +109,8 @@
       "description": "It is enrolled in trade registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.",
       "criterionType": {
         "description": "Selection criteria relating to the suitability of the economic operator",
-        "typeName": "SUITABILITY"
+        "espdType": "SUITABILITY",
+        "code": "CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -179,7 +182,8 @@
       "description": "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
       "criterionType": {
         "description": "Selection criteria relating to the suitability of the economic operator",
-        "typeName": "SUITABILITY"
+        "espdType": "SUITABILITY",
+        "code": "CRITERION.SELECTION.SUITABILITY.AUTHORISATION"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -268,7 +272,8 @@
       "description": "Is a particular membership of a particular organisation needed in order to be able to perform the service in question in the country of establishment of the economic operator?",
       "criterionType": {
         "description": "Selection criteria relating to the suitability of the economic operator",
-        "typeName": "SUITABILITY"
+        "espdType": "SUITABILITY",
+        "code": "CRITERION.SELECTION.SUITABILITY.MEMBERSHIP"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -357,7 +362,8 @@
       "description": "Its general yearly turnover for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.GENERAL_YEARLY"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -553,7 +559,8 @@
       "description": "Its average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -749,7 +756,8 @@
       "description": "Its specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the procurement documents or the ESPD is as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -945,7 +953,8 @@
       "description": "Its specific average yearly turnover in the business area covered by the contract for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1141,7 +1150,8 @@
       "description": "In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1174,7 +1184,8 @@
       "description": "Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1358,7 +1369,8 @@
       "description": "The insured amount in its professional risk indemnity insurance is the following:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1431,7 +1443,8 @@
       "description": "Concerning the other economic or financial requirements, if any, that may have been specified in the relevant notice or the procurement documents, the economic operator declares that:",
       "criterionType": {
         "description": "Selection criteria relating to the economical and financial standing",
-        "typeName": "ECONOMIC_FINANCIAL_STANDING"
+        "espdType": "ECONOMIC_FINANCIAL_STANDING",
+        "code": "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1503,7 +1516,8 @@
       "description": "For public works contracts only: During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.WORKS_PERFORMANCE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -1756,7 +1770,8 @@
       "description": "For public supply contracts only: During the reference period, the economic operator has delivered the following principal deliveries of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SUPPLIES_DELIVERY_PERFORMANCE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2009,7 +2024,8 @@
       "description": "For public service contracts only: During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SERVICES_DELIVERY_PERFORMANCE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2262,7 +2278,8 @@
       "description": "It can call upon the following technicians or technical bodies, especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2334,7 +2351,8 @@
       "description": "In the case of public works contracts, the economic operator will be able to call on the following technicians or technical bodies to carry out the work:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2406,7 +2424,8 @@
       "description": "It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2478,7 +2497,8 @@
       "description": "It uses the following study and research facilities are as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES.FOR_STUDY_RESEARCH"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2550,7 +2570,8 @@
       "description": "It will be able to apply the following supply chain management and tracking systems when performing the contract:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.SUPPLY_CHAIN_MANAGEMENT"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2622,7 +2643,8 @@
       "description": "For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2655,7 +2677,8 @@
       "description": "The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the procurement documents by its managerial staff.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.PROFESSIONAL.QUALIFICATIONS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2727,7 +2750,8 @@
       "description": "The economic operator will be able to apply the following environmental management measures when performing the contract:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.ENVIRONMENTAL_MANAGEMENT_MEASURES"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2799,7 +2823,8 @@
       "description": "The economic operator’s number of managerial staff for the last three years were as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2923,7 +2948,8 @@
       "description": "The economic operator’s average annual manpower for the last three years were as follows:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.AVERAGE_ANNUAL_MANPOWER"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3047,7 +3073,8 @@
       "description": "The following tools, plant or technical equipment will be available to it for performing the contract:",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.EQUIPMENT"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3119,7 +3146,8 @@
       "description": "The economic operator intends possibly to subcontract  the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.SUBCONTRACTING_PROPORTION"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3152,7 +3180,8 @@
       "description": "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied, which do not need to be accompanied by certifications of authenticity.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.ARTEFACTS.NO_AUTHENTICATED_ARTEFACTS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3224,7 +3253,8 @@
       "description": "For public supply contracts: The economic operator will supply the required samples, descriptions or photographs of the products to be supplied and will provide certifications of authenticity where applicable.",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.ARTEFACTS.AUTHENTICATED_ARTEFACTS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3296,7 +3326,8 @@
       "description": "Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?",
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
-        "typeName": "TECHNICAL_PROFESSIONAL_ABILITY"
+        "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INSTITUTES_CERTIFICATE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3385,7 +3416,8 @@
       "description": "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?",
       "criterionType": {
         "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
-        "typeName": "QUALITY_ASSURANCE"
+        "espdType": "QUALITY_ASSURANCE",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INDEPENDENT_CERTIFICATE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -3474,7 +3506,8 @@
       "description": "Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required environmental management systems or standards?",
       "criterionType": {
         "description": "Selection criteria relating to the quality assurance schemes and environmental management standards ",
-        "typeName": "QUALITY_ASSURANCE"
+        "espdType": "QUALITY_ASSURANCE",
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.ENVIRONMENTAL_MANAGEMENT.ENV_INDEPENDENT_CERTIFICATE"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",

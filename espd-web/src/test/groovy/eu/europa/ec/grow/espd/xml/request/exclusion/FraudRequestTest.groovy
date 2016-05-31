@@ -45,7 +45,7 @@ class FraudRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONVICTIONS.FRAUD")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Fraud"

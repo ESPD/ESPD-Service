@@ -48,7 +48,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         checkCriterionId(response, idx, "5e506c16-26ab-4e32-bb78-b27f87dc0565")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SERVICES_DELIVERY_PERFORMANCE")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "For service contracts: performance of services of the specified type"

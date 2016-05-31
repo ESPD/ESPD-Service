@@ -66,54 +66,54 @@ class EspdResponseCriterionFactory {
     @SuppressWarnings("unchecked")
     <T extends EspdCriterion> T buildEspdCriterion(CcvCriterion ccvCriterion, CriterionType ublCriterion) {
 
-        if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildCriminalConvictionsCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
-                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.getTypeName()
-                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType()) ||
+                ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.getEspdType()
+                        .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildTaxesCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
-                ExclusionCriterionTypeCode.SOCIAL_LAW.getTypeName()
-                        .equals(ccvCriterion.getCriterionType().getTypeName()) ||
-                ExclusionCriterionTypeCode.LABOUR_LAW.getTypeName()
-                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType()) ||
+                ExclusionCriterionTypeCode.SOCIAL_LAW.getEspdType()
+                        .equals(ccvCriterion.getCriterionType().getEspdType()) ||
+                ExclusionCriterionTypeCode.LABOUR_LAW.getEspdType()
+                        .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildLawCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildBankruptcyCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.MISCONDUCT.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
-                ExclusionCriterionTypeCode.DISTORTING_MARKET.getTypeName()
-                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.MISCONDUCT.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType()) ||
+                ExclusionCriterionTypeCode.DISTORTING_MARKET.getEspdType()
+                        .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildMisconductCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildConflictOfInterestCriterion(ublCriterion);
-        } else if (ExclusionCriterionTypeCode.OTHER.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (ExclusionCriterionTypeCode.OTHER.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildPurelyNationalGrounds(ublCriterion);
-        } else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildSatisfiesAllCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.SUITABILITY.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (SelectionCriterionTypeCode.SUITABILITY.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildSuitabilityCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildEconomicFinancialStandingCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildTechnicalProfessionalCriterion(ublCriterion);
-        } else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildQualityAssuranceCriterion(ublCriterion);
-        } else if (OtherCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.getTypeName()
-                .equals(ccvCriterion.getCriterionType().getTypeName()) ||
-                OtherCriterionTypeCode.REDUCTION_OF_CANDIDATES.getTypeName()
-                        .equals(ccvCriterion.getCriterionType().getTypeName())) {
+        } else if (OtherCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.getEspdType()
+                .equals(ccvCriterion.getCriterionType().getEspdType()) ||
+                OtherCriterionTypeCode.REDUCTION_OF_CANDIDATES.getEspdType()
+                        .equals(ccvCriterion.getCriterionType().getEspdType())) {
             return (T) buildAwardCriterion(ublCriterion);
         }
         throw new IllegalArgumentException(

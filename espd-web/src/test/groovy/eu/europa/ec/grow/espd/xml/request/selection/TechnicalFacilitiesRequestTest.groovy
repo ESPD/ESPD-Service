@@ -45,7 +45,7 @@ class TechnicalFacilitiesRequestTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(request, idx, "4bf996d9-439c-40c6-9ab9-980a48cb55a1")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Technical facilities and measures for ensuring quality"

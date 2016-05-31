@@ -50,7 +50,7 @@ class TerroristOffencesResponseTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(response, idx, "d486fb70-86b3-4e75-97f2-0d71b5697c7d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONVICTIONS.TERRORIST_OFFENCES")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Terrorist offences or offences linked to terrorist activities"

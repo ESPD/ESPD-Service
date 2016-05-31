@@ -46,7 +46,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(response, idx, "dc12a151-7fdf-4733-a8f0-30f667292e66")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.SUPPLY_CHAIN_MANAGEMENT")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Supply chain management"

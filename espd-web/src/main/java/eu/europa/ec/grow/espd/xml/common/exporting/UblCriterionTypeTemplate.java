@@ -86,7 +86,7 @@ public abstract class UblCriterionTypeTemplate {
 
     private void addTypeCode(CcvCriterion input, CriterionType criterionType) {
         TypeCodeType typeCodeType = new TypeCodeType();
-        typeCodeType.setValue(input.getTypeCode());
+        typeCodeType.setValue(input.getCriterionType().getCode());
         typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         typeCodeType.setListID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_ID);
         typeCodeType.setListVersionID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_VERSION_ID);

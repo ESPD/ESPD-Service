@@ -74,7 +74,7 @@ public enum OtherCriterion implements CcvCriterion {
 
     @Override
     public String getTypeCode() {
-        return this.getCriterionType().getTypeName();
+        return this.getCriterionType().getEspdType();
     }
 
     @Override

@@ -88,7 +88,13 @@ public enum ExclusionCriterionTypeCode implements CcvCriterionType {
     }
 
     @Override
-    public String getTypeName() {
+    public String getEspdType() {
         return name();
     }
+
+    @Override
+    public String getCode() {
+        return null;
+    }
+
 }

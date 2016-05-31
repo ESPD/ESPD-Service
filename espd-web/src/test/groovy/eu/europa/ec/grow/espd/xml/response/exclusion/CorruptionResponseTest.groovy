@@ -51,7 +51,7 @@ class CorruptionResponseTest extends AbstractExclusionCriteriaFixture {
 
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONVICTIONS.CORRUPTION")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Corruption"

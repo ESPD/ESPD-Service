@@ -44,7 +44,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
         checkCriterionId(response, idx, "77f481ce-ffb6-483f-8e2b-c78db5e68292")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Set up of economic operator"

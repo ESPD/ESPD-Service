@@ -45,7 +45,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
         checkCriterionId(response, idx, "61874050-5130-4f1c-a174-720939c7b483")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PREPARATION")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Direct or indirect involvement in the preparation of this procurement procedure"

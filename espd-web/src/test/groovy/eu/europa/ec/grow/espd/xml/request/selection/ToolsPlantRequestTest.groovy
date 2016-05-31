@@ -45,7 +45,7 @@ class ToolsPlantRequestTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(request, idx, "cc18c023-211d-484d-a32e-52f3f970285f")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.EQUIPMENT")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Tools, plant or technical equipment"

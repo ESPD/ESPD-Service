@@ -45,7 +45,7 @@ class CorruptionRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "c27b7c4e-c837-4529-b867-ed55ce639db5")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONVICTIONS.CORRUPTION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Corruption"

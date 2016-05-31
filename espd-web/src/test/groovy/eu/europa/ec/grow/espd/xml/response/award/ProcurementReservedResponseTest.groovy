@@ -45,7 +45,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         checkCriterionId(response, idx, "2043338f-a38a-490b-b3ec-2607cb25a017")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(response, idx, "CRITERION.OTHER.EO_DATA.SHELTERED_WORKSHOP")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Procurement reserved"

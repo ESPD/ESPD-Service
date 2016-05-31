@@ -45,7 +45,7 @@ class OtherEconomicFinancialRequirementsRequestTest extends AbstractSelectionCri
         checkCriterionId(request, idx, "ab0e7f2e-6418-40e2-8870-6713123e41ad")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Other economic or financial requirements"

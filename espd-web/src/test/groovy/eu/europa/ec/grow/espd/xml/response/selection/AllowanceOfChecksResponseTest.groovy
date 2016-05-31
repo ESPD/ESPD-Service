@@ -45,7 +45,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(response, idx, "c8809aa1-29b6-4f27-ae2f-27e612e394db")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Allowance of checks"

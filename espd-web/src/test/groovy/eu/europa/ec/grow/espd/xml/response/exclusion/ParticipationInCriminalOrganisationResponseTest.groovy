@@ -49,7 +49,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         checkCriterionId(response, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONVICTIONS.PARTICIPATION_IN_CRIMINAL_ORGANISATION")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Participation in a criminal organisation"

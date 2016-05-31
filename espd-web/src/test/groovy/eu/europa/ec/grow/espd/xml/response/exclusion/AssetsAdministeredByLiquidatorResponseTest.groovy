@@ -46,7 +46,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
         checkCriterionId(response, idx, "8fda202a-0c37-41bb-9d7d-de3f49edbfcb")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.BUSINESS.LIQUIDATOR_ADMINISTERED")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Assets being administered by liquidator"

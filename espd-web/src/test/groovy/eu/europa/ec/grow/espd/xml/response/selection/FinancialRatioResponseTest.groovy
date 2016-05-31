@@ -46,7 +46,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
         checkCriterionId(response, idx, "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.ECONOMIC_FINANCIAL_STANDING")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Financial ratio"

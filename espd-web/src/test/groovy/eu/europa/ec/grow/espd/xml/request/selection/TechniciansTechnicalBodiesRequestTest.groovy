@@ -45,7 +45,7 @@ class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFix
         checkCriterionId(response, idx, "3aaca389-4a7b-406b-a4b9-080845d127e7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Technicians or technical bodies for quality control"

@@ -42,7 +42,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(response, idx, "d3732c09-7d62-4edc-a172-241da6636e7c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.BUSINESS.BANKRUPTCY")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Bankruptcy"

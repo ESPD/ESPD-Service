@@ -150,8 +150,13 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
         }
         return new CcvCriterionType() {
             @Override
-            public String getTypeName() {
-                return parseStringNode("typeName", parentNode);
+            public String getEspdType() {
+                return parseStringNode("espdType", parentNode);
+            }
+
+            @Override
+            public String getCode() {
+                return parseStringNode("code", parentNode);
             }
         };
     }

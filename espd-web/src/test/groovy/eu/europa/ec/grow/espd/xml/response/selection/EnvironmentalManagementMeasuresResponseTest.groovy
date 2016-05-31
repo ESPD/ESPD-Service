@@ -46,7 +46,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
         checkCriterionId(response, idx, "9460457e-b43d-48a9-acd1-615de6ddd33e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.ENVIRONMENTAL_MANAGEMENT_MEASURES")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Environmental management measures"

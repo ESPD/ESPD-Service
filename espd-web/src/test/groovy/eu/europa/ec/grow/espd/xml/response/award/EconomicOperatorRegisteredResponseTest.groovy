@@ -46,7 +46,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         checkCriterionId(response, idx, "9b19e869-6c89-4cc4-bd6c-ac9ca8602165")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(response, idx, "CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "EO registered"

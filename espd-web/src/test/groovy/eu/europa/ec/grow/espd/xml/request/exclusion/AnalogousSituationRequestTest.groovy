@@ -45,7 +45,7 @@ class AnalogousSituationRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "daffa2a9-9f8f-4568-8be8-7b8bf306d096")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.BUSINESS.BANKRUPTCY_ANALOGOUS")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Analogous situation like bankruptcy under national law"

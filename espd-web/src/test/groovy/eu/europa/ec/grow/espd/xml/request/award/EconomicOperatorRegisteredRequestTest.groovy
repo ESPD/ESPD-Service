@@ -45,7 +45,7 @@ class EconomicOperatorRegisteredRequestTest extends AbstractCriteriaFixture {
         checkCriterionId(request, idx, "9b19e869-6c89-4cc4-bd6c-ac9ca8602165")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(request, idx, "CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "EO registered"

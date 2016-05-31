@@ -44,7 +44,7 @@ class AgreementsWithEORequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "56d13e3d-76e8-4f23-8af6-13e60a2ee356")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.DISTORTING_MARKET")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.MISCONDUCT.MARKET_DISTORTION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Agreements with other economic operators aimed at distorting competition"

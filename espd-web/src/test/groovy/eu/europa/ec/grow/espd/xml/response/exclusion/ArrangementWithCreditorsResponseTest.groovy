@@ -46,7 +46,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
         checkCriterionId(response, idx, "68918c7a-f5bc-4a1a-a62f-ad8983600d48")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.BANKRUPTCY_INSOLVENCY")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.BUSINESS.CREDITORS_ARRANGEMENT")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Arrangement with creditors"

@@ -103,7 +103,7 @@ public enum SelectionCriterion implements CcvCriterion {
     @Override
     @JsonIgnore
     public String getTypeCode() {
-        return CriterionType.SELECTION.name() + "." + this.getCriterionType().getTypeName();
+        return CriterionType.SELECTION.name() + "." + this.getCriterionType().getEspdType();
     }
 
     @Override

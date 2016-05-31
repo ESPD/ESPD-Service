@@ -45,7 +45,7 @@ class SupplyContractsCertificatesByQCRequestTest extends AbstractSelectionCriter
         checkCriterionId(request, idx, "a7669d7d-9297-43e1-9d10-691a1660187c")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INSTITUTES_CERTIFICATE")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "For supply contracts: certificates by quality control institutes"

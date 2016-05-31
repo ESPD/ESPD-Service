@@ -49,7 +49,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
         checkCriterionId(response, idx, "7d85e333-bbab-49c0-be8d-c36d71a72f5e")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.PAYMENT_OF_SOCIAL_SECURITY")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.CONTRIBUTIONS.PAYMENT_OF_SOCIAL_SECURITY")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Payment of social security contributions"

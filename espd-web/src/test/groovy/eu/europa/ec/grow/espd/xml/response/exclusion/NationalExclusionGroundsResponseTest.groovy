@@ -46,7 +46,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         checkCriterionId(response, idx, "63adb07d-db1b-4ef0-a14e-a99785cf8cf6")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "EXCLUSION.OTHER")
+        checkCriterionTypeCode(response, idx, "CRITERION.EXCLUSION.NATIONAL.OTHER")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Purely national exclusion grounds"

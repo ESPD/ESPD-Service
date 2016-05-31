@@ -45,7 +45,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
         checkCriterionId(response, idx, "d726bac9-e153-4e75-bfca-c5385587766d")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "SELECTION.QUALITY_ASSURANCE")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INDEPENDENT_CERTIFICATE")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Certificates by independent bodies about quality assurance standards"

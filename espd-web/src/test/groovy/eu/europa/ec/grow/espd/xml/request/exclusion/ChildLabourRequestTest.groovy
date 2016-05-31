@@ -45,7 +45,7 @@ class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
         checkCriterionId(request, idx, "d789d01a-fe03-4ccd-9898-73f9cfa080d1")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CRIMINAL_CONVICTIONS")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONVICTIONS.CHILD_LABOUR-HUMAN_TRAFFICKING")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Child labour and other forms of trafficking in human beings"

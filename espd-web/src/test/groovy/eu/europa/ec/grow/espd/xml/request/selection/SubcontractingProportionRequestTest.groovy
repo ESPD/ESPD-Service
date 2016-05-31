@@ -45,7 +45,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         checkCriterionId(request, idx, "612a1625-118d-4ea4-a6db-413184e7c0a8")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.SUBCONTRACTING_PROPORTION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Subcontracting proportion"

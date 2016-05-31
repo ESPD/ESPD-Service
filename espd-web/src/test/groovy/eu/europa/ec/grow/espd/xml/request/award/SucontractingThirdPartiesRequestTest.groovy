@@ -45,7 +45,7 @@ class SucontractingThirdPartiesRequestTest extends AbstractCriteriaFixture {
         checkCriterionId(request, idx, "72c0c4b1-ca50-4667-9487-461f3eed4ed7")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "DATA_ON_ECONOMIC_OPERATOR")
+        checkCriterionTypeCode(request, idx, "CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Subcontracting third parties"

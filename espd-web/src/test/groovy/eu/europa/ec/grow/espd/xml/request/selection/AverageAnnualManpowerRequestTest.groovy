@@ -45,7 +45,7 @@ class AverageAnnualManpowerRequestTest extends AbstractSelectionCriteriaFixture 
         checkCriterionId(request, idx, "1f49b3f0-d50f-43f6-8b30-4bafab108b9b")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "SELECTION.TECHNICAL_PROFESSIONAL_ABILITY")
+        checkCriterionTypeCode(request, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.AVERAGE_ANNUAL_MANPOWER")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Average annual manpower"

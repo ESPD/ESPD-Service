@@ -45,7 +45,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
         checkCriterionId(request, idx, "696a75b2-6107-428f-8b74-82affb67e184")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(request, idx, "EXCLUSION.CONFLICT_OF_INTEREST")
+        checkCriterionTypeCode(request, idx, "CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION")
 
         then: "CriterionName element"
         request.Criterion[idx].Name.text() == "Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure"
