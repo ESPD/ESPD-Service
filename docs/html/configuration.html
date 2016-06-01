@@ -552,6 +552,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#lombok">Lombok</a></li>
 <li><a href="#logging">Logging</a></li>
 <li><a href="#monitoring-and-analytics">Monitoring and analytics</a></li>
+<li><a href="#criteria-definitions">Criteria definitions</a></li>
 <li><a href="#jaxb">JAXB</a></li>
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
@@ -821,7 +822,7 @@ the static resources like Javascript or CSS files into a single file per each ty
 requests made by the clients that load the application is reduced drastically.</p>
 </div>
 <div class="sect4">
-<h5 id="run-time-solution"><a class="anchor" href="#run-time-solution"></a>Run-time solution</h5>
+<h5 id="run-time-solution-with-a-servlet-filter"><a class="anchor" href="#run-time-solution-with-a-servlet-filter"></a>Run-time solution with a Servlet filter</h5>
 <div class="paragraph">
 <p>The Java filter configuration makes use of <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> auto-configuration provided by the <a href="https://github.com/michael-simons/wro4j-spring-boot-starter">wro4j-spring-boot-starter</a> library.</p>
 </div>
@@ -880,7 +881,7 @@ wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImpor
 </div>
 </div>
 <div class="sect4">
-<h5 id="build-time-solution"><a class="anchor" href="#build-time-solution"></a>Build-time solution</h5>
+<h5 id="build-time-solution-with-maven"><a class="anchor" href="#build-time-solution-with-maven"></a>Build-time solution with Maven</h5>
 <div class="paragraph">
 <p>The build-time solution uses a <a href="https://maven.apache.org">Maven 3</a> plugin and needs two <a href="https://github.com/wro4j/wro4j">WRO4J</a> configuration files placed under the
 <code>src/main/resources</code> folder.</p>
@@ -1090,6 +1091,53 @@ parameter to <code>false</code> in the corresponding <code>application.propertie
 </div>
 </div>
 <div class="sect2">
+<h3 id="criteria-definitions"><a class="anchor" href="#criteria-definitions"></a>Criteria definitions</h3>
+<div class="paragraph">
+<p>With the <code>2016.06</code> version, the criteria requirement groups have been restructured with regards to interoperability with
+the VCD application and three JSON files have been added under <code>src/main/resources/criteria</code>. These files contain the
+definitions for the exclusion, selection and other criteria used by the static version of <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">exclusionCriterion.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Conflict of interest due to its participation in the procurement procedure</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">uuid</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">b1b5ac18-f393-4280-9659-1367943c1a2e</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">shortName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Conflict of interest due to its participation in the procurement procedure</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">criterionType</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Grounds for exclusion relating to possible conflicts of interests</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">espdType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CONFLICT_OF_INTEREST</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">code</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">legislationReference</span><span class="delimiter">&quot;</span></span>: {
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</span><span class="delimiter">&quot;</span></span>,
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Directive 2014/24/EU</span><span class="delimiter">&quot;</span></span>,
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</span><span class="delimiter">&quot;</span></span>,
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">article</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">57(4)</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
+    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">30450436-f559-4dfa-98ba-f0842ed9d2a0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Your answer?</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">espdCriterionFields</span><span class="delimiter">&quot;</span></span>: [
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">answer</span><span class="delimiter">&quot;</span></span>
+      ]
+      }
+    ]
+    }
+  ],
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">espdDocumentField</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">conflictInterest</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="jaxb"><a class="anchor" href="#jaxb"></a>JAXB</h3>
 <div class="paragraph">
 <p>The marshalling and unmarshalling of the XML files produced by the application is handled by a <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb">Spring Jaxb2Marshaller</a>.</p>
@@ -1260,7 +1308,7 @@ ted.api.password=passed as server startup parameter</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-12 15:04:17 CEST
+Last updated 2016-06-01 13:27:23 CEST
 </div>
 </div>
 </body>

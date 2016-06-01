@@ -689,10 +689,10 @@ and then add the <code>src/main/generated</code> folder on the application class
 </div>
 </div>
 <div class="sect3">
-<h4 id="run-with-an-embedded-tomcat-container-coming-soon"><a class="anchor" href="#run-with-an-embedded-tomcat-container-coming-soon"></a>Run with an embedded Tomcat container (coming soon)</h4>
+<h4 id="run-with-an-embedded-tomcat-container"><a class="anchor" href="#run-with-an-embedded-tomcat-container"></a>Run with an embedded Tomcat container</h4>
 <div class="paragraph">
-<p>The easiest way to start the application is with an embedded <a href="https://tomcat.apache.org">Tomcat 7+</a> container by invoking the <code>main</code> method from
-the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java non-web
+<p>The easiest way to start the application is with an embedded Tomcat 8 (default) container by invoking the <code>main</code> method
+from the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java non-web
 application.</p>
 </div>
 </div>
@@ -714,10 +714,9 @@ check the following links on how to deploy it on a Tomcat container:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deploying-on-an-external-servlet-container"><a class="anchor" href="#deploying-on-an-external-servlet-container"></a>Deploying on an external Servlet container</h4>
+<h4 id="deploying-with-the-embedded-tomcat-container"><a class="anchor" href="#deploying-with-the-embedded-tomcat-container"></a>Deploying with the embedded Tomcat container</h4>
 <div class="paragraph">
-<p>If you want to deploy the application on an external Servlet container, you need to package it as a WAR and provide
-some startup parameters on your server.</p>
+<p>The fastest way to deploy the application is by using an embedded Tomcat container.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -747,17 +746,65 @@ some startup parameters on your server.</p>
 </ol>
 </div>
 </li>
-<li>
-<p>The version that uses the embedded <a href="https://tomcat.apache.org">Tomcat 7+</a> container can be run with <code>java -Dspring.profiles.active=prod -jar
-espd-web.war</code>.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>The application can be started with a shell script that can contain the following minimum configuration:</p>
+</div>
+<div class="listingblock">
+<div class="title">start.sh</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">java -Dspring.profiles.active=prod -Xms768m -Xmx768m -jar espd-web.war</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Other application parameters can also be specified in exactly the same way, i.e. by prefixing them with a <code>-D</code> followed
 by the name of the parameter. You can consult the <code>application.properties</code> files for finding out the available options
 but please note that the ones specified at start-up have higher precedence than the ones specified in the <code>.properties</code>
 files.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is recommended to set up the context path of the application when running in the embedded mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">application.properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="properties"># Context path of the application
+server.context-path=/espd</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deploying-on-an-external-servlet-container"><a class="anchor" href="#deploying-on-an-external-servlet-container"></a>Deploying on an external Servlet container</h4>
+<div class="paragraph">
+<p>If you want to deploy the application on an external Servlet container, you need to package it as a WAR for the
+<code>non-embedded</code> Maven profile and provide some startup parameters on your server.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Perform a <code>mvn clean package -Pnon-embedded</code> from the root folder of the project:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The build should generate a WAR file at <code>${baseDir}/espd-web/target/espd-web.war</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The other steps are similar to the embedded server deployment mode</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -766,7 +813,7 @@ files.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-12 15:04:17 CEST
+Last updated 2016-06-01 13:27:23 CEST
 </div>
 </div>
 </body>
