@@ -1,5 +1,20 @@
 == Release notes
 
+=== 2016.06 (2nd of June 2016)
+
+This most important updates of this release are:
+
+* The restructuring of criterion subgroups in order to achieve a better interoperability with the VCD application
+* Deploy the application as an executable WAR file
+
+==== Improvement
+
+* [ESPD-92] - Issues of interoperability with VCD
+* [ESPD-94] - Official name of CA should not be anymore mandatory
+* [ESPD-99] - Deploy the application as an executable WAR file
+* [ESPD-102] - Update breadcrumb
+* [ESPD-107] - Update text in the Home page
+
 === 2016.05 (12th of May 2016)
 
 The main purpose of this release was to make public the open source version of the ESPD application on Github.

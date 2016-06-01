@@ -32,6 +32,10 @@ services to their users.
 * [Release notes](http://espd.github.io/espd/docs/html/releaseNotes.html)
 * [Full documentation](http://espd.github.io/espd/docs/html/espd.html)
 
+### Older versions
+
+* [2016.05](https://github.com/ESPD/espd/blob/2016.05/espd-docs/src/main/asciidoc/espd.adoc)
+
 ## License
 
 [License](http://espd.github.io/espd/docs/html/license.html)
