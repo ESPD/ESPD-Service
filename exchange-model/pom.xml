@@ -3,7 +3,7 @@
     <parent>
         <artifactId>espd</artifactId>
         <groupId>eu.europa.ec.grow.espd</groupId>
-        <version>2016.05.01-SNAPSHOT</version>
+        <version>2016.06</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
