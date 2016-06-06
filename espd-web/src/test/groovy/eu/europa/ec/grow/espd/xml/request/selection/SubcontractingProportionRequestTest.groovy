@@ -65,7 +65,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 0
         g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "3aaca389-4a7b-406b-a4b9-080845d127e7", "Please specify", "DESCRIPTION")
+        checkRequirement(g1.Requirement[0], "15778db8-0d84-42ba-931b-774c1b3d3f9f", "Please specify", "DESCRIPTION")
     }
 
 }
