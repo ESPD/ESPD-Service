@@ -119,6 +119,8 @@ class EspdController {
             return importEspdAsEo(country, attachments.get(0), model, result);
         } else if ("eo_merge_espds".equals(action)) {
             return mergeTwoEspds(attachments, model, result);
+        } else if ("eo_create_response".equals(action)) {
+	        return createNewResponseAsEO(country, document);
         }
         return "filter";
     }
@@ -194,6 +196,10 @@ class EspdController {
         return "filter";
     }
 
+    private boolean needsToLoadProcurementProcedureInformation(EspdDocument espdDocument) {
+        return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
+    }
+
     private String mergeTwoEspds(List<MultipartFile> attachments, Model model, BindingResult result)
             throws IOException {
         try (InputStream reqIs = attachments.get(1).getInputStream();
@@ -209,9 +215,16 @@ class EspdController {
         return "filter";
     }
 
-    private boolean needsToLoadProcurementProcedureInformation(EspdDocument espdDocument) {
-        return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
-    }
+
+	private String createNewResponseAsEO(Country country, EspdDocument document) {
+		if (document.getEconomicOperator() == null) {
+			document.setEconomicOperator(new EconomicOperatorImpl());
+		}
+		document.getEconomicOperator().setCountry(country);
+		document.giveLifeToAllExclusionCriteria();
+		document.giveLifeToAllSelectionCriteria();
+		return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
+	}
 
     @RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
     public String view(
