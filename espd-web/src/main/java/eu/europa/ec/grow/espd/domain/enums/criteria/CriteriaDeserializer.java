@@ -47,7 +47,7 @@ import java.util.List;
 final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 
     private static final CriteriaDeserializer INSTANCE = new CriteriaDeserializer();
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private static Criteria exclusionCriteria;
     private static Criteria selectionCriteria;
@@ -59,7 +59,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
     static {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Criteria.class, INSTANCE);
-        mapper.registerModule(module);
+        MAPPER.registerModule(module);
         // read the criteria only once to populate the enums
         exclusionCriteria = parseJsonFile("exclusionCriteria.json");
         selectionCriteria = parseJsonFile("selectionCriteria.json");
@@ -211,7 +211,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
             public List<? extends CcvRequirementGroup> getSubgroups() {
                 ArrayNode subGroupNodes = (ArrayNode) parentNode.get("subgroups");
                 if (subGroupNodes == null) {
-                    return null;
+                    return Collections.emptyList();
                 }
                 List<CcvRequirementGroup> subgroups = new ArrayList<>(subGroupNodes.size());
                 for (JsonNode nd : subGroupNodes) {
@@ -273,7 +273,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 
     private static Criteria parseJsonFile(String fileName) {
         try (InputStream is = new ClassPathResource("criteria/" + fileName).getInputStream()){
-            return mapper.readValue(is, Criteria.class);
+            return MAPPER.readValue(is, Criteria.class);
         } catch (IOException e) {
             throw new IllegalArgumentException(String.format("Could not read JSON file: '%s'.", fileName), e);
         }

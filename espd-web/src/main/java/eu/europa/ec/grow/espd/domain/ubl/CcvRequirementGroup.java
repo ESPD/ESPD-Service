@@ -24,12 +24,13 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by ratoico on 12/4/15 at 10:45 AM.
  */
-public interface CcvRequirementGroup {
+public interface CcvRequirementGroup extends Serializable {
 
     String getId();
 

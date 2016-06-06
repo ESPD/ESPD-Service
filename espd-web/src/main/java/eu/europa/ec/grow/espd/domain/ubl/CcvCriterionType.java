@@ -24,10 +24,12 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
+
 /**
  * Created by ratoico on 1/7/16 at 11:30 AM.
  */
-public interface CcvCriterionType {
+public interface CcvCriterionType extends Serializable {
 
     /**
      * ESPD specific type used to build different types of criteria.
