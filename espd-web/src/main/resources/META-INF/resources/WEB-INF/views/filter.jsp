@@ -62,6 +62,8 @@ $(function() {
 <form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
+			<tiles:putAttribute name="agent" value="unknown"/>
+			<tiles:putAttribute name="flow" value="unknown"/>
 			<tiles:putAttribute name="start" value="true"/>
         </tiles:insertDefinition>
 		<div class="paragraph">

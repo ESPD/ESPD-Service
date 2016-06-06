@@ -35,6 +35,22 @@
 <tiles:importAttribute name="selection"/>
 <tiles:importAttribute name="finish"/>
 
+<tiles:importAttribute name="flow"/>
+<tiles:importAttribute name="agent"/>
+
+<c:if test="${flow == 'unknown' and agent == 'unknown'}">
+	<c:set var="procedureLink" value="#"/>
+	<c:set var="exclusionLink" value="#"/>
+	<c:set var="selectionLink" value="#"/>
+	<c:set var="finishLink" value="#"/>
+</c:if>
+<c:if test="${flow != 'unknown' and agent != 'unknown'}">
+	<c:set var="procedureLink" value="${pageContext.request.contextPath}/${flow}/${agent}/procedure"/>
+	<c:set var="exclusionLink" value="${pageContext.request.contextPath}/${flow}/${agent}/exclusion"/>
+	<c:set var="selectionLink" value="${pageContext.request.contextPath}/${flow}/${agent}/selection"/>
+	<c:set var="finishLink" value="${pageContext.request.contextPath}/${flow}/${agent}/finish"/>
+</c:if>
+
 <div class="panel panel-default no-border hidden-print">
     <ul class="nav nav-pills nav-wizard nav-justified">
         <li class="${(start||procedure||exclusion||selection||finish)?'active':''}">
@@ -43,22 +59,22 @@
         </li>
         <li class="${(procedure||exclusion||selection||finish)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="#"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
+            <a href="${procedureLink}"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${(exclusion||selection||finish)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="#"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
+            <a href="${exclusionLink}"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${(finish||selection)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="#"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
+            <a href="${selectionLink}"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${finish?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="#"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
+            <a href="${finishLink}"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
         </li>
     </ul>
 </div>
