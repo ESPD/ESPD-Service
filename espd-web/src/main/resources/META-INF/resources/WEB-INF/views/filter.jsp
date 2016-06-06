@@ -142,6 +142,11 @@ $(function() {
                         <label><input name="action" value="eo_merge_espds" class="radiotab radioCa" type="radio" data-target="#tab-multiple-upload"/>${span18n['filter_merge_espds']}</label>
                         <span data-i18n="tooltip_filter_eo_merge_espds" data-toggle="tooltip" title="${i18n['tooltip_filter_eo_merge_espds']}"></span>
                     </div>
+                    <div class="radio">
+                        <span class="k-button fa fa-upload hoverable"></span>
+                        <label><input name="action" value="eo_create_response" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"/>${span18n['filter_create_response']}</label>
+                        <span data-i18n="tooltip_filter_create_response" data-toggle="tooltip" title="${i18n['tooltip_filter_create_response']}"></span>
+                    </div>
 				</div>
 			</div>
 			<div class="tab-content" >

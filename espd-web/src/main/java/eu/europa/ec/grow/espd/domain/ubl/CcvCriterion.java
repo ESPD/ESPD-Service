@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ import java.util.List;
  * <p/>
  * Created by vigi on 11/17/15:4:16 PM.
  */
-public interface CcvCriterion {
+public interface CcvCriterion extends Serializable {
 
     String getUuid();
 

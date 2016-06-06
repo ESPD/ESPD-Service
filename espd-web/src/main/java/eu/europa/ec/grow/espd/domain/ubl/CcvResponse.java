@@ -24,8 +24,10 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
+
 /**
  * Created by vigi on 11/19/15:10:29 AM.
  */
-public interface CcvResponse {
+public interface CcvResponse extends Serializable {
 }

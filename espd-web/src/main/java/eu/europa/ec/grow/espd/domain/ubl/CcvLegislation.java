@@ -24,10 +24,12 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
+
 /**
  * Created by vigi on 11/18/15:1:04 PM.
  */
-public interface CcvLegislation {
+public interface CcvLegislation extends Serializable {
 
     String getTitle();
 

@@ -24,6 +24,8 @@
 
 package eu.europa.ec.grow.espd.domain.ubl;
 
+import java.io.Serializable;
+
 /**
  * The contracting authority or contracting entity who is buying supplies,
  * services or public works using a tendering procedure as described in the
@@ -31,7 +33,7 @@ package eu.europa.ec.grow.espd.domain.ubl;
  * <p/>
  * Created by vigi on 11/19/15:2:59 PM.
  */
-public interface CacParty {
+public interface CacParty extends Serializable {
 
     String getName();
     

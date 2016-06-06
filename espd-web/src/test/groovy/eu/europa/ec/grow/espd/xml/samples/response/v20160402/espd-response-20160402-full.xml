@@ -4210,8 +4210,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3aaca389-4a7b-406b-a4b9-080845d127e7</cbc:ID>
             <cbc:Description>Please specify</cbc:Description>
             <ccv:Response>
-               <cbc:Description>General training objective : to train students to cope with the current global/international concerns in agriculture and rural development to:
--          identify and critically analyse key factors shaping the development of crops, forests and animal production, the management of research and rural development projects and finally, the sustainable use of natural resources and the envformulate and provide effective and appropriate responses to complex agriculture and natural resources related issues.</cbc:Description>
+               <cbc:Description>General training objective : to train students to cope with the current global/international concerns in agriculture and rural development to.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>

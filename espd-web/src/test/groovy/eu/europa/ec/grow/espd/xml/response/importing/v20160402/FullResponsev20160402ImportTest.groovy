@@ -406,6 +406,12 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.numberManagerialStaff.availableElectronically.code == "Number of managerial staff code"
     }
 
+    def "28. should import all fields of 'Subcontracting proportion'"() {
+        expect:
+        espd.subcontractingProportion.exists == true
+        espd.subcontractingProportion.specify == "General training objective : to train students to cope with the current global/international concerns in agriculture and rural development to."
+    }
+
     def "01. should import all fields of 'Procurement reserved'"() {
         expect:
         espd.procurementReserved.exists == true
