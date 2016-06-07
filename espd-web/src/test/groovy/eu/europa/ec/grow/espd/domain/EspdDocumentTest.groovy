@@ -73,4 +73,21 @@ class EspdDocumentTest extends Specification {
         result.convicted == "hodor"
         result == crit
     }
+
+    def "should preselect the mandatory exclusion criteria for CA"() {
+        given:
+        def espd = new EspdDocument()
+
+        when:
+        espd.selectCAExclusionCriteria()
+
+        then:
+        for (eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion crit : eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.values()) {
+            if (!eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(crit)) {
+                PropertyUtils.getNestedProperty(espd, "${crit.espdDocumentField}.exists") == true
+            } else {
+                espd.purelyNationalGrounds.exists == false
+            }
+        }
+    }
 }
