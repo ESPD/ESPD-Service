@@ -24,7 +24,6 @@
 
 package eu.europa.ec.grow.espd.xml.common.importing;
 
-import com.google.common.base.Function;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -44,9 +43,8 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  */
 @Component
 @Slf4j
-public class PartyImplTransformer implements Function<PartyType, PartyImpl> {
+public class PartyImplTransformer {
 
-    @Override
     public PartyImpl apply(PartyType input) {
         PartyImpl authority = new PartyImpl();
 

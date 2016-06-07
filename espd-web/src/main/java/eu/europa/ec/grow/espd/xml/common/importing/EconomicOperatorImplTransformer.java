@@ -24,11 +24,10 @@
 
 package eu.europa.ec.grow.espd.xml.common.importing;
 
-import com.google.common.base.Function;
-import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
+import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.NaturalPersonType;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +46,7 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
  */
 @Component
 @Slf4j
-public class EconomicOperatorImplTransformer implements Function<EconomicOperatorPartyType, EconomicOperatorImpl> {
+public class EconomicOperatorImplTransformer {
 
     private final PartyImplTransformer partyImplTransformer;
 
@@ -56,8 +55,7 @@ public class EconomicOperatorImplTransformer implements Function<EconomicOperato
         this.partyImplTransformer = partyImplTransformer;
     }
 
-    @Override
-    public EconomicOperatorImpl apply(EconomicOperatorPartyType input) {
+    public EconomicOperatorImpl buildEconomicOperator(EconomicOperatorPartyType input) {
         EconomicOperatorImpl impl = new EconomicOperatorImpl();
 
         if (input.getParty() != null) {

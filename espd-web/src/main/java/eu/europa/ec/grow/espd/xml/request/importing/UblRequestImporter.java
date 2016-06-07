@@ -22,9 +22,10 @@
  *
  */
 
-package eu.europa.ec.grow.espd.xml.response.importing;
+package eu.europa.ec.grow.espd.xml.request.importing;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulator;
 import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer;
 import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer;
@@ -33,7 +34,6 @@ import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
-import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
@@ -43,63 +43,92 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 /**
- * Create an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDResponseType}.
+ * Create an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
  * <p/>
- * Created by ratoico on 1/6/16 at 5:41 PM.
+ * Created by ratoico on 11/25/15 11:28 AM.
  */
 @Component
-@Slf4j
-public class UblResponseImporter extends UblRequestResponseImporter {
+public class UblRequestImporter extends UblRequestResponseImporter {
 
-	@Autowired
-	public UblResponseImporter(PartyImplTransformer partyImplTransformer,
+    @Autowired
+	protected UblRequestImporter(
+			PartyImplTransformer partyImplTransformer,
 			EconomicOperatorImplTransformer economicOperatorImplTransformer,
 			CriteriaToEspdDocumentPopulator criteriaToEspdDocumentPopulator) {
 		super(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator);
 	}
 
 	/**
-	 * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDResponseType}.
-	 *
-	 * @param input The XML object structure of an ESPD Response
-	 *
-	 * @return An {@link EspdDocument} entity containing the information coming from the XML response file.
-	 */
-	public EspdDocument importResponse(ESPDResponseType input) {
-		return buildEspdDocument(null, input);
-	}
+     * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDRequestType}.
+     *
+     * @param input The XML object structure of an ESPD Request
+     *
+     * @return An {@link EspdDocument} entity containing the information coming from the XML request file.
+     */
+    public EspdDocument importRequest(ESPDRequestType input) {
+	    EspdDocument document = buildEspdDocument(input, null);
+	    // the request information is read differently than in the case of a response
+	    addEspdRequestInformation(input, document);
+	    return document;
+    }
+
+    private void addEspdRequestInformation(ESPDRequestType input, EspdDocument espdDocument) {
+        EspdRequestMetadata metadata = new EspdRequestMetadata();
+        metadata.setId(readRequestId(input));
+        metadata.setIssueDate(readIssueDate(input.getIssueDate(), input.getIssueTime()));
+        metadata.setDescription(readRequestDescription(input));
+        // TODO build URL of the request
+        espdDocument.setRequestMetadata(metadata);
+    }
+
+    private String readRequestId(ESPDRequestType input) {
+        if (input.getID() == null) {
+            return null;
+        }
+        return input.getID().getValue();
+    }
+
+    private String readRequestDescription(ESPDRequestType input) {
+        if (input.getContractFolderID() == null || isBlank(input.getContractFolderID().getValue())) {
+            return null;
+        }
+        return "ESPDRequest " + input.getContractFolderID().getValue();
+    }
 
 	@Override
 	protected ContractingPartyType provideContractingParty(ESPDRequestType requestType, ESPDResponseType responseType) {
-		return responseType.getContractingParty();
+		return requestType.getContractingParty();
 	}
 
 	@Override
 	protected EconomicOperatorPartyType provideEconomicOperatorParty(ESPDRequestType requestType,
 			ESPDResponseType responseType) {
-		return responseType.getEconomicOperatorParty();
+		// a request does not have economic operator information
+		return null;
 	}
 
 	@Override
 	protected List<CriterionType> provideCriteria(ESPDRequestType requestType, ESPDResponseType responseType) {
-		return responseType.getCriterion();
+		return requestType.getCriterion();
 	}
 
 	@Override
 	protected List<ProcurementProjectLotType> provideProjectLots(ESPDRequestType requestType,
 			ESPDResponseType responseType) {
-		return responseType.getProcurementProjectLot();
+		return requestType.getProcurementProjectLot();
 	}
 
 	@Override
 	protected List<DocumentReferenceType> provideDocumentReferences(ESPDRequestType requestType,
 			ESPDResponseType responseType) {
-		return responseType.getAdditionalDocumentReference();
+		return requestType.getAdditionalDocumentReference();
 	}
 
 	@Override
 	protected ContractFolderIDType provideContractFolder(ESPDRequestType requestType, ESPDResponseType responseType) {
-		return responseType.getContractFolderID();
+		return requestType.getContractFolderID();
 	}
 }

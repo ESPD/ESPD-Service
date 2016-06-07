@@ -27,10 +27,10 @@ package eu.europa.ec.grow.espd.xml;
 import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestTypeTransformer;
-import eu.europa.ec.grow.espd.xml.request.importing.UblRequestToEspdDocumentTransformer;
+import eu.europa.ec.grow.espd.xml.request.importing.UblRequestImporter;
 import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer;
 import eu.europa.ec.grow.espd.xml.response.importing.UblRequestResponseMerger;
-import eu.europa.ec.grow.espd.xml.response.importing.UblResponseToEspdDocumentTransformer;
+import eu.europa.ec.grow.espd.xml.response.importing.UblResponseImporter;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import lombok.extern.slf4j.Slf4j;
@@ -55,8 +55,8 @@ public class EspdExchangeMarshaller {
 
     private final Jaxb2Marshaller jaxb2Marshaller;
     private final UblRequestTypeTransformer toEspdRequestTransformer;
-    private final UblRequestToEspdDocumentTransformer requestToEspdDocumentTransformer;
-    private final UblResponseToEspdDocumentTransformer responseToEspdDocumentTransformer;
+    private final UblRequestImporter requestToEspdDocumentTransformer;
+    private final UblResponseImporter responseToEspdDocumentTransformer;
     private final UblResponseTypeTransformer toEspdResponseTransformer;
     private final UblRequestResponseMerger requestResponseMerger;
     private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
@@ -65,8 +65,8 @@ public class EspdExchangeMarshaller {
     @Autowired
     EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
             UblRequestTypeTransformer toEspdRequestTransformer,
-            UblRequestToEspdDocumentTransformer requestToEspdDocumentTransformer,
-            UblResponseToEspdDocumentTransformer responseToEspdDocumentTransformer,
+            UblRequestImporter requestToEspdDocumentTransformer,
+            UblResponseImporter responseToEspdDocumentTransformer,
             UblResponseTypeTransformer toEspdResponseTransformer, UblRequestResponseMerger requestResponseMerger) {
         this.jaxb2Marshaller = jaxb2Marshaller;
         this.toEspdRequestTransformer = toEspdRequestTransformer;
@@ -146,7 +146,7 @@ public class EspdExchangeMarshaller {
             JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
                     .unmarshal(new StreamSource(espdRequestStream));
             ESPDRequestType requestType = element.getValue();
-            return Optional.of(requestToEspdDocumentTransformer.buildRequest(requestType));
+            return Optional.of(requestToEspdDocumentTransformer.importRequest(requestType));
         } catch (Exception e) {
             log.warn(e.getMessage(), e);
             return Optional.absent();
@@ -168,7 +168,7 @@ public class EspdExchangeMarshaller {
             JAXBElement<ESPDResponseType> element = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
                     .unmarshal(new StreamSource(espdResponseStream));
             ESPDResponseType responseType = element.getValue();
-            return Optional.of(responseToEspdDocumentTransformer.buildResponse(responseType));
+            return Optional.of(responseToEspdDocumentTransformer.importResponse(responseType));
         } catch (Exception e) {
             log.warn(e.getMessage(), e);
             return Optional.absent();

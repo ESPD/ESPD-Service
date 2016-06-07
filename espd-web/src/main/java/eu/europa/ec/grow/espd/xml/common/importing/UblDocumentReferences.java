@@ -141,4 +141,5 @@ public final class UblDocumentReferences {
             return typeCode.name().equalsIgnoreCase(input.getDocumentTypeCode().getValue());
         }
     }
+
 }

@@ -34,11 +34,11 @@ import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulat
 import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer
 import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestCriteriaTransformer
-import eu.europa.ec.grow.espd.xml.request.importing.UblRequestToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.request.importing.UblRequestImporter
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestTypeTransformer
 import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseCriteriaTransformer
 import eu.europa.ec.grow.espd.xml.response.importing.UblRequestResponseMerger
-import eu.europa.ec.grow.espd.xml.response.importing.UblResponseToEspdDocumentTransformer
+import eu.europa.ec.grow.espd.xml.response.importing.UblResponseImporter
 import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
@@ -74,13 +74,13 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         def ublRequestTypeTransformer = new UblRequestTypeTransformer(ublContractingPartyTypeTransformer, new UblRequestCriteriaTransformer(), espdConfig)
         def partyImplTransformer = new PartyImplTransformer()
         def criteriaToEspdDocumentPopulator = new CriteriaToEspdDocumentPopulator()
-        def requestToEspdDocumentTransformer = new UblRequestToEspdDocumentTransformer(partyImplTransformer, criteriaToEspdDocumentPopulator)
         def economicOperatorImplTransformer = new EconomicOperatorImplTransformer(partyImplTransformer)
-        def responseToEspdDocumentTransformer = new UblResponseToEspdDocumentTransformer(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
+        def ublRequestImporter = new UblRequestImporter(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
+        def ublResponseImporter = new UblResponseImporter(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
         def ublResponseTypeTransformer = new UblResponseTypeTransformer(ublContractingPartyTypeTransformer, economicOperatorPartyTypeTransformer, new UblResponseCriteriaTransformer(), espdConfig)
         def requestResponseMerger = new UblRequestResponseMerger(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, requestToEspdDocumentTransformer,
-                responseToEspdDocumentTransformer, ublResponseTypeTransformer, requestResponseMerger)
+        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, ublRequestImporter,
+                ublResponseImporter, ublResponseTypeTransformer, requestResponseMerger)
     }
 
     void cleanupSpec() {
