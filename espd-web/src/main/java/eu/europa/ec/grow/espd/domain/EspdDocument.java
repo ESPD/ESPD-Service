@@ -156,9 +156,10 @@ public class EspdDocument {
 
 	/**
 	 * Read the value associated with a {@link CcvCriterion} stored on this domain object instance.
-	 * 
-	 * @param ccvCriterion
-	 * @return
+	 *
+	 * @param ccvCriterion The UBL criterion for which we want to retrieve the information
+	 *
+	 * @return The value stored on the ESPD domain object for the given criterion
 	 */
 	public final EspdCriterion readCriterionFromEspd(CcvCriterion ccvCriterion) {
 		try {
@@ -174,7 +175,7 @@ public class EspdDocument {
 	 */
 	public final void giveLifeToAllExclusionCriteria() {
 		for (eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion crit : ExclusionCriterion.values()) {
-			selectCriterionField(crit.getEspdDocumentField(), true);
+			instantiateEspdCriterion(crit.getEspdDocumentField(), true);
 		}
 	}
 
@@ -183,11 +184,23 @@ public class EspdDocument {
 	 */
 	public final void giveLifeToAllSelectionCriteria() {
 		for (SelectionCriterion crit : SelectionCriterion.values()) {
-			selectCriterionField(crit.getEspdDocumentField(), true);
+			instantiateEspdCriterion(crit.getEspdDocumentField(), true);
 		}
 	}
 
-	private void selectCriterionField(String fieldName, Boolean value) {
+	/**
+	 * Select the mandatory exclusion criteria needed by the CA when creating a new ESPD Request. This is a dirty
+	 * workaround in order to overcome the Section C exclusion criteria which need to be preselected and could
+	 * become not selected.
+	 */
+	public final void selectCAExclusionCriteria() {
+		for (eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion crit : ExclusionCriterion.values()) {
+			instantiateEspdCriterion(crit.getEspdDocumentField(),
+					!ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(crit));
+		}
+	}
+
+	private void instantiateEspdCriterion(String fieldName, Boolean value) {
 		try {
 			Class<?> clazz = PropertyUtils.getPropertyType(this, fieldName);
 			EspdCriterion espdCriterion = (EspdCriterion) clazz.newInstance();
