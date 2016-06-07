@@ -66,6 +66,8 @@
     
     <div class="panel-default">
         <tiles:insertDefinition name="progress">
+        	<tiles:putAttribute name="agent" value="${agent}"/>
+        	<tiles:putAttribute name="flow" value="${flow}"/>
             <tiles:putAttribute name="procedure" value="true"/>
         </tiles:insertDefinition>
         <div class="errorContainer alert alert-danger" style="display: none">

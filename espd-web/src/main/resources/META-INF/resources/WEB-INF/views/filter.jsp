@@ -43,6 +43,9 @@ $(function() {
     	$('.radioCa').removeAttr('checked');
     	$('[value="empty"]').prop('selected', true);
     	$("input:file").val('');
+    	
+    	$('#where_are_you_from_'+(($(this).val()=='eo')?'ca':'eo')).hide();
+		$('#where_are_you_from_' + $(this).val()).show();
     });
 	$("input:file").change(function (){
 		if($(this).val() != '') {
@@ -62,6 +65,8 @@ $(function() {
 <form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
+			<tiles:putAttribute name="agent" value="unknown"/>
+			<tiles:putAttribute name="flow" value="unknown"/>
 			<tiles:putAttribute name="start" value="true"/>
         </tiles:insertDefinition>
 		<div class="paragraph">
@@ -161,7 +166,10 @@ $(function() {
                     <form:input type="file" path="attachments"/>
                 </div>
                 <div class="tab-pane" id="tab-country-selection">
-					<h3>${span18n['filter_where_are_you_from']}</h3>
+                
+					<h3 id="where_are_you_from_ca">${span18n['filter_where_are_you_from_ca']}</h3>
+					<h3 id="where_are_you_from_eo">${span18n['filter_where_are_you_from_eo']}</h3>
+					
 					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
 			        <tiles:insertDefinition name="countries">
 			        	<tiles:putAttribute name="field" value="authority.country"/>

@@ -36,6 +36,8 @@
 	<div class="panel-default">
 	
         <tiles:insertDefinition name="progress">
+        	<tiles:putAttribute name="agent" value="${agent}"/>
+       		<tiles:putAttribute name="flow" value="${flow}"/>
 			<tiles:putAttribute name="finish" value="true"/>
         </tiles:insertDefinition>
 
