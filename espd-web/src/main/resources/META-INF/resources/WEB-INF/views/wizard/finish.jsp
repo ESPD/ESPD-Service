@@ -47,6 +47,7 @@
 			</h2>
 		</div>
 		
+		<c:if test="${agent == 'eo'}"><%-- Part V is visible only for EO --%>
 		<div class="panel panel-default espd-panel">
 			<div data-i18n="createcafinish_reduction" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-reduction-of-numbers-section">
 				 <s:message code='createcafinish_reduction'/>
@@ -76,6 +77,7 @@
                 </div>
             </div>
 		</div>
+		</c:if>
 		
 		<div class="panel panel-default espd-panel">
 			<div data-i18n="createcafinish_concl_statements" class="espd-panel-heading" data-toggle="collapse" data-target="#finish-statements-signature-section">
