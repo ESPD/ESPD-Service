@@ -35,7 +35,7 @@
 		${span18n["crit_please_describe_them"]}
 	</label>
 	<div class="col-md-8">
-		<form:textarea path="${field}.description" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
+		<form:textarea path="${field}.description" class="form-control"></form:textarea>
 	</div>
 </div> 
 
@@ -44,7 +44,7 @@
 			${span18n["crit_reasons_nevertheless_contract"]}
 	</label>
     <div class="col-md-8">
-        <form:textarea path="${field}.reason" cssClass="form-control" data-i18n="crit_reasons_nevertheless_contract_placeholder" placeholder="${i18n['crit_reasons_nevertheless_contract_placeholder']}"></form:textarea>
+        <form:textarea path="${field}.reason" cssClass="form-control"></form:textarea>
     </div>
 </div>
 

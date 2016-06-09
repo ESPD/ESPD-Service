@@ -46,13 +46,13 @@
 	<div class="form-group">
 		<label class="control-label col-md-4 small">${span18n['crit_date_of_conviction_or_decision']}</label>
 		<div class="col-md-8">
-			<form:input path="${field}.dateOfConviction" cssClass="form-control datepicker" data-i18n="crit_date_of_conviction_or_decision" placeholder="${i18n['crit_date_of_conviction_or_decision']}"/>
+			<form:input path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-4 small">${span18n['crit_taxes_length_period_of_exclusion']}</label>
 		<div class="col-md-8">
-			<form:input type="text" path="${field}.periodLength" cssClass="form-control" data-i18n="crit_length_period_exclusion_placeholder" placeholder="${i18n['crit_length_period_exclusion_placeholder']}"/>
+			<form:input type="text" path="${field}.periodLength" cssClass="form-control"/>
 		</div>
 	</div>
 </div>
@@ -61,7 +61,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-4 small">${span18n['crit_taxes_means_description']}</label>
 		<div class="col-md-8">
-			<form:textarea path="${field}.meansDescription" cssClass="form-control" data-i18n="crit_taxes_means_description" placeholder="${i18n['crit_taxes_means_description']}"/>
+			<form:textarea path="${field}.meansDescription" cssClass="form-control"/>
 		</div>
 	</div>
     <div class="form-group"> 
@@ -73,7 +73,7 @@
         <div class="form-group">
             <label class="control-label col-md-4 small">${span18n['crit_please_describe_them']}</label>
             <div class="col-md-8">
-                <form:textarea path="${field}.obligationsDescription" cssClass="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"/>
+                <form:textarea path="${field}.obligationsDescription" cssClass="form-control"/>
             </div>
         </div>
     </div>

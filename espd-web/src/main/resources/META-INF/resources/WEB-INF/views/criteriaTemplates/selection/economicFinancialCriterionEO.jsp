@@ -46,7 +46,7 @@
 	                            	${span18n["crit_please_describe_them"]}
 	                            </label>
 	                            <div class="col-md-8">
-	                                <form:textarea path="${field}.description" cssClass="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
+	                                <form:textarea path="${field}.description" cssClass="form-control"></form:textarea>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -71,7 +71,7 @@
 	                	${span18n["crit_amount"]}
 	                </label>
 	                <div class="col-xs-5">
-	                    <form:input path="${field}.amount1" cssClass="form-control" data-i18n="crit_amount_concerned_placeholder" placeholder="${i18n['crit_amount_concerned_placeholder']}"/>
+	                    <form:input path="${field}.amount1" cssClass="form-control"/>
 	                </div>
 	                <div class="col-xs-3">
 	                    <tiles:insertDefinition name="currencies">

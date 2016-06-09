@@ -77,10 +77,15 @@ function language(code) {
 				}
 				var elem = $("*[data-i18n='" + codes[i] + "']");
 				var tagName = elem.prop("tagName").toLowerCase();
-				if(tagName == "input" || tagName == "textarea") {
-					elem.attr('placeholder', array[i]);
-				}
-				else if (elem.attr("data-toggle") == "tooltip") {
+				
+				// placeholders were removed from ESPD.
+				// I leave this code commented in case we need to revert them. lukasal 09/06.2016
+				//if(tagName == "input" || tagName == "textarea") {
+				//	elem.attr('placeholder', array[i]);
+				//}
+				//else 
+				
+				if (elem.attr("data-toggle") == "tooltip") {
 					elem.attr("title", array[i]);
 					elem.attr("data-original-title", array[i]);
 				}
@@ -96,14 +101,7 @@ function language(code) {
 
 function optsort() {
 	$("select.optsorted").each(function() {
-		var $select = $(this);
-		var $groups = $select.find("optgroup");
-		//$groups.remove();
-		//$groups = $groups.sort(function(g1, g2) {
-		//    return g1.label.localeCompare(g2.label);      
-		//});      
-		//$select.append($groups);
-		$groups.each(function() {
+		$(this).find("optgroup").each(function() {
 			var $group = $(this);
             var options = $group.find("option");
             options.remove();

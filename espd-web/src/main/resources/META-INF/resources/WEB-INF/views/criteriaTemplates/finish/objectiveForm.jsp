@@ -33,6 +33,6 @@
 <div class="form-group">
 	<label class="control-label col-md-4 small" data-i18n="crit_please_describe_them">${span18n['crit_please_describe_them']}</label>
 	<div class="col-md-8">
-		<form:textarea path="${field}.description1" class="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"></form:textarea>
+		<form:textarea path="${field}.description1" class="form-control"></form:textarea>
 	</div>
 </div> 

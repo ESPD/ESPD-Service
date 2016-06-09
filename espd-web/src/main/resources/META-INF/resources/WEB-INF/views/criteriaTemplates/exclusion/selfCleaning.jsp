@@ -41,7 +41,7 @@
 			${span18n["crit_please_describe_them"]}
 		</label>
 		<div class="col-md-8">
-			<form:textarea path="${field}.selfCleaning.description" cssClass="form-control" data-i18n="crit_please_describe_them_placeholder" placeholder="${i18n['crit_please_describe_them_placeholder']}"/>
+			<form:textarea path="${field}.selfCleaning.description" cssClass="form-control"/>
 		</div>
 	</div>
 </div>

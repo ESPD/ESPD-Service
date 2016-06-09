@@ -60,7 +60,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="col-md-8">
-                                <form:textarea path="${field}.description" class="form-control" placeholder="${i18n['crit_description_placeholder']}" data-i18n="crit_description_placeholder"></form:textarea>
+                                <form:textarea path="${field}.description" class="form-control" ></form:textarea>
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,7 @@
                             <label class="control-label col-md-4 small">${span18n['crit_please_specify']}</label>
 
                             <div class="col-md-8">
-                                <form:textarea path="${field}.specify" class="form-control"
-                                               data-i18n="crit_please_specify" placeholder="${i18n['crit_please_specify']}"></form:textarea>
+                                <form:textarea path="${field}.specify" class="form-control"></form:textarea>
                             </div>
                         </div>
                     </div>

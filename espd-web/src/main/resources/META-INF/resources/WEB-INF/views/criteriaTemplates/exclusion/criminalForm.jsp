@@ -31,22 +31,17 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field1" data-i18n="crit_date_of_conviction"><s:message
-            code='crit_date_of_conviction'/></label>
-    <s:message code="crit_date_of_conviction_placeholder" var="dateOfconvictionPlaceholder"/>
+    <label class="control-label col-md-4 small" data-i18n="crit_date_of_conviction"><s:message code='crit_date_of_conviction'/></label>
     <div class="col-md-8">
-        <form:input path="${field}.dateOfConviction" cssClass="form-control datepicker" id="${field}-field1"
-                    placeholder="${dateOfconvictionPlaceholder}"/>
+        <form:input path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field2" data-i18n="crit_reason"><s:message
+    <label class="control-label col-md-4 small" data-i18n="crit_reason"><s:message
             code='crit_reason'/></label>
 
     <div class="col-md-8">
-        <s:message code="crit_reason_placeholder" var="reasonPlaceholder"/>
-        <form:textarea path="${field}.reason" cssClass="form-control" id="${field}-field2"
-                       placeholder="${reasonPlaceholder}"/>
+        <form:textarea path="${field}.reason" cssClass="form-control" />
     </div>
 </div>
 <div class="form-group">
@@ -55,18 +50,13 @@
     </label>
 
     <div class="col-md-8">
-        <s:message code="crit_who_convicted_placeholder" var="whoConvictedPlaceholder"/>
-        <form:textarea path="${field}.convicted" cssClass="form-control" id="${field}-field3"
-                       placeholder="${whoConvictedPlaceholder}"/>
+        <form:textarea path="${field}.convicted" cssClass="form-control"/>
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-4 small" for="${field}-field4"
-           data-i18n="crit_length_period_exclusion"><s:message code='crit_length_period_exclusion'/></label>
+    <label class="control-label col-md-4 small" data-i18n="crit_length_period_exclusion"><s:message code='crit_length_period_exclusion'/></label>
     <div class="col-md-8">
-        <s:message code="crit_length_period_exclusion_placeholder" var="periodLengthPlaceholder"/>
-        <form:input path="${field}.periodLength" class="form-control" id="${field}-field4"
-                    placeholder="${periodLengthPlaceholder}"/>
+        <form:input path="${field}.periodLength" class="form-control"/>
     </div>
 </div>
 
