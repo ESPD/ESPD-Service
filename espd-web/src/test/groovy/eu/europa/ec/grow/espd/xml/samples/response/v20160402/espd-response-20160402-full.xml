@@ -245,7 +245,7 @@
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
                <cbc:Description>Please describe them</cbc:Description>
                <ccv:Response>
-                  <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+                  <cbc:Description>Get yer godforsaken bonnie lass out of me teeth!</cbc:Description>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -316,7 +316,7 @@
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
             <cbc:Description>Reason</cbc:Description>
             <ccv:Response>
-               <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+               <cbc:Description>T' slash or not t' slash: tis th' question.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
@@ -341,13 +341,15 @@
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
                <cbc:Description>Have you taken measures to demonstrate your reliability (&quot;Self-Cleaning&quot;)?</cbc:Description>
                <ccv:Response>
-                  <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
+                  <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
                <cbc:Description>Please describe them</cbc:Description>
-               <ccv:Response/>
+               <ccv:Response>
+                <cbc:Description>May I always be pillagin' an' swashbucklin', me plank monkey.</cbc:Description>
+               </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
       </ccv:RequirementGroup>
@@ -369,7 +371,7 @@
                      <cbc:ID>07d13fec-bb9d-4117-bfd3-b551a00ea3b7</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic1.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -417,7 +419,7 @@
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
             <cbc:Description>Reason</cbc:Description>
             <ccv:Response>
-               <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+               <cbc:Description>I'm yer lad, an' yer me clay-brained numbskull. For real, that be!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
@@ -472,7 +474,7 @@
                      <cbc:ID>81e0be57-ef20-4e4d-b1d2-00c7bd474bc2</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic2.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -520,7 +522,7 @@
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
             <cbc:Description>Reason</cbc:Description>
             <ccv:Response>
-               <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+               <cbc:Description>T' plank or not t' plank: tis th' question.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
@@ -575,7 +577,7 @@
                      <cbc:ID>cc1e35bc-84d3-44a2-85ef-a62e1c0025f2</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic3.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -623,7 +625,7 @@
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
             <cbc:Description>Reason</cbc:Description>
             <ccv:Response>
-               <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+               <cbc:Description>Yarrr, give me yer booty lest I hornswaggle yer putrid face.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
@@ -678,7 +680,7 @@
                      <cbc:ID>29846137-1e0f-44b8-8501-7f515eb7a73d</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic4.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -872,7 +874,7 @@
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">201f11c3-1fa2-4464-acc0-f021266fd881</cbc:ID>
                <cbc:Description>Please describe which means were used</cbc:Description>
                <ccv:Response>
-                  <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+                  <cbc:Description>May ye always be swabbin' an' scallywaggin', me deckhand.</cbc:Description>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -882,18 +884,24 @@
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">08b0c984-c5e6-4143-8493-868c39745637</cbc:ID>
                <cbc:Description>If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?</cbc:Description>
                <ccv:Response>
-                  <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
+                  <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
                </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
                <cbc:Description>Date of conviction</cbc:Description>
-               <ccv:Response/>
+               <ccv:Response>
+                <cbc:Date>2002-02-14</cbc:Date>
+               </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="PERIOD">
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
                <cbc:Description>Length of the period of exclusion</cbc:Description>
-               <ccv:Response/>
+                <ccv:Response>
+                    <cac:Period>
+                        <cbc:Description>4 months</cbc:Description>
+                    </cac:Period>
+                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
          <ccv:RequirementGroup>
@@ -909,7 +917,7 @@
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">55905dd0-38f0-4f93-8c74-5ae05a21afc5</cbc:ID>
                <cbc:Description>Please describe them</cbc:Description>
                <ccv:Response>
-                  <cbc:Description>People with mobility and movement impairments may find it difficult to participate when facing social and physical barriers. Quite often they are individuals of courage and independence who have a desire to contribute to the fullest level of their ability. Some are totally independent, while others may need part- or full-time assistance.</cbc:Description>
+                  <cbc:Description>A wise bilge rat keeps only comp'ny with a slimy rum junkie an' a putrid bung hole.</cbc:Description>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -932,7 +940,7 @@
                      <cbc:ID>a66016c6-eec0-4bf3-9043-2ad71dfe454d</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic5.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1020,9 +1028,7 @@
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Once a rum junkie, always a rum junkie. Yo ho!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:RequirementGroup>
@@ -1069,9 +1075,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>By the foul bowels of Davy Jones! Why be we keelhaulin' so cockeredly?</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:RequirementGroup>
@@ -1188,18 +1192,14 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Bilge rats! Stab that blubbery cackle fruit!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
             <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Broadsidin', swabbin' an' slashin' — that be how we sail.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1221,7 +1221,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>09a2c4c4-0b68-4de6-acb5-527a6f0f3731</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic6.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1262,18 +1262,14 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Cursed wenches o' fire! Why be they screamin' so cockeredly?</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
             <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>I think that be his peg-leg. Begad!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1295,7 +1291,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>adc7b6d1-9152-4223-86d1-1cc3d0125ad9</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic7.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1336,18 +1332,14 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Whence I be done mutinizin', I'm going t' stab their rum.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
             <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Ye be plunderin' like a fancy blaggard.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1369,7 +1361,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>b2243ceb-deff-482c-9e1f-aae73c4413e0</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic8.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1410,18 +1402,14 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Yarrr, give me yer flintlock lest I rob yer rotten beard.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
             <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>She be pillagin' like a haggard cap'n.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1443,7 +1431,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>8e2a2c9c-a3ca-4fe9-84ec-82c3f380ac56</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic9.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1484,18 +1472,14 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>I be cuttin' off their teeth an' feedin' it to me clay-brained numbskull.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e3f468a-86c4-4c99-bd15-c8b221229348</cbc:ID>
             <cbc:Description>Indicate reasons for being nevertheless to perform the contract</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>I'm yer goblin, an' yer me seadog. For real, that be!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1517,7 +1501,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>e7cc9e25-7713-4a72-936b-dde2a05dbe57</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic10.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -1675,9 +1659,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Once a cap'n, always a cap'n. Bucket o' bladder stench!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -1707,9 +1689,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Shiver me timbers! Shark-chum that flea-bitten heartie!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:RequirementGroup>
@@ -1818,6 +1798,22 @@ Prepare to accommodate individuals with a physical disability before Church meet
       </ccv:RequirementGroup>
    </ccv:Criterion>
    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7e7db838-eeac-46d9-ab39-42927486f22d</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.ALL_SATISFIED</cbc:TypeCode>
+        <cbc:Name>All selection criteria will be satisfied</cbc:Name>
+        <cbc:Description>It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f3a6836d-2de2-4cd1-81ca-fb06178d05c5</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+   <ccv:Criterion>
       <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
       <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.SUITABILITY</cbc:TypeCode>
       <cbc:Name>Enrolment in a relevant professional register</cbc:Name>
@@ -1913,7 +1909,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>5dca6f01-4ebb-449f-8800-1ac3804b136a</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic11.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2017,9 +2013,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.
-Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.
-Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+               <cbc:Description>Get yer disloyal parrot out of me special pirate parts!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -2041,7 +2035,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>07285230-d7b8-4baa-b2a8-c11bd01fbbb5</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic12.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2283,7 +2277,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">1000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="CHF">1000000.0</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2300,7 +2294,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">200000.0</cbc:Amount>
+                  <cbc:Amount currencyID="RON">200004.53</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2323,7 +2317,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>b3181d18-00cd-4ecb-bdb8-40bd948e577e</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic13.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2373,7 +2367,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">5000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="EUR">5000000.775555</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2390,7 +2384,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4acd0a02-c267-4d05-b456-c0565c2ffd46</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+                  <cbc:Amount currencyID="RON">100000.0</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2424,7 +2418,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">300000.0</cbc:Amount>
+                  <cbc:Amount currencyID="CHF">300000.0</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2464,7 +2458,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>99e7ec49-d82b-4e62-8102-f7563e1055ff</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic14.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2531,7 +2525,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4acd0a02-c267-4d05-b456-c0565c2ffd46</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">2000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="USD">2000003.0</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2548,7 +2542,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">28fb4b41-5178-4b79-ba24-d9a62fa4a658</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">3000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="EUR">3000000.1234</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2565,7 +2559,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">4000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="EUR">10.0001</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2582,7 +2576,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</cbc:ID>
                <cbc:Description>Amount</cbc:Description>
                <ccv:Response>
-                  <cbc:Amount currencyID="EUR">5000000.0</cbc:Amount>
+                  <cbc:Amount currencyID="RON">5000000.0</cbc:Amount>
                </ccv:Response>
             </ccv:Requirement>
          </ccv:RequirementGroup>
@@ -2605,7 +2599,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
                      <cbc:ID>c6254d84-0ed9-4a90-ad87-d6d63c5bf1db</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic15.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2857,9 +2851,7 @@ Prepare to accommodate individuals with a physical disability before Church meet
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>Once they are informed that they are admitted, candidates have to contact the M1 coordinator for specific aspects regarding their arrival.
-Visa , insurance and lodging are the most important issues to clarify then. Browse the pages on these issues which will inform you.
- </cbc:Description>
+               <cbc:Description>Great Oden's Ghost! Slash that pale clay-brained numbskull!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -2881,7 +2873,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
                      <cbc:ID>ba2319fb-b397-429d-b44d-852b93ec2d57</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+                           <cbc:URI>http://www.example.com/images/pic16.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -2892,7 +2884,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
             <cbc:Description>Code</cbc:Description>
             <ccv:Response>
-               <ccv-cbc:Code>Other economic or financial requirements  code</ccv-cbc:Code>
+               <ccv-cbc:Code>Other economic or financial requirements code</ccv-cbc:Code>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3137,7 +3129,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>rec 1</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3154,7 +3146,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4acd0a02-c267-4d05-b456-c0565c2ffd46</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">300000.0</cbc:Amount>
+               <cbc:Amount currencyID="RON">300000.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3168,7 +3160,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c8babafa-b6fa-4e14-8749-d913d8f1d33b</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>rec 2</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3185,7 +3177,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">28fb4b41-5178-4b79-ba24-d9a62fa4a658</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">500000.0</cbc:Amount>
+               <cbc:Amount currencyID="USD">500000.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3199,7 +3191,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5157e1ff-d272-4382-98a9-6953f5a15300</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>rec 3</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3216,7 +3208,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">600000.0</cbc:Amount>
+               <cbc:Amount currencyID="PLN">600000.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3230,7 +3222,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a84ea948-cf03-47b5-b4cf-a35f49910d10</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>rec 4</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3261,7 +3253,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">38a4802f-0b93-4e78-ad4e-2a057e1aa578</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>rec 5</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3283,7 +3275,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
                      <cbc:ID>5b176a9c-60da-4f4c-984f-cd49768579ae</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit15.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3317,14 +3309,14 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
             <cbc:Description>Description</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST F</cbc:Description>
+               <cbc:Description>F</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="AMOUNT">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+               <cbc:Amount currencyID="EUR">100001.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3338,7 +3330,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>r 1</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3348,14 +3340,14 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">927def36-1fa3-4018-8b45-7ee2c5b1e0af</cbc:ID>
             <cbc:Description>Description</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST G</cbc:Description>
+               <cbc:Description>G</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="AMOUNT">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4acd0a02-c267-4d05-b456-c0565c2ffd46</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+               <cbc:Amount currencyID="RON">100002.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3369,7 +3361,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c8babafa-b6fa-4e14-8749-d913d8f1d33b</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>r 2</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3379,14 +3371,14 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</cbc:ID>
             <cbc:Description>Description</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST H</cbc:Description>
+               <cbc:Description>H</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="AMOUNT">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">28fb4b41-5178-4b79-ba24-d9a62fa4a658</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+               <cbc:Amount currencyID="USD">100003.3</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3400,7 +3392,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5157e1ff-d272-4382-98a9-6953f5a15300</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>r 3</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3410,14 +3402,14 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b1640c24-b405-443e-bf5e-d7771f66aab6</cbc:ID>
             <cbc:Description>Description</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST I</cbc:Description>
+               <cbc:Description>I</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="AMOUNT">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+               <cbc:Amount currencyID="PLN">400004.0</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3431,7 +3423,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a84ea948-cf03-47b5-b4cf-a35f49910d10</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>r 4</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3441,14 +3433,14 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">587129bc-a5e1-43be-94ac-6e5366d30c67</cbc:ID>
             <cbc:Description>Description</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST J</cbc:Description>
+               <cbc:Description>J</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="AMOUNT">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</cbc:ID>
             <cbc:Description>Amount</cbc:Description>
             <ccv:Response>
-               <cbc:Amount currencyID="EUR">100000.0</cbc:Amount>
+               <cbc:Amount currencyID="EUR">555.5556</cbc:Amount>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DATE">
@@ -3462,7 +3454,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">38a4802f-0b93-4e78-ad4e-2a057e1aa578</cbc:ID>
             <cbc:Description>Recipients</cbc:Description>
             <ccv:Response>
-               <cbc:Description>TEST 1</cbc:Description>
+               <cbc:Description>r 5</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3484,7 +3476,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
                      <cbc:ID>72ae0158-a7cc-4b9e-af6c-a685732b54e0</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit16.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3518,11 +3510,7 @@ Visa , insurance and lodging are the most important issues to clarify then. Brow
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>Curse th' wench! I'd rather lose me peg-leg.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3544,7 +3532,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>e5174af5-4791-48d1-8cc5-aa938e80b3ab</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit17.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3578,11 +3566,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>Ye scallywags! Blast that malmsey-nosed landlubber!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3604,7 +3588,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>0c98860a-69f0-4f78-a58c-9b819e0d4e50</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit18.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3638,11 +3622,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>I shall rob that monkey with my scupper. Curse ye!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3664,7 +3644,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>1c4acc15-b5a8-40d5-b60d-98da94116164</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit19.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3698,11 +3678,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>By the foul bowels of Davy Jones! Why be I knifin' so cockeredly?</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3724,7 +3700,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>b47572fa-09f4-40dc-9fae-f89bb26f6b18</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit20.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3758,11 +3734,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>Get yer foul dagger out of me peg-leg!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3784,7 +3756,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>b2315b57-e1bc-4217-945f-1f484864b32a</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit21.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3841,11 +3813,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>A wise boot-licker keeps only comp'ny with a haggard bilge rat an' a pale cutlass.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3867,7 +3835,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>9028f1a4-8075-4c1a-9ba2-dd5a33546378</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit23.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -3901,11 +3869,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>f the Netherlands, with a mission to explore the potential of nature to improve the quality of life. WUR has a strong experience in developing countries, especially in the domain of land and water management;
-University of Copenhagen, Faculty of Science, is one of the European leading universities in the areas of food, health, plants, natural resources and environment, with a recognised expertise in agricultural development in the third countries;
-University College Cork (UCC), which hosts one of the well-known colleges in Ireland for agriculture and food industries;
-Università degli Studi di Catania, the university in Sicilia, Italy, with a high experience in mediterranean crops and animals;
-Universidad Politecnica de Madrid the university in Spain which carries for years a deep involvement in the support to local development i</cbc:Description>
+               <cbc:Description>Scallywaggin', weighin' anchor' an' broadsidin' — that be how ye sail.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -3927,7 +3891,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>76537417-2520-4261-8f2b-1b5e11d802f0</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/Partners/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit24.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4091,7 +4055,9 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
          <ccv:Requirement responseDataType="QUANTITY_YEAR">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9d0cf1cb-27bc-4747-8579-47dce4d8d490</cbc:ID>
             <cbc:Description>Year</cbc:Description>
-            <ccv:Response/>
+             <ccv:Response>
+                 <cbc:Quantity unitCode="YEAR">2010</cbc:Quantity>
+             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="QUANTITY_INTEGER">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a</cbc:ID>
@@ -4119,7 +4085,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>e6930d4a-a160-48fb-9baa-f5a2e975af81</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit26.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4153,8 +4119,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">51391308-0bf6-423c-95e2-d5a54aa31fb8</cbc:ID>
             <cbc:Description>Please describe them</cbc:Description>
             <ccv:Response>
-               <cbc:Description>General training objective : to train students to cope with the current global/international concerns in agriculture and rural development to:
--          identify and critically analyse key factors shaping the development of crops, forests and animal production, the management of research and rural development projects and finally, the sustainable use of natural resources and the envformulate and provide effective and appropriate responses to complex agriculture and natural resources related issues.</cbc:Description>
+               <cbc:Description>I care not for a flea-bitten lassie. Just be givin' me th' swag!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
@@ -4176,7 +4141,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>e3320377-a95c-45b1-b0f7-20fffeade325</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit27.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4255,7 +4220,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>403615d3-a9c4-45e3-90f9-013a4c88f051</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit29.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4311,7 +4276,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>1589d63c-623a-4751-8eee-dc7aee6c612f</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit30.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4345,13 +4310,15 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
             <cbc:Description>Your answer?</cbc:Description>
             <ccv:Response>
-               <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+               <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b9dec4cb-2f6f-47d7-a023-e9099b19b338</cbc:ID>
             <cbc:Description>If not, please explain why and state which other means of proof can be provided:</cbc:Description>
-            <ccv:Response/>
+            <ccv:Response>
+                <cbc:Description>Only a plank monkey can be plunderin' on the piece-of-eight.</cbc:Description>
+            </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
       <ccv:RequirementGroup>
@@ -4372,7 +4339,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>343999dc-2907-4b84-ba48-c36bf8b06568</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit31.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4406,13 +4373,15 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
             <cbc:Description>Your answer?</cbc:Description>
             <ccv:Response>
-               <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+               <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">8c5d1e13-54f7-4895-a65c-b8e09253130c</cbc:ID>
             <cbc:Description>If not, please explain why and specify which other means of proof concerning the quality assurance scheme can be provided:</cbc:Description>
-            <ccv:Response/>
+            <ccv:Response>
+                <cbc:Description>I be cuttin' off their peg-leg an' feedin' it to me deckhand.</cbc:Description>
+            </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
       <ccv:RequirementGroup>
@@ -4433,7 +4402,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>74ac3e89-48fe-4959-aed2-989ce79fdd76</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit32.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4467,13 +4436,15 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
             <cbc:Description>Your answer?</cbc:Description>
             <ccv:Response>
-               <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+               <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b0aace10-fd73-46d1-ae78-289ee5cd42ca</cbc:ID>
             <cbc:Description>If not, please explain why and specify which other means of proof concerning the environmental management systems or standards can be provided:</cbc:Description>
-            <ccv:Response/>
+            <ccv:Response>
+                <cbc:Description>I be cuttin' off her ol' poop deck an' feedin' it to me heartie.</cbc:Description>
+            </ccv:Response>
          </ccv:Requirement>
       </ccv:RequirementGroup>
       <ccv:RequirementGroup>
@@ -4494,7 +4465,7 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
                      <cbc:ID>cbbd85d2-de67-476c-8de5-cc6b1533e1ac</cbc:ID>
                      <cac:Attachment>
                         <cac:ExternalReference>
-                           <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+                           <cbc:URI>http://www.selection/crit33.jpg</cbc:URI>
                         </cac:ExternalReference>
                      </cac:Attachment>
                   </cev:EvidenceDocumentReference>
@@ -4563,21 +4534,21 @@ Universidad Politecnica de Madrid the university in Spain which carries for year
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30064ad3-fc11-4579-8528-fdd0b9a5ba75</cbc:ID>
             <cbc:Description>a) Please provide the relevant registration or certification number, if applicable:</cbc:Description>
             <ccv:Response>
-               <cbc:Description>3333</cbc:Description>
+               <cbc:Description>Bilge-for-brains! Stab that godforsaken porthole!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b3403349-cbc0-4d84-879e-fc0f2d90ecbd</cbc:ID>
             <cbc:Description>b) If the certificate of registration or certification is available electronically, please state:</cbc:Description>
             <ccv:Response>
-               <cbc:Description>erfezrazeraezraze</cbc:Description>
+               <cbc:Description>Curse ye! Stab that disloyal botswain!</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:Requirement responseDataType="DESCRIPTION">
             <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">792ff522-6f3f-4a62-ab6e-a8b272bc290e</cbc:ID>
             <cbc:Description>c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:</cbc:Description>
             <ccv:Response>
-               <cbc:Description>fgfddsfdsqfqdsfqdsf</cbc:Description>
+               <cbc:Description>Riggin', knifin' an' slashin' — that be how I sail.</cbc:Description>
             </ccv:Response>
          </ccv:Requirement>
          <ccv:RequirementGroup>

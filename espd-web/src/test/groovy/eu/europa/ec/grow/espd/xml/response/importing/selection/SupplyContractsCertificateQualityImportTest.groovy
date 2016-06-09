@@ -44,7 +44,7 @@ class SupplyContractsCertificateQualityImportTest extends AbstractXmlFileImport 
 
         then:
         espd.supplyContractsCertificatesQc.exists == true
-        espd.supplyContractsCertificatesQc.answer == true
+        espd.supplyContractsCertificatesQc.answer == false
         espd.supplyContractsCertificatesQc.description == "Another description"
 
         then: "info electronically"
@@ -55,7 +55,7 @@ class SupplyContractsCertificateQualityImportTest extends AbstractXmlFileImport 
 
     def "all fields needed to generate a XML sample"() {
         given:
-        def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true, answer: true,
+        def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true, answer: false,
                 description: "Another description",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
