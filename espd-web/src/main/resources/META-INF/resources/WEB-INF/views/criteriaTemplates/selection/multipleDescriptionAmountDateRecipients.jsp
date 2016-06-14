@@ -51,10 +51,10 @@
 <c:forEach begin="1" end="5" varStatus="loop">
 	<div class="form-group form-group-sm" style="margin-bottom: 0;">
 		<div class="col-xs-3" style="padding:1px;">
-			<form:input path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
+			<form:textarea rows="1" path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
-			<form:input path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
+			<form:textarea rows="1" path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
 	        <tiles:insertDefinition name="currencies">
@@ -63,10 +63,10 @@
 	        </tiles:insertDefinition>
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
-			<form:input path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			<form:textarea rows="1" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
 		<div class="col-xs-3" style="padding:1px;">
-			<form:input path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
+			<form:textarea rows="1" path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
 		</div>
 	</div>
 </c:forEach>

@@ -45,7 +45,7 @@
 		${span18n["crit_amount_concerned"]}
 	</label>
     <div class="col-xs-5">
-        <form:input path="${field}.amount" cssClass="form-control" number="true"/>
+        <form:textarea rows="1" path="${field}.amount" cssClass="form-control" number="true"/>
     </div>
     <div class="col-xs-3">
         <tiles:insertDefinition name="currencies">

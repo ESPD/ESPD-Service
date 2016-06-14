@@ -46,13 +46,13 @@
 	<div class="form-group">
 		<label class="control-label col-md-4 small">${span18n['crit_date_of_conviction_or_decision']}</label>
 		<div class="col-md-8">
-			<form:input path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
+			<form:textarea rows="1" path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-4 small">${span18n['crit_taxes_length_period_of_exclusion']}</label>
 		<div class="col-md-8">
-			<form:input type="text" path="${field}.periodLength" cssClass="form-control"/>
+			<form:textarea rows="1" type="text" path="${field}.periodLength" cssClass="form-control"/>
 		</div>
 	</div>
 </div>

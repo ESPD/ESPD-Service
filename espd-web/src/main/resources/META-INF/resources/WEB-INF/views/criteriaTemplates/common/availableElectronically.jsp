@@ -41,12 +41,12 @@
 		${span18n["crit_url"]}
 	</label>
 	<div class="col-md-5">
-		<form:input type="text" path="${field}.availableElectronically.url" class="form-control input-sm" url="true"/>
+		<form:textarea rows="1" path="${field}.availableElectronically.url" class="form-control input-sm" url="true"/>
 	</div>
 	<label class="control-label col-md-1 small">
 		${span18n["crit_code"]}
 	</label>
 	<div class="col-md-4">
-		<form:input type="text" path="${field}.availableElectronically.code" class="form-control input-sm"/>
+		<form:textarea rows="1" path="${field}.availableElectronically.code" class="form-control input-sm"/>
 	</div>
 </div>

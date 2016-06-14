@@ -32,6 +32,10 @@
     padding-bottom: 15px;
 }
 
+textarea.form-control {
+	resize: none; overflow: auto; line-height: 1.2;
+} 
+
 h2 {
     font-size: 1.2em;
     font-family: Verdana, Arial, Helvetica, "DejaVu Sans", sans-serif;
