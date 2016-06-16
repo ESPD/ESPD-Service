@@ -67,6 +67,25 @@
 				$("input:radio[data-target-show]").change(dataShow);
 				$("input:radio[data-target-hide]").change(dataHide);
 				optsort();
+				
+				$('.ecertis-link-header').click(function(){
+				    if($(this).hasClass( "collapsed" )) {
+				    	
+				    	var url = "http://wltent03.cc.cec.eu.int:1061/ecertisrest/criteria/espd/a34b70d6-c43d-4726-9a88-8e2b438424bf/?countryFilter=lv&lang=en";
+				    	var target = $(this).attr("data-target");
+				    	
+				    	$.getJSON( url, function( data ) {
+				    		  var items = [];
+				    		  $.each( data, function( key, val ) {
+				    		    items.push( "<li id='" + key + "'>" + val + "</li>" );
+				    		  });
+
+							$(target).html($( "<ul/>", {html: items.join( "" )}));
+				    	});
+				    	
+
+				    }
+				});
 			});
 		</script>
     </head>

@@ -35,7 +35,7 @@
 <tiles:importAttribute name="default_value"/>
 
 <div class="checkbox" style="border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px;padding-bottom: 5px;">
-    <label>
+    <label for="empty-${field}"><%-- empty-... "for" prevents checkbox value switch after click on label showing ecertis values --%>
         <!-- Exclusion criteria except 'Purely national grounds' must always be checked -->
         <!-- We cannot make checkboxes disabled otherwise their value will not be submitted so we prevent the changing of their value by always returning false on the click event -->
         <c:if test="${is_always_checked}">
@@ -51,10 +51,15 @@
                 </c:otherwise>
             </c:choose>
         </c:if>
-		<span style="font-weight: bold;" data-i18n="${title_code}">
+
+		<span style="font-weight: bold;" class="ecertis-link-header collapsed" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
 			<s:message code='${title_code}'/> 
 		</span>
-    </label>
+		
+		<div id="${field}-ecertis" class="collapse">
+			no data
+		</div>
+	</label>
     <c:if test="${not empty description_code}">
         <br>
         <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
