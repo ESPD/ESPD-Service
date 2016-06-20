@@ -45,7 +45,7 @@
 	    <div class="col-md-8">
 			<label class="control-label col-xs-3 small">${span18n['crit_amount_concerned']}</label>
 			<div class="col-xs-5">
-			    <form:input path="${field}.amount${loop.count}" number="true" cssClass="form-control"/>
+			    <form:textarea rows="1" path="${field}.amount${loop.count}" number="true" cssClass="form-control"/>
 			</div>
 			<div class="col-xs-4">
 	            <tiles:insertDefinition name="currencies">

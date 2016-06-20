@@ -223,8 +223,10 @@ public enum Country implements CacCountry {
             Arrays.asList(AUSTRIA, BELGIUM, BULGARIA, CROATIA, CYPRUS, CZECH_REPUBLIC, DENMARK, ESTONIA,
                     FINLAND, FRANCE, GERMANY, GREECE, HUNGARY, IRELAND, ITALY, LATVIA, LITHUANIA, LUXEMBOURG, MALTA,
                     NETHERLANDS, POLAND, PORTUGAL, ROMANIA, SLOVAKIA, SLOVENIA, SPAIN, SWEDEN,
-                    UNITED_KINGDOM, UNITED_KINGDOM_ENGLAND, UNITED_KINGDOM_NORTHERN_IRELAND, UNITED_KINGDOM_SCOTLAND,
-                    UNITED_KINGDOM_WALES));
+                    UNITED_KINGDOM
+                    /* ESPD-76 requested to remove UK regions. I leave them in enums for back compt.
+                    , UNITED_KINGDOM_ENGLAND, UNITED_KINGDOM_NORTHERN_IRELAND, UNITED_KINGDOM_SCOTLAND,
+                    UNITED_KINGDOM_WALES*/));
 
     public static final List<Country> EFTA_COUNTRIES = Collections.unmodifiableList(Arrays.asList(NORWAY, SWITZERLAND));
 

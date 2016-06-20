@@ -44,7 +44,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
 	    </div>
 		<div class="col-xs-6">
-			<form:input path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
+			<form:textarea rows="1" path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
 		</div>
 		<div class="col-xs-3">
 			<tiles:insertDefinition name="currencies">
@@ -58,7 +58,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_date']}</label>
 	    </div>
 		<div class="col-xs-9">
-			<form:input path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			<form:textarea rows="1" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
 	</div>
 	<div class="form-group">

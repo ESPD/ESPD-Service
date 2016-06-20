@@ -37,19 +37,19 @@
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_street_and_num"><s:message code="createca_street_and_num"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.street" id="streetAndNumber"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.street" id="streetAndNumber"/>
 		</div>
 	</div>
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_postcode"><s:message code="createca_postcode"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.postalCode"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.postalCode"/>
 		</div>
 	</div>
 	<div class=" form-group">
 		<label class="control-label col-md-4" data-i18n="createca_city"><s:message code="createca_city"/></label>
         <div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.city"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.city"/>
 		</div>
 	</div>
 	<div class=" form-group ">
@@ -65,7 +65,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createeo_vat"><s:message code="createeo_vat"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.vatNumber"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.vatNumber"/>
 		</div>
 	</div>
 </c:if>
@@ -73,13 +73,13 @@
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createca_email"><s:message code="createca_email"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.contactEmail"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.contactEmail"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-4" data-i18n="createca_telephone"><s:message code="createca_telephone"/></label>
 		<div class="col-md-8">
-			<form:input cssClass="form-control" path="${field}.contactPhone"/>
+			<form:textarea rows="1" cssClass="form-control" path="${field}.contactPhone"/>
 		</div>
 	</div>
 </c:if>

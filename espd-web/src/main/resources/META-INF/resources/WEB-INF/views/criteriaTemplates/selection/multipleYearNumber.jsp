@@ -45,7 +45,7 @@
 		<div class="col-md-7">
 		    <label class="control-label col-md-3 small">${span18n['crit_number']}</label>
 		    <div class="col-md-9">
-		         <form:input path="${field}.number${loop.count}" digits="true" max="1000000" cssClass="form-control"/>
+		         <form:textarea rows="1" path="${field}.number${loop.count}" digits="true" max="1000000" cssClass="form-control"/>
 		    </div>
 	    </div>
 	</div>

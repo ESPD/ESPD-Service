@@ -35,13 +35,13 @@
 		<div class="col-md-4">
 		    <label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
 		    <div class="col-md-9">
-		        <form:input path="${field}.ratio${loop.index}" number="true" cssClass="form-control"/>
+		        <form:textarea rows="1" path="${field}.ratio${loop.index}" number="true" cssClass="form-control"/>
 		    </div>
 	    </div>
 		<div class="col-md-8">
 		    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
 		    <div class="col-md-9">
-		        <form:input path="${field}.description${loop.index}" cssClass="form-control">
+		        <form:textarea rows="1" path="${field}.description${loop.index}" cssClass="form-control"/>
 		    </div>
 	    </div>
 	</div>
