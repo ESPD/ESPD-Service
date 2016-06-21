@@ -27,7 +27,6 @@ package eu.europa.ec.grow.espd.xml.common.importing;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
-import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.NaturalPersonType;
 import lombok.extern.slf4j.Slf4j;
@@ -145,9 +144,7 @@ public class EconomicOperatorImplTransformer {
             representative.setCity(trimToEmpty(residenceAddress.getCityName().getValue()));
         }
         if (residenceAddress.getCountry() != null && residenceAddress.getCountry().getIdentificationCode() != null) {
-            Country country = Country
-                    .findByIsoCode(trimToEmpty(residenceAddress.getCountry().getIdentificationCode().getValue()));
-            representative.setCountry(country);
+            representative.setCountry(partyImplTransformer.readCountry(residenceAddress.getCountry()));
         }
     }
 

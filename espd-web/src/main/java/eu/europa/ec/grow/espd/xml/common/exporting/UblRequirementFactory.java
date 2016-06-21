@@ -121,7 +121,7 @@ public final class UblRequirementFactory {
             return null;
         }
         TypeCodeType typeCodeType = new TypeCodeType();
-        typeCodeType.setValue(country.getIsoCode());
+        typeCodeType.setValue(country.getIso2Code());
         typeCodeType.setListAgencyID("ISO");
         typeCodeType.setListID(country.getIsoType());
         typeCodeType.setListVersionID("1.0");

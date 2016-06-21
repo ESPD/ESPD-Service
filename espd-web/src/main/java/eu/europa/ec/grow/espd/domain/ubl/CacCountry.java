@@ -33,7 +33,7 @@ public interface CacCountry extends Serializable {
 
     String getName();
 
-    String getIsoCode();
+    String getIso2Code();
     
     String getIsoType();
 }

@@ -160,7 +160,7 @@ public enum ExpectedResponseType implements CcvResponseType {
             if (responseType.getCode() == null) {
                 return null;
             }
-            return Country.findByIsoCode(responseType.getCode().getValue());
+            return Country.findByIso2Code(responseType.getCode().getValue());
         }
     }
 

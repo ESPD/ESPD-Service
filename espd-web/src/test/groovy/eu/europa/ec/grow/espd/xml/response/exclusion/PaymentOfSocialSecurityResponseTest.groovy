@@ -140,7 +140,7 @@ class PaymentOfSocialSecurityResponseTest extends AbstractExclusionCriteriaFixtu
 
     def "check the 'Country member state' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, country: Country.ROMANIA))
+        def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, country: Country.RO))
 
         when:
         def response = parseResponseXml(espd)

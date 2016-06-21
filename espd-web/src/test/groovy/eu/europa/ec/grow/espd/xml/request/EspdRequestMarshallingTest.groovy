@@ -212,7 +212,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
     def "should contain ContractingParty element information"() {
         given:
         def authority = new PartyImpl(name: "  Hodor authority  ", vatNumber: "  Hodor national reg number  ",
-                street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.ROMANIA,
+                street: "  Hodor street  ", postalCode: "  Hodor postcode  ", city: "  Hodor city  ", country: Country.RO,
                 contactName: "  Hodor contact person  ", contactEmail: "  hodor@hodor.com  ", contactPhone: "  555-HODOR  ",
                 website: "  www.hodor.com  ")
         def espd = new EspdDocument(authority: authority)

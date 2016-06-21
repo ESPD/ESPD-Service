@@ -72,7 +72,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.economicOperator.street == "Vitruvio"
         espdFull.economicOperator.postalCode == "28006"
         espdFull.economicOperator.city == "Madrid"
-        espdFull.economicOperator.country == Country.SPAIN
+        espdFull.economicOperator.country == Country.ES
         espdFull.economicOperator.contactName == "hodor"
         espdFull.economicOperator.contactPhone == "+666"
         espdFull.economicOperator.contactEmail == "hodor@hodor.com"
@@ -106,7 +106,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.economicOperator.representative.street == "Vitruvio"
         espdFull.economicOperator.representative.postalCode == "28006"
         espdFull.economicOperator.representative.city == "Edinborough"
-        espdFull.economicOperator.representative.country == Country.UNITED_KINGDOM_SCOTLAND
+        espdFull.economicOperator.representative.country == Country.GB
         espdFull.economicOperator.representative.email == "emilio.garcia3torres@acme.com"
         espdFull.economicOperator.representative.phone == "+34 96 123 456"
         espdFull.economicOperator.representative.position == "Empowered to represent the Consortium"

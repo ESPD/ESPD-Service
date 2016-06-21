@@ -60,7 +60,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.economicOperator.street == "Roma avenue 16"
         espd.economicOperator.postalCode == "00199"
         espd.economicOperator.city == "Roma"
-        espd.economicOperator.country == Country.ITALY
+        espd.economicOperator.country == Country.IT
         espd.economicOperator.contactName == "Giacommo Dino"
         espd.economicOperator.contactPhone == "0039456456"
         espd.economicOperator.contactEmail == "liban@mailinator.com"
@@ -76,7 +76,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.economicOperator.representative.street == "Pisa 256"
         espd.economicOperator.representative.postalCode == "10256"
         espd.economicOperator.representative.city == "roma"
-        espd.economicOperator.representative.country == Country.ITALY
+        espd.economicOperator.representative.country == Country.IT
         espd.economicOperator.representative.email == "galabru@mailinator.com"
         espd.economicOperator.representative.phone == "0039565656"
         espd.economicOperator.representative.position == "representative position"
@@ -223,7 +223,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         expect:
         espd.paymentTaxes.exists == true
         espd.paymentTaxes.answer == true
-        espd.paymentTaxes.country == Country.FRANCE
+        espd.paymentTaxes.country == Country.FR
         espd.paymentTaxes.amount == 300.0
         espd.paymentTaxes.currency == "EUR"
 
@@ -250,7 +250,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         expect:
         espd.paymentSocialSecurity.exists == true
         espd.paymentSocialSecurity.answer == true
-        espd.paymentSocialSecurity.country == Country.SPAIN
+        espd.paymentSocialSecurity.country == Country.ES
         espd.paymentSocialSecurity.amount == 600.0
         espd.paymentSocialSecurity.currency == "EUR"
 

@@ -47,7 +47,7 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
         then:
         espd.paymentTaxes.exists == true
         espd.paymentTaxes.answer == true
-        espd.paymentTaxes.country == Country.ROMANIA
+        espd.paymentTaxes.country == Country.RO
         espd.paymentTaxes.amount == 445.0
         espd.paymentTaxes.currency == "RON"
 
@@ -73,7 +73,7 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true,  answer: true,
-                country: Country.ROMANIA,
+                country: Country.RO,
                 amount: 445, currency: "RON",
                 breachEstablishedOtherThanJudicialDecision: true, meansDescription: "Other means were used",
                 decisionFinalAndBinding: true, dateOfConviction: new Date(), periodLength: "Till the end of the year 2013.",

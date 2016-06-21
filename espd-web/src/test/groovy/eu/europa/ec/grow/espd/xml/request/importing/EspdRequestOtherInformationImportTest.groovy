@@ -72,7 +72,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.authority.street == "elm street"
         espdFull.authority.postalCode == "1500"
         espdFull.authority.city == "drubetis"
-        espdFull.authority.country == Country.ROMANIA
+        espdFull.authority.country == Country.RO
         espdFull.authority.contactName == "gogu"
         espdFull.authority.contactPhone == "+43435543"
         espdFull.authority.contactEmail == "gogu@gogu.com"
@@ -87,7 +87,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
         espdMinimal.authority.street == null
         espdMinimal.authority.postalCode == null
         espdMinimal.authority.city == null
-        espdMinimal.authority.country == Country.ROMANIA
+        espdMinimal.authority.country == Country.RO
         espdMinimal.authority.contactName == null
         espdMinimal.authority.contactPhone == null
         espdMinimal.authority.contactEmail == null

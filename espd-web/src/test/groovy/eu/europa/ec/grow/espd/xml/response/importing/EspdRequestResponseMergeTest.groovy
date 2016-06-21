@@ -95,7 +95,7 @@ class EspdRequestResponseMergeTest extends AbstractXmlFileImport {
         espd.economicOperator.street == "Vitruvio"
         espd.economicOperator.postalCode == "28006"
         espd.economicOperator.city == "Madrid"
-        espd.economicOperator.country == Country.SPAIN
+        espd.economicOperator.country == Country.ES
         espd.economicOperator.contactName == "hodor"
         espd.economicOperator.contactPhone == "+666"
         espd.economicOperator.contactEmail == "hodor@hodor.com"
@@ -112,7 +112,7 @@ class EspdRequestResponseMergeTest extends AbstractXmlFileImport {
         espd.economicOperator.representative.street == "Vitruvio"
         espd.economicOperator.representative.postalCode == "28006"
         espd.economicOperator.representative.city == "Madrid"
-        espd.economicOperator.representative.country == Country.SPAIN
+        espd.economicOperator.representative.country == Country.ES
         espd.economicOperator.representative.email == "emilio.garcia3torres@acme.com"
         espd.economicOperator.representative.phone == "+34 96 123 456"
         espd.economicOperator.representative.position == "Empowered to represent the Consortium"

@@ -135,7 +135,7 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
 
     def "check the 'Country member state' requirement response"() {
         given:
-        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, country: Country.UNITED_KINGDOM_ENGLAND))
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, country: Country.GB))
 
         when:
         def response = parseResponseXml(espd)
@@ -145,9 +145,9 @@ class PaymentOfTaxesResponseTest extends AbstractExclusionCriteriaFixture {
         def req = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].Requirement[0]
         checkRequirement(req, "6c87d3d4-e8eb-4253-b385-6373020ab886", "Country or member state concerned", "CODE_COUNTRY")
         req.Response.size() == 1
-        req.Response[0].Code.text() == "GB-ENG"
+        req.Response[0].Code.text() == "GB"
         req.Response[0].Code.@listAgencyID.text() == "ISO"
-        req.Response[0].Code.@listID.text() == "ISO 3166-2"
+        req.Response[0].Code.@listID.text() == "ISO 3166-1"
         req.Response[0].Code.@listVersionID.text() == "1.0"
     }
 

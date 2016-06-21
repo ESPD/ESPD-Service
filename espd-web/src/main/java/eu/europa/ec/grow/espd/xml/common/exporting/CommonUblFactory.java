@@ -309,7 +309,7 @@ public final class CommonUblFactory {
     static CountryType buildCountryType(CacCountry country) {
         CountryType countryType = new CountryType();
         IdentificationCodeType identificationCodeType = new IdentificationCodeType();
-        identificationCodeType.setValue(country.getIsoCode());
+        identificationCodeType.setValue(country.getIso2Code());
         identificationCodeType.setListAgencyID("ISO");
         identificationCodeType.setListName(country.getIsoType());
         identificationCodeType.setListVersionID("1.0");
