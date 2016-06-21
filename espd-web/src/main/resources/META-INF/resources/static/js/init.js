@@ -1,4 +1,3 @@
-
 /*
  *
  * Copyright 2016 EUROPEAN COMMISSION
@@ -23,92 +22,85 @@
  *
  */
 
-/* Pseudo console for f**g IE9, otherwise it makes undefined error */
+/* Pseudo console for IE9, otherwise it makes undefined error */
 window.console = window.console || (function () {
-	var c = {};
-	c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () {};
-	return c;
-})();
+        var c = {};
+        c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () {
+        };
+        return c;
+    })();
 
 function validator(validators, name, text) {
-	validators[name] = jQuery.validator.format("<span data-i18n=\"validator_" + name + "\">" + text + "</span>");
+    validators[name] = jQuery.validator.format("<span data-i18n=\"validator_" + name + "\">" + text + "</span>");
 }
-    
+
 function dataShow() {
-	$($(this).attr("data-target-show")).show();
+    $($(this).attr("data-target-show")).show();
 }
 
 function dataHide() {
-	$($(this).attr("data-target-hide")).hide();
+    $($(this).attr("data-target-hide")).hide();
 }
 
 var defaultValidators = {};
 
 function language(code) {
-	var flags = [];
-	var codes = [];
+    var flags = [];
+    var codes = [];
 
-	for (var name in defaultValidators) {
-		if (flags["validator_" + name] != true) {
-			codes.push("validator_" + name);
-		}
-	}
-	$("*[data-i18n]").each(function (index) {
-		var className = $(this).attr("data-i18n");
-		if (flags[className] != true) {
-			flags[className] = true;
-			codes.push(className);
-		}
-	});
+    for (var name in defaultValidators) {
+        if (flags["validator_" + name] != true) {
+            codes.push("validator_" + name);
+        }
+    }
+    $("*[data-i18n]").each(function (index) {
+        var className = $(this).attr("data-i18n");
+        if (flags[className] != true) {
+            flags[className] = true;
+            codes.push(className);
+        }
+    });
 
-	$.ajax({
-		type: "POST",
-		url: "translate?lang=" + code,
-		data: {
-			labels: codes
-		},
-		success: function (data) {
-			var array = JSON.parse(data);
-			var validators = {};
-			for (var i = 0; i < codes.length; i++) {
-				if (codes[i].indexOf("validator_") == 0) {
-					validator(validators, codes[i].substring("validator_".length), array[i]);
-					if($("*[data-i18n='" + codes[i] + "']").length == 0) continue;
-				}
-				var elem = $("*[data-i18n='" + codes[i] + "']");
-				var tagName = elem.prop("tagName").toLowerCase();
-				
-				// placeholders were removed from ESPD.
-				// I leave this code commented in case we need to revert them. lukasal 09/06.2016
-				//if(tagName == "input" || tagName == "textarea") {
-				//	elem.attr('placeholder', array[i]);
-				//}
-				//else 
-				
-				if (elem.attr("data-toggle") == "tooltip") {
-					elem.attr("title", array[i]);
-					elem.attr("data-original-title", array[i]);
-				}
-				else {
-					elem.html(array[i]);
-				}
-			}
-			jQuery.extend(jQuery.validator.messages, validators);
-			optsort();
-		}
-	});
+    $.ajax({
+        type: "POST",
+        url: "translate?lang=" + code,
+        data: {
+            labels: codes
+        },
+        success: function (data) {
+            var array = JSON.parse(data);
+            var validators = {};
+            for (var i = 0; i < codes.length; i++) {
+                if (codes[i].indexOf("validator_") == 0) {
+                    validator(validators, codes[i].substring("validator_".length), array[i]);
+                    if ($("*[data-i18n='" + codes[i] + "']").length == 0) continue;
+                }
+                var elem = $("*[data-i18n='" + codes[i] + "']");
+                var tagName = elem.prop("tagName").toLowerCase();
+
+                if (elem.attr("data-toggle") == "tooltip") {
+                    elem.attr("title", array[i]);
+                    elem.attr("data-original-title", array[i]);
+                } else {
+                    elem.html(array[i]);
+                }
+            }
+            jQuery.extend(jQuery.validator.messages, validators);
+            sortDropdowns();
+        }
+    });
 }
 
-function optsort() {
-	$("select.optsorted").each(function() {
-		$(this).find("optgroup").each(function() {
-			var $group = $(this);
-            var options = $group.find("option");
-            options.remove();
-            options = options.sort(function(a, b) {
-            	return a.innerHTML.localeCompare(b.innerHTML);
-            });
-           	$group.append(options);
-		});
-	});
+function sortDropdowns() {
+    $("select.optsorted").each(function () {
+        var select = $(this);
+        var selected = select.val();
+        var options = select.find("option");
+        options.remove();
+        options = options.sort(function (a, b) {
+            return a.innerHTML.localeCompare(b.innerHTML);
+        });
+        select.append(options);
+        select.val(selected);
+    });
 }

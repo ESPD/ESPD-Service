@@ -459,12 +459,6 @@ public enum Country implements CacCountry {
 		}
 	}
 
-    Country(String iso2Code, String countryName, CountryType countryType) {
-        this.countryName = countryName;
-        this.iso2Code = iso2Code;
-        this.countryType = countryType;
-    }
-
 	Country(String iso2Code, String countryName) {
 		this.countryName = countryName;
 		this.iso2Code = iso2Code;
