@@ -67,7 +67,7 @@ public class UblResponseTypeTransformer {
         addIdInformation(responseType);
         addCopyIndicatorInformation(responseType);
         addVersionIdInformation(responseType);
-        addIssueDateAndTimeInformation(responseType);
+        addIssueDateAndTimeInformation(espdDocument, responseType);
         addContractFolderIdInformation(espdDocument, responseType);
         addPartyInformation(espdDocument, responseType);
         addProcurementProjectLots(espdDocument, responseType);
@@ -98,10 +98,10 @@ public class UblResponseTypeTransformer {
         responseType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getBuildVersion()));
     }
 
-    private void addIssueDateAndTimeInformation(ESPDResponseType responseType) {
-        Date now = new Date();
-        responseType.setIssueTime(CommonUblFactory.buildIssueTimeType(now));
-        responseType.setIssueDate(CommonUblFactory.buildIssueDateType(now));
+    private void addIssueDateAndTimeInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+        Date documentDate = espdDocument.getDocumentDate() != null ? espdDocument.getDocumentDate() : new Date();
+        responseType.setIssueTime(CommonUblFactory.buildIssueTimeType(documentDate));
+        responseType.setIssueDate(CommonUblFactory.buildIssueDateType(documentDate));
     }
 
     private void addContractFolderIdInformation(EspdDocument espdDocument, ESPDResponseType responseType) {

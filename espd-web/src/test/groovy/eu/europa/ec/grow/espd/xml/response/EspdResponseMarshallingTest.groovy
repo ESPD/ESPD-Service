@@ -105,12 +105,24 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.VersionID.@schemeAgencyID.text() == "EU-COM-GROW"
     }
 
-    def "should contain IssueDate element information"() {
+    def "should contain IssueDate element information with default document date"() {
         when:
         def result = parseResponseXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}"
+    }
+
+    def "should contain IssueDate element information with a document date"() {
+        given:
+        def documentDate = new Date().minus(1)
+        def espd = new EspdDocument(documentDate: documentDate)
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then: "issue date must match the date format YYYY-MM-dd"
+        result.IssueDate.text() == LocalDateAdapter.marshal(new LocalDate(documentDate))
     }
 
     def "should contain IssueTime element information"() {

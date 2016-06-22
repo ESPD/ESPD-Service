@@ -67,7 +67,11 @@ public class UblResponseImporter extends UblRequestResponseImporter {
 	 * @return An {@link EspdDocument} entity containing the information coming from the XML response file.
 	 */
 	public EspdDocument importResponse(ESPDResponseType input) {
-		return buildEspdDocument(null, input);
+		EspdDocument espd = buildEspdDocument(null, input);
+		if (input.getIssueDate() != null && input.getIssueDate().getValue() != null) {
+			espd.setDocumentDate(input.getIssueDate().getValue().toDate());
+		}
+		return espd;
 	}
 
 	@Override
