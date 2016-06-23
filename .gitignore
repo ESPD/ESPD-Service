@@ -1,8 +1,7 @@
-/espd-web/src/main/webapp/static/bundle/all.css
-/espd-web/src/main/webapp/static/bundle/debug.js
-/espd-web/src/main/webapp/static/bundle/debug.css
-/espd-web/src/main/webapp/static/bundle/all.js
+/static/bundle/
+/espd-web/src/main/webapp/static/bundle/
 /exchange-model/src/main/generated
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
@@ -168,3 +167,4 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+espd-web/build/
