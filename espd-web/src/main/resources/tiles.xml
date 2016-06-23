@@ -122,6 +122,7 @@
         <put-attribute name="is_always_checked" value="false"/>
         <put-attribute name="default_value" value="false"/>
         <put-attribute name="is_disabled" value="false"/>
+        <put-attribute name="hasCriterion" value="true"/>
     </definition>
 
     <definition name="formTemplate" template="/WEB-INF/views/criteriaTemplates/formTemplate.jsp">

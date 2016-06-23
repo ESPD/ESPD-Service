@@ -33,6 +33,11 @@
 <tiles:importAttribute name="description_code"/>
 <tiles:importAttribute name="is_always_checked"/>
 <tiles:importAttribute name="default_value"/>
+<tiles:importAttribute name="hasCriterion"/>
+
+<c:if test="${hasCriterion}">
+	<tiles:importAttribute name="criterion"/>
+</c:if>
 
 <div class="checkbox" style="border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px;padding-bottom: 5px;">
     <label for="empty-${field}"><%-- empty-... "for" prevents checkbox value switch after click on label showing ecertis values --%>
@@ -51,14 +56,17 @@
                 </c:otherwise>
             </c:choose>
         </c:if>
-
-		<span style="font-weight: bold;" class="ecertis-link-header collapsed" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
-			<s:message code='${title_code}'/> 
-		</span>
-		
-		<div id="${field}-ecertis" class="collapse">
-			no data
-		</div>
+		<c:if test="${hasCriterion == true}">
+			<span style="font-weight: bold;" class="ecertis-link-header collapsed" data-uuid="${criterion.uuid}" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
+				<s:message code='${title_code}'/> 
+			</span>
+			<div id="${field}-ecertis" class="collapse"></div>
+		</c:if>
+		<c:if test="${hasCriterion != true}">
+			<span style="font-weight: bold;" data-i18n="${title_code}">
+				<s:message code='${title_code}'/>
+			</span>
+		</c:if>
 	</label>
     <c:if test="${not empty description_code}">
         <br>
