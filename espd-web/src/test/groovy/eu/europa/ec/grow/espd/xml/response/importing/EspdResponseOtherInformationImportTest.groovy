@@ -169,4 +169,9 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         LocalDateAdapter.marshal(new LocalDate(espdFull.documentDate)) == "2015-11-25"
     }
 
+    def "should import signature information"() {
+        expect:
+        espdFull.location == "Eastwatch by the Sea"
+    }
+
 }

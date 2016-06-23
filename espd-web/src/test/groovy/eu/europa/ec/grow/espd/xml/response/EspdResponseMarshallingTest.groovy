@@ -125,6 +125,18 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.IssueDate.text() == LocalDateAdapter.marshal(new LocalDate(documentDate))
     }
 
+    def "should contain signature location"() {
+        given:
+        def espd = new EspdDocument(location: "Eastwatch by the Sea")
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then: "issue date must match the date format YYYY-MM-dd"
+        result.Signature[0].text().length() == 56
+        result.Signature[0].SignatoryParty.PhysicalLocation.Name.text() == "Eastwatch by the Sea"
+    }
+
     def "should contain IssueTime element information"() {
         when:
         def result = parseResponseXml()
