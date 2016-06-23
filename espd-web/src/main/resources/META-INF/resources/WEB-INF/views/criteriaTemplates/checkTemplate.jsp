@@ -60,7 +60,43 @@
 			<span style="font-weight: bold;" class="ecertis-link-header collapsed" data-uuid="${criterion.uuid}" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
 				<s:message code='${title_code}'/> 
 			</span>
-			<div id="${field}-ecertis" class="collapse"></div>
+
+			<div id="${field}-ecertis" class="collapse">
+				<h4 id="loading">${span18n["ecertis_loading"]}</h4>
+				<h4 id="ecertis404">${span18n["ecertis_404"]}</h4>
+				<div id="content">
+					<h4>${span18n["ecertis_language"]}: <span id="language"></span></h4>
+					<h4>${span18n["ecertis_legislation"]}</h4>
+					<ul>
+						<li>${span18n["crit_description"]}: <span id="description"><!-- dynamic Description --></span></li>
+						<li>${span18n["ecertis_article"]}: <span id="article"><!-- dynamic Article --></span></li>
+						<li>${span18n["crit_url"]}: <a id="url" target="_blank"><!-- dynamic URL --></a></li>
+					</ul>
+					<h4 id="evidencesNotFound">
+						${span18n["ecertis_no_evidences"]}
+					</h4>
+					<div id="evidencesFound">
+						<h4>${span18n["ecertis_evidences"]}</h4>
+						<ul id="list">
+							<li id="template">
+								<span id="subname"><!-- dynamic subcriteria name --></span>
+								<ol id="sublist">
+									<li id="evidence">
+										<dl>
+											<dt>
+												<a id="name" target="_blank"><!-- dynamic evidence link --></a>
+											</dt>
+											<dd id="issued">
+												${span18n["ecertis_issued"]}: <span id="issuerNames"><!-- dynamic issuer names --></span>
+											</dd>
+										</dl>
+									</li>
+								</ol>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</c:if>
 		<c:if test="${hasCriterion != true}">
 			<span style="font-weight: bold;" data-i18n="${title_code}">

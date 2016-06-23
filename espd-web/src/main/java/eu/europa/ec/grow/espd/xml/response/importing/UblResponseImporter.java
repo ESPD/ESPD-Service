@@ -34,12 +34,11 @@ import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.extern.slf4j.Slf4j;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ContractFolderIDType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -67,7 +66,31 @@ public class UblResponseImporter extends UblRequestResponseImporter {
 	 * @return An {@link EspdDocument} entity containing the information coming from the XML response file.
 	 */
 	public EspdDocument importResponse(ESPDResponseType input) {
-		return buildEspdDocument(null, input);
+		EspdDocument espd = buildEspdDocument(null, input);
+		if (input.getIssueDate() != null && input.getIssueDate().getValue() != null) {
+			espd.setDocumentDate(input.getIssueDate().getValue().toDate());
+		}
+
+		readSignatureInformation(input, espd);
+
+		return espd;
+	}
+
+	private void readSignatureInformation(ESPDResponseType requestType, EspdDocument espdDocument) {
+		if (CollectionUtils.isEmpty(requestType.getSignature())) {
+			return;
+		}
+
+		SignatureType signatureType = requestType.getSignature().get(0);
+		PartyType signatoryParty = signatureType.getSignatoryParty();
+		if (signatoryParty == null || signatoryParty.getPhysicalLocation() == null) {
+			return;
+		}
+
+		if (signatoryParty.getPhysicalLocation().getName() != null) {
+			espdDocument.setLocation(signatoryParty.getPhysicalLocation().getName().getValue());
+		}
+
 	}
 
 	@Override

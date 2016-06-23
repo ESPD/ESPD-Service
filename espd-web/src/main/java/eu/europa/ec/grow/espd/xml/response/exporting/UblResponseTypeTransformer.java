@@ -32,10 +32,18 @@ import eu.europa.ec.grow.espd.xml.common.exporting.UblEconomicOperatorPartyTypeT
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.LocationType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.PartyType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SignatureType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
+import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.NameType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.UUID;
+
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 /**
  * Transforms a {@link EspdDocument} into a {@link ESPDResponseType}.
@@ -67,12 +75,13 @@ public class UblResponseTypeTransformer {
         addIdInformation(responseType);
         addCopyIndicatorInformation(responseType);
         addVersionIdInformation(responseType);
-        addIssueDateAndTimeInformation(responseType);
+        addIssueDateAndTimeInformation(espdDocument, responseType);
         addContractFolderIdInformation(espdDocument, responseType);
         addPartyInformation(espdDocument, responseType);
         addProcurementProjectLots(espdDocument, responseType);
         addAdditionalDocumentReference(espdDocument, responseType);
         addCriteria(espdDocument, responseType);
+	    addSignatureInformation(espdDocument, responseType);
 
         return responseType;
     }
@@ -98,10 +107,10 @@ public class UblResponseTypeTransformer {
         responseType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getBuildVersion()));
     }
 
-    private void addIssueDateAndTimeInformation(ESPDResponseType responseType) {
-        Date now = new Date();
-        responseType.setIssueTime(CommonUblFactory.buildIssueTimeType(now));
-        responseType.setIssueDate(CommonUblFactory.buildIssueDateType(now));
+    private void addIssueDateAndTimeInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+        Date documentDate = espdDocument.getDocumentDate() != null ? espdDocument.getDocumentDate() : new Date();
+        responseType.setIssueTime(CommonUblFactory.buildIssueTimeType(documentDate));
+        responseType.setIssueDate(CommonUblFactory.buildIssueDateType(documentDate));
     }
 
     private void addContractFolderIdInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
@@ -139,5 +148,29 @@ public class UblResponseTypeTransformer {
     private void addCriteria(EspdDocument espdDocument, ESPDResponseType responseType) {
         responseType.getCriterion().addAll(criteriaTransformer.apply(espdDocument));
     }
+
+	private void addSignatureInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+		if (isBlank(espdDocument.getLocation())) {
+			return;
+		}
+
+		NameType nameType = new NameType();
+		nameType.setValue(espdDocument.getLocation());
+
+		LocationType locationType = new LocationType();
+		locationType.setName(nameType);
+
+		PartyType signatoryParty = new PartyType();
+		signatoryParty.setPhysicalLocation(locationType);
+
+		SignatureType signatureType = new SignatureType();
+		signatureType.setSignatoryParty(signatoryParty);
+
+		IDType idType = new IDType();
+		idType.setValue(UUID.randomUUID().toString());
+		signatureType.setID(idType);
+
+		responseType.getSignature().add(signatureType);
+	}
 
 }

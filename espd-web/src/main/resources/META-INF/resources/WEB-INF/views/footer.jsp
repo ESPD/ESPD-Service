@@ -2,7 +2,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%--
   ~
@@ -37,9 +36,9 @@
 		</div>
 	</div>
 </footer>
-<spring:eval var="piwikEnabled" scope="page" expression='@espdConfiguration.piwikEnabled' />
-<spring:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer' />
-<spring:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId' />
+<s:eval var="piwikEnabled" scope="page" expression='@espdConfiguration.piwikEnabled' />
+<s:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer' />
+<s:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId' />
 <c:if test="${piwikEnabled == true}">
     <script type="text/javascript">
         var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});

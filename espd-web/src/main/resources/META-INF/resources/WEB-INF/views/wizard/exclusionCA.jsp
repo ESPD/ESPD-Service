@@ -31,6 +31,18 @@
 
 <%request.setAttribute("exclusionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionCA);%>
 
+<s:eval var="ecertisCriterionURL" scope="page" expression="@espdConfiguration.ecertisCriterionURL" />
+<s:eval var="ecertisEvidenceURL" scope="page" expression="@espdConfiguration.ecertisEvidenceURL" />
+<script>
+	$(function () {
+		initEcertisLinkHeader({
+			country : "${espd.authority.country.iso2Code}",
+			lang : pageLanguage.toLowerCase(), 
+			criterionURL : "${ecertisCriterionURL}",
+			evidenceURL : "${ecertisEvidenceURL}"});
+	});
+</script>
+
 <tiles:importAttribute name="flow"/>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
