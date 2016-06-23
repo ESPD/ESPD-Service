@@ -92,6 +92,14 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
     </ccv:Criterion>
+    <cac:Signature>
+        <cbc:ID>a47fe139-f2b1-4886-9c01-70033ad82fcb</cbc:ID>
+        <cac:SignatoryParty>
+            <cac:PhysicalLocation>
+                <cbc:Name>Eastwatch by the Sea</cbc:Name>
+            </cac:PhysicalLocation>
+        </cac:SignatoryParty>
+    </cac:Signature>
 
     <cac:AdditionalDocumentReference>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">6d48f751-53cc-4d7f-9dfb-21c3e802b2e0</cbc:ID>

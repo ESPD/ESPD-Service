@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -52,6 +53,9 @@ public class EspdDocument {
 	private EspdRequestMetadata requestMetadata;
 
 	private String tedReceptionId;
+
+	private Date documentDate;
+	private String location;
 
 	// Award criteria
 	private OtherCriterion procurementReserved;
