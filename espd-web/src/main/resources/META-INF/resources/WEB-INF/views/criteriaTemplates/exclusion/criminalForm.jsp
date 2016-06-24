@@ -33,7 +33,7 @@
 <div class="form-group">
     <label class="control-label col-md-4 small" data-i18n="crit_date_of_conviction"><s:message code='crit_date_of_conviction'/></label>
     <div class="col-md-8">
-        <form:textarea rows="1" path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
+        <form:input type="text" path="${field}.dateOfConviction" cssClass="form-control datepicker"/>
     </div>
 </div>
 <div class="form-group">

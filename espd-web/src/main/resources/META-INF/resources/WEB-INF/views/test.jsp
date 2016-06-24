@@ -262,7 +262,7 @@
                                                             </c:when>
                                                             <c:when test="${req.responseDataType == 'DATE'}">
                                                                 <div class="col-md-8">
-                                                                    <form:textarea rows="1" path="${req.response[0].date.value}"
+                                                                    <form:input type="text" path="${req.response[0].date.value}"
                                                                                 cssClass="form-control datepicker"/>
                                                                 </div>
                                                             </c:when>

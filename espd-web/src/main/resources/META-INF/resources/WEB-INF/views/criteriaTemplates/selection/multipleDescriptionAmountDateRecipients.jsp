@@ -63,7 +63,7 @@
 	        </tiles:insertDefinition>
 		</div>
 		<div class="col-xs-2" style="padding:1px;">
-			<form:textarea rows="1" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			<form:input type="text" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
 		<div class="col-xs-3" style="padding:1px;">
 			<form:textarea rows="1" path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />

@@ -58,7 +58,7 @@
 		    <label class="control-label col-md-3 small">${span18n['crit_date']}</label>
 	    </div>
 		<div class="col-xs-9">
-			<form:textarea rows="1" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			<form:input type="text" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
 	</div>
 	<div class="form-group">

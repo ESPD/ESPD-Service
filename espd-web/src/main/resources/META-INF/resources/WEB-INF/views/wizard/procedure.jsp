@@ -429,7 +429,7 @@
                                     <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
 
                                     <div class="col-md-8">
-                                        <form:textarea rows="1" path="economicOperator.representative.dateOfBirth" cssClass="form-control datepicker"/>
+                                        <form:input type="text" path="economicOperator.representative.dateOfBirth" cssClass="form-control datepicker"/>
                                     </div>
                                 </div>
                             </div>
