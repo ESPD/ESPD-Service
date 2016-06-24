@@ -30,7 +30,6 @@
 		<script src="<s:url value="/static/bundle/all.js"/>"></script>
 		
 		<s:eval var="ecertisCriterionURL" scope="page" expression="@espdConfiguration.ecertisCriterionURL" />
-		<s:eval var="ecertisEvidenceURL" scope="page" expression="@espdConfiguration.ecertisEvidenceURL" />
 
 		<script>
 			var pageLanguage = "${pageContext.response.locale}".toLowerCase();
@@ -49,11 +48,9 @@
 				$("input:radio[data-target-hide]").change(dataHide);
 				sortDropdowns();
 
-				var criterionURL = "${ecertisCriterionURL}";
-				var evidenceURL = "${ecertisEvidenceURL}";
-				var country = "${espd.authority.country.iso2Code}";
-				
 				$('.ecertis-link-header').click(function() {
+					var url = "${ecertisCriterionURL}";
+					var country = "${espd.authority.country.iso2Code}";
 					
 				   	var uuid = $(this).attr("data-uuid");
 				   	if($(this).hasClass( "collapsed" ) && uuid != "") {
@@ -62,14 +59,17 @@
 				    	$(content).find("#content, #evidencesFound, #evidencesNotFound, #issued, #ecertis404").hide();
 				    	$(content).children("#loading").show();
 					    	
-				    	$.getJSON(criterionURL.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
+				    	$.getJSON(url.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
 				    		function( data ) {
 								$(content).children("#loading").hide();
 								
-								if(data.DomainID && data.DomainID == "eproc") {
+								if(data && data.DomainID == "eproc") {
 			
 									content = $(content).children("#content").show();
 									$(content).find("#language").html(data.Name.languageID.toUpperCase());
+									
+									//Currently display only first LegislationReference from array
+									//In future could be more
 									$(content).find("#description").html(data.LegislationReference[0].Title.value);
 									$(content).find("#article").html(data.LegislationReference[0].Article.value);
 									$(content).find("#url").text(data.LegislationReference[0].URI).attr("href",data.LegislationReference[0].URI);
@@ -82,7 +82,6 @@
 										$.each( data.SubCriterion, function( key, val ) {
 											var item = T.clone().attr("id","subcriterion").appendTo(T.parent()).show();
 											var list = item.children("#sublist").html("");
-				
 											item.children("#subname").html(val.Name.value);
 				
 											$.each( $(val.RequirementGroup), function( key, val ) {
@@ -91,9 +90,12 @@
 													$.each( $(val["EvidenceIssuerParty"]), function( key, val ) {
 														$.each($(val["PartyName"]), function(i,val) { names.push(val.Name.value) });
 													})
-														
+
+													// EvidenceDocumentReference with evidence URL is an array with only one element,
+													// currently it is implemented as it is, but in future could be more than one
+													var evidenceURL = val.EvidenceDocumentReference[0].Attachment.ExternalReference.URI;
 													var evidence = T.find("#evidence").clone().appendTo(list);
-													evidence.find("#name").text(val.Name.value).attr("href", evidenceURL.replace("[evidenceID]",val.ID))
+													evidence.find("#name").text(val.Name.value).attr("href", evidenceURL);
 													evidence.find("#issued").toggle(names.length != 0).children("#issuerNames").text(names.join(","));
 												});
 											});

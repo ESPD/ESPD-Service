@@ -58,9 +58,6 @@ public class EspdConfiguration {
 
     @Value("${ecertis.criterion.url:https://webgate.acceptance.ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd/[uuid]/?countryFilter=[country]&lang=[lang]}")
     private String ecertisCriterionURL;
-    
-    @Value("${ecertis.evidence.url:https://webgate.acceptance.ec.europa.eu/growth/tools-databases/ecertis/web/evidence/view/[evidenceID]}")
-    private String ecertisEvidenceURL;
 
     @Autowired
     private Environment environment;
