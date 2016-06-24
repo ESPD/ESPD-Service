@@ -24,7 +24,7 @@
 
 <groups xmlns="http://www.isdc.ro/wro">
     <group name="all">
-        <css minimize="false">/static/font-awesome-4.2.0/css/font-awesome.min.css</css>
+        <!--<css minimize="false">/static/font-awesome-4.2.0/css/font-awesome.min.css</css>-->
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap-theme.min.css</css>
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.min.css</css>
         <css minimize="false">/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.min.css</css>
@@ -44,7 +44,7 @@
     </group>
 
     <group name="debug">
-        <css minimize="false">/static/font-awesome-4.2.0/css/font-awesome.css</css>
+        <!--<css minimize="false">/static/font-awesome-4.2.0/css/font-awesome.css</css>-->
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap-theme.css</css>
         <css minimize="false">/static/bootstrap-3.2.0/css/bootstrap.css</css>
         <css minimize="false">/static/bootstrap-plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css</css>

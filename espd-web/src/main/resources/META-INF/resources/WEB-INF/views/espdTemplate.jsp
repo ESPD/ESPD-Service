@@ -64,5 +64,6 @@
         <div id="footer">
             <tiles:insertAttribute name="footer"/>
         </div>
+        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
     </body>
 </html>
