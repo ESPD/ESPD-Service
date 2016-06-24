@@ -67,7 +67,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 				));
 			}
 			else {
-				$(this).replaceWith($("<span />").text(this.value)).addClass("wordwrap");
+				$(this).replaceWith($("<span />").addClass("wordwrap").text(this.value));
 			}
 		});
 
@@ -80,7 +80,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 			}
 		});
 		$('#espdform').find('textarea').each(function() {
-			$(this).replaceWith($("<span />").text(this.value)).addClass("wordwrap");
+			$(this).replaceWith($("<span />").addClass("wordwrap").text(this.value));
 		});
 
 
