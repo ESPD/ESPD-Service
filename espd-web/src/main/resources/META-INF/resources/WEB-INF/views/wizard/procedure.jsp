@@ -416,81 +416,92 @@
                                  style="border: 1px dotted blue; background-color: #D8D8D8;">
                                     ${span18n['createeo_person_empowered']}
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label col-md-4">${span18n['createeo_first_name']}</label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control"
-                                                    path="economicOperator.representative.firstName"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
-
-                                    <div class="col-md-8">
-                                        <form:input type="text" path="economicOperator.representative.dateOfBirth" cssClass="form-control datepicker"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label col-md-4">${span18n['createeo_last_name']}</label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control"
-                                                    path="economicOperator.representative.lastName"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-4">${span18n['createeo_birth_place']}</label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control"
-                                                    path="economicOperator.representative.placeOfBirth"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <tiles:insertDefinition name="partyInfo">
-                                    <tiles:putAttribute name="field" value="economicOperator.representative"/>
-                                    <tiles:putAttribute name="address" value="true"/>
-                                </tiles:insertDefinition>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label col-md-4" data-i18n="createca_email"><s:message
-                                            code="createca_email"/></label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.email"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-4" data-i18n="createca_telephone"><s:message
-                                            code="createca_telephone"/></label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.phone"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-4">${span18n['createeo_pos_act_in_capacity']}</label>
-
-                                    <div class="col-md-8">
-                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.position"/>
-                                    </div>
-                                </div>
+                            <div class="col-md-12">
+                            	<div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4">${span18n['createeo_first_name']}</label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control"
+	                                                    path="economicOperator.representative.firstName"/>
+	                                    </div>
+	                                </div>
+                            	</div>
+                            	<div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4">${span18n['createeo_last_name']}</label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control"
+	                                                    path="economicOperator.representative.lastName"/>
+	                                    </div>
+	                                </div>
+                            	</div>
+                            </div> 
+                            <div class="col-md-12">
+                            	<div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
+	                                    <div class="col-md-8">
+	                                        <form:input type="text" path="economicOperator.representative.dateOfBirth" cssClass="form-control datepicker"/>
+	                                    </div>
+	                                </div>
+                            	</div>
+                            	<div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4">${span18n['createeo_birth_place']}</label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control"
+	                                                    path="economicOperator.representative.placeOfBirth"/>
+	                                    </div>
+	                                </div>
+                            	</div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
-
-                                    <div class="col-md-10">
-                                        <form:textarea path="economicOperator.representative.additionalInfo"
-                                                       cssStyle="resize: none" rows="4" cols="20"
-                                                       cssClass="form-control"/>
-                                    </div>
+	                            <div class="col-md-6">
+	                                <tiles:insertDefinition name="partyInfo">
+	                                    <tiles:putAttribute name="field" value="economicOperator.representative"/>
+	                                    <tiles:putAttribute name="address" value="true"/>
+	                                </tiles:insertDefinition>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4" data-i18n="createca_email"><s:message
+	                                            code="createca_email"/></label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.email"/>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4" data-i18n="createca_telephone"><s:message
+	                                            code="createca_telephone"/></label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.phone"/>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-4">${span18n['createeo_pos_act_in_capacity']}</label>
+	
+	                                    <div class="col-md-8">
+	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.position"/>
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </div>
+                            <div class="col-md-12">
+                            	<div class="col-md-12">
+	                                <div class="form-group">
+	                                    <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
+	
+	                                    <div class="col-md-10">
+	                                        <form:textarea path="economicOperator.representative.additionalInfo"
+	                                                       cssStyle="resize: none" rows="4" cols="20"
+	                                                       cssClass="form-control"/>
+	                                    </div>
+	                                </div>
                                 </div>
                             </div>
                         </div>
