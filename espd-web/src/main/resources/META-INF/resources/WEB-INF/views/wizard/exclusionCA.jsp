@@ -37,7 +37,6 @@
 	$(function () {
 		initEcertisLinkHeader({
 			country : "${espd.authority.country.iso2Code}",
-			lang : pageLanguage.toLowerCase(), 
 			criterionURL : "${ecertisCriterionURL}",
 			evidenceURL : "${ecertisEvidenceURL}"});
 	});

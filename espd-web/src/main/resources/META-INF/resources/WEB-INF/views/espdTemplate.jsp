@@ -100,11 +100,11 @@
 								else {
 					   				$(content).find("#ecertis404").show();
 								}
-									
-					   	}).fail(function() {
-					   		$(content).children("#loading").hide();
-					   		$(content).find("#ecertis404").show();
-						});
+					   		}).fail(function() {
+					   			$(content).children("#loading").hide();
+					   			$(content).find("#ecertis404").show();
+							}
+					   	);
 				    }
 				});
 			}
