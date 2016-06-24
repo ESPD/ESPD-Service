@@ -67,7 +67,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 				));
 			}
 			else {
-				$(this).replaceWith($("<span />").text(this.value));
+				$(this).replaceWith($("<span />").text(this.value)).addClass("wordwrap");
 			}
 		});
 
@@ -80,7 +80,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 			}
 		});
 		$('#espdform').find('textarea').each(function() {
-			$(this).replaceWith($("<span />").text(this.value));
+			$(this).replaceWith($("<span />").text(this.value)).addClass("wordwrap");
 		});
 
 
@@ -743,13 +743,13 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['crit_date']}</label>
                         <div class="col-md-4">
-                            <form:input type="text" path="documentDate" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+                            <form:textarea rows="1" path="documentDate" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['place']}</label>
                         <div class="col-md-4">
-                            <form:textarea rows="1" type="text" path="location" cssClass="form-control"/>
+                            <form:textarea rows="1" path="location" cssClass="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
