@@ -93,68 +93,6 @@ function language(code) {
     });
 }
 
-function initEcertisLinkHeader({country, criterionURL, evidenceURL}) {
-	$('.ecertis-link-header').click(function(){
-
-	   	var uuid = $(this).attr("data-uuid");
-	   	if($(this).hasClass( "collapsed" ) && uuid != "") {
-	   	
-	   		var content = $(this).attr("data-target");
-	    	$(content).find("#content, #evidencesFound, #evidencesNotFound, #issued, #ecertis404").hide();
-	    	$(content).children("#loading").show();
-		    	
-	    	$.getJSON(criterionURL.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
-	    		function( data ) {
-					$(content).children("#loading").hide();
-					
-					if(data.DomainID && data.DomainID == "eproc") {
-
-						content = $(content).children("#content").show();
-						$(content).find("#language").html(data.Name.languageID.toUpperCase());
-						$(content).find("#description").html(data.LegislationReference[0].Title.value);
-						$(content).find("#article").html(data.LegislationReference[0].Article.value);
-						$(content).find("#url").text(data.LegislationReference[0].URI).attr("href",data.LegislationReference[0].URI);
-	
-						var T = $(content).find("#template").hide();
-						$(T).siblings("#subcriterion").remove();
-	
-						var hasEvidences = false;
-						if(data.hasOwnProperty("SubCriterion")) {
-							$.each( data.SubCriterion, function( key, val ) {
-								var item = T.clone().attr("id","subcriterion").appendTo(T.parent()).show();
-								var list = item.children("#sublist").html("");
-	
-								item.children("#subname").html(val.Name.value);
-	
-								$.each( $(val.RequirementGroup), function( key, val ) {
-									$.each( $(val.TypeOfEvidence), function( key, val ) {
-										var names = [];
-										$.each( $(val["EvidenceIssuerParty"]), function( key, val ) {
-											$.each($(val["PartyName"]), function(i,val) { names.push(val.Name.value) });
-										})
-											
-										var evidence = T.find("#evidence").clone().appendTo(list);
-										evidence.find("#name").text(val.Name.value).attr("href", evidenceURL.replace("[evidenceID]",val.ID))
-										evidence.find("#issued").toggle(names.length != 0).children("#issuerNames").text(names.join(","));
-									});
-								});
-								hasEvidences = true;//show evidences when at least one subcriteria is present
-							});
-						}
-						$(content).children(hasEvidences?"#evidencesFound":"#evidencesNotFound").show();
-					}
-					else {
-		   				$(content).find("#ecertis404").show();
-					}
-						
-		   	}).fail(function() {
-		   		$(content).children("#loading").hide();
-		   		$(content).find("#ecertis404").show();
-			});
-	    }
-	});
-}
-
 function sortDropdowns() {
     $("select.optsorted").each(function () {
         var select = $(this);
