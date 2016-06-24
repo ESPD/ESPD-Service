@@ -28,6 +28,9 @@
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 		<link rel="stylesheet" type="text/css" href="<s:url value="/static/bundle/all.css"/>">
 		<script src="<s:url value="/static/bundle/all.js"/>"></script>
+		
+		<s:eval var="ecertisCriterionURL" scope="page" expression="@espdConfiguration.ecertisCriterionURL" />
+		<s:eval var="ecertisEvidenceURL" scope="page" expression="@espdConfiguration.ecertisEvidenceURL" />
 
 		<script>
 			var pageLanguage = "${pageContext.response.locale}".toLowerCase();
@@ -45,14 +48,16 @@
 				$("input:radio[data-target-show]").change(dataShow);
 				$("input:radio[data-target-hide]").change(dataHide);
 				sortDropdowns();
-			});
 
-			function initEcertisLinkHeader({country, criterionURL, evidenceURL}) {
-				$('.ecertis-link-header').click(function(){
-			
+				var criterionURL = "${ecertisCriterionURL}";
+				var evidenceURL = "${ecertisEvidenceURL}";
+				var country = "${espd.authority.country.iso2Code}";
+				
+				$('.ecertis-link-header').click(function() {
+					
 				   	var uuid = $(this).attr("data-uuid");
 				   	if($(this).hasClass( "collapsed" ) && uuid != "") {
-				   	
+
 				   		var content = $(this).attr("data-target");
 				    	$(content).find("#content, #evidencesFound, #evidencesNotFound, #issued, #ecertis404").hide();
 				    	$(content).children("#loading").show();
@@ -107,7 +112,8 @@
 					   	);
 				    }
 				});
-			}
+				
+			});
 		</script>
     </head>
     <body>
