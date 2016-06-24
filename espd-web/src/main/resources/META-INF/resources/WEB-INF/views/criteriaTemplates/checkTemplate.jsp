@@ -65,7 +65,7 @@
 				<h4 id="loading">${span18n["ecertis_loading"]}</h4>
 				<h4 id="ecertis404">${span18n["ecertis_404"]}</h4>
 				<div id="content">
-					<h4>${span18n["ecertis_language"]}: <span id="language"></span></h4>
+					<h4>${span18n["ecertis_language"]}: <span id="language"><!-- dynamic Language --></span></h4>
 					<h4>${span18n["ecertis_legislation"]}</h4>
 					<ul>
 						<li>${span18n["crit_description"]}: <span id="description"><!-- dynamic Description --></span></li>
