@@ -1,5 +1,30 @@
 == Release notes
 
+=== 2016.06.01 (30th of June 2016)
+
+==== Bug
+
+* [ESPD-90] - IE does not allow to copy text with paragraphs in textfield
+* [ESPD-96] - Exclusion ground part C must be preselected
+* [ESPD-104] - We are missing fields for Part VI
+* [ESPD-119] - Incorrect criterion definitions
+
+==== Improvement
+
+* [ESPD-6] - Use procedure, exclusion as tabs
+* [ESPD-76] - Countries list
+* [ESPD-97] - Re-assign labels in the Home Page
+* [ESPD-100] - Selection criteria requirements duplicate ids
+* [ESPD-106] - Part V should not be shown to CAs
+* [ESPD-108] - VCD issues (continued from version 2016.06)
+* [ESPD-109] - Update of the text on the start page
+* [ESPD-110] - Remove all placeholders from the interface
+
+==== New Feature
+
+* [ESPD-50] - Link to eCertis
+* [ESPD-95] - EO should be able to create an ESPD response from scratch as well
+
 === 2016.06 (2nd of June 2016)
 
 This most important updates of this release are:

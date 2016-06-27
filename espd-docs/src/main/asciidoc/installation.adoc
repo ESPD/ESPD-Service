@@ -69,6 +69,9 @@ the end of a line. To have Git solve such problems automatically, you need to se
 see the article https://help.github.com/articles/dealing-with-line-endings[Dealing with Line Endings]. You can change the configuration manually by running
 `git config --global core.autocrlf true` on Windows or `git config --global core.autocrlf input` on Linux and OS X.
 
+[NOTE]
+Each major application version will have a dedicated branch so you can checkout the code for a particular version.
+
 === Running and deploying the ESPD application
 
 This section goes into detail about how you can build and run the {homepage} application.
