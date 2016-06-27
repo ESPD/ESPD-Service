@@ -72,7 +72,8 @@ class AverageYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         g1_1.ID.text() == "abdfa003-d7f5-4375-b1d3-b3765a7c4beb"
         g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
         g1_1.RequirementGroup.size() == 5
-        g1_1.Requirement.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below", "DESCRIPTION")
 
         then: "check year amount currency subgroups"
         checkYearAmountCurrencyGroup1(g1_1.RequirementGroup[0])

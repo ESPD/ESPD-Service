@@ -390,6 +390,16 @@
               "name": "G1.1",
               "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
               "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+                  "description": "Please provide the requested data below",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    null
+                  ]
+                }
+              ],
               "subgroups": [
                 {
                   "name": "G1.1.1",
@@ -587,6 +597,16 @@
               "name": "G1.1",
               "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
               "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+                  "description": "Please provide the requested data below",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    null
+                  ]
+                }
+              ],
               "subgroups": [
                 {
                   "name": "G1.1.1",
@@ -784,6 +804,16 @@
               "name": "G1.1",
               "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
               "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+                  "description": "Please provide the requested data below",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    null
+                  ]
+                }
+              ],
               "subgroups": [
                 {
                   "name": "G1.1.1",
@@ -981,6 +1011,16 @@
               "name": "G1.1",
               "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
               "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
+                  "description": "Please provide the requested data below",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    null
+                  ]
+                }
+              ],
               "subgroups": [
                 {
                   "name": "G1.1.1",
