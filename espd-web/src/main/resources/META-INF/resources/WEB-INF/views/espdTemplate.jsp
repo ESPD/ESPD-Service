@@ -56,34 +56,32 @@
 				   	if($(this).hasClass( "collapsed" ) && uuid != "") {
 
 				   		var content = $(this).attr("data-target");
-				    	$(content).find("#content, #evidencesFound, #evidencesNotFound, #issued, #ecertis404").hide();
+				    	$(content).find("#content, #issued, #ecertis404").hide();
 				    	$(content).children("#loading").show();
 					    	
 				    	$.getJSON(url.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
 				    		function( data ) {
 								$(content).children("#loading").hide();
 								
-								if(data && data.DomainID == "eproc") {
-			
+								if(data && data.DomainID == "eproc" && data.hasOwnProperty("SubCriterion")) {
 									content = $(content).children("#content").show();
 									$(content).find("#language").html(data.Name.languageID.toUpperCase());
 									
-									//Currently display only first LegislationReference from array
-									//In future could be more
-									$(content).find("#description").html(data.LegislationReference[0].Title.value);
-									$(content).find("#article").html(data.LegislationReference[0].Article.value);
-									$(content).find("#url").text(data.LegislationReference[0].URI).attr("href",data.LegislationReference[0].URI);
-				
 									var T = $(content).find("#template").hide();
 									$(T).siblings("#subcriterion").remove();
-				
-									var hasEvidences = false;
+
 									if(data.hasOwnProperty("SubCriterion")) {
 										$.each( data.SubCriterion, function( key, val ) {
 											var item = T.clone().attr("id","subcriterion").appendTo(T.parent()).show();
-											var list = item.children("#sublist").html("");
+											var list = item.children("#evidencesFound").html("");
+				    						item.find("#evidencesFound, #evidencesNotFound").hide();
 											item.children("#subname").html(val.Name.value);
-				
+
+											//Currently display only first LegislationReference from array, in future could be more
+											item.find("#description").html(val.LegislationReference[0].Title.value);
+											item.find("#url").text(val.LegislationReference[0].Article.value).attr("href",data.LegislationReference[0].URI);
+
+											var hasEvidences = false;
 											$.each( $(val.RequirementGroup), function( key, val ) {
 												$.each( $(val.TypeOfEvidence), function( key, val ) {
 													var names = [];
@@ -97,12 +95,15 @@
 													var evidence = T.find("#evidence").clone().appendTo(list);
 													evidence.find("#name").text(val.Name.value).attr("href", evidenceURL);
 													evidence.find("#issued").toggle(names.length != 0).children("#issuerNames").text(names.join(","));
+
+													hasEvidences = true;
 												});
 											});
-											hasEvidences = true;//show evidences when at least one subcriteria is present
+											
+											item.children(hasEvidences?"#evidencesFound":"#evidencesNotFound").show();
 										});
 									}
-									$(content).children(hasEvidences?"#evidencesFound":"#evidencesNotFound").show();
+									
 								}
 								else {
 					   				$(content).find("#ecertis404").show();
