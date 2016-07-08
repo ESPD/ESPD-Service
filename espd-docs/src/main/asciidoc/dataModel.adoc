@@ -8,6 +8,8 @@ Additionally to these requirements, the model also took into account the `Inform
 http://www.cenbii.eu/[CEN/BII-Workshops] (namely Workshop 3), and the latest developments relating to the `Virtual Company
 Dossier (VCD)` in http://www.esens.eu/[e-Sens].
 
+The full data model documentation can be found at: https://espd.github.io/ESPD-EDM/[ESPD Exchange Data Model documentation]
+
 === The ESPD Request XML document overview
 
 The UML Diagram below provides a simplified view of the `ESPD Request` document. Notice that the classes herein represented
