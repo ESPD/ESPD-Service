@@ -96,7 +96,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.hidden-print {
 		display: none !important;
 	}
-	*/
+	
 	.espd-app-container {
 		border-color: black !important;
 	}
@@ -109,13 +109,24 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		border: 1px solid black !important;
 	}
 	
+    .espd-container {
+		color: black;
+	}
+	.alert-espd-info-dotted {
+	    border: 1px dotted black;
+	}
+	.alert-espd-info {
+	    background-color: lightgrey;
+	}
+	*/
 	.espd-panel-heading:after {
 		content: "";
-	}
+	}/*
 	.espd-panel-heading {
 		width: 100%;
 	    top: 0px;
 	    left: 0px;
+	    
 	    
 		color: black;
 	    background: none;
@@ -138,16 +149,9 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.panel-body {
     	padding: 10px 0px 0px 0px;
     }
-    .espd-container {
-		color: black;
-	}
-	.alert-espd-info-dotted {
-	    border: 1px dotted black;
-	}
-	.alert-espd-info {
-	    background-color: lightgrey;
-	}
 	
+	*/
+
 	#loader-wrapper .loader-section {
 	    position: relative;
 	    top: 0;
@@ -191,7 +195,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #3498db;
-
+ 
     -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
     animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
 
@@ -308,21 +312,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
         -webkit-transition: all 0.3s 1s ease-out;  
                 transition: all 0.3s 1s ease-out;
     }
-    
-    /* JavaScript Turned Off */
-    .no-js #loader-wrapper {
-        display: none;
-    }
-    .no-js h1 {
-        color: #222222;
-    }
-
-    #content {
-        margin: 0 auto;
-        padding-bottom: 50px;
-        width: 80%;
-        max-width: 978px;
-    }  
 
 </style>
 
