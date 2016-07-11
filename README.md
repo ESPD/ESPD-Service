@@ -28,7 +28,8 @@ services to their users.
 * [Configuration](http://espd.github.io/espd/docs/html/configuration.html)
 * [View](http://espd.github.io/espd/docs/html/view.html)
 * [Testing](http://espd.github.io/espd/docs/html/testing.html)
-* [Data model](http://espd.github.io/espd/docs/html/dataModel.html)
+* [Data model quick overview](http://espd.github.io/espd/docs/html/dataModel.html)
+* [Data model full documentation](https://espd.github.io/ESPD-EDM/)
 * [Release notes](http://espd.github.io/espd/docs/html/releaseNotes.html)
 * [Full documentation](http://espd.github.io/espd/docs/html/espd.html)
 
