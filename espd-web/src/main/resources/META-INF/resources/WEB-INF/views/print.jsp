@@ -91,9 +91,29 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.espd-panel-heading:after {
 		content: "";
 	}
+	.espd-panel-heading {
+		width: 100%;
+	    top: 0px;
+	    left: 0px;
+	}
 	.form-horizontal .control-label {
 		padding-top: 0px;
 	}
+	.espd-panel {
+		border: none;
+		margin: 0px;
+		
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	} 
+	.panel-default {
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+	.panel-body {
+    	padding: 10px 0px 0px 0px;
+    }
+
 </style>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
