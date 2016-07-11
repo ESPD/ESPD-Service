@@ -96,10 +96,13 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.hidden-print {
 		display: none !important;
 	}
+	*/
 	.espd-app-container {
 		border-color: black !important;
 	}
-	*/
+	#breadbar .breadcrumbs {
+    	background-color: black;
+    }
 	
 	#prevBtn, #nextBtn, #cancelBtn {
 		color: black !important;
