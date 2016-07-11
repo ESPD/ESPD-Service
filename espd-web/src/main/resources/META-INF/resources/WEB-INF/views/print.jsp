@@ -60,12 +60,12 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 			if($(this).attr('type') == "radio") {
 				$(this).replaceWith($("<i />").attr("class",
 					($(this).attr('checked') == "checked" || $(this).attr('checked') == "true") ? "fa fa-check-square-o" : "fa fa-square-o"
-				));
+				).attr("style","margin: 4px;"));
 			}
 			else if($(this).attr('type') == "checkbox") {
 				$(this).replaceWith($("<i />").attr("class",
 					($(this).attr('checked') == "checked" || $(this).attr('checked') == "true") ? "fa fa-check-square-o" : "fa fa-square-o"
-				));
+				).attr("style","margin: 4px;"));
 			}
 			else {
 				$(this).replaceWith($("<span />").addClass("wordwrap").text(this.value));
