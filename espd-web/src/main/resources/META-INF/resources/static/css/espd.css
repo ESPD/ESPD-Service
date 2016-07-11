@@ -227,6 +227,8 @@ div.tooltip-inner {
     margin-top: 15px;
 }
 
+a.progress-link:hover { text-decoration: underline !important; }
+
 /* application header */
 
 #header {

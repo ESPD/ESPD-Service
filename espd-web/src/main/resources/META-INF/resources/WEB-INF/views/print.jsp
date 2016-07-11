@@ -535,8 +535,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 
 <script>
 	$(document).ready(function() {
-		setTimeout(function(){
-			$('body').addClass('loaded');
-		}, 10);
+		$('body').addClass('loaded');
 	});
 </script>
