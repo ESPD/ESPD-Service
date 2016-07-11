@@ -30,7 +30,51 @@
 
 <tiles:importAttribute name="field"/>
 
+<div class="form-group">
+<table style="width:100%">
+	
 <c:forEach begin="1" end="5" varStatus="loop">
+
+		<tr style="border: 1px solid slategrey;">
+			<td>
+				<label class="control-label col-md-3 small">${span18n['crit_description']}</label>
+			</td>
+			<td>
+				<form:textarea path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;"/>
+			</td>
+		</tr>
+		<tr style="border: 1px solid slategrey;">
+			<td>
+				<label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
+			</td>
+			<td>
+				<form:textarea rows="1" path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
+				
+				<tiles:insertDefinition name="currencies">
+		            <tiles:putAttribute name="currencyField" value="${field}.currency${loop.index}"/>
+		            <tiles:putAttribute name="style" value="border-radius: 0;"/>
+		        </tiles:insertDefinition>
+			</td>
+		</tr>
+		<tr style="border: 1px solid slategrey;">
+			<td>
+				 <label class="control-label col-md-3 small">${span18n['crit_date']}</label>
+			</td>
+			<td>
+				<form:input type="text" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			</td>
+		</tr>
+		<tr style="border: 1px solid slategrey;">
+			<td>
+				<label class="control-label col-md-3 small">${span18n['crit_recipients']}</label>
+			</td>
+			<td>
+				<form:textarea path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;"/>
+			</td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+
+<%--
 	<div class="form-group">
 		<div class="col-xs-3">
 		    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
@@ -69,8 +113,10 @@
 			<form:textarea path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;"/>
 		</div>
 	</div>
+	 --%>
 </c:forEach>
 
 
-
+</table>
+</div>
 

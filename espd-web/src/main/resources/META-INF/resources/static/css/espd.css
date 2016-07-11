@@ -27,6 +27,11 @@
     padding-top: 0px !important;
 }
 */
+
+.espd-app-container {
+	padding:0; border-color: #396ea2 !important;
+}
+
 .espd-container {
     color: #04498a;
     padding-bottom: 15px;
@@ -167,6 +172,11 @@ textarea.error {
 
 .alert-espd-info {
     background-color: #d7e1eb;
+}
+
+.alert-espd-info-dotted {
+    border: 1px dotted blue;
+    background-color: #D8D8D8;
 }
 
 .alert {
