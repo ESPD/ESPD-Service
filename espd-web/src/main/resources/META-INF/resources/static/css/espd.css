@@ -129,16 +129,18 @@ option:disabled {
 }
 
 .criteria-row-check {
-    border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px; padding-bottom: 5px;
-    
+    border: 1px solid lightgray;
+    margin-bottom: 5px !important;
+    padding-left: 5px; padding-bottom: 5px;
+    margin-left: 20px;
 }
 
-.criteria-cell-left {
-    border-right: 1px solid lightgray; padding-top: 20px;
+.criteria-row-check-left {
+    border-right: 1px solid transparent; padding-top: 20px;
 }
 
-.criteria-cell-right {
-    border-left: 1px solid lightgray;
+.criteria-row-check-right {
+    border-left: 1px solid transparent;
     left: -1px;
     padding: 20px 20px 0;
 }

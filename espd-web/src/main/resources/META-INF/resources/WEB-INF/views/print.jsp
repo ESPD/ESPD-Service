@@ -162,8 +162,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	}
 	
 	.criteria-row-form {
-	    border-bottom: 1px solid lightgray;
-	    border-top: 1px solid lightgray;
+	    border: none;
+	    border-top: 1px solid transparent;
 	    border-right: none;
 	    border-left: none;
 	    margin-right: 20px;
@@ -419,14 +419,14 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 					<strong>${span18n['crit_selection_eo_declares_that']}</strong>
                 </div>
                 <div class="row criteria-row-form">
-                    <div class="col-md-5 criteria-cell-left">
+                    <div class="col-md-5 criteria-row-check-left">
                         <div class="form-group">
                             <div class="col-md-12">
                                 <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7 criteria-cell-right">
+                    <div class="col-md-7 criteria-row-check-right">
                         <div class="col-md-12">
                             <div class="form-group">
 							 	${span18n["crit_your_answer"]}
