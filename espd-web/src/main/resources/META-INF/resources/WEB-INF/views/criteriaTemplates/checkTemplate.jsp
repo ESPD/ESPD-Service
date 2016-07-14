@@ -39,7 +39,7 @@
 	<tiles:importAttribute name="criterion"/>
 </c:if>
 
-<div class="checkbox" style="border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px;padding-bottom: 5px;">
+<div class="checkbox criteria-row-check">
     <label for="empty-${field}"><%-- empty-... "for" prevents checkbox value switch after click on label showing ecertis values --%>
         <!-- Exclusion criteria except 'Purely national grounds' must always be checked -->
         <!-- We cannot make checkboxes disabled otherwise their value will not be submitted so we prevent the changing of their value by always returning false on the click event -->

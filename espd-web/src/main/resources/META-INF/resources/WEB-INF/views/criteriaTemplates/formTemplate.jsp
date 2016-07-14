@@ -42,8 +42,8 @@
 	<tiles:importAttribute name="availableElectronically" />
 	<tiles:importAttribute name="disableTooltips" />
 	
-	<div class="row" style="border: 1px solid lightgray; margin-right: 5px; margin-left: 0px; margin-bottom: 5px;">
-	    <div class="col-md-5" style="border-right: 1px solid lightgray; padding-top: 5px;padding-left: 5px; padding-top: 7px;">
+	<div class="row criteria-row-form">
+	    <div class="col-md-5 criteria-row-form-left">
 	        <div class="form-group">
 	            <div class="col-md-12">
 	            	<strong>
@@ -59,7 +59,7 @@
 	            </c:if>
 	        </div>
 	    </div>
-	    <div class="col-md-7" style="border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;">
+	    <div class="col-md-7 criteria-row-form-right">
 	
 			<c:if test="${has_your_answer}">
 				<div class="col-md-12">

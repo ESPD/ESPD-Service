@@ -179,7 +179,7 @@
                             <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip"
                                   title="${i18n['crit_selection_eo_satisfies_all_criteria']}"></span>
                         </div>
-                        <div class="row criteria-row">
+                        <div class="row criteria-row-form">
                             <div class="col-md-5 criteria-cell-left">
                                 <div class="form-group">
                                     <div class="col-md-12">

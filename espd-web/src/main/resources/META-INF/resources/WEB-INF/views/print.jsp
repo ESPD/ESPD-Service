@@ -118,10 +118,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.alert-espd-info {
 	    background-color: lightgrey;
 	}
-	*/
-	.espd-panel-heading:after {
-		content: "";
-	}/*
+
 	.espd-panel-heading {
 		width: 100%;
 	    top: 0px;
@@ -151,7 +148,38 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     }
 	
 	*/
+	
+	.alert-espd-info {
+		display: none !important;
+	}
+	
+	.info-label {
+		display: none !important;
+	}
 
+	.espd-panel-heading:after {
+		content: "";
+	}
+	
+	.criteria-row-form {
+	    border-bottom: 1px solid lightgray;
+	    border-top: 1px solid lightgray;
+	    border-right: none;
+	    border-left: none;
+	    margin-right: 20px;
+	    margin-left: 20px;
+	    margin-bottom: -1px;
+	}
+	
+	.criteria-row-form-left {
+		border: none; padding-top: 5px;padding-left: 5px; padding-top: 7px;
+	}
+	
+	.criteria-row-form-right {
+		border: none; padding:20px; left: -1px;  padding-bottom: 0px;
+	}
+	
+	
 	#loader-wrapper .loader-section {
 	    position: relative;
 	    top: 0;
@@ -160,7 +188,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	    background: #222222;
 	    z-index: 1000;
 	}
-	
 	
 	
 	
@@ -391,7 +418,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 <div class="espd-panel-body panel-body">
 					<strong>${span18n['crit_selection_eo_declares_that']}</strong>
                 </div>
-                <div class="row criteria-row">
+                <div class="row criteria-row-form">
                     <div class="col-md-5 criteria-cell-left">
                         <div class="form-group">
                             <div class="col-md-12">

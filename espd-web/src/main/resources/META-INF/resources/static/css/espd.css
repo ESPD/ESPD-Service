@@ -115,8 +115,22 @@ option:disabled {
     background: #ccc;
     padding: 5px;
 }
-.criteria-row {
+.criteria-row-form {
     border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;
+    
+}
+
+.criteria-row-form-left {
+	border-right: 1px solid lightgray; padding-top: 5px;padding-left: 5px; padding-top: 7px;
+}
+
+.criteria-row-form-right {
+	border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;
+}
+
+.criteria-row-check {
+    border: 1px solid lightgray;margin-bottom: 5px;padding-left: 5px; padding-bottom: 5px;
+    
 }
 
 .criteria-cell-left {
