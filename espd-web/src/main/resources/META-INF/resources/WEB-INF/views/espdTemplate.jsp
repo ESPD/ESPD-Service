@@ -120,21 +120,24 @@
 		</script>
     </head>
     <body>
-    	<div class="container panel" style="padding:0; border-color: #396ea2 !important;">
-	        <div id="header">
-	            <tiles:insertAttribute name="header"/>
-	            <tiles:insertAttribute name="breadcrumb"/>
+    	<div id="espd-content">
+	    	<div class="container panel espd-app-container">
+		        <div id="header">
+		            <tiles:insertAttribute name="header"/>
+		            <tiles:insertAttribute name="breadcrumb"/>
+		        </div>
+		        <div id="body" class="container espd-container">
+		            <tiles:insertAttribute name="body">
+		            	<tiles:putAttribute name="agent" value="${agent}"/>
+		            	<tiles:putAttribute name="flow" value="${flow}"/>
+		            </tiles:insertAttribute>
+		        </div>
+			</div>
+	        <div id="footer">
+	            <tiles:insertAttribute name="footer"/>
 	        </div>
-	        <div id="body" class="container espd-container">
-	            <tiles:insertAttribute name="body">
-	            	<tiles:putAttribute name="agent" value="${agent}"/>
-	            	<tiles:putAttribute name="flow" value="${flow}"/>
-	            </tiles:insertAttribute>
-	        </div>
-		</div>
-        <div id="footer">
-            <tiles:insertAttribute name="footer"/>
+	        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
         </div>
-        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
+
     </body>
 </html>

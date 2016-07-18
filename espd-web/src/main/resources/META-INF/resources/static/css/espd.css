@@ -27,6 +27,11 @@
     padding-top: 0px !important;
 }
 */
+
+.espd-app-container {
+	padding:0; border-color: #396ea2 !important;
+}
+
 .espd-container {
     color: #04498a;
     padding-bottom: 15px;
@@ -110,16 +115,32 @@ option:disabled {
     background: #ccc;
     padding: 5px;
 }
-.criteria-row {
+.criteria-row-form {
     border: 1px solid lightgray;margin-right: 20px; margin-left: 20px; margin-bottom: 5px;
+    
 }
 
-.criteria-cell-left {
-    border-right: 1px solid lightgray; padding-top: 20px;
+.criteria-row-form-left {
+	border-right: 1px solid lightgray; padding-top: 5px;padding-left: 5px; padding-top: 7px;
 }
 
-.criteria-cell-right {
-    border-left: 1px solid lightgray;
+.criteria-row-form-right {
+	border-left: 1px solid lightgray; padding:20px; left: -1px;  padding-bottom: 0px;
+}
+
+.criteria-row-check {
+    border: 1px solid lightgray;
+    margin-bottom: 5px !important;
+    padding-left: 5px; padding-bottom: 5px;
+    margin-left: 20px;
+}
+
+.criteria-row-check-left {
+    border-right: 1px solid transparent; padding-top: 20px;
+}
+
+.criteria-row-check-right {
+    border-left: 1px solid transparent;
     left: -1px;
     padding: 20px 20px 0;
 }
@@ -169,6 +190,11 @@ textarea.error {
     background-color: #d7e1eb;
 }
 
+.alert-espd-info-dotted {
+    border: 1px dotted blue;
+    background-color: #D8D8D8;
+}
+
 .alert {
     border-radius: 0;
 }
@@ -216,6 +242,8 @@ div.tooltip-inner {
 .nav-wizard {
     margin-top: 15px;
 }
+
+a.progress-link:hover { text-decoration: underline !important; }
 
 /* application header */
 
@@ -339,7 +367,7 @@ div.tooltip-inner {
 #breadbar .breadcrumbs {
     background-color: #074A8B;
     height: 1.42em;
-    list-style: none;
+    list-style: none; 
     padding-left: 0;
     margin-top: 0;
     margin-left: auto;

@@ -48,7 +48,7 @@
     </c:if>
     <span id="banner-title-text" class="hidden-print">${span18n["app_title"]}</span>
     <span id="banner-title-text" style="font-size: 160%" class="visible-print">${span18n["app_title"]}</span>
-    <span id="banner-image-title-fill"></span>
+    <span id="banner-image-title-fill" class="hidden-print"></span>
     <span id="banner-sub-title-text" class="hidden-print" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
     <div id="top-lang-selector" class="hidden-print">
         <ul class="reset-list">
