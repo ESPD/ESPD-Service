@@ -14,7 +14,7 @@
                 </li>
             </ul>
         </div>
-        <div class="paragraph">
+        <div>
             <h2>${span18n['createca_header']}</h2>
         </div>
         <div class="espd-panel panel panel-default">
@@ -113,7 +113,7 @@
             </div>
         </div>
         <c:if test="${agent == 'eo'}">
-            <div class="paragraph">
+            <div>
                 <h2>${span18n['createeo_header']}</h2>
             </div>
             <div class="espd-panel panel panel-default">

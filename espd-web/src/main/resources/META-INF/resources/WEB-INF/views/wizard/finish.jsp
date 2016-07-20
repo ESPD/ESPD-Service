@@ -35,7 +35,7 @@
        		<tiles:putAttribute name="flow" value="${flow}"/>
 			<tiles:putAttribute name="finish" value="true"/>
         </tiles:insertDefinition>
-		<div class="paragraph">
+		<div>
 			<h2>
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
 			</h2>

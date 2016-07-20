@@ -32,9 +32,9 @@
 <tiles:importAttribute name="currencyField"/>
 <tiles:importAttribute name="style"/>
 
-<form:select path="${currencyField}" cssClass="form-control" cssStyle="${style}">
+<form:select path="${currencyField}" cssClass="form-control currency" cssStyle="${style}">
     <form:option value="${null}" label="---"/>
     <c:forEach items="<%=Currency.values()%>" var="curr">
-        <form:option value="${curr}">${curr} (${curr.description})</form:option>
+        <form:option selected="${espd.authority.country.currency == curr ? 'selected' : ''}" value="${curr}">${curr} (${curr.description})</form:option>
     </c:forEach>
 </form:select>
