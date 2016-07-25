@@ -160,7 +160,7 @@
                     </ul>
                 </div>
                 <form:errors path="*" cssClass="errorContainer alert alert-danger"></form:errors>
-                <div class="paragraph"><h2>${span18n['createcasel_header']}</h2></div>
+                <div><h2>${span18n['createcasel_header']}</h2></div>
                 <div class="alert alert-espd-info">
                     <ul class="fa-ul">
                         <li>

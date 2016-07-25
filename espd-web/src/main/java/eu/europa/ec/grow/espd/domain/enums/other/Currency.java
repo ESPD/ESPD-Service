@@ -41,7 +41,7 @@ public enum Currency {
 	AUD("Australian Dollar"),
 	AWG("Aruban Guilder"),
 	AZN("Azerbaijanian Manat"),
-	BAM("Convertible Marks,"),
+	BAM("Convertible Marks"),
 	BBD("Barbados Dollar"),
 	BDT("Bangladeshi Taka"),
 	BGN("Bulgarian Lev"),
