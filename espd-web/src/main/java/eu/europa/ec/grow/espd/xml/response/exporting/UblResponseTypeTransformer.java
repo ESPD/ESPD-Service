@@ -82,6 +82,7 @@ public class UblResponseTypeTransformer {
         addAdditionalDocumentReference(espdDocument, responseType);
         addCriteria(espdDocument, responseType);
 	    addSignatureInformation(espdDocument, responseType);
+	    addConsortiumName(espdDocument, responseType);
 
         return responseType;
     }
@@ -171,6 +172,16 @@ public class UblResponseTypeTransformer {
 		signatureType.setID(idType);
 
 		responseType.getSignature().add(signatureType);
+	}
+
+	private void addConsortiumName(EspdDocument espdDocument, ESPDResponseType responseType) {
+		if (isBlank(espdDocument.getConsortiumName())) {
+			return;
+		}
+
+		NameType nameType = new NameType();
+		nameType.setValue(espdDocument.getConsortiumName());
+		responseType.setEconomicOperatorGroupName(nameType);
 	}
 
 }

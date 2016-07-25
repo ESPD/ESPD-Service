@@ -49,6 +49,7 @@ public class EspdDocument {
 	private String lotConcerned;
 	private String fileRefByCA;
 	private String tedUrl; // aka ojsUrl
+	private String consortiumName;
 
 	private EspdRequestMetadata requestMetadata;
 

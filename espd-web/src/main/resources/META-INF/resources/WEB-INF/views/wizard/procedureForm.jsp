@@ -445,19 +445,30 @@
                 </div>
                 <div id="createeo_info_reliance_div" class="collapse in">
                     <div class="panel-body">
-                            <div class="col-md-12 form-group">
-                                <label class="control-label col-md-6">
-                                        ${span18n['createeo_eo_rely_other_entities']}
-                                </label>
-
-                                <div class="col-md-6">
-									<form:radiobutton path="eoReliesCapacities.answer" value="true" data-target-show="#separate_espd_div"/>${span18n["yes"]}
-									<form:radiobutton path="eoReliesCapacities.answer" value="false" data-target-hide="#separate_espd_div"/>${span18n["no"]}
-                                </div>
+                        <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6">
+                                    ${span18n['createeo_eo_consortium_name']}
+                            </label>
+                            <div class="col-md-6">
+                                <form:textarea path="consortiumName"
+                                               cssStyle="resize: none" rows="1" cssClass="form-control"/>
                             </div>
-                            <div id="separate_espd_div" class="col-md-12 alert  ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}">
-                                    ${span18n['createeo_separate_espd_sections_a_b']}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label class="control-label col-md-6">
+                                    ${span18n['createeo_eo_rely_other_entities']}
+                            </label>
+                            <div class="col-md-6">
+                                <form:radiobutton path="eoReliesCapacities.answer" value="true"
+                                                  data-target-show="#separate_espd_div"/>${span18n["yes"]}
+                                <form:radiobutton path="eoReliesCapacities.answer" value="false"
+                                                  data-target-hide="#separate_espd_div"/>${span18n["no"]}
                             </div>
+                        </div>
+                        <div id="separate_espd_div"
+                             class="col-md-12 alert  ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}">
+                                ${span18n['createeo_separate_espd_sections_a_b']}
+                        </div>
                     </div>
                 </div>
             </div>
