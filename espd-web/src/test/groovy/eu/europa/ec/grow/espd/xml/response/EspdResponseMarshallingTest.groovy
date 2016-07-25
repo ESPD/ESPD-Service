@@ -417,7 +417,6 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
         when:
         def result = parseResponseXml(espd)
-        printXmlOutput()
 
         then:
         result.EconomicOperatorGroupName.text() == "Lannister Inc."
