@@ -70,7 +70,7 @@ class EconomicOperatorRegisteredRequestTest extends AbstractCriteriaFixture {
         g1_1.@pi.text() == "GROUP_FULFILLED.ON_FALSE"
         g1_1.RequirementGroup.size() == 2
         g1_1.Requirement.size() == 1
-        checkRequirement(g1_1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        checkRequirement(g1_1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
 
         then: "G1.1.1"
         def g1_1_1 = g1_1.RequirementGroup[0]

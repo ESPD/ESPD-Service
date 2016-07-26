@@ -62,7 +62,7 @@ class EconomicOperatorParticipatingProcurementProcedureRequestTest extends Abstr
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 1
         g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        checkRequirement(g1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
 
         then: "G1.1"
         def g1_1 = g1.RequirementGroup[0]
