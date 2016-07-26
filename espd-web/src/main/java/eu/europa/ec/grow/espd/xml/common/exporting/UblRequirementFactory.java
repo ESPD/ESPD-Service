@@ -164,7 +164,7 @@ public final class UblRequirementFactory {
         URIType uriType = new URIType();
         uriType.setValue(url);
         // id is mandatory for EvidenceDocumentReference
-        IDType idType = new IDType();
+        IDType idType =CommonUblFactory.buildIdType();
         idType.setValue(UUID.randomUUID().toString());
         documentReferenceType.setID(idType);
         externalReferenceType.setURI(uriType);

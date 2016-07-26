@@ -26,9 +26,9 @@ package eu.europa.ec.grow.espd.xml.response.exporting;
 
 import eu.europa.ec.grow.espd.domain.EspdCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExpectedResponseType;
-import eu.europa.ec.grow.espd.domain.enums.other.Agency;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.xml.common.exporting.CommonUblFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblRequirementFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblRequirementTypeTemplate;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
@@ -51,9 +51,8 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
     protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion) {
         RequirementType requirementType = new RequirementType();
 
-        IDType idType = new IDType();
+        IDType idType = CommonUblFactory.buildIdType();
         idType.setValue(ccvRequirement.getId());
-        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setSchemeID("CriterionRelatedIDs");
         idType.setSchemeVersionID("1.0");
         requirementType.setID(idType);

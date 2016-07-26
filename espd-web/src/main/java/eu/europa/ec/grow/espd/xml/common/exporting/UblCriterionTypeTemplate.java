@@ -76,9 +76,8 @@ public abstract class UblCriterionTypeTemplate {
     }
 
     private void addCriterionID(CcvCriterion input, CriterionType criterionType) {
-        IDType idType = new IDType();
+        IDType idType = CommonUblFactory.buildIdType();
         idType.setValue(input.getUuid());
-        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setSchemeVersionID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.SCHEME_VERSION_ID);
         idType.setSchemeID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.SCHEME_ID);
         criterionType.setID(idType);
@@ -164,9 +163,8 @@ public abstract class UblCriterionTypeTemplate {
     }
 
     private void addGroupId(CcvRequirementGroup input, RequirementGroupType groupType) {
-        IDType idType = new IDType();
+        IDType idType = CommonUblFactory.buildIdType();
         idType.setSchemeVersionID("1.0");
-        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
         idType.setValue(input.getId());
         groupType.setID(idType);
     }

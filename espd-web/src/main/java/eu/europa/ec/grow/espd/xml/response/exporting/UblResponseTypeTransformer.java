@@ -166,7 +166,7 @@ public class UblResponseTypeTransformer {
 		SignatureType signatureType = new SignatureType();
 		signatureType.setSignatoryParty(signatoryParty);
 
-		IDType idType = new IDType();
+		IDType idType = CommonUblFactory.buildIdType();
 		idType.setValue(UUID.randomUUID().toString());
 		signatureType.setID(idType);
 
