@@ -50,7 +50,7 @@ public enum CriterionJurisdictionLevel {
      */
     NATIONAL_LEGISLATION("NATIONAL_LEGISLATION", "National Legislation");
 
-    public static final String LIST_ID = "CriterionJurisdictionLevelCode";
+    public static final String LIST_ID = "CriterionJurisdictionLevel";
 
     public static final String LIST_VERSION_ID = "1.0";
 

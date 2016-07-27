@@ -51,7 +51,7 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert ref.Title.text() == "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC"
         assert ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
         assert ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
-        assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevelCode"
+        assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevel"
         assert ref.JurisdictionLevelCode.@listVersionID.text() == "1.0"
         assert ref.Article.text() == expectedArticle
         assert ref.URI.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
