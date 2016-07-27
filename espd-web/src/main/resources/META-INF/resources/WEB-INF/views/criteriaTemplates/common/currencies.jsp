@@ -35,7 +35,7 @@
 <form:select path="${currencyField}" cssClass="form-control currency" cssStyle="${style}">
     <form:option value="${null}" label="---"/>
     <c:forEach items="<%=Currency.values()%>" var="curr">
-		<form:option selected="${espd.authority.country.currency == curr ? 'selected' : ''}" data-i18n="${'currency_'.concat(curr)}" value="${curr}">
+		<form:option selected="${espd.economicOperator.country.currency == curr ? 'selected' : ''}" data-i18n="${'currency_'.concat(curr)}" value="${curr}">
 			${i18n["currency_".concat(curr)]}
 		</form:option>
     </c:forEach>
