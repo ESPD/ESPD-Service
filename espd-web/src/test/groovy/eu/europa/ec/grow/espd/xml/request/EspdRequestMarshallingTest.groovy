@@ -229,9 +229,9 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
         then: "check address information"
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.text() == "RO"
-        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "ISO"
-        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "ISO 3166-1"
-        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == "CountryCodeIdentifier"
+        result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
         result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"

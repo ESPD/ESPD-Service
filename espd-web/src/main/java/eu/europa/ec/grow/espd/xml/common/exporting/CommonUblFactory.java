@@ -309,9 +309,10 @@ public final class CommonUblFactory {
         CountryType countryType = new CountryType();
         IdentificationCodeType identificationCodeType = new IdentificationCodeType();
         identificationCodeType.setValue(country.getIso2Code());
-        identificationCodeType.setListAgencyID("ISO");
-        identificationCodeType.setListName(country.getIsoType());
-        identificationCodeType.setListVersionID("1.0");
+	    identificationCodeType.setListID("CountryCodeIdentifier");
+        identificationCodeType.setListAgencyID("EU-COM-GROW");
+        identificationCodeType.setListName("CountryCodeIdentifier");
+        identificationCodeType.setListVersionID("1.0.2");
         countryType.setIdentificationCode(identificationCodeType);
         return countryType;
     }
