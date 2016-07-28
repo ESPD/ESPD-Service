@@ -46,7 +46,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
         checkCriterionId(response, idx, "07301031-2270-41af-8e7e-66fe0c777107")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.PROFESSIONAL.QUALIFICATIONS")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.PROFESSIONAL_QUALIFICATIONS")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Educational and professional qualifications"

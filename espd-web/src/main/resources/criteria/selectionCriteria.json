@@ -2538,7 +2538,7 @@
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
         "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
-        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES.FOR_STUDY_RESEARCH"
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",
@@ -2718,7 +2718,7 @@
       "criterionType": {
         "description": "Selection criteria relating to the technical and professional ability",
         "espdType": "TECHNICAL_PROFESSIONAL_ABILITY",
-        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.PROFESSIONAL.QUALIFICATIONS"
+        "code": "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.PROFESSIONAL_QUALIFICATIONS"
       },
       "legislationReference": {
         "title": "DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC",

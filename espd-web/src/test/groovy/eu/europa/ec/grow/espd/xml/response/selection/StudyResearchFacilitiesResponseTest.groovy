@@ -46,7 +46,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
         checkCriterionId(response, idx, "90a2e100-44cc-45d3-9970-69d6714f1596")
 
         then: "CriterionTypeCode element"
-        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES.FOR_STUDY_RESEARCH")
+        checkCriterionTypeCode(response, idx, "CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH")
 
         then: "CriterionName element"
         response.Criterion[idx].Name.text() == "Study and research facilities"
