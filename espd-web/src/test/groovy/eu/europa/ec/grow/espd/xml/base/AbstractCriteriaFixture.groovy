@@ -42,7 +42,7 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert request.Criterion[idx].TypeCode.text() == expectedTypeCode
         assert request.Criterion[idx].TypeCode.@listAgencyID.text() == "EU-COM-GROW"
         assert request.Criterion[idx].TypeCode.@listID.text() == "CriteriaTypeCode"
-        assert request.Criterion[idx].TypeCode.@listVersionID.text() == "1.0"
+        assert request.Criterion[idx].TypeCode.@listVersionID.text() == "1.0.2"
     }
 
     protected static void checkLegislationReference(def request, int idx, String expectedArticle) {
@@ -52,7 +52,7 @@ class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
         assert ref.JurisdictionLevelCode.text() == "EU_DIRECTIVE"
         assert ref.JurisdictionLevelCode.@listAgencyID.text() == "EU-COM-GROW"
         assert ref.JurisdictionLevelCode.@listID.text() == "CriterionJurisdictionLevel"
-        assert ref.JurisdictionLevelCode.@listVersionID.text() == "1.0"
+        assert ref.JurisdictionLevelCode.@listVersionID.text() == "1.0.2"
         assert ref.Article.text() == expectedArticle
         assert ref.URI.text() == "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024"
     }

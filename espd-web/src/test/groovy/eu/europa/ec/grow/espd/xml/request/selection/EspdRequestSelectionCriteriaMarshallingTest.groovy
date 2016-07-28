@@ -56,7 +56,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         request.Criterion[idx].TypeCode.text() == "CRITERION.SELECTION.ALL_SATISFIED"
         request.Criterion[idx].TypeCode.@listAgencyID.text() == "EU-COM-GROW"
         request.Criterion[idx].TypeCode.@listID.text() == "CriteriaTypeCode"
-        request.Criterion[idx].TypeCode.@listVersionID.text() == "1.0"
+        request.Criterion[idx].TypeCode.@listVersionID.text() == "1.0.2"
 
         then: "check name and description"
         request.Criterion[idx].Name.text() == "All selection criteria will be satisfied"

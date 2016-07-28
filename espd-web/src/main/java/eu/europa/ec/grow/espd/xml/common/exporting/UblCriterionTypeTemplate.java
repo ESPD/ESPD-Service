@@ -88,7 +88,7 @@ public abstract class UblCriterionTypeTemplate {
         typeCodeType.setValue(input.getCriterionType().getCode());
         typeCodeType.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         typeCodeType.setListID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_ID);
-        typeCodeType.setListVersionID(eu.europa.ec.grow.espd.domain.enums.criteria.CriterionType.LIST_VERSION_ID);
+        typeCodeType.setListVersionID("1.0.2");
         criterionType.setTypeCode(typeCodeType);
     }
 
@@ -123,7 +123,7 @@ public abstract class UblCriterionTypeTemplate {
         jurisdictionLevelCode.setValue(CriterionJurisdictionLevel.EU_DIRECTIVE.getCode());
         jurisdictionLevelCode.setListAgencyID(Agency.EU_COM_GROW.getIdentifier());
         jurisdictionLevelCode.setListID(CriterionJurisdictionLevel.LIST_ID);
-        jurisdictionLevelCode.setListVersionID(CriterionJurisdictionLevel.LIST_VERSION_ID);
+        jurisdictionLevelCode.setListVersionID("1.0.2");
         legislationType.setJurisdictionLevelCode(jurisdictionLevelCode);
 
         TextType article = new TextType();
