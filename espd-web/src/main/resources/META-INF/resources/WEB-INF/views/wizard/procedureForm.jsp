@@ -170,11 +170,13 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label col-md-6">
-                                            ${span18n['createeo_is_eo_sized']}
-                                    <span data-i18n="createeo_is_eo_sized_tooltip" title="${i18n['createeo_is_eo_sized_tooltip']}" data-toggle="tooltip"></span>
+                                    <label class="control-label col-md-6">${span18n['createeo_is_eo_sized']}
+                                        <c:if test="${step != 'print'}">
+                                            <span data-i18n="createeo_is_eo_sized_tooltip"
+                                                  title="${i18n['createeo_is_eo_sized_tooltip']}"
+                                                  data-toggle="tooltip"></span>
+                                        </c:if>
                                     </label>
-
                                     <div class="col-md-6">
 										<form:radiobutton path="economicOperator.isSmallSizedEnterprise" value="true"/>${span18n["yes"]}
 										<form:radiobutton path="economicOperator.isSmallSizedEnterprise" value="false"/>${span18n["no"]}

@@ -89,66 +89,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </script>
 
 <style>
-	/*
-	.visible-print {
-		display: block !important;
-	}
-	.hidden-print {
-		display: none !important;
-	}
-	
-	.espd-app-container {
-		border-color: black !important;
-	}
-	#breadbar .breadcrumbs {
-    	background-color: black;
-    }
-	
-	#prevBtn, #nextBtn, #cancelBtn {
-		color: black !important;
-		border: 1px solid black !important;
-	}
-	
-    .espd-container {
-		color: black;
-	}
-	.alert-espd-info-dotted {
-	    border: 1px dotted black;
-	}
-	.alert-espd-info {
-	    background-color: lightgrey;
-	}
-
-	.espd-panel-heading {
-		width: 100%;
-	    top: 0px;
-	    left: 0px;
-	    
-	    
-		color: black;
-	    background: none;
-	    border: 1px solid black;
-	}
-	.form-horizontal .control-label {
-		padding-top: 0px;
-	}
-	.espd-panel {
-		border: none;
-		margin: 0px;
-		
-		box-shadow: none;
-		-webkit-box-shadow: none;
-	} 
-	.panel-default {
-		margin-right: 0px;
-		margin-left: 0px;
-	}
-	.panel-body {
-    	padding: 10px 0px 0px 0px;
-    }
-	
-	*/
-	
 	.alert-espd-info {
 		display: none !important;
 	}
@@ -178,8 +118,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.criteria-row-form-right {
 		border: none; padding:20px; left: -1px;  padding-bottom: 0px;
 	}
-	
-	
+
 	#loader-wrapper .loader-section {
 	    position: relative;
 	    top: 0;
@@ -188,14 +127,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	    background: #222222;
 	    z-index: 1000;
 	}
-	
-	
-	
-	
-	
-	
-	
-	 
+
 .chromeframe {
     margin: 0.2em 0;
     background: #ccc;
