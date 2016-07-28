@@ -72,7 +72,7 @@
             </ul>
         </div>
 
-        <div class="paragraph">
+        <div>
             <h2>${span18n["createcaexcl_header"]}</h2>
         </div>
 

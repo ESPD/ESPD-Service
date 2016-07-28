@@ -39,7 +39,7 @@
 <div class="row-fluid">
     <div class="col-lg-12">
         <div class="alert alert-success" role="alert">
-            Release notes <a href="http://espd.github.io/espd/docs/html/releaseNotes.html" class="alert-link" target="_blank">can be found here</a>
+            Release notes <a href="http://espd.github.io/ESPD-Service/docs/html/releaseNotes.html" class="alert-link" target="_blank">can be found here</a>
         </div>
     </div>
 </div>

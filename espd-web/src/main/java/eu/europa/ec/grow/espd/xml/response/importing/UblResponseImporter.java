@@ -61,27 +61,28 @@ public class UblResponseImporter extends UblRequestResponseImporter {
 	/**
 	 * Build an instance of a {@link EspdDocument} populated with data coming from a UBL {@link ESPDResponseType}.
 	 *
-	 * @param input The XML object structure of an ESPD Response
+	 * @param responseType The XML object structure of an ESPD Response
 	 *
 	 * @return An {@link EspdDocument} entity containing the information coming from the XML response file.
 	 */
-	public EspdDocument importResponse(ESPDResponseType input) {
-		EspdDocument espd = buildEspdDocument(null, input);
-		if (input.getIssueDate() != null && input.getIssueDate().getValue() != null) {
-			espd.setDocumentDate(input.getIssueDate().getValue().toDate());
+	public EspdDocument importResponse(ESPDResponseType responseType) {
+		EspdDocument espd = buildEspdDocument(null, responseType);
+		if (responseType.getIssueDate() != null && responseType.getIssueDate().getValue() != null) {
+			espd.setDocumentDate(responseType.getIssueDate().getValue().toDate());
 		}
 
-		readSignatureInformation(input, espd);
+		readSignatureInformation(responseType, espd);
+		readConsortiumName(responseType, espd);
 
 		return espd;
 	}
 
-	private void readSignatureInformation(ESPDResponseType requestType, EspdDocument espdDocument) {
-		if (CollectionUtils.isEmpty(requestType.getSignature())) {
+	private void readSignatureInformation(ESPDResponseType responseType, EspdDocument espdDocument) {
+		if (CollectionUtils.isEmpty(responseType.getSignature())) {
 			return;
 		}
 
-		SignatureType signatureType = requestType.getSignature().get(0);
+		SignatureType signatureType = responseType.getSignature().get(0);
 		PartyType signatoryParty = signatureType.getSignatoryParty();
 		if (signatoryParty == null || signatoryParty.getPhysicalLocation() == null) {
 			return;
@@ -90,7 +91,13 @@ public class UblResponseImporter extends UblRequestResponseImporter {
 		if (signatoryParty.getPhysicalLocation().getName() != null) {
 			espdDocument.setLocation(signatoryParty.getPhysicalLocation().getName().getValue());
 		}
+	}
 
+	private void readConsortiumName(ESPDResponseType responseType, EspdDocument espdDocument) {
+		if (responseType.getEconomicOperatorGroupName() == null) {
+			return;
+		}
+		espdDocument.setConsortiumName(responseType.getEconomicOperatorGroupName().getValue());
 	}
 
 	@Override

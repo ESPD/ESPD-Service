@@ -411,4 +411,15 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.AdditionalDocumentReference[0].IssueTime.size() == 0
     }
 
+    def "should contain the consortium name"() {
+        given:
+        def espd = new EspdDocument(consortiumName: "Lannister Inc.")
+
+        when:
+        def result = parseResponseXml(espd)
+
+        then:
+        result.EconomicOperatorGroupName.text() == "Lannister Inc."
+    }
+
 }

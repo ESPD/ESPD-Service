@@ -69,7 +69,7 @@ $(function() {
 			<tiles:putAttribute name="flow" value="unknown"/>
 			<tiles:putAttribute name="start" value="true"/>
         </tiles:insertDefinition>
-		<div class="paragraph">
+		<div>
 			<h2 data-i18n="filter_header"><s:message code='filter_header'/></h2>
 		</div>
 		<div class="alert alert-espd-info">
@@ -89,7 +89,7 @@ $(function() {
 			</ul>
 		</div>
         <form:errors path="attachments" cssClass="errorContainer alert alert-danger"/>
-		<div class="paragraph">
+		<div>
 			<h3>
 				<span data-i18n="filter_who_are_you"><s:message code='filter_who_are_you'/></span>
 				<span data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip" title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>

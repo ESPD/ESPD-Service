@@ -89,66 +89,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </script>
 
 <style>
-	/*
-	.visible-print {
-		display: block !important;
-	}
-	.hidden-print {
-		display: none !important;
-	}
-	
-	.espd-app-container {
-		border-color: black !important;
-	}
-	#breadbar .breadcrumbs {
-    	background-color: black;
-    }
-	
-	#prevBtn, #nextBtn, #cancelBtn {
-		color: black !important;
-		border: 1px solid black !important;
-	}
-	
-    .espd-container {
-		color: black;
-	}
-	.alert-espd-info-dotted {
-	    border: 1px dotted black;
-	}
-	.alert-espd-info {
-	    background-color: lightgrey;
-	}
-
-	.espd-panel-heading {
-		width: 100%;
-	    top: 0px;
-	    left: 0px;
-	    
-	    
-		color: black;
-	    background: none;
-	    border: 1px solid black;
-	}
-	.form-horizontal .control-label {
-		padding-top: 0px;
-	}
-	.espd-panel {
-		border: none;
-		margin: 0px;
-		
-		box-shadow: none;
-		-webkit-box-shadow: none;
-	} 
-	.panel-default {
-		margin-right: 0px;
-		margin-left: 0px;
-	}
-	.panel-body {
-    	padding: 10px 0px 0px 0px;
-    }
-	
-	*/
-	
 	.alert-espd-info {
 		display: none !important;
 	}
@@ -178,8 +118,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	.criteria-row-form-right {
 		border: none; padding:20px; left: -1px;  padding-bottom: 0px;
 	}
-	
-	
+
 	#loader-wrapper .loader-section {
 	    position: relative;
 	    top: 0;
@@ -188,14 +127,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	    background: #222222;
 	    z-index: 1000;
 	}
-	
-	
-	
-	
-	
-	
-	
-	 
+
 .chromeframe {
     margin: 0.2em 0;
     background: #ccc;
@@ -221,7 +153,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     margin: -75px 0 0 -75px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #3498db;
+    border-top-color: #04498a;
  
     -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
     animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -238,7 +170,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
         bottom: 5px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #e74c3c;
+        border-top-color: #04498a;
 
         -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
         animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -253,7 +185,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
         bottom: 15px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #f9c922;
+        border-top-color: #04498a;
 
         -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
           animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -346,16 +278,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-	<div style="top: 170px; width: 100%; text-align: center; position: fixed; background: black;z-index:1001">
-		<h1 style="color: white">
-			${span18n["report_generating"]}
-		</h1>
-		<h1>
-			<a href="${pageContext.request.contextPath}/${flow}/${agent}/finish">
-				${span18n["back_to_final"]}
-			</a>
-		</h1>
-    </div>
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
@@ -367,7 +289,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	<%-- EXCLUSION --%>
     <div class="panel-default">
 
-        <div class="paragraph">
+        <div>
             <h2>${span18n["createcaexcl_header"]}</h2>
         </div>
         
@@ -402,7 +324,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     <div class="panel-default">
         
         
-        <div class="paragraph"><h2>${span18n['createcasel_header']}</h2></div>
+        <div><h2>${span18n['createcasel_header']}</h2></div>
         <div class="alert alert-espd-info">
             <ul class="fa-ul">
                 <li>
@@ -478,7 +400,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 
 	<%-- FINISH --%>
 	<div class="panel-default">
-		<div class="paragraph">
+		<div>
 			<h2>
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
 			</h2>

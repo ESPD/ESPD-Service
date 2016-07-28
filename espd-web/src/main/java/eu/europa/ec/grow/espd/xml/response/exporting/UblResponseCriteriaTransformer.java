@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.exporting;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblCriterionTypeTemplate;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
@@ -66,5 +67,11 @@ class UblResponseCriteriaTransformer extends UblCriteriaTemplate {
     protected UblCriterionTypeTemplate getCriterionTransformer() {
         return this.criterionTransformer;
     }
+
+	@Override
+	protected Boolean satisfiesAllCriterionPresent(SatisfiesAllCriterion satisfiesAllCriterion) {
+		// the 'Satisfies all' criterion is present on an ESPD Response only if its answer is 'true'
+		return satisfiesAllCriterion != null && Boolean.TRUE.equals(satisfiesAllCriterion.getAnswer());
+	}
 
 }

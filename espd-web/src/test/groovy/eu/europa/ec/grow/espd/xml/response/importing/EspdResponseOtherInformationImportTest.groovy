@@ -174,4 +174,9 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.location == "Eastwatch by the Sea"
     }
 
+    def "should import consortium name"() {
+        expect:
+        espdFull.consortiumName == "Lannisterum Incorporatus"
+    }
+
 }

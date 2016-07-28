@@ -47,7 +47,7 @@
         	<tiles:putAttribute name="flow" value="${flow}"/>
             <tiles:putAttribute name="exclusion" value="true"/>
         </tiles:insertDefinition>
-        <div class="paragraph">
+        <div>
             <h2>
                 <span data-i18n="createcaexcl_header"><s:message code="createcaexcl_header"/></span>
             </h2>
