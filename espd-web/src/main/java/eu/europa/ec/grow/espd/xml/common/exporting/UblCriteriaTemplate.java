@@ -89,9 +89,7 @@ public abstract class UblCriteriaTemplate {
 			// Option 2:
 			// CA select individual selection criteria -> EO sees only the selected ones (and even not the "All selection criteria")
 			for (SelectionCriterion criterion : SelectionCriterion.values()) {
-				if (SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED.equals(criterion)) {
-					continue;
-				}
+				// this will also cover the case when 'Satisfies all' exists with the answer 'No'
 				addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
 			}
 		}
