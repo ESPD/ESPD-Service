@@ -21,17 +21,19 @@
 :piwik: http://piwik.org/[Piwik]
 :jquery: https://jquery.com/[jQuery]
 :rest: https://en.wikipedia.org/wiki/Representational_state_transfer[REST]
+:espd-edm: https://espd.github.io/ESPD-EDM[ESPD Exchange Data Model]
 
 == Overview
 
-The {espd} application is composed of three {maven} modules:
+The {espd} application is composed of two {maven} modules:
 
 * *espd-docs* contains the documentation of the application
 * *espd-web* holds the deployable web part of the application
-* *exchange-model* is where the XML schemas and JAXB bindings are defined
 
-The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (coming soon) or as
-a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.
+The Java library `eu.europa.ec.grow.espd.exchange-model` contains the {jaxb} classes of the {espd-edm}.
+
+The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
+server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.
 
 The main responsibilities of the application are handled as follows:
 
