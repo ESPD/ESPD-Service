@@ -55,6 +55,7 @@
             <li><a target="_blank" href="http://ec.europa.eu/growth/legal-notice/index_en.htm">${span18n["legal_notice"]}</a></li>
             <li><a target="_blank" href="http://ec.europa.eu/growth/cookies/index_en.htm">${span18n["cookies"]}</a></li>
             <li><a target="_blank" href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
+            <li><a target="_blank" href="${pageContext.request.contextPath}/about">${span18n["about"]}</a></li>
             <li>
                 <label for="language"></label><select id="language">
                 <c:forEach var="lang" items="<%=Language.values()%>">
