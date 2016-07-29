@@ -556,7 +556,7 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is composed of three <a href="https://maven.apache.org">Maven 3</a> modules:</p>
+<p>The <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven 3</a> modules:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -566,14 +566,14 @@ table.CodeRay td.code>pre{padding:0}
 <li>
 <p><strong>espd-web</strong> holds the deployable web part of the application</p>
 </li>
-<li>
-<p><strong>exchange-model</strong> is where the XML schemas and JAXB bindings are defined</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (coming soon) or as
-a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
+<p>The Java library <code>eu.europa.ec.grow.espd.exchange-model</code> contains the <a href="https://jaxb.java.net">JAXB</a> classes of the <a href="https://espd.github.io/ESPD-EDM">ESPD Exchange Data Model</a>.</p>
+</div>
+<div class="paragraph">
+<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
+server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
 </div>
 <div class="paragraph">
 <p>The main responsibilities of the application are handled as follows:</p>
@@ -727,7 +727,7 @@ to internationalization, logging, web resource optimizations and general applica
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-01 13:27:23 CEST
+Last updated 2016-07-29 10:55:15 CEST
 </div>
 </div>
 </body>

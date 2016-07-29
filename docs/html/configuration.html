@@ -1140,6 +1140,19 @@ definitions for the exclusion, selection and other criteria used by the static v
 <div class="sect2">
 <h3 id="jaxb"><a class="anchor" href="#jaxb"></a>JAXB</h3>
 <div class="paragraph">
+<p>The <code>eu.europa.ec.grow.espd.exchange-model</code> Java library contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
+</div>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>eu.europa.ec.grow.espd<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>exchange-model<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.0.2<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>The marshalling and unmarshalling of the XML files produced by the application is handled by a <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb">Spring Jaxb2Marshaller</a>.</p>
 </div>
 <div class="paragraph">
@@ -1204,23 +1217,6 @@ objects inside the <a href="https://jaxb.java.net">JAXB</a> POJOs. These adapter
       <span class="keyword">return</span> v.toString(DATE_FORMAT);
   }
 }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The mapping of the date adapters is done in the <a href="https://jaxb.java.net">JAXB</a> <code>bindings.xjb</code> configuration file inside the <code>exchange-model</code> module.</p>
-</div>
-<div class="listingblock">
-<div class="title">bindings.xjb</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jxb:globalBindings&gt;</span>
-  <span class="tag">&lt;jxb:javaType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.joda.time.LocalDate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xs:date</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">parseMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">printMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;jxb:javaType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.joda.time.LocalTime</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xs:time</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">parseMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">printMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;jxb:serializable</span> <span class="attribute-name">uid</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/jxb:globalBindings&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1308,7 +1304,7 @@ ted.api.password=passed as server startup parameter</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-01 13:27:23 CEST
+Last updated 2016-07-29 10:55:15 CEST
 </div>
 </div>
 </body>

@@ -595,6 +595,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2016-07-29th-of-july-2016">2016.07 (29th of July 2016)</a></li>
 <li><a href="#2016-06-01-30th-of-june-2016">2016.06.01 (30th of June 2016)</a></li>
 <li><a href="#2016-06-2nd-of-june-2016">2016.06 (2nd of June 2016)</a></li>
 <li><a href="#2016-05-12th-of-may-2016">2016.05 (12th of May 2016)</a></li>
@@ -617,7 +618,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2016.06.01, 30-06-2016</p>
+<p>v2016.07, 29-07-2016</p>
 </div>
 </div>
 </div>
@@ -954,7 +955,7 @@ server.context-path=/espd</code></pre>
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is composed of three <a href="https://maven.apache.org">Maven 3</a> modules:</p>
+<p>The <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven 3</a> modules:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -964,14 +965,14 @@ server.context-path=/espd</code></pre>
 <li>
 <p><strong>espd-web</strong> holds the deployable web part of the application</p>
 </li>
-<li>
-<p><strong>exchange-model</strong> is where the XML schemas and JAXB bindings are defined</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (coming soon) or as
-a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
+<p>The Java library <code>eu.europa.ec.grow.espd.exchange-model</code> contains the <a href="https://jaxb.java.net">JAXB</a> classes of the <a href="https://espd.github.io/ESPD-EDM">ESPD Exchange Data Model</a>.</p>
+</div>
+<div class="paragraph">
+<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
+server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
 </div>
 <div class="paragraph">
 <p>The main responsibilities of the application are handled as follows:</p>
@@ -1700,6 +1701,19 @@ definitions for the exclusion, selection and other criteria used by the static v
 <div class="sect2">
 <h3 id="jaxb"><a class="anchor" href="#jaxb"></a>JAXB</h3>
 <div class="paragraph">
+<p>The <code>eu.europa.ec.grow.espd.exchange-model</code> Java library contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
+</div>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>eu.europa.ec.grow.espd<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>exchange-model<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.0.2<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>The marshalling and unmarshalling of the XML files produced by the application is handled by a <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb">Spring Jaxb2Marshaller</a>.</p>
 </div>
 <div class="paragraph">
@@ -1764,23 +1778,6 @@ objects inside the <a href="https://jaxb.java.net">JAXB</a> POJOs. These adapter
       <span class="keyword">return</span> v.toString(DATE_FORMAT);
   }
 }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The mapping of the date adapters is done in the <a href="https://jaxb.java.net">JAXB</a> <code>bindings.xjb</code> configuration file inside the <code>exchange-model</code> module.</p>
-</div>
-<div class="listingblock">
-<div class="title">bindings.xjb</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jxb:globalBindings&gt;</span>
-  <span class="tag">&lt;jxb:javaType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.joda.time.LocalDate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xs:date</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">parseMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">printMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;jxb:javaType</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.joda.time.LocalTime</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">xs:time</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">parseMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">printMethod</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;jxb:serializable</span> <span class="attribute-name">uid</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/jxb:globalBindings&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -2331,6 +2328,9 @@ Additionally to these requirements, the model also took into account the <code>I
 <a href="http://www.cenbii.eu/">CEN/BII-Workshops</a> (namely Workshop 3), and the latest developments relating to the <code>Virtual Company
 Dossier (VCD)</code> in <a href="http://www.esens.eu/">e-Sens</a>.</p>
 </div>
+<div class="paragraph">
+<p><strong>The full data model documentation can be found at:</strong> <a href="https://espd.github.io/ESPD-EDM/">ESPD Exchange Data Model documentation</a></p>
+</div>
 <div class="sect2">
 <h3 id="the-espd-request-xml-document-overview"><a class="anchor" href="#the-espd-request-xml-document-overview"></a>The ESPD Request XML document overview</h3>
 <div class="paragraph">
@@ -2338,7 +2338,7 @@ Dossier (VCD)</code> in <a href="http://www.esens.eu/">e-Sens</a>.</p>
 belong to 4 different data-packages. Consequently, each class name is preceded by one of the following prefixes representing
 different namespaces: <code>espd</code>, <code>ccv</code>, <code>cev</code>, and <code>cac</code>.</p>
 </div>
-<div id="img-espd-request" class="imageblock">
+<div id="img-espd-request" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/espd_request.png" alt="espd::ESPDRequest UML class diagram">
 </div>
@@ -2349,7 +2349,7 @@ different namespaces: <code>espd</code>, <code>ccv</code>, <code>cev</code>, and
 entity. The UML diagram below, in turn, shows in detail the classes and attributes of the Core Criterion Data Model
 used in the <code>ESPD Request</code> XML document.</p>
 </div>
-<div id="img-criterion" class="imageblock">
+<div id="img-criterion" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/criterion.png" alt="UML representation of the parts of the Core Criterion Data Model used in the ESPD Request XML documents">
 </div>
@@ -2411,30 +2411,21 @@ the conviction.</p>
 <div class="sect2">
 <h3 id="java-packages"><a class="anchor" href="#java-packages"></a>Java packages</h3>
 <div class="paragraph">
-<p>The <code>exchange-model</code> Maven module contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.
-In the <code>bindings.xjb</code> configuration file we want to specify the desired XML namespace prefixes for the entities involved
-in the generation of <code>ESPD-Request</code> or <code>ESPD-Response</code> entities.</p>
-</div>
-<div class="listingblock">
-<div class="title">bindings.xjb</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jxb:bindings</span> <span class="attribute-name">schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ESPDRequest-1.0.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;jxb:bindings&gt;</span>
-                <span class="tag">&lt;namespace:prefix</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">espd-req</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/jxb:bindings&gt;</span>
-<span class="tag">&lt;/jxb:bindings&gt;</span>
-<span class="tag">&lt;jxb:bindings</span> <span class="attribute-name">schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ESPDResponse-1.0.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;jxb:bindings&gt;</span>
-                <span class="tag">&lt;namespace:prefix</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">espd</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/jxb:bindings&gt;</span>
-<span class="tag">&lt;/jxb:bindings&gt;</span></code></pre>
-</div>
+<p>The <code>eu.europa.ec.grow.espd.exchange-model</code> Java library contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://jaxb.java.net">JAXB</a> POJOs are generated by the <a href="https://java.net/projects/maven-jaxb2-plugin/pages/Home">JAXB2 Maven plugin</a>. The plugin configuration
-resides in the <code>exchange-mode/pom.xml</code> file and the generated Java files are stored in the <code>src/main/generated</code> folder that
-must be available on the classpath. The plugin will add <code>toString</code>, <code>hashCode</code>, <code>equals</code> methods to the Java classes and
-also customize the XML namespace prefixes provided in the sample above.</p>
+<p>To include the ESPD Exchange Model classes inside your Java project just declare the following Maven dependency
+in your POM file:</p>
+</div>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>eu.europa.ec.grow.espd<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>exchange-model<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.0.2<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2443,9 +2434,66 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="2016-06-01-30th-of-june-2016"><a class="anchor" href="#2016-06-01-30th-of-june-2016"></a>2016.06.01 (30th of June 2016)</h3>
+<h3 id="2016-07-29th-of-july-2016"><a class="anchor" href="#2016-07-29th-of-july-2016"></a>2016.07 (29th of July 2016)</h3>
 <div class="sect3">
 <h4 id="bug"><a class="anchor" href="#bug"></a>Bug</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/7">Issues related to translations</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/12">Satisfies all criterion logic when importing/exporting an ESPD Response</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/13">Fix some XML validation issues</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="improvement"><a class="anchor" href="#improvement"></a>Improvement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/5">General improvements in the printouts</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/4">Consortium name</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/8">Select the currency only once</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-EDM/issues/2">Update the ESPD Data Model to version 1.0.2</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Translation/issues/3">Update EN version labels</a></p>
+</li>
+<li>
+<p>Update the documentation of the ESPD Exchange Data Model</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-feature"><a class="anchor" href="#new-feature"></a>New Feature</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/6">We should show version number and updates in the ESPD service</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/3">List of countries in all other official languages</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2016-06-01-30th-of-june-2016"><a class="anchor" href="#2016-06-01-30th-of-june-2016"></a>2016.06.01 (30th of June 2016)</h3>
+<div class="sect3">
+<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2464,7 +2512,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="improvement"><a class="anchor" href="#improvement"></a>Improvement</h4>
+<h4 id="improvement-2"><a class="anchor" href="#improvement-2"></a>Improvement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2495,7 +2543,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="new-feature"><a class="anchor" href="#new-feature"></a>New Feature</h4>
+<h4 id="new-feature-2"><a class="anchor" href="#new-feature-2"></a>New Feature</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2524,7 +2572,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="improvement-2"><a class="anchor" href="#improvement-2"></a>Improvement</h4>
+<h4 id="improvement-3"><a class="anchor" href="#improvement-3"></a>Improvement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2552,7 +2600,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 <p>The main purpose of this release was to make public the open source version of the ESPD application on Github.</p>
 </div>
 <div class="sect3">
-<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
+<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2578,7 +2626,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 <div class="sect2">
 <h3 id="2016-04-02-2nd-of-may-2016"><a class="anchor" href="#2016-04-02-2nd-of-may-2016"></a>2016.04.02 (2nd of May 2016)</h3>
 <div class="sect3">
-<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
+<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2591,7 +2639,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 <div class="sect2">
 <h3 id="2016-04-01-25th-of-april-2016"><a class="anchor" href="#2016-04-01-25th-of-april-2016"></a>2016.04.01 (25th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
+<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2632,7 +2680,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="improvement-3"><a class="anchor" href="#improvement-3"></a>Improvement</h4>
+<h4 id="improvement-4"><a class="anchor" href="#improvement-4"></a>Improvement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2645,7 +2693,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 <div class="sect2">
 <h3 id="2016-04-15th-of-april-2016"><a class="anchor" href="#2016-04-15th-of-april-2016"></a>2016.04 (15th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
+<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2667,7 +2715,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="improvement-4"><a class="anchor" href="#improvement-4"></a>Improvement</h4>
+<h4 id="improvement-5"><a class="anchor" href="#improvement-5"></a>Improvement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2680,7 +2728,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="new-feature-2"><a class="anchor" href="#new-feature-2"></a>New Feature</h4>
+<h4 id="new-feature-3"><a class="anchor" href="#new-feature-3"></a>New Feature</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2706,7 +2754,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
+<h4 id="bug-7"><a class="anchor" href="#bug-7"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2716,7 +2764,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="improvement-5"><a class="anchor" href="#improvement-5"></a>Improvement</h4>
+<h4 id="improvement-6"><a class="anchor" href="#improvement-6"></a>Improvement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2780,7 +2828,7 @@ also customize the XML namespace prefixes provided in the sample above.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-27 16:00:57 CEST
+Last updated 2016-07-29 10:55:15 CEST
 </div>
 </div>
 </body>
