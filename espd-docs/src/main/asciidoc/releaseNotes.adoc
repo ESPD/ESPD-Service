@@ -1,5 +1,27 @@
 == Release notes
 
+=== 2016.07 (29th of July 2016)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/7[Issues related to translations]
+* https://github.com/ESPD/ESPD-Service/issues/12[Satisfies all criterion logic when importing/exporting an ESPD Response]
+* https://github.com/ESPD/ESPD-Service/issues/13[Fix some XML validation issues]
+
+==== Improvement
+
+* https://github.com/ESPD/ESPD-Service/issues/5[General improvements in the printouts]
+* https://github.com/ESPD/ESPD-Service/issues/4[Consortium name]
+* https://github.com/ESPD/ESPD-Service/issues/8[Select the currency only once]
+* https://github.com/ESPD/ESPD-EDM/issues/2[Update the ESPD Data Model to version 1.0.2]
+* https://github.com/ESPD/ESPD-Translation/issues/3[Update EN version labels]
+* Update the documentation of the ESPD Exchange Data Model
+
+==== New Feature
+
+* https://github.com/ESPD/ESPD-Service/issues/6[We should show version number and updates in the ESPD service]
+* https://github.com/ESPD/ESPD-Service/issues/3[List of countries in all other official languages]
+
 === 2016.06.01 (30th of June 2016)
 
 ==== Bug

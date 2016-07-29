@@ -18,7 +18,7 @@ services to their users.
 
 * Java Development Kit 7
 * Maven 3
-* Tomcat or other Servlet 3 container
+* (Optional) Tomcat or other Servlet 3 container
 
 ## Documentation
 
@@ -28,12 +28,14 @@ services to their users.
 * [Configuration](http://espd.github.io/ESPD-Service/docs/html/configuration.html)
 * [View](http://espd.github.io/ESPD-Service/docs/html/view.html)
 * [Testing](http://espd.github.io/ESPD-Service/docs/html/testing.html)
-* [Data model](http://espd.github.io/ESPD-Service/docs/html/dataModel.html)
+* [Data model quick overview](http://espd.github.io/ESPD-Service/docs/html/dataModel.html)
+* [Data model full documentation](https://espd.github.io/ESPD-EDM/)
 * [Release notes](http://espd.github.io/ESPD-Service/docs/html/releaseNotes.html)
 * [Full documentation](http://espd.github.io/ESPD-Service/docs/html/espd.html)
 
 ### Older versions
 
+* [2016.06](https://github.com/espd/ESPD-Service/blob/2016.06/espd-docs/src/main/asciidoc/espd.adoc)
 * [2016.05](https://github.com/espd/ESPD-Service/blob/2016.05/espd-docs/src/main/asciidoc/espd.adoc)
 
 ## License

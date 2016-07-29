@@ -515,6 +515,18 @@ definitions for the exclusion, selection and other criteria used by the static v
 
 === JAXB
 
+The `eu.europa.ec.grow.espd.exchange-model` Java library contains the XML schemas used to generate the {jaxb} annotated Java classes.
+
+[source,xml]
+.pom.xml
+----
+<dependency>
+  <groupId>eu.europa.ec.grow.espd</groupId>
+  <artifactId>exchange-model</artifactId>
+  <version>1.0.2</version>
+</dependency>
+----
+
 The marshalling and unmarshalling of the XML files produced by the application is handled by a http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb[Spring Jaxb2Marshaller].
 
 The {jaxb} configuration declares the packages to be scanned for potential {jaxb} annotated classes which are located in the
@@ -577,22 +589,6 @@ public final class LocalDateAdapter {
       return v.toString(DATE_FORMAT);
   }
 }
-----
-
-The mapping of the date adapters is done in the {jaxb} `bindings.xjb` configuration file inside the `exchange-model` module.
-
-[source,xml]
-.bindings.xjb
-----
-<jxb:globalBindings>
-  <jxb:javaType name="org.joda.time.LocalDate" xmlType="xs:date"
-    parseMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.unmarshal"
-    printMethod="eu.europa.ec.grow.espd.xml.LocalDateAdapter.marshal"/>
-  <jxb:javaType name="org.joda.time.LocalTime" xmlType="xs:time"
-    parseMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.unmarshal"
-    printMethod="eu.europa.ec.grow.espd.xml.LocalTimeAdapter.marshal"/>
-  <jxb:serializable uid="100"/>
-</jxb:globalBindings>
 ----
 
 === REST template

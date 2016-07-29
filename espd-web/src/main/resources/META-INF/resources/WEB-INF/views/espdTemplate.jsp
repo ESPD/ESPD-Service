@@ -33,7 +33,6 @@
 
 		<script>
 			var pageLanguage = "${pageContext.response.locale}".toLowerCase();
-			
 			$(function () {
 				validator(defaultValidators, "required", "${i18n['validator_required']}");
 				validator(defaultValidators, "number", "${i18n['validator_number']}");
@@ -48,93 +47,30 @@
 				$("input:radio[data-target-hide]").change(dataHide);
 				sortDropdowns();
 
-				$('.ecertis-link-header').click(function() {
-					var url = "${ecertisCriterionURL}";
-					var country = "${espd.authority.country.iso2Code}";
-					
-				   	var uuid = $(this).attr("data-uuid");
-				   	if($(this).hasClass( "collapsed" ) && uuid != "") {
-
-				   		var content = $(this).attr("data-target");
-				    	$(content).find("#content, #issued, #ecertis404").hide();
-				    	$(content).children("#loading").show();
-					    	
-				    	$.getJSON(url.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
-				    		function( data ) {
-								$(content).children("#loading").hide();
-								
-								if(data && data.DomainID == "eproc" && data.hasOwnProperty("SubCriterion")) {
-									content = $(content).children("#content").show();
-									$(content).find("#language").html(data.Name.languageID.toUpperCase());
-									
-									var T = $(content).find("#template").hide();
-									$(T).siblings("#subcriterion").remove();
-
-									if(data.hasOwnProperty("SubCriterion")) {
-										$.each( data.SubCriterion, function( key, val ) {
-											var item = T.clone().attr("id","subcriterion").appendTo(T.parent()).show();
-											var list = item.children("#evidencesFound").html("");
-				    						item.find("#evidencesFound, #evidencesNotFound").hide();
-											item.children("#subname").html(val.Name.value);
-
-											//Currently display only first LegislationReference from array, in future could be more
-											item.find("#description").html(val.LegislationReference[0].Title.value);
-											item.find("#url").text(val.LegislationReference[0].Article.value).attr("href",data.LegislationReference[0].URI);
-
-											var hasEvidences = false;
-											$.each( $(val.RequirementGroup), function( key, val ) {
-												$.each( $(val.TypeOfEvidence), function( key, val ) {
-													var names = [];
-													$.each( $(val["EvidenceIssuerParty"]), function( key, val ) {
-														$.each($(val["PartyName"]), function(i,val) { names.push(val.Name.value) });
-													})
-
-													// EvidenceDocumentReference with evidence URL is an array with only one element,
-													// currently it is implemented as it is, but in future could be more than one
-													var evidenceURL = val.EvidenceDocumentReference[0].Attachment.ExternalReference.URI;
-													var evidence = T.find("#evidence").clone().appendTo(list);
-													evidence.find("#name").text(val.Name.value).attr("href", evidenceURL);
-													evidence.find("#issued").toggle(names.length != 0).children("#issuerNames").text(names.join(","));
-
-													hasEvidences = true;
-												});
-											});
-											
-											item.children(hasEvidences?"#evidencesFound":"#evidencesNotFound").show();
-										});
-									}
-									
-								}
-								else {
-					   				$(content).find("#ecertis404").show();
-								}
-					   		}).fail(function() {
-					   			$(content).children("#loading").hide();
-					   			$(content).find("#ecertis404").show();
-							}
-					   	);
-				    }
-				});
-				
+				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${espd.authority.country.iso2Code}")
+				$('.ecertis-link-header').click(ecertisHandler);
 			});
 		</script>
     </head>
     <body>
-    	<div class="container panel" style="padding:0; border-color: #396ea2 !important;">
-	        <div id="header">
-	            <tiles:insertAttribute name="header"/>
-	            <tiles:insertAttribute name="breadcrumb"/>
+    	<div id="espd-content">
+	    	<div class="container panel espd-app-container">
+		        <div id="header">
+		            <tiles:insertAttribute name="header"/>
+		            <tiles:insertAttribute name="breadcrumb"/>
+		        </div>
+		        <div id="body" class="container espd-container">
+		            <tiles:insertAttribute name="body">
+		            	<tiles:putAttribute name="agent" value="${agent}"/>
+		            	<tiles:putAttribute name="flow" value="${flow}"/>
+		            </tiles:insertAttribute>
+		        </div>
+			</div>
+	        <div id="footer">
+	            <tiles:insertAttribute name="footer"/>
 	        </div>
-	        <div id="body" class="container espd-container">
-	            <tiles:insertAttribute name="body">
-	            	<tiles:putAttribute name="agent" value="${agent}"/>
-	            	<tiles:putAttribute name="flow" value="${flow}"/>
-	            </tiles:insertAttribute>
-	        </div>
-		</div>
-        <div id="footer">
-            <tiles:insertAttribute name="footer"/>
+	        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
         </div>
-        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
+
     </body>
 </html>

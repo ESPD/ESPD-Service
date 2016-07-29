@@ -59,22 +59,22 @@
         </li>
         <li class="${(procedure||exclusion||selection||finish)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="${procedureLink}"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
+            <a class="${procedureLink=='#'?'':'progress-link'}" href="${procedureLink}"><i class="fa fa-university"></i>&nbsp;${span18n['progress_procedure']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${(exclusion||selection||finish)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="${exclusionLink}"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
+            <a class="${exclusionLink=='#'?'':'progress-link'}" href="${exclusionLink}"><i class="fa fa-exclamation"></i>&nbsp;${span18n['progress_exclusion']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${(finish||selection)?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="${selectionLink}"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
+            <a class="${selectionLink=='#'?'':'progress-link'}" href="${selectionLink}"><i class="fa fa-check-circle"></i>&nbsp;${span18n['progress_selection']}</a>
             <div class="nav-arrow"></div>
         </li>
         <li class="${finish?'active':''}">
             <div class="nav-wedge"></div>
-            <a href="${finishLink}"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
+            <a class="${finishLink=='#'?'':'progress-link'}" href="${finishLink}"><i class="fa fa-download"></i>&nbsp;${span18n['progress_finish']} </a>
         </li>
     </ul>
 </div>

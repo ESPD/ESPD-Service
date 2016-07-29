@@ -18,7 +18,7 @@
           "requirements": [
             {
               "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-              "description": "",
+              "description": "Your answer",
               "responseType": "INDICATOR",
               "espdCriterionFields": [
                 "answer"
@@ -87,7 +87,7 @@
               "requirements": [
                 {
                   "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-                  "description": "",
+                  "description": "Your answer",
                   "responseType": "INDICATOR",
                   "espdCriterionFields": [
                     "answer"
@@ -190,7 +190,7 @@
           "requirements": [
             {
               "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-              "description": "",
+              "description": "Your answer",
               "responseType": "INDICATOR",
               "espdCriterionFields": [
                 "answer"
@@ -252,7 +252,7 @@
           "requirements": [
             {
               "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-              "description": "",
+              "description": "Your answer",
               "responseType": "INDICATOR",
               "espdCriterionFields": [
                 "answer"
@@ -281,7 +281,7 @@
             {
               "name": "G1",
               "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-              "description": "",
+              "description": "Your answer",
               "responseType": "INDICATOR",
               "espdCriterionFields": [
                 "answer"
@@ -327,7 +327,7 @@
           "requirements": [
             {
               "id": "7f18c64e-ae09-4646-9400-f3666d50af51",
-              "description": "",
+              "description": "Your answer",
               "responseType": "INDICATOR",
               "espdCriterionFields": [
                 "answer"

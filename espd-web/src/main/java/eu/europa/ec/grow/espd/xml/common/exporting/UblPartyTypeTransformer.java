@@ -70,7 +70,7 @@ final class UblPartyTypeTransformer implements Function<CacParty, PartyType> {
 
     private PartyIdentificationType buildPartyIdentificationType(String regNumber) {
         PartyIdentificationType partyIdentificationType = new PartyIdentificationType();
-        IDType id = new IDType();
+        IDType id = CommonUblFactory.buildIdType();
         id.setValue(trimToEmpty(regNumber));
         partyIdentificationType.setID(id);
         return partyIdentificationType;

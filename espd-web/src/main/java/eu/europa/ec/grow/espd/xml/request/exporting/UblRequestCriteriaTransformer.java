@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.request.exporting;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.SatisfiesAllCriterion;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblCriteriaTemplate;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblCriterionTypeTemplate;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
@@ -62,5 +63,12 @@ class UblRequestCriteriaTransformer extends UblCriteriaTemplate {
     protected UblCriterionTypeTemplate getCriterionTransformer() {
         return this.criterionTransformer;
     }
+
+	@Override
+	protected Boolean satisfiesAllCriterionPresent(SatisfiesAllCriterion satisfiesAllCriterion) {
+		// if the CA has selected the 'Satisfies all' (which means that the 'exists' property is true)
+		// then this implies that the criterion is present on the ESPD Request.
+		return isCriterionSelectedByTheCA(satisfiesAllCriterion);
+	}
 
 }

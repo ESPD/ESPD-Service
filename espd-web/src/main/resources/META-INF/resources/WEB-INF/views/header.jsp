@@ -48,13 +48,14 @@
     </c:if>
     <span id="banner-title-text" class="hidden-print">${span18n["app_title"]}</span>
     <span id="banner-title-text" style="font-size: 160%" class="visible-print">${span18n["app_title"]}</span>
-    <span id="banner-image-title-fill"></span>
+    <span id="banner-image-title-fill" class="hidden-print"></span>
     <span id="banner-sub-title-text" class="hidden-print" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
     <div id="top-lang-selector" class="hidden-print">
         <ul class="reset-list">
             <li><a target="_blank" href="http://ec.europa.eu/growth/legal-notice/index_en.htm">${span18n["legal_notice"]}</a></li>
             <li><a target="_blank" href="http://ec.europa.eu/growth/cookies/index_en.htm">${span18n["cookies"]}</a></li>
             <li><a target="_blank" href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
+            <li><a target="_blank" href="${pageContext.request.contextPath}/about">${span18n["about"]}</a></li>
             <li>
                 <label for="language"></label><select id="language">
                 <c:forEach var="lang" items="<%=Language.values()%>">

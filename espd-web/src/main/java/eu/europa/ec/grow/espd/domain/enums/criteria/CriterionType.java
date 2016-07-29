@@ -38,5 +38,4 @@ public enum CriterionType {
 
     public static final String LIST_ID = "CriteriaTypeCode";
 
-    public static final String LIST_VERSION_ID = "1.0";
 }

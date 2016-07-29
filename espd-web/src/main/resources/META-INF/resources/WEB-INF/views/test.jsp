@@ -160,7 +160,7 @@
                     </ul>
                 </div>
                 <form:errors path="*" cssClass="errorContainer alert alert-danger"></form:errors>
-                <div class="paragraph"><h2>${span18n['createcasel_header']}</h2></div>
+                <div><h2>${span18n['createcasel_header']}</h2></div>
                 <div class="alert alert-espd-info">
                     <ul class="fa-ul">
                         <li>
@@ -179,15 +179,15 @@
                             <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip"
                                   title="${i18n['crit_selection_eo_satisfies_all_criteria']}"></span>
                         </div>
-                        <div class="row criteria-row">
-                            <div class="col-md-5 criteria-cell-left">
+                        <div class="row criteria-row-form">
+                            <div class="col-md-5 criteria-row-check-left">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-7 criteria-cell-right">
+                            <div class="col-md-7 criteria-row-check-right">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                             ${span18n["crit_your_answer"]}

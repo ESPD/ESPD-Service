@@ -62,7 +62,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 0
         g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        checkRequirement(g1.Requirement[0], "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
     }
 
     def "check the 'Indicator' requirement response"() {
@@ -75,7 +75,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
 
         then:
         def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "", "INDICATOR")
+        checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
     }
