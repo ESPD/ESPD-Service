@@ -104,7 +104,7 @@ class EspdController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String whoAreYouScreen(
-            @RequestParam("authority.country") Country country,
+            @RequestParam Country country,
             @RequestParam String action,
             @RequestPart List<MultipartFile> attachments,
             @ModelAttribute("espd") EspdDocument document,
