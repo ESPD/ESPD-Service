@@ -56,7 +56,6 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @SessionAttributes("espd")
@@ -88,7 +87,7 @@ class EspdController {
         return WELCOME_PAGE;
     }
 
-    @RequestMapping(value = "/{page:filter|contact}", method = GET)
+    @RequestMapping("/{page:filter|contact}")
     public String getPage(@PathVariable String page) {
         return page;
     }
@@ -102,26 +101,26 @@ class EspdController {
         }
     }
 
-    @RequestMapping(value = "/filter", method = POST)
+    @RequestMapping(value = "/filter", params = "action", method = POST)
     public String whoAreYouScreen(
-            @RequestParam String country,
+            @RequestParam("authority.country") Country country,
             @RequestParam String action,
             @RequestPart List<MultipartFile> attachments,
             @ModelAttribute("espd") EspdDocument document,
             Model model,
             BindingResult result) throws IOException {
         if ("ca_create_espd_request".equals(action)) {
-            return createNewRequestAsCA(Country.valueOf(country), document);
+            return createNewRequestAsCA(country, document);
         } else if ("ca_reuse_espd_request".equals(action)) {
             return reuseRequestAsCA(attachments.get(0), model, result);
         } else if ("ca_review_espd_response".equals(action)) {
             return reviewResponseAsCA(attachments.get(0), model, result);
         } else if ("eo_import_espd".equals(action)) {
-            return importEspdAsEo(Country.valueOf(country), attachments.get(0), model, result);
+            return importEspdAsEo(country, attachments.get(0), model, result);
         } else if ("eo_merge_espds".equals(action)) {
             return mergeTwoEspds(attachments, model, result);
         } else if ("eo_create_response".equals(action)) {
-	        return createNewResponseAsEO(Country.valueOf(country), document);
+	        return createNewResponseAsEO(country, document);
         }
         return "filter";
     }

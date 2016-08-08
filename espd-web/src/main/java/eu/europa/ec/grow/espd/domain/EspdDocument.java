@@ -26,7 +26,6 @@ package eu.europa.ec.grow.espd.domain;
 
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion;
-import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.Data;
@@ -214,18 +213,6 @@ public class EspdDocument {
 			PropertyUtils.setSimpleProperty(this, fieldName, espdCriterion);
 		} catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e) {
 			// this is covered by tests, it should never happen so we don't care
-		}
-	}
-
-	//Temporary FIX for WL migration
-	public Country getCountry() {
-		return (authority == null) ? null : authority.getCountry();
-	}
-
-	//Temporary FIX for WL migration
-	public void setCountry(Country country) {
-		if(authority != null) {
-			authority.setCountry(country);
 		}
 	}
 }

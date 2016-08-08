@@ -7,7 +7,7 @@
   ~
   ~ Copyright 2016 EUROPEAN COMMISSION
   ~
-  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ Licensed under the EUPL, Version 1.1 or â as soon they
   ~ will be approved by the European Commission - subsequent
   ~ versions of the EUPL (the "Licence");
   ~
@@ -172,7 +172,7 @@ $(function() {
 					
 					<span data-i18n="filter_select_country"><s:message code='filter_select_country'/></span>
 			        <tiles:insertDefinition name="countries">
-			        	<tiles:putAttribute name="field" value="country"/>
+			        	<tiles:putAttribute name="field" value="authority.country"/>
 			        	<tiles:putAttribute name="cssClass" value=""/>
 			        </tiles:insertDefinition>
 				</div>
