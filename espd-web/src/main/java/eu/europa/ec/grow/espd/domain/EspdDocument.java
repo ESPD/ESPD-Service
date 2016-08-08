@@ -215,4 +215,16 @@ public class EspdDocument {
 			// this is covered by tests, it should never happen so we don't care
 		}
 	}
+
+	//Temporary FIX for WL migration
+	public Country getCountry() {
+		return (authority == null) ? null : authority.country;
+	}
+
+	//Temporary FIX for WL migration
+	public void setCountry(Country country) {
+		if(authority != null) {
+			authority.country = country;
+		}
+	}
 }
