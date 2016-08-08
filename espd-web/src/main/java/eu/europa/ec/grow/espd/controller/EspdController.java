@@ -104,24 +104,24 @@ class EspdController {
 
     @RequestMapping(value = "/filter", method = POST)
     public String whoAreYouScreen(
-            @RequestParam Country country,
+            @RequestParam String country,
             @RequestParam String action,
             @RequestPart List<MultipartFile> attachments,
             @ModelAttribute("espd") EspdDocument document,
             Model model,
             BindingResult result) throws IOException {
         if ("ca_create_espd_request".equals(action)) {
-            return createNewRequestAsCA(country, document);
+            return createNewRequestAsCA(Country.valueOf(country), document);
         } else if ("ca_reuse_espd_request".equals(action)) {
             return reuseRequestAsCA(attachments.get(0), model, result);
         } else if ("ca_review_espd_response".equals(action)) {
             return reviewResponseAsCA(attachments.get(0), model, result);
         } else if ("eo_import_espd".equals(action)) {
-            return importEspdAsEo(country, attachments.get(0), model, result);
+            return importEspdAsEo(Country.valueOf(country), attachments.get(0), model, result);
         } else if ("eo_merge_espds".equals(action)) {
             return mergeTwoEspds(attachments, model, result);
         } else if ("eo_create_response".equals(action)) {
-	        return createNewResponseAsEO(country, document);
+	        return createNewResponseAsEO(Country.valueOf(country), document);
         }
         return "filter";
     }
