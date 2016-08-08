@@ -102,7 +102,7 @@ class EspdController {
         }
     }
 
-    @RequestMapping(value = "/filter", params = "action", method = POST)
+    @RequestMapping(value = "/filter", method = POST)
     public String whoAreYouScreen(
             @RequestParam("authority.country") Country country,
             @RequestParam String action,
