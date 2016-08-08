@@ -56,6 +56,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @SessionAttributes("espd")
@@ -87,7 +88,7 @@ class EspdController {
         return WELCOME_PAGE;
     }
 
-    @RequestMapping("/{page:filter|contact}")
+    @RequestMapping(value = "/{page:filter|contact}", method = GET)
     public String getPage(@PathVariable String page) {
         return page;
     }
