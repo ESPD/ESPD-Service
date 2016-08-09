@@ -24,11 +24,17 @@
 
 package eu.europa.ec.grow.espd.config;
 
-import net.bull.javamelody.MonitoringFilter;
-import net.bull.javamelody.Parameter;
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.web.HttpEncodingProperties;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.context.web.OrderedCharacterEncodingFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -39,11 +45,15 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
-import java.util.Locale;
+import net.bull.javamelody.MonitoringFilter;
+import net.bull.javamelody.Parameter;
 
 @Configuration
 class WebConfiguration extends WebMvcConfigurerAdapter {
 
+	@Autowired
+	private HttpEncodingProperties properties;
+	
     @Bean
     UrlBasedViewResolver viewResolver() {
         UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
@@ -109,5 +119,35 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
         return frb;
     }
 
+    /*
+     * A workaround for the problem is that OrderedCharacterEncodingFilter is running after HiddenHttpMethodFilter. 
+     * HiddenHttpMethodFilter triggers processing of the request body as it calls getParameter on the request. 
+     * OrderedCharacterEncodingFilter then runs and sets the request's encoding. 
+     * Setting the request's encoding after its body has been processed is bad and, on WebLogic, 
+     * causes the request to lose track of all its multipart data.
+     * 
+     * This causes issues with the HiddenHttpMethodFilter. If this one is registered first, it already accesses 
+     * the request parameters before the encoding is enforced by the CharacterEncodingFilter
+     * and the request data is already in the wrong format.
+     * 
+     * https://github.com/spring-projects/spring-boot/issues/2862
+     * https://github.com/spring-projects/spring-boot/issues/2148
+     */
+    @Bean
+    OrderedCharacterEncodingFilter characterEncodingFilter() {
+    	OrderedCharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+    	filter.setEncoding(this.properties.getCharset().name());
+    	filter.setForceEncoding(this.properties.isForce());
+    	
+    	//Check is in WebLogic
+    	if(System.getProperty("weblogic.Name") != null || System.getProperty("weblogic.home") != null) {
+        	filter.setOrder(Ordered.LOWEST_PRECEDENCE);
+    	}
+    	else {
+        	filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    	}
 
+    	return filter;
+    }
+    
 }
