@@ -27,7 +27,6 @@ package eu.europa.ec.grow.espd.config;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.web.HttpEncodingProperties;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
@@ -134,19 +133,12 @@ class WebConfiguration extends WebMvcConfigurerAdapter {
      * https://github.com/spring-projects/spring-boot/issues/2148
      */
     @Bean
+    @ConditionalOnProperty("weblogic.Name")
     OrderedCharacterEncodingFilter characterEncodingFilter() {
     	OrderedCharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
     	filter.setEncoding(this.properties.getCharset().name());
     	filter.setForceEncoding(this.properties.isForce());
-    	
-    	//Check is in WebLogic
-    	if(System.getProperty("weblogic.Name") != null || System.getProperty("weblogic.home") != null) {
-        	filter.setOrder(Ordered.LOWEST_PRECEDENCE);
-    	}
-    	else {
-        	filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
-    	}
-
+        filter.setOrder(Ordered.LOWEST_PRECEDENCE);
     	return filter;
     }
     
