@@ -1,6 +1,7 @@
 <%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Language" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   ~
@@ -26,7 +27,21 @@
   ~
   --%>
 
+<s:eval var="espdEnvironment" scope="page" expression="@espdConfiguration.espdEnvironment" />
+
 <div class="row" style="padding:50px">
+
+	<c:if test="${espdEnvironment == true}">
+		<div class="alert alert-danger">
+			<ul class="fa-ul">
+                <li>
+                    <i class="error-label fa fa-info-circle fa-lg fa-li"></i>
+                    <s:message code="app_environment"/> <a href="https://ec.europa.eu/espd">https://ec.europa.eu/espd</a>
+                </li>
+			</ul>
+		</div>
+	</c:if>
+
     <fmt:formatNumber var="colLen" value="6" maxFractionDigits="0"/>
     <div class="col-lg-3 col-sm-6">
         <c:forEach var="lang" items="<%=Language.values()%>" varStatus="i">
