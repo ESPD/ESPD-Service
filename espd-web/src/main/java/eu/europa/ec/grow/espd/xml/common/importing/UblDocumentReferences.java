@@ -43,14 +43,14 @@ import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 /**
  * Created by ratoico on 1/21/16 at 1:51 PM.
  */
-public final class UblDocumentReferences {
+final class UblDocumentReferences {
 
     private UblDocumentReferences() {
 
     }
 
-    public static List<DocumentReferenceType> filterByTypeCode(List<DocumentReferenceType> unfiltered,
-            final DocumentTypeCode typeCode) {
+    static List<DocumentReferenceType> filterByTypeCode(List<DocumentReferenceType> unfiltered,
+		    final DocumentTypeCode typeCode) {
         if (CollectionUtils.isEmpty(unfiltered)) {
             return ImmutableList.of();
         }
@@ -60,7 +60,7 @@ public final class UblDocumentReferences {
         return ImmutableList.copyOf(filtered);
     }
 
-    public static String readIdValue(DocumentReferenceType input) {
+    static String readIdValue(DocumentReferenceType input) {
         if (input == null || input.getID() == null || hasTemporaryOjsNumber(input)) {
             return null;
         }
@@ -73,7 +73,7 @@ public final class UblDocumentReferences {
                 MarshallingConstants.TEMPORARY_OJS_NUMBER.equals(input.getID().getValue());
     }
 
-    public static String readFileNameValue(DocumentReferenceType input) {
+    static String readFileNameValue(DocumentReferenceType input) {
         if (input == null || input.getAttachment() == null || input.getAttachment().getExternalReference() == null) {
             return null;
         }
@@ -86,11 +86,11 @@ public final class UblDocumentReferences {
         return null;
     }
 
-    public static String readDescriptionValue(DocumentReferenceType input) {
+    static String readDescriptionValue(DocumentReferenceType input) {
         return readDescriptionValue(input, 0);
     }
 
-    public static String readDescriptionValue(DocumentReferenceType input, int position) {
+    static String readDescriptionValue(DocumentReferenceType input, int position) {
         if (input == null || input.getAttachment() == null || input.getAttachment().getExternalReference() == null) {
             return null;
         }
@@ -104,7 +104,7 @@ public final class UblDocumentReferences {
         return null;
     }
 
-    public static String readDocumentDescriptionValue(DocumentReferenceType input) {
+    static String readDocumentDescriptionValue(DocumentReferenceType input) {
         if (input == null || isEmpty(input.getDocumentDescription())) {
             return null;
         }
@@ -112,7 +112,7 @@ public final class UblDocumentReferences {
        return input.getDocumentDescription().get(0).getValue();
     }
 
-    public static String readUrlValue(DocumentReferenceType input) {
+    static String readUrlValue(DocumentReferenceType input) {
         if (noUrlElementPresent(input)) {
             return null;
         }
@@ -129,7 +129,7 @@ public final class UblDocumentReferences {
 
         private final DocumentTypeCode typeCode;
 
-        public DocumentReferenceTypePredicate(DocumentTypeCode typeCode) {
+        DocumentReferenceTypePredicate(DocumentTypeCode typeCode) {
             this.typeCode = typeCode;
         }
 
