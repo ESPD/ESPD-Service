@@ -30,6 +30,10 @@
 
 <tiles:importAttribute name="checkExistanse"/>
 <tiles:importAttribute name="field"/>
+<tiles:importAttribute name="hasCriterion"/>
+<c:if test="${hasCriterion}">
+	<tiles:importAttribute name="criterion"/>
+</c:if>
 
 <c:if test="${(checkExistanse && espd[field] != null && espd[field].exists) || (!checkExistanse)}">
 
@@ -46,9 +50,39 @@
 	    <div class="col-md-5 criteria-row-form-left">
 	        <div class="form-group">
 	            <div class="col-md-12">
-	            	<strong>
-	                	${span18n[title_code]}
-	                </strong>
+
+					<span style="font-weight: bold;cursor: pointer;" class="ecertis-link-header collapsed" data-uuid="${criterion.uuid}" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
+						<s:message code='${title_code}'/> 
+					</span>
+	                
+					<div id="${field}-ecertis" class="alert alert-espd-info  collapse">
+						<h4 id="loading">${span18n["ecertis_loading"]}</h4>
+						<h5 id="ecertis404">${span18n["ecertis_404"]}</h5>
+						<div id="content">
+							<h5>${span18n["ecertis_language"]}: <span id="language"><!-- dynamic Language --></span></h5>
+							<ol type="I" id="list">
+								<li id="template">
+									<span id="subname"><!-- dynamic subcriteria name --></span>
+									(
+									<span id="description"></span> <a id="url" target="_blank"><!-- dynamic URL --></a>
+									)
+									<ol id="evidencesFound">
+										<li id="evidence">
+											<dl>
+												<dt>
+													<a id="name" target="_blank"><!-- dynamic evidence link --></a>
+												</dt>
+												<dd id="issued">
+													${span18n["ecertis_issued"]}: <span id="issuerNames"><!-- dynamic issuer names --></span>
+												</dd>
+											</dl>
+										</li>
+									</ol>
+									<h5  id="evidencesNotFound">${span18n["ecertis_no_evidences"]}</h5>
+								</li>
+							</ol>
+						</div>
+					</div>
 	            </div>
 	            <c:if test="${not empty description_code}">
 	                <div class="col-md-12">

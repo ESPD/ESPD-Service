@@ -96,6 +96,7 @@
 						<tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
 						<tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
 						<tiles:putAttribute name="selfCleaning" value="false"/>
+	                    <tiles:putAttribute name="hasCriterion" value="false"/>
 					</tiles:insertDefinition>
                 </div>
             </div>

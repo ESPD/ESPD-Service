@@ -313,6 +313,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                             <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
                             <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
                             <tiles:putAttribute name="selfCleaning" value="false"/>
+	              	    	<tiles:putAttribute name="hasCriterion" value="false"/>
                         </tiles:insertDefinition>
                     </c:if>
                 </div>
@@ -426,6 +427,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 						<tiles:putAttribute name="field" value="meetsObjective"/>
 						<tiles:putAttribute name="title_code" value="createcafinish_title_eo_declares_that"/>
 						<tiles:putAttribute name="description_code" value="createcafinish_text_eo_declares_that"/>
+	                    <tiles:putAttribute name="hasCriterion" value="false"/>
 					</tiles:insertDefinition>
                 </div>
             </div>

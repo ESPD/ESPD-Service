@@ -62,6 +62,7 @@
                             <tiles:putAttribute name="field" value="meetsObjective"/>
                             <tiles:putAttribute name="title_code" value="createcafinish_title_eo_declares_that"/>
                             <tiles:putAttribute name="description_code" value="createcafinish_text_eo_declares_that"/>
+	                  		<tiles:putAttribute name="hasCriterion" value="false"/>
                         </tiles:insertDefinition>
                     </div>
                 </div>
