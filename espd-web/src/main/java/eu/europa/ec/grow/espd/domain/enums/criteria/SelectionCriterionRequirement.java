@@ -269,6 +269,16 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
      */
     SPECIFY_YEAR("a18b2c98-8552-45ca-9751-d4c94c05847a", CriterionText.PLEASE_SPECIFY_TEXT,
             ExpectedResponseType.QUANTITY_YEAR, "year1"),
+	/**
+	 *
+	 */
+	NUMBER_OF_YEARS("b98ffd05-6572-4b07-a521-693a1754ed46", "Number of years",
+			ExpectedResponseType.QUANTITY_INTEGER, "numberOfYears"),
+	/**
+	 *
+	 */
+	AVERAGE_TURNOVER("217637ba-6bdb-4c73-a38f-27fe0e71d9be", "Average turnover",
+			ExpectedResponseType.AMOUNT, "amount1", "currency1"),
     ;
 
     private final String id;

@@ -63,24 +63,10 @@ class AverageYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         def g1 = request.Criterion[idx].RequirementGroup[0]
         g1.ID.text() == "e1886054-ada4-473c-9afc-2fde82c24cf4"
         g1.@pi.text() == ""
-        g1.RequirementGroup.size() == 1
-        g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
-
-        then: "G1.1"
-        def g1_1 = g1.RequirementGroup[0]
-        g1_1.ID.text() == "abdfa003-d7f5-4375-b1d3-b3765a7c4beb"
-        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
-        g1_1.RequirementGroup.size() == 5
-        g1_1.Requirement.size() == 1
-        checkRequirement(g1_1.Requirement[0], "3a6fefd4-f458-4d43-97fb-0725fce5dce2", "Please provide the requested data below", "DESCRIPTION")
-
-        then: "check year amount currency subgroups"
-        checkYearAmountCurrencyGroup1(g1_1.RequirementGroup[0])
-        checkYearAmountCurrencyGroup2(g1_1.RequirementGroup[1])
-        checkYearAmountCurrencyGroup3(g1_1.RequirementGroup[2])
-        checkYearAmountCurrencyGroup4(g1_1.RequirementGroup[3])
-        checkYearAmountCurrencyGroup5(g1_1.RequirementGroup[4])
+        g1.RequirementGroup.size() == 0
+        g1.Requirement.size() == 2
+        checkRequirement(g1.Requirement[0], "b98ffd05-6572-4b07-a521-693a1754ed46", "Number of years", "QUANTITY_INTEGER")
+        checkRequirement(g1.Requirement[1], "217637ba-6bdb-4c73-a38f-27fe0e71d9be", "Average turnover", "AMOUNT")
 
         then: "info available electronically sub group"
         def g2 = request.Criterion[idx].RequirementGroup[1]

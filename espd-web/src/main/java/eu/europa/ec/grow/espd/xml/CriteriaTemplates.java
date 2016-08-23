@@ -768,7 +768,8 @@ public final class CriteriaTemplates {
                     put("field", "averageYearlyTurnover").
                     put("title_code", "crit_selection_economic_average_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_average_yearly_turnover_description").
-                    put("lastYearsAmount", LAST_YEARS_AMOUNT).
+                    put("has_multiple_year_amount", "false").
+		            put("has_number_of_years", "true").
                     put("criterion", SelectionCriterion.AVERAGE_YEARLY_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().
@@ -784,7 +785,8 @@ public final class CriteriaTemplates {
                     put("field", "specificAverageTurnover").
                     put("title_code", "crit_selection_economic_specific_average_turnover_main").
                     put("description_code", "crit_selection_economic_specific_average_turnover_description").
-                    put("lastYearsAmount", LAST_YEARS_AMOUNT).
+		            put("has_multiple_year_amount", "false").
+		            put("has_number_of_years", "true").
                     put("criterion", SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().

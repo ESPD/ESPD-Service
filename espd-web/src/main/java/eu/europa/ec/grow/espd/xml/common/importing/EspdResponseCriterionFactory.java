@@ -343,6 +343,16 @@ class EspdResponseCriterionFactory {
 			criterion.setYear1(year1);
 		}
 
+		Integer numberOfYears = readRequirementValue(SelectionCriterionRequirement.NUMBER_OF_YEARS, criterionType);
+		if (numberOfYears != null) {
+			criterion.setNumberOfYears(numberOfYears);
+		}
+		Amount turnover = readRequirementValue(SelectionCriterionRequirement.AVERAGE_TURNOVER, criterionType);
+		if (turnover != null) {
+			criterion.setAverageTurnover(turnover.getAmount());
+			criterion.setAverageTurnoverCurrency(turnover.getCurrency());
+		}
+
 		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
 		return criterion;

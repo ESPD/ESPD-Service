@@ -584,145 +584,20 @@
           "id": "e1886054-ada4-473c-9afc-2fde82c24cf4",
           "requirements": [
             {
-              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
-              "description": "Your answer?",
-              "responseType": "INDICATOR",
+              "id": "b98ffd05-6572-4b07-a521-693a1754ed46",
+              "description": "Number of years",
+              "responseType": "QUANTITY_INTEGER",
               "espdCriterionFields": [
-                "answer"
+                "numberOfYears"
               ]
-            }
-          ],
-          "subgroups": [
+            },
             {
-              "name": "G1.1",
-              "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
-              "fulfillmentIndicator": "true",
-              "requirements": [
-                {
-                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
-                  "description": "Please provide the requested data below",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    null
-                  ]
-                }
-              ],
-              "subgroups": [
-                {
-                  "name": "G1.1.1",
-                  "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
-                  "requirements": [
-                    {
-                      "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year1"
-                      ]
-                    },
-                    {
-                      "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount1",
-                        "currency1"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.2",
-                  "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
-                  "requirements": [
-                    {
-                      "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year2"
-                      ]
-                    },
-                    {
-                      "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount2",
-                        "currency2"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.3",
-                  "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
-                  "requirements": [
-                    {
-                      "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year3"
-                      ]
-                    },
-                    {
-                      "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount3",
-                        "currency3"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.4",
-                  "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
-                  "requirements": [
-                    {
-                      "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year4"
-                      ]
-                    },
-                    {
-                      "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount4",
-                        "currency4"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.5",
-                  "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
-                  "requirements": [
-                    {
-                      "id": "34825634-5151-4e31-af1b-7eafadcf15be",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year5"
-                      ]
-                    },
-                    {
-                      "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount5",
-                        "currency5"
-                      ]
-                    }
-                  ]
-                }
+              "id": "217637ba-6bdb-4c73-a38f-27fe0e71d9be",
+              "description": "Average turnover",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "averageTurnover",
+                "averageTurnoverCurrency"
               ]
             }
           ]
@@ -998,145 +873,20 @@
           "id": "e1886054-ada4-473c-9afc-2fde82c24cf4",
           "requirements": [
             {
-              "id": "15335c12-ad77-4728-b5ad-3c06a60d65a4",
-              "description": "Your answer?",
-              "responseType": "INDICATOR",
+              "id": "b98ffd05-6572-4b07-a521-693a1754ed46",
+              "description": "Number of years",
+              "responseType": "QUANTITY_INTEGER",
               "espdCriterionFields": [
-                "answer"
+                "numberOfYears"
               ]
-            }
-          ],
-          "subgroups": [
+            },
             {
-              "name": "G1.1",
-              "id": "abdfa003-d7f5-4375-b1d3-b3765a7c4beb",
-              "fulfillmentIndicator": "true",
-              "requirements": [
-                {
-                  "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
-                  "description": "Please provide the requested data below",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    null
-                  ]
-                }
-              ],
-              "subgroups": [
-                {
-                  "name": "G1.1.1",
-                  "id": "1689194b-6ecf-4ab4-ab38-7656610c25bb",
-                  "requirements": [
-                    {
-                      "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year1"
-                      ]
-                    },
-                    {
-                      "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount1",
-                        "currency1"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.2",
-                  "id": "c628dd27-8016-4d80-8660-7461f2e3ee0f",
-                  "requirements": [
-                    {
-                      "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year2"
-                      ]
-                    },
-                    {
-                      "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount2",
-                        "currency2"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.3",
-                  "id": "9dd09f9f-3326-4865-9d5a-f0836076fb19",
-                  "requirements": [
-                    {
-                      "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year3"
-                      ]
-                    },
-                    {
-                      "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount3",
-                        "currency3"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.4",
-                  "id": "962011c9-9e2e-4e7b-818e-30e8506e874f",
-                  "requirements": [
-                    {
-                      "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year4"
-                      ]
-                    },
-                    {
-                      "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount4",
-                        "currency4"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "G1.1.5",
-                  "id": "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
-                  "requirements": [
-                    {
-                      "id": "34825634-5151-4e31-af1b-7eafadcf15be",
-                      "description": "Year",
-                      "responseType": "QUANTITY_YEAR",
-                      "espdCriterionFields": [
-                        "year5"
-                      ]
-                    },
-                    {
-                      "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-                      "description": "Amount",
-                      "responseType": "AMOUNT",
-                      "espdCriterionFields": [
-                        "amount5",
-                        "currency5"
-                      ]
-                    }
-                  ]
-                }
+              "id": "217637ba-6bdb-4c73-a38f-27fe0e71d9be",
+              "description": "Average turnover",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "averageTurnover",
+                "averageTurnoverCurrency"
               ]
             }
           ]

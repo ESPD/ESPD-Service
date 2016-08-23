@@ -189,6 +189,7 @@
         <put-attribute name="has_single_amount" value="false"/>
         <put-attribute name="has_specify_year" value="false"/>
         <put-attribute name="has_multiple_year_amount" value="true"/>
+        <put-attribute name="has_number_of_years" value="false"/>
     </definition>
 
     <definition name="technicalProfessionalCriterionEO" extends="selectionFormTemplate">

@@ -3,31 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-
-<%--
-  ~
-  ~ Copyright 2016 EUROPEAN COMMISSION
-  ~
-  ~ Licensed under the EUPL, Version 1.1 or – as soon they
-  ~ will be approved by the European Commission - subsequent
-  ~ versions of the EUPL (the "Licence");
-  ~
-  ~ You may not use this work except in compliance with the Licence.
-  ~
-  ~ You may obtain a copy of the Licence at:
-  ~
-  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
-  ~
-  ~ Unless required by applicable law or agreed to in
-  ~ writing, software distributed under the Licence is
-  ~ distributed on an "AS IS" basis,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  ~ express or implied.
-  ~ See the Licence for the specific language governing
-  ~ permissions and limitations under the Licence.
-  ~
-  --%>
-
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="lastYearsAmount"/>
@@ -35,8 +10,7 @@
 <tiles:importAttribute name="has_multiple_year_amount"/>
 <tiles:importAttribute name="has_single_amount"/>
 <tiles:importAttribute name="has_specify_year"/>
-
-        
+<tiles:importAttribute name="has_number_of_years"/>
 	        <c:if test="${has_please_describe_them}">
 	            <div class="col-md-12" id="${field}-form">
 	                <div class="form-group">
@@ -53,7 +27,6 @@
 	                </div>
 	            </div>
 	        </c:if>
-	        
 	        <c:if test="${has_multiple_year_amount && lastYearsAmount != null}">
 	            <tiles:insertDefinition name="multipleYearAmount">
 	                <tiles:putAttribute name="field" value="${field}"/>
@@ -79,19 +52,37 @@
 	                    </tiles:insertDefinition>
 	                </div>
 	            </div>
-	            
 	        </c:if>
             <c:if test="${has_specify_year}">
                 <div class="form-group">
                     <label class="control-label col-md-4 small" data-i18n="crit_please_specify"><s:message
                             code='crit_please_specify'/></label>
-
                     <div class="col-md-5">
                         <form:select path="${field}.year1" cssClass="form-control">
                             <form:option value="${null}" label="---"/>
                             <form:options items="${lastYearsAmount}"/>
                         </form:select>
                     </div>
-
+                </div>
+            </c:if>
+            <c:if test="${has_number_of_years}">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label class="control-label col-xs-3 small">${span18n['crit_number_of_years']}</label>
+                        <div class="col-xs-9" style="margin-bottom: 5px;">
+                            <form:textarea rows="1" path="${field}.numberOfYears" digits="true" max="100" cssClass="form-control"></form:textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label col-xs-3 small">${span18n['crit_average_turnover']}</label>
+                        <div class="col-xs-5">
+                            <form:textarea rows="1" path="${field}.averageTurnover" number="true" cssClass="form-control"></form:textarea>
+                        </div>
+                        <div class="col-xs-4">
+                            <tiles:insertDefinition name="currencies">
+                                <tiles:putAttribute name="currencyField" value="${field}.averageTurnoverCurrency"/>
+                            </tiles:insertDefinition>
+                        </div>
+                    </div>
                 </div>
             </c:if>

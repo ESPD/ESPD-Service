@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<espd:ESPDResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns092:ver3.0</cbc:CustomizationID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">a496fdf2-f9cd-42bd-8742-07a37759f184</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW">2016.4</cbc:VersionID>
+    <cbc:IssueDate>2016-08-23</cbc:IssueDate>
+    <cbc:IssueTime>09:30:54</cbc:IssueTime>
+    <cbc:ContractFolderID schemeAgencyID="TeD"/>
+    <cac:ProcurementProjectLot>
+        <cbc:ID schemeAgencyID="EU-COM-GROW">0</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b16cb9fc-6cb7-4585-9302-9533b415cf48</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY</cbc:TypeCode>
+        <cbc:Name>Average yearly turnover</cbc:Name>
+        <cbc:Description>Its average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevel" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(3)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e1886054-ada4-473c-9afc-2fde82c24cf4</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b98ffd05-6572-4b07-a521-693a1754ed46</cbc:ID>
+                <cbc:Description>Number of years</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="NUMBER">3</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="AMOUNT">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">217637ba-6bdb-4c73-a38f-27fe0e71d9be</cbc:ID>
+                <cbc:Description>Average turnover</cbc:Description>
+                <ccv:Response>
+                    <cbc:Amount currencyID="RON">111.154</cbc:Amount>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID schemeAgencyID="EU-COM-GROW">a60504f1-92a2-4083-9090-f9abfeba0131</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>www.hodor.com</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>AVERAGE_YEARLY_TURNOVER</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">2043338f-a38a-490b-b3ec-2607cb25a017</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.SHELTERED_WORKSHOP</cbc:TypeCode>
+        <cbc:Name>Procurement reserved</cbc:Name>
+        <cbc:Description>Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6febbe4a-e715-427c-a2b1-19cfabadaef0</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                <cbc:Description>Your answer</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a5e33369-e2b5-45f7-9969-ddb1c3ae17c8</cbc:ID>
+                <ccv:Requirement responseDataType="PERCENTAGE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4e552658-d532-4770-943b-b90efcc9788d</cbc:ID>
+                    <cbc:Description>What is the corresponding percentage of disabled or disadvantaged workers?</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e01d0929-c7a9-455a-aaf9-e1f7cd966336</cbc:ID>
+                    <cbc:Description>If required, please provide details on whether the employees concerned belong to a specific category of disabled or disadvantaged workers?</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b19e869-6c89-4cc4-bd6c-ac9ca8602165</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</cbc:TypeCode>
+        <cbc:Name>EO registered</cbc:Name>
+        <cbc:Description>If applicable, is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate (e.g. under a national (pre)qualification system)?</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">64162276-7014-408f-a9af-080426bfe1fd</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">67fd1dde-2a0a-486e-9469-79c78796fc22</cbc:ID>
+                <cbc:Description>Not applicable</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_FALSE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecb5127b-9018-4fb8-8327-a6a7a2c73195</cbc:ID>
+                <ccv:Requirement responseDataType="INDICATOR">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                    <cbc:Description>Your answer</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+                <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">dc4acf0c-c761-40d0-b031-4ee1f224be5c</cbc:ID>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30064ad3-fc11-4579-8528-fdd0b9a5ba75</cbc:ID>
+                        <cbc:Description>a) Please provide the relevant registration or certification number, if applicable:</cbc:Description>
+                        <ccv:Response/>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b3403349-cbc0-4d84-879e-fc0f2d90ecbd</cbc:ID>
+                        <cbc:Description>b) If the certificate of registration or certification is available electronically, please state:</cbc:Description>
+                        <ccv:Response/>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">792ff522-6f3f-4a62-ab6e-a8b272bc290e</cbc:ID>
+                        <cbc:Description>c) Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list:</cbc:Description>
+                        <ccv:Response/>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">92e44d3b-af8e-4a29-91a8-24d27aa27fee</cbc:ID>
+                        <ccv:Requirement responseDataType="INDICATOR">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d9996ef5-49f9-4cf8-a2f5-31c9f4efd894</cbc:ID>
+                            <cbc:Description>d) Does the registration or certification cover all of the required selection criteria?</cbc:Description>
+                            <ccv:Response/>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_FALSE">
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">59e6f3ef-15cd-4e21-82ac-ea497ccd44e2</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0e71abd3-198e-49c5-8128-5708617bb191</cbc:ID>
+                        <cbc:Description>e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?</cbc:Description>
+                        <ccv:Response/>
+                    </ccv:Requirement>
+                    <ccv:Requirement responseDataType="DESCRIPTION">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">caa72cea-5443-49fb-84ba-ab6c64427f77</cbc:ID>
+                        <cbc:Description>If the relevant documentation is available electronically, please indicate:</cbc:Description>
+                        <ccv:Response/>
+                    </ccv:Requirement>
+                </ccv:RequirementGroup>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ee51100f-8e3e-40c9-8f8b-57d5a15be1f2</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS</cbc:TypeCode>
+        <cbc:Name>EO participating in procurement procedure</cbc:Name>
+        <cbc:Description>Is the economic operator participating in the procurement procedure together with others?</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d939f2c6-ba25-4dc4-889c-11d1853add19</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                <cbc:Description>Your answer</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f5663c5a-d311-4ae4-be14-1575754be5f2</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">907fd62b-02f1-452c-81a8-785bedb0c536</cbc:ID>
+                    <cbc:Description>a) Please indicate the role of the economic operator in the group (leader, responsible for specific tasks...):</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c267f95-a3a7-49ef-abd9-e121dcd641a9</cbc:ID>
+                    <cbc:Description>b) Please identify the other economic operators participating in the procurement procedure together:</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f38793-4469-4153-aba6-c613282cdbdc</cbc:ID>
+                    <cbc:Description>c) Where applicable, name of the participating group:</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0d62c6ed-f074-4fcf-8e9f-f691351d52ad</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES</cbc:TypeCode>
+        <cbc:Name>EO relies capacities</cbc:Name>
+        <cbc:Description>Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e688f7d6-dcef-4726-bc61-052e63ead60f</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                <cbc:Description>Your answer</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">72c0c4b1-ca50-4667-9487-461f3eed4ed7</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES</cbc:TypeCode>
+        <cbc:Name>Subcontracting third parties</cbc:Name>
+        <cbc:Description>Does the economic operator intend to subcontract any share of the contract to third parties?</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d5fe5a71-7fd3-4910-b6f4-5cd2a4d23524</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                <cbc:Description>Your answer</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b638edf6-4f00-4e24-92c4-cf96846f2c17</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">999c7fe2-61cd-4e86-b76f-e280304dc8c9</cbc:ID>
+                    <cbc:Description>If yes and in so far as known, please list the proposed subcontractors:</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9c70375e-1264-407e-8b50-b9736bc08901</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.OTHER.EO_DATA.MEETS_THE_OBJECTIVE</cbc:TypeCode>
+        <cbc:Name>It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: In case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents:</cbc:Name>
+        <cbc:Description>If some of these certificates or forms of documentary evidence are available electronically, please indicate for each:</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3e5c2859-68a7-4312-92e4-01ae79c00cb8</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7f18c64e-ae09-4646-9400-f3666d50af51</cbc:ID>
+                <cbc:Description>Your answer</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6066950e-3049-4b4e-86e7-2454f1fb3780</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">323f19b5-3308-4873-b2d1-767963cc81e9</cbc:ID>
+                    <cbc:Description>Please describe them</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab335516-73a4-41f7-977b-a98c13a51060</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0622bbd1-7378-45e1-8fb9-25429740ac22</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">8e7e890c-d117-44c8-aa48-cc236d26b475</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ee1ee1cd-3791-4855-8b8b-28d4f4c5c007</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1e55ff14-c643-4abc-91d7-2f4dfcdf2409</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="COM-GROW-TEMPORARY-ID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">0000/S 000-000000</cbc:ID>
+        <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:Description>-</cbc:Description>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+</espd:ESPDResponse>

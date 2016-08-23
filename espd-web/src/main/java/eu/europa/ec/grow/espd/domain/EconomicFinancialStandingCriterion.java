@@ -70,6 +70,10 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion
     private BigDecimal ratio4;
     private BigDecimal ratio5;
 
+	private Integer numberOfYears;
+	private BigDecimal averageTurnover;
+	private String averageTurnoverCurrency;
+
     public static EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
         EconomicFinancialStandingCriterion criterion = new EconomicFinancialStandingCriterion();
         criterion.setExists(exists);
