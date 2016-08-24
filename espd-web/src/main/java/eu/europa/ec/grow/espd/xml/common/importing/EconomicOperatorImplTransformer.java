@@ -38,6 +38,10 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 
 /**
@@ -55,30 +59,42 @@ public class EconomicOperatorImplTransformer {
     }
 
     public EconomicOperatorImpl buildEconomicOperator(EconomicOperatorPartyType input) {
-        EconomicOperatorImpl impl = new EconomicOperatorImpl();
+        EconomicOperatorImpl economicOperator = new EconomicOperatorImpl();
 
         if (input.getParty() != null) {
             PartyImpl party = partyImplTransformer.apply(input.getParty());
-            impl.copyProperties(party);
+            economicOperator.copyProperties(party);
         }
 
         if (input.getSMEIndicator() != null) {
-            impl.setIsSmallSizedEnterprise(input.getSMEIndicator().isValue());
+            economicOperator.setIsSmallSizedEnterprise(input.getSMEIndicator().isValue());
         }
 
-        impl.setRepresentative(buildRepresentative(input));
+        economicOperator.setRepresentatives(buildRepresentatives(input));
 
-        return impl;
+        return economicOperator;
     }
 
-    private EconomicOperatorRepresentative buildRepresentative(EconomicOperatorPartyType input) {
+	private List<EconomicOperatorRepresentative> buildRepresentatives(EconomicOperatorPartyType input) {
+		if (CollectionUtils.isEmpty(input.getRepresentativeNaturalPerson())) {
+			return Collections.emptyList();
+		}
+
+		List<EconomicOperatorRepresentative> representatives = new ArrayList<>(
+				input.getRepresentativeNaturalPerson().size());
+		for (NaturalPersonType personType : input.getRepresentativeNaturalPerson()) {
+			if (personType == null) {
+				continue;
+			}
+			representatives.add(buildRepresentative(personType));
+		}
+
+		return representatives;
+	}
+
+    private EconomicOperatorRepresentative buildRepresentative(NaturalPersonType naturalPersonType) {
         EconomicOperatorRepresentative representative = new EconomicOperatorRepresentative();
 
-        if (CollectionUtils.isEmpty(input.getRepresentativeNaturalPerson())) {
-            return representative;
-        }
-
-        NaturalPersonType naturalPersonType = input.getRepresentativeNaturalPerson().get(0);
         if (naturalPersonType.getNaturalPersonRoleDescription() != null) {
             representative.setPosition(trimToEmpty(naturalPersonType.getNaturalPersonRoleDescription().getValue()));
         }

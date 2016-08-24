@@ -29,26 +29,28 @@ import eu.europa.ec.grow.espd.domain.ubl.CacParty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 public class EconomicOperatorImpl extends PartyImpl {
-	
+
 	private Boolean isSmallSizedEnterprise; //Is the economic operator a Micro, a Small or a Medium-Sized Enterprise ?
 
-    private EconomicOperatorRepresentative representative;
+	private List<EconomicOperatorRepresentative> representatives;
 
-    public void copyProperties(CacParty fromParty) {
-        setName(fromParty.getName());
-        setWebsite(fromParty.getWebsite());
-        setVatNumber(fromParty.getVatNumber());
-        setAnotherNationalId(fromParty.getAnotherNationalId());
-        setStreet(fromParty.getStreet());
-        setPostalCode(fromParty.getPostalCode());
-        setCity(fromParty.getCity());
-        setCountry((Country) fromParty.getCountry());
-        setContactName(fromParty.getContactName());
-        setContactPhone(fromParty.getContactPhone());
-        setContactEmail(fromParty.getContactEmail());
-    }
+	public void copyProperties(CacParty fromParty) {
+		setName(fromParty.getName());
+		setWebsite(fromParty.getWebsite());
+		setVatNumber(fromParty.getVatNumber());
+		setAnotherNationalId(fromParty.getAnotherNationalId());
+		setStreet(fromParty.getStreet());
+		setPostalCode(fromParty.getPostalCode());
+		setCity(fromParty.getCity());
+		setCountry((Country) fromParty.getCountry());
+		setContactName(fromParty.getContactName());
+		setContactPhone(fromParty.getContactPhone());
+		setContactEmail(fromParty.getContactEmail());
+	}
 
 }

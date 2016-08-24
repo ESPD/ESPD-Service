@@ -104,19 +104,22 @@ class EspdRequestResponseMergeTest extends AbstractXmlFileImport {
     }
 
     def "should import economic operator representative full information"() {
+        given:
+        def representative = espd.economicOperator.representatives[0]
+
         expect:
-        espd.economicOperator.representative.firstName == "Emilio"
-        espd.economicOperator.representative.lastName == "García De Tres Torres"
-        espd.economicOperator.representative.dateOfBirth == LocalDateAdapter.unmarshal("1960-01-19").toDate()
-        espd.economicOperator.representative.placeOfBirth == "València, Spain"
-        espd.economicOperator.representative.street == "Vitruvio"
-        espd.economicOperator.representative.postalCode == "28006"
-        espd.economicOperator.representative.city == "Madrid"
-        espd.economicOperator.representative.country == Country.ES
-        espd.economicOperator.representative.email == "emilio.garcia3torres@acme.com"
-        espd.economicOperator.representative.phone == "+34 96 123 456"
-        espd.economicOperator.representative.position == "Empowered to represent the Consortium"
-        espd.economicOperator.representative.additionalInfo == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
+        representative.firstName == "Emilio"
+        representative.lastName == "García De Tres Torres"
+        representative.dateOfBirth == LocalDateAdapter.unmarshal("1960-01-19").toDate()
+        representative.placeOfBirth == "València, Spain"
+        representative.street == "Vitruvio"
+        representative.postalCode == "28006"
+        representative.city == "Madrid"
+        representative.country == Country.ES
+        representative.email == "emilio.garcia3torres@acme.com"
+        representative.phone == "+34 96 123 456"
+        representative.position == "Empowered to represent the Consortium"
+        representative.additionalInfo == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
     }
 
     def "should import espd request full information"() {

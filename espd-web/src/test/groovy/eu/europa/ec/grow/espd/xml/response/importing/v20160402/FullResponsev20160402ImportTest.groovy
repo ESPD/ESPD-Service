@@ -68,19 +68,22 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
     }
 
     def "should import economic operator representative full information"() {
+        given:
+        def representative = espd.economicOperator.representatives[0]
+
         expect:
-        espd.economicOperator.representative.firstName == "Keith"
-        espd.economicOperator.representative.lastName == "Sweat"
-        espd.economicOperator.representative.dateOfBirth == LocalDateAdapter.unmarshal("1965-09-28").toDate()
-        espd.economicOperator.representative.placeOfBirth == "Naples"
-        espd.economicOperator.representative.street == "Pisa 256"
-        espd.economicOperator.representative.postalCode == "10256"
-        espd.economicOperator.representative.city == "roma"
-        espd.economicOperator.representative.country == Country.IT
-        espd.economicOperator.representative.email == "galabru@mailinator.com"
-        espd.economicOperator.representative.phone == "0039565656"
-        espd.economicOperator.representative.position == "representative position"
-        espd.economicOperator.representative.additionalInfo == "The Agris Mundus fees are the same."
+        representative.firstName == "Keith"
+        representative.lastName == "Sweat"
+        representative.dateOfBirth == LocalDateAdapter.unmarshal("1965-09-28").toDate()
+        representative.placeOfBirth == "Naples"
+        representative.street == "Pisa 256"
+        representative.postalCode == "10256"
+        representative.city == "roma"
+        representative.country == Country.IT
+        representative.email == "galabru@mailinator.com"
+        representative.phone == "0039565656"
+        representative.position == "representative position"
+        representative.additionalInfo == "The Agris Mundus fees are the same."
     }
 
     def "should import lots information"() {
