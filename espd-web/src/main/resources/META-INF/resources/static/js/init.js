@@ -106,3 +106,68 @@ function sortDropdowns() {
         select.val(selected);
     });
 }
+
+function EcertisHandler(url, country) {
+	return function() {
+	   	var uuid = $(this).attr("data-uuid");
+	   	if($(this).hasClass( "collapsed" ) && uuid != "") {
+	
+	   		var content = $(this).attr("data-target");
+	    	$(content).find("#content, #issued, #ecertis404").hide();
+	    	$(content).children("#loading").show();
+						    	
+	    	$.getJSON(url.replace("[uuid]",uuid).replace("[country]",country.toLowerCase()).replace("[lang]",pageLanguage),
+	    		function( data ) {
+					$(content).children("#loading").hide();
+									
+					if(data && data.DomainID == "eproc" && data.hasOwnProperty("SubCriterion")) {
+						content = $(content).children("#content").show();
+						$(content).find("#language").html(data.Name.languageID.toUpperCase());
+										
+						var T = $(content).find("#template").hide();
+						$(T).siblings("#subcriterion").remove();
+	
+						if(data.hasOwnProperty("SubCriterion")) {
+							$.each( data.SubCriterion, function( key, val ) {
+								var item = T.clone().attr("id","subcriterion").appendTo(T.parent()).show();
+								var list = item.children("#evidencesFound").html("");
+	    						item.find("#evidencesFound, #evidencesNotFound").hide();
+								item.children("#subname").html(val.Name.value);
+	
+								//Currently display only first LegislationReference from array, in future could be more
+								item.find("#description").html(val.LegislationReference[0].Title.value);
+								item.find("#url").text(val.LegislationReference[0].Article.value).attr("href",data.LegislationReference[0].URI);
+	
+								var hasEvidences = false;
+								$.each( $(val.RequirementGroup), function( key, val ) {
+									$.each( $(val.TypeOfEvidence), function( key, val ) {
+										var names = [];
+										$.each( $(val["EvidenceIssuerParty"]), function( key, val ) {
+											$.each($(val["PartyName"]), function(i,val) { names.push(val.Name.value) });
+										})
+	
+										// EvidenceDocumentReference with evidence URL is an array with only one element,
+										// currently it is implemented as it is, but in future could be more than one
+										var evidenceURL = val.EvidenceDocumentReference[0].Attachment.ExternalReference.URI;
+										var evidence = T.find("#evidence").clone().appendTo(list);
+										evidence.find("#name").text(val.Name.value).attr("href", evidenceURL);
+										evidence.find("#issued").toggle(names.length != 0).children("#issuerNames").text(names.join(","));
+	
+										hasEvidences = true;
+									});
+								});
+								item.children(hasEvidences?"#evidencesFound":"#evidencesNotFound").show();
+							});
+						}
+					}
+					else {
+		   				$(content).find("#ecertis404").show();
+					}
+		   		}).fail(function() {
+		   			$(content).children("#loading").hide();
+		   			$(content).find("#ecertis404").show();
+				}
+		   	);
+	    }
+	}
+}

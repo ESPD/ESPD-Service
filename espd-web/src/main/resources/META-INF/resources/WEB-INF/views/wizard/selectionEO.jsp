@@ -80,9 +80,9 @@
             </ul>
         </div>
         <c:if test="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}">
-            <div class="panel panel-default espd-panel">
-                <div class="espd-panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
-                    ${span18n["all_selection_switch"]}
+            <div class="panel panel-espd">
+                <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
+                    <h4 class="panel-title">${span18n['all_selection_switch']}</h4>
                 </div>
                 <div id="eo-satisfies-all-section" class="collapse in">
                     <div class="espd-panel-body panel-body">

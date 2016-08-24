@@ -67,6 +67,7 @@ public class UblEconomicOperatorPartyTypeTransformer
     }
 
     private NaturalPersonType buildRepresentative(EconomicOperatorImpl input) {
+    	/*
         EconomicOperatorRepresentative representative = input.getRepresentative();
         if (representative == null) {
             return null;
@@ -77,7 +78,8 @@ public class UblEconomicOperatorPartyTypeTransformer
         naturalPersonType.setNaturalPersonRoleDescription(buildRepresentativeRole(representative));
         naturalPersonType.setPowerOfAttorney(buildPowerOfAttorney(representative));
 
-        return naturalPersonType;
+        return naturalPersonType;*/
+    	return null;
     }
 
     private DescriptionType buildRepresentativeRole(EconomicOperatorRepresentative representative) {

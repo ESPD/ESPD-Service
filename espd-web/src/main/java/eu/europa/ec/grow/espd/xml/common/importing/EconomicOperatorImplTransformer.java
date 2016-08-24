@@ -55,6 +55,7 @@ public class EconomicOperatorImplTransformer {
     }
 
     public EconomicOperatorImpl buildEconomicOperator(EconomicOperatorPartyType input) {
+    	/*
         EconomicOperatorImpl impl = new EconomicOperatorImpl();
 
         if (input.getParty() != null) {
@@ -68,7 +69,8 @@ public class EconomicOperatorImplTransformer {
 
         impl.setRepresentative(buildRepresentative(input));
 
-        return impl;
+        return impl;*/
+    	return null;
     }
 
     private EconomicOperatorRepresentative buildRepresentative(EconomicOperatorPartyType input) {

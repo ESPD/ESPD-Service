@@ -37,10 +37,12 @@
 
 <tiles:importAttribute name="criteriaList" />
 
-<div class="panel panel-default espd-panel">
+<div class="panel panel-espd">
 	        
-	<div class="espd-panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
-		${span18n[title_code]}
+	<div class="panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
+		<h4 class="panel-title">
+			${span18n[title_code]}
+		</h4>
 	</div>
 	            
 	<div id="${id}" class="collapse in">
