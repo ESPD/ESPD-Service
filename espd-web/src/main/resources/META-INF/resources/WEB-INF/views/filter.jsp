@@ -62,6 +62,9 @@ $(function() {
     nextBtn.prop('disabled', true);
 });
 </script>
+
+<s:eval var="espdEnvironment" scope="page" expression="@espdConfiguration.espdEnvironment" />
+
 <form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
@@ -72,6 +75,18 @@ $(function() {
 		<div>
 			<h2 data-i18n="filter_header"><s:message code='filter_header'/></h2>
 		</div>
+
+		<c:if test="${espdEnvironment == true}">
+			<div class="alert alert-danger">
+				<ul class="fa-ul">
+	                <li>
+	                    <i class="error-label fa fa-info-circle fa-lg fa-li"></i>
+	                    <s:message code="app_environment"/> <a href="https://ec.europa.eu/espd">https://ec.europa.eu/espd</a>
+	                </li>
+				</ul>
+			</div>
+		</c:if>
+
 		<div class="alert alert-espd-info">
 			<ul class="fa-ul">
                 <li>
