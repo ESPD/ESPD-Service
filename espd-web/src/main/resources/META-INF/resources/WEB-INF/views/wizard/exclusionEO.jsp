@@ -80,10 +80,11 @@
 			<tiles:putAttribute name="topLevelCriteriaList" value="${exclusionEO}"/>
 		</tiles:insertDefinition>
 		
-        <div class="panel panel-default espd-panel">
-            <div data-i18n="crit_top_title_purely_national" class="espd-panel-heading" data-toggle="collapse"
-                 data-target="#ca-insolvency-section">
-                <s:message code='crit_top_title_purely_national'/>
+        <div class="panel panel-espd">
+            <div class="panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
+ 				<h4 class="panel-title">
+					${span18n['crit_top_title_purely_national']}
+				</h4>
             </div>
             <div id="ca-insolvency-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
