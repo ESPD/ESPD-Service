@@ -1,6 +1,6 @@
 :sourcedir: ../java/eu/europa/ec/grow/espd
-:homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
-:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:homepage: https://ec.europa.eu/espd[ESPD]
+:espd: https://ec.europa.eu/espd[ESPD]
 :appVersion: 2016.05
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
