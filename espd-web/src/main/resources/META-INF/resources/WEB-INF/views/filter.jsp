@@ -93,12 +93,15 @@ $(function() {
                     <i class="info-label fa fa-info-circle fa-lg fa-li"></i>
                     <div id="filter_text">${span18n['filter_alert']}</div>
                     <div id="filter_faq">
-                        <s:message var="click_here" code="click_here"/>
-                        <c:set var="hereLink" value="<a id='here_link' href='http://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd/index_en.htm'>${click_here}</a>"/>
-                        <c:set var="faqLinkHref" value="http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/${pageContext.response.locale}/renditions/native"/>
-                        <s:message var="faqLeaflet" code="faq_leaflet"/>
-                        <c:set var="faqLink" value="<a id='faq_link' href='${faqLinkHref}'>${faqLeaflet}</a>"/>
-                        <s:message code="faq_text" arguments="${hereLink},${faqLink}"/>
+                        ${span18n['faq_text_more_info']}   
+                        <a href='http://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd/index_en.htm'>
+							${span18n['click_here']}
+                        </a>
+                        <br>
+                        ${span18n['faq_text_answers']}
+                        <a href='http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/${pageContext.response.locale}/renditions/native'>
+							${span18n['faq_leaflet']}
+                        </a>    
                     </div>
                 </li>
 			</ul>
