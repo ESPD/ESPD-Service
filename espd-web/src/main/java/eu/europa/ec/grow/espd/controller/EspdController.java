@@ -24,15 +24,21 @@
 
 package eu.europa.ec.grow.espd.controller;
 
-import com.google.common.base.Optional;
-import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
-import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.enums.other.Country;
-import eu.europa.ec.grow.espd.ted.TedRequest;
-import eu.europa.ec.grow.espd.ted.TedResponse;
-import eu.europa.ec.grow.espd.ted.TedService;
-import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
-import lombok.extern.slf4j.Slf4j;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -41,25 +47,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import com.google.common.base.Optional;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
+import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
+import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.enums.other.Country;
+import eu.europa.ec.grow.espd.ted.TedRequest;
+import eu.europa.ec.grow.espd.ted.TedResponse;
+import eu.europa.ec.grow.espd.ted.TedService;
+import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 
 @Controller
 @SessionAttributes("espd")
-@Slf4j
 class EspdController {
 
     private static final String WELCOME_PAGE = "welcome";
@@ -79,7 +89,11 @@ class EspdController {
 
     @ModelAttribute("espd")
     public EspdDocument newDocument() {
-        return new EspdDocument();
+    	EspdDocument espd = new EspdDocument();
+    	espd.setEconomicOperator(new EconomicOperatorImpl());
+    	espd.getEconomicOperator().setRepresentatives(new ArrayList<EconomicOperatorRepresentative>());
+    	espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
+    	return espd;
     }
 
     @RequestMapping("/")
@@ -259,6 +273,34 @@ class EspdController {
             BindingResult bindingResult) {
         return bindingResult.hasErrors() ?
                 flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
+    }
+
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "add")
+    public String addRepresentative(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam Integer add,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
+    	espd.getEconomicOperator().getRepresentatives().add(add, new EconomicOperatorRepresentative());
+        return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + add);
+    }
+
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "remove")
+    public String removeRepresentative(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam Integer remove,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
+    	espd.getEconomicOperator().getRepresentatives().remove(remove.intValue());
+    	if(espd.getEconomicOperator().getRepresentatives().size() == 0) {
+    		espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
+    	}
+    	remove = Math.min(espd.getEconomicOperator().getRepresentatives().size() - 1, remove);
+        return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
     }
     
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print}", method = POST, params = "next")

@@ -33,6 +33,9 @@ public final class MarshallingConstants {
     public static final String TEMPORARY_OJS_NUMBER_SCHEME_ID = "COM-GROW-TEMPORARY-ID";
     public static final String NO_LOTS = "0";
 
+	public static final String VAT_NUMBER_SCHEME_ID = "VAT_Number";
+	public static final String NATIONAL_NUMBER_SCHEME_ID = "National_Number";
+
     private MarshallingConstants() {
 
     }

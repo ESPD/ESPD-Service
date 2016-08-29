@@ -1,5 +1,24 @@
 == Release notes
 
+=== 2016.08 (31st of August 2016)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/63[Text shown twice]
+* https://github.com/ESPD/ESPD-Service/issues/35[Bug needs to be fixed due to an upgrade to weblogic 12 1.3]
+* https://github.com/ESPD/ESPD-Service/issues/34[Duplicate ids of requirement groups]
+* https://github.com/ESPD/ESPD-Service/issues/32[KvK number is filled in for the VAT number after reloading the xml]
+* https://github.com/ESPD/ESPD-Service/issues/20[For more information about the UEA click here not translated]
+
+==== Improvement
+
+* https://github.com/ESPD/ESPD-Service/issues/42[Inform users that they are using the wrong environment]
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/17[Link to eCertis for EOs]
+* https://github.com/ESPD/ESPD-Service/issues/16[Add more Legal representative]
+
 === 2016.07 (29th of July 2016)
 
 ==== Bug

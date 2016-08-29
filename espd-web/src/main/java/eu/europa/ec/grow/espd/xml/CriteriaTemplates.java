@@ -279,42 +279,42 @@ public final class CriteriaTemplates {
                     put("field", "criminalConvictions").
                     put("title_code", "crit_eu_title_grounds_criminal_conv").
                     put("description_code", "crit_eu_text_grounds_criminal_conv").
-                    build(),
+                    put("criterion", ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "criminalFormTemplate").
                     put("field", "corruption").
                     put("title_code", "crit_eu_title_corruption").
                     put("description_code", "crit_eu_text_corruption").
-                    build(),
+                    put("criterion", ExclusionCriterion.CORRUPTION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "criminalFormTemplate").
                     put("field", "fraud").
                     put("title_code", "crit_eu_title_fraud").
                     put("description_code", "crit_eu_text_fraud").
-                    build(),
+                    put("criterion", ExclusionCriterion.FRAUD).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "criminalFormTemplate").
                     put("field", "terroristOffences").
                     put("title_code", "crit_eu_title_terrorist").
                     put("description_code", "crit_eu_text_terrorist").
-                    build(),
+                    put("criterion", ExclusionCriterion.TERRORIST_OFFENCES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "criminalFormTemplate").
                     put("field", "moneyLaundering").
                     put("title_code", "crit_eu_title_money_laundering").
                     put("description_code", "crit_eu_text_money_laundering").
-                    build(),
+                    put("criterion", ExclusionCriterion.MONEY_LAUNDERING).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "criminalFormTemplate").
                     put("field", "childLabour").
                     put("title_code", "crit_eu_title_child_labour").
                     put("description_code", "crit_eu_text_child_labour").
-                    build()
+                    put("criterion", ExclusionCriterion.CHILD_LABOUR).build()
     };
 
     public static final Map[] taxesListEO = new Map[] {
@@ -324,7 +324,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_eu_title_payment_taxes").
                     put("description_code", "crit_eu_text_payment_taxes").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.PAYMENT_OF_TAXES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "taxFormTemplate").
@@ -332,7 +332,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_eu_title_payment_social_security").
                     put("description_code", "crit_eu_text_payment_social_security").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY).build()
     };
 
     public static final Map[] insolvencyListEO = new Map[] {
@@ -343,7 +343,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_breaching_obligations_environmental").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -352,7 +352,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_breaching_obligations_social").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -361,7 +361,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_breaching_obligations_labour").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -370,7 +370,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_bankrupt").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.BANKRUPTCY).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -379,7 +379,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_insolvency").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.INSOLVENCY).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -388,7 +388,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_arrangement_creditors").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -397,7 +397,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_national_bankruptcy").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.ANALOGOUS_SITUATION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -406,7 +406,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_liquidator").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "reasonsNeverlessPerformForm").
@@ -415,7 +415,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_suspended_business").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -424,7 +424,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_agreement_economic").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -433,7 +433,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_guilty_misconduct").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -444,7 +444,7 @@ public final class CriteriaTemplates {
                     put("hasDescription", "false").
                     put("availableElectronically", "false").
                     put("description_code", "crit_eu_text_conflict_interest").
-                    build(),
+                    put("criterion", ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -454,7 +454,7 @@ public final class CriteriaTemplates {
                     put("availableElectronically", "false").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -463,7 +463,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_early_termination").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    build(),
+                    put("criterion", ExclusionCriterion.EARLY_TERMINATION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -474,7 +474,7 @@ public final class CriteriaTemplates {
                     put("selfCleaning", "false").
                     put("hasDescription", "false").
                     put("availableElectronically", "false").
-                    build()
+                    put("criterion", ExclusionCriterion.GUILTY_OF_MISINTERPRETATION).build()
 
     };
 
@@ -724,14 +724,14 @@ public final class CriteriaTemplates {
                     put("field", "enrolmentProfessionalRegister").
                     put("title_code", "crit_selection_suitability_enrolment_professional_register_main").
                     put("description_code", "crit_selection_suitability_enrolment_professional_register_description").
-                    build(),
+                    put("criterion", SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "selectionFormTemplate").
                     put("field", "enrolmentTradeRegister").
                     put("title_code", "crit_selection_suitability_enrolment_trade_register_main").
                     put("description_code", "crit_selection_suitability_enrolment_trade_register_description").
-                    build(),
+                    put("criterion", SelectionCriterion.ENROLMENT_TRADE_REGISTER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -741,7 +741,7 @@ public final class CriteriaTemplates {
                     put("has_multiple_year_amount", "false").
                     put("title_code", "crit_selection_suitability_service_contracts_auth_main").
                     put("description_code", "crit_selection_suitability_service_contracts_auth_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -751,7 +751,7 @@ public final class CriteriaTemplates {
                     put("has_multiple_year_amount", "false").
                     put("title_code", "crit_selection_suitability_service_contracts_membership_main").
                     put("description_code", "crit_selection_suitability_service_contracts_membership_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP).build()
     };
 
     public static final Map[] economicListEO = new Map[] {
@@ -761,7 +761,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_general_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_general_yearly_turnover_description").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
-                    build(),
+                    put("criterion", SelectionCriterion.GENERAL_YEARLY_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -769,7 +769,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_average_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_average_yearly_turnover_description").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
-                    build(),
+                    put("criterion", SelectionCriterion.AVERAGE_YEARLY_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -777,7 +777,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_specific_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_specific_yearly_turnover_description").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
-                    build(),
+                    put("criterion", SelectionCriterion.SPECIFIC_YEARLY_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -785,7 +785,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_specific_average_turnover_main").
                     put("description_code", "crit_selection_economic_specific_average_turnover_description").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
-                    build(),
+                    put("criterion", SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -796,7 +796,7 @@ public final class CriteriaTemplates {
                     put("availableElectronically", "false").
                     put("has_multiple_year_amount", "false").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
-                    build(),
+                    put("criterion", SelectionCriterion.SETUP_ECONOMIC_OPERATOR).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -804,7 +804,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_financial_ratio_main").
                     put("description_code", "crit_selection_economic_financial_ratio_description").
                     put("has_multiple_description_ratio", "true").
-                    build(),
+                    put("criterion", SelectionCriterion.FINANCIAL_RATIO).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -812,7 +812,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_professional_risk_insurance_main").
                     put("description_code", "crit_selection_economic_professional_risk_insurance_description").
                     put("has_single_amount", "true").
-                    build(),
+                    put("criterion", SelectionCriterion.PROFESSIONAL_RISK_INSURANCE).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "economicFinancialCriterionEO").
@@ -820,7 +820,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_economic_other_financial_requirements_main").
                     put("description_code", "crit_selection_economic_other_financial_requirements_description").
                     put("has_please_describe_them", "true").
-                    build(),
+                    put("criterion", SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS).build()
     };
 
     public static final Map[] technicalListEO = new Map[] {
@@ -830,7 +830,7 @@ public final class CriteriaTemplates {
                     put("has_multiple_description_amount_date_recipients", "true").
                     put("title_code", "crit_selection_technical_work_contracts_performance_works_main").
                     put("description_code", "crit_selection_technical_work_contracts_performance_works_description").
-                    build(),
+                    put("criterion", SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -839,7 +839,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_technical_supply_contracts_performance_deliveries_main").
                     put("description_code",
                             "crit_selection_technical_supply_contracts_performance_deliveries_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -848,7 +848,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_technical_service_contracts_performance_services_main").
                     put("description_code",
                             "crit_selection_technical_service_contracts_performance_services_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -856,7 +856,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_technicians_technical_bodies_main").
                     put("description_code", "crit_selection_technical_technicians_technical_bodies_description").
-                    build(),
+                    put("criterion", SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -864,7 +864,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_work_contracts_technicians_main").
                     put("description_code", "crit_selection_technical_work_contracts_technicians_description").
-                    build(),
+                    put("criterion", SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -872,7 +872,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_technical_facilities_measures_main").
                     put("description_code", "crit_selection_technical_technical_facilities_measures_description").
-                    build(),
+                    put("criterion", SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -880,7 +880,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_study_research_facilities_main").
                     put("description_code", "crit_selection_technical_study_research_facilities_description").
-                    build(),
+                    put("criterion", SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -888,7 +888,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_supply_chain_management_main").
                     put("description_code", "crit_selection_technical_supply_chain_management_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -898,7 +898,7 @@ public final class CriteriaTemplates {
                     put("availableElectronically", "false").
                     put("title_code", "crit_selection_technical_allowance_of_checks_main").
                     put("description_code", "crit_selection_technical_allowance_of_checks_description").
-                    build(),
+                    put("criterion", SelectionCriterion.ALLOWANCE_OF_CHECKS).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -907,7 +907,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_technical_educational_professional_qualifications_main").
                     put("description_code",
                             "crit_selection_technical_educational_professional_qualifications_description").
-                    build(),
+                    put("criterion", SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -915,7 +915,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_environment_management_features_main").
                     put("description_code", "crit_selection_technical_environment_management_features_description").
-                    build(),
+                    put("criterion", SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -923,7 +923,7 @@ public final class CriteriaTemplates {
                     put("lastYearsNumber", LAST_YEARS_NUMBER).
                     put("title_code", "crit_selection_technical_number_managerial_staff_main").
                     put("description_code", "crit_selection_technical_number_managerial_staff_description").
-                    build(),
+                    put("criterion", SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -931,7 +931,7 @@ public final class CriteriaTemplates {
                     put("lastYearsNumber", LAST_YEARS_NUMBER).
                     put("title_code", "crit_selection_technical_average_annual_manpower_main").
                     put("description_code", "crit_selection_technical_average_annual_manpower_description").
-                    build(),
+                    put("criterion", SelectionCriterion.AVERAGE_ANNUAL_MANPOWER).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -939,7 +939,7 @@ public final class CriteriaTemplates {
                     put("has_please_describe_them", "true").
                     put("title_code", "crit_selection_technical_tools_plant_main").
                     put("description_code", "crit_selection_technical_tools_plant_description").
-                    build(),
+                    put("criterion", SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -948,7 +948,7 @@ public final class CriteriaTemplates {
                     put("availableElectronically", "false").
                     put("title_code", "crit_selection_technical_subcontracting_proportion_main").
                     put("description_code", "crit_selection_technical_subcontracting_proportion_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SUBCONTRACTING_PROPORTION).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -956,7 +956,7 @@ public final class CriteriaTemplates {
                     put("has_your_answer", "true").
                     put("title_code", "crit_selection_technical_supply_contracts_without_ca_main").
                     put("description_code", "crit_selection_technical_supply_contracts_without_ca_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -964,7 +964,7 @@ public final class CriteriaTemplates {
                     put("has_your_answer", "true").
                     put("title_code", "crit_selection_technical_supply_contracts_with_ca_main").
                     put("description_code", "crit_selection_technical_supply_contracts_with_ca_description").
-                    build(),
+                    put("criterion", SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -974,7 +974,7 @@ public final class CriteriaTemplates {
                     put("has_explain_supply_contracts_quality", "true").
                     put("title_code", "crit_selection_technical_supply_contracts_certificate_quality_main").
                     put("description_code", "crit_selection_technical_supply_contracts_certificate_quality_description").
-                    build()
+                    put("criterion", SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC).build(),
     };
 
     public static final Map[] qualityAssuranceListEO = new Map[] {
@@ -987,7 +987,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_quality_certificate_independent_bodies_quality_main").
                     put("description_code",
                             "crit_selection_quality_certificate_independent_bodies_quality_description").
-                    build(),
+                    put("criterion", SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "technicalProfessionalCriterionEO").
@@ -998,7 +998,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_selection_quality_certificate_independent_bodies_environmental_main").
                     put("description_code",
                             "crit_selection_quality_certificate_independent_bodies_environmental_description").
-                    build()
+                    put("criterion", SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL).build()
     };
 
     /**

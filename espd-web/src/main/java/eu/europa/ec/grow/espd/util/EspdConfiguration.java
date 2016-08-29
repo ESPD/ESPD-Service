@@ -59,6 +59,9 @@ public class EspdConfiguration {
     @Value("${ecertis.criterion.url:https://www.development.ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd/[uuid]/?countryFilter=[country]&lang=[lang]}")
     private String ecertisCriterionURL;
 
+    @Value("${espd.environment:false}")
+    private boolean espdEnvironment;
+    
     @Autowired
     private Environment environment;
 

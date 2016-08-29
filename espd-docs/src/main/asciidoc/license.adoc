@@ -1,4 +1,4 @@
-:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:espd: https://ec.europa.eu/espd[ESPD]
 
 == License
 

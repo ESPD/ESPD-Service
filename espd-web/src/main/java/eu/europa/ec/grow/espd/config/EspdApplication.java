@@ -24,8 +24,6 @@
 
 package eu.europa.ec.grow.espd.config;
 
-import ac.simons.spring.boot.wro4j.Wro4jAutoConfiguration;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,6 +34,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ac.simons.spring.boot.wro4j.Wro4jAutoConfiguration;
 /**
  * Created by vigi on 10/20/15:5:17 PM.
  */
