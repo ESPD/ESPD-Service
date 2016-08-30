@@ -32,8 +32,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -89,11 +87,7 @@ class EspdController {
 
     @ModelAttribute("espd")
     public EspdDocument newDocument() {
-    	EspdDocument espd = new EspdDocument();
-    	espd.setEconomicOperator(new EconomicOperatorImpl());
-    	espd.getEconomicOperator().setRepresentatives(new ArrayList<EconomicOperatorRepresentative>());
-    	espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
-    	return espd;
+    	return new EspdDocument();
     }
 
     @RequestMapping("/")
