@@ -582,7 +582,7 @@ specified, then a <code>default</code> one will be used by <a href="http://proje
 <div class="sect2">
 <h3 id="spring"><a class="anchor" href="#spring"></a>Spring</h3>
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is built from the ground-up with <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>, allowing us to simplify the project configuration
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> application is built from the ground-up with <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>, allowing us to simplify the project configuration
 and the management of third party libraries.</p>
 </div>
 <div class="paragraph">
@@ -672,7 +672,7 @@ TilesConfigurer tilesConfigurer() {
 <div class="sect2">
 <h3 id="internationalization-i18n"><a class="anchor" href="#internationalization-i18n"></a>Internationalization (i18n)</h3>
 <div class="paragraph">
-<p>Concerning internationalization (i18n), the <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application takes advantage of the auto-configuration provided
+<p>Concerning internationalization (i18n), the <a href="https://ec.europa.eu/espd">ESPD</a> application takes advantage of the auto-configuration provided
 by <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> in the <code>MessageSourceAutoConfiguration</code> class.</p>
 </div>
 <div class="listingblock">
@@ -749,7 +749,7 @@ is stored in a <code>ESPD_LOCALE</code> <code>cookie</code>.</p>
 <div class="sect3">
 <h4 id="static-resources"><a class="anchor" href="#static-resources"></a>Static resources</h4>
 <div class="paragraph">
-<p><a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> uses advanced resource handling features provided by <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-config-static-resources">Spring MVC</a> and <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-static-content">Spring Boot</a>.
+<p><a href="https://ec.europa.eu/espd">ESPD</a> uses advanced resource handling features provided by <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-config-static-resources">Spring MVC</a> and <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-static-content">Spring Boot</a>.
 We have chosen a path that relies on optimizing resources at build-time using <a href="https://github.com/wro4j/wro4j">WRO4J</a> and leveraging Spring MVC
 Resolvers and Transformers and <a href="https://github.com/wro4j/wro4j">WRO4J</a> filter at run-time.</p>
 </div>
@@ -810,7 +810,7 @@ ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
 </div>
 <div class="paragraph">
 <p>For example, a request made to the <code>all.js</code> file would be translated into a request made to a Javascript file with a hash:
-<code><a href="https://ec.europa.eu/growth/tools-databases/espd/static/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js" class="bare">https://ec.europa.eu/growth/tools-databases/espd/static/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js</a></code>.</p>
+<code><a href="https://ec.europa.eu/espdstatic/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js" class="bare">https://ec.europa.eu/espdstatic/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js</a></code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -958,7 +958,7 @@ reduce some of the annoyances of the language by using Java annotations.</p>
 go back to standard Java source code.</p>
 </div>
 <div class="paragraph">
-<p>Here is a very simple example of how <a href="https://projectlombok.org/features/index.html">Lombok</a> might be used inside the <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> project.</p>
+<p>Here is a very simple example of how <a href="https://projectlombok.org/features/index.html">Lombok</a> might be used inside the <a href="https://ec.europa.eu/espd">ESPD</a> project.</p>
 </div>
 <div class="listingblock">
 <div class="title">TedRequest.java</div>
@@ -1032,7 +1032,7 @@ logging.config=classpath:logback/logback-dev.xml</code></pre>
 <div class="sect3">
 <h4 id="java-melody"><a class="anchor" href="#java-melody"></a>Java Melody</h4>
 <div class="paragraph">
-<p>Basic monitoring of the <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a> application is handled using the <a href="https://github.com/javamelody/javamelody/wiki">Java Melody</a> library by registering a Java filter
+<p>Basic monitoring of the <a href="https://ec.europa.eu/espd">ESPD</a> application is handled using the <a href="https://github.com/javamelody/javamelody/wiki">Java Melody</a> library by registering a Java filter
 inside the Spring application context.</p>
 </div>
 <div class="listingblock">
@@ -1095,7 +1095,7 @@ parameter to <code>false</code> in the corresponding <code>application.propertie
 <div class="paragraph">
 <p>With the <code>2016.06</code> version, the criteria requirement groups have been restructured with regards to interoperability with
 the VCD application and three JSON files have been added under <code>src/main/resources/criteria</code>. These files contain the
-definitions for the exclusion, selection and other criteria used by the static version of <a href="https://ec.europa.eu/growth/tools-databases/espd/">ESPD</a>.</p>
+definitions for the exclusion, selection and other criteria used by the static version of <a href="https://ec.europa.eu/espd">ESPD</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">exclusionCriterion.json</div>
@@ -1304,7 +1304,7 @@ ted.api.password=passed as server startup parameter</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-08 19:03:42 +02:00
+Last updated 2016-09-01 10:41:13 +02:00
 </div>
 </div>
 </body>
