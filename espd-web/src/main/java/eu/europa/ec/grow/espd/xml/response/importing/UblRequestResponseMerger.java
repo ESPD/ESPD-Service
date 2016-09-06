@@ -136,7 +136,11 @@ public class UblRequestResponseMerger extends UblRequestResponseImporter {
 	@Override
 	protected List<DocumentReferenceType> provideDocumentReferences(ESPDRequestType requestType,
 			ESPDResponseType responseType) {
-		return responseType.getAdditionalDocumentReference();
+		//hotfix
+		//Part 1 MUST come from the new request and not from the old response
+		//return responseType.getAdditionalDocumentReference();
+		
+		return requestType.getAdditionalDocumentReference();
 	}
 
 	@Override
