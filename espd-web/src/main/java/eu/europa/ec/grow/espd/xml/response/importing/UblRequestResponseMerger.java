@@ -81,7 +81,11 @@ public class UblRequestResponseMerger extends UblRequestResponseImporter {
 
 	@Override
 	protected ContractingPartyType provideContractingParty(ESPDRequestType requestType, ESPDResponseType responseType) {
-		return responseType.getContractingParty();
+		//hotfix
+		//Part 1 MUST come from the new request and not from the old response
+		//return responseType.getContractingParty();
+		
+		return requestType.getContractingParty();
 	}
 
 	@Override
