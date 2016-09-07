@@ -122,22 +122,31 @@ class EspdRequestResponseMergeTest extends AbstractXmlFileImport {
         representative.additionalInfo == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
     }
 
-    def "should import espd request full information"() {
-        expect:
-        espd.requestMetadata.id == "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
-        espd.requestMetadata.url == "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
-        espd.requestMetadata.description == "ESPDRequest SMART 2015/0065"
-        LocalDateAdapter.marshal(new LocalDate(espd.requestMetadata.issueDate)) == "2015-12-18"
-        LocalTimeAdapter.marshal(new LocalTime(espd.requestMetadata.issueDate)) == "17:46:54"
-    }
+    //all fields already taken from request
+    //def "should import espd request full information"() {
+    //    expect:
+    //    espd.requestMetadata.id == "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
+    //    espd.requestMetadata.url == "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
+    //    espd.requestMetadata.description == "ESPDRequest SMART 2015/0065"
+    //    LocalDateAdapter.marshal(new LocalDate(espd.requestMetadata.issueDate)) == "2015-12-18"
+    //    LocalTimeAdapter.marshal(new LocalTime(espd.requestMetadata.issueDate)) == "17:46:54"
+    //}
 
     def "should parse TED procurement procedure information"() {
         expect:
-        espd.fileRefByCA == "SMART 2015/0065"
-        espd.ojsNumber == "6d48f751-53cc-4d7f-9dfb-21c3e802b2e0"
-        espd.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
-        espd.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
-        espd.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
+        //fields taken from request
+        espd.fileRefByCA == "SMART 2015/0075"
+        espd.ojsNumber == "2e556f14-c643-4abc-9177-2f4dycdfh411"
+        espd.procedureTitle == "Poland-Kalisz: Stadium construction work"
+        espd.procedureShortDesc == "2015/S 206-373046"
+        espd.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373046-2015:TEXT:EN:HTML"
+        
+        //response
+        //espd.fileRefByCA == "SMART 2015/0065"
+        //espd.ojsNumber == "6d48f751-53cc-4d7f-9dfb-21c3e802b2e0"
+        //espd.procedureTitle == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        //espd.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
+        //espd.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
     }
 
 }

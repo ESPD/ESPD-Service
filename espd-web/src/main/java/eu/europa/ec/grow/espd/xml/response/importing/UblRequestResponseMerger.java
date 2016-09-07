@@ -145,7 +145,11 @@ public class UblRequestResponseMerger extends UblRequestResponseImporter {
 
 	@Override
 	protected ContractFolderIDType provideContractFolder(ESPDRequestType requestType, ESPDResponseType responseType) {
-		return responseType.getContractFolderID();
+		//hotfix
+		//Part 1 MUST come from the new request and not from the old response
+		//return responseType.getContractFolderID();
+		
+		return requestType.getContractFolderID();
 	}
 
 }

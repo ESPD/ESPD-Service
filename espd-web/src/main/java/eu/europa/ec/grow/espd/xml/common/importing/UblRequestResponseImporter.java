@@ -91,6 +91,7 @@ public abstract class UblRequestResponseImporter {
 			PartyImpl authority = partyImplTransformer.apply(caParty.getParty());
 			espdDocument.setAuthority(authority);
 		}
+
 		EconomicOperatorPartyType economicOperatorParty = provideEconomicOperatorParty(requestType, responseType);
 		if (economicOperatorParty != null) {
 			espdDocument.setEconomicOperator(economicOperatorImplTransformer.buildEconomicOperator(
@@ -161,19 +162,20 @@ public abstract class UblRequestResponseImporter {
 		}
 
 		List<DocumentReferenceType> documentReferences = provideDocumentReferences(requestType, responseType);
-		List<DocumentReferenceType> tedContractNumbers = UblDocumentReferences
-				.filterByTypeCode(documentReferences, DocumentTypeCode.TED_CN);
+		List<DocumentReferenceType> tedContractNumbers = UblDocumentReferences.filterByTypeCode(documentReferences, DocumentTypeCode.TED_CN);
 		if (isNotEmpty(tedContractNumbers)) {
 			DocumentReferenceType procurementInfo = tedContractNumbers.get(0);
+			// read the tedReceptionId as a second description
+			espdDocument.setTedReceptionId(UblDocumentReferences.readDescriptionValue(procurementInfo, 1));
+			espdDocument.setTedUrl(UblDocumentReferences.readUrlValue(procurementInfo));
+
 			espdDocument.setOjsNumber(UblDocumentReferences.readIdValue(procurementInfo));
 			espdDocument.setProcedureTitle(UblDocumentReferences.readFileNameValue(procurementInfo));
 			espdDocument.setProcedureShortDesc(UblDocumentReferences.readDescriptionValue(procurementInfo));
-			espdDocument.setTedUrl(UblDocumentReferences.readUrlValue(procurementInfo));
-			// read the tedReceptionId as a second description
-			espdDocument.setTedReceptionId(UblDocumentReferences.readDescriptionValue(procurementInfo, 1));
 		} else {
 			log.warn("No TED information found for response '{}'.", getResponseId(responseType));
 		}
+
 	}
 
 	private String getResponseId(ESPDResponseType input) {
@@ -196,7 +198,7 @@ public abstract class UblRequestResponseImporter {
 		return null;
 	}
 
-
+	
 	/**
 	 * Provide the UBL element containing information about the contracting authority party type.
 	 *
