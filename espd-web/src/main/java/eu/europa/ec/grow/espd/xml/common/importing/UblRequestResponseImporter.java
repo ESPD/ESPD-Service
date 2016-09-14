@@ -106,7 +106,7 @@ public abstract class UblRequestResponseImporter {
 
 	private void addOtherInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument) {
 		addProjectLotInformation(requestType, responseType, espdDocument);
-		addEspdRequestInformation(requestType, responseType, espdDocument);
+		addRequestInformation(requestType, responseType, espdDocument);
 		addTedInformation(requestType, responseType, espdDocument);
 	}
 
@@ -115,16 +115,17 @@ public abstract class UblRequestResponseImporter {
 		espdDocument.setLotConcerned(readLot(projectLots));
 	}
 
-	private void addEspdRequestInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument) {
-		List<DocumentReferenceType> documentReferences = provideDocumentReferences(requestType, responseType);
-		EspdRequestMetadata metadata = readRequestMetadata(documentReferences);
-		espdDocument.setRequestMetadata(metadata);
-		if (StringUtils.isBlank(metadata.getId())) {
-			log.warn("No ESPD Request information found for response '{}'.", getResponseId(responseType));
-		}
-	}
 
-	private EspdRequestMetadata readRequestMetadata(List<DocumentReferenceType> documentReferenceTypes) {
+	protected final void addEspdRequestInformation(ESPDRequestType input, EspdDocument espdDocument) {
+        EspdRequestMetadata metadata = new EspdRequestMetadata();
+        metadata.setId(readRequestId(input));
+        metadata.setIssueDate(readIssueDate(input.getIssueDate(), input.getIssueTime()));
+        metadata.setDescription(readRequestDescription(input));
+        // TODO build URL of the request
+        espdDocument.setRequestMetadata(metadata);
+    }
+	
+	protected final EspdRequestMetadata readRequestMetadata(List<DocumentReferenceType> documentReferenceTypes) {
 		EspdRequestMetadata metadata = new EspdRequestMetadata();
 		List<DocumentReferenceType> requestReferences = UblDocumentReferences
 				.filterByTypeCode(documentReferenceTypes, DocumentTypeCode.ESPD_REQUEST);
@@ -137,6 +138,20 @@ public abstract class UblRequestResponseImporter {
 		}
 		return metadata;
 	}
+	
+    private String readRequestId(ESPDRequestType input) {
+        if (input.getID() == null) {
+            return null;
+        }
+        return input.getID().getValue();
+    }
+
+    private String readRequestDescription(ESPDRequestType input) {
+        if (input.getContractFolderID() == null || StringUtils.isBlank(input.getContractFolderID().getValue())) {
+            return null;
+        }
+        return "ESPDRequest " + input.getContractFolderID().getValue();
+    }
 
 	protected final Date readIssueDate(IssueDateType issueDateType, IssueTimeType issueTimeType) {
 		if (issueDateType == null || issueDateType.getValue() == null) {
@@ -161,7 +176,7 @@ public abstract class UblRequestResponseImporter {
 			espdDocument.setFileRefByCA(contractFolder.getValue());
 		}
 
-		List<DocumentReferenceType> documentReferences = provideDocumentReferences(requestType, responseType);
+		List<DocumentReferenceType> documentReferences = provideTedDocumentReferences(requestType, responseType);
 		List<DocumentReferenceType> tedContractNumbers = UblDocumentReferences.filterByTypeCode(documentReferences, DocumentTypeCode.TED_CN);
 		if (isNotEmpty(tedContractNumbers)) {
 			DocumentReferenceType procurementInfo = tedContractNumbers.get(0);
@@ -178,7 +193,7 @@ public abstract class UblRequestResponseImporter {
 
 	}
 
-	private String getResponseId(ESPDResponseType input) {
+	protected String getResponseId(ESPDResponseType input) {
 		if (input == null || input.getID() == null) {
 			return "";
 		}
@@ -198,7 +213,19 @@ public abstract class UblRequestResponseImporter {
 		return null;
 	}
 
-	
+	protected abstract void addRequestInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument);
+
+	/**
+	 * Provide the list of UBL elements of request document containing information about the additional document references type.
+	 *
+	 * @param requestType  A UBL {@link ESPDRequestType}
+	 * @param responseType A UBL {@link ESPDResponseType}
+	 *
+	 * @return A list of {@link DocumentReferenceType} element
+	 */
+	protected abstract List<DocumentReferenceType> provideTedDocumentReferences(ESPDRequestType requestType,
+			ESPDResponseType responseType);
+
 	/**
 	 * Provide the UBL element containing information about the contracting authority party type.
 	 *
@@ -252,7 +279,7 @@ public abstract class UblRequestResponseImporter {
 	 */
 	protected abstract List<DocumentReferenceType> provideDocumentReferences(ESPDRequestType requestType,
 			ESPDResponseType responseType);
-
+	
 	/**
 	 * Provide the UBL element containing information about the contract folder id type.
 	 *

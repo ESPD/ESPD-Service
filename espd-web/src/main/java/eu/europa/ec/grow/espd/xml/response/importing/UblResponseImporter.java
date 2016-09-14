@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.importing;
 
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.EspdRequestMetadata;
 import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulator;
 import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer;
 import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer;
@@ -36,6 +37,8 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ContractFolderIDType;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -127,9 +130,26 @@ public class UblResponseImporter extends UblRequestResponseImporter {
 			ESPDResponseType responseType) {
 		return responseType.getAdditionalDocumentReference();
 	}
+	
+	@Override
+	protected List<DocumentReferenceType> provideTedDocumentReferences(ESPDRequestType requestType,
+			ESPDResponseType responseType) {
+		return responseType.getAdditionalDocumentReference();
+	}
 
 	@Override
 	protected ContractFolderIDType provideContractFolder(ESPDRequestType requestType, ESPDResponseType responseType) {
 		return responseType.getContractFolderID();
+	}
+	
+	@Override
+	protected void addRequestInformation(ESPDRequestType requestType, ESPDResponseType responseType,
+			EspdDocument espdDocument) {
+		List<DocumentReferenceType> documentReferences = provideDocumentReferences(requestType, responseType);
+		EspdRequestMetadata metadata = readRequestMetadata(documentReferences);
+		espdDocument.setRequestMetadata(metadata);
+		if (StringUtils.isBlank(metadata.getId())) {
+			log.warn("No ESPD Request information found for response '{}'.", getResponseId(responseType));
+		}
 	}
 }

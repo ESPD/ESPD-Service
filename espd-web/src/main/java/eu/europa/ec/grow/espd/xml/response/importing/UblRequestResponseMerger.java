@@ -34,7 +34,6 @@ import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
-import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ProcurementProjectLotType;
@@ -60,7 +59,6 @@ import java.util.Objects;
  * Created by ratoico on 3/8/16 at 11:12 AM.
  */
 @Component
-@Slf4j
 public class UblRequestResponseMerger extends UblRequestResponseImporter {
 
 	@Autowired
@@ -136,20 +134,27 @@ public class UblRequestResponseMerger extends UblRequestResponseImporter {
 	@Override
 	protected List<DocumentReferenceType> provideDocumentReferences(ESPDRequestType requestType,
 			ESPDResponseType responseType) {
-		//hotfix
-		//Part 1 MUST come from the new request and not from the old response
-		//return responseType.getAdditionalDocumentReference();
 		
+		//TODO: combine ted info from request and request info from response here
+		return responseType.getAdditionalDocumentReference();
+	}
+
+	@Override
+	protected List<DocumentReferenceType> provideTedDocumentReferences(ESPDRequestType requestType,
+			ESPDResponseType responseType) {
 		return requestType.getAdditionalDocumentReference();
 	}
 
 	@Override
 	protected ContractFolderIDType provideContractFolder(ESPDRequestType requestType, ESPDResponseType responseType) {
-		//hotfix
 		//Part 1 MUST come from the new request and not from the old response
-		//return responseType.getContractFolderID();
-		
 		return requestType.getContractFolderID();
+	}
+
+	@Override
+	protected void addRequestInformation(ESPDRequestType requestType, ESPDResponseType responseType,
+			EspdDocument espdDocument) {
+		addEspdRequestInformation(requestType, espdDocument);
 	}
 
 }
