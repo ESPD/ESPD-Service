@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2016.08.01 (7th of September 2016)
+=== 2016.08.01 (14th of September 2016)
 
 ==== Bug
 
