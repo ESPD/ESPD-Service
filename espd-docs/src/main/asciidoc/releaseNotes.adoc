@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2016.08.01 (19th of September 2016)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/76[Information on CA should not be merged]
+
 === 2016.08 (31st of August 2016)
 
 ==== Bug
