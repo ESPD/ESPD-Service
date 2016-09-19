@@ -76,11 +76,11 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
 
     def "selection criteria with no 'Your answer' must have a default value of TRUE"() {
         given:
-        def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: null))
+        def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: null))
 
         when:
         def request = parseResponseXml(espd)
-        def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
+        def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
         def subGroup = request.Criterion[idx].RequirementGroup[0]

@@ -58,7 +58,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
     }
 
     protected static void checkYearAmountCurrencyGroup1(def yearAmountCurrencyGroup) {
-        assert yearAmountCurrencyGroup.ID.text() == "1689194b-6ecf-4ab4-ab38-7656610c25bb"
+        assert yearAmountCurrencyGroup.ID.text() == "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
         assert yearAmountCurrencyGroup.@pi.text() == ""
 
@@ -67,7 +67,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
     }
 
     protected static void checkYearAmountCurrencyGroup2(def yearAmountCurrencyGroup) {
-        assert yearAmountCurrencyGroup.ID.text() == "c628dd27-8016-4d80-8660-7461f2e3ee0f"
+        assert yearAmountCurrencyGroup.ID.text() == "99c9d014-d0e1-473d-b6d4-a8549f2b19fa"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
         assert yearAmountCurrencyGroup.@pi.text() == ""
 
@@ -76,7 +76,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
     }
 
     protected static void checkYearAmountCurrencyGroup3(def yearAmountCurrencyGroup) {
-        assert yearAmountCurrencyGroup.ID.text() == "9dd09f9f-3326-4865-9d5a-f0836076fb19"
+        assert yearAmountCurrencyGroup.ID.text() == "9f0e291f-05c9-4cb6-bc50-4c2d3b2049b2"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
         assert yearAmountCurrencyGroup.@pi.text() == ""
 
@@ -85,7 +85,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
     }
 
     protected static void checkYearAmountCurrencyGroup4(def yearAmountCurrencyGroup) {
-        assert yearAmountCurrencyGroup.ID.text() == "962011c9-9e2e-4e7b-818e-30e8506e874f"
+        assert yearAmountCurrencyGroup.ID.text() == "67b8d7fa-a0aa-43d6-a30b-e15b95326df2"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
         assert yearAmountCurrencyGroup.@pi.text() == ""
 
@@ -94,7 +94,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
     }
 
     protected static void checkYearAmountCurrencyGroup5(def yearAmountCurrencyGroup) {
-        assert yearAmountCurrencyGroup.ID.text() == "343795e2-98e9-4cc9-8ef2-8817cec8f49a"
+        assert yearAmountCurrencyGroup.ID.text() == "c8c09a0c-b7a7-4271-bb6a-80f1c0e988f7"
         assert yearAmountCurrencyGroup.Requirement.size() == 2
         assert yearAmountCurrencyGroup.@pi.text() == ""
 

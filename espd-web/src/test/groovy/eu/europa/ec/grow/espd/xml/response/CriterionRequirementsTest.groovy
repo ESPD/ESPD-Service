@@ -144,7 +144,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[0]
         req1.Response.size() == 1
         req1.Response[0].Quantity.size() == 0
