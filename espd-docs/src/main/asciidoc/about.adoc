@@ -1,4 +1,4 @@
-:homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:homepage: https://ec.europa.eu/espd[ESPD]
 
 == About
 

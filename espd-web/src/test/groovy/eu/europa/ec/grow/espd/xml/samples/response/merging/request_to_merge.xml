@@ -7,7 +7,7 @@
     <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
     <cbc:IssueDate>2016-04-08</cbc:IssueDate>
     <cbc:IssueTime>13:28:57</cbc:IssueTime>
-    <cbc:ContractFolderID schemeAgencyID="TeD"></cbc:ContractFolderID>
+    <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0075</cbc:ContractFolderID>
     <cac:ContractingParty>
         <cac:Party>
             <cac:PartyName>
@@ -234,11 +234,15 @@
         </ccv:RequirementGroup>
     </ccv:Criterion>
     <cac:AdditionalDocumentReference>
-        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1"></cbc:ID>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">2e556f14-c643-4abc-9177-2f4dycdfh411</cbc:ID>
         <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">TED_CN</cbc:DocumentTypeCode>
         <cac:Attachment>
             <cac:ExternalReference>
-                <cbc:Description>-</cbc:Description>
+            	<cbc:URI>http://ted.europa.eu/udl?uri=TED:NOTICE:373046-2015:TEXT:EN:HTML</cbc:URI>
+                <!-- Title of the Contract Notice -->
+                <cbc:FileName>Poland-Kalisz: Stadium construction work</cbc:FileName>
+                <!-- Short description of the Procurement Project -->
+                <cbc:Description>2015/S 206-373046</cbc:Description>
             </cac:ExternalReference>
         </cac:Attachment>
     </cac:AdditionalDocumentReference>

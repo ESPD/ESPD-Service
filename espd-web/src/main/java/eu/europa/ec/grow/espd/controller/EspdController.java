@@ -58,6 +58,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.common.base.Optional;
 
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
+import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.ted.TedRequest;
@@ -86,7 +87,7 @@ class EspdController {
 
     @ModelAttribute("espd")
     public EspdDocument newDocument() {
-        return new EspdDocument();
+    	return new EspdDocument();
     }
 
     @RequestMapping("/")
@@ -266,6 +267,34 @@ class EspdController {
             BindingResult bindingResult) {
         return bindingResult.hasErrors() ?
                 flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
+    }
+
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "add")
+    public String addRepresentative(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam Integer add,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
+    	espd.getEconomicOperator().getRepresentatives().add(add, new EconomicOperatorRepresentative());
+        return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + add);
+    }
+
+    @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "remove")
+    public String removeRepresentative(
+            @PathVariable String flow,
+            @PathVariable String agent,
+            @PathVariable String step,
+            @RequestParam Integer remove,
+            @ModelAttribute("espd") EspdDocument espd,
+            BindingResult bindingResult) {
+    	espd.getEconomicOperator().getRepresentatives().remove(remove.intValue());
+    	if(espd.getEconomicOperator().getRepresentatives().size() == 0) {
+    		espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
+    	}
+    	remove = Math.min(espd.getEconomicOperator().getRepresentatives().size() - 1, remove);
+        return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
     }
     
     @RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print}", method = POST, params = "next")

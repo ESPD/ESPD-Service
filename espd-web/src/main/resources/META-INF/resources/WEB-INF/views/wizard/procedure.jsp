@@ -1,3 +1,9 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EconomicOperatorImpl"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative"%>
+<%@page import="org.springframework.util.CollectionUtils"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EspdDocument"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -70,6 +76,20 @@
         	<tiles:putAttribute name="flow" value="${flow}"/>
             <tiles:putAttribute name="procedure" value="true"/>
         </tiles:insertDefinition>
+        
+        <%
+        	// Add at least one EconomicOperatorRepresentative to be sure user will see it in form
+        	EspdDocument espd = (EspdDocument)request.getAttribute("espd");
+        	if (espd != null) { 
+        		if (espd.getEconomicOperator() == null) {
+        			espd.setEconomicOperator(new EconomicOperatorImpl());
+        		}
+	        	if (CollectionUtils.isEmpty(espd.getEconomicOperator().getRepresentatives())) {
+        			espd.getEconomicOperator().setRepresentatives(new ArrayList<EconomicOperatorRepresentative>());
+        			espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
+	        	}
+        	}
+        %>
 
 		<%@ include file="/WEB-INF/views/wizard/procedureForm.jsp" %>
 

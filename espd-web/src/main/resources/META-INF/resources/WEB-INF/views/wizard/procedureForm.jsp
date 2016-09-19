@@ -17,9 +17,9 @@
         <div>
             <h2>${span18n['createca_header']}</h2>
         </div>
-        <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading" data-toggle="collapse" data-target="#ojsdiv">
-                    ${span18n['createca_info_pub']}
+        <div class="panel panel-espd">
+            <div class="panel-heading" data-toggle="collapse" data-target="#ojsdiv">
+            	<h4 class="panel-title">${span18n['createca_info_pub']}</h4>
             </div>
             <div id="ojsdiv" class="panel-body collapse in">
                 <div class="alert alert-espd-info-dotted">
@@ -41,9 +41,9 @@
                 </div>
             </div>
         </div>
-        <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading" data-toggle="collapse" data-target="#cadiv">
-                    ${span18n['createca_contact_details_ca']}
+        <div class="panel panel-espd">
+            <div class="panel-heading" data-toggle="collapse" data-target="#cadiv">
+            	<h4 class="panel-title">${span18n['createca_contact_details_ca']}</h4>
             </div>
             <div id="cadiv" class="panel-body collapse in">
 
@@ -76,9 +76,10 @@
 
             </div>
         </div>
-        <div class="espd-panel panel panel-default">
-            <div class="espd-panel-heading" data-toggle="collapse"
-                 data-target="#ppdiv">${span18n['createca_info_procurement_proc']}</div>
+        <div class="panel panel-espd">
+            <div class="panel-heading" data-toggle="collapse" data-target="#ppdiv">
+				<h4 class="panel-title">${span18n['createca_info_procurement_proc']}</h4>
+            </div>
             <div id="ppdiv" class="panel-body collapse in">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -116,9 +117,10 @@
             <div>
                 <h2>${span18n['createeo_header']}</h2>
             </div>
-            <div class="espd-panel panel panel-default">
-                <div class="espd-panel-heading" data-toggle="collapse"
-                     data-target="#createeo_info_eo_div">${span18n['createeo_info_eo']}</div>
+            <div class="panel panel-espd">
+                <div class="panel-heading" data-toggle="collapse"data-target="#createeo_info_eo_div">
+					<h4 class="panel-title">${span18n['createeo_info_eo']}</h4>
+                </div>
                 <div id="createeo_info_eo_div" class="collapse in">
                     <div class="panel-body">
                             <div class="col-md-6">
@@ -340,110 +342,136 @@
                     </div>
                 </div>
             </div>
-            <div class="espd-panel panel panel-default">
-                <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_respresent_div">
-                        ${span18n['createeo_info_respresent']}
-                </div>
-                <div id="createeo_info_respresent_div" class="collapse in">
-                    <div class="panel-body">
-                            <div class="col-md-12 alert alert-espd-info-dotted">
-                                    ${span18n['createeo_person_empowered']}
-                            </div>
-                            <div class="col-md-12">
-                            	<div class="col-md-6">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4">${span18n['createeo_first_name']}</label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control"
-	                                                    path="economicOperator.representative.firstName"/>
-	                                    </div>
-	                                </div>
-                            	</div>
-                            	<div class="col-md-6">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4">${span18n['createeo_last_name']}</label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control"
-	                                                    path="economicOperator.representative.lastName"/>
-	                                    </div>
-	                                </div>
-                            	</div>
-                            </div> 
-                            <div class="col-md-12">
-                            	<div class="col-md-6">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
-	                                    <div class="col-md-8">
-	                                        <form:input type="text" path="economicOperator.representative.dateOfBirth" cssClass="form-control datepicker"/>
-	                                    </div>
-	                                </div>
-                            	</div>
-                            	<div class="col-md-6">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4">${span18n['createeo_birth_place']}</label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control"
-	                                                    path="economicOperator.representative.placeOfBirth"/>
-	                                    </div>
-	                                </div>
-                            	</div>
-                            </div>
-                            <div class="col-md-12">
-	                            <div class="col-md-6">
-	                                <tiles:insertDefinition name="partyInfo">
-	                                    <tiles:putAttribute name="field" value="economicOperator.representative"/>
-	                                    <tiles:putAttribute name="address" value="true"/>
-	                                </tiles:insertDefinition>
+            
+
+            <c:forEach var="representative" items="${espd.economicOperator.representatives}" varStatus="vs">
+            
+            	<a name="representative${vs.index}"></a>
+
+	            <div class="panel panel-espd">
+	            
+	                <div class="panel-heading clearfix" data-toggle="collapse" data-target="#createeo_info_respresent_div${vs.index}">
+	                	<h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+	                		${span18n['createeo_info_respresent']} ${'#'}${vs.index+1}
+	                	</h4>
+	                	<div class="btn-group pull-right hidden-print">
+							<button id="addRepresentative" type="submit" class="btn btn-default btn-sm" name="add" value="${vs.index + 1}">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+							</button>
+							<button id="removeRepresentative" type="submit" class="btn btn-default btn-sm " name="remove" value="${vs.index}">
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button>
+	                	</div>
+	                </div>
+	                
+	                <div id="createeo_info_respresent_div${vs.index}" class="collapse in">
+	                    <div class="panel-body">
+	                    
+	                    	<c:if test="${vs.index == 0}"><%-- display this alert only for first representative --%>
+		                        <div class="col-md-12 alert alert-espd-info-dotted">
+									${span18n['createeo_person_empowered']}
+		                        </div>
+	                        </c:if>
+
+	                            <div class="col-md-12">
+	                            	<div class="col-md-6">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4">
+
+			                                   	 ${span18n['createeo_first_name']}
+		                                    </label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control"
+		                                                    path="economicOperator.representatives[${vs.index}].firstName"/>
+		                                    </div>
+		                                </div>
+	                            	</div>
+	                            	<div class="col-md-6">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4">${span18n['createeo_last_name']}</label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control"
+		                                                    path="economicOperator.representatives[${vs.index}].lastName"/>
+		                                    </div>
+		                                </div>
+	                            	</div>
+	                            </div> 
+	                            <div class="col-md-12">
+	                            	<div class="col-md-6">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4">${span18n['createeo_birth_date']}</label>
+		                                    <div class="col-md-8">
+		                                        <form:input type="text" path="economicOperator.representatives[${vs.index}].dateOfBirth" cssClass="form-control datepicker"/>
+		                                    </div>
+		                                </div>
+	                            	</div>
+	                            	<div class="col-md-6">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4">${span18n['createeo_birth_place']}</label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control"
+		                                                    path="economicOperator.representatives[${vs.index}].placeOfBirth"/>
+		                                    </div>
+		                                </div>
+	                            	</div>
 	                            </div>
-	                            <div class="col-md-6">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4" data-i18n="createca_email"><s:message
-	                                            code="createca_email"/></label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.email"/>
-	                                    </div>
-	                                </div>
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4" data-i18n="createca_telephone"><s:message
-	                                            code="createca_telephone"/></label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.phone"/>
-	                                    </div>
-	                                </div>
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-4">${span18n['createeo_pos_act_in_capacity']}</label>
-	
-	                                    <div class="col-md-8">
-	                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representative.position"/>
-	                                    </div>
+	                            <div class="col-md-12">
+		                            <div class="col-md-6">
+		                                <tiles:insertDefinition name="partyInfo">
+		                                    <tiles:putAttribute name="field" value="economicOperator.representatives[${vs.index}]"/>
+		                                    <tiles:putAttribute name="address" value="true"/>
+		                                </tiles:insertDefinition>
+		                            </div>
+		                            <div class="col-md-6">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4" data-i18n="createca_email"><s:message
+		                                            code="createca_email"/></label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representatives[${vs.index}].email"/>
+		                                    </div>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4" data-i18n="createca_telephone"><s:message
+		                                            code="createca_telephone"/></label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representatives[${vs.index}].phone"/>
+		                                    </div>
+		                                </div>
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-4">${span18n['createeo_pos_act_in_capacity']}</label>
+		
+		                                    <div class="col-md-8">
+		                                        <form:textarea rows="1" cssClass="form-control" path="economicOperator.representatives[${vs.index}].position"/>
+		                                    </div>
+		                                </div>
+		                            </div>
+	                            </div>
+	                            <div class="col-md-12">
+	                            	<div class="col-md-12">
+		                                <div class="form-group">
+		                                    <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
+		
+		                                    <div class="col-md-10">
+		                                        <form:textarea path="economicOperator.representatives[${vs.index}].additionalInfo"
+		                                                       cssStyle="resize: none" rows="4" cols="20"
+		                                                       cssClass="form-control"/>
+		                                    </div>
+		                                </div>
 	                                </div>
 	                            </div>
-                            </div>
-                            <div class="col-md-12">
-                            	<div class="col-md-12">
-	                                <div class="form-group">
-	                                    <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
-	
-	                                    <div class="col-md-10">
-	                                        <form:textarea path="economicOperator.representative.additionalInfo"
-	                                                       cssStyle="resize: none" rows="4" cols="20"
-	                                                       cssClass="form-control"/>
-	                                    </div>
-	                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-            </div>
-            <div class="espd-panel panel panel-default">
-                <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
-                        ${span18n['createeo_info_reliance']}
+						</div>
+	                </div>
+	            </div>
+            </c:forEach>
+            
+            <div class="panel panel-espd">
+                <div class="panel-heading" data-toggle="collapse" data-target="#createeo_info_reliance_div">
+					<h4 class="panel-title">${span18n['createeo_info_reliance']}</h4>
                 </div>
                 <div id="createeo_info_reliance_div" class="collapse in">
                     <div class="panel-body">
@@ -475,9 +503,9 @@
                 </div>
             </div>
             
-            <div class="espd-panel panel panel-default">
-                <div class="espd-panel-heading" data-toggle="collapse" data-target="#createeo_subcontractors">
-                        ${span18n['createeo_information_subcontractors']}
+            <div class="panel panel-espd">
+                <div class="panel-heading" data-toggle="collapse" data-target="#createeo_subcontractors">
+					<h4 class="panel-title">${span18n['createeo_information_subcontractors']}</h4>
                 </div>
                 <div id="createeo_subcontractors" class="collapse in">
                     <div class="panel-body">

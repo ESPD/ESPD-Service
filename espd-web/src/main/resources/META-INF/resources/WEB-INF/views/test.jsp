@@ -169,9 +169,9 @@
                     </ul>
                 </div>
 
-                <div class="panel panel-default espd-panel">
-                    <div class="espd-panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
-                            ${span18n["all_selection_switch"]}
+                <div class="panel panel-espd">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
+                    	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
                     </div>
                     <div id="eo-satisfies-all-section" class="collapse in">
                         <div class="espd-panel-body panel-body">
@@ -203,9 +203,9 @@
                 </div>
 
                 <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
-                    <div class="panel panel-default espd-panel">
-                        <div class="espd-panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
-                                ${span18n[title_code]}
+                    <div class="panel panel-espd">
+                        <div class="panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
+                        	<h4 class="panel-title">${span18n['title_code']}</h4>
                         </div>
                         <div id="${id}" class="collapse in">
                             <div class="espd-panel-body panel-body">

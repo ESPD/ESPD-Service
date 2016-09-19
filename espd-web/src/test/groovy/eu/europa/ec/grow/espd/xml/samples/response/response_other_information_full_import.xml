@@ -53,6 +53,32 @@
                 </cac:AgentParty>
             </cac:PowerOfAttorney>
         </espd-cac:RepresentativeNaturalPerson>
+        <espd-cac:RepresentativeNaturalPerson>
+            <espd-cbc:NaturalPersonRoleDescription>Team assembler</espd-cbc:NaturalPersonRoleDescription>
+            <cac:PowerOfAttorney>
+                <cbc:Description>1993 TVR Griffith</cbc:Description>
+                <cac:AgentParty>
+                    <cac:Person>
+                        <cbc:FirstName>Uffo</cbc:FirstName>
+                        <cbc:FamilyName>Goldworthy</cbc:FamilyName>
+                        <cbc:BirthDate>1911-03-22</cbc:BirthDate>
+                        <cbc:BirthplaceName>Lisbon, Portugal</cbc:BirthplaceName>
+                        <cac:Contact>
+                            <cbc:Telephone>351 21 253 526 3533</cbc:Telephone>
+                            <cbc:ElectronicMail>UffoGoldworthy@rhyta.com</cbc:ElectronicMail>
+                        </cac:Contact>
+                        <cac:ResidenceAddress>
+                            <cbc:Postbox>4755-160</cbc:Postbox>
+                            <cbc:StreetName>R Cruzes 27</cbc:StreetName>
+                            <cbc:CityName>CRISTELO</cbc:CityName>
+                            <cac:Country>
+                                <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-2" listVersionID="1.0">PT</cbc:IdentificationCode>
+                            </cac:Country>
+                        </cac:ResidenceAddress>
+                    </cac:Person>
+                </cac:AgentParty>
+            </cac:PowerOfAttorney>
+        </espd-cac:RepresentativeNaturalPerson>
         <cac:Party>
             <cbc:WebsiteURI>www.hodor.com</cbc:WebsiteURI>
             <cac:PartyIdentification>

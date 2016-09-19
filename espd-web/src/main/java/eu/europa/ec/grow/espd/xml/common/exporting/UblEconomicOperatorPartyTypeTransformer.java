@@ -32,6 +32,7 @@ import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.
 import grow.names.specification.ubl.schema.xsd.espd_commonbasiccomponents_1.IndicatorType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.*;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
@@ -47,182 +48,191 @@ import static org.apache.commons.lang3.StringUtils.*;
  */
 @Component
 public class UblEconomicOperatorPartyTypeTransformer
-        implements Function<EconomicOperatorImpl, EconomicOperatorPartyType> {
+		implements Function<EconomicOperatorImpl, EconomicOperatorPartyType> {
 
-    private final UblPartyTypeTransformer partyTypeTransformer = new UblPartyTypeTransformer();
+	private final UblPartyTypeTransformer partyTypeTransformer = new UblPartyTypeTransformer();
 
-    @Override
-    public EconomicOperatorPartyType apply(EconomicOperatorImpl input) {
-        if (input == null) {
-            return null;
-        }
+	@Override
+	public EconomicOperatorPartyType apply(EconomicOperatorImpl input) {
+		if (input == null) {
+			return null;
+		}
 
-        EconomicOperatorPartyType eoPartyType = new EconomicOperatorPartyType();
+		EconomicOperatorPartyType eoPartyType = new EconomicOperatorPartyType();
 
-        eoPartyType.setParty(partyTypeTransformer.apply(input));
-        eoPartyType.getRepresentativeNaturalPerson().add(buildRepresentative(input));
-        eoPartyType.setSMEIndicator(buildSmeIndicator(input.getIsSmallSizedEnterprise()));
+		eoPartyType.setParty(partyTypeTransformer.apply(input));
+		buildRepresentatives(input, eoPartyType);
+		eoPartyType.setSMEIndicator(buildSmeIndicator(input.getIsSmallSizedEnterprise()));
 
-        return eoPartyType;
-    }
+		return eoPartyType;
+	}
 
-    private NaturalPersonType buildRepresentative(EconomicOperatorImpl input) {
-        EconomicOperatorRepresentative representative = input.getRepresentative();
-        if (representative == null) {
-            return null;
-        }
+	private void buildRepresentatives(EconomicOperatorImpl input, EconomicOperatorPartyType eoPartyType) {
+		if (CollectionUtils.isEmpty(input.getRepresentatives())) {
+			return;
+		}
 
-        NaturalPersonType naturalPersonType = new NaturalPersonType();
+		for (EconomicOperatorRepresentative representative : input.getRepresentatives()) {
+			if (representative == null) {
+				continue;
+			}
+			eoPartyType.getRepresentativeNaturalPerson().add(buildRepresentative(representative));
+		}
+	}
 
-        naturalPersonType.setNaturalPersonRoleDescription(buildRepresentativeRole(representative));
-        naturalPersonType.setPowerOfAttorney(buildPowerOfAttorney(representative));
+	private NaturalPersonType buildRepresentative(EconomicOperatorRepresentative representative) {
+		NaturalPersonType naturalPersonType = new NaturalPersonType();
 
-        return naturalPersonType;
-    }
+		naturalPersonType.setNaturalPersonRoleDescription(buildRepresentativeRole(representative));
+		naturalPersonType.setPowerOfAttorney(buildPowerOfAttorney(representative));
 
-    private DescriptionType buildRepresentativeRole(EconomicOperatorRepresentative representative) {
-        if (StringUtils.isBlank(representative.getPosition())) {
-            return null;
-        }
+		return naturalPersonType;
+	}
 
-        DescriptionType descriptionType = new DescriptionType();
-        descriptionType.setValue(representative.getPosition());
-        return descriptionType;
-    }
+	private DescriptionType buildRepresentativeRole(EconomicOperatorRepresentative representative) {
+		if (StringUtils.isBlank(representative.getPosition())) {
+			return null;
+		}
 
-    private PowerOfAttorneyType buildPowerOfAttorney(EconomicOperatorRepresentative representative) {
-        PowerOfAttorneyType attorneyType = new PowerOfAttorneyType();
+		DescriptionType descriptionType = new DescriptionType();
+		descriptionType.setValue(representative.getPosition());
+		return descriptionType;
+	}
 
-        if (isNotBlank(representative.getAdditionalInfo())) {
-            DescriptionType descriptionType = new DescriptionType();
-            descriptionType.setValue(representative.getAdditionalInfo());
-            attorneyType.getDescription().add(descriptionType);
-        }
+	private PowerOfAttorneyType buildPowerOfAttorney(EconomicOperatorRepresentative representative) {
+		PowerOfAttorneyType attorneyType = new PowerOfAttorneyType();
 
-        attorneyType.setAgentParty(buildAgentPartyType(representative));
+		if (isNotBlank(representative.getAdditionalInfo())) {
+			DescriptionType descriptionType = new DescriptionType();
+			descriptionType.setValue(representative.getAdditionalInfo());
+			attorneyType.getDescription().add(descriptionType);
+		}
 
-        return attorneyType;
-    }
+		attorneyType.setAgentParty(buildAgentPartyType(representative));
 
-    private PartyType buildAgentPartyType(EconomicOperatorRepresentative representative) {
-        PartyType agentParty = new PartyType();
+		return attorneyType;
+	}
 
-        agentParty.getPerson().add(buildPersonType(representative));
+	private PartyType buildAgentPartyType(EconomicOperatorRepresentative representative) {
+		PartyType agentParty = new PartyType();
 
-        return agentParty;
-    }
+		agentParty.getPerson().add(buildPersonType(representative));
 
-    private PersonType buildPersonType(EconomicOperatorRepresentative representative) {
-        PersonType personType = new PersonType();
+		return agentParty;
+	}
 
-        if (isNotBlank(representative.getFirstName())) {
-            FirstNameType firstName = new FirstNameType();
-            firstName.setValue(trimToEmpty(representative.getFirstName()));
-            personType.setFirstName(firstName);
-        }
-        if (isNotBlank(representative.getLastName())) {
-            FamilyNameType familyName = new FamilyNameType();
-            familyName.setValue(trimToEmpty(representative.getLastName()));
-            personType.setFamilyName(familyName);
-        }
-        if (representative.getDateOfBirth() != null) {
-            BirthDateType birthDate = new BirthDateType();
-            birthDate.setValue(new LocalDate(representative.getDateOfBirth()));
-            personType.setBirthDate(birthDate);
-        }
-        if (isNotBlank(representative.getPlaceOfBirth())) {
-            BirthplaceNameType birthplaceName = new BirthplaceNameType();
-            birthplaceName.setValue(trimToEmpty(representative.getPlaceOfBirth()));
-            personType.setBirthplaceName(birthplaceName);
-        }
+	private PersonType buildPersonType(EconomicOperatorRepresentative representative) {
+		PersonType personType = new PersonType();
 
-        personType.setResidenceAddress(buildPersonAddress(representative));
-        personType.setContact(buildContact(representative));
+		if (isNotBlank(representative.getFirstName())) {
+			FirstNameType firstName = new FirstNameType();
+			firstName.setValue(trimToEmpty(representative.getFirstName()));
+			personType.setFirstName(firstName);
+		}
+		if (isNotBlank(representative.getLastName())) {
+			FamilyNameType familyName = new FamilyNameType();
+			familyName.setValue(trimToEmpty(representative.getLastName()));
+			personType.setFamilyName(familyName);
+		}
+		if (representative.getDateOfBirth() != null) {
+			BirthDateType birthDate = new BirthDateType();
+			birthDate.setValue(new LocalDate(representative.getDateOfBirth()));
+			personType.setBirthDate(birthDate);
+		}
+		if (isNotBlank(representative.getPlaceOfBirth())) {
+			BirthplaceNameType birthplaceName = new BirthplaceNameType();
+			birthplaceName.setValue(trimToEmpty(representative.getPlaceOfBirth()));
+			personType.setBirthplaceName(birthplaceName);
+		}
 
-        return personType;
-    }
+		personType.setResidenceAddress(buildPersonAddress(representative));
+		personType.setContact(buildContact(representative));
 
-    private AddressType buildPersonAddress(EconomicOperatorRepresentative representative) {
-        // TODO this code is the same as UblPartyTypeTransformer (we need an abstraction)
-        AddressType addressType = new AddressType();
-        addCountryInformation(representative, addressType);
-        addCityInformation(representative, addressType);
-        addStreetInformation(representative, addressType);
-        addPostboxInformation(representative, addressType);
-        return addressType;
-    }
+		return personType;
+	}
 
-    private void addCountryInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
-        if (representative.getCountry() == null) {
-            return;
-        }
+	private AddressType buildPersonAddress(EconomicOperatorRepresentative representative) {
+		// TODO this code is the same as UblPartyTypeTransformer (we need an abstraction)
+		AddressType addressType = new AddressType();
+		addCountryInformation(representative, addressType);
+		addCityInformation(representative, addressType);
+		addStreetInformation(representative, addressType);
+		addPostboxInformation(representative, addressType);
+		return addressType;
+	}
 
-        addressType.setCountry(CommonUblFactory.buildCountryType(representative.getCountry()));
-    }
+	private void addCountryInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
+		if (representative.getCountry() == null) {
+			return;
+		}
 
-    private void addCityInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
-        if (isBlank(representative.getCity())) {
-            return;
-        }
+		addressType.setCountry(CommonUblFactory.buildCountryType(representative.getCountry()));
+	}
 
-        CityNameType cityName = new CityNameType();
-        cityName.setValue(trimToEmpty(representative.getCity()));
-        addressType.setCityName(cityName);
-    }
+	private void addCityInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
+		if (isBlank(representative.getCity())) {
+			return;
+		}
 
-    private void addStreetInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
-        if (isBlank(representative.getStreet())) {
-            return;
-        }
+		CityNameType cityName = new CityNameType();
+		cityName.setValue(trimToEmpty(representative.getCity()));
+		addressType.setCityName(cityName);
+	}
 
-        StreetNameType streetName = new StreetNameType();
-        streetName.setValue(trimToEmpty(representative.getStreet()));
-        addressType.setStreetName(streetName);
-    }
+	private void addStreetInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
+		if (isBlank(representative.getStreet())) {
+			return;
+		}
 
-    private void addPostboxInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
-        if (isBlank(representative.getPostalCode())) {
-            return;
-        }
+		StreetNameType streetName = new StreetNameType();
+		streetName.setValue(trimToEmpty(representative.getStreet()));
+		addressType.setStreetName(streetName);
+	}
 
-        PostboxType postboxType = new PostboxType();
-        postboxType.setValue(trimToEmpty(representative.getPostalCode()));
-        addressType.setPostbox(postboxType);
-    }
+	private void addPostboxInformation(EconomicOperatorRepresentative representative, AddressType addressType) {
+		if (isBlank(representative.getPostalCode())) {
+			return;
+		}
 
-    private ContactType buildContact(EconomicOperatorRepresentative representative) {
-        // TODO this code is the same as UblPartyTypeTransformer (we need an abstraction)
-        ContactType contactType = new ContactType();
+		PostboxType postboxType = new PostboxType();
+		postboxType.setValue(trimToEmpty(representative.getPostalCode()));
+		addressType.setPostbox(postboxType);
+	}
 
-        addContactEmailInformation(representative, contactType);
-        addContactTelephoneInformation(representative, contactType);
+	private ContactType buildContact(EconomicOperatorRepresentative representative) {
+		// TODO this code is the same as UblPartyTypeTransformer (we need an abstraction)
+		ContactType contactType = new ContactType();
 
-        return contactType;
-    }
+		addContactEmailInformation(representative, contactType);
+		addContactTelephoneInformation(representative, contactType);
 
-    private void addContactEmailInformation(EconomicOperatorRepresentative representative, ContactType contactType) {
-        if (isBlank(representative.getEmail())) {
-            return;
-        }
+		return contactType;
+	}
 
-        ElectronicMailType electronicMail = new ElectronicMailType();
-        electronicMail.setValue(trimToEmpty(representative.getEmail()));
-        contactType.setElectronicMail(electronicMail);
-    }
+	private void addContactEmailInformation(EconomicOperatorRepresentative representative, ContactType contactType) {
+		if (isBlank(representative.getEmail())) {
+			return;
+		}
 
-    private void addContactTelephoneInformation(EconomicOperatorRepresentative representative, ContactType contactType) {
-        if (isBlank(representative.getPhone())) {
-            return;
-        }
+		ElectronicMailType electronicMail = new ElectronicMailType();
+		electronicMail.setValue(trimToEmpty(representative.getEmail()));
+		contactType.setElectronicMail(electronicMail);
+	}
 
-        TelephoneType telephone = new TelephoneType();
-        telephone.setValue(trimToEmpty(representative.getPhone()));
-        contactType.setTelephone(telephone);
-    }
+	private void addContactTelephoneInformation(EconomicOperatorRepresentative representative,
+			ContactType contactType) {
+		if (isBlank(representative.getPhone())) {
+			return;
+		}
 
-    private IndicatorType buildSmeIndicator(Boolean isSme) {
-        IndicatorType smeIndicator = new IndicatorType();
-        smeIndicator.setValue(Boolean.TRUE.equals(isSme));
-        return smeIndicator;
-    }
+		TelephoneType telephone = new TelephoneType();
+		telephone.setValue(trimToEmpty(representative.getPhone()));
+		contactType.setTelephone(telephone);
+	}
+
+	private IndicatorType buildSmeIndicator(Boolean isSme) {
+		IndicatorType smeIndicator = new IndicatorType();
+		smeIndicator.setValue(Boolean.TRUE.equals(isSme));
+		return smeIndicator;
+	}
 }

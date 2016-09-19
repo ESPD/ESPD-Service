@@ -89,35 +89,42 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
     }
 
     def "should import economic operator representative full information"() {
+        given:
+        def representative1 = espdFull.economicOperator.representatives[0]
+        def representative2 = espdFull.economicOperator.representatives[1]
+
         expect:
-        espdFull.economicOperator.representative.firstName == "Emilio"
-        espdFull.economicOperator.representative.lastName == "García De Tres Torres"
-        espdFull.economicOperator.representative.dateOfBirth == LocalDateAdapter.unmarshal("1960-01-19").toDate()
-        espdFull.economicOperator.representative.placeOfBirth == "València, Spain"
-        espdFull.economicOperator.representative.street == "Vitruvio"
-        espdFull.economicOperator.representative.postalCode == "28006"
-        espdFull.economicOperator.representative.city == "Edinborough"
-        espdFull.economicOperator.representative.country == Country.GB
-        espdFull.economicOperator.representative.email == "emilio.garcia3torres@acme.com"
-        espdFull.economicOperator.representative.phone == "+34 96 123 456"
-        espdFull.economicOperator.representative.position == "Empowered to represent the Consortium"
-        espdFull.economicOperator.representative.additionalInfo == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
+        representative1.firstName == "Emilio"
+        representative1.lastName == "García De Tres Torres"
+        representative1.dateOfBirth == LocalDateAdapter.unmarshal("1960-01-19").toDate()
+        representative1.placeOfBirth == "València, Spain"
+        representative1.street == "Vitruvio"
+        representative1.postalCode == "28006"
+        representative1.city == "Edinborough"
+        representative1.country == Country.GB
+        representative1.email == "emilio.garcia3torres@acme.com"
+        representative1.phone == "+34 96 123 456"
+        representative1.position == "Empowered to represent the Consortium"
+        representative1.additionalInfo == "Can represent ACME, Corp. and the Consortia to which ACME, Corp"
+
+        and:
+        representative2.firstName == "Uffo"
+        representative2.lastName == "Goldworthy"
+        representative2.dateOfBirth == LocalDateAdapter.unmarshal("1911-03-22").toDate()
+        representative2.placeOfBirth == "Lisbon, Portugal"
+        representative2.street == "R Cruzes 27"
+        representative2.postalCode == "4755-160"
+        representative2.city == "CRISTELO"
+        representative2.country == Country.PT
+        representative2.email == "UffoGoldworthy@rhyta.com"
+        representative2.phone == "351 21 253 526 3533"
+        representative2.position == "Team assembler"
+        representative2.additionalInfo == "1993 TVR Griffith"
     }
 
     def "should import economic operator representative minimal information"() {
         expect:
-        espdMinimal.economicOperator.representative.firstName == null
-        espdMinimal.economicOperator.representative.lastName == null
-        espdMinimal.economicOperator.representative.dateOfBirth == null
-        espdMinimal.economicOperator.representative.placeOfBirth == null
-        espdMinimal.economicOperator.representative.street == null
-        espdMinimal.economicOperator.representative.postalCode == null
-        espdMinimal.economicOperator.representative.city == null
-        espdMinimal.economicOperator.representative.country == null
-        espdMinimal.economicOperator.representative.email == null
-        espdMinimal.economicOperator.representative.phone == null
-        espdMinimal.economicOperator.representative.position == null
-        espdMinimal.economicOperator.representative.additionalInfo == null
+        espdMinimal.economicOperator.representatives == []
     }
 
     def "should import lots information"() {

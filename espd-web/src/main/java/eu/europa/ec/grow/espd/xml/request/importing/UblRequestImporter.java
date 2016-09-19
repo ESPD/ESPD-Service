@@ -75,29 +75,6 @@ public class UblRequestImporter extends UblRequestResponseImporter {
 	    return document;
     }
 
-    private void addEspdRequestInformation(ESPDRequestType input, EspdDocument espdDocument) {
-        EspdRequestMetadata metadata = new EspdRequestMetadata();
-        metadata.setId(readRequestId(input));
-        metadata.setIssueDate(readIssueDate(input.getIssueDate(), input.getIssueTime()));
-        metadata.setDescription(readRequestDescription(input));
-        // TODO build URL of the request
-        espdDocument.setRequestMetadata(metadata);
-    }
-
-    private String readRequestId(ESPDRequestType input) {
-        if (input.getID() == null) {
-            return null;
-        }
-        return input.getID().getValue();
-    }
-
-    private String readRequestDescription(ESPDRequestType input) {
-        if (input.getContractFolderID() == null || isBlank(input.getContractFolderID().getValue())) {
-            return null;
-        }
-        return "ESPDRequest " + input.getContractFolderID().getValue();
-    }
-
 	@Override
 	protected ContractingPartyType provideContractingParty(ESPDRequestType requestType, ESPDResponseType responseType) {
 		return requestType.getContractingParty();
@@ -128,7 +105,20 @@ public class UblRequestImporter extends UblRequestResponseImporter {
 	}
 
 	@Override
+	protected List<DocumentReferenceType> provideTedDocumentReferences(ESPDRequestType requestType,
+			ESPDResponseType responseType) {
+		return requestType.getAdditionalDocumentReference();
+	}
+
+	@Override
 	protected ContractFolderIDType provideContractFolder(ESPDRequestType requestType, ESPDResponseType responseType) {
 		return requestType.getContractFolderID();
 	}
+	
+	@Override
+	protected void addRequestInformation(ESPDRequestType requestType, ESPDResponseType responseType,
+			EspdDocument espdDocument) {
+		addEspdRequestInformation(requestType, espdDocument);
+	}
+
 }

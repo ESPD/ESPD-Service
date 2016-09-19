@@ -1,6 +1,6 @@
 :sourcedir: ../java/eu/europa/ec/grow/espd
-:homepage: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
-:espd: https://ec.europa.eu/growth/tools-databases/espd/[ESPD]
+:homepage: https://ec.europa.eu/espd[ESPD]
+:espd: https://ec.europa.eu/espd[ESPD]
 :appVersion: 2016.05
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
@@ -226,7 +226,7 @@ And this is how the static resources are referenced in the view part:
 ----
 
 For example, a request made to the `all.js` file would be translated into a request made to a Javascript file with a hash:
-`https://ec.europa.eu/growth/tools-databases/espd/static/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js`.
+`https://ec.europa.eu/espdstatic/bundle/all-60d9cd4aee2d53a2a4bd69a5546a9d18.js`.
 
 ==== WRO4J
 
