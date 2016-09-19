@@ -553,7 +553,7 @@
             {
               "id": "b98ffd05-6572-4b07-a521-693a1754ed46",
               "description": "Number of years",
-              "responseType": "QUANTITY_INTEGER",
+              "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
                 "numberOfYears"
               ]
@@ -809,7 +809,7 @@
             {
               "id": "b98ffd05-6572-4b07-a521-693a1754ed46",
               "description": "Number of years",
-              "responseType": "QUANTITY_INTEGER",
+              "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
                 "numberOfYears"
               ]
