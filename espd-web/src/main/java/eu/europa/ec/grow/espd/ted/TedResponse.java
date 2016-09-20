@@ -27,6 +27,7 @@ package eu.europa.ec.grow.espd.ted;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
@@ -57,10 +58,14 @@ public class TedResponse {
 
     }
 
-    public TedNotice getFirstNotice() {
+    public final TedNotice getFirstNotice() {
         if (MapUtils.isEmpty(info)) {
             return new TedNotice();
         }
         return info.entrySet().iterator().next().getValue();
     }
+
+	public final boolean isEmpty() {
+		return MapUtils.isEmpty(info) && StringUtils.isBlank(noDocOjs);
+	}
 }
