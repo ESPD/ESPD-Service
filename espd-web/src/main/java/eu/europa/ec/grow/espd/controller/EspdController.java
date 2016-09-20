@@ -140,17 +140,21 @@ class EspdController {
 		return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
 	}
 
-	private void copyTedInformation(EspdDocument document) {
-		TedResponse tedResponse = tedService
-				.getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
-		document.setOjsNumber(tedResponse.getNoDocOjs());
-		TedResponse.TedNotice notice = tedResponse.getFirstNotice();
-		document.getAuthority().setName(notice.getOfficialName());
-		document.setProcedureTitle(notice.getTitle());
-		document.setProcedureShortDesc(notice.getShortDescription());
-		document.setFileRefByCA(notice.getReferenceNumber());
-		document.setTedUrl(notice.getTedUrl());
-	}
+    private void copyTedInformation(EspdDocument document) {
+        TedResponse tedResponse = tedService
+                .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
+	    if (tedResponse.isEmpty()) {
+		    return;
+	    }
+
+        document.setOjsNumber(tedResponse.getNoDocOjs());
+        TedResponse.TedNotice notice = tedResponse.getFirstNotice();
+        document.getAuthority().setName(notice.getOfficialName());
+        document.setProcedureTitle(notice.getTitle());
+        document.setProcedureShortDesc(notice.getShortDescription());
+        document.setFileRefByCA(notice.getReferenceNumber());
+        document.setTedUrl(notice.getTedUrl());
+    }
 
 	private String reuseRequestAsCA(MultipartFile attachment, Model model,
 			BindingResult result) throws IOException {
