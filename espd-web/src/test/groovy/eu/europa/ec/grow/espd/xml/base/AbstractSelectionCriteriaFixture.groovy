@@ -149,57 +149,62 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
 
     protected static void checkDescriptionAmountDateRecipientsGroup1(def group) {
         assert group.ID.text() == "96f00020-0a25-402e-b850-2378e83b5695"
-        assert group.Requirement.size() == 4
+        assert group.Requirement.size() == 5
         assert group.@pi.text() == ""
 
         checkRequirement(group.Requirement[0], "ab05ff3b-f3e1-4441-9b43-ee9912e29e92", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "DESCRIPTION")
+        checkRequirement(group.Requirement[2], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Start Date", "DATE")
+        checkRequirement(group.Requirement[3], "3641b897-f9f0-4d90-909a-b6d4c4b1d645", "End Date", "DATE")
+        checkRequirement(group.Requirement[4], "a92536ab-6783-40bb-a037-5d31f421fd85", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipientsGroup2(def group) {
         assert group.ID.text() == "c48572f9-47bf-423a-9885-2c78ae9ca718"
-        assert group.Requirement.size() == 4
+        assert group.Requirement.size() == 5
         assert group.@pi.text() == ""
 
         checkRequirement(group.Requirement[0], "927def36-1fa3-4018-8b45-7ee2c5b1e0af", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "4acd0a02-c267-4d05-b456-c0565c2ffd46", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "8d0e5e16-85ed-4730-a784-d4db8f439c0c", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "DESCRIPTION")
+        checkRequirement(group.Requirement[2], "8d0e5e16-85ed-4730-a784-d4db8f439c0c", "Start Date", "DATE")
+        checkRequirement(group.Requirement[3], "4c842551-fb07-4a13-91e6-5653820f7e80", "End Date", "DATE")
+        checkRequirement(group.Requirement[4], "c8babafa-b6fa-4e14-8749-d913d8f1d33b", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipientsGroup3(def group) {
         assert group.ID.text() == "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7"
-        assert group.Requirement.size() == 4
+        assert group.Requirement.size() == 5
         assert group.@pi.text() == ""
 
         checkRequirement(group.Requirement[0], "e6ca4034-cfee-499a-9a47-c4f2862ef4d0", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "28fb4b41-5178-4b79-ba24-d9a62fa4a658", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "c953e635-580b-4d7c-a30c-2edbde3b8fdf", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "DESCRIPTION")
+        checkRequirement(group.Requirement[2], "c953e635-580b-4d7c-a30c-2edbde3b8fdf", "Start Date", "DATE")
+        checkRequirement(group.Requirement[3], "822934ff-da94-40d2-a799-f29ba7bba2b0", "End Date", "DATE")
+        checkRequirement(group.Requirement[4], "5157e1ff-d272-4382-98a9-6953f5a15300", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipientsGroup4(def group) {
         assert group.ID.text() == "d67a6126-dd6d-4ed2-bda7-214a19e13a63"
-        assert group.Requirement.size() == 4
+        assert group.Requirement.size() == 5
         assert group.@pi.text() == ""
 
         checkRequirement(group.Requirement[0], "b1640c24-b405-443e-bf5e-d7771f66aab6", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "9f278e42-aa1d-4b2e-97cd-832248aa5393", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "9b263b45-fc63-4b01-a3dc-cb9c95dda449", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "a84ea948-cf03-47b5-b4cf-a35f49910d10", "Recipients", "DESCRIPTION")
+        checkRequirement(group.Requirement[2], "9b263b45-fc63-4b01-a3dc-cb9c95dda449", "Start Date", "DATE")
+        checkRequirement(group.Requirement[3], "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f", "End Date", "DATE")
+        checkRequirement(group.Requirement[4], "a84ea948-cf03-47b5-b4cf-a35f49910d10", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkDescriptionAmountDateRecipientsGroup5(def group) {
         assert group.ID.text() == "159fc086-cf34-48a4-a41b-afed62661383"
-        assert group.Requirement.size() == 4
+        assert group.Requirement.size() == 5
         assert group.@pi.text() == ""
 
         checkRequirement(group.Requirement[0], "587129bc-a5e1-43be-94ac-6e5366d30c67", "Description", "DESCRIPTION")
         checkRequirement(group.Requirement[1], "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b", "Amount", "AMOUNT")
-        checkRequirement(group.Requirement[2], "056cba1d-986b-4164-92b6-26a1cbdf0690", "Date", "DATE")
-        checkRequirement(group.Requirement[3], "38a4802f-0b93-4e78-ad4e-2a057e1aa578", "Recipients", "DESCRIPTION")
+        checkRequirement(group.Requirement[2], "056cba1d-986b-4164-92b6-26a1cbdf0690", "Start Date", "DATE")
+        checkRequirement(group.Requirement[3], "dd71df86-3ad5-42dd-add5-9bd51dc88f05", "End Date", "DATE")
+        checkRequirement(group.Requirement[4], "38a4802f-0b93-4e78-ad4e-2a057e1aa578", "Recipients", "DESCRIPTION")
     }
 
     protected static void checkYearNumberGroup1(def yearNumberGroup) {

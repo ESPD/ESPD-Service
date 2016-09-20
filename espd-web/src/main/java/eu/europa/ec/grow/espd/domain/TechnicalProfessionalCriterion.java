@@ -59,11 +59,17 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
     private String currency4;
     private String currency5;
 
-    private Date date1;
-    private Date date2;
-    private Date date3;
-    private Date date4;
-    private Date date5;
+    private Date startDate1;
+    private Date startDate2;
+    private Date startDate3;
+    private Date startDate4;
+    private Date startDate5;
+
+	private Date endDate1;
+	private Date endDate2;
+	private Date endDate3;
+	private Date endDate4;
+	private Date endDate5;
 
     private String recipients1;
     private String recipients2;

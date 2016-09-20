@@ -159,7 +159,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         req5.Response.Amount.@currencyID == "YEN"
     }
 
-    def "check the 'Date' requirements response"() {
+    def "check the 'Start Date' requirements response"() {
         given:
         def date1 = new Date()
         def date2 = new Date().plus(1)
@@ -167,7 +167,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def date4 = new Date().plus(3)
         def date5 = new Date().plus(4)
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                date1: date1, date2: date2, date3: date3, date4: date4, date5: date5))
+                startDate1: date1, startDate2: date2, startDate3: date3, startDate4: date4, startDate5: date5))
 
         when:
         def response = parseResponseXml(espd)
@@ -204,6 +204,51 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date5.time))
     }
 
+    def "check the 'End Date' requirements response"() {
+        given:
+        def date1 = new Date()
+        def date2 = new Date().plus(1)
+        def date3 = new Date().plus(2)
+        def date4 = new Date().plus(3)
+        def date5 = new Date().plus(4)
+        def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
+                endDate1: date1, endDate2: date2, endDate3: date3, endDate4: date4, endDate5: date5))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
+
+        then: "First date"
+        def subGroup1 = response.Criterion[idx].RequirementGroup[0]
+        def req1 = subGroup1.Requirement[3]
+        req1.Response.size() == 1
+        req1.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date1.time))
+
+        then: "Second date"
+        def subGroup2 = response.Criterion[idx].RequirementGroup[1]
+        def req2 = subGroup2.Requirement[3]
+        req2.Response.size() == 1
+        req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date2.time))
+
+        then: "Third date"
+        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
+        def req3 = subGroup3.Requirement[3]
+        req3.Response.size() == 1
+        req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date3.time))
+
+        then: "Fourth date"
+        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
+        def req4 = subGroup4.Requirement[3]
+        req4.Response.size() == 1
+        req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date4.time))
+
+        then: "Fifth date"
+        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
+        def req5 = subGroup5.Requirement[3]
+        req5.Response.size() == 1
+        req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date5.time))
+    }
+
     def "check the 'Recipients' requirements response"() {
         given:
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
@@ -215,31 +260,31 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
 
         then: "First recipients"
         def subGroup1 = response.Criterion[idx].RequirementGroup[0]
-        def req1 = subGroup1.Requirement[3]
+        def req1 = subGroup1.Requirement[4]
         req1.Response.size() == 1
         req1.Response[0].Description.text() == "rec1"
 
         then: "Second recipients"
         def subGroup2 = response.Criterion[idx].RequirementGroup[1]
-        def req2 = subGroup2.Requirement[3]
+        def req2 = subGroup2.Requirement[4]
         req2.Response.size() == 1
         req2.Response[0].Description.text() == "rec2"
 
         then: "Third recipients"
         def subGroup3 = response.Criterion[idx].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[3]
+        def req3 = subGroup3.Requirement[4]
         req3.Response.size() == 1
         req3.Response[0].Description.text() == "rec3"
 
         then: "Fourth recipients"
         def subGroup4 = response.Criterion[idx].RequirementGroup[3]
-        def req4 = subGroup4.Requirement[3]
+        def req4 = subGroup4.Requirement[4]
         req4.Response.size() == 1
         req4.Response[0].Description.text() == "rec4"
 
         then: "Fifth recipients"
         def subGroup5 = response.Criterion[idx].RequirementGroup[4]
-        def req5 = subGroup5.Requirement[3]
+        def req5 = subGroup5.Requirement[4]
         req5.Response.size() == 1
         req5.Response[0].Description.text() == "rec5"
     }

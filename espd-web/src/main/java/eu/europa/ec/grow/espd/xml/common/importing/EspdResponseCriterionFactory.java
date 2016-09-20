@@ -571,16 +571,27 @@ class EspdResponseCriterionFactory {
 	}
 
 	private void addMultipleDates(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {
-		Date date1 = readRequirementValue(SelectionCriterionRequirement.DATE_1, criterionType);
-		criterion.setDate1(date1);
-		Date date2 = readRequirementValue(SelectionCriterionRequirement.DATE_2, criterionType);
-		criterion.setDate2(date2);
-		Date date3 = readRequirementValue(SelectionCriterionRequirement.DATE_3, criterionType);
-		criterion.setDate3(date3);
-		Date date4 = readRequirementValue(SelectionCriterionRequirement.DATE_4, criterionType);
-		criterion.setDate4(date4);
-		Date date5 = readRequirementValue(SelectionCriterionRequirement.DATE_5, criterionType);
-		criterion.setDate5(date5);
+		Date startDate1 = readRequirementValue(SelectionCriterionRequirement.START_DATE_1, criterionType);
+		criterion.setStartDate1(startDate1);
+		Date startDate2 = readRequirementValue(SelectionCriterionRequirement.START_DATE_2, criterionType);
+		criterion.setStartDate2(startDate2);
+		Date startDate3 = readRequirementValue(SelectionCriterionRequirement.START_DATE_3, criterionType);
+		criterion.setStartDate3(startDate3);
+		Date startDate4 = readRequirementValue(SelectionCriterionRequirement.START_DATE_4, criterionType);
+		criterion.setStartDate4(startDate4);
+		Date startDate5 = readRequirementValue(SelectionCriterionRequirement.START_DATE_5, criterionType);
+		criterion.setStartDate5(startDate5);
+
+		Date endDate1 = readRequirementValue(SelectionCriterionRequirement.END_DATE_1, criterionType);
+		criterion.setEndDate1(endDate1);
+		Date endDate2 = readRequirementValue(SelectionCriterionRequirement.END_DATE_2, criterionType);
+		criterion.setEndDate2(endDate2);
+		Date endDate3 = readRequirementValue(SelectionCriterionRequirement.END_DATE_3, criterionType);
+		criterion.setEndDate3(endDate3);
+		Date endDate4 = readRequirementValue(SelectionCriterionRequirement.END_DATE_4, criterionType);
+		criterion.setEndDate4(endDate4);
+		Date endDate5 = readRequirementValue(SelectionCriterionRequirement.END_DATE_5, criterionType);
+		criterion.setEndDate5(endDate5);
 	}
 
 	private void addMultipleRecipients(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {

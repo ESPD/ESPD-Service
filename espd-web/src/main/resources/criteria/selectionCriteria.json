@@ -1273,10 +1273,18 @@
             },
             {
               "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date1"
+                "startDate1"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate1"
               ]
             },
             {
@@ -1312,10 +1320,18 @@
             },
             {
               "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date2"
+                "startDate2"
+              ]
+            },
+            {
+              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate2"
               ]
             },
             {
@@ -1351,10 +1367,18 @@
             },
             {
               "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date3"
+                "startDate3"
+              ]
+            },
+            {
+              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate3"
               ]
             },
             {
@@ -1390,10 +1414,18 @@
             },
             {
               "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date4"
+                "startDate4"
+              ]
+            },
+            {
+              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate4"
               ]
             },
             {
@@ -1429,10 +1461,18 @@
             },
             {
               "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date5"
+                "startDate5"
+              ]
+            },
+            {
+              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate5"
               ]
             },
             {
@@ -1527,10 +1567,18 @@
             },
             {
               "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date1"
+                "startDate1"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate1"
               ]
             },
             {
@@ -1566,10 +1614,18 @@
             },
             {
               "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date2"
+                "startDate2"
+              ]
+            },
+            {
+              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate2"
               ]
             },
             {
@@ -1605,10 +1661,18 @@
             },
             {
               "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date3"
+                "startDate3"
+              ]
+            },
+            {
+              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate3"
               ]
             },
             {
@@ -1644,10 +1708,18 @@
             },
             {
               "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date4"
+                "startDate4"
+              ]
+            },
+            {
+              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate4"
               ]
             },
             {
@@ -1683,10 +1755,18 @@
             },
             {
               "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date5"
+                "startDate5"
+              ]
+            },
+            {
+              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate5"
               ]
             },
             {
@@ -1781,10 +1861,18 @@
             },
             {
               "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date1"
+                "startDate1"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate1"
               ]
             },
             {
@@ -1820,10 +1908,18 @@
             },
             {
               "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date2"
+                "startDate2"
+              ]
+            },
+            {
+              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate2"
               ]
             },
             {
@@ -1859,10 +1955,18 @@
             },
             {
               "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date3"
+                "startDate3"
+              ]
+            },
+            {
+              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate3"
               ]
             },
             {
@@ -1898,10 +2002,18 @@
             },
             {
               "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date4"
+                "startDate4"
+              ]
+            },
+            {
+              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate4"
               ]
             },
             {
@@ -1937,10 +2049,18 @@
             },
             {
               "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Date",
+              "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "date5"
+                "startDate5"
+              ]
+            },
+            {
+              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate5"
               ]
             },
             {

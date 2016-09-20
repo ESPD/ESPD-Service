@@ -727,35 +727,35 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.description1 == "TEST 1"
         espd.workContractsPerformanceOfWorks.amount1 == 100000.0
         espd.workContractsPerformanceOfWorks.currency1 == "EUR"
-        espd.workContractsPerformanceOfWorks.date1 == LocalDateAdapter.unmarshal("2016-03-16").toDate()
+        espd.workContractsPerformanceOfWorks.startDate1 == LocalDateAdapter.unmarshal("2016-03-16").toDate()
         espd.workContractsPerformanceOfWorks.recipients1 == "recipients1"
 
         and:
         espd.workContractsPerformanceOfWorks.description2 == "TEST 2"
         espd.workContractsPerformanceOfWorks.amount2 == 200000.0
         espd.workContractsPerformanceOfWorks.currency2 == "RON"
-        espd.workContractsPerformanceOfWorks.date2 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
+        espd.workContractsPerformanceOfWorks.startDate2 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
         espd.workContractsPerformanceOfWorks.recipients2 == "recipients2"
 
         and:
         espd.workContractsPerformanceOfWorks.description3 == "TEST 3"
         espd.workContractsPerformanceOfWorks.amount3 == 300000.0
         espd.workContractsPerformanceOfWorks.currency3 == "USD"
-        espd.workContractsPerformanceOfWorks.date3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        espd.workContractsPerformanceOfWorks.startDate3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
         espd.workContractsPerformanceOfWorks.recipients3 == "recipients3"
 
         and:
         espd.workContractsPerformanceOfWorks.description4 == "TEST 4"
         espd.workContractsPerformanceOfWorks.amount4 == 400000.0
         espd.workContractsPerformanceOfWorks.currency4 == "CHF"
-        espd.workContractsPerformanceOfWorks.date4 == LocalDateAdapter.unmarshal("2015-08-21").toDate()
+        espd.workContractsPerformanceOfWorks.startDate4 == LocalDateAdapter.unmarshal("2015-08-21").toDate()
         espd.workContractsPerformanceOfWorks.recipients4 == "recipients4"
 
         and:
         espd.workContractsPerformanceOfWorks.description5 == "TEST 5"
         espd.workContractsPerformanceOfWorks.amount5 == 500000.0
         espd.workContractsPerformanceOfWorks.currency5 == "PLN"
-        espd.workContractsPerformanceOfWorks.date5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
+        espd.workContractsPerformanceOfWorks.startDate5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
         espd.workContractsPerformanceOfWorks.recipients5 == "recipients5"
 
         and: "info electronically"
@@ -773,35 +773,35 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.supplyContractsPerformanceDeliveries.description1 == "TEST A"
         espd.supplyContractsPerformanceDeliveries.amount1 == 200000.0
         espd.supplyContractsPerformanceDeliveries.currency1 == "EUR"
-        espd.supplyContractsPerformanceDeliveries.date1 == LocalDateAdapter.unmarshal("2016-04-05").toDate()
+        espd.supplyContractsPerformanceDeliveries.startDate1 == LocalDateAdapter.unmarshal("2016-04-05").toDate()
         espd.supplyContractsPerformanceDeliveries.recipients1 == "rec 1"
 
         and:
         espd.supplyContractsPerformanceDeliveries.description2 == "TEST B"
         espd.supplyContractsPerformanceDeliveries.amount2 == 300000.0
         espd.supplyContractsPerformanceDeliveries.currency2 == "RON"
-        espd.supplyContractsPerformanceDeliveries.date2 == LocalDateAdapter.unmarshal("2016-02-05").toDate()
+        espd.supplyContractsPerformanceDeliveries.startDate2 == LocalDateAdapter.unmarshal("2016-02-05").toDate()
         espd.supplyContractsPerformanceDeliveries.recipients2 == "rec 2"
 
         and:
         espd.supplyContractsPerformanceDeliveries.description3 == "TEST C"
         espd.supplyContractsPerformanceDeliveries.amount3 == 500000.0
         espd.supplyContractsPerformanceDeliveries.currency3 == "USD"
-        espd.supplyContractsPerformanceDeliveries.date3 == LocalDateAdapter.unmarshal("2015-12-09").toDate()
+        espd.supplyContractsPerformanceDeliveries.startDate3 == LocalDateAdapter.unmarshal("2015-12-09").toDate()
         espd.supplyContractsPerformanceDeliveries.recipients3 == "rec 3"
 
         and:
         espd.supplyContractsPerformanceDeliveries.description4 == "TEST D"
         espd.supplyContractsPerformanceDeliveries.amount4 == 600000.0
         espd.supplyContractsPerformanceDeliveries.currency4 == "PLN"
-        espd.supplyContractsPerformanceDeliveries.date4 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
+        espd.supplyContractsPerformanceDeliveries.startDate4 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
         espd.supplyContractsPerformanceDeliveries.recipients4 == "rec 4"
 
         and:
         espd.supplyContractsPerformanceDeliveries.description5 == "TEST E"
         espd.supplyContractsPerformanceDeliveries.amount5 == 800000.0
         espd.supplyContractsPerformanceDeliveries.currency5 == "EUR"
-        espd.supplyContractsPerformanceDeliveries.date5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
+        espd.supplyContractsPerformanceDeliveries.startDate5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
         espd.supplyContractsPerformanceDeliveries.recipients5 == "rec 5"
 
         and: "info electronically"
@@ -819,35 +819,35 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.serviceContractsPerformanceServices.description1 == "F"
         espd.serviceContractsPerformanceServices.amount1 == 100001.0
         espd.serviceContractsPerformanceServices.currency1 == "EUR"
-        espd.serviceContractsPerformanceServices.date1 == LocalDateAdapter.unmarshal("2016-04-20").toDate()
+        espd.serviceContractsPerformanceServices.startDate1 == LocalDateAdapter.unmarshal("2016-04-20").toDate()
         espd.serviceContractsPerformanceServices.recipients1 == "r 1"
 
         and:
         espd.serviceContractsPerformanceServices.description2 == "G"
         espd.serviceContractsPerformanceServices.amount2 == 100002.0
         espd.serviceContractsPerformanceServices.currency2 == "RON"
-        espd.serviceContractsPerformanceServices.date2 == LocalDateAdapter.unmarshal("2016-01-04").toDate()
+        espd.serviceContractsPerformanceServices.startDate2 == LocalDateAdapter.unmarshal("2016-01-04").toDate()
         espd.serviceContractsPerformanceServices.recipients2 == "r 2"
 
         and:
         espd.serviceContractsPerformanceServices.description3 == "H"
         espd.serviceContractsPerformanceServices.amount3 == 100003.3
         espd.serviceContractsPerformanceServices.currency3 == "USD"
-        espd.serviceContractsPerformanceServices.date3 == LocalDateAdapter.unmarshal("2016-02-09").toDate()
+        espd.serviceContractsPerformanceServices.startDate3 == LocalDateAdapter.unmarshal("2016-02-09").toDate()
         espd.serviceContractsPerformanceServices.recipients3 == "r 3"
 
         and:
         espd.serviceContractsPerformanceServices.description4 == "I"
         espd.serviceContractsPerformanceServices.amount4 == 400004.0
         espd.serviceContractsPerformanceServices.currency4 == "PLN"
-        espd.serviceContractsPerformanceServices.date4 == LocalDateAdapter.unmarshal("2016-01-01").toDate()
+        espd.serviceContractsPerformanceServices.startDate4 == LocalDateAdapter.unmarshal("2016-01-01").toDate()
         espd.serviceContractsPerformanceServices.recipients4 == "r 4"
 
         and:
         espd.serviceContractsPerformanceServices.description5 == "J"
         espd.serviceContractsPerformanceServices.amount5 == 555.5556
         espd.serviceContractsPerformanceServices.currency5 == "EUR"
-        espd.serviceContractsPerformanceServices.date5 == LocalDateAdapter.unmarshal("2015-12-29").toDate()
+        espd.serviceContractsPerformanceServices.startDate5 == LocalDateAdapter.unmarshal("2015-12-29").toDate()
         espd.serviceContractsPerformanceServices.recipients5 == "r 5"
 
         and: "info electronically"

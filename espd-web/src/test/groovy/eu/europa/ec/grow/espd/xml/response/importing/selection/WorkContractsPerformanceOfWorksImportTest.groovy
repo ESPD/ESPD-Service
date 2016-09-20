@@ -51,35 +51,40 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.description1 == "description1"
         espd.workContractsPerformanceOfWorks.amount1 == 11.1
         espd.workContractsPerformanceOfWorks.currency1 == "RON"
-        espd.workContractsPerformanceOfWorks.date1 == LocalDateAdapter.unmarshal("2016-01-17").toDate()
+        espd.workContractsPerformanceOfWorks.startDate1 == LocalDateAdapter.unmarshal("2016-01-17").toDate()
+        espd.workContractsPerformanceOfWorks.endDate1 == LocalDateAdapter.unmarshal("2016-02-17").toDate()
         espd.workContractsPerformanceOfWorks.recipients1 == "recipients1"
 
         then:
         espd.workContractsPerformanceOfWorks.description2 == "description2"
         espd.workContractsPerformanceOfWorks.amount2 == 22.2
         espd.workContractsPerformanceOfWorks.currency2 == "EUR"
-        espd.workContractsPerformanceOfWorks.date2 == LocalDateAdapter.unmarshal("2016-01-18").toDate()
+        espd.workContractsPerformanceOfWorks.startDate2 == LocalDateAdapter.unmarshal("2016-01-18").toDate()
+        espd.workContractsPerformanceOfWorks.endDate2 == LocalDateAdapter.unmarshal("2016-02-18").toDate()
         espd.workContractsPerformanceOfWorks.recipients2 == "recipients2"
 
         then:
         espd.workContractsPerformanceOfWorks.description3 == "description3"
         espd.workContractsPerformanceOfWorks.amount3 == 33.3
         espd.workContractsPerformanceOfWorks.currency3 == "USD"
-        espd.workContractsPerformanceOfWorks.date3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        espd.workContractsPerformanceOfWorks.startDate3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        espd.workContractsPerformanceOfWorks.endDate3 == LocalDateAdapter.unmarshal("2016-02-19").toDate()
         espd.workContractsPerformanceOfWorks.recipients3 == "recipients3"
 
         then:
         espd.workContractsPerformanceOfWorks.description4 == "description4"
         espd.workContractsPerformanceOfWorks.amount4 == 44.4
         espd.workContractsPerformanceOfWorks.currency4 == "CHF"
-        espd.workContractsPerformanceOfWorks.date4 == LocalDateAdapter.unmarshal("2016-01-20").toDate()
+        espd.workContractsPerformanceOfWorks.startDate4 == LocalDateAdapter.unmarshal("2016-01-20").toDate()
+        espd.workContractsPerformanceOfWorks.endDate4 == LocalDateAdapter.unmarshal("2016-02-20").toDate()
         espd.workContractsPerformanceOfWorks.recipients4 == "recipients4"
 
         then:
         espd.workContractsPerformanceOfWorks.description5 == "description5"
         espd.workContractsPerformanceOfWorks.amount5 == 55.5
         espd.workContractsPerformanceOfWorks.currency5 == "YEN"
-        espd.workContractsPerformanceOfWorks.date5 == LocalDateAdapter.unmarshal("2016-01-21").toDate()
+        espd.workContractsPerformanceOfWorks.startDate5 == LocalDateAdapter.unmarshal("2016-01-21").toDate()
+        espd.workContractsPerformanceOfWorks.endDate5 == LocalDateAdapter.unmarshal("2016-02-21").toDate()
         espd.workContractsPerformanceOfWorks.recipients5 == "recipients5"
 
         then: "info electronically"
@@ -91,11 +96,11 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true, answer: true,
-                description1: "description1", amount1: 11.1, currency1: "RON", date1: LocalDateAdapter.unmarshal("2016-01-17").toDate(), recipients1: "recipients1",
-                description2: "description2", amount2: 22.2, currency2: "EUR", date2: LocalDateAdapter.unmarshal("2016-01-18").toDate(), recipients2: "recipients2",
-                description3: "description3", amount3: 33.3, currency3: "USD", date3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), recipients3: "recipients3",
-                description4: "description4", amount4: 44.4, currency4: "CHF", date4: LocalDateAdapter.unmarshal("2016-01-20").toDate(), recipients4: "recipients4",
-                description5: "description5", amount5: 55.5, currency5: "YEN", date5: LocalDateAdapter.unmarshal("2016-01-21").toDate(), recipients5: "recipients5",
+                description1: "description1", amount1: 11.1, currency1: "RON", startDate1: LocalDateAdapter.unmarshal("2016-01-17").toDate(), endDate1: LocalDateAdapter.unmarshal("2016-02-17").toDate(), recipients1: "recipients1",
+                description2: "description2", amount2: 22.2, currency2: "EUR", startDate2: LocalDateAdapter.unmarshal("2016-01-18").toDate(), endDate2: LocalDateAdapter.unmarshal("2016-02-18").toDate(), recipients2: "recipients2",
+                description3: "description3", amount3: 33.3, currency3: "USD", startDate3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), endDate3: LocalDateAdapter.unmarshal("2016-02-19").toDate(), recipients3: "recipients3",
+                description4: "description4", amount4: 44.4, currency4: "CHF", startDate4: LocalDateAdapter.unmarshal("2016-01-20").toDate(), endDate4: LocalDateAdapter.unmarshal("2016-02-20").toDate(), recipients4: "recipients4",
+                description5: "description5", amount5: 55.5, currency5: "YEN", startDate5: LocalDateAdapter.unmarshal("2016-01-21").toDate(), endDate5: LocalDateAdapter.unmarshal("2016-02-21").toDate(), recipients5: "recipients5",
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PERF")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

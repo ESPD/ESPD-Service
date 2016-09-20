@@ -27,46 +27,53 @@
   ~ permissions and limitations under the Licence.
   ~
   --%>
-
 <tiles:importAttribute name="field"/>
-
-<div class="form-group">
-	<div class="col-xs-3" style="padding:2px">
-	    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
-    </div>
-	<div class="col-xs-2" style="padding:2px">
-	    <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
-    </div>
-	<div class="col-xs-2" style="padding:2px">
-	    &nbsp;
-    </div>
-	<div class="col-xs-2" style="padding:2px">
-	    <label class="control-label col-md-3 small">${span18n['crit_date']}</label>
-    </div>
-	<div class="col-xs-3" style="padding:2px">
-	    <label class="control-label col-md-3 small">${span18n['crit_recipients']}</label>
-    </div>
-</div>
-
 <c:forEach begin="1" end="5" varStatus="loop">
-	<div class="form-group form-group-sm" style="margin-bottom: 0;">
-		<div class="col-xs-3" style="padding:1px;">
-			<form:textarea rows="1" path="${field}.description${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
+    <div class="form-group">
+        <div class="col-xs-3">
+            <label class="control-label small">${span18n['crit_description']}</label>
+        </div>
+		<div class="col-xs-9">
+			<form:textarea path="${field}.description${loop.index}" cssClass="form-control" />
 		</div>
-		<div class="col-xs-2" style="padding:1px;">
-			<form:textarea rows="1" path="${field}.amount${loop.index}" number="true" cssClass="form-control small" cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
+    </div>
+	<div class="form-group form-group-sm">
+        <div class="col-xs-3">
+            <label class="control-label small">${span18n['crit_amount']}</label>
+        </div>
+		<div class="col-xs-6">
+			<form:textarea rows="1" path="${field}.amount${loop.index}" number="true" cssClass="form-control small" />
 		</div>
-		<div class="col-xs-2" style="padding:1px;">
+		<div class="col-xs-3">
 	        <tiles:insertDefinition name="currencies">
 	            <tiles:putAttribute name="currencyField" value="${field}.currency${loop.index}"/>
 	            <tiles:putAttribute name="style" value="border-radius: 0;"/>
 	        </tiles:insertDefinition>
 		</div>
-		<div class="col-xs-2" style="padding:1px;">
-			<form:input type="text" path="${field}.date${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+    </div>
+	<div class="form-group form-group-sm">
+        <div class="col-xs-3">
+            <label class="control-label small">${span18n['crit_start_date']}</label>
+        </div>
+		<div class="col-xs-9">
+			<form:input type="text" path="${field}.startDate${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
-		<div class="col-xs-3" style="padding:1px;">
-			<form:textarea rows="1" path="${field}.recipients${loop.index}" cssClass="form-control small" cssStyle="border-radius: 0;" />
+    </div>
+	<div class="form-group form-group-sm">
+        <div class="col-xs-3">
+            <label class="control-label small">${span18n['crit_end_date']}</label>
+        </div>
+        <div class="col-xs-9">
+            <form:input type="text" path="${field}.endDate${loop.index}" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+        </div>
+    </div>
+	<div class="form-group">
+        <div class="col-xs-3">
+            <label class="control-label small">${span18n['crit_recipients']}</label>
+        </div>
+		<div class="col-xs-9">
+			<form:textarea path="${field}.recipients${loop.index}" cssClass="form-control small"/>
 		</div>
 	</div>
+    <hr/>
 </c:forEach>
