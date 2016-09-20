@@ -37,6 +37,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 @Data
 public class EspdDocument {
 
@@ -214,5 +216,21 @@ public class EspdDocument {
 		} catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e) {
 			// this is covered by tests, it should never happen so we don't care
 		}
+	}
+
+	public final boolean hasProcurementInformation() {
+		return hasPublicationInformation() || hasProcurementProcedureInformation() || hasProcurerIdentity();
+	}
+
+	private boolean hasPublicationInformation() {
+		return isNotBlank(ojsNumber) || isNotBlank(tedUrl);
+	}
+
+	private boolean hasProcurementProcedureInformation() {
+		return isNotBlank(procedureTitle) || isNotBlank(procedureShortDesc) || isNotBlank(fileRefByCA);
+	}
+
+	private boolean hasProcurerIdentity() {
+		return authority != null && isNotBlank(authority.getName());
 	}
 }

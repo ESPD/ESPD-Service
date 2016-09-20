@@ -134,7 +134,7 @@ class EspdController {
     private void copyTedInformation(EspdDocument document) {
         TedResponse tedResponse = tedService
                 .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
-	    if (tedResponse.isEmpty()) {
+	    if (tedResponse.isEmpty() || document.hasProcurementInformation()) {
 		    return;
 	    }
 
