@@ -16,10 +16,10 @@
 	                <div class="form-group">
 	                    <div class="tab-pane" id="${field}-reliability">
 	                        <div class="form-group">
-	                            <label class="control-label col-md-4 small">
+	                            <label class="control-label col-md-3 small">
 	                            	${span18n["crit_please_describe_them"]}
 	                            </label>
-	                            <div class="col-md-8">
+	                            <div class="col-md-9">
 	                                <form:textarea path="${field}.description" cssClass="form-control"></form:textarea>
 	                            </div>
 	                        </div>
@@ -40,10 +40,10 @@
 	        </c:if>
 	        <c:if test="${has_single_amount}">
 	            <div class="form-group">
-	                <label class="control-label col-xs-4 small">
+	                <label class="control-label col-xs-3 small">
 	                	${span18n["crit_amount"]}
 	                </label>
-	                <div class="col-xs-5">
+	                <div class="col-xs-6">
 	                    <form:textarea rows="1" path="${field}.amount1" cssClass="form-control"></form:textarea>
 	                </div>
 	                <div class="col-xs-3">

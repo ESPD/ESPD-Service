@@ -27,19 +27,14 @@
   ~ permissions and limitations under the Licence.
   ~
   --%>
-
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="has_multiple_description_amount_date_recipients"/>
 <tiles:importAttribute name="lastYearsNumber"/>
-
 <tiles:importAttribute name="has_explain_supply_contracts_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_environmental"/>
 <tiles:importAttribute name="has_please_specify"/>
-
-
-
         <c:if test="${has_please_describe_them}">
             <div class="col-md-12">
                 <div class="form-group">
@@ -47,19 +42,19 @@
                         <div class="form-group">
                             <c:choose>
                                 <c:when test="${has_explain_supply_contracts_quality}">
-                                    <label class="control-label col-md-4 small">${span18n['crit_explain_supply_contracts_quality_description']}</label>
+                                    <label class="control-label col-md-3 small">${span18n['crit_explain_supply_contracts_quality_description']}</label>
                                 </c:when>
                                 <c:when test="${has_explain_certificates_independent_quality}">
-                                    <label class="control-label col-md-4 small">${span18n['crit_explain_certificates_independent_quality_description']}</label>
+                                    <label class="control-label col-md-3 small">${span18n['crit_explain_certificates_independent_quality_description']}</label>
                                 </c:when>
                                 <c:when test="${has_explain_certificates_independent_environmental}">
-                                    <label class="control-label col-md-4 small">${span18n['crit_explain_certificates_independent_environmental_description']}</label>
+                                    <label class="control-label col-md-3 small">${span18n['crit_explain_certificates_independent_environmental_description']}</label>
                                 </c:when>
                                 <c:otherwise>
-                                    <label class="control-label col-md-4 small">${span18n['crit_please_describe_them']}</label>
+                                    <label class="control-label col-md-3 small">${span18n['crit_please_describe_them']}</label>
                                 </c:otherwise>
                             </c:choose>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <form:textarea path="${field}.description" class="form-control" ></form:textarea>
                             </div>
                         </div>
@@ -72,9 +67,9 @@
                 <div class="form-group">
                     <div class="tab-pane" id="${field}-specify">
                         <div class="form-group">
-                            <label class="control-label col-md-4 small">${span18n['crit_please_specify']}</label>
+                            <label class="control-label col-md-3 small">${span18n['crit_please_specify']}</label>
 
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <form:textarea path="${field}.specify" class="form-control"></form:textarea>
                             </div>
                         </div>
@@ -93,4 +88,3 @@
                 <tiles:putAttribute name="lastYears" value="${lastYearsNumber}"/>
             </tiles:insertDefinition>
         </c:if>
-
