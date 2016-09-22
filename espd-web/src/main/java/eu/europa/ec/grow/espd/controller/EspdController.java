@@ -90,7 +90,7 @@ class EspdController {
 		return new EspdDocument();
 	}
 
-		@RequestMapping("/")
+	@RequestMapping("/")
 	public String index() {
 		return WELCOME_PAGE;
 	}
@@ -140,21 +140,29 @@ class EspdController {
 		return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
 	}
 
-    private void copyTedInformation(EspdDocument document) {
-        TedResponse tedResponse = tedService
-                .getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
-	    if (tedResponse.isEmpty() || document.hasProcurementInformation()) {
-		    return;
-	    }
+	private void copyTedInformation(EspdDocument document) {
+		TedResponse tedResponse = tedService
+				.getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
+		if (tedResponse.isEmpty()) {
+			return;
+		}
 
-        document.setOjsNumber(tedResponse.getNoDocOjs());
-        TedResponse.TedNotice notice = tedResponse.getFirstNotice();
-        document.getAuthority().setName(notice.getOfficialName());
-        document.setProcedureTitle(notice.getTitle());
-        document.setProcedureShortDesc(notice.getShortDescription());
-        document.setFileRefByCA(notice.getReferenceNumber());
-        document.setTedUrl(notice.getTedUrl());
-    }
+		TedResponse.TedNotice notice = tedResponse.getFirstNotice();
+		if (document.hasProcurementInformation()) {
+			if (isBlank(document.getOjsNumber()) && isBlank(document.getTedUrl())) {
+				// only update these fields if none of them is filled in
+				document.setOjsNumber(tedResponse.getNoDocOjs());
+				document.setTedUrl(notice.getTedUrl());
+			}
+		} else {
+			document.setOjsNumber(tedResponse.getNoDocOjs());
+			document.getAuthority().setName(notice.getOfficialName());
+			document.setProcedureTitle(notice.getTitle());
+			document.setProcedureShortDesc(notice.getShortDescription());
+			document.setFileRefByCA(notice.getReferenceNumber());
+			document.setTedUrl(notice.getTedUrl());
+		}
+	}
 
 	private String reuseRequestAsCA(MultipartFile attachment, Model model,
 			BindingResult result) throws IOException {
@@ -244,7 +252,6 @@ class EspdController {
 			@PathVariable String agent,
 			@PathVariable String step,
 			@ModelAttribute("espd") EspdDocument espd) {
-
 		return flow + "_" + agent + "_" + step;
 	}
 
