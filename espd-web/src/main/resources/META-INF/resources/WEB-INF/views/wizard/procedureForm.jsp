@@ -4,6 +4,18 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<script>
+    $(function () {
+        $('#procedureTedReceptionId').keyup(function () {
+            if (!$(this).val()) {
+                $('#ojsNumber').val("");
+                $('#tedUrlLink').attr("href", "");
+                $('#tedUrlLink').text("");
+            }
+        });
+    });
+</script>
+
 <div class="errorContainer alert alert-danger" style="display: none">
     <ul class="fa-ul">
         <li>
@@ -23,17 +35,27 @@
     <div id="ojsdiv" class="panel-body collapse in">
         <div class="alert alert-espd-info-dotted">
             ${div18n['createca_to_be_filled_alert']}
+            <c:if test="${agent eq 'ca'}">
+                <div class="form-group">
+                    <label class="control-label col-md-4">${span18n['createca_ted_reception_id']}</label>
+                    <div class="col-md-8">
+                        <form:input path="tedReceptionId" id="procedureTedReceptionId" cssClass="form-control small"
+                                    data-i18n="filter_ted_reception_id_placeholder"
+                                    placeholder="${i18n['filter_ted_reception_id_placeholder']}"/>
+                    </div>
+                </div>
+            </c:if>
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_ojs_label']}</label>
                 <div class="col-md-8">
-                    <form:input cssClass="form-control" path="ojsNumber"
+                    <form:input cssClass="form-control" path="ojsNumber" id="ojsNumber"
                                 placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ]"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_ojs_url']}</label>
                 <div class="col-md-8">
-                    <a href="${espd.tedUrl}" target="_blank" class="btn btn-link">${espd.tedUrl}</a>
+                    <a href="${espd.tedUrl}" target="_blank" class="btn btn-link" id="tedUrlLink">${espd.tedUrl}</a>
                 </div>
             </div>
             ${span18n['createca_official_journal_alert']}
@@ -467,7 +489,7 @@
                                            cssStyle="resize: none" rows="1" cssClass="form-control"/>
                         </div>
                     </div>
-                    ${span18n['createeo_separate_espd_sections_a_b']}
+                        ${span18n['createeo_separate_espd_sections_a_b']}
                 </div>
             </div>
         </div>
