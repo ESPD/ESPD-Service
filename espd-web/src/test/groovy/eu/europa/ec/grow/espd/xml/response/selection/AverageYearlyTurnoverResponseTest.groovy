@@ -66,7 +66,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 0
         g1.Requirement.size() == 2
-        checkRequirement(g1.Requirement[0], "b98ffd05-6572-4b07-a521-693a1754ed46", "Number of years", "QUANTITY_YEAR")
+        checkRequirement(g1.Requirement[0], "b98ffd05-6572-4b07-a521-693a1754ed46", "Number of years", "QUANTITY_INTEGER")
         checkRequirement(g1.Requirement[1], "217637ba-6bdb-4c73-a38f-27fe0e71d9be", "Average turnover", "AMOUNT")
 
         then: "info available electronically sub group"
@@ -88,7 +88,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def req1 = g1.Requirement[0]
         req1.Response.size() == 1
         req1.Response[0].Quantity.text() == "666"
-        req1.Response[0].Quantity.@unitCode.text() == "YEAR"
+        req1.Response[0].Quantity.@unitCode.text() == "NUMBER"
     }
 
     def "check the 'Average turnover' requirements response"() {
