@@ -1,10 +1,34 @@
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format"
 				version="1.0">
 	<xsl:import href="xhtml2fo.xsl"/>
 
 	<xsl:attribute-set name="body">
 		<!--  specified on fo:flow's only child fo:block  -->
-		<xsl:attribute name="font-family">Verdana, Myriad Web, Syntax, sans-serif</xsl:attribute>
+		<xsl:attribute name="font-family">Arial</xsl:attribute>
 		<xsl:attribute name="font-size-adjust">0.30</xsl:attribute>
 		<xsl:attribute name="line-height.minimum">1.5em</xsl:attribute>
 		<xsl:attribute name="line-height.optimum">1.58em</xsl:attribute>
