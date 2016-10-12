@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
   ~
   ~ Copyright 2016 EUROPEAN COMMISSION
   ~
@@ -21,12 +21,17 @@
   ~ See the Licence for the specific language governing
   ~ permissions and limitations under the Licence.
   ~
-  -->
+  --%>
 
-<configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+<div class="row-fluid">
+    <div class="span9">
+        <div>
+            <!-- The model values come from org.springframework.boot.autoconfigure.web.BasicErrorController -->
+            <h2 class="text-center alert alert-danger"><c:out value="Session expired"/></h2>
+            <h5 class="alert alert-info">
+                <c:out value="Your session has expired. Please reload the page."/>
+            </h5>
+        </div>
+    </div>
+</div>
 
-    <logger name="ro.isdc.wro" level="INFO" />
-    <!--<logger name="org.apache.fop" level="DEBUG" />-->
-
-</configuration>

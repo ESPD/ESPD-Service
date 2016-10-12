@@ -118,7 +118,7 @@
                 <h2>${span18n['createeo_header']}</h2>
             </div>
             <div class="panel panel-espd">
-                <div class="panel-heading" data-toggle="collapse"data-target="#createeo_info_eo_div">
+                <div class="panel-heading" data-toggle="collapse" data-target="#createeo_info_eo_div">
 					<h4 class="panel-title">${span18n['createeo_info_eo']}</h4>
                 </div>
                 <div id="createeo_info_eo_div" class="collapse in">

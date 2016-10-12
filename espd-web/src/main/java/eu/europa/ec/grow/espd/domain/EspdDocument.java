@@ -40,6 +40,8 @@ import java.util.List;
 @Data
 public class EspdDocument {
 
+	private String html;
+
 	private PartyImpl authority;
 	private EconomicOperatorImpl economicOperator;
 
@@ -193,12 +195,7 @@ public class EspdDocument {
 		}
 	}
 
-	/**
-	 * Select the mandatory exclusion criteria needed by the CA when creating a new ESPD Request. This is a dirty
-	 * workaround in order to overcome the Section C exclusion criteria which need to be preselected and could
-	 * become not selected.
-	 */
-	public final void selectCAExclusionCriteria() {
+	public final void selectCAExclusionCriteriaEU() {
 		for (eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion crit : ExclusionCriterion.values()) {
 			instantiateEspdCriterion(crit.getEspdDocumentField(),
 					!ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS.equals(crit));

@@ -105,7 +105,60 @@
             <version>3.3</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.httpcomponents</groupId>-->
+            <!--<artifactId>httpclient</artifactId>-->
+            <!--<version>4.5.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.httpcomponents</groupId>-->
+            <!--<artifactId>httpmime</artifactId>-->
+            <!--<version>4.5.1</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-bridge</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-extension</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-transcoder</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-svg-dom</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-ext</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>batik-gvt</artifactId>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                </exclusion>
+                <!--<exclusion>-->
+                    <!--<artifactId>avalon-framework-impl</artifactId>-->
+                    <!--<groupId>org.apache.avalon.framework</groupId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>avalon-framework-api</artifactId>-->
+                    <!--<groupId>org.apache.avalon.framework</groupId>-->
+                <!--</exclusion>-->
+            </exclusions>
+        </dependency>
+     </dependencies>
 
     <build>
         <!-- Use the following to develop on your local machine or on the CI server -->

@@ -5,6 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%--
   ~
@@ -281,6 +282,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
+    <c:set var="cachedFragment" scope="application">
 
 	<%-- PROCEDURE --%>
 	
@@ -464,10 +466,16 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 </div>
             </div>
 		</div>
+
+    </c:set>
+    ${applicationScope.cachedFragment}
+    <input type="hidden"
+           name="html"
+           value="${fn:escapeXml(applicationScope.cachedFragment)}" />
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
-            <tiles:putAttribute name="next" value="generate"/>
+            <tiles:putAttribute name="next" value="savePrintHtml"/>
         </tiles:insertDefinition>
 	</div>
 </form:form>
