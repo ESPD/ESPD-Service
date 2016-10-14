@@ -1,4 +1,28 @@
 <?xml version="1.0"?>
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+
 <!-- NOTE: This is the version of the configuration -->
 <fop version="1.0">
 
@@ -7,6 +31,7 @@
 
     <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
     <source-resolution>72</source-resolution>
+
     <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
     <target-resolution>72</target-resolution>
 
@@ -54,11 +79,12 @@
                 (normal = 400, bold = 700)
                 -->
 
-                <!--
-                <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
-                  <font-triplet name="Arial" style="normal" weight="normal"/>
-                  <font-triplet name="ArialMT" style="normal" weight="normal"/>
+                <font metrics-url="tenderned/pdfrendering/fonts/DejaVuSans/ttf/DejaVuSans.xml"
+                      embed-url="tenderned/pdfrendering/fonts/DejaVuSans/ttf/DejaVuSans.ttf">
+                    <font-triplet name="DejaVuSans" style="normal" weight="normal"/>
                 </font>
+
+                <!--
                 <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
                   <font-triplet name="Arial" style="normal" weight="bold"/>
                   <font-triplet name="ArialMT" style="normal" weight="bold"/>

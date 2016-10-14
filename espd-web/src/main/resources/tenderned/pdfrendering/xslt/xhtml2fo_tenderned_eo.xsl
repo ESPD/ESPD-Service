@@ -28,7 +28,7 @@
 
 	<xsl:attribute-set name="body">
 		<!--  specified on fo:flow's only child fo:block  -->
-		<xsl:attribute name="font-family">Arial</xsl:attribute>
+		<xsl:attribute name="font-family">DejaVuSans</xsl:attribute>
 		<xsl:attribute name="font-size-adjust">0.30</xsl:attribute>
 		<xsl:attribute name="line-height.minimum">1.5em</xsl:attribute>
 		<xsl:attribute name="line-height.optimum">1.58em</xsl:attribute>

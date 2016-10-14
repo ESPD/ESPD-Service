@@ -30,6 +30,8 @@ import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.fop.apps.*;
+import org.apache.xmlgraphics.io.Resource;
+import org.apache.xmlgraphics.io.ResourceResolver;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
@@ -39,7 +41,6 @@ import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -61,28 +62,15 @@ public class HtmlToPdfTransformer {
 		resolver = new XsltURIResolver();
 		transformerFactory.setURIResolver(resolver);
 
-		File f = new File(".");
-		File fopConfig = new File(".");
-		//		fopFactory = FopFactory.newInstance(initFopConfiguration());
 		try {
 			DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
 			Configuration cfg = cfgBuilder.build(new ClassPathResource("/tenderned/pdfrendering/fop/fop-config.xml").getInputStream());
-			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(new File(".").toURI()).setConfiguration(cfg);
+			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(new File("./espd-web/src/main/resources").toURI()).setConfiguration(cfg);
 //			fopFactory = FopFactory.newInstance(initFopConfiguration());
 			fopFactory = fopFactoryBuilder.build();
 		} catch (SAXException | IOException | ConfigurationException e) {
 			throw new IllegalArgumentException(e);
 		}
-	}
-
-	private URI initFopConfiguration() {
-		URI fopConfigURI;
-		try {
-			fopConfigURI = this.getClass().getResource("/tenderned/pdfrendering/fop/fop-config.xml").toURI();
-		} catch (URISyntaxException e) {
-			throw new IllegalArgumentException("Could not load fop config.", e);
-		}
-		return fopConfigURI;
 	}
 
 	/**
@@ -102,6 +90,19 @@ public class HtmlToPdfTransformer {
 			xsl = XSL_CA;
 		} else {
 			xsl = XSL_EO;
+		}
+		FopFactory fopFactory;
+		try {
+			DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
+			Configuration cfg = cfgBuilder
+					.build(new ClassPathResource("/tenderned/pdfrendering/fop/fop-config.xml").getInputStream());
+//			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
+//					new ClassPathResource("/tenderned/pdfrendering/").getURI()/*, new EspdResourceResolver()*/)
+//					.setConfiguration(cfg);
+			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(new File("./espd-web/src/main/resources").toURI()).setConfiguration(cfg);
+			fopFactory = fopFactoryBuilder.build();
+		} catch (SAXException | IOException | ConfigurationException e) {
+			throw new IllegalArgumentException(e);
 		}
 
 		try {
@@ -127,6 +128,26 @@ public class HtmlToPdfTransformer {
 			InputStream inputStream = this.getClass().getClassLoader()
 			                              .getResourceAsStream("tenderned/pdfrendering/xslt/" + href);
 			return new StreamSource(inputStream);
+		}
+	}
+
+	private static class EspdResourceResolver implements ResourceResolver {
+
+		@Override
+		public Resource getResource(URI uri) throws IOException {
+			System.out.println("--------- get resource: " + uri);
+			int aaa = uri.toASCIIString().lastIndexOf("/tenderned/pdfrendering/");
+			String res = uri.toASCIIString().substring(aaa);
+			InputStream is = new ClassPathResource(res).getInputStream();
+			return new Resource(is);
+		}
+
+		@Override
+		public OutputStream getOutputStream(URI uri) throws IOException {
+			System.out.println("--------- get outputstream: " + uri);
+			return new ClassPathResource(uri.toASCIIString()).getURL().openConnection().getOutputStream();
+			//			URL url = servletContext.getResource(uri.toASCIIString());
+			//			return url.openConnection().getOutputStream();
 		}
 	}
 }
