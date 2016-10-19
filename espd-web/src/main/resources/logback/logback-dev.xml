@@ -38,6 +38,7 @@
     </appender>
 
     <logger name="ro.isdc.wro" level="INFO" />
+    <!--<logger name="org.apache.fop" level="DEBUG" />-->
 
     <root level="INFO">
         <appender-ref ref="EMAIL" />
