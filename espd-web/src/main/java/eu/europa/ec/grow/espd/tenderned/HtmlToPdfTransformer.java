@@ -25,6 +25,8 @@
 package eu.europa.ec.grow.espd.tenderned;
 
 import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
+import eu.europa.ec.grow.espd.util.EspdConfiguration;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.avalon.framework.configuration.Configuration;
 import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
@@ -32,14 +34,19 @@ import org.apache.commons.io.IOUtils;
 import org.apache.fop.apps.*;
 import org.apache.xmlgraphics.io.Resource;
 import org.apache.xmlgraphics.io.ResourceResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
 
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -48,6 +55,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * This class converts html to pdf file
  */
 @Component
+@Slf4j
 public class HtmlToPdfTransformer {
 
 	private static final String XSL_CA = "xhtml2fo_tenderned_ca.xsl";
@@ -56,21 +64,17 @@ public class HtmlToPdfTransformer {
 	private final TransformerFactory transformerFactory;
 	private final XsltURIResolver resolver;
 	private final FopFactory fopFactory;
+	private final ResourceLoader resourceLoader;
+	private final EspdConfiguration espdConfiguration;
 
-	public HtmlToPdfTransformer() {
-		transformerFactory = TransformerFactory.newInstance();
-		resolver = new XsltURIResolver();
+	@Autowired
+	HtmlToPdfTransformer(ResourceLoader resourceLoader, EspdConfiguration espdConfiguration) {
+		this.resourceLoader = resourceLoader;
+		this.espdConfiguration = espdConfiguration;
+		this.transformerFactory = TransformerFactory.newInstance();
+		this.resolver = new XsltURIResolver();
 		transformerFactory.setURIResolver(resolver);
-
-		try {
-			DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
-			Configuration cfg = cfgBuilder.build(new ClassPathResource("/tenderned/pdfrendering/fop/fop-config.xml").getInputStream());
-			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(new File("./espd-web/src/main/resources").toURI()).setConfiguration(cfg);
-//			fopFactory = FopFactory.newInstance(initFopConfiguration());
-			fopFactory = fopFactoryBuilder.build();
-		} catch (SAXException | IOException | ConfigurationException e) {
-			throw new IllegalArgumentException(e);
-		}
+		this.fopFactory = buildFopFactory();
 	}
 
 	/**
@@ -79,45 +83,58 @@ public class HtmlToPdfTransformer {
 	 * @param html  is a String of html content
 	 * @param agent is a String, can be 'ca' or 'eo'
 	 *
-	 * @return a {@link ByteArrayOutputStream} object
-	 *
 	 * @throws PdfRenderingException In case an exception occurred
 	 */
-	public OutputStream convertToPDF(String html, String agent, OutputStream out) throws PdfRenderingException {
-		String xsl;
+	public ByteArrayOutputStream convertToPDF(String html, String agent) throws PdfRenderingException {
+		String xslt;
 
 		if ("ca".equals(agent)) {
-			xsl = XSL_CA;
+			xslt = XSL_CA;
 		} else {
-			xsl = XSL_EO;
+			xslt = XSL_EO;
 		}
-		FopFactory fopFactory;
+
+		try {
+			// Setup a buffer to obtain the content length (empirical initial size)
+			ByteArrayOutputStream out = new ByteArrayOutputStream(html.length() / 6);
+
+			// Setup FOP
+			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
+
+			// Setup Transformer
+			Source xsltSource = resolver.resolve(xslt, null);
+			Transformer transformer = transformerFactory.newTransformer(xsltSource);
+
+			// Make sure the XSL transformation's result is piped through to FOP
+			Result res = new SAXResult(fop.getDefaultHandler());
+
+			// Setup input
+			InputStream htmlInputStream = IOUtils.toInputStream(html, UTF_8.name());
+			StreamSource source = new StreamSource(htmlInputStream);
+
+			// Start the transformation and rendering process
+			transformer.transform(source, res);
+
+			return out;
+		} catch (TransformerException | FOPException | IOException e) {
+			throw new PdfRenderingException("Something went wrong while generating the PDF file.", e);
+		}
+	}
+
+	private FopFactory buildFopFactory() {
 		try {
 			DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
 			Configuration cfg = cfgBuilder
-					.build(new ClassPathResource("/tenderned/pdfrendering/fop/fop-config.xml").getInputStream());
-//			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
-//					new ClassPathResource("/tenderned/pdfrendering/").getURI()/*, new EspdResourceResolver()*/)
-//					.setConfiguration(cfg);
-			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(new File("./espd-web/src/main/resources").toURI()).setConfiguration(cfg);
-			fopFactory = fopFactoryBuilder.build();
+					.build(resourceLoader.getResource(espdConfiguration.getFopXmlConfigurationLocation())
+					                     .getInputStream());
+			URI defaultBaseURI = new ClassPathResource("application.properties").getURI();
+			log.debug("--- Default base URI: '{}'.", defaultBaseURI);
+			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
+					defaultBaseURI, new EspdResourceResolver(resourceLoader))
+					.setConfiguration(cfg);
+			return fopFactoryBuilder.build();
 		} catch (SAXException | IOException | ConfigurationException e) {
 			throw new IllegalArgumentException(e);
-		}
-
-		try {
-			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
-			Result res = new SAXResult(fop.getDefaultHandler());
-
-			Source xslSource = resolver.resolve(xsl, null);
-			Transformer xhtml2foTransformer = transformerFactory.newTransformer(xslSource);
-
-			InputStream htmlInputStream = IOUtils.toInputStream(html, UTF_8.name());
-			StreamSource xhtmlSource = new StreamSource(htmlInputStream);
-			xhtml2foTransformer.transform(xhtmlSource, res);
-			return out;
-		} catch (TransformerException | FOPException | IOException e) {
-			throw new PdfRenderingException("Something went wrong while generating PDF file.", e);
 		}
 	}
 
@@ -125,29 +142,32 @@ public class HtmlToPdfTransformer {
 
 		@Override
 		public Source resolve(String href, String base) throws TransformerException {
-			InputStream inputStream = this.getClass().getClassLoader()
-			                              .getResourceAsStream("tenderned/pdfrendering/xslt/" + href);
-			return new StreamSource(inputStream);
+			InputStream is = this.getClass().getClassLoader()
+			                     .getResourceAsStream("tenderned/pdfrendering/xslt/" + href);
+			return new StreamSource(is);
 		}
 	}
 
 	private static class EspdResourceResolver implements ResourceResolver {
 
+		private final ResourceLoader resourceLoader;
+
+		private EspdResourceResolver(ResourceLoader resourceLoader) {
+			this.resourceLoader = resourceLoader;
+		}
+
 		@Override
 		public Resource getResource(URI uri) throws IOException {
-			System.out.println("--------- get resource: " + uri);
-			int aaa = uri.toASCIIString().lastIndexOf("/tenderned/pdfrendering/");
-			String res = uri.toASCIIString().substring(aaa);
-			InputStream is = new ClassPathResource(res).getInputStream();
+			log.debug("--- Fop resource resolver get resource: '{}'.", uri);
+			InputStream is = resourceLoader.getResource(uri.toASCIIString()).getInputStream();
 			return new Resource(is);
 		}
 
 		@Override
 		public OutputStream getOutputStream(URI uri) throws IOException {
-			System.out.println("--------- get outputstream: " + uri);
-			return new ClassPathResource(uri.toASCIIString()).getURL().openConnection().getOutputStream();
-			//			URL url = servletContext.getResource(uri.toASCIIString());
-			//			return url.openConnection().getOutputStream();
+			log.debug("--- Fop resource resolver get output stream: '{}'.", uri);
+			return resourceLoader.getResource(uri.toASCIIString()).getURL().openConnection().getOutputStream();
 		}
 	}
+
 }

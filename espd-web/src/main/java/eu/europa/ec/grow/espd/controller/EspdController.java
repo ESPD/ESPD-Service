@@ -41,6 +41,7 @@ import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,12 +52,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
@@ -90,7 +93,7 @@ class EspdController {
 		return new EspdDocument();
 	}
 
-		@RequestMapping("/")
+	@RequestMapping("/")
 	public String index() {
 		return WELCOME_PAGE;
 	}
@@ -143,13 +146,25 @@ class EspdController {
 	private void copyTedInformation(EspdDocument document) {
 		TedResponse tedResponse = tedService
 				.getContractNoticeInformation(TedRequest.builder().receptionId(document.getTedReceptionId()).build());
-		document.setOjsNumber(tedResponse.getNoDocOjs());
+		if (tedResponse.isEmpty()) {
+			return;
+		}
+
 		TedResponse.TedNotice notice = tedResponse.getFirstNotice();
-		document.getAuthority().setName(notice.getOfficialName());
-		document.setProcedureTitle(notice.getTitle());
-		document.setProcedureShortDesc(notice.getShortDescription());
-		document.setFileRefByCA(notice.getReferenceNumber());
-		document.setTedUrl(notice.getTedUrl());
+		if (document.hasProcurementInformation()) {
+			if (isBlank(document.getOjsNumber()) && isBlank(document.getTedUrl())) {
+				// only update these fields if none of them is filled in
+				document.setOjsNumber(tedResponse.getNoDocOjs());
+				document.setTedUrl(notice.getTedUrl());
+			}
+		} else {
+			document.setOjsNumber(tedResponse.getNoDocOjs());
+			document.getAuthority().setName(notice.getOfficialName());
+			document.setProcedureTitle(notice.getTitle());
+			document.setProcedureShortDesc(notice.getShortDescription());
+			document.setFileRefByCA(notice.getReferenceNumber());
+			document.setTedUrl(notice.getTedUrl());
+		}
 	}
 
 	private String reuseRequestAsCA(MultipartFile attachment, Model model,
@@ -240,7 +255,6 @@ class EspdController {
 			@PathVariable String agent,
 			@PathVariable String step,
 			@ModelAttribute("espd") EspdDocument espd) {
-
 		return flow + "_" + agent + "_" + step;
 	}
 
@@ -317,9 +331,16 @@ class EspdController {
 		if ("savePrintHtml".equals(next)) {
 			espd.setHtml(addHtmlHeader(espd.getHtml()));
 
-			response.setContentType("application/pdf");
-			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd.pdf\"");
-			pdfTransformer.convertToPDF(espd.getHtml(), agent, response.getOutputStream());
+			ByteArrayOutputStream pdfOutput = pdfTransformer.convertToPDF(espd.getHtml(), agent);
+
+			String pdfFileName = "ca".equals(agent) ? "espd-request.pdf" : "espd-response.pdf";
+			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+			response.setContentLength(pdfOutput.size());
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", pdfFileName));
+
+			// Send content to Browser
+			response.getOutputStream().write(pdfOutput.toByteArray());
+			response.getOutputStream().flush();
 			return null;
 		}
 
@@ -336,9 +357,9 @@ class EspdController {
 	 * This method is for adding headers to the html code that's being saved on
 	 * the print.jsp page to make the html valid for creating a PDF file.
 	 *
-	 * @param html
+	 * @param html The HTML code of the ESPD to be printed
 	 *
-	 * @return
+	 * @return The HTML surrounded by the proper tags
 	 *
 	 */
 	private String addHtmlHeader(String html) {
@@ -376,7 +397,7 @@ class EspdController {
 	/**
 	 * If we have a value 'null' as a path variable we can assume the session was expired.
 	 *
-	 * @return
+	 * @return The name of the expired page
 	 */
 	@RequestMapping("**/null/**")
 	public String getPage() {

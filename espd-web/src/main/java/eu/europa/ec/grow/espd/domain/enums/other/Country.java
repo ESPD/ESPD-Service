@@ -203,7 +203,7 @@ public enum Country implements CacCountry {
 	NF("NF", "Norfolk Island", Currency.AUD),
 	NG("NG", "Nigeria", Currency.NGN),
 	NI("NI", "Nicaragua", Currency.NIO),
-	NL("NL", "Netherlands", Currency.ANG),
+	NL("NL", "Netherlands", Currency.EUR),
 	NO("NO", "Norway", Currency.NOK),
 	NP("NP", "Nepal", Currency.INR),
 	NR("NR", "Nauru", Currency.AUD),

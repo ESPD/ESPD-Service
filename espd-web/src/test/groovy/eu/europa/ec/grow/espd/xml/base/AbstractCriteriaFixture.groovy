@@ -29,7 +29,7 @@ import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 /**
  * Created by ratoico on 12/15/15 at 3:54 PM.
  */
-class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
+abstract class AbstractCriteriaFixture extends AbstractEspdXmlMarshalling {
 
     protected static void checkCriterionId(def request, int idx, String expectedId) {
         assert request.Criterion[idx].ID.text() == expectedId

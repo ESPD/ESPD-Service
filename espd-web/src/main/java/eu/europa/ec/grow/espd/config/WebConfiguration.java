@@ -24,13 +24,13 @@
 
 package eu.europa.ec.grow.espd.config;
 
-import java.util.Locale;
-
+import net.bull.javamelody.MonitoringFilter;
+import net.bull.javamelody.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.web.HttpEncodingProperties;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
-import org.springframework.boot.context.web.OrderedCharacterEncodingFilter;
+import org.springframework.boot.web.filter.OrderedCharacterEncodingFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -44,16 +44,19 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
-import net.bull.javamelody.MonitoringFilter;
-import net.bull.javamelody.Parameter;
+import java.util.Locale;
 
 @Configuration
 class WebConfiguration extends WebMvcConfigurerAdapter {
 
+	private final HttpEncodingProperties properties;
+
 	@Autowired
-	private HttpEncodingProperties properties;
-	
-    @Bean
+	WebConfiguration(HttpEncodingProperties properties) {
+		this.properties = properties;
+	}
+
+	@Bean
     UrlBasedViewResolver viewResolver() {
         UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
         viewResolver.setViewClass(TilesView.class);

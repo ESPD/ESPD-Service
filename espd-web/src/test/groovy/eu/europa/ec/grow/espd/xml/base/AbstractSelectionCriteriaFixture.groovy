@@ -26,7 +26,7 @@ package eu.europa.ec.grow.espd.xml.base
 /**
  * Created by ratoico on 12/15/15 at 5:29 PM.
  */
-class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
+abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkInfoAvailableElectronicallyRequirementGroup(def infoGroup) {
         assert infoGroup.ID.text() == "9026e403-3eb6-4705-a9e9-e21a1efc867d"
