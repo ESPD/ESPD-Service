@@ -284,6 +284,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
     <c:set var="cachedFragment" scope="application">
 
+    <!-- Hidden header element which appears only in the PDF rendition -->
+    <h1 id="print_espd_title" class="hidden hidden-print"><s:message code='app_title'/></h1>
 	<%-- PROCEDURE --%>
 	
 	<%@ include file="/WEB-INF/views/wizard/procedureForm.jsp" %>
