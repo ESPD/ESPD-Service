@@ -310,7 +310,7 @@ class EspdController {
 		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print|savePrintHtml}",
+	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",
 			method = POST, params = "next")
 	public String next(
 			@PathVariable String flow,
@@ -328,28 +328,41 @@ class EspdController {
 			return flow + "_" + agent + "_" + step;
 		}
 
-		if ("savePrintHtml".equals(next)) {
-			espd.setHtml(addHtmlHeader(espd.getHtml()));
-
-			ByteArrayOutputStream pdfOutput = pdfTransformer.convertToPDF(espd.getHtml(), agent);
-
-			String pdfFileName = "ca".equals(agent) ? "espd-request.pdf" : "espd-response.pdf";
-			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-			response.setContentLength(pdfOutput.size());
-			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", pdfFileName));
-
-			// Send content to Browser
-			response.getOutputStream().write(pdfOutput.toByteArray());
-			response.getOutputStream().flush();
-			return null;
-		}
-
 		if (!"generate".equals(next)) {
 			return redirectToPage(flow + "/" + agent + "/" + next);
 		}
 
 		downloadEspdFile(agent, espd, response);
 
+		return null;
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:print}", params = "next=savePrintHtml")
+	public String printPDF(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletResponse response,
+			BindingResult bindingResult,
+			Model model) throws PdfRenderingException, IOException {
+
+		if (bindingResult.hasErrors()) {
+			return flow + "_" + agent + "_" + step;
+		}
+
+		espd.setHtml(addHtmlHeader(espd.getHtml()));
+
+		ByteArrayOutputStream pdfOutput = pdfTransformer.convertToPDF(espd.getHtml(), agent);
+
+		String pdfFileName = "ca".equals(agent) ? "espd-request.pdf" : "espd-response.pdf";
+		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+		response.setContentLength(pdfOutput.size());
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", pdfFileName));
+
+		// Send content to Browser
+		response.getOutputStream().write(pdfOutput.toByteArray());
+		response.getOutputStream().flush();
 		return null;
 	}
 
@@ -360,7 +373,6 @@ class EspdController {
 	 * @param html The HTML code of the ESPD to be printed
 	 *
 	 * @return The HTML surrounded by the proper tags
-	 *
 	 */
 	private String addHtmlHeader(String html) {
 		String newHtml = UnescapeHtml4.unescapeHtml4(html);
