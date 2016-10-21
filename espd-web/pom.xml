@@ -156,6 +156,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <nonFilteredFileExtensions>
+                        <!-- To avoid the corruption of fonts when building the WAR file -->
                         <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
                 </configuration>

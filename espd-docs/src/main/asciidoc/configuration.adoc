@@ -24,6 +24,7 @@
 :piwik: http://piwik.org/[Piwik]
 :jquery: https://jquery.com/[jQuery]
 :rest: https://en.wikipedia.org/wiki/Representational_state_transfer[REST]
+:fop: https://xmlgraphics.apache.org/fop/[Apache FOP]
 
 == Configuration
 
@@ -661,3 +662,74 @@ ted.api.password=passed as server startup parameter
 ----
 
 The part of the code that handles the TED service can be found in the `eu.europa.ec.grow.espd.ted` package.
+
+=== PDF printing
+
+Printing the `ESPD Request` and `ESPD Response` to PDF files is achieved via {fop}. To produce a PDF file, we start
+from the HTML content of the `ESPD` entity which we want to print and use an XSLT stylesheet that converts the HTML
+to XSL-FO. This is the first step in the processing chain. The second step will be done by {fop} when it reads the
+generated XSL-FO document and formats it to a PDF document.
+
+XSL-FO is an XML vocabulary that is used to specify a pagination and other styling for page layout output.
+The acronym `FO` stands for Formatting Objects. XSL-FO can be used in conjunction with XSLT to convert from any XML
+format into a paginated layout ready for printing or displaying. The XSLT files taking care of the HTML transformation
+can be found in `src/main/resources/tenderned/pdfrendering/xslt`.
+
+The printing implementation resides inside the `eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer` class.
+
+{fop} requires a configuration file whose location can be configured via the `apache.fop.xml.configuration.location`
+application parameter. The default location is `src/main/resources/grow/fop/fop-config.xml`.
+
+In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
+for these languages. Otherwise, if no glyph can be found for a given character, {fop} will issue a warning and use
+the glyph for "#" (if available) instead. The font also needs to be embedded in the PDF so that the document is
+correctly displayed on all clients which are viewing the generated files. For these reasons we are using a custom
+font called `DejaVu`.
+
+Inside the `fop-config.xml` file we need to make sure that the font files are correctly configured and then properly
+loaded by {fop} across multiple Servlet containers. Please notice the `ember-url` attribute.
+
+[source,xml]
+.fop-config.xml
+----
+<font metrics-url="fonts/DejaVuSans/ttf/DejaVuSans.xml"
+      embed-url="fonts/DejaVuSans/ttf/DejaVuSans.ttf">
+  <font-triplet name="DejaVuSans" style="normal" weight="normal"/>
+</font>
+----
+
+The fonts are then loaded by {fop} by using a custom `org.apache.xmlgraphics.io.ResourceResolver` which looks for them
+via the Spring `ResourceLoader` mechanism in a portable and consistent way across different Serlvet containers.
+
+[source,java]
+.EspdResourceResolver.java
+----
+@Override
+public Resource getResource(URI uri) throws IOException {
+  log.debug("--- Fop resource resolver get resource: '{}'.", uri);
+  InputStream is = resourceLoader.getResource(uri.toASCIIString()).getInputStream();
+  return new Resource(is);
+}
+----
+
+To be able to load the fonts when running the application with an embedded server we need to copy them in a location
+relative to the application context root.
+
+[source,xml]
+.pom.xml
+----
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-war-plugin</artifactId>
+  <configuration>
+    <warName>${project.artifactId}</warName>
+    <webResources>
+      <resource>
+        <directory>src/main/resources/fonts</directory>
+        <targetPath>fonts</targetPath>
+        <filtering>false</filtering>
+      </resource>
+    </webResources>
+  </configuration>
+</plugin>
+----

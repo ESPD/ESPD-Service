@@ -127,6 +127,8 @@ public class HtmlToPdfTransformer {
 			Configuration cfg = cfgBuilder
 					.build(resourceLoader.getResource(espdConfiguration.getFopXmlConfigurationLocation())
 					                     .getInputStream());
+			// it is very important to load the fonts from the classpath to achieve maximum portability
+			// and the base URI is built accordingly by using the location of the application.properties file
 			URI defaultBaseURI = new ClassPathResource("application.properties").getURI();
 			log.debug("--- Default base URI: '{}'.", defaultBaseURI);
 			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
