@@ -52,7 +52,7 @@ import java.net.URI;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
- * This class converts html to pdf file
+ * This class converts HTML pages to a PDF file using XSLT transformations and Apache FOP.
  */
 @Component
 @Slf4j
@@ -86,12 +86,12 @@ public class HtmlToPdfTransformer {
 	 * @throws PdfRenderingException In case an exception occurred
 	 */
 	public ByteArrayOutputStream convertToPDF(String html, String agent) throws PdfRenderingException {
-		String xslt;
+		String xsltLocation;
 
 		if ("ca".equals(agent)) {
-			xslt = XSL_CA;
+			xsltLocation = XSL_CA;
 		} else {
-			xslt = XSL_EO;
+			xsltLocation = XSL_EO;
 		}
 
 		try {
@@ -102,7 +102,7 @@ public class HtmlToPdfTransformer {
 			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
 
 			// Setup Transformer
-			Source xsltSource = resolver.resolve(xslt, null);
+			Source xsltSource = resolver.resolve(xsltLocation, null);
 			Transformer transformer = transformerFactory.newTransformer(xsltSource);
 
 			// Make sure the XSL transformation's result is piped through to FOP
@@ -127,6 +127,8 @@ public class HtmlToPdfTransformer {
 			Configuration cfg = cfgBuilder
 					.build(resourceLoader.getResource(espdConfiguration.getFopXmlConfigurationLocation())
 					                     .getInputStream());
+			// it is very important to load the fonts from the classpath to achieve maximum portability
+			// and the base URI is built accordingly by using the location of the application.properties file
 			URI defaultBaseURI = new ClassPathResource("application.properties").getURI();
 			log.debug("--- Default base URI: '{}'.", defaultBaseURI);
 			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
@@ -148,6 +150,11 @@ public class HtmlToPdfTransformer {
 		}
 	}
 
+	/**
+	 * A {@link ResourceResolver} which delegates to a Spring {@link ResourceLoader} for loading font information
+	 * for Apache FOP, generally from application classpath, in a consistent and portable manner across different
+	 * Servlet containers and application servers.
+	 */
 	private static class EspdResourceResolver implements ResourceResolver {
 
 		private final ResourceLoader resourceLoader;

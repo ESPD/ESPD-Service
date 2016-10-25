@@ -133,11 +133,11 @@
 
 				<xsl:choose>
 					<xsl:when test="@checked = 'checked'">
-						<fo:inline font-family='ZapfDingbats'>&#x25CF;</fo:inline>
+						<fo:inline font-family='DejaVuSans'>&#x25CF;</fo:inline>
 						<xsl:value-of select="span"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<fo:inline font-family='ZapfDingbats'>&#x274D;</fo:inline>
+						<fo:inline font-family='DejaVuSans'>&#x274D;</fo:inline>
 						<xsl:value-of select="span"/>
 					</xsl:otherwise>
 				</xsl:choose>
@@ -146,11 +146,11 @@
 				<fo:block/>
 				<xsl:choose>
 					<xsl:when test="@selected ='selected'">
-						<fo:inline font-family='ZapfDingbats'>&#x25A0;</fo:inline>
+						<fo:inline font-family='DejaVuSans'>&#x25A0;</fo:inline>
 						<xsl:value-of select="span"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<fo:inline font-family='ZapfDingbats'>&#x274F;</fo:inline>
+						<fo:inline font-family='DejaVuSans'>&#x274F;</fo:inline>
 						<xsl:value-of select="span"/>
 					</xsl:otherwise>
 				</xsl:choose>
