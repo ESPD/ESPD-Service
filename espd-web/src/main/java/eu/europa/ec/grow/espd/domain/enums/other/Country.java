@@ -92,7 +92,7 @@ public enum Country implements CacCountry {
 	CV("CV", "Cape Verde", Currency.CVE),
 	CW("CW", "Curaçao", Currency.ANG),
 	CX("CX", "Christmas Island", Currency.AUD),
-	CY("CY", "Cyprus", Currency.CYP),
+	CY("CY", "Cyprus", Currency.EUR),
 	CZ("CZ", "Czech Republic", Currency.CZK),
 	DE("DE", "Germany", Currency.EUR),
 	DJ("DJ", "Djibouti", Currency.DJF),
