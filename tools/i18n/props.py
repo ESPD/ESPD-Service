@@ -59,7 +59,7 @@ def loadProps(fileName, lang, globalProps):
                     else: globalProps[key][lang] = True
     return props
 
-# load properties from muiltipe property files presented in given folder and sort them by translated language
+# load properties from muiltipe property files presented in given folder and sort them by language
 def loadTranslations(folderName, loadDefault = True, globalProps=None):
     globalProps = {} if globalProps == None else globalProps
     propsByLang = {}
@@ -78,7 +78,7 @@ def loadTranslations(folderName, loadDefault = True, globalProps=None):
     langs.sort()		# list of languages including MS as master property
     return propsByLang, langs, globalProps
 
-# performs merging between untranslated on partually translated properties files and newly translated properties files
+# performs merging between untranslated or partually translated properties files and newly translated properties files
 def mergeTranslations(headerFile, resultFolder, langs, translByLang, propsByLang, globalProps):
 
     with open(headerFile) as f: headerText = f.read()
