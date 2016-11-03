@@ -4,6 +4,13 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
+<%--
+	Attributes of procedureForm.jsp
+	
+	show_part_II - Boolean value to display or hide Part II (Information about EO)
+--%>
+
 <script>
     $(function () {
         $('#procedureTedReceptionId').keyup(function () {
@@ -127,7 +134,7 @@
         </div>
     </div>
 </div>
-<c:if test="${agent == 'eo'}">
+<c:if test="${show_part_II}">
     <div>
         <h2>${span18n['createeo_header']}</h2>
     </div>

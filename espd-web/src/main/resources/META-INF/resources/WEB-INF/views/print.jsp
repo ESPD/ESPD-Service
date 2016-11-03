@@ -288,6 +288,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
     <h1 id="print_espd_title" class="hidden hidden-print"><s:message code='app_title'/></h1>
 	<%-- PROCEDURE --%>
 	
+	<c:set var="show_part_II" value="${true}" scope="request"/>
 	<%@ include file="/WEB-INF/views/wizard/procedureForm.jsp" %>
  
 	<%-- EXCLUSION --%>
