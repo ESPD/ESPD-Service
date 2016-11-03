@@ -1,21 +1,45 @@
+#
+# Python script combining translated properties files
+# for muilti language project.
+#
+# Usage as command line tool:
+#
+# python props.py [-options]
+# or
+# java -jar jython.jar props.py [-options]
+#
+# where options include:
+#
+# -f or -folder	path to a folder having source untranslated or partually rtanslated property files
+# -t or -translated path to a folder containing newly translated property files
+# -r or -result path to a folder where to generate results and translation check reports
+# -h or -header path to a textual file header to be included in the beginning of every property file
+#
+# lukasal 03/11/2016
+#
+
 import os
 import sys
 import re
 from os.path import basename
 
+# simply prints line on screen
 def trace(msg):
     sys.stdout.write(msg+"\n")
     sys.stdout.flush()
     return
 
+# opens file with writing permission
+# creates empty file including folder structure if file not exists 
 def towrite(filename):
     if not os.path.exists(os.path.dirname(filename)):
         try:
             os.makedirs(os.path.dirname(filename))
-        except OSError as exc: # Guard against race condition
+        except OSError as exc:
             raise
     return open(filename, "w")
 
+# load properties key=value ignoring comments from property file into a hash map
 def loadProps(fileName, lang, globalProps):
     props = {}
     with open(fileName, "r") as f:
@@ -35,6 +59,7 @@ def loadProps(fileName, lang, globalProps):
                     else: globalProps[key][lang] = True
     return props
 
+# load properties from muiltipe property files presented in given folder and sort them by translated language
 def loadTranslations(folderName, loadDefault = True, globalProps=None):
     globalProps = {} if globalProps == None else globalProps
     propsByLang = {}
@@ -53,6 +78,7 @@ def loadTranslations(folderName, loadDefault = True, globalProps=None):
     langs.sort()		# list of languages including MS as master property
     return propsByLang, langs, globalProps
 
+# performs merging between untranslated on partually translated properties files and newly translated properties files
 def mergeTranslations(headerFile, resultFolder, langs, translByLang, propsByLang, globalProps):
 
     with open(headerFile) as f: headerText = f.read()
@@ -98,7 +124,7 @@ def mergeTranslations(headerFile, resultFolder, langs, translByLang, propsByLang
         resultFiles[lang].flush()
         resultFiles[lang].close()
 
-
+# generates report indicating partually translated properties
 def checkReport(reportFileName, langs, propsByLang, globalProps):
     checkList = []
     for key in globalProps: 
@@ -120,6 +146,7 @@ def checkReport(reportFileName, langs, propsByLang, globalProps):
         report.write(keyLine + "    " + key + "\n")
 
 
+# main method with all application logic inside
 def MAIN(argv):    
                     
     headerFile = ""
@@ -151,5 +178,6 @@ def MAIN(argv):
     trace("Global property check...")
     checkReport(os.path.join(resultFolder, "translationTest.txt"), langs, propsByLang, globalProps)
 
-MAIN(sys.argv)
-sys.exit(0)
+
+MAIN(sys.argv)	# run main
+sys.exit(0) 	# exit with ok
