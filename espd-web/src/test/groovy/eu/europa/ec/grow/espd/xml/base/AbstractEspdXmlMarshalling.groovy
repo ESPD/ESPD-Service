@@ -34,17 +34,16 @@ import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulat
 import eu.europa.ec.grow.espd.xml.common.importing.EconomicOperatorImplTransformer
 import eu.europa.ec.grow.espd.xml.common.importing.PartyImplTransformer
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestCriteriaTransformer
-import eu.europa.ec.grow.espd.xml.request.importing.UblRequestImporter
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestTypeTransformer
+import eu.europa.ec.grow.espd.xml.request.importing.UblRequestImporter
 import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseCriteriaTransformer
+import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer
 import eu.europa.ec.grow.espd.xml.response.importing.UblRequestResponseMerger
 import eu.europa.ec.grow.espd.xml.response.importing.UblResponseImporter
-import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer
 import groovy.util.slurpersupport.GPathResult
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import spock.lang.Shared
 import spock.lang.Specification
-
 /**
  *  Created by vigi on 11/20/15:9:13 AM.
  */
@@ -70,7 +69,8 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     private static void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
         def ublContractingPartyTypeTransformer = new UblContractingPartyTypeTransformer()
         def economicOperatorPartyTypeTransformer = new UblEconomicOperatorPartyTypeTransformer()
-        def espdConfig = new EspdConfiguration(buildVersion: "2016.4")
+        def espdConfig = new EspdConfiguration(null)
+        espdConfig.buildVersion = "2016.4"
         def ublRequestTypeTransformer = new UblRequestTypeTransformer(ublContractingPartyTypeTransformer, new UblRequestCriteriaTransformer(), espdConfig)
         def partyImplTransformer = new PartyImplTransformer()
         def criteriaToEspdDocumentPopulator = new CriteriaToEspdDocumentPopulator()

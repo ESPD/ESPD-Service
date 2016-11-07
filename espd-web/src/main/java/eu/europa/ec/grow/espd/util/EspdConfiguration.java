@@ -61,11 +61,18 @@ public class EspdConfiguration {
 
     @Value("${espd.environment:false}")
     private boolean espdEnvironment;
-    
-    @Autowired
-    private Environment environment;
 
-    public String getActiveProfile() {
+	@Value("${apache.fop.xml.configuration.location:classpath:grow/fop/fop-config.xml}")
+	private String fopXmlConfigurationLocation;
+    
+    private final Environment environment;
+
+	@Autowired
+	EspdConfiguration(Environment environment) {
+		this.environment = environment;
+	}
+
+	public String getActiveProfile() {
         if (ArrayUtils.isNotEmpty(environment.getActiveProfiles())) {
             return Arrays.toString(environment.getActiveProfiles());
         }

@@ -29,48 +29,43 @@
   ~
   --%>
 
-<tiles:importAttribute name="id" />
+<tiles:importAttribute name="id"/>
 <tiles:importAttribute name="title_code"/>
 <tiles:importAttribute name="subtitle_code"/>
 <tiles:importAttribute name="tooltip_code"/>
 <tiles:importAttribute name="disableTooltips"/>
+<tiles:importAttribute name="criteriaList"/>
 
-<tiles:importAttribute name="criteriaList" />
-
-<div class="panel panel-espd">
-	        
-	<div class="panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
-		<h4 class="panel-title">
-			${span18n[title_code]}
-		</h4>
-	</div>
-	            
-	<div id="${id}" class="collapse in">
-		<div class="espd-panel-body panel-body">
-
-			<strong>
-				${span18n[subtitle_code]}
-			</strong>
-			
-			<c:if test="${!disableTooltips && not empty tooltip_code}">
-				<span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${i18n[tooltip_code]}"></span>
-			</c:if>
-			
-			<c:forEach var="criterion" items="${criteriaList}">
-
-				<tiles:insertDefinition name="${criterion['template']}">
-					<c:forEach var="criterionParam" items="${criterion}">
-					    <tiles:putAttribute name="${criterionParam.key}" value="${criterionParam.value}"/>
-					</c:forEach>
-
-					<%-- only for ugly print version --%>
-					<c:if test="${disableTooltips == true}">
-						<tiles:putAttribute name="disableTooltips" value="true"/>
-					</c:if>
-				</tiles:insertDefinition>
-				
-			</c:forEach>
-			
-		</div>
-	</div>
-</div>
+<c:set var="atLeastOneCriterionExists" value="false"/>
+<c:forEach var="criterion" items="${criteriaList}">
+    <c:set var="atLeastOneCriterionExists" value="${atLeastOneCriterionExists || espd[criterion.field].exists}"/>
+</c:forEach>
+<c:if test="${agent eq 'ca'}">
+    <c:set var="atLeastOneCriterionExists" value="true"/>
+</c:if>
+<c:if test="${atLeastOneCriterionExists}">
+    <div class="panel panel-espd">
+        <div class="panel-heading" data-toggle="collapse" data-target="${'#'}${id}">
+            <h4 class="panel-title"> ${span18n[title_code]} </h4>
+        </div>
+        <div id="${id}" class="collapse in">
+            <div class="espd-panel-body panel-body">
+                <strong> ${span18n[subtitle_code]} </strong>
+                <c:if test="${!disableTooltips && not empty tooltip_code}">
+                    <span data-i18n="${tooltip_code}" data-toggle="tooltip" title="${i18n[tooltip_code]}"></span>
+                </c:if>
+                <c:forEach var="criterion" items="${criteriaList}">
+                    <tiles:insertDefinition name="${criterion['template']}">
+                        <c:forEach var="criterionParam" items="${criterion}">
+                            <tiles:putAttribute name="${criterionParam.key}" value="${criterionParam.value}"/>
+                        </c:forEach>
+                        <%-- only for ugly print version --%>
+                        <c:if test="${disableTooltips == true}">
+                            <tiles:putAttribute name="disableTooltips" value="true"/>
+                        </c:if>
+                    </tiles:insertDefinition>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+</c:if>

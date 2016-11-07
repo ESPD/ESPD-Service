@@ -79,7 +79,7 @@ class EspdDocumentTest extends Specification {
         def espd = new EspdDocument()
 
         when:
-        espd.selectCAExclusionCriteria()
+        espd.selectCAExclusionCriteriaEU()
 
         then:
         for (eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion crit : eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.values()) {

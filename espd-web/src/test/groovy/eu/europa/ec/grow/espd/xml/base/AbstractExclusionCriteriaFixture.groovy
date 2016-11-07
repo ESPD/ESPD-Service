@@ -26,7 +26,7 @@ package eu.europa.ec.grow.espd.xml.base
 /**
  * Created by ratoico on 12/15/15 at 3:53 PM.
  */
-class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
+abstract class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture {
 
     protected static void checkSelfCleaningRequirementGroup(def selfCleaningGroup) {
         assert selfCleaningGroup.ID.text() == "5f9f09f7-f701-432c-9fdc-c22c124a74c9"

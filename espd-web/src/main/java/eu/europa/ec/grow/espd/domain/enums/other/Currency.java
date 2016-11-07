@@ -70,7 +70,6 @@ public enum Currency {
 	CRC("Costa Rican Colon"),
 	CUP("Cuban Peso"),
 	CVE("Cape Verde Escudo"),
-	CYP("Cyprus Pound"),
 	CZK("Czech Koruna"),
 	DJF("Djibouti Franc"),
 	DKK("Danish Krone"),

@@ -3,17 +3,17 @@
 Alexey Lukashov +
 Virgiliu Ratoi
 
-v2016.08.01, 19-09-2016
+v2016.10, 08-11-2016
 
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
-:appVersion: 2016.05
+:appVersion: 2016.10
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
 :spring: https://projects.spring.io/spring-framework/[Spring]
-:springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
+:springMvc: http://docs.spring.io/autorepo/docs/spring/4.3.x/spring-framework-reference/html/mvc.html[Spring MVC]
 :logback: http://logback.qos.ch/[Logback]
 :slf4j: http://www.slf4j.org/[SLF4J]
 :lombok: https://projectlombok.org/features/index.html[Lombok]
