@@ -1,5 +1,35 @@
 == Release notes
 
+=== 2016.10 (8th of November 2016)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/79[Part II: Not printed if printed out as CA]
+* https://github.com/ESPD/ESPD-Service/issues/90[Part II: Concerning the information on registration]
+* https://github.com/ESPD/ESPD-Service/issues/83[If ESPD service receives an empty response from TED, the answer should be ignored.]
+* https://github.com/ESPD/ESPD-Service/issues/82[Temporary TED ID to be deleted if CA reuses request from .XML]
+* https://github.com/ESPD/ESPD-Service/issues/80[Some currency changes after reload]
+* https://github.com/ESPD/ESPD-Service/issues/77[Wrong default currency for the Netherlands (ANG instead of Euro)]
+* https://github.com/ESPD/ESPD-Service/issues/105[Printing Alpha Criterion display issue when the user is an Economic Operator]
+* https://github.com/ESPD/ESPD-Service/issues/107[RO language: country list]
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/97[Export an ESPD as PDF]
+* https://github.com/ESPD/ESPD-Service/issues/18[Migration to the corporate PIWIK]
+* https://github.com/ESPD/ESPD-Service/issues/70[Change breadcrumb]
+* https://github.com/ESPD/ESPD-Service/issues/36[If CA selects global indicator than A/B/C/D should not be shown at all only alpha]
+
+===== Usability
+
+* https://github.com/ESPD/ESPD-Service/issues/78[Part II section c: Consortium name field should be below "yes" "no"]
+
+==== Translation
+
+* The release includes fixes related to translation issues for various languages
+
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/4?closed=1[ESPD Milestone 2016.10].
+
 === 2016.08.01 (19th of September 2016)
 
 ==== Bug
@@ -25,6 +55,8 @@
 * https://github.com/ESPD/ESPD-Service/issues/17[Link to eCertis for EOs]
 * https://github.com/ESPD/ESPD-Service/issues/16[Add more Legal representative]
 
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/2?closed=1[ESPD Milestone 2016.08].
+
 === 2016.07 (29th of July 2016)
 
 ==== Bug
@@ -46,6 +78,8 @@
 
 * https://github.com/ESPD/ESPD-Service/issues/6[We should show version number and updates in the ESPD service]
 * https://github.com/ESPD/ESPD-Service/issues/3[List of countries in all other official languages]
+
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/1?closed=1[ESPD Milestone 2016.07].
 
 === 2016.06.01 (30th of June 2016)
 
