@@ -41,4 +41,6 @@
         <appender-ref ref="EMAIL" />
     </root>
 
+    <logger name="org.apache.fop" level="ERROR" />
+
 </configuration>

@@ -27,7 +27,7 @@
     <parent>
         <artifactId>espd</artifactId>
         <groupId>eu.europa.ec.grow.espd</groupId>
-        <version>2016.08.01</version>
+        <version>2016.10-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>espd-web</artifactId>
@@ -105,8 +105,28 @@
             <version>3.3</version>
             <scope>test</scope>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpclient</artifactId>-->
+        <!--<version>4.5.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpmime</artifactId>-->
+        <!--<version>4.5.1</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-
     <build>
         <!-- Use the following to develop on your local machine or on the CI server -->
         <finalName>${project.artifactId}</finalName>
@@ -129,6 +149,16 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <!-- To avoid the corruption of fonts when building the WAR file -->
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
             <plugin>
@@ -184,6 +214,12 @@
                             <!-- copy these files in the WAR so that Apache Tiles is able to load its definitions correctly -->
                             <directory>src/main/resources/META-INF/resources/</directory>
                         </resource>
+                        <!-- We need to copy fonts so that they can be served from the context root when printing PDFs with the embedded server -->
+                        <resource>
+                            <directory>src/main/resources/fonts</directory>
+                            <targetPath>fonts</targetPath>
+                            <filtering>false</filtering>
+                        </resource>
                     </webResources>
                 </configuration>
             </plugin>
@@ -221,26 +257,26 @@
                 <version>${wro4j.version}</version>
                 <executions>
                     <execution>
-						<id>all</id>
+                        <id>all</id>
                         <phase>compile</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
-                         <configuration>
-                    		<targetGroups>all</targetGroups>
-                   			<minimize>true</minimize>
-                    	</configuration>
+                        <configuration>
+                            <targetGroups>all</targetGroups>
+                            <minimize>true</minimize>
+                        </configuration>
                     </execution>
                     <execution>
-						<id>debug</id>
+                        <id>debug</id>
                         <phase>compile</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
-                         <configuration>
-                    		<targetGroups>debug</targetGroups>
-                   			<minimize>false</minimize>
-                    	</configuration>
+                        <configuration>
+                            <targetGroups>debug</targetGroups>
+                            <minimize>false</minimize>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -249,7 +285,8 @@
                     <contextFolder>${basedir}/src/main/resources/META-INF/resources</contextFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/static/bundle/</cssDestinationFolder>
                     <jsDestinationFolder>${basedir}/src/main/webapp/static/bundle/</jsDestinationFolder>
-                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory
+                    </wroManagerFactory>
                     <ignoreMissingResources>false</ignoreMissingResources>
                     <incrementalBuildEnabled>true</incrementalBuildEnabled>
                     <contextPath>/espd/</contextPath>
@@ -257,40 +294,40 @@
             </plugin>
         </plugins>
         <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.codehaus.gmavenplus
-        								</groupId>
-        								<artifactId>
-        									gmavenplus-plugin
-        								</artifactId>
-        								<versionRange>
-        									[1.5,)
-        								</versionRange>
-        								<goals>
-        									<goal>compile</goal>
-        									<goal>testCompile</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore></ignore>
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.codehaus.gmavenplus
+                                        </groupId>
+                                        <artifactId>
+                                            gmavenplus-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.5,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>compile</goal>
+                                            <goal>testCompile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
     <profiles>
