@@ -15,7 +15,6 @@
 
 ==== Enhancement
 
-* https://github.com/ESPD/ESPD-Service/issues/97[Export an ESPD as PDF]
 * https://github.com/ESPD/ESPD-Service/issues/18[Migration to the corporate PIWIK]
 * https://github.com/ESPD/ESPD-Service/issues/70[Change breadcrumb]
 * https://github.com/ESPD/ESPD-Service/issues/36[If CA selects global indicator than A/B/C/D should not be shown at all only alpha]
