@@ -556,6 +556,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#jaxb">JAXB</a></li>
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
+<li><a href="#pdf-printing">PDF printing</a></li>
 </ul>
 </li>
 </ul>
@@ -1299,12 +1300,92 @@ ted.api.password=passed as server startup parameter</code></pre>
 <p>The part of the code that handles the TED service can be found in the <code>eu.europa.ec.grow.espd.ted</code> package.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="pdf-printing"><a class="anchor" href="#pdf-printing"></a>PDF printing</h3>
+<div class="paragraph">
+<p>Printing the <code>ESPD Request</code> and <code>ESPD Response</code> to PDF files is achieved via <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a>. To produce a PDF file, we start
+from the HTML content of the <code>ESPD</code> entity which we want to print and use an XSLT stylesheet that converts the HTML
+to XSL-FO. This is the first step in the processing chain. The second step will be done by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> when it reads the
+generated XSL-FO document and formats it to a PDF document.</p>
+</div>
+<div class="paragraph">
+<p>XSL-FO is an XML vocabulary that is used to specify a pagination and other styling for page layout output.
+The acronym <code>FO</code> stands for Formatting Objects. XSL-FO can be used in conjunction with XSLT to convert from any XML
+format into a paginated layout ready for printing or displaying. The XSLT files taking care of the HTML transformation
+can be found in <code>src/main/resources/tenderned/pdfrendering/xslt</code>.</p>
+</div>
+<div class="paragraph">
+<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> requires a configuration file whose location can be configured via the <code>apache.fop.xml.configuration.location</code>
+application parameter. The default location is <code>src/main/resources/grow/fop/fop-config.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p>In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
+for these languages. Otherwise, if no glyph can be found for a given character, <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> will issue a warning and use
+the glyph for "#" (if available) instead. The font also needs to be embedded in the PDF so that the document is
+correctly displayed on all clients which are viewing the generated files. For these reasons we are using a custom
+font called <code>DejaVu</code>.</p>
+</div>
+<div class="paragraph">
+<p>Inside the <code>fop-config.xml</code> file we need to make sure that the font files are correctly configured and then properly
+loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> across multiple Servlet containers. Please notice the <code>ember-url</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="title">fop-config.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;font</span> <span class="attribute-name">metrics-url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fonts/DejaVuSans/ttf/DejaVuSans.xml</span><span class="delimiter">&quot;</span></span>
+      <span class="attribute-name">embed-url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fonts/DejaVuSans/ttf/DejaVuSans.ttf</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;font-triplet</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DejaVuSans</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">normal</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">weight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">normal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/font&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fonts are then loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
+via the Spring <code>ResourceLoader</code> mechanism in a portable and consistent way across different Serlvet containers.</p>
+</div>
+<div class="listingblock">
+<div class="title">EspdResourceResolver.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> Resource getResource(<span class="predefined-type">URI</span> uri) <span class="directive">throws</span> <span class="exception">IOException</span> {
+  log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">--- Fop resource resolver get resource: '{}'.</span><span class="delimiter">&quot;</span></span>, uri);
+  <span class="predefined-type">InputStream</span> is = resourceLoader.getResource(uri.toASCIIString()).getInputStream();
+  <span class="keyword">return</span> <span class="keyword">new</span> Resource(is);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To be able to load the fonts when running the application with an embedded server we need to copy them in a location
+relative to the application context root.</p>
+</div>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>maven-war-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+    <span class="tag">&lt;warName&gt;</span>${project.artifactId}<span class="tag">&lt;/warName&gt;</span>
+    <span class="tag">&lt;webResources&gt;</span>
+      <span class="tag">&lt;resource&gt;</span>
+        <span class="tag">&lt;directory&gt;</span>src/main/resources/fonts<span class="tag">&lt;/directory&gt;</span>
+        <span class="tag">&lt;targetPath&gt;</span>fonts<span class="tag">&lt;/targetPath&gt;</span>
+        <span class="tag">&lt;filtering&gt;</span>false<span class="tag">&lt;/filtering&gt;</span>
+      <span class="tag">&lt;/resource&gt;</span>
+    <span class="tag">&lt;/webResources&gt;</span>
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-19 09:57:36 CEST
+Last updated 2016-10-21 11:18:00 CEST
 </div>
 </div>
 </body>

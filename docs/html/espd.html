@@ -571,6 +571,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#jaxb">JAXB</a></li>
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
+<li><a href="#pdf-printing">PDF printing</a></li>
 </ul>
 </li>
 <li><a href="#view">View</a>
@@ -595,6 +596,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2016-10-8th-of-november-2016">2016.10 (8th of November 2016)</a></li>
 <li><a href="#2016-08-01-19th-of-september-2016">2016.08.01 (19th of September 2016)</a></li>
 <li><a href="#2016-08-31st-of-august-2016">2016.08 (31st of August 2016)</a></li>
 <li><a href="#2016-07-29th-of-july-2016">2016.07 (29th of July 2016)</a></li>
@@ -620,7 +622,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2016.08.01, 19-09-2016</p>
+<p>v2016.10, 08-11-2016</p>
 </div>
 </div>
 </div>
@@ -634,7 +636,7 @@ Virgiliu Ratoi</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://img.shields.io/badge/Spring%20Boot-1.3.3-green.svg?style=flat" alt="Spring Boot">
+<img src="https://img.shields.io/badge/Spring%20Boot-1.4.1-green.svg?style=flat" alt="Spring Boot">
 </div>
 </div>
 <div class="imageblock">
@@ -1862,6 +1864,86 @@ ted.api.password=passed as server startup parameter</code></pre>
 <p>The part of the code that handles the TED service can be found in the <code>eu.europa.ec.grow.espd.ted</code> package.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="pdf-printing"><a class="anchor" href="#pdf-printing"></a>PDF printing</h3>
+<div class="paragraph">
+<p>Printing the <code>ESPD Request</code> and <code>ESPD Response</code> to PDF files is achieved via <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a>. To produce a PDF file, we start
+from the HTML content of the <code>ESPD</code> entity which we want to print and use an XSLT stylesheet that converts the HTML
+to XSL-FO. This is the first step in the processing chain. The second step will be done by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> when it reads the
+generated XSL-FO document and formats it to a PDF document.</p>
+</div>
+<div class="paragraph">
+<p>XSL-FO is an XML vocabulary that is used to specify a pagination and other styling for page layout output.
+The acronym <code>FO</code> stands for Formatting Objects. XSL-FO can be used in conjunction with XSLT to convert from any XML
+format into a paginated layout ready for printing or displaying. The XSLT files taking care of the HTML transformation
+can be found in <code>src/main/resources/tenderned/pdfrendering/xslt</code>.</p>
+</div>
+<div class="paragraph">
+<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> requires a configuration file whose location can be configured via the <code>apache.fop.xml.configuration.location</code>
+application parameter. The default location is <code>src/main/resources/grow/fop/fop-config.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p>In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
+for these languages. Otherwise, if no glyph can be found for a given character, <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> will issue a warning and use
+the glyph for "#" (if available) instead. The font also needs to be embedded in the PDF so that the document is
+correctly displayed on all clients which are viewing the generated files. For these reasons we are using a custom
+font called <code>DejaVu</code>.</p>
+</div>
+<div class="paragraph">
+<p>Inside the <code>fop-config.xml</code> file we need to make sure that the font files are correctly configured and then properly
+loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> across multiple Servlet containers. Please notice the <code>ember-url</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="title">fop-config.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;font</span> <span class="attribute-name">metrics-url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fonts/DejaVuSans/ttf/DejaVuSans.xml</span><span class="delimiter">&quot;</span></span>
+      <span class="attribute-name">embed-url</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fonts/DejaVuSans/ttf/DejaVuSans.ttf</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;font-triplet</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DejaVuSans</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">normal</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">weight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">normal</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/font&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fonts are then loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
+via the Spring <code>ResourceLoader</code> mechanism in a portable and consistent way across different Serlvet containers.</p>
+</div>
+<div class="listingblock">
+<div class="title">EspdResourceResolver.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> Resource getResource(<span class="predefined-type">URI</span> uri) <span class="directive">throws</span> <span class="exception">IOException</span> {
+  log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">--- Fop resource resolver get resource: '{}'.</span><span class="delimiter">&quot;</span></span>, uri);
+  <span class="predefined-type">InputStream</span> is = resourceLoader.getResource(uri.toASCIIString()).getInputStream();
+  <span class="keyword">return</span> <span class="keyword">new</span> Resource(is);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To be able to load the fonts when running the application with an embedded server we need to copy them in a location
+relative to the application context root.</p>
+</div>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>maven-war-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+    <span class="tag">&lt;warName&gt;</span>${project.artifactId}<span class="tag">&lt;/warName&gt;</span>
+    <span class="tag">&lt;webResources&gt;</span>
+      <span class="tag">&lt;resource&gt;</span>
+        <span class="tag">&lt;directory&gt;</span>src/main/resources/fonts<span class="tag">&lt;/directory&gt;</span>
+        <span class="tag">&lt;targetPath&gt;</span>fonts<span class="tag">&lt;/targetPath&gt;</span>
+        <span class="tag">&lt;filtering&gt;</span>false<span class="tag">&lt;/filtering&gt;</span>
+      <span class="tag">&lt;/resource&gt;</span>
+    <span class="tag">&lt;/webResources&gt;</span>
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2436,9 +2518,82 @@ in your POM file:</p>
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="2016-08-01-19th-of-september-2016"><a class="anchor" href="#2016-08-01-19th-of-september-2016"></a>2016.08.01 (19th of September 2016)</h3>
+<h3 id="2016-10-8th-of-november-2016"><a class="anchor" href="#2016-10-8th-of-november-2016"></a>2016.10 (8th of November 2016)</h3>
 <div class="sect3">
 <h4 id="bug"><a class="anchor" href="#bug"></a>Bug</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/79">Part II: Not printed if printed out as CA</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/90">Part II: Concerning the information on registration</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/83">If ESPD service receives an empty response from TED, the answer should be ignored.</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/82">Temporary TED ID to be deleted if CA reuses request from .XML</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/80">Some currency changes after reload</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/77">Wrong default currency for the Netherlands (ANG instead of Euro)</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/105">Printing Alpha Criterion display issue when the user is an Economic Operator</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/107">RO language: country list</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/18">Migration to the corporate PIWIK</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/70">Change breadcrumb</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/36">If CA selects global indicator than A/B/C/D should not be shown at all only alpha</a></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="usability"><a class="anchor" href="#usability"></a>Usability</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/78">Part II section c: Consortium name field should be below "yes" "no"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="translation"><a class="anchor" href="#translation"></a>Translation</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The release includes fixes related to translation issues for various languages</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The full list of issues can be seen at <a href="https://github.com/ESPD/ESPD-Service/milestone/4?closed=1">ESPD Milestone 2016.10</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2016-08-01-19th-of-september-2016"><a class="anchor" href="#2016-08-01-19th-of-september-2016"></a>2016.08.01 (19th of September 2016)</h3>
+<div class="sect3">
+<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2451,7 +2606,7 @@ in your POM file:</p>
 <div class="sect2">
 <h3 id="2016-08-31st-of-august-2016"><a class="anchor" href="#2016-08-31st-of-august-2016"></a>2016.08 (31st of August 2016)</h3>
 <div class="sect3">
-<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
+<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2483,7 +2638,7 @@ in your POM file:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2494,12 +2649,15 @@ in your POM file:</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The full list of issues can be seen at <a href="https://github.com/ESPD/ESPD-Service/milestone/2?closed=1">ESPD Milestone 2016.08</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="2016-07-29th-of-july-2016"><a class="anchor" href="#2016-07-29th-of-july-2016"></a>2016.07 (29th of July 2016)</h3>
 <div class="sect3">
-<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
+<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2551,12 +2709,15 @@ in your POM file:</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The full list of issues can be seen at <a href="https://github.com/ESPD/ESPD-Service/milestone/1?closed=1">ESPD Milestone 2016.07</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="2016-06-01-30th-of-june-2016"><a class="anchor" href="#2016-06-01-30th-of-june-2016"></a>2016.06.01 (30th of June 2016)</h3>
 <div class="sect3">
-<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
+<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2663,7 +2824,7 @@ in your POM file:</p>
 <p>The main purpose of this release was to make public the open source version of the ESPD application on Github.</p>
 </div>
 <div class="sect3">
-<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
+<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2689,7 +2850,7 @@ in your POM file:</p>
 <div class="sect2">
 <h3 id="2016-04-02-2nd-of-may-2016"><a class="anchor" href="#2016-04-02-2nd-of-may-2016"></a>2016.04.02 (2nd of May 2016)</h3>
 <div class="sect3">
-<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
+<h4 id="bug-7"><a class="anchor" href="#bug-7"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2702,7 +2863,7 @@ in your POM file:</p>
 <div class="sect2">
 <h3 id="2016-04-01-25th-of-april-2016"><a class="anchor" href="#2016-04-01-25th-of-april-2016"></a>2016.04.01 (25th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-7"><a class="anchor" href="#bug-7"></a>Bug</h4>
+<h4 id="bug-8"><a class="anchor" href="#bug-8"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2756,7 +2917,7 @@ in your POM file:</p>
 <div class="sect2">
 <h3 id="2016-04-15th-of-april-2016"><a class="anchor" href="#2016-04-15th-of-april-2016"></a>2016.04 (15th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-8"><a class="anchor" href="#bug-8"></a>Bug</h4>
+<h4 id="bug-9"><a class="anchor" href="#bug-9"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2817,7 +2978,7 @@ in your POM file:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="bug-9"><a class="anchor" href="#bug-9"></a>Bug</h4>
+<h4 id="bug-10"><a class="anchor" href="#bug-10"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2891,7 +3052,7 @@ in your POM file:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-19 09:57:36 CEST
+Last updated 2016-11-07 11:16:18 CET
 </div>
 </div>
 </body>
