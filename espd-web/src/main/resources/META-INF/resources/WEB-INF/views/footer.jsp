@@ -39,10 +39,16 @@
 <s:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer' />
 <s:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId' />
 <c:if test="${piwikEnabled == true}">
+	<%-- old sync piwik load
     <script type="text/javascript">
         var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});
         piwik.enableLinkTracking(true);
         piwik.trackPageView();
     </script>
     <noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt="" /></p></noscript>
+     --%>
+    
+    <%-- postponed piwik load --%>
+	<script defer src="//europa.eu/webtools/load.js" type="text/javascript"></script>
+	<script type="application/json"> { "utility": "piwik", "siteID": 401, "sitePath": ["ec.europa.eu\/tools\/espd"] } </script>
 </c:if>
