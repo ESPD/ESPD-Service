@@ -79,6 +79,7 @@
                 (normal = 400, bold = 700)
                 -->
 
+                <!-- The only way to make it work (so far) on a Weblogic running in Production mode is to use absolute paths -->
                 <font metrics-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans.xml"
                       embed-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans.ttf">
                     <font-triplet name="DejaVuSans" style="normal" weight="normal"/>
