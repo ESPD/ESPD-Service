@@ -481,7 +481,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
-            <tiles:putAttribute name="next" value="generate"/>
+            <tiles:putAttribute name="next" value="savePrintHtml"/>
         </tiles:insertDefinition>
 	</div>
 </form:form>

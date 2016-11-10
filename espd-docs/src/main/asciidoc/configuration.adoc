@@ -675,10 +675,11 @@ The acronym `FO` stands for Formatting Objects. XSL-FO can be used in conjunctio
 format into a paginated layout ready for printing or displaying. The XSLT files taking care of the HTML transformation
 can be found in `src/main/resources/tenderned/pdfrendering/xslt`.
 
-The printing implementation resides inside the `eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer` class.
+The printing implementation resides inside the `eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer` class while
+the infrastructure setup of {fop} is defined in the `eu.europa.ec.grow.espd.config.ApacheFopConfig` class.
 
 {fop} requires a configuration file whose location can be configured via the `apache.fop.xml.configuration.location`
-application parameter. The default location is `src/main/resources/grow/fop/fop-config.xml`.
+application parameter. The default locations point to files belonging to the `src/main/resources/grow/fop/` folder.
 
 In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
 for these languages. Otherwise, if no glyph can be found for a given character, {fop} will issue a warning and use
@@ -698,7 +699,11 @@ loaded by {fop} across multiple Servlet containers. Please notice the `ember-url
 </font>
 ----
 
-The fonts are then loaded by {fop} by using a custom `org.apache.xmlgraphics.io.ResourceResolver` which looks for them
+The application parameter `apache.fop.defaultBaseUri` can be specified to load the font files via different strategies.
+Embedded fonts can be loaded via absolute (Weblogic in Production mode) or relative paths or via classpath depending on
+the chosen strategy. When using an embedded server it is recommended to use the classpath approach.
+
+The fonts are loaded by {fop} by using a custom `org.apache.xmlgraphics.io.ResourceResolver` which looks for them
 via the Spring `ResourceLoader` mechanism in a portable and consistent way across different Serlvet containers.
 
 [source,java]

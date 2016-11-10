@@ -79,16 +79,17 @@
                 (normal = 400, bold = 700)
                 -->
 
-                <font metrics-url="fonts/DejaVuSans/ttf/DejaVuSans.xml"
-                      embed-url="fonts/DejaVuSans/ttf/DejaVuSans.ttf">
+                <!-- The only way to make it work (so far) on a Weblogic running in Production mode is to use absolute paths -->
+                <font metrics-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans.xml"
+                      embed-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans.ttf">
                     <font-triplet name="DejaVuSans" style="normal" weight="normal"/>
                 </font>
-                <font metrics-url="fonts/DejaVuSans/ttf/DejaVuSans-Bold.xml"
-                      embed-url="fonts/DejaVuSans/ttf/DejaVuSans-Bold.ttf">
+                <font metrics-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans-Bold.xml"
+                      embed-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans-Bold.ttf">
                     <font-triplet name="DejaVuSans" style="normal" weight="bold"/>
                 </font>
-                <font metrics-url="fonts/DejaVuSans/ttf/DejaVuSans-Oblique.xml"
-                      embed-url="fonts/DejaVuSans/ttf/DejaVuSans-Oblique.ttf">
+                <font metrics-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans-Oblique.xml"
+                      embed-url="/ec/prod/server/weblogic/u010/home/groespdp/data/ESPD_PROD/_appconfdir/fonts/DejaVuSans/ttf/DejaVuSans-Oblique.ttf">
                     <font-triplet name="DejaVuSans" style="italic" weight="normal"/>
                 </font>
 
@@ -110,11 +111,6 @@
             </xml-handler-->
 
         </renderer>
-
-        <!-- MIF does not have a renderer
-        <renderer mime="application/vnd.mif">
-        </renderer>
-        -->
 
         <renderer mime="image/svg+xml">
             <format type="paginated"/>
