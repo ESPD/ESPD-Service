@@ -3,7 +3,7 @@
 == About
 
 image::https://img.shields.io/badge/Java%20Development%20Kit-7%2B-blue.svg?style=flat[JDK]
-image::https://img.shields.io/badge/Spring%20Boot-1.3.3-green.svg?style=flat[Spring Boot]
+image::https://img.shields.io/badge/Spring%20Boot-1.4.1-green.svg?style=flat[Spring Boot]
 image::https://img.shields.io/badge/Maven-3.0%2B-blue.svg?style=flat[Maven]
 
 The {homepage} service is a web-based solution which allows the http://europa.eu/about-eu/countries/index_en.htm[Member States] and http://europa.eu/about-eu/institutions-bodies[European Institutions] to exchange structured

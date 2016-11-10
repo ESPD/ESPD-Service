@@ -27,6 +27,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
     <logger name="ro.isdc.wro" level="INFO" />
-    <!--<logger name="org.springframework.web" level="DEBUG" />-->
+    <logger name="eu.europa.ec.grow.espd.tenderned" level="DEBUG" />
+    <!--<logger name="org.apache.fop" level="DEBUG" />-->
 
 </configuration>

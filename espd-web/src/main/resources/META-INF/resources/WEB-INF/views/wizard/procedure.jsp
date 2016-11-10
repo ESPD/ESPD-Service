@@ -91,6 +91,7 @@
         	}
         %>
 
+		<c:set var="show_part_II" value="${agent == 'eo'}" scope="request"/>
 		<%@ include file="/WEB-INF/views/wizard/procedureForm.jsp" %>
 
     </div>

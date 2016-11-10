@@ -5,6 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%--
   ~
@@ -281,9 +282,13 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
+    <c:set var="cachedFragment" scope="application">
 
+    <!-- Hidden header element which appears only in the PDF rendition -->
+    <h1 id="print_espd_title" class="hidden hidden-print"><s:message code='app_title'/></h1>
 	<%-- PROCEDURE --%>
 	
+	<c:set var="show_part_II" value="${true}" scope="request"/>
 	<%@ include file="/WEB-INF/views/wizard/procedureForm.jsp" %>
  
 	<%-- EXCLUSION --%>
@@ -332,34 +337,37 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 </li>
             </ul>
         </div>
-        <div class="panel panel-espd">
-            <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
-            	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
-            </div>
-            <div id="eo-satisfies-all-section" class="collapse in">
-                <div class="espd-panel-body panel-body">
-					<strong>${span18n['crit_selection_eo_declares_that']}</strong>
-                </div>
-                <div class="row criteria-row-form">
-                    <div class="col-md-5 criteria-row-check-left">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-7 criteria-row-check-right">
-                        <div class="col-md-12">
-                            <div class="form-group">
-							 	${span18n["crit_your_answer"]}
-								<form:radiobutton path="selectionSatisfiesAll.answer" value="true" data-target-hide="${'#'}eo-satisfies-all-form"/>${span18n["yes"]}
-								<form:radiobutton path="selectionSatisfiesAll.answer" value="false" data-target-show="${'#'}eo-satisfies-all-form"/>${span18n["no"]}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <c:if test="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}">
+	        <div class="panel panel-espd">
+	            <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
+	            	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
+	            </div>
+	            <div id="eo-satisfies-all-section" class="collapse in">
+	                <div class="espd-panel-body panel-body">
+						<strong>${span18n['crit_selection_eo_declares_that']}</strong>
+	                </div>
+	                <div class="row criteria-row-form">
+	                    <div class="col-md-5 criteria-row-check-left">
+	                        <div class="form-group">
+	                            <div class="col-md-12">
+	                                <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-md-7 criteria-row-check-right">
+	                        <div class="col-md-12">
+	                            <div class="form-group">
+								 	${span18n["crit_your_answer"]}
+									<form:radiobutton path="selectionSatisfiesAll.answer" value="true" data-target-hide="${'#'}eo-satisfies-all-form"/>${span18n["yes"]}
+									<form:radiobutton path="selectionSatisfiesAll.answer" value="false" data-target-show="${'#'}eo-satisfies-all-form"/>${span18n["no"]}
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+       </c:if>
        
         <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
         
@@ -464,10 +472,16 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 </div>
             </div>
 		</div>
+
+    </c:set>
+    ${applicationScope.cachedFragment}
+    <input type="hidden"
+           name="html"
+           value="${fn:escapeXml(applicationScope.cachedFragment)}" />
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
-            <tiles:putAttribute name="next" value="generate"/>
+            <tiles:putAttribute name="next" value="savePrintHtml"/>
         </tiles:insertDefinition>
 	</div>
 </form:form>

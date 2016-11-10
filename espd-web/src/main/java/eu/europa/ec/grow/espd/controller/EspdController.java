@@ -32,11 +32,16 @@ import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.ted.TedRequest;
 import eu.europa.ec.grow.espd.ted.TedResponse;
 import eu.europa.ec.grow.espd.ted.TedService;
+import eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer;
+import eu.europa.ec.grow.espd.tenderned.UnescapeHtml4;
+import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,35 +50,42 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
-@SessionAttributes("espd")
+@SessionAttributes(value = { "espd" })
+@Slf4j
 class EspdController {
 
 	private static final String WELCOME_PAGE = "welcome";
 	private static final String REQUEST_CA_PROCEDURE_PAGE = "request/ca/procedure";
 	private static final String RESPONSE_EO_PROCEDURE_PAGE = "response/eo/procedure";
 	private static final String PRINT_PAGE = "response/eo/print";
+	private static final String SESSION_EXPIRED_PAGE = "sessionExpired";
 
 	private final EspdExchangeMarshaller exchangeMarshaller;
-
 	private final TedService tedService;
+	private final HtmlToPdfTransformer pdfTransformer;
 
 	@Autowired
-	EspdController(EspdExchangeMarshaller exchangeMarshaller, TedService tedService) {
+	EspdController(EspdExchangeMarshaller exchangeMarshaller, TedService tedService,
+			HtmlToPdfTransformer pdfTransformer) {
 		this.exchangeMarshaller = exchangeMarshaller;
 		this.tedService = tedService;
+		this.pdfTransformer = pdfTransformer;
 	}
 
 	@ModelAttribute("espd")
@@ -126,7 +138,7 @@ class EspdController {
 
 	private String createNewRequestAsCA(Country country, EspdDocument document) {
 		document.getAuthority().setCountry(country);
-		document.selectCAExclusionCriteria();
+		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
 		return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
 	}
@@ -298,15 +310,20 @@ class EspdController {
 		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate|print}", method = POST, params = "next")
+	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",
+			method = POST, params = "next")
 	public String next(
 			@PathVariable String flow,
 			@PathVariable String agent,
 			@PathVariable String step,
 			@RequestParam String next,
 			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletRequest request,
 			HttpServletResponse response,
-			BindingResult bindingResult) throws IOException {
+			BindingResult bindingResult,
+			SessionStatus status,
+			Model model) throws PdfRenderingException, IOException {
+
 		if (bindingResult.hasErrors()) {
 			return flow + "_" + agent + "_" + step;
 		}
@@ -318,6 +335,48 @@ class EspdController {
 		downloadEspdFile(agent, espd, response);
 
 		return null;
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:print}", params = "next=savePrintHtml")
+	public String printPDF(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletResponse response,
+			BindingResult bindingResult,
+			Model model) throws PdfRenderingException, IOException {
+
+		if (bindingResult.hasErrors()) {
+			return flow + "_" + agent + "_" + step;
+		}
+
+		espd.setHtml(addHtmlHeader(espd.getHtml()));
+
+		ByteArrayOutputStream pdfOutput = pdfTransformer.convertToPDF(espd.getHtml(), agent);
+
+		String pdfFileName = "ca".equals(agent) ? "espd-request.pdf" : "espd-response.pdf";
+		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+		response.setContentLength(pdfOutput.size());
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", pdfFileName));
+
+		// Send content to Browser
+		response.getOutputStream().write(pdfOutput.toByteArray());
+		response.getOutputStream().flush();
+		return null;
+	}
+
+	/**
+	 * This method is for adding headers to the html code that's being saved on
+	 * the print.jsp page to make the html valid for creating a PDF file.
+	 *
+	 * @param html The HTML code of the ESPD to be printed
+	 *
+	 * @return The HTML surrounded by the proper tags
+	 */
+	private String addHtmlHeader(String html) {
+		String newHtml = UnescapeHtml4.unescapeHtml4(html);
+		return "<html><head/><body>" + newHtml + "</div></body></html>";
 	}
 
 	private static String redirectToPage(String pageName) {
@@ -345,5 +404,15 @@ class EspdController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
 		binder.registerCustomEditor(Date.class, editor);
+	}
+
+	/**
+	 * If we have a value 'null' as a path variable we can assume the session was expired.
+	 *
+	 * @return The name of the expired page
+	 */
+	@RequestMapping("**/null/**")
+	public String getPage() {
+		return SESSION_EXPIRED_PAGE;
 	}
 }

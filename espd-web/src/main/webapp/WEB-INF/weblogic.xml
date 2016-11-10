@@ -57,6 +57,7 @@
             <package-name>org.apache.oro.*</package-name>
             <package-name>org.apache.taglibs.*</package-name>
             <package-name>org.codehaus.jackson.*</package-name>
+            <package-name>org.apache.batik.*</package-name>
         </prefer-application-packages>
     </container-descriptor>
 

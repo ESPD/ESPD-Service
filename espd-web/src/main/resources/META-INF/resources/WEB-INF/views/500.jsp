@@ -115,8 +115,7 @@
                 <span data-i18n="footer_last_update"><s:message code='footer_last_update'/></span>
                 <span class="datefmt"> <fmt:formatDate value="${now}"/> </span> |
                 <a target="_blank" href="http://ec.europa.eu/growth/tools-databases/security-incidents/index_en.htm">
-                <span data-i18n="footer_report_security_incident"><s:message
-                        code='footer_report_security_incident'/></span>
+                	<span data-i18n="report_security_incident"><s:message code='report_security_incident'/></span>
                 </a>
             </div>
         </div>
@@ -126,12 +125,19 @@
 <s:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer'/>
 <s:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId'/>
 <c:if test="${piwikEnabled == true}">
+	<%-- old sync piwik load
     <script type="text/javascript">
         var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});
         piwik.enableLinkTracking(true);
         piwik.trackPageView();
     </script>
-    <noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt=""/></p></noscript>
+    <noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt="" /></p></noscript>
+     --%>
+    
+    <%-- postponed piwik load --%>
+	<script defer src="//europa.eu/webtools/load.js" type="text/javascript"></script>
+	<script type="application/json"> { "utility": "piwik", "siteID": 401, "sitePath": ["ec.europa.eu\/tools\/espd"] } </script>
 </c:if>
+
 </body>
 </html>
