@@ -36,6 +36,8 @@
             <level>ERROR</level>
         </filter>
     </appender>
+    <logger name="eu.europa.ec.grow.espd.tenderned" level="DEBUG" />
+    <logger name="org.apache.fop.apps.FOUserAgent" level="ERROR" />
 
     <root level="INFO">
         <appender-ref ref="EMAIL" />

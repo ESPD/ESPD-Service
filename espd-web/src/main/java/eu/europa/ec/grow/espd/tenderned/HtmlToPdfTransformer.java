@@ -43,13 +43,11 @@ import org.xml.sax.SAXException;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URI;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 
 /**
  * This class converts HTML pages to a PDF file using XSLT transformations and Apache FOP.
@@ -127,10 +125,9 @@ public class HtmlToPdfTransformer {
 			Configuration cfg = cfgBuilder
 					.build(resourceLoader.getResource(espdConfiguration.getFopXmlConfigurationLocation())
 					                     .getInputStream());
-			// it is very important to load the fonts from the classpath to achieve maximum portability
-			// and the base URI is built accordingly by using the location of the application.properties file
-			URI defaultBaseURI = new ClassPathResource("application.properties").getURI();
-			log.debug("--- Default base URI: '{}'.", defaultBaseURI);
+			URI defaultBaseURI = buildDefaultBaseUri();
+			log.debug("--- apache.fop.defaultBaseUri: '{}'.", espdConfiguration.getFopDefaultBaseUri());
+			log.debug("--- Computed base URI: '{}'.", defaultBaseURI);
 			FopFactoryBuilder fopFactoryBuilder = new FopFactoryBuilder(
 					defaultBaseURI, new EspdResourceResolver(resourceLoader))
 					.setConfiguration(cfg);
@@ -138,6 +135,21 @@ public class HtmlToPdfTransformer {
 		} catch (SAXException | IOException | ConfigurationException e) {
 			throw new IllegalArgumentException(e);
 		}
+	}
+
+	/**
+	 * Embedded fonts can be loaded via absolute or relative paths or via classpath depending on the chosen strategy.
+	 * When using an embedded server it is recommended to use the classpath approach.
+	 *
+	 * @return
+	 * @throws IOException
+	 */
+	private URI buildDefaultBaseUri() throws IOException {
+		String baseUri = trimToEmpty(espdConfiguration.getFopDefaultBaseUri());
+		if (baseUri.startsWith("classpath:")) {
+			return new ClassPathResource(baseUri.replace("classpath:", "")).getURI();
+		}
+		return new File(espdConfiguration.getFopDefaultBaseUri()).toURI();
 	}
 
 	private static class XsltURIResolver implements URIResolver {

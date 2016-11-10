@@ -698,7 +698,11 @@ loaded by {fop} across multiple Servlet containers. Please notice the `ember-url
 </font>
 ----
 
-The fonts are then loaded by {fop} by using a custom `org.apache.xmlgraphics.io.ResourceResolver` which looks for them
+The application parameter `apache.fop.defaultBaseUri` can be specified to load the font files via different strategies.
+Embedded fonts can be loaded via absolute (Weblogic in Production mode) or relative paths or via classpath depending on
+the chosen strategy. When using an embedded server it is recommended to use the classpath approach.
+
+The fonts are loaded by {fop} by using a custom `org.apache.xmlgraphics.io.ResourceResolver` which looks for them
 via the Spring `ResourceLoader` mechanism in a portable and consistent way across different Serlvet containers.
 
 [source,java]

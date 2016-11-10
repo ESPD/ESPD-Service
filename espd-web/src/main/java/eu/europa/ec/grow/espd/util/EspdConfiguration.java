@@ -64,6 +64,9 @@ public class EspdConfiguration {
 
 	@Value("${apache.fop.xml.configuration.location:classpath:grow/fop/fop-config.xml}")
 	private String fopXmlConfigurationLocation;
+
+	@Value("${apache.fop.defaultBaseUri:.}")
+	private String fopDefaultBaseUri;
     
     private final Environment environment;
 
