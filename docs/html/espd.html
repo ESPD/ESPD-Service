@@ -596,6 +596,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2016-10-01-11th-of-november-2016">2016.10.01 (11th of November 2016)</a></li>
 <li><a href="#2016-10-8th-of-november-2016">2016.10 (8th of November 2016)</a></li>
 <li><a href="#2016-08-01-19th-of-september-2016">2016.08.01 (19th of September 2016)</a></li>
 <li><a href="#2016-08-31st-of-august-2016">2016.08 (31st of August 2016)</a></li>
@@ -622,7 +623,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2016.10, 08-11-2016</p>
+<p>v2016.10.01, 11-11-2016</p>
 </div>
 </div>
 </div>
@@ -1879,11 +1880,12 @@ format into a paginated layout ready for printing or displaying. The XSLT files 
 can be found in <code>src/main/resources/tenderned/pdfrendering/xslt</code>.</p>
 </div>
 <div class="paragraph">
-<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class.</p>
+<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class while
+the infrastructure setup of <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> is defined in the <code>eu.europa.ec.grow.espd.config.ApacheFopConfig</code> class.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> requires a configuration file whose location can be configured via the <code>apache.fop.xml.configuration.location</code>
-application parameter. The default location is <code>src/main/resources/grow/fop/fop-config.xml</code>.</p>
+application parameter. The default locations point to files belonging to the <code>src/main/resources/grow/fop/</code> folder.</p>
 </div>
 <div class="paragraph">
 <p>In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
@@ -1906,7 +1908,12 @@ loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> across mu
 </div>
 </div>
 <div class="paragraph">
-<p>The fonts are then loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
+<p>The application parameter <code>apache.fop.defaultBaseUri</code> can be specified to load the font files via different strategies.
+Embedded fonts can be loaded via absolute (Weblogic in Production mode) or relative paths or via classpath depending on
+the chosen strategy. When using an embedded server it is recommended to use the classpath approach.</p>
+</div>
+<div class="paragraph">
+<p>The fonts are loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
 via the Spring <code>ResourceLoader</code> mechanism in a portable and consistent way across different Serlvet containers.</p>
 </div>
 <div class="listingblock">
@@ -2518,6 +2525,19 @@ in your POM file:</p>
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="2016-10-01-11th-of-november-2016"><a class="anchor" href="#2016-10-01-11th-of-november-2016"></a>2016.10.01 (11th of November 2016)</h3>
+<div class="sect3">
+<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/97">Export an ESPD as PDF</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="2016-10-8th-of-november-2016"><a class="anchor" href="#2016-10-8th-of-november-2016"></a>2016.10 (8th of November 2016)</h3>
 <div class="sect3">
 <h4 id="bug"><a class="anchor" href="#bug"></a>Bug</h4>
@@ -2551,7 +2571,7 @@ in your POM file:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2638,7 +2658,7 @@ in your POM file:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
+<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3052,7 +3072,7 @@ in your POM file:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-11-07 11:16:18 CET
+Last updated 2016-11-14 09:26:02 CET
 </div>
 </div>
 </body>

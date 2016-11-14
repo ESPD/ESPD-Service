@@ -1315,11 +1315,12 @@ format into a paginated layout ready for printing or displaying. The XSLT files 
 can be found in <code>src/main/resources/tenderned/pdfrendering/xslt</code>.</p>
 </div>
 <div class="paragraph">
-<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class.</p>
+<p>The printing implementation resides inside the <code>eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer</code> class while
+the infrastructure setup of <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> is defined in the <code>eu.europa.ec.grow.espd.config.ApacheFopConfig</code> class.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> requires a configuration file whose location can be configured via the <code>apache.fop.xml.configuration.location</code>
-application parameter. The default location is <code>src/main/resources/grow/fop/fop-config.xml</code>.</p>
+application parameter. The default locations point to files belonging to the <code>src/main/resources/grow/fop/</code> folder.</p>
 </div>
 <div class="paragraph">
 <p>In order to display the PDF correctly across all European languages we need to use a font which contains all the glyphs
@@ -1342,7 +1343,12 @@ loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> across mu
 </div>
 </div>
 <div class="paragraph">
-<p>The fonts are then loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
+<p>The application parameter <code>apache.fop.defaultBaseUri</code> can be specified to load the font files via different strategies.
+Embedded fonts can be loaded via absolute (Weblogic in Production mode) or relative paths or via classpath depending on
+the chosen strategy. When using an embedded server it is recommended to use the classpath approach.</p>
+</div>
+<div class="paragraph">
+<p>The fonts are loaded by <a href="https://xmlgraphics.apache.org/fop/">Apache FOP</a> by using a custom <code>org.apache.xmlgraphics.io.ResourceResolver</code> which looks for them
 via the Spring <code>ResourceLoader</code> mechanism in a portable and consistent way across different Serlvet containers.</p>
 </div>
 <div class="listingblock">
@@ -1385,7 +1391,7 @@ relative to the application context root.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-21 11:18:00 CEST
+Last updated 2016-11-10 16:44:01 CET
 </div>
 </div>
 </body>
