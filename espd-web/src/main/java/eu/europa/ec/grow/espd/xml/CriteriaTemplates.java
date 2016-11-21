@@ -441,7 +441,7 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_eu_title_conflict_interest").
                     put("checkExistanse", "true").
                     put("selfCleaning", "false").
-                    put("hasDescription", "false").
+                    put("hasDescription", "true").
                     put("availableElectronically", "false").
                     put("description_code", "crit_eu_text_conflict_interest").
                     put("criterion", ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE).build(),

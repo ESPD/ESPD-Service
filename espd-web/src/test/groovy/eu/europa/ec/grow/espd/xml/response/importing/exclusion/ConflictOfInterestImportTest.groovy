@@ -24,10 +24,8 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
-import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
 /**
@@ -45,14 +43,13 @@ class ConflictOfInterestImportTest extends AbstractXmlFileImport {
         then:
         espd.conflictInterest.exists == true
         espd.conflictInterest.answer == true
+        espd.conflictInterest.description == "Hodor is conflicted"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,  answer: true,
-                description: "Hodor is conflicted",
-                selfCleaning: new SelfCleaning(answer: true, description: "Hodor is clean"),
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "HODOR?")))
+                description: "Hodor is conflicted"))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

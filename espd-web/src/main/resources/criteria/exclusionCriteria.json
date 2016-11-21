@@ -2323,6 +2323,23 @@
                 "answer"
               ]
             }
+          ],
+          "subgroups": [
+            {
+              "name": "G1.1",
+              "id": "73f0fe4c-4ed9-4343-8096-d898cf200146",
+              "fulfillmentIndicator": "true",
+              "requirements": [
+                {
+                  "id": "e098da8e-4717-4500-965f-f882d5b4e1ad",
+                  "description": "Please describe them",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "description"
+                  ]
+                }
+              ]
+            }
           ]
         }
       ],

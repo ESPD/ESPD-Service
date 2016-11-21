@@ -63,12 +63,20 @@ class ConflictOfInterestParticipationProcurementProcedureRequestTest extends Abs
         def g1 = request.Criterion[idx].RequirementGroup[0]
         g1.ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
         g1.@pi.text() == ""
-        g1.RequirementGroup.size() == 0
+        g1.RequirementGroup.size() == 1
         g1.Requirement.size() == 1
 
         then: "main sub group requirements"
         def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
     }
 
 }
