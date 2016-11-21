@@ -44,7 +44,7 @@
 	                	${span18n["crit_amount"]}
 	                </label>
 	                <div class="col-xs-6">
-	                    <form:textarea rows="1" path="${field}.amount1" cssClass="form-control"></form:textarea>
+	                    <form:input type="text" path="${field}.amount1" cssClass="form-control"></form:input>
 	                </div>
 	                <div class="col-xs-3">
 	                    <tiles:insertDefinition name="currencies">
@@ -70,13 +70,13 @@
                     <div class="col-md-4">
                         <label class="control-label col-xs-3 small">${span18n['crit_number_of_years']}</label>
                         <div class="col-xs-9" style="margin-bottom: 5px;">
-                            <form:textarea rows="1" path="${field}.numberOfYears" digits="true" max="100" cssClass="form-control"></form:textarea>
+                            <form:input type="text" path="${field}.numberOfYears" digits="true" max="100" cssClass="form-control"></form:input>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <label class="control-label col-xs-3 small">${span18n['crit_average_turnover']}</label>
                         <div class="col-xs-5">
-                            <form:textarea rows="1" path="${field}.averageTurnover" number="true" cssClass="form-control"></form:textarea>
+                            <form:input type="text" path="${field}.averageTurnover" number="true" cssClass="form-control"></form:input>
                         </div>
                         <div class="col-xs-4">
                             <tiles:insertDefinition name="currencies">
