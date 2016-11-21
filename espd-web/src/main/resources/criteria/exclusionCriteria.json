@@ -85,7 +85,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -232,7 +232,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -379,7 +379,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -526,7 +526,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -673,7 +673,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -820,7 +820,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -1347,7 +1347,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -1431,7 +1431,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -1515,7 +1515,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -2187,7 +2187,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -2271,7 +2271,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -2440,7 +2440,7 @@
                   ],
                   "subgroups": [
                     {
-                      "name": "G1.1.1.1.1",
+                      "name": "G1.1.1.1",
                       "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
                       "fulfillmentIndicator": "true",
                       "requirements": [
@@ -2539,6 +2539,39 @@
                   "responseType": "DESCRIPTION",
                   "espdCriterionFields": [
                     "description"
+                  ]
+                }
+              ],
+              "subgroups": [
+                {
+                  "name": "G1.1.1",
+                  "id": "5f9f09f7-f701-432c-9fdc-c22c124a74c9",
+                  "requirements": [
+                    {
+                      "id": "20c5361b-7599-4ee6-b030-7f8323174d1e",
+                      "description": "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?",
+                      "responseType": "INDICATOR",
+                      "espdCriterionFields": [
+                        "selfCleaningAnswer"
+                      ]
+                    }
+                  ],
+                  "subgroups": [
+                    {
+                      "name": "G1.1.1.1",
+                      "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
+                      "fulfillmentIndicator": "true",
+                      "requirements": [
+                        {
+                          "id": "7b07904f-e080-401a-a3a1-9a3efeeda54b",
+                          "description": "Please describe them",
+                          "responseType": "DESCRIPTION",
+                          "espdCriterionFields": [
+                            "selfCleaningDescription"
+                          ]
+                        }
+                      ]
+                    }
                   ]
                 }
               ]

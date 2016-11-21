@@ -284,6 +284,7 @@ class EspdResponseCriterionFactory {
 		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
 		criterion.setDescription(description);
 
+		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
 		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;

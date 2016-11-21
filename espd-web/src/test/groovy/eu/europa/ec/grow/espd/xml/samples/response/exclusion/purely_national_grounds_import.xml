@@ -14,13 +14,13 @@
     </cac:ProcurementProjectLot>
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">63adb07d-db1b-4ef0-a14e-a99785cf8cf6</cbc:ID>
-        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EXCLUSION.OTHER</cbc:TypeCode>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.EXCLUSION.NATIONAL.OTHER</cbc:TypeCode>
         <cbc:Name>Purely national exclusion grounds</cbc:Name>
         <cbc:Description>Other exclusion grounds that may be foreseen in the national legislation of the contracting authority’s or contracting entity’s Member State. Do the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents, apply?</cbc:Description>
         <ccv:LegislationReference>
             <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
             <cbc:Description>Directive 2014/24/EU</cbc:Description>
-            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevel" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
             <ccv-cbc:Article>57(4)</ccv-cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
         </ccv:LegislationReference>
@@ -42,6 +42,26 @@
                         <cbc:Description>Hodor is national</cbc:Description>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
+                        <cbc:Description>Have you taken measures to demonstrate your reliability ("Self-Cleaning")?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
+                            <cbc:Description>Please describe them</cbc:Description>
+                            <ccv:Response>
+                                <cbc:Description>Hodor24 is clean</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
@@ -61,7 +81,7 @@
                     <ccv:Response>
                         <cev:Evidence>
                             <cev:EvidenceDocumentReference>
-                                <cbc:ID>67949da2-4a1f-4ada-a3f6-dc938ddc6371</cbc:ID>
+                                <cbc:ID schemeAgencyID="EU-COM-GROW">2070b8cf-9ae2-492f-bc7a-2630a71f6b6d</cbc:ID>
                                 <cac:Attachment>
                                     <cac:ExternalReference>
                                         <cbc:URI>www.hodor.com</cbc:URI>

@@ -71,9 +71,14 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         def g1_1 = g1.RequirementGroup[0]
         g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
         g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
-        g1_1.RequirementGroup.size() == 0
+        g1_1.RequirementGroup.size() == 1
         g1_1.Requirement.size() == 1
         checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+
+        then: "check the self-cleaning sub group"
+        def g1_1_1 = g1_1.RequirementGroup[0]
+        g1_1_1.@pi.text() == ""
+        checkSelfCleaningRequirementGroup(g1_1_1)
 
         then: "check second sub group"
         def g2 = request.Criterion[idx].RequirementGroup[1]

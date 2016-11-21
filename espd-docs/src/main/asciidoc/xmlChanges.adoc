@@ -2,6 +2,44 @@
 
 === Version 2016.12
 
+https://github.com/ESPD/ESPD-Service/issues/86[Part III D: Purely national exlclusion grounds are allowing for self-cleaning]
+
+We need to add the `self-cleaning` subgroup to the section D exclusion criterion `Purely national grounds`.
+
+Consequently, the G1.1 criterion group will contain the following subgroup structure:
+
+[source,javascript]
+.exclusionCriteria.js
+----
+{
+  "name": "G1.1.1",
+  "id": "5f9f09f7-f701-432c-9fdc-c22c124a74c9",
+  "requirements": [
+    {
+      "id": "20c5361b-7599-4ee6-b030-7f8323174d1e",
+      "description": "Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")?",
+      "responseType": "INDICATOR"
+    }
+  ],
+  "subgroups": [
+    {
+      "name": "G1.1.1.1",
+      "id": "74e6c7b4-757b-4b40-ada6-fad6a997c310",
+      "fulfillmentIndicator": "true",
+      "requirements": [
+        {
+          "id": "7b07904f-e080-401a-a3a1-9a3efeeda54b",
+          "description": "Please describe them",
+          "responseType": "DESCRIPTION"
+        }
+      ]
+    }
+  ]
+}
+----
+
+
+
 https://github.com/ESPD/ESPD-Service/issues/71[Correct the structure of yearly turnover selection criteria]
 
 The structure of the `General yearly turnover` and `Specific yearly turnover` selection criteria has been simplified.

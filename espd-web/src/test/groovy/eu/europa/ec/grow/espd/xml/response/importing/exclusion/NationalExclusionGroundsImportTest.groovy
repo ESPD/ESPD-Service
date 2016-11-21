@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
+import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
 /**
@@ -45,6 +46,10 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
         espd.purelyNationalGrounds.answer == true
         espd.purelyNationalGrounds.description == "Hodor is national"
 
+        then: "self cleaning"
+        espd.purelyNationalGrounds.selfCleaning.answer == true
+        espd.purelyNationalGrounds.selfCleaning.description == "Hodor24 is clean"
+
         then: "info electronically"
         espd.purelyNationalGrounds.availableElectronically.answer == true
         espd.purelyNationalGrounds.availableElectronically.url == "www.hodor.com"
@@ -55,6 +60,7 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
         given:
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true,  answer: true,
                 description: "Hodor is national",
+                selfCleaning: new SelfCleaning(answer: true, description: "Hodor24 is clean"),
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "NATIONAL")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
