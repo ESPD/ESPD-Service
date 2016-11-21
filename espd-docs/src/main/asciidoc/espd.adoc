@@ -48,6 +48,8 @@ include::testing.adoc[]
 
 include::dataModel.adoc[]
 
+include::xmlChanges.adoc[]
+
 include::releaseNotes.adoc[]
 
 include::license.adoc[]

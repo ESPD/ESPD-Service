@@ -1,6 +1,6 @@
 == XML changes
 
-=== Version 2016.09
+=== Version 2016.12
 
 https://github.com/ESPD/ESPD-Service/issues/71[Correct the structure of yearly turnover selection criteria]
 
@@ -162,7 +162,7 @@ They will contain only two requirements on the first group, `Number of years` an
 
 https://github.com/ESPD/ESPD-Service/issues/9[Allow for references "start date" and "end date"]
 
-The following criteria will need to contain to date requirements instead of one: `Start date` and `End date`.
+The following criteria will need to contain two date requirements instead of one: `Start date` and `End date`.
 
 * `For works contracts: performance of works of the specified type`;
 * `For supply contracts: performance of deliveries of the specified type`;
