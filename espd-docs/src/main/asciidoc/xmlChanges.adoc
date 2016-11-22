@@ -2,6 +2,49 @@
 
 === Version 2016.12
 
+https://github.com/ESPD/ESPD-Service/issues/92[Fields missing for "Information is available electronically"]
+
+All the `Information is available electronically` requirement groups will contain one extra requirement, called `Issuer`.
+Please keep in mind that this modification will affect a lot of criteria.
+
+For the exclusion criteria, the requirement will have this definition:
+
+[source,javascript]
+.exclusionCriteria.js
+----
+{
+  "id": "c3ccfa31-0c5e-4e3a-a3fd-db9fb83d78d4",
+  "description": "Issuer",
+  "responseType": "DESCRIPTION"
+}
+----
+
+
+And for the selection criteria, the requirement will include the following definition:
+
+[source,javascript]
+.selectionCriteria.js
+----
+{
+  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+  "description": "Issuer",
+  "responseType": "DESCRIPTION"
+}
+----
+
+The economic operator (other) criteria will contain the requirement below:
+[source,javascript]
+.otherCriteria.js
+----
+{
+  "id": "d8e1e818-d67b-4bb9-9aeb-4c10943a8342",
+  "description": "Issuer",
+  "responseType": "DESCRIPTION"
+}
+----
+
+
+
 https://github.com/ESPD/ESPD-Service/issues/91[Part III C: Conflict of interest due to its participation in the procurement procedure]
 
 A requirement for `Description` has to be added to the `Conflict of interest due to its participation in the procurement

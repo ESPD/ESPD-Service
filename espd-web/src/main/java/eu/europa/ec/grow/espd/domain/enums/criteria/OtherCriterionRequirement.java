@@ -122,6 +122,11 @@ public enum OtherCriterionRequirement implements CcvCriterionRequirement {
      */
     URL_CODE("1e55ff14-c643-4abc-91d7-2f4dfcdf2409", CriterionText.URL_CODE_TEXT, ExpectedResponseType.CODE,
             "infoElectronicallyCode"),
+	/**
+	 *
+	 */
+	ISSUER("d8e1e818-d67b-4bb9-9aeb-4c10943a8342", "Issuer", ExpectedResponseType.DESCRIPTION,
+			"infoElectronicallyIssuer"),
     /**
      *
      */

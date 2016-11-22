@@ -67,6 +67,13 @@
                         <ccv-cbc:Code>MEETS</ccv-cbc:Code>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d8e1e818-d67b-4bb9-9aeb-4c10943a8342</cbc:ID>
+                    <cbc:Description>Issuer</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>HODOR</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>

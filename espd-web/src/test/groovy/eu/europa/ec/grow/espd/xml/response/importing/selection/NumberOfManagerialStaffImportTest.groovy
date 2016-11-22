@@ -62,6 +62,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
         espd.numberManagerialStaff.availableElectronically.answer == true
         espd.numberManagerialStaff.availableElectronically.url == "www.hodor.com"
         espd.numberManagerialStaff.availableElectronically.code == "GENERAL_TURNOVER"
+        espd.numberManagerialStaff.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
@@ -70,7 +71,7 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
                 year1: 2016, number1: 11,
                 year2: 2015, number2: 22,
                 year3: 2014, number3: 33,
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

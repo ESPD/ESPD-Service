@@ -41,7 +41,7 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
 
         def g1_1 = infoGroup.RequirementGroup[0]
         assert g1_1.ID.text() == "0a166f0a-0c5f-42b0-81e9-0fc9fa598a48"
-        assert g1_1.Requirement.size() == 2
+        assert g1_1.Requirement.size() == 3
         assert g1_1.RequirementGroup.size() == 0
         assert g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
 
@@ -55,6 +55,11 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
         checkRequirement(r2, "e2d863a0-60cb-4e58-8c14-4c1595af48b7", "Code", "CODE")
         assert r2.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r2.ID.@schemeVersionID.text() == "1.0"
+
+        def r3 = g1_1.Requirement[2]
+        checkRequirement(r3, "5cbf74d9-a1e2-4233-921d-8b298842ee7d", "Issuer", "DESCRIPTION")
+        assert r3.ID.@schemeID.text() == "CriterionRelatedIDs"
+        assert r3.ID.@schemeVersionID.text() == "1.0"
     }
 
     protected static void checkYearAmountCurrencyGroup1(def yearAmountCurrencyGroup) {

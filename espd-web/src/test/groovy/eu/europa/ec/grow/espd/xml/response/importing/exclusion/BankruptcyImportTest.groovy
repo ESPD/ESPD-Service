@@ -50,6 +50,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
         espd.bankruptcy.availableElectronically.answer == true
         espd.bankruptcy.availableElectronically.url == "www.hodor.com"
         espd.bankruptcy.availableElectronically.code == "INTERNATIONAL"
+        espd.bankruptcy.availableElectronically.issuer == "HODOR"
 
     }
 
@@ -58,7 +59,7 @@ class BankruptcyImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, answer: false,
                 description: "Bankruptcy description",
                 reason: "We lost all our money at poker.",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "INTERNATIONAL", issuer: "HODOR")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

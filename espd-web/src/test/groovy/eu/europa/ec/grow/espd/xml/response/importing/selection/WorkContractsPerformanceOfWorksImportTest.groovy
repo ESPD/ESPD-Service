@@ -91,6 +91,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.availableElectronically.answer == true
         espd.workContractsPerformanceOfWorks.availableElectronically.url == "www.hodor.com"
         espd.workContractsPerformanceOfWorks.availableElectronically.code == "PERF"
+        espd.workContractsPerformanceOfWorks.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
@@ -101,7 +102,7 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
                 description3: "description3", amount3: 33.3, currency3: "USD", startDate3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), endDate3: LocalDateAdapter.unmarshal("2016-02-19").toDate(), recipients3: "recipients3",
                 description4: "description4", amount4: 44.4, currency4: "CHF", startDate4: LocalDateAdapter.unmarshal("2016-01-20").toDate(), endDate4: LocalDateAdapter.unmarshal("2016-02-20").toDate(), recipients4: "recipients4",
                 description5: "description5", amount5: 55.5, currency5: "YEN", startDate5: LocalDateAdapter.unmarshal("2016-01-21").toDate(), endDate5: LocalDateAdapter.unmarshal("2016-02-21").toDate(), recipients5: "recipients5",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PERF")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PERF", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

@@ -55,6 +55,13 @@ public abstract class SelectionCriterion extends EspdCriterion {
         return null;
     }
 
+	public final String getInfoElectronicallyIssuer() {
+		if (availableElectronically != null) {
+			return availableElectronically.getIssuer();
+		}
+		return null;
+	}
+
     @Override
     public Boolean getAnswer() {
         if (this.answer == null) {

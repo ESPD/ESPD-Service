@@ -37,4 +37,6 @@ public class AvailableElectronically {
 
     private String code;
 
+	private String issuer;
+
 }

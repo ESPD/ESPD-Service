@@ -54,6 +54,7 @@ class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
         espd.purelyNationalGrounds.availableElectronically.answer == true
         espd.purelyNationalGrounds.availableElectronically.url == "www.hodor.com"
         espd.purelyNationalGrounds.availableElectronically.code == "NATIONAL"
+        espd.purelyNationalGrounds.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {

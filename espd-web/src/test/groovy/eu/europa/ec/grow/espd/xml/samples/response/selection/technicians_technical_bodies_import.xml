@@ -68,6 +68,13 @@
                         <ccv-cbc:Code>TECHNICAL_BODIES</ccv-cbc:Code>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5cbf74d9-a1e2-4233-921d-8b298842ee7d</cbc:ID>
+                    <cbc:Description>Issuer</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>HODOR</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>

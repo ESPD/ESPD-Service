@@ -72,6 +72,13 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
         return null;
     }
 
+	public final String getInfoElectronicallyIssuer() {
+		if (availableElectronically != null) {
+			return availableElectronically.getIssuer();
+		}
+		return null;
+	}
+
     public static OtherCriterion build() {
         return new OtherCriterion();
     }

@@ -241,6 +241,11 @@ public enum SelectionCriterionRequirement implements CcvCriterionRequirement {
 	/**
 	 *
 	 */
+	ISSUER("5cbf74d9-a1e2-4233-921d-8b298842ee7d", "Issuer", ExpectedResponseType.DESCRIPTION,
+			"infoElectronicallyIssuer"),
+	/**
+	 *
+	 */
 	ALLOW_CHECKS("23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7", CriterionText.ALLOW_CHECKS_TEXT,
 			ExpectedResponseType.INDICATOR, "answer"),
 	/**

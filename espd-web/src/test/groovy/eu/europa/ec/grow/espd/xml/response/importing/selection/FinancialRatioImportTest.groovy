@@ -70,6 +70,7 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
         espd.financialRatio.availableElectronically.answer == true
         espd.financialRatio.availableElectronically.url == "www.hodor.com"
         espd.financialRatio.availableElectronically.code == "PROF_REGISTER"
+        espd.financialRatio.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
@@ -77,7 +78,7 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true, answer: true,
                 description1: "description1", description2: "description2", description3: "description3", description4: "description4", description5: "description5",
                 ratio1: 11.1, ratio2: 22.2, ratio3: 33.3, ratio4: 44.4, ratio5: 55.5,
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

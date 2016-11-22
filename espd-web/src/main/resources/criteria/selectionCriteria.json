@@ -94,6 +94,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -166,6 +174,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -257,6 +273,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -346,6 +370,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -521,6 +553,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -602,6 +642,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -777,6 +825,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -858,6 +914,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -1078,6 +1142,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -1152,6 +1224,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -1224,6 +1304,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -1519,6 +1607,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -1812,6 +1908,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -2107,6 +2211,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2179,6 +2291,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -2253,6 +2373,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2325,6 +2453,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -2399,6 +2535,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2471,6 +2615,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -2579,6 +2731,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2651,6 +2811,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -2777,6 +2945,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2902,6 +3078,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -2974,6 +3158,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -3082,6 +3274,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -3154,6 +3354,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]
@@ -3245,6 +3453,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -3335,6 +3551,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }
@@ -3424,6 +3648,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "5cbf74d9-a1e2-4233-921d-8b298842ee7d",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]

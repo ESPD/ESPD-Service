@@ -386,6 +386,14 @@
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
                   ]
+                },
+                {
+                  "id": "d8e1e818-d67b-4bb9-9aeb-4c10943a8342",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
+                  ]
                 }
               ]
             }

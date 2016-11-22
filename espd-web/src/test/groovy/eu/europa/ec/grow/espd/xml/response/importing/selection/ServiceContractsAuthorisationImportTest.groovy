@@ -52,13 +52,14 @@ class ServiceContractsAuthorisationImportTest extends AbstractXmlFileImport {
         espd.serviceContractsAuthorisation.availableElectronically.answer == true
         espd.serviceContractsAuthorisation.availableElectronically.url == "www.hodor.com"
         espd.serviceContractsAuthorisation.availableElectronically.code == "SERVICE_CONTRACTS_AUTH"
+        espd.serviceContractsAuthorisation.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true, answer: true,
                 description: "my kingdom",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "SERVICE_CONTRACTS_AUTH")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "SERVICE_CONTRACTS_AUTH", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

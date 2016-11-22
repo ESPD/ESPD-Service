@@ -98,6 +98,13 @@
                         <ccv-cbc:Code>NATIONAL</ccv-cbc:Code>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c3ccfa31-0c5e-4e3a-a3fd-db9fb83d78d4</cbc:ID>
+                    <cbc:Description>Issuer</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>HODOR</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>

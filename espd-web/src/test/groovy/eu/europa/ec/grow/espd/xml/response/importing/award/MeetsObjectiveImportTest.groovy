@@ -53,13 +53,14 @@ class MeetsObjectiveImportTest extends AbstractXmlFileImport {
         espd.meetsObjective.availableElectronically.answer == true
         espd.meetsObjective.availableElectronically.url == "www.hodor.com"
         espd.meetsObjective.availableElectronically.code == "MEETS"
+        espd.meetsObjective.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(meetsObjective: new OtherCriterion(exists: true, answer: null,
             description1: "please describe",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "MEETS")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "MEETS", issuer: "HODOR")))
 //        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

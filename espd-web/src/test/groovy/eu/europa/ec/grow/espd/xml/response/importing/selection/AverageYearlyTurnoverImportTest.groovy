@@ -54,13 +54,14 @@ class AverageYearlyTurnoverImportTest extends AbstractXmlFileImport {
         espd.averageYearlyTurnover.availableElectronically.answer == true
         espd.averageYearlyTurnover.availableElectronically.url == "www.hodor.com"
         espd.averageYearlyTurnover.availableElectronically.code == "AVERAGE_YEARLY_TURNOVER"
+        espd.averageYearlyTurnover.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: true,
                 numberOfYears: 3, averageTurnover: 111.154, averageTurnoverCurrency: "RON",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "AVERAGE_YEARLY_TURNOVER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "AVERAGE_YEARLY_TURNOVER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

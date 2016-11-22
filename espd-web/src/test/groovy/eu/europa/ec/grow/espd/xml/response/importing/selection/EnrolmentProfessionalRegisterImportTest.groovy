@@ -50,12 +50,13 @@ class EnrolmentProfessionalRegisterImportTest extends AbstractXmlFileImport {
         espd.enrolmentProfessionalRegister.availableElectronically.answer == true
         espd.enrolmentProfessionalRegister.availableElectronically.url == "www.hodor.com"
         espd.enrolmentProfessionalRegister.availableElectronically.code == "PROF_REGISTER"
+        espd.enrolmentProfessionalRegister.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: true,
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

@@ -59,6 +59,7 @@ class ParticipationCriminalOrganisationImportTest extends AbstractXmlFileImport 
         espd.criminalConvictions.availableElectronically.answer == true
         espd.criminalConvictions.availableElectronically.url == "www.hodor.com"
         espd.criminalConvictions.availableElectronically.code == "INTERNATIONAL"
+        espd.criminalConvictions.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {

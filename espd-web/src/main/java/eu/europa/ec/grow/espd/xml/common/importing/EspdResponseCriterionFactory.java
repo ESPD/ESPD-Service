@@ -71,53 +71,60 @@ class EspdResponseCriterionFactory {
 	<T extends EspdCriterion> T buildEspdCriterion(CcvCriterion ccvCriterion, CriterionType ublCriterion) {
 
 		if (ExclusionCriterionTypeCode.CRIMINAL_CONVICTIONS.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                   .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildCriminalConvictionsCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.PAYMENT_OF_TAXES.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType()) ||
+		                                                      .equals(ccvCriterion.getCriterionType().getEspdType()) ||
 				ExclusionCriterionTypeCode.PAYMENT_OF_SOCIAL_SECURITY.getEspdType()
-						.equals(ccvCriterion.getCriterionType().getEspdType())) {
+				                                                     .equals(ccvCriterion.getCriterionType()
+				                                                                         .getEspdType())) {
 			return (T) buildTaxesCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.ENVIRONMENTAL_LAW.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType()) ||
+		                                                       .equals(ccvCriterion.getCriterionType().getEspdType()) ||
 				ExclusionCriterionTypeCode.SOCIAL_LAW.getEspdType()
-						.equals(ccvCriterion.getCriterionType().getEspdType()) ||
+				                                     .equals(ccvCriterion.getCriterionType().getEspdType()) ||
 				ExclusionCriterionTypeCode.LABOUR_LAW.getEspdType()
-						.equals(ccvCriterion.getCriterionType().getEspdType())) {
+				                                     .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildLawCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.BANKRUPTCY_INSOLVENCY.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                           .equals(ccvCriterion.getCriterionType()
+		                                                                               .getEspdType())) {
 			return (T) buildBankruptcyCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.MISCONDUCT.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType()) ||
+		                                                .equals(ccvCriterion.getCriterionType().getEspdType()) ||
 				ExclusionCriterionTypeCode.DISTORTING_MARKET.getEspdType()
-						.equals(ccvCriterion.getCriterionType().getEspdType())) {
+				                                            .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildMisconductCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.CONFLICT_OF_INTEREST.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                          .equals(ccvCriterion.getCriterionType()
+		                                                                              .getEspdType())) {
 			return (T) buildConflictOfInterestCriterion(ublCriterion);
 		} else if (ExclusionCriterionTypeCode.OTHER.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                           .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildPurelyNationalGrounds(ublCriterion);
 		} else if (SelectionCriterionTypeCode.ALL_CRITERIA_SATISFIED.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                            .equals(ccvCriterion.getCriterionType()
+		                                                                                .getEspdType())) {
 			return (T) buildSatisfiesAllCriterion(ublCriterion);
 		} else if (SelectionCriterionTypeCode.SUITABILITY.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                 .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildSuitabilityCriterion(ublCriterion);
 		} else if (SelectionCriterionTypeCode.ECONOMIC_FINANCIAL_STANDING.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                                 .equals(ccvCriterion.getCriterionType()
+		                                                                                     .getEspdType())) {
 			return (T) buildEconomicFinancialStandingCriterion(ublCriterion);
 		} else if (SelectionCriterionTypeCode.TECHNICAL_PROFESSIONAL_ABILITY.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                                    .equals(ccvCriterion.getCriterionType()
+		                                                                                        .getEspdType())) {
 			return (T) buildTechnicalProfessionalCriterion(ublCriterion);
 		} else if (SelectionCriterionTypeCode.QUALITY_ASSURANCE.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType())) {
+		                                                       .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildQualityAssuranceCriterion(ublCriterion);
 		} else if (OtherCriterionTypeCode.DATA_ON_ECONOMIC_OPERATOR.getEspdType()
-				.equals(ccvCriterion.getCriterionType().getEspdType()) ||
+		                                                           .equals(ccvCriterion.getCriterionType()
+		                                                                               .getEspdType()) ||
 				OtherCriterionTypeCode.REDUCTION_OF_CANDIDATES.getEspdType()
-						.equals(ccvCriterion.getCriterionType().getEspdType())) {
+				                                              .equals(ccvCriterion.getCriterionType().getEspdType())) {
 			return (T) buildAwardCriterion(ublCriterion);
 		}
 		throw new IllegalArgumentException(
@@ -637,21 +644,24 @@ class EspdResponseCriterionFactory {
 
 	private AvailableElectronically buildExclusionAvailableElectronically(CriterionType criterionType) {
 		return buildAvailableElectronically(criterionType, ExclusionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
-				ExclusionCriterionRequirement.URL, ExclusionCriterionRequirement.URL_CODE);
+				ExclusionCriterionRequirement.URL, ExclusionCriterionRequirement.URL_CODE,
+				ExclusionCriterionRequirement.ISSUER);
 	}
 
 	private AvailableElectronically buildSelectionAvailableElectronically(CriterionType criterionType) {
 		return buildAvailableElectronically(criterionType, SelectionCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
-				SelectionCriterionRequirement.URL, SelectionCriterionRequirement.URL_CODE);
+				SelectionCriterionRequirement.URL, SelectionCriterionRequirement.URL_CODE,
+				SelectionCriterionRequirement.ISSUER);
 	}
 
 	private AvailableElectronically buildAwardAvailableElectronically(CriterionType criterionType) {
 		return buildAvailableElectronically(criterionType, OtherCriterionRequirement.INFO_AVAILABLE_ELECTRONICALLY,
-				OtherCriterionRequirement.URL, OtherCriterionRequirement.URL_CODE);
+				OtherCriterionRequirement.URL, OtherCriterionRequirement.URL_CODE, OtherCriterionRequirement.ISSUER);
 	}
 
 	private AvailableElectronically buildAvailableElectronically(CriterionType criterionType,
-			CcvCriterionRequirement answerReq, CcvCriterionRequirement urlReq, CcvCriterionRequirement urlCodeReq) {
+			CcvCriterionRequirement answerReq, CcvCriterionRequirement urlReq, CcvCriterionRequirement urlCodeReq,
+			CcvCriterionRequirement issuerReq) {
 		AvailableElectronically electronically = new AvailableElectronically();
 		Boolean electronicallyAnswer = readBooleanRequirement(answerReq, criterionType);
 		electronically.setAnswer(electronicallyAnswer);
@@ -659,6 +669,8 @@ class EspdResponseCriterionFactory {
 		electronically.setUrl(url);
 		String code = readRequirementValue(urlCodeReq, criterionType);
 		electronically.setCode(code);
+		String issuer = readRequirementValue(issuerReq, criterionType);
+		electronically.setIssuer(issuer);
 		return electronically;
 	}
 

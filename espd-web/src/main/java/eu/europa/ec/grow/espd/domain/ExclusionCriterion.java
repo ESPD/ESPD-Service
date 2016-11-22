@@ -60,6 +60,13 @@ public abstract class ExclusionCriterion extends EspdCriterion {
         return null;
     }
 
+	public final String getInfoElectronicallyIssuer() {
+		if (availableElectronically != null) {
+			return availableElectronically.getIssuer();
+		}
+		return null;
+	}
+
     public final boolean getSelfCleaningAnswer() {
         return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getAnswer());
     }
