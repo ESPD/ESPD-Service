@@ -123,7 +123,11 @@ public enum Language {
     /**
      * Swedish
      */
-    SWEDISH( "Svenska", "Swedish", "sv");
+    SWEDISH( "Svenska", "Swedish", "sv"),
+    /**
+     * Norwegian
+     */
+    NORWEGIAN( "Norsk", "Norwegian", "no");
 
     private int order;
 
