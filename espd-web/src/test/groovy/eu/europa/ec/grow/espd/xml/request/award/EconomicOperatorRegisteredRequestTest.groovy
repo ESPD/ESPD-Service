@@ -61,8 +61,7 @@ class EconomicOperatorRegisteredRequestTest extends AbstractCriteriaFixture {
         g1.ID.text() == "64162276-7014-408f-a9af-080426bfe1fd"
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 1
-        g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
+        g1.Requirement.size() == 0
 
         then: "G1.1"
         def g1_1 = g1.RequirementGroup[0]

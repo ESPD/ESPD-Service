@@ -2,6 +2,12 @@
 
 === Version 2016.12
 
+https://github.com/ESPD/ESPD-Service/issues/37[Part II: CA needs to select two "criteria"]
+
+This update will affect the Economic Operator criterion `EO registered` with id `9b19e869-6c89-4cc4-bd6c-ac9ca8602165`.
+The requirement `Not applicable` with id `67fd1dde-2a0a-486e-9469-79c78796fc22` will be removed from the parent
+criterion and will not be displayed and understood anymore by the ESPD service.
+
 https://github.com/ESPD/ESPD-Service/issues/92[Fields missing for "Information is available electronically"]
 
 All the `Information is available electronically` requirement groups will contain one extra requirement, called `Issuer`.

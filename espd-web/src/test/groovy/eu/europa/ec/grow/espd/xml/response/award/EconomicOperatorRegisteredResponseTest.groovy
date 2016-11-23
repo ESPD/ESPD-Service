@@ -62,8 +62,7 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
         g1.ID.text() == "64162276-7014-408f-a9af-080426bfe1fd"
         g1.@pi.text() == ""
         g1.RequirementGroup.size() == 1
-        g1.Requirement.size() == 1
-        checkRequirement(g1.Requirement[0], "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
+        g1.Requirement.size() == 0
 
         then: "G1.1"
         def g1_1 = g1.RequirementGroup[0]
@@ -103,21 +102,6 @@ class EconomicOperatorRegisteredResponseTest extends AbstractCriteriaFixture {
                 "INDICATOR")
         checkRequirement(g1_1_2.Requirement[1], "caa72cea-5443-49fb-84ba-ab6c64427f77",
                 "If the relevant documentation is available electronically, please indicate:", "DESCRIPTION")
-    }
-
-    def "check the 'Not applicable' requirement response"() {
-        given:
-        def espd = new EspdDocument(eoRegistered: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: true, booleanValue2: true))
-
-        when:
-        def response = parseResponseXml(espd)
-        def idx = getEoCriterionIndex(OtherCriterion.EO_REGISTERED)
-
-        then:
-        def req = response.Criterion[idx].RequirementGroup[0].Requirement[0]
-        checkRequirement(req, "67fd1dde-2a0a-486e-9469-79c78796fc22", "Not applicable", "INDICATOR")
-        req.Response.size() == 1
-        req.Response[0].Indicator.text() == "true"
     }
 
     def "check the 'Indicator' requirement response"() {

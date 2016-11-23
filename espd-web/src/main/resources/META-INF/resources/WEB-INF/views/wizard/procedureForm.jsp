@@ -237,7 +237,6 @@
                             <form:radiobutton path="eoRegistered.answer" value="false" id="eo_registered_answer_no"
                                               data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <form:checkbox path="eoRegistered.booleanValue2" id="eo_registered_na"/>${span18n['not_applicable']}
                         </div>
                     </div>
                 </div>

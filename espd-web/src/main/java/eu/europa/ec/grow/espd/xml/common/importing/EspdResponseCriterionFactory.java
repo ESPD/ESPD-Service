@@ -684,9 +684,6 @@ class EspdResponseCriterionFactory {
 		Boolean yourAnswer = readAwardCriterionAnswer(criterionType);
 		criterion.setAnswer(yourAnswer);
 
-		Boolean notApplicable = readBooleanRequirement(OtherCriterionRequirement.NOT_APPLICABLE, criterionType);
-		criterion.setBooleanValue2(notApplicable);
-
 		// description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
 		String detailsCategory = readRequirementValue(OtherCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
 				criterionType);

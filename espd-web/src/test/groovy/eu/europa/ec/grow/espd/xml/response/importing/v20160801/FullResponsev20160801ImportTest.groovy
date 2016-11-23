@@ -1096,7 +1096,7 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         espd.eoRegistered.exists == true
         espd.eoRegistered.answer == true
         espd.eoRegistered.booleanValue1 == true
-        espd.eoRegistered.booleanValue2 == false
+        espd.eoRegistered.booleanValue2 == null // not applicable is not recognized anymore
         espd.eoRegistered.booleanValue3 == false
         espd.eoRegistered.description1 == "Bilge-for-brains! Stab that godforsaken porthole!"
         espd.eoRegistered.description2 == "Curse ye! Stab that disloyal botswain!"

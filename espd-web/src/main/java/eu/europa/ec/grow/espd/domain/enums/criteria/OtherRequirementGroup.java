@@ -54,7 +54,7 @@ public enum OtherRequirementGroup implements CcvRequirementGroup {
      *
      */
     EO_REGISTERED_GROUP_1("64162276-7014-408f-a9af-080426bfe1fd", ListUtil.list(EO_REGISTERED_GROUP_1_1),
-            ListUtil.list(OtherCriterionRequirement.NOT_APPLICABLE, OtherCriterionRequirement.INDICATOR,
+            ListUtil.list(OtherCriterionRequirement.INDICATOR,
                     OtherCriterionRequirement.PROVIDE_REGISTRATION_NUMBER,
                     OtherCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
                     OtherCriterionRequirement.REFERENCES_REGISTRATION)),

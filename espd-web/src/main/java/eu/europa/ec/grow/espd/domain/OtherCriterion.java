@@ -46,7 +46,7 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
     private String description5;
     private BigDecimal doubleValue1;
     private Boolean booleanValue1;
-    private Boolean booleanValue2; // is not applicable
+    private Boolean booleanValue2; // is not applicable (not used anymore)
     private Boolean booleanValue3; // e) Will the economic operator... indicator
 
     public OtherCriterion() {
