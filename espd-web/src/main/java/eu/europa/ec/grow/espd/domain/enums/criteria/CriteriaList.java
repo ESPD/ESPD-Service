@@ -35,28 +35,25 @@ import java.util.Map;
  */
 public final class CriteriaList {
 
-    private static final Map<String, CcvCriterion> CRITERIA = new HashMap<>();
+	private static final Map<String, CcvCriterion> CRITERIA = new HashMap<>();
 
-    static {
-        for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
-            CRITERIA.put(criterion.getUuid(), criterion);
-        }
-        for (SelectionCriterion criterion : SelectionCriterion.values()) {
-            CRITERIA.put(criterion.getUuid(), criterion);
-        }
-        for (OtherCriterion criterion : OtherCriterion.values()) {
-            CRITERIA.put(criterion.getUuid(), criterion);
-        }
-    }
+	static {
+		for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
+			CRITERIA.put(criterion.getUuid(), criterion);
+		}
+		for (SelectionCriterion criterion : SelectionCriterion.values()) {
+			CRITERIA.put(criterion.getUuid(), criterion);
+		}
+		for (OtherCriterion criterion : OtherCriterion.values()) {
+			CRITERIA.put(criterion.getUuid(), criterion);
+		}
+	}
 
-    private CriteriaList() {
+	private CriteriaList() {
 
-    }
+	}
 
-    public static Optional<CcvCriterion> findById(String uuid) {
-        if (CRITERIA.get(uuid) != null) {
-            return Optional.of(CRITERIA.get(uuid));
-        }
-        return Optional.absent();
-    }
+	public static Optional<CcvCriterion> findById(String uuid) {
+		return Optional.fromNullable(CRITERIA.get(uuid));
+	}
 }
