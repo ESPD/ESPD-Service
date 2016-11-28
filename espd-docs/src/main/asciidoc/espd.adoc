@@ -3,7 +3,7 @@
 Alexey Lukashov +
 Virgiliu Ratoi
 
-v2016.10, 08-11-2016
+v2016.10, 28-11-2016
 
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
