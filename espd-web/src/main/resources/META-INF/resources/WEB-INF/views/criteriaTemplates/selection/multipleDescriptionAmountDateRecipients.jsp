@@ -34,7 +34,7 @@
             <label class="control-label small">${span18n['crit_description']}</label>
         </div>
 		<div class="col-xs-9">
-			<form:textarea path="${field}.description${loop.index}" cssClass="form-control" />
+			<form:textarea path="${field}.dynamicGroups[${loop.index - 1}]['description']" cssClass="form-control" />
 		</div>
     </div>
 	<div class="form-group form-group-sm">

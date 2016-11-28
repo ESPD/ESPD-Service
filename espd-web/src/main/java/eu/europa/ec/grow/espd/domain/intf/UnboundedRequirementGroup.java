@@ -22,29 +22,20 @@
  *
  */
 
-package eu.europa.ec.grow.espd.domain.ubl;
+package eu.europa.ec.grow.espd.domain.intf;
 
-import java.io.Serializable;
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
+
 import java.util.List;
 
 /**
+ * Interface marking requirement groups which can grow indefinitely and can have dynamic requirements. Examples of
+ * such groups can be found in the Sections B or C of the selection criteria, i.e. yearly turnovers, financial ratios,
+ * work contracts, supply contracts, service contracts, etc.
  *
- *
- * Created by vigi on 11/23/15:11:49 AM.
+ * Created by ratoico on 11/25/16.
  */
-public interface CcvCriterionRequirement extends Serializable {
+public interface UnboundedRequirementGroup {
 
-    String getId();
-
-    String getDescription();
-
-    CcvResponseType getResponseType();
-
-	/**
-	 * The fields on the parent {@link eu.europa.ec.grow.espd.domain.EspdCriterion} which are mapped to the
-	 * requirement. Usually, a requirement is mapped to one field only, but requirements of type AMOUNT are mapped to
-	 * an 'amount' and 'currency' fields.
-	 * @return
-	 */
-    List<String> getEspdCriterionFields();
+	List<DynamicRequirementGroup> getUnboundedGroups();
 }

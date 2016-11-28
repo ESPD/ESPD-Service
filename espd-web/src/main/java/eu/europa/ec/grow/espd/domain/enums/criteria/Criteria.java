@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Utility class for holding ESPD criteria meta information by using the criterion UUID.
+ *
  * Created by ratoico on 5/23/16.
  */
 final class Criteria {
