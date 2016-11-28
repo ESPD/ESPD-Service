@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2016.10.02 (28th of November 2016)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/118[extend the sesion from 1h upto 2h]
+
 === 2016.10.01 (11th of November 2016)
 
 ==== Enhancement
