@@ -1,5 +1,25 @@
 == Release notes
 
+=== 2016.11 (29th of November 2016)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/111[Add NORSK translation]
+* https://github.com/ESPD/ESPD-Service/issues/112[piwik statistics understated]
+* https://github.com/ESPD/ESPD-Service/issues/23[As entrepreneur reloading xml changes values]
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/114[The data coming from eCertis is not shown]
+
+==== Translation
+
+* https://github.com/ESPD/ESPD-Service/issues/99[ENG-SWE: error in translation]
+* https://github.com/ESPD/ESPD-Service/issues/87[Part III D: Purley national exlcusion grounds wording should be changed]
+* https://github.com/ESPD/ESPD-Service/issues/51[Part III: Section B: "Payment of taxes" and “Payment of social security”]
+* https://github.com/ESPD/ESPD-Service/issues/85[Part II A: Official list, name is missing]
+* https://github.com/ESPD/ESPD-Service/issues/81[Part I: Identity of procurer not correct translated in HU]
+
 === 2016.10.02 (28th of November 2016)
 
 ==== Enhancement

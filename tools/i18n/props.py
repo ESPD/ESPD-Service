@@ -51,7 +51,7 @@ def loadProps(fileName, lang, globalProps):
                 except ValueError:
                     trace("Error on reading line: " + line)
 
-                if key[0].isupper(): trace("Warning. Uppercase in label key found " + key)
+                if key.isupper(): trace("Warning. Uppercase in label key found " + key)
                 props[key] = val
                 if globalProps != None:
                     if key not in globalProps:
