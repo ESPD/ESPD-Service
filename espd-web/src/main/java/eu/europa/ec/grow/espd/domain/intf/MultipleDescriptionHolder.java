@@ -40,4 +40,6 @@ public interface MultipleDescriptionHolder {
     void setDescription3(String description3);
     void setDescription4(String description4);
     void setDescription5(String description5);
+
+	void setDescriptionAtIndex(String description, int index);
 }

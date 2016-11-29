@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.common.importing;
 
+import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.domain.OtherCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.*;
@@ -31,13 +32,16 @@ import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.intf.MultipleAmountHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
+import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvResponseType;
 import eu.europa.ec.grow.espd.util.Amount;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementGroupType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -54,6 +58,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * <p/>
  * Created by ratoico on 1/7/16 at 11:16 AM.
  */
+@Slf4j
 class EspdResponseCriterionFactory {
 
 	private static final CcvCriterionRequirement OLD_SELECTION_PLEASE_SPECIFY_REQUIREMENT = buildOldSelectionPleaseSpecifyRequirement();
@@ -427,6 +432,8 @@ class EspdResponseCriterionFactory {
 		addMultipleYears(criterionType, criterion);
 		addMultipleNumbers(criterionType, criterion);
 
+		addUnboundedGroups(criterionType, criterion);
+
 		addDescriptionForTechnicalProfessional(criterionType, criterion);
 
 		String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
@@ -548,6 +555,45 @@ class EspdResponseCriterionFactory {
 		criterion.setDescription4(description4);
 		String description5 = readRequirementValue(SelectionCriterionRequirement.DESCRIPTION_5, criterionType);
 		criterion.setDescription5(description5);
+	}
+
+	private void addUnboundedGroups(CriterionType criterionType, UnboundedRequirementGroup criterion) {
+		if (isEmpty(criterionType.getRequirementGroup())) {
+			return;
+		}
+		for (RequirementGroupType groupType : criterionType.getRequirementGroup()) {
+			addUnboundedGroup(criterion, groupType);
+		}
+	}
+
+	private void addUnboundedGroup(UnboundedRequirementGroup criterion, RequirementGroupType groupType) {
+		Optional<CcvRequirementGroup> ccvGroup = CriteriaDefinitions
+				.findRequirementGroupById(groupType.getID().getValue());
+		if (!ccvGroup.isPresent() || !ccvGroup.get().isUnbounded()) {
+			return;
+		}
+
+		DynamicRequirementGroup dynamicGroup = new DynamicRequirementGroup();
+		criterion.getUnboundedGroups().add(dynamicGroup);
+		if (isNotEmpty(groupType.getRequirement())) {
+			for (RequirementType requirementType : groupType.getRequirement()) {
+				addRequirementValueToUnboundedGroup(dynamicGroup, requirementType);
+			}
+		}
+	}
+
+	private void addRequirementValueToUnboundedGroup(DynamicRequirementGroup dynamicGroup,
+			RequirementType requirementType) {
+		Optional<CcvCriterionRequirement> requirementById = CriteriaDefinitions
+				.findRequirementById(requirementType.getID().getValue());
+		if (requirementById.isPresent() && isNotEmpty(requirementType.getResponse())) {
+			Object value = requirementById.get().getResponseType()
+			                              .parseValue(requirementType.getResponse().get(0));
+			dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), value);
+		} else {
+			log.warn("Requirement with id '{}' could not be found or does not have a response.",
+					requirementType.getID().getValue());
+		}
 	}
 
 	private void addMultipleAmounts(CriterionType criterionType, MultipleAmountHolder criterion) {

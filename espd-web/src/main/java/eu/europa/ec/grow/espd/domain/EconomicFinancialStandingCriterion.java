@@ -80,4 +80,8 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion
         return criterion;
     }
 
+	@Override
+	public void setDescriptionAtIndex(String description, int index) {
+		throw new UnsupportedOperationException("TODO this");
+	}
 }

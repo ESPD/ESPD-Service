@@ -26,7 +26,7 @@ package eu.europa.ec.grow.espd.xml.common.importing;
 
 import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.enums.criteria.CriteriaList;
+import eu.europa.ec.grow.espd.domain.enums.criteria.CriteriaDefinitions;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.extern.slf4j.Slf4j;
@@ -72,7 +72,7 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void setCriterionValueOnEspdModel(EspdDocument espdDocument, CriterionType ublCriterion) {
-        Optional<CcvCriterion> ccvCriterion = CriteriaList.findById(ublCriterion.getID().getValue());
+        Optional<CcvCriterion> ccvCriterion = CriteriaDefinitions.findCriterionById(ublCriterion.getID().getValue());
         if (!ccvCriterion.isPresent()) {
             return;
         }

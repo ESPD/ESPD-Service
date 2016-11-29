@@ -80,7 +80,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     ExclusionCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDeserializer.getExclusionCriterion(uuid);
+        CcvCriterion criterion = CriteriaDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();

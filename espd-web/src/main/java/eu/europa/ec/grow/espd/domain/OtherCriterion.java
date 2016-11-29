@@ -91,4 +91,9 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
     public Boolean getAnswer() {
         return this.answer;
     }
+
+	@Override
+	public void setDescriptionAtIndex(String description, int index) {
+		throw new UnsupportedOperationException("TODO this");
+	}
 }

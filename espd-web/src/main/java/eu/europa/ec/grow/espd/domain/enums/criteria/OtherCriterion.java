@@ -62,7 +62,7 @@ public enum OtherCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     OtherCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDeserializer.getOtherCriterion(uuid);
+        CcvCriterion criterion = CriteriaDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();

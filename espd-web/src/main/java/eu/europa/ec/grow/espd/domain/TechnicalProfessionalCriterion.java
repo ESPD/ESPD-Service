@@ -30,6 +30,7 @@ import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
 import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import java.util.List;
  * Created by ratoico on 1/5/16 at 1:57 PM.
  */
 @Data
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class TechnicalProfessionalCriterion extends SelectionCriterion
         implements MultipleAmountHolder, MultipleDescriptionHolder, MultipleYearHolder, UnboundedRequirementGroup {
 
@@ -121,5 +122,14 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion
 	@Override
 	public List<DynamicRequirementGroup> getUnboundedGroups() {
 		return this.unboundedGroups;
+	}
+
+	@Override
+	public void setDescriptionAtIndex(String description, int index) {
+		if (CollectionUtils.isEmpty(unboundedGroups) || unboundedGroups.size() <= index) {
+			DynamicRequirementGroup dynamicGroup = new DynamicRequirementGroup();
+			unboundedGroups.add(index, dynamicGroup);
+		}
+		unboundedGroups.get(index).put("description", description);
 	}
 }

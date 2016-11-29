@@ -33,6 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import eu.europa.ec.grow.espd.domain.ubl.*;
+import lombok.Setter;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
@@ -44,44 +45,45 @@ import java.util.List;
 /**
  * Utility class which reads the meta information about all the possible ESPD criteria definitions stored inside
  * JSON files and loaded via classpath.
- *
+ * <p>
  * Created by ratoico on 5/23/16.
  */
-final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
+final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
 
 	private static final CriteriaDeserializer INSTANCE = new CriteriaDeserializer();
 	private static final ObjectMapper MAPPER = new ObjectMapper();
-
-	private static Criteria exclusionCriteria;
-	private static Criteria selectionCriteria;
-	private static Criteria otherCriteria;
 
 	private CriteriaDeserializer() {
 	}
 
 	static {
 		SimpleModule module = new SimpleModule();
-		module.addDeserializer(Criteria.class, INSTANCE);
+		module.addDeserializer(CriteriaDefinitions.class, INSTANCE);
 		MAPPER.registerModule(module);
-		// read the criteria only once to populate the enums
-		exclusionCriteria = parseJsonFile("exclusionCriteria.json");
-		selectionCriteria = parseJsonFile("selectionCriteria.json");
-		otherCriteria = parseJsonFile("otherCriteria.json");
+	}
+
+	static CriteriaDefinitions parseJsonFile(String fileName) {
+		try (InputStream is = new ClassPathResource("criteria/" + fileName).getInputStream()) {
+			return MAPPER.readValue(is, CriteriaDefinitions.class);
+		} catch (IOException e) {
+			throw new IllegalArgumentException(String.format("Could not read JSON file: '%s'.", fileName), e);
+		}
 	}
 
 	@Override
-	public Criteria deserialize(JsonParser jp, DeserializationContext dc)
+	public CriteriaDefinitions deserialize(JsonParser jp, DeserializationContext dc)
 			throws IOException, JsonProcessingException {
 		JsonNode node = jp.getCodec().readTree(jp);
-		ArrayNode critNode = (ArrayNode) node.get("criteria");
+		ArrayNode criteriaNode = (ArrayNode) node.get("criteria");
 
-		Criteria criteria = new Criteria(critNode.size());
-		for (JsonNode nd : critNode) {
+		CriteriaDefinitions criteriaDefinitions = new CriteriaDefinitions();
+		for (JsonNode nd : criteriaNode) {
 			CcvCriterion crit = parseCcvCriterion(nd);
-			criteria.put(crit.getUuid(), crit);
+			criteriaDefinitions.addCriterion(crit.getUuid(), crit);
 		}
+		addCcvEntityMappings(node, criteriaDefinitions);
 
-		return criteria;
+		return criteriaDefinitions;
 	}
 
 	private CcvCriterion parseCcvCriterion(final JsonNode node) {
@@ -141,6 +143,41 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 				return espdDocumentField;
 			}
 		};
+	}
+
+	private void addCcvEntityMappings(JsonNode node, CriteriaDefinitions criteriaDefinitions) {
+		// Related to https://github.com/ESPD/ESPD-Service/issues/15. We need to still support the old group ids
+		// in order to support requirement group and requirement definitions for versions prior to 2016.12 we need
+		// to create a mapping between the old ids and the new definitions for the groups and the requirements
+		// so when we do a lookup with the old id we get the new definition
+
+		ArrayNode oldRequirementGroupMappingsNode = (ArrayNode) node.get("requirementGroupMappings");
+		if (oldRequirementGroupMappingsNode != null) {
+			for (JsonNode nd : oldRequirementGroupMappingsNode) {
+				OldCcvEntityMapping mapping = parseOldMappings(nd);
+				criteriaDefinitions.addRequirementGroupMappings(mapping.replacementId, mapping.idsToBeReplaced);
+			}
+		}
+
+		ArrayNode oldRequirementMappingsNode = (ArrayNode) node.get("requirementMappings");
+		if (oldRequirementMappingsNode != null) {
+			for (JsonNode nd : oldRequirementMappingsNode) {
+				OldCcvEntityMapping mapping = parseOldMappings(nd);
+				criteriaDefinitions.addRequirementMappings(mapping.replacementId, mapping.idsToBeReplaced);
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static OldCcvEntityMapping parseOldMappings(JsonNode node) {
+		String replacementId = parseStringNode("replacementId", node);
+		ArrayNode idNodes = (ArrayNode) node.get("idsToBeReplaced");
+		List<String> idsToBeReplaced = new ArrayList<>(idNodes.size());
+		for (JsonNode nd : idNodes) {
+			idsToBeReplaced.add(nd.textValue());
+		}
+
+		return new OldCcvEntityMapping(replacementId, idsToBeReplaced);
 	}
 
 	private static String parseStringNode(String nodeName, JsonNode parentNode) {
@@ -225,10 +262,7 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 
 			@Override
 			public boolean isUnbounded() {
-				if (parentNode.get("unbounded") == null) {
-					return false;
-				}
-				return parentNode.get("unbounded").asBoolean();
+				return parentNode.get("unbounded") != null && parentNode.get("unbounded").asBoolean();
 			}
 
 			@Override
@@ -282,31 +316,17 @@ final class CriteriaDeserializer extends JsonDeserializer<Criteria> {
 		return parentNode == null || parentNode.size() <= 0;
 	}
 
-	private static Criteria parseJsonFile(String fileName) {
-		try (InputStream is = new ClassPathResource("criteria/" + fileName).getInputStream()) {
-			return MAPPER.readValue(is, Criteria.class);
-		} catch (IOException e) {
-			throw new IllegalArgumentException(String.format("Could not read JSON file: '%s'.", fileName), e);
+	@Setter
+	private static class OldCcvEntityMapping {
+
+		private final String replacementId;
+
+		private final List<String> idsToBeReplaced;
+
+		private OldCcvEntityMapping(String replacementId, List<String> idsToBeReplaced) {
+			this.replacementId = replacementId;
+			this.idsToBeReplaced = idsToBeReplaced;
 		}
 	}
 
-	static CcvCriterion getExclusionCriterion(String uuid) {
-		return loadCriterionById(uuid, exclusionCriteria);
-	}
-
-	static CcvCriterion getSelectionCriterion(String uuid) {
-		return loadCriterionById(uuid, selectionCriteria);
-	}
-
-	static CcvCriterion getOtherCriterion(String uuid) {
-		return loadCriterionById(uuid, otherCriteria);
-	}
-
-	private static CcvCriterion loadCriterionById(String uuid, Criteria criteria) {
-		CcvCriterion criterion = criteria.get(uuid);
-		if (criterion == null) {
-			throw new IllegalArgumentException(String.format("The criterion with id: '%s' could not be found.", uuid));
-		}
-		return criterion;
-	}
 }

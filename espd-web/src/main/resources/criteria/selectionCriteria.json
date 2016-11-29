@@ -1456,13 +1456,14 @@
         {
           "name": "G1",
           "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
               "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "description1"
+                "description"
               ]
             },
             {
@@ -1471,7 +1472,7 @@
               "responseType": "AMOUNT",
               "espdCriterionFields": [
                 "amount1",
-                "currency1"
+                "currency"
               ]
             },
             {
@@ -1479,7 +1480,7 @@
               "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "startDate1"
+                "startDate"
               ]
             },
             {
@@ -1487,7 +1488,7 @@
               "description": "End Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "endDate1"
+                "endDate"
               ]
             },
             {
@@ -1495,7 +1496,7 @@
               "description": "Recipients",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "recipients1"
+                "recipients"
               ]
             }
           ]
@@ -1758,13 +1759,14 @@
         {
           "name": "G1",
           "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
               "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "description1"
+                "description"
               ]
             },
             {
@@ -1772,8 +1774,8 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             },
             {
@@ -1781,7 +1783,7 @@
               "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "startDate1"
+                "startDate"
               ]
             },
             {
@@ -1789,7 +1791,7 @@
               "description": "End Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "endDate1"
+                "endDate"
               ]
             },
             {
@@ -1797,7 +1799,7 @@
               "description": "Recipients",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "recipients1"
+                "recipients"
               ]
             }
           ]
@@ -3477,6 +3479,64 @@
         }
       ],
       "espdDocumentField": "certificateIndependentBodiesAboutEnvironmental"
+    }
+  ],
+  "requirementGroupMappings": [
+    {
+      "replacementId": "96f00020-0a25-402e-b850-2378e83b5695",
+      "idsToBeReplaced": [
+        "c48572f9-47bf-423a-9885-2c78ae9ca718",
+        "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+        "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+        "159fc086-cf34-48a4-a41b-afed62661383"
+      ]
+    }
+  ],
+  "requirementMappings": [
+    {
+      "replacementId": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+      "idsToBeReplaced": [
+        "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+        "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+        "b1640c24-b405-443e-bf5e-d7771f66aab6",
+        "587129bc-a5e1-43be-94ac-6e5366d30c67"
+      ]
+    },
+    {
+      "replacementId": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+      "idsToBeReplaced": [
+        "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+        "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+        "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+        "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b"
+      ]
+    },
+    {
+      "replacementId": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+      "idsToBeReplaced": [
+        "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
+        "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
+        "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
+        "056cba1d-986b-4164-92b6-26a1cbdf0690"
+      ]
+    },
+    {
+      "replacementId": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+      "idsToBeReplaced": [
+        "4c842551-fb07-4a13-91e6-5653820f7e80",
+        "822934ff-da94-40d2-a799-f29ba7bba2b0",
+        "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
+        "dd71df86-3ad5-42dd-add5-9bd51dc88f05"
+      ]
+    },
+    {
+      "replacementId": "a92536ab-6783-40bb-a037-5d31f421fd85",
+      "idsToBeReplaced": [
+        "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
+        "5157e1ff-d272-4382-98a9-6953f5a15300",
+        "a84ea948-cf03-47b5-b4cf-a35f49910d10",
+        "38a4802f-0b93-4e78-ad4e-2a057e1aa578"
+      ]
     }
   ]
 }

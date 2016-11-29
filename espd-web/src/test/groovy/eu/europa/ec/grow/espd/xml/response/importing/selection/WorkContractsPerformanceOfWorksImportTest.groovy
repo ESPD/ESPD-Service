@@ -23,23 +23,27 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
 import org.apache.commons.io.IOUtils
+
 /**
  * Created by ratoico on 1/8/16 at 11:45 AM.
  */
 class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
-    def "14. should import all fields of 'For works contracts: performance of works of the specified type'"() {
+    def "14. should import all fields of 'For works contracts: performance of works of the specified type' with unbounded requirement groups"() {
         given:
         def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import.xml")
 
         when:
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        def unboundedGroups = espd.workContractsPerformanceOfWorks.unboundedGroups
 
         then:
         espd.workContractsPerformanceOfWorks.exists == true
@@ -48,44 +52,119 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.answer == true
 
         then:
-        espd.workContractsPerformanceOfWorks.description1 == "description1"
-        espd.workContractsPerformanceOfWorks.amount1 == 11.1
-        espd.workContractsPerformanceOfWorks.currency1 == "RON"
-        espd.workContractsPerformanceOfWorks.startDate1 == LocalDateAdapter.unmarshal("2016-01-17").toDate()
-        espd.workContractsPerformanceOfWorks.endDate1 == LocalDateAdapter.unmarshal("2016-02-17").toDate()
-        espd.workContractsPerformanceOfWorks.recipients1 == "recipients1"
+        unboundedGroups.size() == 6
 
         then:
-        espd.workContractsPerformanceOfWorks.description2 == "description2"
-        espd.workContractsPerformanceOfWorks.amount2 == 22.2
-        espd.workContractsPerformanceOfWorks.currency2 == "EUR"
-        espd.workContractsPerformanceOfWorks.startDate2 == LocalDateAdapter.unmarshal("2016-01-18").toDate()
-        espd.workContractsPerformanceOfWorks.endDate2 == LocalDateAdapter.unmarshal("2016-02-18").toDate()
-        espd.workContractsPerformanceOfWorks.recipients2 == "recipients2"
+        unboundedGroups[0].get("description") == "description1"
+        unboundedGroups[0].get("amount").amount == 11.1
+        unboundedGroups[0].get("amount").currency == "RON"
+        unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-01-17").toDate()
+        unboundedGroups[0].get("endDate") == LocalDateAdapter.unmarshal("2016-02-17").toDate()
+        unboundedGroups[0].get("recipients") == "recipients1"
 
         then:
-        espd.workContractsPerformanceOfWorks.description3 == "description3"
-        espd.workContractsPerformanceOfWorks.amount3 == 33.3
-        espd.workContractsPerformanceOfWorks.currency3 == "USD"
-        espd.workContractsPerformanceOfWorks.startDate3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
-        espd.workContractsPerformanceOfWorks.endDate3 == LocalDateAdapter.unmarshal("2016-02-19").toDate()
-        espd.workContractsPerformanceOfWorks.recipients3 == "recipients3"
+        unboundedGroups[1].get("description") == "description2"
+        unboundedGroups[1].get("amount").amount == 22.2
+        unboundedGroups[1].get("amount").currency == "EUR"
+        unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-18").toDate()
+        unboundedGroups[1].get("endDate") == LocalDateAdapter.unmarshal("2016-02-18").toDate()
+        unboundedGroups[1].get("recipients") == "recipients2"
 
         then:
-        espd.workContractsPerformanceOfWorks.description4 == "description4"
-        espd.workContractsPerformanceOfWorks.amount4 == 44.4
-        espd.workContractsPerformanceOfWorks.currency4 == "CHF"
-        espd.workContractsPerformanceOfWorks.startDate4 == LocalDateAdapter.unmarshal("2016-01-20").toDate()
-        espd.workContractsPerformanceOfWorks.endDate4 == LocalDateAdapter.unmarshal("2016-02-20").toDate()
-        espd.workContractsPerformanceOfWorks.recipients4 == "recipients4"
+        unboundedGroups[2].get("description") == "description3"
+        unboundedGroups[2].get("amount").amount == 33.3
+        unboundedGroups[2].get("amount").currency == "USD"
+        unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        unboundedGroups[2].get("endDate") == LocalDateAdapter.unmarshal("2016-02-19").toDate()
+        unboundedGroups[2].get("recipients") == "recipients3"
 
         then:
-        espd.workContractsPerformanceOfWorks.description5 == "description5"
-        espd.workContractsPerformanceOfWorks.amount5 == 55.5
-        espd.workContractsPerformanceOfWorks.currency5 == "YEN"
-        espd.workContractsPerformanceOfWorks.startDate5 == LocalDateAdapter.unmarshal("2016-01-21").toDate()
-        espd.workContractsPerformanceOfWorks.endDate5 == LocalDateAdapter.unmarshal("2016-02-21").toDate()
-        espd.workContractsPerformanceOfWorks.recipients5 == "recipients5"
+        unboundedGroups[3].get("description") == "description4"
+        unboundedGroups[3].get("amount").amount == 44.4
+        unboundedGroups[3].get("amount").currency == "CHF"
+        unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-20").toDate()
+        unboundedGroups[3].get("endDate") == LocalDateAdapter.unmarshal("2016-02-20").toDate()
+        unboundedGroups[3].get("recipients") == "recipients4"
+
+        then:
+        unboundedGroups[4].get("description") == "description5"
+        unboundedGroups[4].get("amount").amount == 55.5
+        unboundedGroups[4].get("amount").currency == "YEN"
+        unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2016-01-21").toDate()
+        unboundedGroups[4].get("endDate") == LocalDateAdapter.unmarshal("2016-02-21").toDate()
+        unboundedGroups[4].get("recipients") == "recipients5"
+
+        then: "see that we can handle more than 5 requirement unboundedGroups"
+        unboundedGroups[5].get("description") == "description6"
+        unboundedGroups[5].get("amount").amount == 66.6
+        unboundedGroups[5].get("amount").currency == "YEN"
+        unboundedGroups[5].get("startDate") == LocalDateAdapter.unmarshal("2016-01-22").toDate()
+        unboundedGroups[5].get("endDate") == LocalDateAdapter.unmarshal("2016-02-23").toDate()
+        unboundedGroups[5].get("recipients") == "recipients6"
+
+        then: "info electronically"
+        espd.workContractsPerformanceOfWorks.availableElectronically.answer == true
+        espd.workContractsPerformanceOfWorks.availableElectronically.url == "www.hodor.com"
+        espd.workContractsPerformanceOfWorks.availableElectronically.code == "PERF"
+        espd.workContractsPerformanceOfWorks.availableElectronically.issuer == "HODOR"
+    }
+
+    def "14. should import all fields of 'For works contracts: performance of works of the specified type' with old requirement ids before the unbounded groups feature"() {
+        given:
+        def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import_old_req_ids.xml")
+
+        when:
+        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        def unboundedGroups = espd.workContractsPerformanceOfWorks.unboundedGroups
+
+        then:
+        espd.workContractsPerformanceOfWorks.exists == true
+
+        then: "answer is null and it is a selection criterion so the default value should be true"
+        espd.workContractsPerformanceOfWorks.answer == true
+
+        then:
+        unboundedGroups.size() == 5
+
+        then:
+        unboundedGroups[0].get("description") == "description1"
+        unboundedGroups[0].get("amount").amount == 11.1
+        unboundedGroups[0].get("amount").currency == "RON"
+        unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-01-17").toDate()
+        unboundedGroups[0].get("endDate") == LocalDateAdapter.unmarshal("2016-02-17").toDate()
+        unboundedGroups[0].get("recipients") == "recipients1"
+
+        then:
+        unboundedGroups[1].get("description") == "description2"
+        unboundedGroups[1].get("amount").amount == 22.2
+        unboundedGroups[1].get("amount").currency == "EUR"
+        unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-18").toDate()
+        unboundedGroups[1].get("endDate") == LocalDateAdapter.unmarshal("2016-02-18").toDate()
+        unboundedGroups[1].get("recipients") == "recipients2"
+
+        then:
+        unboundedGroups[2].get("description") == "description3"
+        unboundedGroups[2].get("amount").amount == 33.3
+        unboundedGroups[2].get("amount").currency == "USD"
+        unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        unboundedGroups[2].get("endDate") == LocalDateAdapter.unmarshal("2016-02-19").toDate()
+        unboundedGroups[2].get("recipients") == "recipients3"
+
+        then:
+        unboundedGroups[3].get("description") == "description4"
+        unboundedGroups[3].get("amount").amount == 44.4
+        unboundedGroups[3].get("amount").currency == "CHF"
+        unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-20").toDate()
+        unboundedGroups[3].get("endDate") == LocalDateAdapter.unmarshal("2016-02-20").toDate()
+        unboundedGroups[3].get("recipients") == "recipients4"
+
+        then:
+        unboundedGroups[4].get("description") == "description5"
+        unboundedGroups[4].get("amount").amount == 55.5
+        unboundedGroups[4].get("amount").currency == "YEN"
+        unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2016-01-21").toDate()
+        unboundedGroups[4].get("endDate") == LocalDateAdapter.unmarshal("2016-02-21").toDate()
+        unboundedGroups[4].get("recipients") == "recipients5"
 
         then: "info electronically"
         espd.workContractsPerformanceOfWorks.availableElectronically.answer == true
@@ -97,13 +176,15 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true, answer: true,
-                description1: "description1", amount1: 11.1, currency1: "RON", startDate1: LocalDateAdapter.unmarshal("2016-01-17").toDate(), endDate1: LocalDateAdapter.unmarshal("2016-02-17").toDate(), recipients1: "recipients1",
-                description2: "description2", amount2: 22.2, currency2: "EUR", startDate2: LocalDateAdapter.unmarshal("2016-01-18").toDate(), endDate2: LocalDateAdapter.unmarshal("2016-02-18").toDate(), recipients2: "recipients2",
-                description3: "description3", amount3: 33.3, currency3: "USD", startDate3: LocalDateAdapter.unmarshal("2016-01-19").toDate(), endDate3: LocalDateAdapter.unmarshal("2016-02-19").toDate(), recipients3: "recipients3",
-                description4: "description4", amount4: 44.4, currency4: "CHF", startDate4: LocalDateAdapter.unmarshal("2016-01-20").toDate(), endDate4: LocalDateAdapter.unmarshal("2016-02-20").toDate(), recipients4: "recipients4",
-                description5: "description5", amount5: 55.5, currency5: "YEN", startDate5: LocalDateAdapter.unmarshal("2016-01-21").toDate(), endDate5: LocalDateAdapter.unmarshal("2016-02-21").toDate(), recipients5: "recipients5",
+                unboundedGroups: [
+                        new DynamicRequirementGroup("description": "description1", "amount": 11.1, "currency": "RON", "startDate": LocalDateAdapter.unmarshal("2016-01-17").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-17").toDate(), "recipients": "recipients1"),
+                        new DynamicRequirementGroup("description": "description2", "amount": 22.2, "currency": "EUR", "startDate": LocalDateAdapter.unmarshal("2016-01-18").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-18").toDate(), "recipients": "recipients2"),
+                        new DynamicRequirementGroup("description": "description3", "amount": 33.3, "currency": "USD", "startDate": LocalDateAdapter.unmarshal("2016-01-19").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-19").toDate(), "recipients": "recipients3"),
+                        new DynamicRequirementGroup("description": "description4", "amount": 44.4, "currency": "CHF", "startDate": LocalDateAdapter.unmarshal("2016-01-20").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-20").toDate(), "recipients": "recipients4"),
+                        new DynamicRequirementGroup("description": "description5", "amount": 55.5, "currency": "YEN", "startDate": LocalDateAdapter.unmarshal("2016-01-21").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-21").toDate(), "recipients": "recipients5"),
+                        new DynamicRequirementGroup("description": "description6", "amount": 66.6, "currency": "RON", "startDate": LocalDateAdapter.unmarshal("2016-01-22").toDate(), "endDate": LocalDateAdapter.unmarshal("2016-02-22").toDate(), "recipients": "recipients6")],
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PERF", issuer: "HODOR")))
-//                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
+//        saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:
         1 == 1

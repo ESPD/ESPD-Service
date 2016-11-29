@@ -90,7 +90,7 @@ public enum SelectionCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     SelectionCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDeserializer.getSelectionCriterion(uuid);
+        CcvCriterion criterion = CriteriaDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();
