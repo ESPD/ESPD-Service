@@ -6,7 +6,6 @@
         <error-code>500</error-code>
         <location>/WEB-INF/views/500.jsp</location>
     </error-page>
-    
     <session-config>
     	<session-timeout>120</session-timeout>
     </session-config>
