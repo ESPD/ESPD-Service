@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2016.11 (29th of November 2016)
+=== 2016.11 (30th of November 2016)
 
 ==== Enhancement
 
