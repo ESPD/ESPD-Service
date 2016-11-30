@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2016.11 (29th of November 2016)
+=== 2016.11 (30th of November 2016)
 
 ==== Enhancement
 
@@ -19,6 +19,7 @@
 * https://github.com/ESPD/ESPD-Service/issues/51[Part III: Section B: "Payment of taxes" and “Payment of social security”]
 * https://github.com/ESPD/ESPD-Service/issues/85[Part II A: Official list, name is missing]
 * https://github.com/ESPD/ESPD-Service/issues/81[Part I: Identity of procurer not correct translated in HU]
+* https://github.com/ESPD/ESPD-Service/issues/117[EN text about "guilty of misinterpretation" is wrong]
 
 === 2016.10.02 (28th of November 2016)
 
