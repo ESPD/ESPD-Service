@@ -39,4 +39,12 @@ public class AvailableElectronically {
 
 	private String issuer;
 
+	public Boolean getAnswer() {
+		if (this.answer == null) {
+			// available electronically with no answer has a default value of FALSE
+			return Boolean.FALSE;
+		}
+		return this.answer;
+	}
+
 }
