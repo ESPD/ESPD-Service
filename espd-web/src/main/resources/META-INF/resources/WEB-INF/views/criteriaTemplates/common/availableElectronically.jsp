@@ -31,11 +31,16 @@
 <tiles:importAttribute name="field"/>
 
 <div class="form-group">
-    ${span18n["crit_information_available_electronically"]}
-    <form:radiobutton path="${field}.availableElectronically.answer" value="true"
-                      data-target-show="${'#'}${field}-electronically"/>${span18n["yes"]}
-    <form:radiobutton path="${field}.availableElectronically.answer" value="false"
-                      data-target-hide="${'#'}${field}-electronically"/>${span18n["no"]}
+	${span18n["crit_information_available_electronically"]}
+
+	<form:radiobutton path="${field}.availableElectronically.answer" value="true" data-target-show="${'#'}${field}-electronically"/>${span18n["yes"]}
+
+	<c:if test="${espd[field].availableElectronically.answer == null}">
+		<form:radiobutton checked="checked" path="${field}.availableElectronically.answer" value="false" data-target-hide="${'#'}${field}-electronically"/>${span18n["no"]}
+	</c:if>
+	<c:if test="${espd[field].availableElectronically.answer != null}">
+		<form:radiobutton  path="${field}.availableElectronically.answer" value="false" data-target-hide="${'#'}${field}-electronically"/>${span18n["no"]}
+	</c:if>
 </div>
 
 <div id="${field}-electronically" class="col-md-12 ${espd[field].availableElectronically.answer ? '' : 'collapse'}">
