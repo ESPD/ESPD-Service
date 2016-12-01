@@ -40,7 +40,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
                 </td>
                 <td>
-                    <form:textarea path="${field}.description${loop.index}" cssClass="form-control small"
+                    <form:textarea path="${field}.unboundedGroups[${loop.index - 1}]['description']" cssClass="form-control small"
                                    cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -49,12 +49,12 @@
                     <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
                 </td>
                 <td>
-                    <form:textarea rows="1" path="${field}.amount${loop.index}" number="true"
+                    <form:textarea rows="1" path="${field}.unboundedGroups[${loop.index - 1}]['amount']" number="true"
                                    cssClass="form-control small"
                                    cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
 
                     <tiles:insertDefinition name="currencies">
-                        <tiles:putAttribute name="currencyField" value="${field}.currency${loop.index}"/>
+                        <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${loop.index - 1}]['currency']"/>
                         <tiles:putAttribute name="style" value="border-radius: 0;"/>
                     </tiles:insertDefinition>
                 </td>
@@ -64,7 +64,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_start_date']}</label>
                 </td>
                 <td>
-                    <form:input type="text" path="${field}.startDate${loop.index}" cssClass="form-control datepicker"
+                    <form:input type="text" path="${field}.unboundedGroups[${loop.index - 1}]['startDate']" cssClass="form-control datepicker"
                                 cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -73,7 +73,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_end_date']}</label>
                 </td>
                 <td>
-                    <form:input type="text" path="${field}.endDate${loop.index}" cssClass="form-control datepicker"
+                    <form:input type="text" path="${field}.unboundedGroups[${loop.index - 1}]['endDate']" cssClass="form-control datepicker"
                                 cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -82,7 +82,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_recipients']}</label>
                 </td>
                 <td>
-                    <form:textarea path="${field}.recipients${loop.index}" cssClass="form-control small"
+                    <form:textarea path="${field}.unboundedGroups[${loop.index - 1}]['recipients']" cssClass="form-control small"
                                    cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
