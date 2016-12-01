@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -31,6 +32,7 @@ import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
 import org.joda.time.LocalDate
+
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -60,23 +62,21 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        response.Criterion[idx].RequirementGroup.size() == 6
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "check description amount date recipients"
         checkDescriptionAmountDateRecipientsGroup1(response.Criterion[idx].RequirementGroup[0])
-        checkDescriptionAmountDateRecipientsGroup2(response.Criterion[idx].RequirementGroup[1])
-        checkDescriptionAmountDateRecipientsGroup3(response.Criterion[idx].RequirementGroup[2])
-        checkDescriptionAmountDateRecipientsGroup4(response.Criterion[idx].RequirementGroup[3])
-        checkDescriptionAmountDateRecipientsGroup5(response.Criterion[idx].RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[5])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Description' requirements response"() {
         given:
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                description1: "desc1", description2: "desc2", description3: "desc3", description4: "desc4", description5: "desc5"))
+                unboundedGroups: [new DynamicRequirementGroup("description": "desc1"), new DynamicRequirementGroup("description": "desc2"),
+                                  new DynamicRequirementGroup("description": "desc3"), new DynamicRequirementGroup("description": "desc4"),
+                                  new DynamicRequirementGroup("description": "desc5"), new DynamicRequirementGroup("description": "desc6")]))
 
         when:
         def response = parseResponseXml(espd)
@@ -116,8 +116,11 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
     def "check the 'Amount' requirements response"() {
         given:
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                amount1: 11.11, amount2: 22.22, amount3: 33.33, amount4: 44.44, amount5: 55.55,
-                currency1: "EUR", currency2: "RON", currency3: "USD", currency4: "CHF", currency5: "YEN"))
+                unboundedGroups: [new DynamicRequirementGroup("amount": 11.11, "currency": "EUR"),
+                                  new DynamicRequirementGroup("amount": 22.22, "currency": "RON"),
+                                  new DynamicRequirementGroup("amount": 33.33, "currency": "USD"),
+                                  new DynamicRequirementGroup("amount": 44.44, "currency": "CHF"),
+                                  new DynamicRequirementGroup("amount": 55.55, "currency": "YEN")]))
 
         when:
         def response = parseResponseXml(espd)
@@ -163,11 +166,9 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         given:
         def date1 = new Date()
         def date2 = new Date().plus(1)
-        def date3 = new Date().plus(2)
-        def date4 = new Date().plus(3)
-        def date5 = new Date().plus(4)
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                startDate1: date1, startDate2: date2, startDate3: date3, startDate4: date4, startDate5: date5))
+                unboundedGroups: [new DynamicRequirementGroup("startDate": date1),
+                                  new DynamicRequirementGroup("startDate": date2)]))
 
         when:
         def response = parseResponseXml(espd)
@@ -184,35 +185,15 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def req2 = subGroup2.Requirement[2]
         req2.Response.size() == 1
         req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date2.time))
-
-        then: "Third date"
-        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[2]
-        req3.Response.size() == 1
-        req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date3.time))
-
-        then: "Fourth date"
-        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
-        def req4 = subGroup4.Requirement[2]
-        req4.Response.size() == 1
-        req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date4.time))
-
-        then: "Fifth date"
-        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
-        def req5 = subGroup5.Requirement[2]
-        req5.Response.size() == 1
-        req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date5.time))
     }
 
     def "check the 'End Date' requirements response"() {
         given:
         def date1 = new Date()
         def date2 = new Date().plus(1)
-        def date3 = new Date().plus(2)
-        def date4 = new Date().plus(3)
-        def date5 = new Date().plus(4)
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                endDate1: date1, endDate2: date2, endDate3: date3, endDate4: date4, endDate5: date5))
+                unboundedGroups: [new DynamicRequirementGroup("endDate": date1),
+                                  new DynamicRequirementGroup("endDate": date2)]))
 
         when:
         def response = parseResponseXml(espd)
@@ -229,30 +210,13 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def req2 = subGroup2.Requirement[3]
         req2.Response.size() == 1
         req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date2.time))
-
-        then: "Third date"
-        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[3]
-        req3.Response.size() == 1
-        req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date3.time))
-
-        then: "Fourth date"
-        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
-        def req4 = subGroup4.Requirement[3]
-        req4.Response.size() == 1
-        req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date4.time))
-
-        then: "Fifth date"
-        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
-        def req5 = subGroup5.Requirement[3]
-        req5.Response.size() == 1
-        req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date5.time))
     }
 
     def "check the 'Recipients' requirements response"() {
         given:
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true,
-                recipients1: "rec1", recipients2: "rec2", recipients3: "rec3", recipients4: "rec4", recipients5: "rec5"))
+                unboundedGroups: [new DynamicRequirementGroup("recipients": "rec1"),
+                                  new DynamicRequirementGroup("recipients": "rec2")]))
 
         when:
         def response = parseResponseXml(espd)
@@ -269,24 +233,6 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def req2 = subGroup2.Requirement[4]
         req2.Response.size() == 1
         req2.Response[0].Description.text() == "rec2"
-
-        then: "Third recipients"
-        def subGroup3 = response.Criterion[idx].RequirementGroup[2]
-        def req3 = subGroup3.Requirement[4]
-        req3.Response.size() == 1
-        req3.Response[0].Description.text() == "rec3"
-
-        then: "Fourth recipients"
-        def subGroup4 = response.Criterion[idx].RequirementGroup[3]
-        def req4 = subGroup4.Requirement[4]
-        req4.Response.size() == 1
-        req4.Response[0].Description.text() == "rec4"
-
-        then: "Fifth recipients"
-        def subGroup5 = response.Criterion[idx].RequirementGroup[4]
-        def req5 = subGroup5.Requirement[4]
-        req5.Response.size() == 1
-        req5.Response[0].Description.text() == "rec5"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {
@@ -299,7 +245,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[5]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -316,7 +262,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
@@ -333,7 +279,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
 
         def req = subGroup.Requirement[1]
         req.Response.size() == 1

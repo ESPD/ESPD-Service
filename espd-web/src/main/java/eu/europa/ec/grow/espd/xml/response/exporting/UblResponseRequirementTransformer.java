@@ -40,9 +40,15 @@ import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.Date;
 import java.util.List;
 
@@ -51,6 +57,8 @@ import java.util.List;
  */
 @Slf4j
 class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
+
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("dd-MM-yyyy");
 
 	@Override
 	protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
@@ -88,64 +96,94 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 		}
 
 		ExpectedResponseType type = (ExpectedResponseType) ccvRequirement.getResponseType();
+		// values from the Maps of the unbounded groups are somehow(how?) converted to Strings
+		Object value = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
 		switch (type) {
 		case INDICATOR:
-			Boolean answer = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			if (answer != null) {
-				responseType.setIndicator(UblRequirementFactory.buildIndicatorType(answer));
+			if (value != null) {
+				responseType.setIndicator(UblRequirementFactory.buildIndicatorType((Boolean) value));
 			}
 			break;
 		case DATE:
-			Date date = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setDate(UblRequirementFactory.buildDateType(date));
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseDateFromString((String) value);
+			}
+			responseType.setDate(UblRequirementFactory.buildDateType((Date) value));
 			break;
 		case DESCRIPTION:
-			String description = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setDescription(UblRequirementFactory.buildDescriptionType(description));
+			responseType.setDescription(UblRequirementFactory.buildDescriptionType((String) value));
 			break;
 		case EVIDENCE_URL:
-			String url = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.getEvidence().add(UblRequirementFactory.buildEvidenceType(url));
+			responseType.getEvidence().add(UblRequirementFactory.buildEvidenceType((String) value));
 			break;
 		case QUANTITY:
-			BigDecimal quantity = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setQuantity(UblRequirementFactory.buildQuantityType(quantity));
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildQuantityType((BigDecimal) value));
 			break;
 		case QUANTITY_YEAR:
-			Integer year = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setQuantity(UblRequirementFactory.buildYearType(year));
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseIntegerFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildYearType((Integer) value));
 			break;
 		case QUANTITY_INTEGER:
-			Integer value = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setQuantity(UblRequirementFactory.buildQuantityIntegerType(value));
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseIntegerFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildQuantityIntegerType((Integer) value));
 			break;
 		case AMOUNT:
-			BigDecimal amount = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
 			String currency = readRequirementSecondValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setAmount(UblRequirementFactory.buildAmountType(amount, currency));
+			responseType.setAmount(UblRequirementFactory.buildAmountType((BigDecimal) value, currency));
 			break;
 		case CODE_COUNTRY:
-			Country country = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setCode(UblRequirementFactory.buildCountryType(country));
+			responseType.setCode(UblRequirementFactory.buildCountryType((Country) value));
 			break;
 		case PERCENTAGE:
-			BigDecimal percentage = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setPercent(UblRequirementFactory.buildPercentType(percentage));
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
+			responseType.setPercent(UblRequirementFactory.buildPercentType((BigDecimal) value));
 			break;
 		case PERIOD:
-			String period = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setPeriod(UblRequirementFactory.buildPeriodType(period));
+			responseType.setPeriod(UblRequirementFactory.buildPeriodType((String) value));
 			break;
 		case CODE:
-			String code = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
-			responseType.setCode(UblRequirementFactory.buildCodeType(code));
+			responseType.setCode(UblRequirementFactory.buildCodeType((String) value));
 			break;
 		default:
 			throw new IllegalArgumentException(String.format(
 					"Could not save the requirement '%s' with id '%s' and expected response type '%s' on the ESPD Response.",
 					ccvRequirement, ccvRequirement.getId(), type));
 		}
+	}
 
+	private BigDecimal parseBigDecimalFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance();
+		nf.setParseBigDecimal(true);
+		return (BigDecimal) nf.parse(value, new ParsePosition(0));
+	}
+
+	private Integer parseIntegerFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		return Integer.valueOf(value);
+	}
+
+	private Date parseDateFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		return DATE_TIME_FORMATTER.parseLocalDate(value).toDate();
 	}
 
 	private <T> T readRequirementFirstValue(CcvCriterionRequirement requirement, EspdCriterion espdCriterion,
@@ -167,6 +205,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 			// there is one criterion which is not mapped to any field (3a6fefd4-f458-4d43-97fb-0725fce5dce2) financial ratio
 			return null;
 		}
+
 		try {
 			if (group.isUnbounded()) {
 				List<DynamicRequirementGroup> unboundedGroups = ((UnboundedRequirementGroup) espdCriterion)
@@ -177,10 +216,10 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 				return (T) PropertyUtils
 						.getProperty(unboundedGroups.get(groupIndex),
 								requirement.getEspdCriterionFields().get(position));
-			} else {
-				// all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
-				return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
 			}
+
+			// all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
+			return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			log.error(e.getMessage(), e);
 			return null;

@@ -107,6 +107,9 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
         def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
+        then:
+        response.Criterion[idx].RequirementGroup.size() == 7
+
         then: "First description"
         def subGroup1 = response.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[0]

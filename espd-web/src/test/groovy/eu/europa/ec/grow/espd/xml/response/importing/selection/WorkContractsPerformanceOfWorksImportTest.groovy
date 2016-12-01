@@ -56,48 +56,48 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
         then:
         unboundedGroups[0].get("description") == "description1"
-        unboundedGroups[0].get("amount").amount == 11.1
-        unboundedGroups[0].get("amount").currency == "RON"
+        unboundedGroups[0].get("amount") == 11.1
+        unboundedGroups[0].get("currency") == "RON"
         unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-01-17").toDate()
         unboundedGroups[0].get("endDate") == LocalDateAdapter.unmarshal("2016-02-17").toDate()
         unboundedGroups[0].get("recipients") == "recipients1"
 
         then:
         unboundedGroups[1].get("description") == "description2"
-        unboundedGroups[1].get("amount").amount == 22.2
-        unboundedGroups[1].get("amount").currency == "EUR"
+        unboundedGroups[1].get("amount") == 22.2
+        unboundedGroups[1].get("currency") == "EUR"
         unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-18").toDate()
         unboundedGroups[1].get("endDate") == LocalDateAdapter.unmarshal("2016-02-18").toDate()
         unboundedGroups[1].get("recipients") == "recipients2"
 
         then:
         unboundedGroups[2].get("description") == "description3"
-        unboundedGroups[2].get("amount").amount == 33.3
-        unboundedGroups[2].get("amount").currency == "USD"
+        unboundedGroups[2].get("amount") == 33.3
+        unboundedGroups[2].get("currency") == "USD"
         unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-01-19").toDate()
         unboundedGroups[2].get("endDate") == LocalDateAdapter.unmarshal("2016-02-19").toDate()
         unboundedGroups[2].get("recipients") == "recipients3"
 
         then:
         unboundedGroups[3].get("description") == "description4"
-        unboundedGroups[3].get("amount").amount == 44.4
-        unboundedGroups[3].get("amount").currency == "CHF"
+        unboundedGroups[3].get("amount") == 44.4
+        unboundedGroups[3].get("currency") == "CHF"
         unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-20").toDate()
         unboundedGroups[3].get("endDate") == LocalDateAdapter.unmarshal("2016-02-20").toDate()
         unboundedGroups[3].get("recipients") == "recipients4"
 
         then:
         unboundedGroups[4].get("description") == "description5"
-        unboundedGroups[4].get("amount").amount == 55.5
-        unboundedGroups[4].get("amount").currency == "YEN"
+        unboundedGroups[4].get("amount") == 55.5
+        unboundedGroups[4].get("currency") == "YEN"
         unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2016-01-21").toDate()
         unboundedGroups[4].get("endDate") == LocalDateAdapter.unmarshal("2016-02-21").toDate()
         unboundedGroups[4].get("recipients") == "recipients5"
 
         then: "see that we can handle more than 5 requirement unboundedGroups"
         unboundedGroups[5].get("description") == "description6"
-        unboundedGroups[5].get("amount").amount == 66.6
-        unboundedGroups[5].get("amount").currency == "YEN"
+        unboundedGroups[5].get("amount") == 66.6
+        unboundedGroups[5].get("currency") == "YEN"
         unboundedGroups[5].get("startDate") == LocalDateAdapter.unmarshal("2016-01-22").toDate()
         unboundedGroups[5].get("endDate") == LocalDateAdapter.unmarshal("2016-02-23").toDate()
         unboundedGroups[5].get("recipients") == "recipients6"
@@ -128,40 +128,41 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
         then:
         unboundedGroups[0].get("description") == "description1"
-        unboundedGroups[0].get("amount").amount == 11.1
-        unboundedGroups[0].get("amount").currency == "RON"
+        unboundedGroups[0].get("amount").getClass() == BigDecimal.class
+        unboundedGroups[0].get("amount") == 11.1
+        unboundedGroups[0].get("currency") == "RON"
         unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-01-17").toDate()
         unboundedGroups[0].get("endDate") == LocalDateAdapter.unmarshal("2016-02-17").toDate()
         unboundedGroups[0].get("recipients") == "recipients1"
 
         then:
         unboundedGroups[1].get("description") == "description2"
-        unboundedGroups[1].get("amount").amount == 22.2
-        unboundedGroups[1].get("amount").currency == "EUR"
+        unboundedGroups[1].get("amount") == 22.2
+        unboundedGroups[1].get("currency") == "EUR"
         unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-18").toDate()
         unboundedGroups[1].get("endDate") == LocalDateAdapter.unmarshal("2016-02-18").toDate()
         unboundedGroups[1].get("recipients") == "recipients2"
 
         then:
         unboundedGroups[2].get("description") == "description3"
-        unboundedGroups[2].get("amount").amount == 33.3
-        unboundedGroups[2].get("amount").currency == "USD"
+        unboundedGroups[2].get("amount") == 33.3
+        unboundedGroups[2].get("currency") == "USD"
         unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-01-19").toDate()
         unboundedGroups[2].get("endDate") == LocalDateAdapter.unmarshal("2016-02-19").toDate()
         unboundedGroups[2].get("recipients") == "recipients3"
 
         then:
         unboundedGroups[3].get("description") == "description4"
-        unboundedGroups[3].get("amount").amount == 44.4
-        unboundedGroups[3].get("amount").currency == "CHF"
+        unboundedGroups[3].get("amount") == 44.4
+        unboundedGroups[3].get("currency") == "CHF"
         unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-20").toDate()
         unboundedGroups[3].get("endDate") == LocalDateAdapter.unmarshal("2016-02-20").toDate()
         unboundedGroups[3].get("recipients") == "recipients4"
 
         then:
         unboundedGroups[4].get("description") == "description5"
-        unboundedGroups[4].get("amount").amount == 55.5
-        unboundedGroups[4].get("amount").currency == "YEN"
+        unboundedGroups[4].get("amount") == 55.5
+        unboundedGroups[4].get("currency") == "YEN"
         unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2016-01-21").toDate()
         unboundedGroups[4].get("endDate") == LocalDateAdapter.unmarshal("2016-02-21").toDate()
         unboundedGroups[4].get("recipients") == "recipients5"

@@ -425,10 +425,6 @@ class EspdResponseCriterionFactory {
 			criterion.setAnswer(yourAnswer);
 		}
 
-		addMultipleDescriptions(criterionType, criterion);
-		addMultipleAmounts(criterionType, criterion);
-		addMultipleDates(criterionType, criterion);
-		addMultipleRecipients(criterionType, criterion);
 		addMultipleYears(criterionType, criterion);
 		addMultipleNumbers(criterionType, criterion);
 
@@ -541,7 +537,6 @@ class EspdResponseCriterionFactory {
 		if (number3 != null) {
 			criterion.setNumber3(number3);
 		}
-
 	}
 
 	private void addMultipleDescriptions(CriterionType criterionType, MultipleDescriptionHolder criterion) {
@@ -589,7 +584,13 @@ class EspdResponseCriterionFactory {
 		if (requirementById.isPresent() && isNotEmpty(requirementType.getResponse())) {
 			Object value = requirementById.get().getResponseType()
 			                              .parseValue(requirementType.getResponse().get(0));
-			dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), value);
+			if (value instanceof Amount) {
+				// values which represent amounts are special and need to be stored into two fields
+				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), ((Amount) value).getAmount());
+				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
+			} else {
+				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), value);
+			}
 		} else {
 			log.warn("Requirement with id '{}' could not be found or does not have a response.",
 					requirementType.getID().getValue());
@@ -622,43 +623,6 @@ class EspdResponseCriterionFactory {
 			criterion.setAmount5(amount5.getAmount());
 			criterion.setCurrency5(amount5.getCurrency());
 		}
-	}
-
-	private void addMultipleDates(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {
-		Date startDate1 = readRequirementValue(SelectionCriterionRequirement.START_DATE_1, criterionType);
-		criterion.setStartDate1(startDate1);
-		Date startDate2 = readRequirementValue(SelectionCriterionRequirement.START_DATE_2, criterionType);
-		criterion.setStartDate2(startDate2);
-		Date startDate3 = readRequirementValue(SelectionCriterionRequirement.START_DATE_3, criterionType);
-		criterion.setStartDate3(startDate3);
-		Date startDate4 = readRequirementValue(SelectionCriterionRequirement.START_DATE_4, criterionType);
-		criterion.setStartDate4(startDate4);
-		Date startDate5 = readRequirementValue(SelectionCriterionRequirement.START_DATE_5, criterionType);
-		criterion.setStartDate5(startDate5);
-
-		Date endDate1 = readRequirementValue(SelectionCriterionRequirement.END_DATE_1, criterionType);
-		criterion.setEndDate1(endDate1);
-		Date endDate2 = readRequirementValue(SelectionCriterionRequirement.END_DATE_2, criterionType);
-		criterion.setEndDate2(endDate2);
-		Date endDate3 = readRequirementValue(SelectionCriterionRequirement.END_DATE_3, criterionType);
-		criterion.setEndDate3(endDate3);
-		Date endDate4 = readRequirementValue(SelectionCriterionRequirement.END_DATE_4, criterionType);
-		criterion.setEndDate4(endDate4);
-		Date endDate5 = readRequirementValue(SelectionCriterionRequirement.END_DATE_5, criterionType);
-		criterion.setEndDate5(endDate5);
-	}
-
-	private void addMultipleRecipients(CriterionType criterionType, TechnicalProfessionalCriterion criterion) {
-		String recipients1 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_1, criterionType);
-		criterion.setRecipients1(recipients1);
-		String recipients2 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_2, criterionType);
-		criterion.setRecipients2(recipients2);
-		String recipients3 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_3, criterionType);
-		criterion.setRecipients3(recipients3);
-		String recipients4 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_4, criterionType);
-		criterion.setRecipients4(recipients4);
-		String recipients5 = readRequirementValue(SelectionCriterionRequirement.RECIPIENTS_5, criterionType);
-		criterion.setRecipients5(recipients5);
 	}
 
 	private Boolean readExclusionCriterionAnswer(CriterionType criterionType) {
