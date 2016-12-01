@@ -50,8 +50,8 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
         espd.agreementsWithOtherEO.selfCleaning.answer == true
         espd.agreementsWithOtherEO.selfCleaning.description == "Hodor is clean"
 
-        then: "there should be no info electronically"
-        espd.agreementsWithOtherEO.availableElectronically.answer == null
+        then: "info electronically has a default answer of false"
+        espd.agreementsWithOtherEO.availableElectronically.answer == false
         espd.agreementsWithOtherEO.availableElectronically.url == null
         espd.agreementsWithOtherEO.availableElectronically.code == null
     }
