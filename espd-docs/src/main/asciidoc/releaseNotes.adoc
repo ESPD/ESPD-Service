@@ -1,5 +1,13 @@
 == Release notes
 
+=== 2016.11.01 (2nd of December 2016)
+
+==== Bug
+
+* Fix for https://github.com/ESPD/ESPD-Service/issues/23[As entrepreneur reloading xml changes values] which broke
+the printing functionality in version 2016.11
+
+
 === 2016.11 (30th of November 2016)
 
 ==== Enhancement

@@ -32,15 +32,8 @@
 
 <div class="form-group">
 	${span18n["crit_taken_self_cleaning_measures"]}
-	
 	<form:radiobutton path="${field}.selfCleaning.answer" value="true" data-target-show="${'#'}${field}-reliability"/>${span18n["yes"]}
-
-	<c:if test="${espd[field].availableElectronically.answer == null}">
-		<form:radiobutton checked="checked" path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-reliability"/>${span18n["no"]}		
-	</c:if>
-	<c:if test="${espd[field].availableElectronically.answer != null}">
-		<form:radiobutton path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-reliability"/>${span18n["no"]}	
-	</c:if>
+	<form:radiobutton path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-reliability"/>${span18n["no"]}
 </div>
 <div id="${field}-reliability" class="tab-pane ${espd[field].selfCleaning.answer ? '' : 'collapse'}">
 	<div class="form-group">
