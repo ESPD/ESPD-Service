@@ -28,7 +28,6 @@ import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.domain.OtherCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.*;
-import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.intf.MultipleAmountHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
@@ -42,9 +41,10 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Cr
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementGroupType;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.PropertyUtils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
@@ -55,7 +55,25 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 /**
  * Class that reads data coming from UBL {@link CriterionType} and creates the appropriate ESPD criterion objects
  * containing all the data read from the XML.
- * <p/>
+ * <p>
+ * The algorithm traverses all the {@link RequirementGroupType} recursively (including subgroups) found in the
+ * {@link CriterionType} and looks up each requirement by id in the {@link CriteriaDefinitions} lookup tables.
+ * The criterion requirements are then set dynamically via reflection by using its 'espdCriterionFields' loaded from
+ * the criteria JSON definition files.
+ * </p>
+ * <p>
+ * Requirement groups are treated differently when they are unbounded (which means they can ashave  many references as
+ * needed) because the requirement values are dynamically stored in a {@link java.util.Map} structure called
+ * {@link DynamicRequirementGroup}.
+ * </p>
+ * <p>
+ * For the unbounded requirements there are mappings defined in the configuration JSON files ('requirementGroupMappings'
+ * and 'requirementMappings') for supporting versions prior to 2016.12 when there were 3 or 5 requirement groups with
+ * a similar structure but sequential ESPD criterion field mappings. Since now there is only one unbounded requirement
+ * group for a given criterion, we need to point the old requirement group ids and requirement ids to the primary ones
+ * used from version 2016.12.
+ * </p>
+ * <p>
  * Created by ratoico on 1/7/16 at 11:16 AM.
  */
 @Slf4j
@@ -144,22 +162,24 @@ class EspdResponseCriterionFactory {
 
 		CriminalConvictionsCriterion criterion = CriminalConvictionsCriterion.buildWithExists(true);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
+		setCriterionValues(criterionType, criterion);
 
-		Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
-		criterion.setDateOfConviction(dateOfConviction);
-		String reason = readRequirementValue(ExclusionCriterionRequirement.REASON, criterionType);
-		criterion.setReason(reason);
-		String whoConvicted = readRequirementValue(ExclusionCriterionRequirement.WHO_CONVICTED, criterionType);
-		criterion.setConvicted(whoConvicted);
-		String periodLength = readRequirementValue(ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION,
-				criterionType);
-		criterion.setPeriodLength(periodLength);
-
-		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
+		//		criterion.setDateOfConviction(dateOfConviction);
+		//		String reason = readRequirementValue(ExclusionCriterionRequirement.REASON, criterionType);
+		//		criterion.setReason(reason);
+		//		String whoConvicted = readRequirementValue(ExclusionCriterionRequirement.WHO_CONVICTED, criterionType);
+		//		criterion.setConvicted(whoConvicted);
+		//		String periodLength = readRequirementValue(ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION,
+		//				criterionType);
+		//		criterion.setPeriodLength(periodLength);
+		//
+		//		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+		//
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 		return criterion;
 	}
 
@@ -169,41 +189,42 @@ class EspdResponseCriterionFactory {
 		}
 
 		TaxesCriterion criterion = TaxesCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		Country country = readRequirementValue(ExclusionCriterionRequirement.COUNTRY_MS, criterionType);
-		criterion.setCountry(country);
-		Amount amount = readRequirementValue(ExclusionCriterionRequirement.AMOUNT, criterionType);
-		if (amount != null) {
-			criterion.setAmount(amount.getAmount());
-			criterion.setCurrency(amount.getCurrency());
-		}
-
-		Boolean breach = readBooleanRequirement(ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN,
-				criterionType);
-		criterion.setBreachEstablishedOtherThanJudicialDecision(breach);
-		String meansDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_MEANS, criterionType);
-		criterion.setMeansDescription(meansDescription);
-
-		Boolean finalAndBinding = readBooleanRequirement(ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING,
-				criterionType);
-		criterion.setDecisionFinalAndBinding(finalAndBinding);
-		Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
-		criterion.setDateOfConviction(dateOfConviction);
-		String periodLength = readRequirementValue(ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION,
-				criterionType);
-		criterion.setPeriodLength(periodLength);
-
-		Boolean fulfilledObligation = readBooleanRequirement(ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION,
-				criterionType);
-		criterion.setEoFulfilledObligations(fulfilledObligation);
-		String obligationDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS,
-				criterionType);
-		criterion.setObligationsDescription(obligationDescription);
-
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		Country country = readRequirementValue(ExclusionCriterionRequirement.COUNTRY_MS, criterionType);
+		//		criterion.setCountry(country);
+		//		Amount amount = readRequirementValue(ExclusionCriterionRequirement.AMOUNT, criterionType);
+		//		if (amount != null) {
+		//			criterion.setAmount(amount.getAmount());
+		//			criterion.setCurrency(amount.getCurrency());
+		//		}
+		//
+		//		Boolean breach = readBooleanRequirement(ExclusionCriterionRequirement.BREACH_OF_OBLIGATIONS_OTHER_THAN,
+		//				criterionType);
+		//		criterion.setBreachEstablishedOtherThanJudicialDecision(breach);
+		//		String meansDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_MEANS, criterionType);
+		//		criterion.setMeansDescription(meansDescription);
+		//
+		//		Boolean finalAndBinding = readBooleanRequirement(ExclusionCriterionRequirement.DECISION_FINAL_AND_BINDING,
+		//				criterionType);
+		//		criterion.setDecisionFinalAndBinding(finalAndBinding);
+		//		Date dateOfConviction = readRequirementValue(ExclusionCriterionRequirement.DATE_OF_CONVICTION, criterionType);
+		//		criterion.setDateOfConviction(dateOfConviction);
+		//		String periodLength = readRequirementValue(ExclusionCriterionRequirement.LENGTH_PERIOD_EXCLUSION,
+		//				criterionType);
+		//		criterion.setPeriodLength(periodLength);
+		//
+		//		Boolean fulfilledObligation = readBooleanRequirement(ExclusionCriterionRequirement.EO_FULFILLED_OBLIGATION,
+		//				criterionType);
+		//		criterion.setEoFulfilledObligations(fulfilledObligation);
+		//		String obligationDescription = readRequirementValue(ExclusionCriterionRequirement.DESCRIBE_OBLIGATIONS,
+		//				criterionType);
+		//		criterion.setObligationsDescription(obligationDescription);
+		//
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -214,13 +235,14 @@ class EspdResponseCriterionFactory {
 		}
 
 		LawCriterion criterion = LawCriterion.buildWithExists(true);
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-
-		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+		setCriterionValues(criterionType, criterion);
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//
+		//		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
 
 		return criterion;
 	}
@@ -231,17 +253,18 @@ class EspdResponseCriterionFactory {
 		}
 
 		BankruptcyCriterion criterion = BankruptcyCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-		String reasonContract = readRequirementValue(ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT,
-				criterionType);
-		criterion.setReason(reasonContract);
-
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//		String reasonContract = readRequirementValue(ExclusionCriterionRequirement.REASONS_NEVERTHELESS_CONTRACT,
+		//				criterionType);
+		//		criterion.setReason(reasonContract);
+		//
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -252,15 +275,16 @@ class EspdResponseCriterionFactory {
 		}
 
 		MisconductDistortionCriterion criterion = MisconductDistortionCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-
-		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//
+		//		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -271,15 +295,16 @@ class EspdResponseCriterionFactory {
 		}
 
 		ConflictInterestCriterion criterion = ConflictInterestCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-
-		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//
+		//		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -289,15 +314,16 @@ class EspdResponseCriterionFactory {
 			return PurelyNationalGrounds.buildWithExists(false);
 		}
 		PurelyNationalGrounds criterion = PurelyNationalGrounds.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-
-		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
-		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readExclusionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(ExclusionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//
+		//		criterion.setSelfCleaning(buildSelfCleaningMeasures(criterionType));
+		//		criterion.setAvailableElectronically(buildExclusionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -308,9 +334,10 @@ class EspdResponseCriterionFactory {
 		}
 
 		SatisfiesAllCriterion criterion = SatisfiesAllCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
+		//		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
 
 		return criterion;
 	}
@@ -321,14 +348,15 @@ class EspdResponseCriterionFactory {
 		}
 
 		SuitabilityCriterion criterion = SuitabilityCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
-
-		String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-
-		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//
+		//		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -339,34 +367,35 @@ class EspdResponseCriterionFactory {
 		}
 
 		EconomicFinancialStandingCriterion criterion = EconomicFinancialStandingCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
+		//		Boolean yourAnswer = readSelectionCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
 
-		addMultipleYears(criterionType, criterion);
+		//		addMultipleYears(criterionType, criterion);
 		addMultipleAmounts(criterionType, criterion);
 		addMultipleDescriptions(criterionType, criterion);
-		addMultipleRatios(criterionType, criterion);
+		//		addMultipleRatios(criterionType, criterion);
 
-		String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		criterion.setDescription(description);
-		// year 1 is overloaded because of criterion 10. Set up of economic operator
-		Integer year1 = readRequirementValue(SelectionCriterionRequirement.SPECIFY_YEAR, criterionType);
-		if (year1 != null) {
-			criterion.setYear1(year1);
-		}
+		//		String description = readRequirementValue(SelectionCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		criterion.setDescription(description);
+		//		// year 1 is overloaded because of criterion 10. Set up of economic operator
+		//		Integer year1 = readRequirementValue(SelectionCriterionRequirement.SPECIFY_YEAR, criterionType);
+		//		if (year1 != null) {
+		//			criterion.setYear1(year1);
+		//		}
+		//
+		//		Integer numberOfYears = readRequirementValue(SelectionCriterionRequirement.NUMBER_OF_YEARS, criterionType);
+		//		if (numberOfYears != null) {
+		//			criterion.setNumberOfYears(numberOfYears);
+		//		}
+		//		Amount turnover = readRequirementValue(SelectionCriterionRequirement.AVERAGE_TURNOVER, criterionType);
+		//		if (turnover != null) {
+		//			criterion.setAverageTurnover(turnover.getAmount());
+		//			criterion.setAverageTurnoverCurrency(turnover.getCurrency());
+		//		}
 
-		Integer numberOfYears = readRequirementValue(SelectionCriterionRequirement.NUMBER_OF_YEARS, criterionType);
-		if (numberOfYears != null) {
-			criterion.setNumberOfYears(numberOfYears);
-		}
-		Amount turnover = readRequirementValue(SelectionCriterionRequirement.AVERAGE_TURNOVER, criterionType);
-		if (turnover != null) {
-			criterion.setAverageTurnover(turnover.getAmount());
-			criterion.setAverageTurnoverCurrency(turnover.getCurrency());
-		}
-
-		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+		//		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -413,37 +442,37 @@ class EspdResponseCriterionFactory {
 		}
 
 		TechnicalProfessionalCriterion criterion = TechnicalProfessionalCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
 		// because of allow checks requirement we are overloading the 'answer' field
 		// this is a workaround in order to not add one additional Boolean field 'allowChecks' that is used by only technical professional criterion
-		Boolean allowChecks = readRequirementValue(SelectionCriterionRequirement.ALLOW_CHECKS, criterionType);
-		if (allowChecks != null) {
-			criterion.setAnswer(allowChecks);
-		}
-		Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
-		if (yourAnswer != null) {
-			criterion.setAnswer(yourAnswer);
-		}
-
-		addMultipleYears(criterionType, criterion);
-		addMultipleNumbers(criterionType, criterion);
-
-		addUnboundedGroups(criterionType, criterion);
-
-		addDescriptionForTechnicalProfessional(criterionType, criterion);
-
-		String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
-		if (isBlank(specify)) {
-			// backwards compatibility check, the id of this requirement was changed in version 2016.06.01
-			// due to conflict with an existing selection criterion id
-			specify = readRequirementValue(OLD_SELECTION_PLEASE_SPECIFY_REQUIREMENT, criterionType);
-		}
-		criterion.setSpecify(specify);
-
-		BigDecimal percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
-		criterion.setPercentage(percentage);
-
-		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+		//		Boolean allowChecks = readRequirementValue(SelectionCriterionRequirement.ALLOW_CHECKS, criterionType);
+		//		if (allowChecks != null) {
+		//			criterion.setAnswer(allowChecks);
+		//		}
+		//		Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
+		//		if (yourAnswer != null) {
+		//			criterion.setAnswer(yourAnswer);
+		//		}
+		//
+		//		addMultipleYears(criterionType, criterion);
+		//		addMultipleNumbers(criterionType, criterion);
+		//
+		//
+		//		addDescriptionForTechnicalProfessional(criterionType, criterion);
+		//
+		//		String specify = readRequirementValue(SelectionCriterionRequirement.PLEASE_SPECIFY, criterionType);
+		//		if (isBlank(specify)) {
+		//			// backwards compatibility check, the id of this requirement was changed in version 2016.06.01
+		//			// due to conflict with an existing selection criterion id
+		//			specify = readRequirementValue(OLD_SELECTION_PLEASE_SPECIFY_REQUIREMENT, criterionType);
+		//		}
+		//		criterion.setSpecify(specify);
+		//
+		//		BigDecimal percentage = readRequirementValue(SelectionCriterionRequirement.PERCENTAGE, criterionType);
+		//		criterion.setPercentage(percentage);
+		//
+		//		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -478,23 +507,24 @@ class EspdResponseCriterionFactory {
 		}
 
 		QualityAssuranceCriterion criterion = QualityAssuranceCriterion.buildWithExists(true);
+		setCriterionValues(criterionType, criterion);
 
-		Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
-		if (yourAnswer != null) {
-			criterion.setAnswer(yourAnswer);
-		}
-
-		String explainQa = readRequirementValue(SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA, criterionType);
-		if (isNotBlank(explainQa)) {
-			criterion.setDescription(explainQa);
-		}
-		String explainEnvironmental = readRequirementValue(
-				SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL, criterionType);
-		if (isNotBlank(explainEnvironmental)) {
-			criterion.setDescription(explainEnvironmental);
-		}
-
-		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readRequirementValue(SelectionCriterionRequirement.YOUR_ANSWER, criterionType);
+		//		if (yourAnswer != null) {
+		//			criterion.setAnswer(yourAnswer);
+		//		}
+		//
+		//		String explainQa = readRequirementValue(SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_QA, criterionType);
+		//		if (isNotBlank(explainQa)) {
+		//			criterion.setDescription(explainQa);
+		//		}
+		//		String explainEnvironmental = readRequirementValue(
+		//				SelectionCriterionRequirement.EXPLAIN_CERTIFICATES_ENVIRONMENTAL, criterionType);
+		//		if (isNotBlank(explainEnvironmental)) {
+		//			criterion.setDescription(explainEnvironmental);
+		//		}
+		//
+		//		criterion.setAvailableElectronically(buildSelectionAvailableElectronically(criterionType));
 
 		return criterion;
 	}
@@ -552,48 +582,93 @@ class EspdResponseCriterionFactory {
 		criterion.setDescription5(description5);
 	}
 
-	private void addUnboundedGroups(CriterionType criterionType, UnboundedRequirementGroup criterion) {
-		if (isEmpty(criterionType.getRequirementGroup())) {
+	private void setCriterionValues(CriterionType criterionType, EspdCriterion espdCriterion) {
+		setCriterionValuesForRequirementGroups(espdCriterion, criterionType.getRequirementGroup());
+	}
+
+	private void setCriterionValuesForRequirementGroups(EspdCriterion espdCriterion,
+			List<RequirementGroupType> groups) {
+		if (isEmpty(groups)) {
 			return;
 		}
-		for (RequirementGroupType groupType : criterionType.getRequirementGroup()) {
-			addUnboundedGroup(criterion, groupType);
+		for (RequirementGroupType groupType : groups) {
+			setCriterionValuesForRequirementGroup(espdCriterion, groupType);
 		}
 	}
 
-	private void addUnboundedGroup(UnboundedRequirementGroup criterion, RequirementGroupType groupType) {
+	private void setCriterionValuesForRequirementGroup(EspdCriterion espdCriterion, RequirementGroupType groupType) {
 		Optional<CcvRequirementGroup> ccvGroup = CriteriaDefinitions
 				.findRequirementGroupById(groupType.getID().getValue());
-		if (!ccvGroup.isPresent() || !ccvGroup.get().isUnbounded()) {
-			return;
+		DynamicRequirementGroup dynamicGroup = null;
+		if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
+			dynamicGroup = new DynamicRequirementGroup();
+			((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(dynamicGroup);
 		}
 
-		DynamicRequirementGroup dynamicGroup = new DynamicRequirementGroup();
-		criterion.getUnboundedGroups().add(dynamicGroup);
-		if (isNotEmpty(groupType.getRequirement())) {
-			for (RequirementType requirementType : groupType.getRequirement()) {
-				addRequirementValueToUnboundedGroup(dynamicGroup, requirementType);
-			}
+		setCriterionValuesForRequirementGroups(espdCriterion, groupType.getRequirementGroup());
+		setCriterionValueForRequirements(espdCriterion, groupType.getRequirement(), ccvGroup, dynamicGroup);
+	}
+
+	private void setCriterionValueForRequirements(EspdCriterion espdCriterion, List<RequirementType> requirementTypes,
+			Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
+		if (isEmpty(requirementTypes)) {
+			return;
+		}
+		for (RequirementType requirementType : requirementTypes) {
+			setCriterionValueForRequirement(espdCriterion, requirementType, ccvGroup, dynamicGroup);
 		}
 	}
 
-	private void addRequirementValueToUnboundedGroup(DynamicRequirementGroup dynamicGroup,
-			RequirementType requirementType) {
+	private void setCriterionValueForRequirement(EspdCriterion espdCriterion, RequirementType requirementType,
+			Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
 		Optional<CcvCriterionRequirement> requirementById = CriteriaDefinitions
 				.findRequirementById(requirementType.getID().getValue());
+
 		if (requirementById.isPresent() && isNotEmpty(requirementType.getResponse())) {
-			Object value = requirementById.get().getResponseType()
-			                              .parseValue(requirementType.getResponse().get(0));
-			if (value instanceof Amount) {
-				// values which represent amounts are special and need to be stored into two fields
-				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), ((Amount) value).getAmount());
-				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
+			Object requirementValue = requirementById.get().getResponseType()
+			                                         .parseValue(requirementType.getResponse().get(0));
+			if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
+				addRequirementValueToUnboundedGroup(requirementById.get(), dynamicGroup, requirementValue);
 			} else {
-				dynamicGroup.put(requirementById.get().getEspdCriterionFields().get(0), value);
+				addNormalRequirementValueToEspdCriterion(requirementById.get(), espdCriterion, requirementValue);
 			}
 		} else {
 			log.warn("Requirement with id '{}' could not be found or does not have a response.",
 					requirementType.getID().getValue());
+		}
+
+	}
+
+	private void addRequirementValueToUnboundedGroup(CcvCriterionRequirement ccvRequirement,
+			DynamicRequirementGroup dynamicGroup, Object value) {
+		if (value instanceof Amount) {
+			// values which represent amounts are special and need to be stored in two fields
+			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), ((Amount) value).getAmount());
+			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
+		} else {
+			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), value);
+		}
+	}
+
+	private void addNormalRequirementValueToEspdCriterion(CcvCriterionRequirement ccvCriterionRequirement,
+			EspdCriterion espdCriterion, Object value) {
+		String espdFieldName = ccvCriterionRequirement.getEspdCriterionFields().get(0);
+		if (isBlank(espdFieldName)) {
+			return;
+		}
+
+		// values which represent amounts are special and need to be stored in two fields
+		try {
+			if (value instanceof Amount) {
+				PropertyUtils.setProperty(espdCriterion, espdFieldName, ((Amount) value).getAmount());
+				PropertyUtils.setProperty(espdCriterion, ccvCriterionRequirement.getEspdCriterionFields().get(1),
+						((Amount) value).getCurrency());
+			} else {
+				PropertyUtils.setProperty(espdCriterion, espdFieldName, value);
+			}
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			log.error("Could not set value '{}' on field '{}' of requirement '{}' with id '{}'.", value, espdFieldName,
+					ccvCriterionRequirement.getDescription(), ccvCriterionRequirement.getId());
 		}
 	}
 
@@ -691,70 +766,72 @@ class EspdResponseCriterionFactory {
 			return criterion;
 		}
 
-		Boolean yourAnswer = readAwardCriterionAnswer(criterionType);
-		criterion.setAnswer(yourAnswer);
+		setCriterionValues(criterionType, criterion);
 
-		// description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
-		String detailsCategory = readRequirementValue(OtherCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
-				criterionType);
-		if (isNotBlank(detailsCategory)) {
-			criterion.setDescription1(detailsCategory);
-		}
-		String regNumber = readRequirementValue(OtherCriterionRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
-		if (isNotBlank(regNumber)) {
-			criterion.setDescription1(regNumber);
-		}
-		String eoRole = readRequirementValue(OtherCriterionRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
-		if (isNotBlank(eoRole)) {
-			criterion.setDescription1(eoRole);
-		}
-		String describe = readRequirementValue(OtherCriterionRequirement.PLEASE_DESCRIBE, criterionType);
-		if (isNotBlank(describe)) {
-			criterion.setDescription1(describe);
-		}
-		String subcontractors = readRequirementValue(OtherCriterionRequirement.LIST_SUBCONTRACTORS, criterionType);
-		if (isNotBlank(subcontractors)) {
-			criterion.setDescription1(subcontractors);
-		}
-
-		String regNumberElectronically = readRequirementValue(OtherCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
-				criterionType);
-		if (isNotBlank(regNumberElectronically)) {
-			criterion.setDescription2(regNumberElectronically);
-		}
-		String otherEos = readRequirementValue(OtherCriterionRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
-		if (isNotBlank(otherEos)) {
-			criterion.setDescription2(otherEos);
-		}
-
-		String referencesRegistration = readRequirementValue(OtherCriterionRequirement.REFERENCES_REGISTRATION,
-				criterionType);
-		if (isNotBlank(referencesRegistration)) {
-			criterion.setDescription3(referencesRegistration);
-		}
-		String participantGroupName = readRequirementValue(OtherCriterionRequirement.PARTICIPANT_GROUP_NAME,
-				criterionType);
-		if (isNotBlank(participantGroupName)) {
-			criterion.setDescription3(participantGroupName);
-		}
-
-		// this field used to contain 'description4' but has become an indicator
-		Boolean eoProvideCertificate = readRequirementValue(OtherCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
-				criterionType);
-		criterion.setBooleanValue3(eoProvideCertificate);
-		String docElectronically = readRequirementValue(OtherCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
-				criterionType);
-		if (isNotBlank(docElectronically)) {
-			criterion.setDescription5(docElectronically);
-		}
-
-		Boolean coversAllSelectionCriteria = readBooleanRequirement(
-				OtherCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
-		criterion.setBooleanValue1(coversAllSelectionCriteria);
-		BigDecimal percentage = readRequirementValue(OtherCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
-		criterion.setDoubleValue1(percentage);
-
-		criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));
+		//		Boolean yourAnswer = readAwardCriterionAnswer(criterionType);
+		//		criterion.setAnswer(yourAnswer);
+		//
+		//		// description1 is overloaded by multiple fields but it should not be a problem since they are coming from different criteria
+		//		String detailsCategory = readRequirementValue(OtherCriterionRequirement.DETAILS_EMPLOYEES_CATEGORY,
+		//				criterionType);
+		//		if (isNotBlank(detailsCategory)) {
+		//			criterion.setDescription1(detailsCategory);
+		//		}
+		//		String regNumber = readRequirementValue(OtherCriterionRequirement.PROVIDE_REGISTRATION_NUMBER, criterionType);
+		//		if (isNotBlank(regNumber)) {
+		//			criterion.setDescription1(regNumber);
+		//		}
+		//		String eoRole = readRequirementValue(OtherCriterionRequirement.ECONOMIC_OPERATOR_ROLE, criterionType);
+		//		if (isNotBlank(eoRole)) {
+		//			criterion.setDescription1(eoRole);
+		//		}
+		//		String describe = readRequirementValue(OtherCriterionRequirement.PLEASE_DESCRIBE, criterionType);
+		//		if (isNotBlank(describe)) {
+		//			criterion.setDescription1(describe);
+		//		}
+		//		String subcontractors = readRequirementValue(OtherCriterionRequirement.LIST_SUBCONTRACTORS, criterionType);
+		//		if (isNotBlank(subcontractors)) {
+		//			criterion.setDescription1(subcontractors);
+		//		}
+		//
+		//		String regNumberElectronically = readRequirementValue(OtherCriterionRequirement.REG_NO_AVAILABLE_ELECTRONICALLY,
+		//				criterionType);
+		//		if (isNotBlank(regNumberElectronically)) {
+		//			criterion.setDescription2(regNumberElectronically);
+		//		}
+		//		String otherEos = readRequirementValue(OtherCriterionRequirement.OTHER_ECONOMIC_OPERATORS, criterionType);
+		//		if (isNotBlank(otherEos)) {
+		//			criterion.setDescription2(otherEos);
+		//		}
+		//
+		//		String referencesRegistration = readRequirementValue(OtherCriterionRequirement.REFERENCES_REGISTRATION,
+		//				criterionType);
+		//		if (isNotBlank(referencesRegistration)) {
+		//			criterion.setDescription3(referencesRegistration);
+		//		}
+		//		String participantGroupName = readRequirementValue(OtherCriterionRequirement.PARTICIPANT_GROUP_NAME,
+		//				criterionType);
+		//		if (isNotBlank(participantGroupName)) {
+		//			criterion.setDescription3(participantGroupName);
+		//		}
+		//
+		//		// this field used to contain 'description4' but has become an indicator
+		//		Boolean eoProvideCertificate = readRequirementValue(OtherCriterionRequirement.EO_ABLE_PROVIDE_CERTIFICATE,
+		//				criterionType);
+		//		criterion.setBooleanValue3(eoProvideCertificate);
+		//		String docElectronically = readRequirementValue(OtherCriterionRequirement.DOC_AVAILABLE_ELECTRONICALLY,
+		//				criterionType);
+		//		if (isNotBlank(docElectronically)) {
+		//			criterion.setDescription5(docElectronically);
+		//		}
+		//
+		//		Boolean coversAllSelectionCriteria = readBooleanRequirement(
+		//				OtherCriterionRequirement.REGISTRATION_COVERS_SELECTION_CRITERIA, criterionType);
+		//		criterion.setBooleanValue1(coversAllSelectionCriteria);
+		//		BigDecimal percentage = readRequirementValue(OtherCriterionRequirement.CORRESPONDING_PERCENTAGE, criterionType);
+		//		criterion.setDoubleValue1(percentage);
+		//
+		//		criterion.setAvailableElectronically(buildAwardAvailableElectronically(criterionType));
 
 		return criterion;
 	}

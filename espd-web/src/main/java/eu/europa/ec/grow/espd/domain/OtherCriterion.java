@@ -37,8 +37,6 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = false)
 public class OtherCriterion extends EspdCriterion implements MultipleDescriptionHolder {
 
-    private AvailableElectronically availableElectronically;
-
     private String description1;
     private String description2;
     private String description3;
@@ -54,31 +52,6 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
         setExists(true);
     }
 
-    public final boolean getInfoElectronicallyAnswer() {
-        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
-    }
-
-    public final String getInfoElectronicallyUrl() {
-        if (availableElectronically != null) {
-            return availableElectronically.getUrl();
-        }
-        return null;
-    }
-
-    public final String getInfoElectronicallyCode() {
-        if (availableElectronically != null) {
-            return availableElectronically.getCode();
-        }
-        return null;
-    }
-
-	public final String getInfoElectronicallyIssuer() {
-		if (availableElectronically != null) {
-			return availableElectronically.getIssuer();
-		}
-		return null;
-	}
-
     public static OtherCriterion build() {
         return new OtherCriterion();
     }
@@ -92,8 +65,4 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
         return this.answer;
     }
 
-	@Override
-	public void setDescriptionAtIndex(String description, int index) {
-		throw new UnsupportedOperationException("TODO this");
-	}
 }

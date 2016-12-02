@@ -27,10 +27,13 @@ package eu.europa.ec.grow.espd.domain;
 import eu.europa.ec.grow.espd.domain.intf.MultipleAmountHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
+import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ratoico on 1/4/16 at 5:03 PM.
@@ -38,7 +41,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class EconomicFinancialStandingCriterion extends SelectionCriterion
-        implements MultipleAmountHolder, MultipleDescriptionHolder, MultipleYearHolder {
+        implements MultipleAmountHolder, MultipleDescriptionHolder, MultipleYearHolder, UnboundedRequirementGroup {
 
     private Integer year1;
     private Integer year2;
@@ -74,14 +77,12 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion
 	private BigDecimal averageTurnover;
 	private String averageTurnoverCurrency;
 
+	private List<DynamicRequirementGroup> unboundedGroups = new ArrayList<>(5);
+
     public static EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
         EconomicFinancialStandingCriterion criterion = new EconomicFinancialStandingCriterion();
         criterion.setExists(exists);
         return criterion;
     }
 
-	@Override
-	public void setDescriptionAtIndex(String description, int index) {
-		throw new UnsupportedOperationException("TODO this");
-	}
 }

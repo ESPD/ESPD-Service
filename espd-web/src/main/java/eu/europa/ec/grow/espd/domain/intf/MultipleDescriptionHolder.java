@@ -41,5 +41,4 @@ public interface MultipleDescriptionHolder {
     void setDescription4(String description4);
     void setDescription5(String description5);
 
-	void setDescriptionAtIndex(String description, int index);
 }
