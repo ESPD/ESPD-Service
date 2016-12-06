@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.domain.enums.criteria;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import eu.europa.ec.grow.espd.domain.infrastructure.CriterionDefinitions;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
 import eu.europa.ec.grow.espd.domain.ubl.CcvLegislation;
@@ -90,7 +91,7 @@ public enum SelectionCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     SelectionCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDefinitions.findCriterionById(uuid).get();
+        CcvCriterion criterion = CriterionDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();

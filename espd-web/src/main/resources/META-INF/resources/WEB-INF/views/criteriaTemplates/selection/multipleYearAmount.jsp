@@ -36,7 +36,7 @@
 		<div class="col-md-4">
 		    <label class="control-label col-xs-3 small">${span18n['crit_year']}</label>
 		    <div class="col-xs-9" style="margin-bottom: 5px;">
-		        <form:select path="${field}.year${loop.count}" cssClass="form-control" >
+		        <form:select path="${field}.unboundedGroups[${loop.index}]['year']" cssClass="form-control" >
 					<form:option value="${null}" label="---"/>
 					<form:options items="${lastYears}"/>
 				</form:select>
@@ -45,11 +45,11 @@
 	    <div class="col-md-8">
 			<label class="control-label col-xs-3 small">${span18n['crit_amount_concerned']}</label>
 			<div class="col-xs-5">
-			    <form:input type="text" path="${field}.amount${loop.count}" number="true" cssClass="form-control"/>
+			    <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['amount']" number="true" cssClass="form-control"/>
 			</div>
 			<div class="col-xs-4">
 	            <tiles:insertDefinition name="currencies">
-	                <tiles:putAttribute name="currencyField" value="${field}.currency${loop.count}"/>
+	                <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${loop.index}]['currency']"/>
 	            </tiles:insertDefinition>
 		    </div>
 	    </div>

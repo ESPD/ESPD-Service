@@ -24,7 +24,6 @@
 
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.domain.intf.MultipleYearHolder;
 import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -38,15 +37,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TechnicalProfessionalCriterion extends SelectionCriterion implements MultipleYearHolder, UnboundedRequirementGroup {
-
-	private Integer year1;
-	private Integer year2;
-	private Integer year3;
-
-	private Integer number1;
-	private Integer number2;
-	private Integer number3;
+public class TechnicalProfessionalCriterion extends SelectionCriterion implements UnboundedRequirementGroup {
 
 	private BigDecimal percentage;
 	private String specify;
@@ -57,26 +48,6 @@ public class TechnicalProfessionalCriterion extends SelectionCriterion implement
 		criterion.setExists(exists);
 		return criterion;
 	}
-
-    @Override
-    public Integer getYear4() {
-        return null;
-    }
-
-    @Override
-    public Integer getYear5() {
-        return null;
-    }
-
-    @Override
-    public void setYear4(Integer year4) {
-        throw new UnsupportedOperationException("Technical professional criterion does not have year4.");
-    }
-
-    @Override
-    public void setYear5(Integer year5) {
-        throw new UnsupportedOperationException("Technical professional criterion does not have year5.");
-    }
 
 	@Override
 	public List<DynamicRequirementGroup> getUnboundedGroups() {

@@ -22,7 +22,7 @@
  *
  */
 
-package eu.europa.ec.grow.espd.domain.enums.criteria;
+package eu.europa.ec.grow.espd.domain.infrastructure;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExpectedResponseType;
 import eu.europa.ec.grow.espd.domain.ubl.*;
 import lombok.Setter;
 import org.springframework.core.io.ClassPathResource;
@@ -48,7 +49,7 @@ import java.util.List;
  * <p>
  * Created by ratoico on 5/23/16.
  */
-final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
+final class CriteriaDeserializer extends JsonDeserializer<CriterionDefinitions> {
 
 	private static final CriteriaDeserializer INSTANCE = new CriteriaDeserializer();
 	private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -58,32 +59,32 @@ final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
 
 	static {
 		SimpleModule module = new SimpleModule();
-		module.addDeserializer(CriteriaDefinitions.class, INSTANCE);
+		module.addDeserializer(CriterionDefinitions.class, INSTANCE);
 		MAPPER.registerModule(module);
 	}
 
-	static CriteriaDefinitions parseJsonFile(String fileName) {
+	static CriterionDefinitions parseJsonFile(String fileName) {
 		try (InputStream is = new ClassPathResource("criteria/" + fileName).getInputStream()) {
-			return MAPPER.readValue(is, CriteriaDefinitions.class);
+			return MAPPER.readValue(is, CriterionDefinitions.class);
 		} catch (IOException e) {
 			throw new IllegalArgumentException(String.format("Could not read JSON file: '%s'.", fileName), e);
 		}
 	}
 
 	@Override
-	public CriteriaDefinitions deserialize(JsonParser jp, DeserializationContext dc)
+	public CriterionDefinitions deserialize(JsonParser jp, DeserializationContext dc)
 			throws IOException, JsonProcessingException {
 		JsonNode node = jp.getCodec().readTree(jp);
 		ArrayNode criteriaNode = (ArrayNode) node.get("criteria");
 
-		CriteriaDefinitions criteriaDefinitions = new CriteriaDefinitions();
+		CriterionDefinitions criterionDefinitions = new CriterionDefinitions();
 		for (JsonNode nd : criteriaNode) {
 			CcvCriterion crit = parseCcvCriterion(nd);
-			criteriaDefinitions.addCriterion(crit.getUuid(), crit);
+			criterionDefinitions.addCriterion(crit.getUuid(), crit);
 		}
-		addCcvEntityMappings(node, criteriaDefinitions);
+		addCcvEntityMappings(node, criterionDefinitions);
 
-		return criteriaDefinitions;
+		return criterionDefinitions;
 	}
 
 	private CcvCriterion parseCcvCriterion(final JsonNode node) {
@@ -145,7 +146,7 @@ final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
 		};
 	}
 
-	private void addCcvEntityMappings(JsonNode node, CriteriaDefinitions criteriaDefinitions) {
+	private void addCcvEntityMappings(JsonNode node, CriterionDefinitions criterionDefinitions) {
 		// Related to https://github.com/ESPD/ESPD-Service/issues/15. We need to still support the old group ids
 		// in order to support requirement group and requirement definitions for versions prior to 2016.12 we need
 		// to create a mapping between the old ids and the new definitions for the groups and the requirements
@@ -155,7 +156,7 @@ final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
 		if (oldRequirementGroupMappingsNode != null) {
 			for (JsonNode nd : oldRequirementGroupMappingsNode) {
 				OldCcvEntityMapping mapping = parseOldMappings(nd);
-				criteriaDefinitions.addRequirementGroupMappings(mapping.replacementId, mapping.idsToBeReplaced);
+				criterionDefinitions.addRequirementGroupMappings(mapping.replacementId, mapping.idsToBeReplaced);
 			}
 		}
 
@@ -163,7 +164,7 @@ final class CriteriaDeserializer extends JsonDeserializer<CriteriaDefinitions> {
 		if (oldRequirementMappingsNode != null) {
 			for (JsonNode nd : oldRequirementMappingsNode) {
 				OldCcvEntityMapping mapping = parseOldMappings(nd);
-				criteriaDefinitions.addRequirementMappings(mapping.replacementId, mapping.idsToBeReplaced);
+				criterionDefinitions.addRequirementMappings(mapping.replacementId, mapping.idsToBeReplaced);
 			}
 		}
 	}

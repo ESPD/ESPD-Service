@@ -44,11 +44,11 @@
 	                	${span18n["crit_amount"]}
 	                </label>
 	                <div class="col-xs-6">
-	                    <form:input type="text" path="${field}.amount1" cssClass="form-control"></form:input>
+	                    <form:input type="text" path="${field}.amount" cssClass="form-control"></form:input>
 	                </div>
 	                <div class="col-xs-3">
 	                    <tiles:insertDefinition name="currencies">
-	                        <tiles:putAttribute name="currencyField" value="${field}.currency1"/>
+	                        <tiles:putAttribute name="currencyField" value="${field}.currency"/>
 	                    </tiles:insertDefinition>
 	                </div>
 	            </div>
@@ -58,7 +58,7 @@
                     <label class="control-label col-md-4 small" data-i18n="crit_please_specify"><s:message
                             code='crit_please_specify'/></label>
                     <div class="col-md-5">
-                        <form:select path="${field}.year1" cssClass="form-control">
+                        <form:select path="${field}.year" cssClass="form-control">
                             <form:option value="${null}" label="---"/>
                             <form:options items="${lastYearsAmount}"/>
                         </form:select>

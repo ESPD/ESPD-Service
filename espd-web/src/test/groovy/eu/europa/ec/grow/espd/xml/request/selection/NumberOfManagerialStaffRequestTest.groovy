@@ -57,15 +57,13 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
         checkLegislationReference(request, idx, "58(4)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 4
+        request.Criterion[idx].RequirementGroup.size() == 2
 
         then:
         checkYearNumberGroup1(request.Criterion[idx].RequirementGroup[0])
-        checkYearNumberGroup2(request.Criterion[idx].RequirementGroup[1])
-        checkYearNumberGroup3(request.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[3])
+        checkInfoAvailableElectronicallyRequirementGroup(request.Criterion[idx].RequirementGroup[1])
     }
 
 }

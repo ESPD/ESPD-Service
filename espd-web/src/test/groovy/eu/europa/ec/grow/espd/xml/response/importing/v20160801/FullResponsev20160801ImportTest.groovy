@@ -509,31 +509,35 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         expect:
         espd.generalYearlyTurnover.exists == true
         espd.generalYearlyTurnover.answer == true
+        def unboundedGroups = espd.generalYearlyTurnover.unboundedGroups
 
         and:
-        espd.generalYearlyTurnover.year1 == 2012
-        espd.generalYearlyTurnover.amount1 == 1000000.0
-        espd.generalYearlyTurnover.currency1 == "EUR"
+        unboundedGroups.size() == 5
 
         and:
-        espd.generalYearlyTurnover.year2 == 2013
-        espd.generalYearlyTurnover.amount2 == 2000000.0
-        espd.generalYearlyTurnover.currency2 == "RON"
+        unboundedGroups[0].get("year") == 2012
+        unboundedGroups[0].get("amount") == 1000000.0
+        unboundedGroups[0].get("currency") == "EUR"
 
         and:
-        espd.generalYearlyTurnover.year3 == 2014
-        espd.generalYearlyTurnover.amount3 == 3000000.0
-        espd.generalYearlyTurnover.currency3 == "USD"
+        unboundedGroups[1].get("year") == 2013
+        unboundedGroups[1].get("amount") == 2000000.0
+        unboundedGroups[1].get("currency") == "RON"
 
         and:
-        espd.generalYearlyTurnover.year4 == 2015
-        espd.generalYearlyTurnover.amount4 == 4000000.0
-        espd.generalYearlyTurnover.currency4 == "CHF"
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("amount") == 3000000.0
+        unboundedGroups[2].get("currency") == "USD"
 
         and:
-        espd.generalYearlyTurnover.year5 == 2011
-        espd.generalYearlyTurnover.amount5 == 5000000.0
-        espd.generalYearlyTurnover.currency5 == "PLN"
+        unboundedGroups[3].get("year") == 2015
+        unboundedGroups[3].get("amount") == 4000000.0
+        unboundedGroups[3].get("currency") == "CHF"
+
+        and:
+        unboundedGroups[4].get("year") == 2011
+        unboundedGroups[4].get("amount") == 5000000.0
+        unboundedGroups[4].get("currency") == "PLN"
 
         and: "info electronically"
         espd.generalYearlyTurnover.availableElectronically.answer == true
@@ -546,30 +550,10 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         espd.averageYearlyTurnover.exists == true
         espd.averageYearlyTurnover.answer == true
 
-        and:
-        espd.averageYearlyTurnover.year1 == 2012
-        espd.averageYearlyTurnover.amount1 == 2000000.0
-        espd.averageYearlyTurnover.currency1 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year2 == 2013
-        espd.averageYearlyTurnover.amount2 == 2000001.0
-        espd.averageYearlyTurnover.currency2 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year3 == 2014
-        espd.averageYearlyTurnover.amount3 == 100000.0
-        espd.averageYearlyTurnover.currency3 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year4 == 2015
-        espd.averageYearlyTurnover.amount4 == 1000000.0
-        espd.averageYearlyTurnover.currency4 == "CHF"
-
-        and:
-        espd.averageYearlyTurnover.year5 == 2011
-        espd.averageYearlyTurnover.amount5 == 200004.53
-        espd.averageYearlyTurnover.currency5 == "RON"
+        and: "we did not have these fields (requirements) in the 2016.04 version"
+        espd.averageYearlyTurnover.numberOfYears == null
+        espd.averageYearlyTurnover.averageTurnover == null
+        espd.averageYearlyTurnover.averageTurnoverCurrency == null
 
         and: "info electronically"
         espd.averageYearlyTurnover.availableElectronically.answer == true
@@ -581,31 +565,35 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         expect:
         espd.specificYearlyTurnover.exists == true
         espd.specificYearlyTurnover.answer == true
+        def unboundedGroups = espd.specificYearlyTurnover.unboundedGroups
 
         and:
-        espd.specificYearlyTurnover.year1 == 2012
-        espd.specificYearlyTurnover.amount1 == 5000000.775555
-        espd.specificYearlyTurnover.currency1 == "EUR"
+        unboundedGroups.size() == 5
 
         and:
-        espd.specificYearlyTurnover.year2 == 2013
-        espd.specificYearlyTurnover.amount2 == 100000.0
-        espd.specificYearlyTurnover.currency2 == "RON"
+        unboundedGroups[0].get("year") == 2012
+        unboundedGroups[0].get("amount") == 5000000.775555
+        unboundedGroups[0].get("currency") == "EUR"
 
         and:
-        espd.specificYearlyTurnover.year3 == 2014
-        espd.specificYearlyTurnover.amount3 == 200000.0
-        espd.specificYearlyTurnover.currency3 == "EUR"
+        unboundedGroups[1].get("year") == 2013
+        unboundedGroups[1].get("amount") == 100000.0
+        unboundedGroups[1].get("currency") == "RON"
 
         and:
-        espd.specificYearlyTurnover.year4 == 2015
-        espd.specificYearlyTurnover.amount4 == 300000.0
-        espd.specificYearlyTurnover.currency4 == "CHF"
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("amount") == 200000.0
+        unboundedGroups[2].get("currency") == "EUR"
 
         and:
-        espd.specificYearlyTurnover.year5 == 2011
-        espd.specificYearlyTurnover.amount5 == 400000.0
-        espd.specificYearlyTurnover.currency5 == "EUR"
+        unboundedGroups[3].get("year") == 2015
+        unboundedGroups[3].get("amount") == 300000.0
+        unboundedGroups[3].get("currency") == "CHF"
+
+        and:
+        unboundedGroups[4].get("year") == 2011
+        unboundedGroups[4].get("amount") == 400000.0
+        unboundedGroups[4].get("currency") == "EUR"
 
         and: "info electronically"
         espd.specificYearlyTurnover.availableElectronically.answer == true
@@ -619,29 +607,9 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         espd.specificAverageTurnover.answer == true
 
         and:
-        espd.specificAverageTurnover.year1 == 2012
-        espd.specificAverageTurnover.amount1 == 1000000.0
-        espd.specificAverageTurnover.currency1 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year2 == 2013
-        espd.specificAverageTurnover.amount2 == 2000003.0
-        espd.specificAverageTurnover.currency2 == "USD"
-
-        and:
-        espd.specificAverageTurnover.year3 == 2014
-        espd.specificAverageTurnover.amount3 == 3000000.1234
-        espd.specificAverageTurnover.currency3 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year4 == 2015
-        espd.specificAverageTurnover.amount4 == 10.0001
-        espd.specificAverageTurnover.currency4 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year5 == 2011
-        espd.specificAverageTurnover.amount5 == 5000000.0
-        espd.specificAverageTurnover.currency5 == "RON"
+        espd.specificAverageTurnover.numberOfYears == null
+        espd.specificAverageTurnover.averageTurnover == null
+        espd.specificAverageTurnover.averageTurnoverCurrency == null
 
         and: "info electronically"
         espd.specificAverageTurnover.availableElectronically.answer == true
@@ -652,7 +620,7 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
     def "10. should import all fields of 'Set up of economic operator'"() {
         expect: "selection criteria with no answer have a default value of true"
         espd.setupEconomicOperator.answer == true
-        espd.setupEconomicOperator.year1 == 2014
+        espd.setupEconomicOperator.year == 2014
     }
 
     def "11. should import all fields of 'Financial ratio'"() {
@@ -661,26 +629,30 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
 
         and: "selection criteria with no answer have a default value of true"
         espd.financialRatio.answer == true
+        def unboundedGroups = espd.financialRatio.unboundedGroups
 
         and:
-        espd.financialRatio.description1 == "TEST_1"
-        espd.financialRatio.ratio1 == 1.0
+        unboundedGroups.size() == 5
 
         and:
-        espd.financialRatio.description2 == "TEST_2"
-        espd.financialRatio.ratio2 == 2.0
+        unboundedGroups[0].get("description") == "TEST_1"
+        unboundedGroups[0].get("ratio") == 1.0
 
         and:
-        espd.financialRatio.description3 == "TEST_3"
-        espd.financialRatio.ratio3 == 3.0
+        unboundedGroups[1].get("description") == "TEST_2"
+        unboundedGroups[1].get("ratio") == 2.0
 
         and:
-        espd.financialRatio.description4 == "TEST_4"
-        espd.financialRatio.ratio4 == 4.0
+        unboundedGroups[2].get("description") == "TEST_3"
+        unboundedGroups[2].get("ratio") == 3.0
 
         and:
-        espd.financialRatio.description5 == "TEST_5"
-        espd.financialRatio.ratio5 == 5.0
+        unboundedGroups[3].get("description") == "TEST_4"
+        unboundedGroups[3].get("ratio") == 4.0
+
+        and:
+        unboundedGroups[4].get("description") == "TEST_5"
+        unboundedGroups[4].get("ratio") == 5.0
 
         and: "info electronically"
         espd.financialRatio.availableElectronically.answer == true
@@ -694,8 +666,8 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         espd.professionalRiskInsurance.answer == true
 
         and:
-        espd.professionalRiskInsurance.amount1 == 3000000000000000
-        espd.professionalRiskInsurance.currency1 == "RON"
+        espd.professionalRiskInsurance.amount == 3000000000000000
+        espd.professionalRiskInsurance.currency == "RON"
 
         and: "info electronically"
         espd.professionalRiskInsurance.availableElectronically.answer == true
@@ -969,18 +941,22 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         expect:
         espd.numberManagerialStaff.exists == true
         espd.numberManagerialStaff.answer == true
+        def unboundedGroups = espd.numberManagerialStaff.unboundedGroups
 
         and:
-        espd.numberManagerialStaff.year1 == 2014
-        espd.numberManagerialStaff.number1 == 123
+        unboundedGroups.size() == 3
 
         and:
-        espd.numberManagerialStaff.year2 == 2015
-        espd.numberManagerialStaff.number2 == 456
+        unboundedGroups[0].get("year") == 2014
+        unboundedGroups[0].get("number") == 123
 
         and:
-        espd.numberManagerialStaff.year3 == 2013
-        espd.numberManagerialStaff.number3 == 789
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("number") == 456
+
+        and:
+        unboundedGroups[2].get("year") == 2013
+        unboundedGroups[2].get("number") == 789
 
         and: "info electronically"
         espd.numberManagerialStaff.availableElectronically.answer == true
@@ -992,18 +968,22 @@ class FullResponsev20160801ImportTest extends AbstractXmlFileImport {
         expect:
         espd.averageAnnualManpower.exists == true
         espd.averageAnnualManpower.answer == true
+        def unboundedGroups = espd.averageAnnualManpower.unboundedGroups
 
         and:
-        espd.averageAnnualManpower.year1 == 2014
-        espd.averageAnnualManpower.number1 == 321
+        unboundedGroups.size() == 3
 
         and:
-        espd.averageAnnualManpower.year2 == 2015
-        espd.averageAnnualManpower.number2 == 654
+        unboundedGroups[0].get("year") == 2014
+        unboundedGroups[0].get("number") == 321
 
         and:
-        espd.averageAnnualManpower.year3 == 2013
-        espd.averageAnnualManpower.number3 == 987
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("number") == 654
+
+        and:
+        unboundedGroups[2].get("year") == 2013
+        unboundedGroups[2].get("number") == 987
 
         and: "info electronically"
         espd.averageAnnualManpower.availableElectronically.answer == true

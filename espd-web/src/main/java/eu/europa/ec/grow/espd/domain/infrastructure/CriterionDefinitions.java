@@ -22,7 +22,7 @@
  *
  */
 
-package eu.europa.ec.grow.espd.domain.enums.criteria;
+package eu.europa.ec.grow.espd.domain.infrastructure;
 
 import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
@@ -34,23 +34,21 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static eu.europa.ec.grow.espd.domain.enums.criteria.CriteriaDeserializer.parseJsonFile;
-
 /**
  * Central Utility class for holding ESPD criteria, requirement groups and requirements meta information by using
  * the criterion UUID.
  * <p>
  * Created by ratoico on 5/23/16.
  */
-public final class CriteriaDefinitions {
+public final class CriterionDefinitions {
 
-	private static final CriteriaDefinitions INSTANCE = new CriteriaDefinitions();
+	private static final CriterionDefinitions INSTANCE = new CriterionDefinitions();
 
 	static {
 		// read the criteria only once to populate the enums
-		INSTANCE.mergeCriteriaDefinitions(parseJsonFile("exclusionCriteria.json"));
-		INSTANCE.mergeCriteriaDefinitions(parseJsonFile("selectionCriteria.json"));
-		INSTANCE.mergeCriteriaDefinitions(parseJsonFile("otherCriteria.json"));
+		INSTANCE.mergeCriteriaDefinitions(CriteriaDeserializer.parseJsonFile("exclusionCriteria.json"));
+		INSTANCE.mergeCriteriaDefinitions(CriteriaDeserializer.parseJsonFile("selectionCriteria.json"));
+		INSTANCE.mergeCriteriaDefinitions(CriteriaDeserializer.parseJsonFile("otherCriteria.json"));
 	}
 
 	private final Map<String, CcvCriterion> criteria;
@@ -59,13 +57,13 @@ public final class CriteriaDefinitions {
 
 	private final Map<String, CcvCriterionRequirement> requirements;
 
-	CriteriaDefinitions() {
+	CriterionDefinitions() {
 		criteria = new HashMap<>();
 		requirementGroups = new HashMap<>();
 		requirements = new HashMap<>();
 	}
 
-	private void mergeCriteriaDefinitions(CriteriaDefinitions toMergeWith) {
+	private void mergeCriteriaDefinitions(CriterionDefinitions toMergeWith) {
 		criteria.putAll(toMergeWith.criteria);
 		requirementGroups.putAll(toMergeWith.requirementGroups);
 		requirements.putAll(toMergeWith.requirements);

@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.importing.selection
 
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -41,35 +42,39 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
 
         when:
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        def unboundedGroups = espd.generalYearlyTurnover.unboundedGroups
+
+        then:
+        unboundedGroups.size() == 5
 
         then:
         espd.generalYearlyTurnover.exists == true
         espd.generalYearlyTurnover.answer == true
 
         then:
-        espd.generalYearlyTurnover.year1 == 2016
-        espd.generalYearlyTurnover.amount1 == 111.1
-        espd.generalYearlyTurnover.currency1 == "RON"
+        unboundedGroups[0].get("year") == 2016
+        unboundedGroups[0].get("amount") == 111.1
+        unboundedGroups[0].get("currency") == "RON"
 
         then:
-        espd.generalYearlyTurnover.year2 == 2015
-        espd.generalYearlyTurnover.amount2 == 222.2
-        espd.generalYearlyTurnover.currency2 == "EUR"
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("amount") == 222.2
+        unboundedGroups[1].get("currency") == "EUR"
 
         then:
-        espd.generalYearlyTurnover.year3 == 2014
-        espd.generalYearlyTurnover.amount3 == 333.3
-        espd.generalYearlyTurnover.currency3 == "USD"
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("amount") == 333.3
+        unboundedGroups[2].get("currency") == "USD"
 
         then:
-        espd.generalYearlyTurnover.year4 == 2013
-        espd.generalYearlyTurnover.amount4 == 444.4
-        espd.generalYearlyTurnover.currency4 == "CHF"
+        unboundedGroups[3].get("year") == 2013
+        unboundedGroups[3].get("amount") == 444.4
+        unboundedGroups[3].get("currency") == "CHF"
 
         then:
-        espd.generalYearlyTurnover.year5 == 2012
-        espd.generalYearlyTurnover.amount5 == 555.5
-        espd.generalYearlyTurnover.currency5 == "YEN"
+        unboundedGroups[4].get("year") == 2012
+        unboundedGroups[4].get("amount") == 555.5
+        unboundedGroups[4].get("currency") == "YEN"
 
         then: "info electronically"
         espd.generalYearlyTurnover.availableElectronically.answer == true
@@ -94,11 +99,12 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true, answer: true,
-                year1: 2016, amount1: 111.1, currency1: "RON",
-                year2: 2015, amount2: 222.2, currency2: "EUR",
-                year3: 2014, amount3: 333.3, currency3: "USD",
-                year4: 2013, amount4: 444.4, currency4: "CHF",
-                year5: 2012, amount5: 555.5, currency5: "YEN",
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": 2016, "amount": 111.1, "currency": "RON"),
+                        new DynamicRequirementGroup("year": 2015, "amount": 222.2, "currency": "EUR"),
+                        new DynamicRequirementGroup("year": 2014, "amount": 333.3, "currency": "USD"),
+                        new DynamicRequirementGroup("year": 2013, "amount": 444.4, "currency": "CHF"),
+                        new DynamicRequirementGroup("year": 2012, "amount": 555.5, "currency": "YEN")],
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

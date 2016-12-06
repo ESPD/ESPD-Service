@@ -36,7 +36,7 @@
 		<div class="col-md-5">
 		    <label class="control-label col-md-3 small">${span18n['crit_year']}</label>
 		    <div class="col-md-9">
-		        <form:select path="${field}.year${loop.count}" cssClass="form-control" >
+		        <form:select path="${field}.unboundedGroups[${loop.index}]['year']" cssClass="form-control" >
 					<form:option value="${null}" label="---"/>
 					<form:options items="${lastYears}"/>
 				</form:select>
@@ -45,7 +45,7 @@
 		<div class="col-md-7">
 		    <label class="control-label col-md-3 small">${span18n['crit_number']}</label>
 		    <div class="col-md-9">
-		         <form:input type="text" path="${field}.number${loop.count}" digits="true" max="1000000" cssClass="form-control"/>
+		         <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['number']" digits="true" max="1000000" cssClass="form-control"/>
 		    </div>
 	    </div>
 	</div>

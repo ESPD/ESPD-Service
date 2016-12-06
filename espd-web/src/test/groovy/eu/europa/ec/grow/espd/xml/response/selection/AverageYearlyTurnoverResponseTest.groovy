@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.xml.response.selection
 
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
@@ -111,7 +112,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check empty 'Average turnover' requirements response"() {
         given:
         def espd = new EspdDocument(averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: null, currency1: "EUR"))
+                unboundedGroups: [new DynamicRequirementGroup("amount": null, "currency": null)]))
 
         when:
         def response = parseResponseXml(espd)
