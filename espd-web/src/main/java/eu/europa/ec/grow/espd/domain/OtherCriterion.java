@@ -87,8 +87,16 @@ public class OtherCriterion extends EspdCriterion implements MultipleDescription
         return Boolean.TRUE.equals(this.booleanValue1);
     }
 
+	public Boolean getBooleanValue3() {
+		return Boolean.TRUE.equals(this.booleanValue3);
+	}
+
     @Override
     public Boolean getAnswer() {
-        return this.answer;
+	    if (this.answer == null) {
+		    // other (economic operator) criterion with no answer has a default value of FALSE
+		    return Boolean.FALSE;
+	    }
+	    return this.answer;
     }
 }
