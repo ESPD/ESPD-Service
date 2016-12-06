@@ -53,193 +53,199 @@ import java.io.*;
 @Slf4j
 public class EspdExchangeMarshaller {
 
-    private final Jaxb2Marshaller jaxb2Marshaller;
-    private final UblRequestTypeTransformer toEspdRequestTransformer;
-    private final UblRequestImporter requestToEspdDocumentTransformer;
-    private final UblResponseImporter responseToEspdDocumentTransformer;
-    private final UblResponseTypeTransformer toEspdResponseTransformer;
-    private final UblRequestResponseMerger requestResponseMerger;
-    private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
-    private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
+	private final Jaxb2Marshaller jaxb2Marshaller;
+	private final UblRequestTypeTransformer toEspdRequestTransformer;
+	private final UblRequestImporter requestToEspdDocumentTransformer;
+	private final UblResponseImporter responseToEspdDocumentTransformer;
+	private final UblResponseTypeTransformer toEspdResponseTransformer;
+	private final UblRequestResponseMerger requestResponseMerger;
+	private final grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory espdRequestObjectFactory;
+	private final grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory espdResponseObjectFactory;
 
-    @Autowired
-    EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
-            UblRequestTypeTransformer toEspdRequestTransformer,
-            UblRequestImporter requestToEspdDocumentTransformer,
-            UblResponseImporter responseToEspdDocumentTransformer,
-            UblResponseTypeTransformer toEspdResponseTransformer, UblRequestResponseMerger requestResponseMerger) {
-        this.jaxb2Marshaller = jaxb2Marshaller;
-        this.toEspdRequestTransformer = toEspdRequestTransformer;
-        this.requestToEspdDocumentTransformer = requestToEspdDocumentTransformer;
-        this.responseToEspdDocumentTransformer = responseToEspdDocumentTransformer;
-        this.toEspdResponseTransformer = toEspdResponseTransformer;
-        this.requestResponseMerger = requestResponseMerger;
-        this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
-        this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
-    }
+	@Autowired
+	EspdExchangeMarshaller(Jaxb2Marshaller jaxb2Marshaller,
+			UblRequestTypeTransformer toEspdRequestTransformer,
+			UblRequestImporter requestToEspdDocumentTransformer,
+			UblResponseImporter responseToEspdDocumentTransformer,
+			UblResponseTypeTransformer toEspdResponseTransformer, UblRequestResponseMerger requestResponseMerger) {
+		this.jaxb2Marshaller = jaxb2Marshaller;
+		this.toEspdRequestTransformer = toEspdRequestTransformer;
+		this.requestToEspdDocumentTransformer = requestToEspdDocumentTransformer;
+		this.responseToEspdDocumentTransformer = responseToEspdDocumentTransformer;
+		this.toEspdResponseTransformer = toEspdResponseTransformer;
+		this.requestResponseMerger = requestResponseMerger;
+		this.espdRequestObjectFactory = new grow.names.specification.ubl.schema.xsd.espdrequest_1.ObjectFactory();
+		this.espdResponseObjectFactory = new grow.names.specification.ubl.schema.xsd.espdresponse_1.ObjectFactory();
+	}
 
-    /**
-     * Create a {@link ESPDRequestType} from the provided {@link EspdDocument} and marshals it
-     * to the output stream.
-     *
-     * @param espdDocument The ESPD document that will be written out
-     * @param out          The place where the XML representation will be written out
-     */
-    public void generateEspdRequest(EspdDocument espdDocument, OutputStream out) {
-        ESPDRequestType espdRequestType = toEspdRequestTransformer.buildRequestType(espdDocument);
-        StreamResult result = new StreamResult(out);
-        jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
-    }
+	/**
+	 * Create a {@link ESPDRequestType} from the provided {@link EspdDocument} and marshals it
+	 * to the output stream.
+	 *
+	 * @param espdDocument The ESPD document that will be written out
+	 *
+	 * @return The stream where the XML representation will be written out
+	 */
+	public ByteArrayOutputStream generateEspdRequest(EspdDocument espdDocument) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		ESPDRequestType espdRequestType = toEspdRequestTransformer.buildRequestType(espdDocument);
+		StreamResult result = new StreamResult(out);
+		jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
+		return out;
+	}
 
-    /**
-     * Create a {@link ESPDRequestType} from the provided {@link EspdDocument} and marshals it
-     * as a {@link StringWriter}.
-     *
-     * @param espdDocument The ESPD document that will be written out
-     * @param sw           The place where the XML representation will be written out
-     */
-    public void generateEspdRequest(EspdDocument espdDocument, StringWriter sw) {
-        ESPDRequestType espdRequestType = toEspdRequestTransformer.buildRequestType(espdDocument);
-        StreamResult result = new StreamResult(sw);
+	/**
+	 * Create a {@link ESPDRequestType} from the provided {@link EspdDocument} and marshals it
+	 * as a {@link StringWriter}.
+	 *
+	 * @param espdDocument The ESPD document that will be written out
+	 * @param sw           The place where the XML representation will be written out
+	 */
+	public void generateEspdRequest(EspdDocument espdDocument, StringWriter sw) {
+		ESPDRequestType espdRequestType = toEspdRequestTransformer.buildRequestType(espdDocument);
+		StreamResult result = new StreamResult(sw);
 
-        jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
-    }
+		jaxb2Marshaller.marshal(espdRequestObjectFactory.createESPDRequest(espdRequestType), result);
+	}
 
-    /**
-     * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
-     * to the output stream.
-     *
-     * @param espdDocument The ESPD document that will be written out
-     * @param out          The place where the XML representation will be written out
-     */
-    public void generateEspdResponse(EspdDocument espdDocument, OutputStream out) {
-        ESPDResponseType espdResponseType = toEspdResponseTransformer.buildResponseType(espdDocument);
-        StreamResult result = new StreamResult(out);
-        jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
-    }
+	/**
+	 * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
+	 * to the output stream.
+	 *
+	 * @param espdDocument The ESPD document that will be written out
+	 *
+	 * @return The stream where the XML representation will be written out
+	 */
+	public ByteArrayOutputStream generateEspdResponse(EspdDocument espdDocument) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		ESPDResponseType espdResponseType = toEspdResponseTransformer.buildResponseType(espdDocument);
+		StreamResult result = new StreamResult(out);
+		jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
+		return out;
+	}
 
-    /**
-     * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
-     * to the output stream.
-     *
-     * @param espdDocument The ESPD document that will be written out
-     * @param sw           The place where the XML representation will be written out
-     */
-    public void generateEspdResponse(EspdDocument espdDocument, StringWriter sw) {
-        ESPDResponseType espdResponseType = toEspdResponseTransformer.buildResponseType(espdDocument);
-        StreamResult result = new StreamResult(sw);
-        jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
-    }
+	/**
+	 * Create a {@link ESPDResponseType} from the provided {@link EspdDocument} and marshals it
+	 * to the output stream.
+	 *
+	 * @param espdDocument The ESPD document that will be written out
+	 * @param sw           The place where the XML representation will be written out
+	 */
+	public void generateEspdResponse(EspdDocument espdDocument, StringWriter sw) {
+		ESPDResponseType espdResponseType = toEspdResponseTransformer.buildResponseType(espdDocument);
+		StreamResult result = new StreamResult(sw);
+		jaxb2Marshaller.marshal(espdResponseObjectFactory.createESPDResponse(espdResponseType), result);
+	}
 
-    /**
-     * Convert a {@link ESPDRequestType} coming from an input stream into a {@link EspdDocument} object needed by
-     * the web application user interface.
-     *
-     * @param espdRequestStream An input stream containing the ESPD Request
-     *
-     * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Request
-     * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
-     */
-    @SuppressWarnings("unchecked")
-    public Optional<EspdDocument> importEspdRequest(InputStream espdRequestStream) {
-        try {
-            JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
-                    .unmarshal(new StreamSource(espdRequestStream));
-            ESPDRequestType requestType = element.getValue();
-            return Optional.of(requestToEspdDocumentTransformer.importRequest(requestType));
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-            return Optional.absent();
-        }
-    }
+	/**
+	 * Convert a {@link ESPDRequestType} coming from an input stream into a {@link EspdDocument} object needed by
+	 * the web application user interface.
+	 *
+	 * @param espdRequestStream An input stream containing the ESPD Request
+	 *
+	 * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Request
+	 * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
+	 */
+	@SuppressWarnings("unchecked")
+	public Optional<EspdDocument> importEspdRequest(InputStream espdRequestStream) {
+		try {
+			JAXBElement<ESPDRequestType> element = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
+					.unmarshal(new StreamSource(espdRequestStream));
+			ESPDRequestType requestType = element.getValue();
+			return Optional.of(requestToEspdDocumentTransformer.importRequest(requestType));
+		} catch (Exception e) {
+			log.warn(e.getMessage(), e);
+			return Optional.absent();
+		}
+	}
 
-    /**
-     * Convert a {@link ESPDResponseType} coming from an input stream into a {@link EspdDocument} object needed by
-     * the web application user interface.
-     *
-     * @param espdResponseStream An input stream containing the ESPD Response
-     *
-     * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Response
-     * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
-     */
-    @SuppressWarnings("unchecked")
-    public Optional<EspdDocument> importEspdResponse(InputStream espdResponseStream) {
-        try {
-            JAXBElement<ESPDResponseType> element = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
-                    .unmarshal(new StreamSource(espdResponseStream));
-            ESPDResponseType responseType = element.getValue();
-            return Optional.of(responseToEspdDocumentTransformer.importResponse(responseType));
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-            return Optional.absent();
-        }
-    }
+	/**
+	 * Convert a {@link ESPDResponseType} coming from an input stream into a {@link EspdDocument} object needed by
+	 * the web application user interface.
+	 *
+	 * @param espdResponseStream An input stream containing the ESPD Response
+	 *
+	 * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Response
+	 * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
+	 */
+	@SuppressWarnings("unchecked")
+	public Optional<EspdDocument> importEspdResponse(InputStream espdResponseStream) {
+		try {
+			JAXBElement<ESPDResponseType> element = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
+					.unmarshal(new StreamSource(espdResponseStream));
+			ESPDResponseType responseType = element.getValue();
+			return Optional.of(responseToEspdDocumentTransformer.importResponse(responseType));
+		} catch (Exception e) {
+			log.warn(e.getMessage(), e);
+			return Optional.absent();
+		}
+	}
 
-    /**
-     * Read from an input stream that should contain a {@link ESPDRequestType} or {@link ESPDResponseType}
-     * and convert it into a {@link EspdDocument}. It is not known beforehand if the content
-     * belongs to a ESPD Request or Response.
-     *
-     * @param is An input stream hopefully containing a ESPD Request or Response
-     *
-     * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Request or Response
-     * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
-     *
-     * @throws IOException
-     */
-    public Optional<EspdDocument> importAmbiguousEspdFile(InputStream is) throws IOException {
-        // peek at the first bytes in the file to see if it is a ESPD Request or Response
-        try (BufferedInputStream bis = new BufferedInputStream(is)) {
-            int peekReadLimit = 80;
-            bis.mark(peekReadLimit);
-            byte[] peek = new byte[peekReadLimit];
-            int bytesRead = bis.read(peek, 0, peekReadLimit - 1);
-            if (bytesRead < 0) {
-                return null;
-            }
-            bis.reset(); // need to read from the beginning afterwards
-            String firstBytes = new String(peek, "UTF-8");
+	/**
+	 * Read from an input stream that should contain a {@link ESPDRequestType} or {@link ESPDResponseType}
+	 * and convert it into a {@link EspdDocument}. It is not known beforehand if the content
+	 * belongs to a ESPD Request or Response.
+	 *
+	 * @param is An input stream hopefully containing a ESPD Request or Response
+	 *
+	 * @return An {@link EspdDocument} object coming out from the stream if it contained a valid ESPD Request or Response
+	 * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
+	 *
+	 * @throws IOException
+	 */
+	public Optional<EspdDocument> importAmbiguousEspdFile(InputStream is) throws IOException {
+		// peek at the first bytes in the file to see if it is a ESPD Request or Response
+		try (BufferedInputStream bis = new BufferedInputStream(is)) {
+			int peekReadLimit = 80;
+			bis.mark(peekReadLimit);
+			byte[] peek = new byte[peekReadLimit];
+			int bytesRead = bis.read(peek, 0, peekReadLimit - 1);
+			if (bytesRead < 0) {
+				return null;
+			}
+			bis.reset(); // need to read from the beginning afterwards
+			String firstBytes = new String(peek, "UTF-8");
 
-            // decide how to read the uploaded file
-            if (firstBytes.contains("ESPDResponse")) {
-                return importEspdResponse(bis);
-            } else if (firstBytes.contains("ESPDRequest")) {
-                return importEspdRequest(bis);
-            }
-        }
-        return Optional.absent();
-    }
+			// decide how to read the uploaded file
+			if (firstBytes.contains("ESPDResponse")) {
+				return importEspdResponse(bis);
+			} else if (firstBytes.contains("ESPDRequest")) {
+				return importEspdRequest(bis);
+			}
+		}
+		return Optional.absent();
+	}
 
-    /**
-     * Merge the data coming from a ESPD Request with data coming from a ESPD Response.
-     * <p>
-     * The new file shall include:
-     * <ul>
-     *     <li>Information on the EO</li>
-     *     <li>All mandatory Exclusion grounds</li>
-     *     <li>Selection criteria that where asked for in the new ESPD request that were answered in the old ESPD response</li>
-     * </ul>
-     * </p>
-     *
-     * @param requestStream An input stream hopefully containing a ESPD Request
-     * @param responseStream An input stream hopefully containing a ESPD Response
-     *
-     * @return An {@link EspdDocument} object coming out from the merging of the Request and Response
-     * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
-     */
-    @SuppressWarnings("unchecked")
-    public Optional<EspdDocument> mergeEspdRequestAndResponse(InputStream requestStream, InputStream responseStream) {
-        try {
-            JAXBElement<ESPDRequestType> requestElement = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
-                    .unmarshal(new StreamSource(requestStream));
-            ESPDRequestType requestType = requestElement.getValue();
-            JAXBElement<ESPDResponseType> responseElement = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
-                    .unmarshal(new StreamSource(responseStream));
-            ESPDResponseType responseType = responseElement.getValue();
-            return Optional.of(requestResponseMerger.mergeRequestAndResponse(requestType, responseType));
-        } catch (Exception e) {
-            log.warn(e.getMessage(), e);
-            return Optional.absent();
-        }
-    }
+	/**
+	 * Merge the data coming from a ESPD Request with data coming from a ESPD Response.
+	 * <p>
+	 * The new file shall include:
+	 * <ul>
+	 * <li>Information on the EO</li>
+	 * <li>All mandatory Exclusion grounds</li>
+	 * <li>Selection criteria that where asked for in the new ESPD request that were answered in the old ESPD response</li>
+	 * </ul>
+	 * </p>
+	 *
+	 * @param requestStream  An input stream hopefully containing a ESPD Request
+	 * @param responseStream An input stream hopefully containing a ESPD Response
+	 *
+	 * @return An {@link EspdDocument} object coming out from the merging of the Request and Response
+	 * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
+	 */
+	@SuppressWarnings("unchecked")
+	public Optional<EspdDocument> mergeEspdRequestAndResponse(InputStream requestStream, InputStream responseStream) {
+		try {
+			JAXBElement<ESPDRequestType> requestElement = (JAXBElement<ESPDRequestType>) jaxb2Marshaller
+					.unmarshal(new StreamSource(requestStream));
+			ESPDRequestType requestType = requestElement.getValue();
+			JAXBElement<ESPDResponseType> responseElement = (JAXBElement<ESPDResponseType>) jaxb2Marshaller
+					.unmarshal(new StreamSource(responseStream));
+			ESPDResponseType responseType = responseElement.getValue();
+			return Optional.of(requestResponseMerger.mergeRequestAndResponse(requestType, responseType));
+		} catch (Exception e) {
+			log.warn(e.getMessage(), e);
+			return Optional.absent();
+		}
+	}
 }

@@ -37,7 +37,6 @@ import eu.europa.ec.grow.espd.tenderned.UnescapeHtml4;
 import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.output.CountingOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
@@ -113,31 +112,10 @@ class EspdController {
 		}
 	}
 
-	@RequestMapping(value = "/filter", params = "action", method = POST)
-	public String whoAreYouScreen(
+	@PostMapping(value = "/filter", params = "action=ca_create_espd_request")
+	public String createNewRequestAsCA(
 			@RequestParam("authority.country") Country country,
-			@RequestParam String action,
-			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
-			Model model,
-			BindingResult result) throws IOException {
-		if ("ca_create_espd_request".equals(action)) {
-			return createNewRequestAsCA(country, document);
-		} else if ("ca_reuse_espd_request".equals(action)) {
-			return reuseRequestAsCA(attachments.get(0), model, result);
-		} else if ("ca_review_espd_response".equals(action)) {
-			return reviewResponseAsCA(attachments.get(0), model, result);
-		} else if ("eo_import_espd".equals(action)) {
-			return importEspdAsEo(country, attachments.get(0), model, result);
-		} else if ("eo_merge_espds".equals(action)) {
-			return mergeTwoEspds(attachments, model, result);
-		} else if ("eo_create_response".equals(action)) {
-			return createNewResponseAsEO(country, document);
-		}
-		return "filter";
-	}
-
-	private String createNewRequestAsCA(Country country, EspdDocument document) {
+			@ModelAttribute("espd") EspdDocument document) throws IOException {
 		document.getAuthority().setCountry(country);
 		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
@@ -168,9 +146,13 @@ class EspdController {
 		}
 	}
 
-	private String reuseRequestAsCA(MultipartFile attachment, Model model,
+	@PostMapping(value = "/filter", params = "action=ca_reuse_espd_request")
+	public String reuseRequestAsCA(
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
 			BindingResult result) throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
 			if (espd.isPresent()) {
 				model.addAttribute("espd", espd.get());
@@ -182,9 +164,13 @@ class EspdController {
 		return "filter";
 	}
 
-	private String reviewResponseAsCA(MultipartFile attachment, Model model,
+	@PostMapping(value = "/filter", params = "action=ca_review_espd_response")
+	public String reviewResponseAsCA(
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
 			BindingResult result) throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
 			if (espd.isPresent()) {
 				model.addAttribute("espd", espd.get());
@@ -196,9 +182,14 @@ class EspdController {
 		return "filter";
 	}
 
-	private String importEspdAsEo(Country country, MultipartFile attachment, Model model, BindingResult result)
-			throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+	@PostMapping(value = "/filter", params = "action=eo_import_espd")
+	public String importEspdAsEo(
+			@RequestParam("authority.country") Country country,
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.importAmbiguousEspdFile(is);
 
 			// how can wrappedEspd be null???
@@ -225,8 +216,12 @@ class EspdController {
 		return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
 	}
 
-	private String mergeTwoEspds(List<MultipartFile> attachments, Model model, BindingResult result)
-			throws IOException {
+	@PostMapping(value = "/filter", params = "action=eo_merge_espds")
+	public String mergeTwoEspds(
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
 		try (InputStream reqIs = attachments.get(1).getInputStream();
 				InputStream respIs = attachments.get(2).getInputStream()) {
 			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.mergeEspdRequestAndResponse(reqIs, respIs);
@@ -240,7 +235,12 @@ class EspdController {
 		return "filter";
 	}
 
-	private String createNewResponseAsEO(Country country, EspdDocument document) {
+	@PostMapping(value = "/filter", params = "action=eo_create_response")
+	public String createNewResponseAsEO(
+			@RequestParam("authority.country") Country country,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
 		if (document.getEconomicOperator() == null) {
 			document.setEconomicOperator(new EconomicOperatorImpl());
 		}
@@ -386,18 +386,18 @@ class EspdController {
 
 	private void downloadEspdFile(@PathVariable String agent, @ModelAttribute("espd") EspdDocument espd,
 			HttpServletResponse response) throws IOException {
-		try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
-			response.setContentType(APPLICATION_XML_VALUE);
-			if ("eo".equals(agent)) {
-				response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-response.xml\"");
-				exchangeMarshaller.generateEspdResponse(espd, out);
-			} else {
-				response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-request.xml\"");
-				exchangeMarshaller.generateEspdRequest(espd, out);
-			}
-			response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
-			out.flush();
+		response.setContentType(APPLICATION_XML_VALUE);
+		ByteArrayOutputStream out;
+		if ("eo".equals(agent)) {
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-response.xml\"");
+			out = exchangeMarshaller.generateEspdResponse(espd);
+		} else {
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-request.xml\"");
+			out = exchangeMarshaller.generateEspdRequest(espd);
 		}
+		response.setContentLength(out.size());
+		response.getOutputStream().write(out.toByteArray());
+		response.getOutputStream().flush();
 	}
 
 	@InitBinder
