@@ -91,7 +91,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         req.Response[0].Indicator.text() == "true"
     }
 
-    def "Award criteria with no 'Indicator' don't have a response"() {
+    def "Other (economic operator) criteria with no Answer have a default value of false"() {
         given:
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: null))
 
@@ -105,6 +105,6 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def req = subGroup.Requirement[0]
         checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
         req.Response.size() == 1
-        req.Response[0].Indicator.size() == 0
+        req.Response[0].Indicator.text() == "false"
     }
 }

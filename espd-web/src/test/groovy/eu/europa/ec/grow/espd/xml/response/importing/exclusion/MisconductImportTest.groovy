@@ -46,8 +46,8 @@ class MisconductImportTest extends AbstractXmlFileImport {
         espd.guiltyGrave.answer == true
         espd.guiltyGrave.description == "Hodor is misbehaving"
 
-        then: "self cleaning"
-        espd.guiltyGrave.selfCleaning.answer == true
+        then: "self cleaning should have a default value of false if it is missing in the xml"
+        espd.guiltyGrave.selfCleaning.answer == false
         espd.guiltyGrave.selfCleaning.description == "Hodor is clean"
 
         then: "info electronically has a default answer of false"

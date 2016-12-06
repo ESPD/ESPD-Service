@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.domain;
 
+import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -59,9 +60,16 @@ public class OtherCriterion extends EspdCriterion {
 		return Boolean.TRUE.equals(this.booleanValue1);
 	}
 
-	@Override
-	public Boolean getAnswer() {
-		return this.answer;
+	public Boolean getBooleanValue3() {
+		return Boolean.TRUE.equals(this.booleanValue3);
 	}
 
+    @Override
+    public Boolean getAnswer() {
+	    if (this.answer == null) {
+		    // other (economic operator) criterion with no answer has a default value of FALSE
+		    return Boolean.FALSE;
+	    }
+	    return this.answer;
+    }
 }
