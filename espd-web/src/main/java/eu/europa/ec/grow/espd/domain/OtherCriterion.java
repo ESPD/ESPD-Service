@@ -24,7 +24,6 @@
 
 package eu.europa.ec.grow.espd.domain;
 
-import eu.europa.ec.grow.espd.domain.intf.MultipleDescriptionHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
