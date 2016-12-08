@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2016.11.02 (8th of December 2016)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/129[Printing information from another economic operator under high load conditions]
+
 === 2016.11.01 (2nd of December 2016)
 
 ==== Bug
