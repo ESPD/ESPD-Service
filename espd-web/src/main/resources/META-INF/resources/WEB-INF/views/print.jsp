@@ -282,7 +282,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
-    <c:set var="cachedFragment" scope="application">
+    <c:set var="htmlToPrint" scope="request">
 
     <!-- Hidden header element which appears only in the PDF rendition -->
     <h1 id="print_espd_title" class="hidden hidden-print"><s:message code='app_title'/></h1>
@@ -474,10 +474,10 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		</div>
 
     </c:set>
-    ${applicationScope.cachedFragment}
+    ${htmlToPrint}
     <input type="hidden"
            name="html"
-           value="${fn:escapeXml(applicationScope.cachedFragment)}" />
+           value="${fn:escapeXml(htmlToPrint)}" />
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
