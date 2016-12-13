@@ -25,6 +25,8 @@
 package eu.europa.ec.grow.espd.controller;
 
 import com.google.common.base.Optional;
+
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
@@ -283,32 +285,84 @@ class EspdController {
 				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "add")
-	public String addRepresentative(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@RequestParam Integer add,
-			@ModelAttribute("espd") EspdDocument espd,
-			BindingResult bindingResult) {
+	@RequestMapping(value = "/{flow:request|response}/eo/procedure", method = POST, params = "add")
+	public String addRepresentative(@PathVariable String flow, @RequestParam Integer add, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		espd.getEconomicOperator().getRepresentatives().add(add, new EconomicOperatorRepresentative());
-		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + add);
+		return redirectToPage(flow + "/" + "eo" + "/" + "procedure" + "#representative" + add);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "remove")
-	public String removeRepresentative(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@RequestParam Integer remove,
-			@ModelAttribute("espd") EspdDocument espd,
-			BindingResult bindingResult) {
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "add_financialRatio")
+	public String addFinancialRatio(@PathVariable String flow, @RequestParam Integer add_financialRatio, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getFinancialRatio().getUnboundedGroups().add(add_financialRatio, new DynamicRequirementGroup());
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#financialRatio" + add_financialRatio);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "add_workContractsPerformanceOfWorks")
+	public String addWorkContractsPerformanceOfWorks(@PathVariable String flow, @RequestParam Integer add_workContractsPerformanceOfWorks, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups().add(add_workContractsPerformanceOfWorks, new DynamicRequirementGroup());
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#workContractsPerformanceOfWorks" + add_workContractsPerformanceOfWorks);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "add_supplyContractsPerformanceDeliveries")
+	public String addSupplyContractsPerformanceDeliveries(@PathVariable String flow, @RequestParam Integer add_supplyContractsPerformanceDeliveries, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups().add(add_supplyContractsPerformanceDeliveries, new DynamicRequirementGroup());
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#supplyContractsPerformanceDeliveries" + add_supplyContractsPerformanceDeliveries);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "add_serviceContractsPerformanceServices")
+	public String addServiceContractsPerformanceServices(@PathVariable String flow, @RequestParam Integer add_serviceContractsPerformanceServices, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getServiceContractsPerformanceServices().getUnboundedGroups().add(add_serviceContractsPerformanceServices, new DynamicRequirementGroup());
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#serviceContractsPerformanceServices" + add_serviceContractsPerformanceServices);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/procedure", method = POST, params = "remove")
+	public String removeRepresentative(@PathVariable String flow, @RequestParam Integer remove, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		espd.getEconomicOperator().getRepresentatives().remove(remove.intValue());
 		if (espd.getEconomicOperator().getRepresentatives().size() == 0) {
 			espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
 		}
 		remove = Math.min(espd.getEconomicOperator().getRepresentatives().size() - 1, remove);
-		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
+		return redirectToPage(flow + "/" + "eo" + "/" + "procedure" + "#representative" + remove);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "remove_financialRatio")
+	public String removeFinancialRatio(@PathVariable String flow, @RequestParam Integer remove_financialRatio, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getFinancialRatio().getUnboundedGroups().remove(remove_financialRatio.intValue());
+		if (espd.getFinancialRatio().getUnboundedGroups().size() == 0) {
+			espd.getFinancialRatio().getUnboundedGroups().add(new DynamicRequirementGroup());
+		}
+		remove_financialRatio = Math.min(espd.getFinancialRatio().getUnboundedGroups().size() - 1, remove_financialRatio);
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#financialRatio" + remove_financialRatio);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "remove_workContractsPerformanceOfWorks")
+	public String removeWorkContractsPerformanceOfWorks(@PathVariable String flow, @RequestParam Integer remove_workContractsPerformanceOfWorks, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups().remove(remove_workContractsPerformanceOfWorks.intValue());
+		if (espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups().size() == 0) {
+			espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups().add(new DynamicRequirementGroup());
+		}
+		remove_workContractsPerformanceOfWorks = Math.min(espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups().size() - 1, remove_workContractsPerformanceOfWorks);
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#workContractsPerformanceOfWorks" + remove_workContractsPerformanceOfWorks);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "remove_supplyContractsPerformanceDeliveries")
+	public String removeSupplyContractsPerformanceDeliveries(@PathVariable String flow, @RequestParam Integer remove_supplyContractsPerformanceDeliveries, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups().remove(remove_supplyContractsPerformanceDeliveries.intValue());
+		if (espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups().size() == 0) {
+			espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups().add(new DynamicRequirementGroup());
+		}
+		remove_supplyContractsPerformanceDeliveries = Math.min(espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups().size() - 1, remove_supplyContractsPerformanceDeliveries);
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#supplyContractsPerformanceDeliveries" + remove_supplyContractsPerformanceDeliveries);
+	}
+
+	@RequestMapping(value = "/{flow:request|response}/eo/selection", method = POST, params = "remove_serviceContractsPerformanceServices")
+	public String removeServiceContractsPerformanceServices(@PathVariable String flow, @RequestParam Integer remove_serviceContractsPerformanceServices, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		espd.getServiceContractsPerformanceServices().getUnboundedGroups().remove(remove_serviceContractsPerformanceServices.intValue());
+		if (espd.getServiceContractsPerformanceServices().getUnboundedGroups().size() == 0) {
+			espd.getServiceContractsPerformanceServices().getUnboundedGroups().add(new DynamicRequirementGroup());
+		}
+		remove_serviceContractsPerformanceServices = Math.min(espd.getServiceContractsPerformanceServices().getUnboundedGroups().size() - 1, remove_serviceContractsPerformanceServices);
+		return redirectToPage(flow + "/" + "eo" + "/" + "selection" + "#serviceContractsPerformanceServices" + remove_serviceContractsPerformanceServices);
 	}
 
 	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",

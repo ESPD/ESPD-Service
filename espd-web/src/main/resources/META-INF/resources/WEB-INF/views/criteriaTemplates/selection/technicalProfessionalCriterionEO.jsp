@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="has_multiple_description_amount_date_recipients"/>
@@ -11,6 +12,7 @@
 <tiles:importAttribute name="has_explain_certificates_independent_quality"/>
 <tiles:importAttribute name="has_explain_certificates_independent_environmental"/>
 <tiles:importAttribute name="has_please_specify"/>
+
 <c:if test="${has_please_describe_them}">
     <div class="col-md-12">
         <div class="form-group">
