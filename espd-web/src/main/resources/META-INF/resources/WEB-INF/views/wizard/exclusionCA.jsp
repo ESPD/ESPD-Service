@@ -29,7 +29,12 @@
   ~
   --%>
 
-<%request.setAttribute("exclusionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionCA);%>
+<c:if test="${!espd.extendCe}">
+	<%request.setAttribute("exclusionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionCA);%>
+</c:if>
+<c:if test="${espd.extendCe}">
+	<%request.setAttribute("exclusionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionCE);%>
+</c:if>
 
 <tiles:importAttribute name="flow"/>
 

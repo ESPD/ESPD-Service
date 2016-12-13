@@ -42,6 +42,8 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @Data
 public class EspdDocument {
 
+	private Boolean extendCe;
+
 	private String html;
 
 	private PartyImpl authority;
