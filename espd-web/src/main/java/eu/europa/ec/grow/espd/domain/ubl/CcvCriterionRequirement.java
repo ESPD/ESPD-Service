@@ -40,5 +40,11 @@ public interface CcvCriterionRequirement extends Serializable {
 
     CcvResponseType getResponseType();
 
+	/**
+	 * The fields on the parent {@link eu.europa.ec.grow.espd.domain.EspdCriterion} which are mapped to the
+	 * requirement. Usually, a requirement is mapped to one field only, but requirements of type AMOUNT are mapped to
+	 * an 'amount' and 'currency' fields.
+	 * @return
+	 */
     List<String> getEspdCriterionFields();
 }

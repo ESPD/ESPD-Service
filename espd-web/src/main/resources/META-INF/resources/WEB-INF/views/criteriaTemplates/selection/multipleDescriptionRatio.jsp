@@ -4,45 +4,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
-<%--
-  ~
-  ~ Copyright 2016 EUROPEAN COMMISSION
-  ~
-  ~ Licensed under the EUPL, Version 1.1 or – as soon they
-  ~ will be approved by the European Commission - subsequent
-  ~ versions of the EUPL (the "Licence");
-  ~
-  ~ You may not use this work except in compliance with the Licence.
-  ~
-  ~ You may obtain a copy of the Licence at:
-  ~
-  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
-  ~
-  ~ Unless required by applicable law or agreed to in
-  ~ writing, software distributed under the Licence is
-  ~ distributed on an "AS IS" basis,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  ~ express or implied.
-  ~ See the Licence for the specific language governing
-  ~ permissions and limitations under the Licence.
-  ~
-  --%>
-
 <tiles:importAttribute name="field"/>
 
-<c:forEach begin="1" end="5" varStatus="loop">
-	<div class="form-group">
-		<div class="col-md-4">
-		    <label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
-		    <div class="col-md-9">
-		        <form:input type="text" path="${field}.ratio${loop.index}" number="true" cssClass="form-control"/>
-		    </div>
+<c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="vs" >
+	<a name="${field}${vs.index}"></a>
+    <div class="form-group">
+	    <div class="col-md-4">
+			<label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
+	        <div class="col-md-9">
+	            <form:input type="text" path="${field}.unboundedGroups[${vs.index}]['ratio']" number="true" cssClass="form-control"/>
+	        </div>
+    	</div>
+	    <div class="col-md-7">
+	        <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
+	        <div class="col-md-9">
+	            <form:textarea rows="1" path="${field}.unboundedGroups[${vs.index}]['description']" cssClass="form-control"/>
+	        </div>
 	    </div>
-		<div class="col-md-8">
-		    <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
-		    <div class="col-md-9">
-		        <form:textarea rows="1" path="${field}.description${loop.index}" cssClass="form-control"/>
-		    </div>
+	    <div class="col-md-1">
+			<div class="btn-group pull-right hidden-print">
+            	<button id="remove_${field}" type="submit" class="btn btn-default btn-sm " name="remove_${field}" value="${vs.index}">
+                	<i class="fa fa-trash" aria-hidden="true"></i>
+            	</button>
+	    	</div>
 	    </div>
-	</div>
+    </div>
+	<c:if test="${vs.last}">
+		<div class="form-group">
+			<div class="btn-group pull-right hidden-print">
+				<button id="add_${field}" type="submit" class="btn btn-default btn-sm" name="add_${field}" value="${vs.index + 1}">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	</c:if>
 </c:forEach>
+<hr/>

@@ -57,20 +57,16 @@ class GeneralYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         checkLegislationReference(request, idx, "58(3)")
 
         then: "check all the sub groups"
-        request.Criterion[idx].RequirementGroup.size() == 6
+        request.Criterion[idx].RequirementGroup.size() == 2
 
         then: "G1"
         def crit = request.Criterion[idx]
 
         then: "check year amount currency subgroups"
         checkYearAmountCurrencyGroup1(crit.RequirementGroup[0])
-        checkYearAmountCurrencyGroup2(crit.RequirementGroup[1])
-        checkYearAmountCurrencyGroup3(crit.RequirementGroup[2])
-        checkYearAmountCurrencyGroup4(crit.RequirementGroup[3])
-        checkYearAmountCurrencyGroup5(crit.RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[5])
+        checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[1])
     }
 
 }

@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import eu.europa.ec.grow.espd.domain.infrastructure.CriterionDefinitions;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
 import eu.europa.ec.grow.espd.domain.ubl.CcvLegislation;
@@ -80,7 +81,7 @@ public enum ExclusionCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     ExclusionCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDeserializer.getExclusionCriterion(uuid);
+        CcvCriterion criterion = CriterionDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();

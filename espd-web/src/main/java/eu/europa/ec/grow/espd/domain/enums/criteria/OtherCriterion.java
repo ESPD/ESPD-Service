@@ -25,6 +25,7 @@
 package eu.europa.ec.grow.espd.domain.enums.criteria;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import eu.europa.ec.grow.espd.domain.infrastructure.CriterionDefinitions;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionType;
@@ -62,7 +63,7 @@ public enum OtherCriterion implements CcvCriterion {
     private final String espdDocumentField;
 
     OtherCriterion(String uuid) {
-        CcvCriterion criterion = CriteriaDeserializer.getOtherCriterion(uuid);
+        CcvCriterion criterion = CriterionDefinitions.findCriterionById(uuid).get();
         this.uuid = criterion.getUuid();
         this.shortName = criterion.getName();
         this.description = criterion.getDescription();

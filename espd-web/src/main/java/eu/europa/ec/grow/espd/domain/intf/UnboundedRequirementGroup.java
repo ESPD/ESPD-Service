@@ -22,29 +22,20 @@
  *
  */
 
-package eu.europa.ec.grow.espd.domain.enums.criteria;
+package eu.europa.ec.grow.espd.domain.intf;
 
-import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
- * Created by ratoico on 5/23/16.
+ * Interface marking requirement groups which can grow indefinitely and can have dynamic requirements. Examples of
+ * such groups can be found in the Sections B or C of the selection criteria, i.e. yearly turnovers, financial ratios,
+ * work contracts, supply contracts, service contracts, etc.
+ *
+ * Created by ratoico on 11/25/16.
  */
-final class Criteria {
+public interface UnboundedRequirementGroup {
 
-    Criteria(int size) {
-        criteria = new HashMap<>(size);
-    }
-
-    private Map<String, CcvCriterion> criteria;
-
-    void put(String uuid, CcvCriterion criterion) {
-        criteria.put(uuid, criterion);
-    }
-
-    CcvCriterion get(String uuid) {
-        return criteria.get(uuid);
-    }
+	List<DynamicRequirementGroup> getUnboundedGroups();
 }

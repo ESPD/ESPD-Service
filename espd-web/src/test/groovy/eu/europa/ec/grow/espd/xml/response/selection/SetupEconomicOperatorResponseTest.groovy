@@ -70,7 +70,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Please specify year' requirements response"() {
         given:
         def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true,
-                year1: 2016))
+                year: 2016))
 
         when:
         def response = parseResponseXml(espd)

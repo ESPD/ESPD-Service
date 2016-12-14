@@ -40,4 +40,12 @@ public interface CcvRequirementGroup extends Serializable {
 
     List<? extends CcvRequirementGroup> getSubgroups();
 
+	/**
+	 * Certain criteria need to have a theoretically unlimited number of requirement groups. The meta definition of
+	 * these groups starts from a primary one and then gets cloned as many times as needed.
+	 *
+	 * @return
+	 */
+	boolean isUnbounded();
+
 }

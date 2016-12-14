@@ -78,7 +78,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
     def "check the 'Amount' requirements response"() {
         given:
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: 11.11, currency1: "EUR"))
+                amount: 11.11, currency: "EUR"))
 
         when:
         def response = parseResponseXml(espd)
@@ -96,7 +96,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
     def "check empty 'Amount' requirements response"() {
         given:
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: null, currency1: "EUR"))
+                amount: null, currency: "EUR"))
 
         when:
         def response = parseResponseXml(espd)

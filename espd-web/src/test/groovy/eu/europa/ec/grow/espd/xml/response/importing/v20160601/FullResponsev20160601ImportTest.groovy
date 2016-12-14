@@ -510,31 +510,35 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         expect:
         espd.generalYearlyTurnover.exists == true
         espd.generalYearlyTurnover.answer == true
+        def unboundedGroups = espd.generalYearlyTurnover.unboundedGroups
 
         and:
-        espd.generalYearlyTurnover.year1 == 2012
-        espd.generalYearlyTurnover.amount1 == 1000000.0
-        espd.generalYearlyTurnover.currency1 == "EUR"
+        unboundedGroups.size() == 5
 
         and:
-        espd.generalYearlyTurnover.year2 == 2013
-        espd.generalYearlyTurnover.amount2 == 2000000.0
-        espd.generalYearlyTurnover.currency2 == "RON"
+        unboundedGroups[0].get("year") == 2012
+        unboundedGroups[0].get("amount") == 1000000.0
+        unboundedGroups[0].get("currency") == "EUR"
 
         and:
-        espd.generalYearlyTurnover.year3 == 2014
-        espd.generalYearlyTurnover.amount3 == 3000000.0
-        espd.generalYearlyTurnover.currency3 == "USD"
+        unboundedGroups[1].get("year") == 2013
+        unboundedGroups[1].get("amount") == 2000000.0
+        unboundedGroups[1].get("currency") == "RON"
 
         and:
-        espd.generalYearlyTurnover.year4 == 2015
-        espd.generalYearlyTurnover.amount4 == 4000000.0
-        espd.generalYearlyTurnover.currency4 == "CHF"
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("amount") == 3000000.0
+        unboundedGroups[2].get("currency") == "USD"
 
         and:
-        espd.generalYearlyTurnover.year5 == 2016
-        espd.generalYearlyTurnover.amount5 == 5000000.0
-        espd.generalYearlyTurnover.currency5 == "PLN"
+        unboundedGroups[3].get("year") == 2015
+        unboundedGroups[3].get("amount") == 4000000.0
+        unboundedGroups[3].get("currency") == "CHF"
+
+        and:
+        unboundedGroups[4].get("year") == 2016
+        unboundedGroups[4].get("amount") == 5000000.0
+        unboundedGroups[4].get("currency") == "PLN"
 
         and: "info electronically"
         espd.generalYearlyTurnover.availableElectronically.answer == true
@@ -547,30 +551,10 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.averageYearlyTurnover.exists == true
         espd.averageYearlyTurnover.answer == true
 
-        and:
-        espd.averageYearlyTurnover.year1 == 2012
-        espd.averageYearlyTurnover.amount1 == 2000000.0
-        espd.averageYearlyTurnover.currency1 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year2 == 2013
-        espd.averageYearlyTurnover.amount2 == 2000001.0
-        espd.averageYearlyTurnover.currency2 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year3 == 2014
-        espd.averageYearlyTurnover.amount3 == 100000.0
-        espd.averageYearlyTurnover.currency3 == "EUR"
-
-        and:
-        espd.averageYearlyTurnover.year4 == 2015
-        espd.averageYearlyTurnover.amount4 == 1000000.0
-        espd.averageYearlyTurnover.currency4 == "CHF"
-
-        and:
-        espd.averageYearlyTurnover.year5 == 2011
-        espd.averageYearlyTurnover.amount5 == 200004.53
-        espd.averageYearlyTurnover.currency5 == "RON"
+        and: "we did not have these fields (requirements) in the 2016.04 version"
+        espd.averageYearlyTurnover.numberOfYears == null
+        espd.averageYearlyTurnover.averageTurnover == null
+        espd.averageYearlyTurnover.averageTurnoverCurrency == null
 
         and: "info electronically"
         espd.averageYearlyTurnover.availableElectronically.answer == true
@@ -582,31 +566,35 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         expect:
         espd.specificYearlyTurnover.exists == true
         espd.specificYearlyTurnover.answer == true
+        def unboundedGroups = espd.specificYearlyTurnover.unboundedGroups
 
         and:
-        espd.specificYearlyTurnover.year1 == 2012
-        espd.specificYearlyTurnover.amount1 == 5000000.775555
-        espd.specificYearlyTurnover.currency1 == "EUR"
+        unboundedGroups.size() == 5
 
         and:
-        espd.specificYearlyTurnover.year2 == 2013
-        espd.specificYearlyTurnover.amount2 == 100000.0
-        espd.specificYearlyTurnover.currency2 == "RON"
+        unboundedGroups[0].get("year") == 2012
+        unboundedGroups[0].get("amount") == 5000000.775555
+        unboundedGroups[0].get("currency") == "EUR"
 
         and:
-        espd.specificYearlyTurnover.year3 == 2014
-        espd.specificYearlyTurnover.amount3 == 200000.0
-        espd.specificYearlyTurnover.currency3 == "EUR"
+        unboundedGroups[1].get("year") == 2013
+        unboundedGroups[1].get("amount") == 100000.0
+        unboundedGroups[1].get("currency") == "RON"
 
         and:
-        espd.specificYearlyTurnover.year4 == 2015
-        espd.specificYearlyTurnover.amount4 == 300000.0
-        espd.specificYearlyTurnover.currency4 == "CHF"
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("amount") == 200000.0
+        unboundedGroups[2].get("currency") == "EUR"
 
         and:
-        espd.specificYearlyTurnover.year5 == 2011
-        espd.specificYearlyTurnover.amount5 == 400000.0
-        espd.specificYearlyTurnover.currency5 == "EUR"
+        unboundedGroups[3].get("year") == 2015
+        unboundedGroups[3].get("amount") == 300000.0
+        unboundedGroups[3].get("currency") == "CHF"
+
+        and:
+        unboundedGroups[4].get("year") == 2011
+        unboundedGroups[4].get("amount") == 400000.0
+        unboundedGroups[4].get("currency") == "EUR"
 
         and: "info electronically"
         espd.specificYearlyTurnover.availableElectronically.answer == true
@@ -620,29 +608,9 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.specificAverageTurnover.answer == true
 
         and:
-        espd.specificAverageTurnover.year1 == 2012
-        espd.specificAverageTurnover.amount1 == 1000000.0
-        espd.specificAverageTurnover.currency1 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year2 == 2013
-        espd.specificAverageTurnover.amount2 == 2000003.0
-        espd.specificAverageTurnover.currency2 == "USD"
-
-        and:
-        espd.specificAverageTurnover.year3 == 2014
-        espd.specificAverageTurnover.amount3 == 3000000.1234
-        espd.specificAverageTurnover.currency3 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year4 == 2015
-        espd.specificAverageTurnover.amount4 == 10.0001
-        espd.specificAverageTurnover.currency4 == "EUR"
-
-        and:
-        espd.specificAverageTurnover.year5 == 2011
-        espd.specificAverageTurnover.amount5 == 5000000.0
-        espd.specificAverageTurnover.currency5 == "RON"
+        espd.specificAverageTurnover.numberOfYears == null
+        espd.specificAverageTurnover.averageTurnover == null
+        espd.specificAverageTurnover.averageTurnoverCurrency == null
 
         and: "info electronically"
         espd.specificAverageTurnover.availableElectronically.answer == true
@@ -653,7 +621,7 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
     def "10. should import all fields of 'Set up of economic operator'"() {
         expect: "selection criteria with no answer have a default value of true"
         espd.setupEconomicOperator.answer == true
-        espd.setupEconomicOperator.year1 == 2014
+        espd.setupEconomicOperator.year == 2014
     }
 
     def "11. should import all fields of 'Financial ratio'"() {
@@ -662,26 +630,30 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
 
         and: "selection criteria with no answer have a default value of true"
         espd.financialRatio.answer == true
+        def unboundedGroups = espd.financialRatio.unboundedGroups
 
         and:
-        espd.financialRatio.description1 == "TEST_1"
-        espd.financialRatio.ratio1 == 1.0
+        unboundedGroups.size() == 5
 
         and:
-        espd.financialRatio.description2 == "TEST_2"
-        espd.financialRatio.ratio2 == 2.0
+        unboundedGroups[0].get("description") == "TEST_1"
+        unboundedGroups[0].get("ratio") == 1.0
 
         and:
-        espd.financialRatio.description3 == "TEST_3"
-        espd.financialRatio.ratio3 == 3.0
+        unboundedGroups[1].get("description") == "TEST_2"
+        unboundedGroups[1].get("ratio") == 2.0
 
         and:
-        espd.financialRatio.description4 == "TEST_4"
-        espd.financialRatio.ratio4 == 4.0
+        unboundedGroups[2].get("description") == "TEST_3"
+        unboundedGroups[2].get("ratio") == 3.0
 
         and:
-        espd.financialRatio.description5 == "TEST_5"
-        espd.financialRatio.ratio5 == 5.0
+        unboundedGroups[3].get("description") == "TEST_4"
+        unboundedGroups[3].get("ratio") == 4.0
+
+        and:
+        unboundedGroups[4].get("description") == "TEST_5"
+        unboundedGroups[4].get("ratio") == 5.0
 
         and: "info electronically"
         espd.financialRatio.availableElectronically.answer == true
@@ -695,8 +667,8 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.professionalRiskInsurance.answer == true
 
         and:
-        espd.professionalRiskInsurance.amount1 == 3000000000000000
-        espd.professionalRiskInsurance.currency1 == "RON"
+        espd.professionalRiskInsurance.amount == 3000000000000000
+        espd.professionalRiskInsurance.currency == "RON"
 
         and: "info electronically"
         espd.professionalRiskInsurance.availableElectronically.answer == true
@@ -723,40 +695,42 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.workContractsPerformanceOfWorks.exists == true
         espd.workContractsPerformanceOfWorks.answer == true
 
-        and:
-        espd.workContractsPerformanceOfWorks.description1 == "TEST 1"
-        espd.workContractsPerformanceOfWorks.amount1 == 100000.0
-        espd.workContractsPerformanceOfWorks.currency1 == "EUR"
-        espd.workContractsPerformanceOfWorks.startDate1 == LocalDateAdapter.unmarshal("2016-03-16").toDate()
-        espd.workContractsPerformanceOfWorks.recipients1 == "recipients1"
+        def unboundedGroups = espd.workContractsPerformanceOfWorks.unboundedGroups
 
         and:
-        espd.workContractsPerformanceOfWorks.description2 == "TEST 2"
-        espd.workContractsPerformanceOfWorks.amount2 == 200000.0
-        espd.workContractsPerformanceOfWorks.currency2 == "RON"
-        espd.workContractsPerformanceOfWorks.startDate2 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
-        espd.workContractsPerformanceOfWorks.recipients2 == "recipients2"
+        unboundedGroups[0].get("description") == "TEST 1"
+        unboundedGroups[0].get("amount") == 100000.0
+        unboundedGroups[0].get("currency") == "EUR"
+        unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-03-16").toDate()
+        unboundedGroups[0].get("recipients") == "recipients1"
 
         and:
-        espd.workContractsPerformanceOfWorks.description3 == "TEST 3"
-        espd.workContractsPerformanceOfWorks.amount3 == 300000.0
-        espd.workContractsPerformanceOfWorks.currency3 == "USD"
-        espd.workContractsPerformanceOfWorks.startDate3 == LocalDateAdapter.unmarshal("2016-01-19").toDate()
-        espd.workContractsPerformanceOfWorks.recipients3 == "recipients3"
+        unboundedGroups[1].get("description") == "TEST 2"
+        unboundedGroups[1].get("amount") == 200000.0
+        unboundedGroups[1].get("currency") == "RON"
+        unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-06").toDate()
+        unboundedGroups[1].get("recipients") == "recipients2"
 
         and:
-        espd.workContractsPerformanceOfWorks.description4 == "TEST 4"
-        espd.workContractsPerformanceOfWorks.amount4 == 400000.0
-        espd.workContractsPerformanceOfWorks.currency4 == "CHF"
-        espd.workContractsPerformanceOfWorks.startDate4 == LocalDateAdapter.unmarshal("2015-08-21").toDate()
-        espd.workContractsPerformanceOfWorks.recipients4 == "recipients4"
+        unboundedGroups[2].get("description") == "TEST 3"
+        unboundedGroups[2].get("amount") == 300000.0
+        unboundedGroups[2].get("currency") == "USD"
+        unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-01-19").toDate()
+        unboundedGroups[2].get("recipients") == "recipients3"
 
         and:
-        espd.workContractsPerformanceOfWorks.description5 == "TEST 5"
-        espd.workContractsPerformanceOfWorks.amount5 == 500000.0
-        espd.workContractsPerformanceOfWorks.currency5 == "PLN"
-        espd.workContractsPerformanceOfWorks.startDate5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
-        espd.workContractsPerformanceOfWorks.recipients5 == "recipients5"
+        unboundedGroups[3].get("description") == "TEST 4"
+        unboundedGroups[3].get("amount") == 400000.0
+        unboundedGroups[3].get("currency") == "CHF"
+        unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2015-08-21").toDate()
+        unboundedGroups[3].get("recipients") == "recipients4"
+
+        and:
+        unboundedGroups[4].get("description") == "TEST 5"
+        unboundedGroups[4].get("amount") == 500000.0
+        unboundedGroups[4].get("currency") == "PLN"
+        unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2015-10-27").toDate()
+        unboundedGroups[4].get("recipients") == "recipients5"
 
         and: "info electronically"
         espd.workContractsPerformanceOfWorks.availableElectronically.answer == true
@@ -769,40 +743,42 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.supplyContractsPerformanceDeliveries.exists == true
         espd.supplyContractsPerformanceDeliveries.answer == true
 
-        and:
-        espd.supplyContractsPerformanceDeliveries.description1 == "TEST A"
-        espd.supplyContractsPerformanceDeliveries.amount1 == 200000.0
-        espd.supplyContractsPerformanceDeliveries.currency1 == "EUR"
-        espd.supplyContractsPerformanceDeliveries.startDate1 == LocalDateAdapter.unmarshal("2016-04-05").toDate()
-        espd.supplyContractsPerformanceDeliveries.recipients1 == "rec 1"
+        def unboundedGroups = espd.supplyContractsPerformanceDeliveries.unboundedGroups
 
         and:
-        espd.supplyContractsPerformanceDeliveries.description2 == "TEST B"
-        espd.supplyContractsPerformanceDeliveries.amount2 == 300000.0
-        espd.supplyContractsPerformanceDeliveries.currency2 == "RON"
-        espd.supplyContractsPerformanceDeliveries.startDate2 == LocalDateAdapter.unmarshal("2016-02-05").toDate()
-        espd.supplyContractsPerformanceDeliveries.recipients2 == "rec 2"
+        unboundedGroups[0].get("description") == "TEST A"
+        unboundedGroups[0].get("amount") == 200000.0
+        unboundedGroups[0].get("currency") == "EUR"
+        unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-04-05").toDate()
+        unboundedGroups[0].get("recipients") == "rec 1"
 
         and:
-        espd.supplyContractsPerformanceDeliveries.description3 == "TEST C"
-        espd.supplyContractsPerformanceDeliveries.amount3 == 500000.0
-        espd.supplyContractsPerformanceDeliveries.currency3 == "USD"
-        espd.supplyContractsPerformanceDeliveries.startDate3 == LocalDateAdapter.unmarshal("2015-12-09").toDate()
-        espd.supplyContractsPerformanceDeliveries.recipients3 == "rec 3"
+        unboundedGroups[1].get("description") == "TEST B"
+        unboundedGroups[1].get("amount") == 300000.0
+        unboundedGroups[1].get("currency") == "RON"
+        unboundedGroups[1].get("startDate") ==LocalDateAdapter.unmarshal("2016-02-05").toDate()
+        unboundedGroups[1].get("recipients") == "rec 2"
 
         and:
-        espd.supplyContractsPerformanceDeliveries.description4 == "TEST D"
-        espd.supplyContractsPerformanceDeliveries.amount4 == 600000.0
-        espd.supplyContractsPerformanceDeliveries.currency4 == "PLN"
-        espd.supplyContractsPerformanceDeliveries.startDate4 == LocalDateAdapter.unmarshal("2016-01-06").toDate()
-        espd.supplyContractsPerformanceDeliveries.recipients4 == "rec 4"
+        unboundedGroups[2].get("description") == "TEST C"
+        unboundedGroups[2].get("amount") == 500000.0
+        unboundedGroups[2].get("currency") == "USD"
+        unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2015-12-09").toDate()
+        unboundedGroups[2].get("recipients") == "rec 3"
 
         and:
-        espd.supplyContractsPerformanceDeliveries.description5 == "TEST E"
-        espd.supplyContractsPerformanceDeliveries.amount5 == 800000.0
-        espd.supplyContractsPerformanceDeliveries.currency5 == "EUR"
-        espd.supplyContractsPerformanceDeliveries.startDate5 == LocalDateAdapter.unmarshal("2015-10-27").toDate()
-        espd.supplyContractsPerformanceDeliveries.recipients5 == "rec 5"
+        unboundedGroups[3].get("description") == "TEST D"
+        unboundedGroups[3].get("amount") == 600000.0
+        unboundedGroups[3].get("currency") == "PLN"
+        unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-06").toDate()
+        unboundedGroups[3].get("recipients") == "rec 4"
+
+        and:
+        unboundedGroups[4].get("description") == "TEST E"
+        unboundedGroups[4].get("amount") == 800000.0
+        unboundedGroups[4].get("currency") == "EUR"
+        unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2015-10-27").toDate()
+        unboundedGroups[4].get("recipients") == "rec 5"
 
         and: "info electronically"
         espd.supplyContractsPerformanceDeliveries.availableElectronically.answer == true
@@ -815,40 +791,42 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         espd.serviceContractsPerformanceServices.exists == true
         espd.serviceContractsPerformanceServices.answer == true
 
-        and:
-        espd.serviceContractsPerformanceServices.description1 == "F"
-        espd.serviceContractsPerformanceServices.amount1 == 100001.0
-        espd.serviceContractsPerformanceServices.currency1 == "EUR"
-        espd.serviceContractsPerformanceServices.startDate1 == LocalDateAdapter.unmarshal("2016-04-20").toDate()
-        espd.serviceContractsPerformanceServices.recipients1 == "r 1"
+        def unboundedGroups = espd.serviceContractsPerformanceServices.unboundedGroups
 
         and:
-        espd.serviceContractsPerformanceServices.description2 == "G"
-        espd.serviceContractsPerformanceServices.amount2 == 100002.0
-        espd.serviceContractsPerformanceServices.currency2 == "RON"
-        espd.serviceContractsPerformanceServices.startDate2 == LocalDateAdapter.unmarshal("2016-01-04").toDate()
-        espd.serviceContractsPerformanceServices.recipients2 == "r 2"
+        unboundedGroups[0].get("description") == "F"
+        unboundedGroups[0].get("amount") == 100001.0
+        unboundedGroups[0].get("currency") == "EUR"
+        unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2016-04-20").toDate()
+        unboundedGroups[0].get("recipients") == "r 1"
 
         and:
-        espd.serviceContractsPerformanceServices.description3 == "H"
-        espd.serviceContractsPerformanceServices.amount3 == 100003.3
-        espd.serviceContractsPerformanceServices.currency3 == "USD"
-        espd.serviceContractsPerformanceServices.startDate3 == LocalDateAdapter.unmarshal("2016-02-09").toDate()
-        espd.serviceContractsPerformanceServices.recipients3 == "r 3"
+        unboundedGroups[1].get("description") == "G"
+        unboundedGroups[1].get("amount") == 100002.0
+        unboundedGroups[1].get("currency") == "RON"
+        unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-01-04").toDate()
+        unboundedGroups[1].get("recipients") == "r 2"
 
         and:
-        espd.serviceContractsPerformanceServices.description4 == "I"
-        espd.serviceContractsPerformanceServices.amount4 == 400004.0
-        espd.serviceContractsPerformanceServices.currency4 == "PLN"
-        espd.serviceContractsPerformanceServices.startDate4 == LocalDateAdapter.unmarshal("2016-01-01").toDate()
-        espd.serviceContractsPerformanceServices.recipients4 == "r 4"
+        unboundedGroups[2].get("description") == "H"
+        unboundedGroups[2].get("amount") == 100003.3
+        unboundedGroups[2].get("currency") == "USD"
+        unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2016-02-09").toDate()
+        unboundedGroups[2].get("recipients") == "r 3"
 
         and:
-        espd.serviceContractsPerformanceServices.description5 == "J"
-        espd.serviceContractsPerformanceServices.amount5 == 555.5556
-        espd.serviceContractsPerformanceServices.currency5 == "EUR"
-        espd.serviceContractsPerformanceServices.startDate5 == LocalDateAdapter.unmarshal("2015-12-29").toDate()
-        espd.serviceContractsPerformanceServices.recipients5 == "r 5"
+        unboundedGroups[3].get("description") == "I"
+        unboundedGroups[3].get("amount") == 400004.0
+        unboundedGroups[3].get("currency") == "PLN"
+        unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2016-01-01").toDate()
+        unboundedGroups[3].get("recipients") == "r 4"
+
+        and:
+        unboundedGroups[4].get("description") == "J"
+        unboundedGroups[4].get("amount") == 555.5556
+        unboundedGroups[4].get("currency") == "EUR"
+        unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2015-12-29").toDate()
+        unboundedGroups[4].get("recipients") == "r 5"
 
         and: "info electronically"
         espd.serviceContractsPerformanceServices.availableElectronically.answer == true
@@ -964,18 +942,22 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         expect:
         espd.numberManagerialStaff.exists == true
         espd.numberManagerialStaff.answer == true
+        def unboundedGroups = espd.numberManagerialStaff.unboundedGroups
 
         and:
-        espd.numberManagerialStaff.year1 == 2014
-        espd.numberManagerialStaff.number1 == 123
+        unboundedGroups.size() == 3
 
         and:
-        espd.numberManagerialStaff.year2 == 2015
-        espd.numberManagerialStaff.number2 == 456
+        unboundedGroups[0].get("year") == 2014
+        unboundedGroups[0].get("number") == 123
 
         and:
-        espd.numberManagerialStaff.year3 == 2013
-        espd.numberManagerialStaff.number3 == 789
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("number") == 456
+
+        and:
+        unboundedGroups[2].get("year") == 2013
+        unboundedGroups[2].get("number") == 789
 
         and: "info electronically"
         espd.numberManagerialStaff.availableElectronically.answer == true
@@ -987,18 +969,22 @@ class FullResponsev20160601ImportTest extends AbstractXmlFileImport {
         expect:
         espd.averageAnnualManpower.exists == true
         espd.averageAnnualManpower.answer == true
+        def unboundedGroups = espd.averageAnnualManpower.unboundedGroups
 
         and:
-        espd.averageAnnualManpower.year1 == 2014
-        espd.averageAnnualManpower.number1 == 321
+        unboundedGroups.size() == 3
 
         and:
-        espd.averageAnnualManpower.year2 == 2015
-        espd.averageAnnualManpower.number2 == 654
+        unboundedGroups[0].get("year") == 2014
+        unboundedGroups[0].get("number") == 321
 
         and:
-        espd.averageAnnualManpower.year3 == 2010
-        espd.averageAnnualManpower.number3 == 987
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("number") == 654
+
+        and:
+        unboundedGroups[2].get("year") == 2010
+        unboundedGroups[2].get("number") == 987
 
         and: "info electronically"
         espd.averageAnnualManpower.availableElectronically.answer == true

@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -39,6 +40,7 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
 
         when:
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        def unboundedGroups = espd.financialRatio.unboundedGroups
 
         then:
         espd.financialRatio.exists == true
@@ -47,24 +49,27 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
         espd.financialRatio.answer == true
 
         then:
-        espd.financialRatio.description1 == "description1"
-        espd.financialRatio.ratio1 == 11.1
+        unboundedGroups.size() == 5
 
         then:
-        espd.financialRatio.description2 == "description2"
-        espd.financialRatio.ratio2 == 22.2
+        unboundedGroups[0].get("description") == "description1"
+        unboundedGroups[0].get("ratio") == 11.1
 
         then:
-        espd.financialRatio.description3 == "description3"
-        espd.financialRatio.ratio3 == 33.3
+        unboundedGroups[1].get("description") == "description2"
+        unboundedGroups[1].get("ratio") == 22.2
 
         then:
-        espd.financialRatio.description4 == "description4"
-        espd.financialRatio.ratio4 == 44.4
+        unboundedGroups[2].get("description") == "description3"
+        unboundedGroups[2].get("ratio") == 33.3
 
         then:
-        espd.financialRatio.description5 == "description5"
-        espd.financialRatio.ratio5 == 55.5
+        unboundedGroups[3].get("description") == "description4"
+        unboundedGroups[3].get("ratio") == 44.4
+
+        then:
+        unboundedGroups[4].get("description") == "description5"
+        unboundedGroups[4].get("ratio") == 55.5
 
         then: "info electronically"
         espd.financialRatio.availableElectronically.answer == true
@@ -76,8 +81,11 @@ class FinancialRatioImportTest extends AbstractXmlFileImport {
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true, answer: true,
-                description1: "description1", description2: "description2", description3: "description3", description4: "description4", description5: "description5",
-                ratio1: 11.1, ratio2: 22.2, ratio3: 33.3, ratio4: 44.4, ratio5: 55.5,
+                unboundedGroups: [new DynamicRequirementGroup("description": "description1", "ratio": 11.1),
+                                  new DynamicRequirementGroup("description": "description2", "ratio": 22.2),
+                                  new DynamicRequirementGroup("description": "description3", "ratio": 33.3),
+                                  new DynamicRequirementGroup("description": "description4", "ratio": 44.4),
+                                  new DynamicRequirementGroup("description": "description5", "ratio": 55.5)],
                 availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "PROF_REGISTER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 

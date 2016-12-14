@@ -29,6 +29,8 @@ import lombok.Data;
 @Data
 public abstract class EspdCriterion {
 
+	private AvailableElectronically availableElectronically = new AvailableElectronically();
+
     protected Boolean exists;
 
     protected Boolean answer;
@@ -38,5 +40,54 @@ public abstract class EspdCriterion {
     }
 
     public abstract Boolean getAnswer();
+
+	public final boolean getInfoElectronicallyAnswer() {
+		return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
+	}
+
+	public final void setInfoElectronicallyAnswer(boolean answer) {
+		if (availableElectronically != null) {
+			availableElectronically.setAnswer(answer);
+		}
+	}
+
+	public final String getInfoElectronicallyUrl() {
+		if (availableElectronically != null) {
+			return availableElectronically.getUrl();
+		}
+		return null;
+	}
+
+	public final void setInfoElectronicallyUrl(String url) {
+		if (availableElectronically != null) {
+			availableElectronically.setUrl(url);
+		}
+	}
+
+	public final String getInfoElectronicallyCode() {
+		if (availableElectronically != null) {
+			return availableElectronically.getCode();
+		}
+		return null;
+	}
+
+	public final void setInfoElectronicallyCode(String code) {
+		if (availableElectronically != null) {
+			availableElectronically.setCode(code);
+		}
+	}
+
+	public final String getInfoElectronicallyIssuer() {
+		if (availableElectronically != null) {
+			return availableElectronically.getIssuer();
+		}
+		return null;
+	}
+
+	public final void setInfoElectronicallyIssuer(String issuer) {
+		if (availableElectronically != null) {
+			availableElectronically.setIssuer(issuer);
+		}
+	}
 
 }

@@ -407,13 +407,14 @@
         {
           "name": "G1",
           "id": "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
               "description": "Year",
               "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
-                "year1"
+                "year"
               ]
             },
             {
@@ -421,106 +422,14 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "99c9d014-d0e1-473d-b6d4-a8549f2b19fa",
-          "requirements": [
-            {
-              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year2"
-              ]
-            },
-            {
-              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount2",
-                "currency2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "9f0e291f-05c9-4cb6-bc50-4c2d3b2049b2",
-          "requirements": [
-            {
-              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year3"
-              ]
-            },
-            {
-              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount3",
-                "currency3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
-          "id": "67b8d7fa-a0aa-43d6-a30b-e15b95326df2",
-          "requirements": [
-            {
-              "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year4"
-              ]
-            },
-            {
-              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount4",
-                "currency4"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G5",
-          "id": "c8c09a0c-b7a7-4271-bb6a-80f1c0e988f7",
-          "requirements": [
-            {
-              "id": "34825634-5151-4e31-af1b-7eafadcf15be",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year5"
-              ]
-            },
-            {
-              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount5",
-                "currency5"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G6",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -679,13 +588,14 @@
         {
           "name": "G1",
           "id": "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
               "description": "Year",
               "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
-                "year1"
+                "year"
               ]
             },
             {
@@ -693,106 +603,14 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "99c9d014-d0e1-473d-b6d4-a8549f2b19fa",
-          "requirements": [
-            {
-              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year2"
-              ]
-            },
-            {
-              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount2",
-                "currency2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "9f0e291f-05c9-4cb6-bc50-4c2d3b2049b2",
-          "requirements": [
-            {
-              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year3"
-              ]
-            },
-            {
-              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount3",
-                "currency3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
-          "id": "67b8d7fa-a0aa-43d6-a30b-e15b95326df2",
-          "requirements": [
-            {
-              "id": "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year4"
-              ]
-            },
-            {
-              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount4",
-                "currency4"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G5",
-          "id": "c8c09a0c-b7a7-4271-bb6a-80f1c0e988f7",
-          "requirements": [
-            {
-              "id": "34825634-5151-4e31-af1b-7eafadcf15be",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year5"
-              ]
-            },
-            {
-              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount5",
-                "currency5"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G6",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -957,7 +775,7 @@
               "description": "Please specify",
               "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
-                "year1"
+                "year"
               ]
             }
           ]
@@ -984,126 +802,23 @@
       "groups": [
         {
           "name": "G1",
-          "id": "cf00f7bb-c2cf-4565-91bb-221d78d8dd2f",
+          "id": "096686e1-82ca-4de0-8710-d74d90da0f0c",
+          "unbounded": "true",
           "requirements": [
             {
-              "id": "3a6fefd4-f458-4d43-97fb-0725fce5dce2",
-              "description": "Please provide the requested data below",
+              "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+              "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                null
-              ]
-            }
-          ],
-          "subgroups": [
-            {
-              "name": "G1.1",
-              "id": "096686e1-82ca-4de0-8710-d74d90da0f0c",
-              "requirements": [
-                {
-                  "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
-                  "description": "Description",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    "description1"
-                  ]
-                },
-                {
-                  "id": "5461b973-7067-457e-93cc-8338da2c3eef",
-                  "description": "Ratio",
-                  "responseType": "QUANTITY",
-                  "espdCriterionFields": [
-                    "ratio1"
-                  ]
-                }
+                "description"
               ]
             },
             {
-              "name": "G1.2",
-              "id": "ce5a61e7-0b0d-4c8b-ac55-2a457743022a",
-              "requirements": [
-                {
-                  "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
-                  "description": "Description",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    "description2"
-                  ]
-                },
-                {
-                  "id": "295d82b7-5ee6-4977-8aea-bac4acf6ecdf",
-                  "description": "Ratio",
-                  "responseType": "QUANTITY",
-                  "espdCriterionFields": [
-                    "ratio2"
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "G1.3",
-              "id": "3d0734f0-8f9b-4218-a245-c535e3773bc5",
-              "requirements": [
-                {
-                  "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
-                  "description": "Description",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    "description3"
-                  ]
-                },
-                {
-                  "id": "2b792afb-87ba-47b5-a80c-aee76a6f2cc8",
-                  "description": "Ratio",
-                  "responseType": "QUANTITY",
-                  "espdCriterionFields": [
-                    "ratio3"
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "G1.4",
-              "id": "87fda668-c758-4c54-af0a-0210e6ded32d",
-              "requirements": [
-                {
-                  "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
-                  "description": "Description",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    "description4"
-                  ]
-                },
-                {
-                  "id": "22dc4bef-182d-4b81-bddc-cc30b218f9bb",
-                  "description": "Ratio",
-                  "responseType": "QUANTITY",
-                  "espdCriterionFields": [
-                    "ratio4"
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "G1.5",
-              "id": "637f9db3-ee53-48f7-8ee7-aefa58260730",
-              "requirements": [
-                {
-                  "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
-                  "description": "Description",
-                  "responseType": "DESCRIPTION",
-                  "espdCriterionFields": [
-                    "description5"
-                  ]
-                },
-                {
-                  "id": "990eef0a-14c6-41af-8bf2-b8311332d152",
-                  "description": "Ratio",
-                  "responseType": "QUANTITY",
-                  "espdCriterionFields": [
-                    "ratio5"
-                  ]
-                }
+              "id": "5461b973-7067-457e-93cc-8338da2c3eef",
+              "description": "Ratio",
+              "responseType": "QUANTITY",
+              "espdCriterionFields": [
+                "ratio"
               ]
             }
           ]
@@ -1184,8 +899,8 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             }
           ]
@@ -1341,13 +1056,14 @@
         {
           "name": "G1",
           "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
               "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "description1"
+                "description"
               ]
             },
             {
@@ -1355,8 +1071,8 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             },
             {
@@ -1364,7 +1080,7 @@
               "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "startDate1"
+                "startDate"
               ]
             },
             {
@@ -1372,7 +1088,7 @@
               "description": "End Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "endDate1"
+                "endDate"
               ]
             },
             {
@@ -1380,201 +1096,13 @@
               "description": "Recipients",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "recipients1"
+                "recipients"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
-          "requirements": [
-            {
-              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description2"
-              ]
-            },
-            {
-              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount2",
-                "currency2"
-              ]
-            },
-            {
-              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate2"
-              ]
-            },
-            {
-              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate2"
-              ]
-            },
-            {
-              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
-          "requirements": [
-            {
-              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description3"
-              ]
-            },
-            {
-              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount3",
-                "currency3"
-              ]
-            },
-            {
-              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate3"
-              ]
-            },
-            {
-              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate3"
-              ]
-            },
-            {
-              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
-          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
-          "requirements": [
-            {
-              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description4"
-              ]
-            },
-            {
-              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount4",
-                "currency4"
-              ]
-            },
-            {
-              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate4"
-              ]
-            },
-            {
-              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate4"
-              ]
-            },
-            {
-              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients4"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G5",
-          "id": "159fc086-cf34-48a4-a41b-afed62661383",
-          "requirements": [
-            {
-              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description5"
-              ]
-            },
-            {
-              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount5",
-                "currency5"
-              ]
-            },
-            {
-              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate5"
-              ]
-            },
-            {
-              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate5"
-              ]
-            },
-            {
-              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients5"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G6",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -1643,13 +1171,14 @@
         {
           "name": "G1",
           "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
               "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "description1"
+                "description"
               ]
             },
             {
@@ -1657,8 +1186,8 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             },
             {
@@ -1666,7 +1195,7 @@
               "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "startDate1"
+                "startDate"
               ]
             },
             {
@@ -1674,7 +1203,7 @@
               "description": "End Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "endDate1"
+                "endDate"
               ]
             },
             {
@@ -1682,201 +1211,13 @@
               "description": "Recipients",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "recipients1"
+                "recipients"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
-          "requirements": [
-            {
-              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description2"
-              ]
-            },
-            {
-              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount2",
-                "currency2"
-              ]
-            },
-            {
-              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate2"
-              ]
-            },
-            {
-              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate2"
-              ]
-            },
-            {
-              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
-          "requirements": [
-            {
-              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description3"
-              ]
-            },
-            {
-              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount3",
-                "currency3"
-              ]
-            },
-            {
-              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate3"
-              ]
-            },
-            {
-              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate3"
-              ]
-            },
-            {
-              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
-          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
-          "requirements": [
-            {
-              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description4"
-              ]
-            },
-            {
-              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount4",
-                "currency4"
-              ]
-            },
-            {
-              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate4"
-              ]
-            },
-            {
-              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate4"
-              ]
-            },
-            {
-              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients4"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G5",
-          "id": "159fc086-cf34-48a4-a41b-afed62661383",
-          "requirements": [
-            {
-              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description5"
-              ]
-            },
-            {
-              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount5",
-                "currency5"
-              ]
-            },
-            {
-              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate5"
-              ]
-            },
-            {
-              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate5"
-              ]
-            },
-            {
-              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients5"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G6",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -1945,13 +1286,14 @@
         {
           "name": "G1",
           "id": "96f00020-0a25-402e-b850-2378e83b5695",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
               "description": "Description",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "description1"
+                "description"
               ]
             },
             {
@@ -1959,8 +1301,8 @@
               "description": "Amount",
               "responseType": "AMOUNT",
               "espdCriterionFields": [
-                "amount1",
-                "currency1"
+                "amount",
+                "currency"
               ]
             },
             {
@@ -1968,7 +1310,7 @@
               "description": "Start Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "startDate1"
+                "startDate"
               ]
             },
             {
@@ -1976,7 +1318,7 @@
               "description": "End Date",
               "responseType": "DATE",
               "espdCriterionFields": [
-                "endDate1"
+                "endDate"
               ]
             },
             {
@@ -1984,201 +1326,13 @@
               "description": "Recipients",
               "responseType": "DESCRIPTION",
               "espdCriterionFields": [
-                "recipients1"
+                "recipients"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "c48572f9-47bf-423a-9885-2c78ae9ca718",
-          "requirements": [
-            {
-              "id": "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description2"
-              ]
-            },
-            {
-              "id": "4acd0a02-c267-4d05-b456-c0565c2ffd46",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount2",
-                "currency2"
-              ]
-            },
-            {
-              "id": "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate2"
-              ]
-            },
-            {
-              "id": "4c842551-fb07-4a13-91e6-5653820f7e80",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate2"
-              ]
-            },
-            {
-              "id": "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
-          "requirements": [
-            {
-              "id": "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description3"
-              ]
-            },
-            {
-              "id": "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount3",
-                "currency3"
-              ]
-            },
-            {
-              "id": "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate3"
-              ]
-            },
-            {
-              "id": "822934ff-da94-40d2-a799-f29ba7bba2b0",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate3"
-              ]
-            },
-            {
-              "id": "5157e1ff-d272-4382-98a9-6953f5a15300",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
-          "id": "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
-          "requirements": [
-            {
-              "id": "b1640c24-b405-443e-bf5e-d7771f66aab6",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description4"
-              ]
-            },
-            {
-              "id": "9f278e42-aa1d-4b2e-97cd-832248aa5393",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount4",
-                "currency4"
-              ]
-            },
-            {
-              "id": "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate4"
-              ]
-            },
-            {
-              "id": "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate4"
-              ]
-            },
-            {
-              "id": "a84ea948-cf03-47b5-b4cf-a35f49910d10",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients4"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G5",
-          "id": "159fc086-cf34-48a4-a41b-afed62661383",
-          "requirements": [
-            {
-              "id": "587129bc-a5e1-43be-94ac-6e5366d30c67",
-              "description": "Description",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "description5"
-              ]
-            },
-            {
-              "id": "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b",
-              "description": "Amount",
-              "responseType": "AMOUNT",
-              "espdCriterionFields": [
-                "amount5",
-                "currency5"
-              ]
-            },
-            {
-              "id": "056cba1d-986b-4164-92b6-26a1cbdf0690",
-              "description": "Start Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "startDate5"
-              ]
-            },
-            {
-              "id": "dd71df86-3ad5-42dd-add5-9bd51dc88f05",
-              "description": "End Date",
-              "responseType": "DATE",
-              "espdCriterionFields": [
-                "endDate5"
-              ]
-            },
-            {
-              "id": "38a4802f-0b93-4e78-ad4e-2a057e1aa578",
-              "description": "Recipients",
-              "responseType": "DESCRIPTION",
-              "espdCriterionFields": [
-                "recipients5"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G6",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -2848,13 +2002,14 @@
         {
           "name": "G1",
           "id": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
               "description": "Year",
               "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
-                "year1"
+                "year"
               ]
             },
             {
@@ -2862,57 +2017,13 @@
               "description": "Number",
               "responseType": "QUANTITY_INTEGER",
               "espdCriterionFields": [
-                "number1"
+                "number"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "dac727d8-2cd2-43e0-8561-6f17e25870a4",
-          "requirements": [
-            {
-              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year2"
-              ]
-            },
-            {
-              "id": "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30",
-              "description": "Number",
-              "responseType": "QUANTITY_INTEGER",
-              "espdCriterionFields": [
-                "number2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "b799d324-358c-48b0-bd5e-6d205969b4a5",
-          "requirements": [
-            {
-              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year3"
-              ]
-            },
-            {
-              "id": "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a",
-              "description": "Number",
-              "responseType": "QUANTITY_INTEGER",
-              "espdCriterionFields": [
-                "number3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -2981,13 +2092,14 @@
         {
           "name": "G1",
           "id": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+          "unbounded": "true",
           "requirements": [
             {
               "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
               "description": "Year",
               "responseType": "QUANTITY_YEAR",
               "espdCriterionFields": [
-                "year1"
+                "year"
               ]
             },
             {
@@ -2995,57 +2107,13 @@
               "description": "Number",
               "responseType": "QUANTITY_INTEGER",
               "espdCriterionFields": [
-                "number1"
+                "number"
               ]
             }
           ]
         },
         {
           "name": "G2",
-          "id": "dac727d8-2cd2-43e0-8561-6f17e25870a4",
-          "requirements": [
-            {
-              "id": "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year2"
-              ]
-            },
-            {
-              "id": "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30",
-              "description": "Number",
-              "responseType": "QUANTITY_INTEGER",
-              "espdCriterionFields": [
-                "number2"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G3",
-          "id": "b799d324-358c-48b0-bd5e-6d205969b4a5",
-          "requirements": [
-            {
-              "id": "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
-              "espdCriterionFields": [
-                "year3"
-              ]
-            },
-            {
-              "id": "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a",
-              "description": "Number",
-              "responseType": "QUANTITY_INTEGER",
-              "espdCriterionFields": [
-                "number3"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "G4",
           "id": "9026e403-3eb6-4705-a9e9-e21a1efc867d",
           "requirements": [
             {
@@ -3664,6 +2732,134 @@
         }
       ],
       "espdDocumentField": "certificateIndependentBodiesAboutEnvironmental"
+    }
+  ],
+  "requirementGroupMappings": [
+    {
+      "description": "Description, amount, start date, end date, recipients requirement group",
+      "replacementId": "96f00020-0a25-402e-b850-2378e83b5695",
+      "idsToBeReplaced": [
+        "c48572f9-47bf-423a-9885-2c78ae9ca718",
+        "2c7a3581-2954-4142-8c1b-5c52d7c7e9b7",
+        "d67a6126-dd6d-4ed2-bda7-214a19e13a63",
+        "159fc086-cf34-48a4-a41b-afed62661383"
+      ]
+    },
+    {
+      "description": "Year, amount requirement group",
+      "replacementId": "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16",
+      "idsToBeReplaced": [
+        "1689194b-6ecf-4ab4-ab38-7656610c25bb",
+        "c628dd27-8016-4d80-8660-7461f2e3ee0f",
+        "9dd09f9f-3326-4865-9d5a-f0836076fb19",
+        "962011c9-9e2e-4e7b-818e-30e8506e874f",
+        "343795e2-98e9-4cc9-8ef2-8817cec8f49a",
+        "4564d79e-5db6-4a31-93ee-ac1f0019bdcb",
+        "bc43685e-8473-40e3-b174-3233aead6207"
+      ]
+    },
+    {
+      "description": "Description, ratio requirement group",
+      "replacementId": "096686e1-82ca-4de0-8710-d74d90da0f0c",
+      "idsToBeReplaced": [
+        "ce5a61e7-0b0d-4c8b-ac55-2a457743022a",
+        "3d0734f0-8f9b-4218-a245-c535e3773bc5",
+        "87fda668-c758-4c54-af0a-0210e6ded32d",
+        "637f9db3-ee53-48f7-8ee7-aefa58260730"
+      ]
+    },
+    {
+      "description": "Year, number requirement group",
+      "replacementId": "96defecc-7d32-4957-82e9-aad5f3c5b736",
+      "idsToBeReplaced": [
+        "dac727d8-2cd2-43e0-8561-6f17e25870a4",
+        "b799d324-358c-48b0-bd5e-6d205969b4a5"
+      ]
+    }
+  ],
+  "requirementMappings": [
+    {
+      "description": "Description requirement",
+      "replacementId": "ab05ff3b-f3e1-4441-9b43-ee9912e29e92",
+      "idsToBeReplaced": [
+        "927def36-1fa3-4018-8b45-7ee2c5b1e0af",
+        "e6ca4034-cfee-499a-9a47-c4f2862ef4d0",
+        "b1640c24-b405-443e-bf5e-d7771f66aab6",
+        "587129bc-a5e1-43be-94ac-6e5366d30c67"
+      ]
+    },
+    {
+      "description": "Amount requirement",
+      "replacementId": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+      "idsToBeReplaced": [
+        "4acd0a02-c267-4d05-b456-c0565c2ffd46",
+        "28fb4b41-5178-4b79-ba24-d9a62fa4a658",
+        "9f278e42-aa1d-4b2e-97cd-832248aa5393",
+        "cc1a0b1e-dbfd-4313-a4fb-2e543b05549b"
+      ]
+    },
+    {
+      "description": "Start Date requirement",
+      "replacementId": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+      "idsToBeReplaced": [
+        "8d0e5e16-85ed-4730-a784-d4db8f439c0c",
+        "c953e635-580b-4d7c-a30c-2edbde3b8fdf",
+        "9b263b45-fc63-4b01-a3dc-cb9c95dda449",
+        "056cba1d-986b-4164-92b6-26a1cbdf0690"
+      ]
+    },
+    {
+      "description": "End Date requirement",
+      "replacementId": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+      "idsToBeReplaced": [
+        "4c842551-fb07-4a13-91e6-5653820f7e80",
+        "822934ff-da94-40d2-a799-f29ba7bba2b0",
+        "7a95ddbd-05e8-4af4-973f-1b8d05f71e0f",
+        "dd71df86-3ad5-42dd-add5-9bd51dc88f05"
+      ]
+    },
+    {
+      "description": "Recipients requirement",
+      "replacementId": "a92536ab-6783-40bb-a037-5d31f421fd85",
+      "idsToBeReplaced": [
+        "c8babafa-b6fa-4e14-8749-d913d8f1d33b",
+        "5157e1ff-d272-4382-98a9-6953f5a15300",
+        "a84ea948-cf03-47b5-b4cf-a35f49910d10",
+        "38a4802f-0b93-4e78-ad4e-2a057e1aa578"
+      ]
+    },
+    {
+      "description": "Please Specify requirement",
+      "replacementId": "15778db8-0d84-42ba-931b-774c1b3d3f9f",
+      "idsToBeReplaced": ["3aaca389-4a7b-406b-a4b9-080845d127e7"]
+    },
+    {
+      "description": "Year requirement",
+      "replacementId": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
+      "idsToBeReplaced": [
+        "49a57870-7fb8-451f-a7af-fa0e7f8b97e7",
+        "9d0cf1cb-27bc-4747-8579-47dce4d8d490",
+        "17a7353d-a7a4-43ee-9cc8-b9db83eeafb3",
+        "34825634-5151-4e31-af1b-7eafadcf15be"
+      ]
+    },
+    {
+      "description": "Ratio requirement",
+      "replacementId": "5461b973-7067-457e-93cc-8338da2c3eef",
+      "idsToBeReplaced": [
+        "295d82b7-5ee6-4977-8aea-bac4acf6ecdf",
+        "2b792afb-87ba-47b5-a80c-aee76a6f2cc8",
+        "22dc4bef-182d-4b81-bddc-cc30b218f9bb",
+        "990eef0a-14c6-41af-8bf2-b8311332d152"
+      ]
+    },
+    {
+      "description": "Number requirement",
+      "replacementId": "42037f41-53af-44df-b6b8-2395cee98087",
+      "idsToBeReplaced": [
+        "0bb2d3bf-160f-4904-a4e8-ee672bd5cb30",
+        "668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a"
+      ]
     }
   ]
 }
