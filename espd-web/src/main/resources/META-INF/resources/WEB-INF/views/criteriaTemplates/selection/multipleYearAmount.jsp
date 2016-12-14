@@ -6,19 +6,19 @@
 
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="lastYears"/>
-
+<c:set var="currentYear" value='<%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>'/>
 <c:forEach var="count" items="${lastYears}" varStatus="loop">
 	<div class="form-group">
 		<div class="col-md-4">
 		    <label class="control-label col-xs-3 small">${span18n['crit_year']}</label>
 		    <div class="col-xs-9" style="margin-bottom: 5px;">
-			    <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['year']" digits="true" max='<%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>' cssClass="form-control"></form:input>
+			    <form:input type="text" path='${field}.unboundedGroups[${loop.index}]["year"]' digits="true" min="1900" max="${currentYear}" cssClass="form-control"></form:input>
 		    </div>
 	    </div>
 	    <div class="col-md-8">
 			<label class="control-label col-xs-3 small">${span18n['crit_amount_concerned']}</label>
 			<div class="col-xs-5">
-			    <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['amount']" number="true" cssClass="form-control"/>
+			    <form:input type="text" path='${field}.unboundedGroups[${loop.index}]["amount"]' number="true" cssClass="form-control"/>
 			</div>
 			<div class="col-xs-4">
 	            <tiles:insertDefinition name="currencies">

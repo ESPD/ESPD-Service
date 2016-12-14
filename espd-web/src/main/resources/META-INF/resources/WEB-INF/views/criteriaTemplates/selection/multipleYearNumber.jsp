@@ -6,19 +6,19 @@
 
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="lastYears"/>
-
+<c:set var="currentYear" value='<%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>'/>
 <c:forEach var="count" items="${lastYears}" varStatus="loop">
 	<div class="form-group">
 		<div class="col-md-5">
 		    <label class="control-label col-md-3 small">${span18n['crit_year']}</label>
 		    <div class="col-md-9">
-		    	<form:input type="text" path="${field}.unboundedGroups[${loop.index}]['year']" digits="true" max='<%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>' cssClass="form-control"></form:input>
+		    	<form:input type="text" path='${field}.unboundedGroups[${loop.index}]["year"]' digits="true" min="1900" max="${currentYear}" cssClass="form-control"></form:input>
 		    </div>
 	    </div>
 		<div class="col-md-7">
 		    <label class="control-label col-md-3 small">${span18n['crit_number']}</label>
 		    <div class="col-md-9">
-		         <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['number']" digits="true" max="1000000" cssClass="form-control"/>
+		         <form:input type="text" path='${field}.unboundedGroups[${loop.index}]["number"]' digits="true" max="1000000" cssClass="form-control"/>
 		    </div>
 	    </div>
 	</div>
