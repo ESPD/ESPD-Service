@@ -6,37 +6,39 @@
 
 <tiles:importAttribute name="field"/>
 
-<c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="vs" >
-	<a name="${field}${vs.index}"></a>
+<c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="vs">
+    <a name="${field}${vs.index}"></a>
     <div class="form-group">
-	    <div class="col-md-4">
-			<label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
-	        <div class="col-md-9">
-	            <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["ratio"]' number="true" cssClass="form-control"/>
-	        </div>
-    	</div>
-	    <div class="col-md-7">
-	        <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
-	        <div class="col-md-9">
-	            <form:textarea rows="1" path='${field}.unboundedGroups[${vs.index}]["description"]' cssClass="form-control"/>
-	        </div>
-	    </div>
-	    <div class="col-md-1">
-			<div class="btn-group pull-right hidden-print">
-            	<button id="remove_${field}" type="submit" class="btn btn-default btn-sm " name="remove_${field}" value="${vs.index}">
-                	<i class="fa fa-trash" aria-hidden="true"></i>
-            	</button>
-	    	</div>
-	    </div>
+        <div class="col-md-4">
+            <label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
+            <div class="col-md-9">
+                <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["ratio"]' number="true"
+                            cssClass="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
+            <div class="col-md-9">
+                <form:textarea rows="1" path='${field}.unboundedGroups[${vs.index}]["description"]'
+                               cssClass="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="btn-group pull-right hidden-print">
+                <button id="remove_${field}" type="submit" class="btn btn-default btn-sm " name="remove_${field}"
+                        value="${vs.index}" data-toggle="tooltip" title="Delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </div>
+            <c:if test="${vs.last}">
+                <div class="btn-group pull-right hidden-print">
+                    <button id="add_${field}" type="submit" class="btn btn-default btn-sm" name="add_${field}"
+                            value="${vs.index + 1}" data-toggle="tooltip" title="Add">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </c:if>
+        </div>
     </div>
-	<c:if test="${vs.last}">
-		<div class="form-group">
-			<div class="btn-group pull-right hidden-print">
-				<button id="add_${field}" type="submit" class="btn btn-default btn-sm" name="add_${field}" value="${vs.index + 1}">
-				<i class="fa fa-plus" aria-hidden="true"></i>
-				</button>
-			</div>
-		</div>
-	</c:if>
 </c:forEach>
 <hr/>

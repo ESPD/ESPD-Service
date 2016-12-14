@@ -361,11 +361,11 @@
                 </h4>
                 <div class="btn-group pull-right hidden-print">
                     <button id="addRepresentative" type="submit" class="btn btn-default btn-sm" name="add"
-                            value="${vs.index + 1}">
+                            value="${vs.index + 1}" data-toggle="tooltip" title="Add">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
                     <button id="removeRepresentative" type="submit" class="btn btn-default btn-sm " name="remove"
-                            value="${vs.index}">
+                            value="${vs.index}" data-toggle="tooltip" title="Delete">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </div>
