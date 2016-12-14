@@ -35,4 +35,12 @@ public class SelfCleaning {
 
     private String description;
 
+	public Boolean getAnswer() {
+		if (this.answer == null) {
+			// self-cleaning with no answer has a default value of FALSE
+			return Boolean.FALSE;
+		}
+		return this.answer;
+	}
+
 }

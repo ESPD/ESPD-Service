@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
@@ -39,6 +40,10 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
 
         when:
         EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        def unboundedGroups = espd.numberManagerialStaff.unboundedGroups
+
+        then:
+        unboundedGroups.size() == 3
 
         then:
         espd.numberManagerialStaff.exists == true
@@ -47,30 +52,32 @@ class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
         espd.numberManagerialStaff.answer == true
 
         then:
-        espd.numberManagerialStaff.year1 == 2016
-        espd.numberManagerialStaff.number1 == 11
+        unboundedGroups[0].get("year") == 2016
+        unboundedGroups[0].get("number") == 11
 
         then:
-        espd.numberManagerialStaff.year2 == 2015
-        espd.numberManagerialStaff.number2 == 22
+        unboundedGroups[1].get("year") == 2015
+        unboundedGroups[1].get("number") == 22
 
         then:
-        espd.numberManagerialStaff.year3 == 2014
-        espd.numberManagerialStaff.number3 == 33
+        unboundedGroups[2].get("year") == 2014
+        unboundedGroups[2].get("number") == 33
 
         then: "info electronically"
         espd.numberManagerialStaff.availableElectronically.answer == true
         espd.numberManagerialStaff.availableElectronically.url == "www.hodor.com"
         espd.numberManagerialStaff.availableElectronically.code == "GENERAL_TURNOVER"
+        espd.numberManagerialStaff.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true, answer: true,
-                year1: 2016, number1: 11,
-                year2: 2015, number2: 22,
-                year3: 2014, number3: 33,
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER")))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": 2016, "number": 11),
+                        new DynamicRequirementGroup("year": 2015, "number": 22),
+                        new DynamicRequirementGroup("year": 2014, "number": 33)],
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "GENERAL_TURNOVER", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

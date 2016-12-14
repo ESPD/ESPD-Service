@@ -69,16 +69,6 @@
         {
           "name": "G1",
           "id": "64162276-7014-408f-a9af-080426bfe1fd",
-          "requirements": [
-            {
-              "id": "67fd1dde-2a0a-486e-9469-79c78796fc22",
-              "description": "Not applicable",
-              "responseType": "INDICATOR",
-              "espdCriterionFields": [
-                "booleanValue2"
-              ]
-            }
-          ],
           "subgroups": [
             {
               "name": "G1.1",
@@ -385,6 +375,14 @@
                   "responseType": "CODE",
                   "espdCriterionFields": [
                     "infoElectronicallyCode"
+                  ]
+                },
+                {
+                  "id": "d8e1e818-d67b-4bb9-9aeb-4c10943a8342",
+                  "description": "Issuer",
+                  "responseType": "DESCRIPTION",
+                  "espdCriterionFields": [
+                    "infoElectronicallyIssuer"
                   ]
                 }
               ]

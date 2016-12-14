@@ -60,13 +60,22 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         response.Criterion[idx].RequirementGroup.size() == 1
 
         then: "main sub group"
-        response.Criterion[idx].RequirementGroup[0].ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
-        response.Criterion[idx].RequirementGroup[0].RequirementGroup.size() == 0
-        response.Criterion[idx].RequirementGroup[0].Requirement.size() == 1
+        def g1 = response.Criterion[idx].RequirementGroup[0]
+        g1.ID.text() == "30450436-f559-4dfa-98ba-f0842ed9d2a0"
+        g1.RequirementGroup.size() == 1
+        g1.Requirement.size() == 1
 
         then: "main sub group requirements"
-        def r1_0 = response.Criterion[idx].RequirementGroup[0].Requirement[0]
+        def r1_0 = g1.Requirement[0]
         checkRequirement(r1_0, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
+
+        then:
+        def g1_1 = g1.RequirementGroup[0]
+        g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
+        g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
+        g1_1.RequirementGroup.size() == 0
+        g1_1.Requirement.size() == 1
+        checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
     }
 
     def "check the 'Your answer' requirement response"() {
@@ -82,5 +91,22 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Please describe them' requirement response"() {
+        given:
+        def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true,
+                description: "conflict description."))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
+
+        then:
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+        req.Response[0].Description.text() == "conflict description."
     }
 }

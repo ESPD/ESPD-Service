@@ -37,6 +37,8 @@ public class AvailableElectronically {
 
     private String code;
 
+	private String issuer;
+
 	public Boolean getAnswer() {
 		if (this.answer == null) {
 			// available electronically with no answer has a default value of FALSE

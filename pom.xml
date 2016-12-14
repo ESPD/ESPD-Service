@@ -29,7 +29,7 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>espd</artifactId>
     <packaging>pom</packaging>
-    <version>2016.11.02</version>
+    <version>2016.12</version>
     <modules>
         <module>espd-web</module>
         <module>espd-docs</module>

@@ -67,7 +67,8 @@ class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
         then: "info electronically"
         espd.paymentTaxes.availableElectronically.answer == true
         espd.paymentTaxes.availableElectronically.url == "http://aeat.es/doc/recibos/792db19f-687c-4402-a6c7-77158c306334.pdf"
-        espd.paymentTaxes.availableElectronically.code == "HODOR"
+        espd.paymentTaxes.availableElectronically.code == "TAXES"
+        espd.paymentTaxes.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {

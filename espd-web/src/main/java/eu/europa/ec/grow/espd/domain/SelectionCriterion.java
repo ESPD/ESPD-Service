@@ -34,26 +34,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public abstract class SelectionCriterion extends EspdCriterion {
 
-    private AvailableElectronically availableElectronically;
     private String description;
-
-    public final boolean getInfoElectronicallyAnswer() {
-        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
-    }
-
-    public final String getInfoElectronicallyUrl() {
-        if (availableElectronically != null) {
-            return availableElectronically.getUrl();
-        }
-        return null;
-    }
-
-    public final String getInfoElectronicallyCode() {
-        if (availableElectronically != null) {
-            return availableElectronically.getCode();
-        }
-        return null;
-    }
 
     @Override
     public Boolean getAnswer() {

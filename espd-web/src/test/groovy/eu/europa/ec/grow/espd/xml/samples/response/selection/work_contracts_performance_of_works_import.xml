@@ -8,19 +8,18 @@
     <cbc:IssueDate>2016-01-13</cbc:IssueDate>
     <cbc:IssueTime>16:47:15</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
-    <cac:ContractingParty/>
     <cac:ProcurementProjectLot>
         <cbc:ID>0</cbc:ID>
     </cac:ProcurementProjectLot>
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cdd3bb3e-34a5-43d5-b668-2aab86a73822</cbc:ID>
-        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.TECHNICAL_PROFESSIONAL_ABILITY</cbc:TypeCode>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.WORKS_PERFORMANCE</cbc:TypeCode>
         <cbc:Name>For works contracts: performance of works of the specified type</cbc:Name>
         <cbc:Description>For public works contracts only: During the reference period, the economic operator has performed the following works of the specified type. Contracting authorities may require up to five years and allow experience dating from more than five years.</cbc:Description>
         <ccv:LegislationReference>
             <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
             <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
-            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevel" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
             <ccv-cbc:Article>58(4)</ccv-cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
         </ccv:LegislationReference>
@@ -42,9 +41,16 @@
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
-                <cbc:Description>Date</cbc:Description>
+                <cbc:Description>Start Date</cbc:Description>
                 <ccv:Response>
                     <cbc:Date>2016-01-17</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-17</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
@@ -56,30 +62,37 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c48572f9-47bf-423a-9885-2c78ae9ca718</cbc:ID>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f00020-0a25-402e-b850-2378e83b5695</cbc:ID>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">927def36-1fa3-4018-8b45-7ee2c5b1e0af</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
                 <cbc:Description>Description</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>description2</cbc:Description>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="AMOUNT">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4acd0a02-c267-4d05-b456-c0565c2ffd46</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
                 <cbc:Description>Amount</cbc:Description>
                 <ccv:Response>
                     <cbc:Amount currencyID="EUR">22.2</cbc:Amount>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">8d0e5e16-85ed-4730-a784-d4db8f439c0c</cbc:ID>
-                <cbc:Description>Date</cbc:Description>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
+                <cbc:Description>Start Date</cbc:Description>
                 <ccv:Response>
                     <cbc:Date>2016-01-18</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-18</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c8babafa-b6fa-4e14-8749-d913d8f1d33b</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
                 <cbc:Description>Recipients</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>recipients2</cbc:Description>
@@ -87,30 +100,37 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">2c7a3581-2954-4142-8c1b-5c52d7c7e9b7</cbc:ID>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f00020-0a25-402e-b850-2378e83b5695</cbc:ID>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
                 <cbc:Description>Description</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>description3</cbc:Description>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="AMOUNT">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">28fb4b41-5178-4b79-ba24-d9a62fa4a658</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
                 <cbc:Description>Amount</cbc:Description>
                 <ccv:Response>
                     <cbc:Amount currencyID="USD">33.3</cbc:Amount>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c953e635-580b-4d7c-a30c-2edbde3b8fdf</cbc:ID>
-                <cbc:Description>Date</cbc:Description>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
+                <cbc:Description>Start Date</cbc:Description>
                 <ccv:Response>
                     <cbc:Date>2016-01-19</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-19</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5157e1ff-d272-4382-98a9-6953f5a15300</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
                 <cbc:Description>Recipients</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>recipients3</cbc:Description>
@@ -118,30 +138,37 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d67a6126-dd6d-4ed2-bda7-214a19e13a63</cbc:ID>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f00020-0a25-402e-b850-2378e83b5695</cbc:ID>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b1640c24-b405-443e-bf5e-d7771f66aab6</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
                 <cbc:Description>Description</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>description4</cbc:Description>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="AMOUNT">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9f278e42-aa1d-4b2e-97cd-832248aa5393</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
                 <cbc:Description>Amount</cbc:Description>
                 <ccv:Response>
                     <cbc:Amount currencyID="CHF">44.4</cbc:Amount>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b263b45-fc63-4b01-a3dc-cb9c95dda449</cbc:ID>
-                <cbc:Description>Date</cbc:Description>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
+                <cbc:Description>Start Date</cbc:Description>
                 <ccv:Response>
                     <cbc:Date>2016-01-20</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-20</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a84ea948-cf03-47b5-b4cf-a35f49910d10</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
                 <cbc:Description>Recipients</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>recipients4</cbc:Description>
@@ -149,33 +176,78 @@
             </ccv:Requirement>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">159fc086-cf34-48a4-a41b-afed62661383</cbc:ID>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f00020-0a25-402e-b850-2378e83b5695</cbc:ID>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">587129bc-a5e1-43be-94ac-6e5366d30c67</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
                 <cbc:Description>Description</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>description5</cbc:Description>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="AMOUNT">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
                 <cbc:Description>Amount</cbc:Description>
                 <ccv:Response>
                     <cbc:Amount currencyID="YEN">55.5</cbc:Amount>
                 </ccv:Response>
             </ccv:Requirement>
             <ccv:Requirement responseDataType="DATE">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">056cba1d-986b-4164-92b6-26a1cbdf0690</cbc:ID>
-                <cbc:Description>Date</cbc:Description>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
+                <cbc:Description>Start Date</cbc:Description>
                 <ccv:Response>
                     <cbc:Date>2016-01-21</cbc:Date>
                 </ccv:Response>
             </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-21</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">38a4802f-0b93-4e78-ad4e-2a057e1aa578</cbc:ID>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
                 <cbc:Description>Recipients</cbc:Description>
                 <ccv:Response>
                     <cbc:Description>recipients5</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96f00020-0a25-402e-b850-2378e83b5695</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description6</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="AMOUNT">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
+                <cbc:Description>Amount</cbc:Description>
+                <ccv:Response>
+                    <cbc:Amount currencyID="YEN">66.6</cbc:Amount>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42ec8116-31a7-4118-8612-5b04f5c8bde7</cbc:ID>
+                <cbc:Description>Start Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-01-22</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DATE">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3641b897-f9f0-4d90-909a-b6d4c4b1d645</cbc:ID>
+                <cbc:Description>End Date</cbc:Description>
+                <ccv:Response>
+                    <cbc:Date>2016-02-23</cbc:Date>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a92536ab-6783-40bb-a037-5d31f421fd85</cbc:ID>
+                <cbc:Description>Recipients</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>recipients6</cbc:Description>
                 </ccv:Response>
             </ccv:Requirement>
         </ccv:RequirementGroup>
@@ -196,7 +268,7 @@
                     <ccv:Response>
                         <cev:Evidence>
                             <cev:EvidenceDocumentReference>
-                                <cbc:ID>165a8931-6992-47a5-ac3f-9d69f87219aa</cbc:ID>
+                                <cbc:ID schemeAgencyID="EU-COM-GROW">f8767755-654a-4846-b21f-9a7d59ac2fd1</cbc:ID>
                                 <cac:Attachment>
                                     <cac:ExternalReference>
                                         <cbc:URI>www.hodor.com</cbc:URI>
@@ -213,7 +285,15 @@
                         <ccv-cbc:Code>PERF</ccv-cbc:Code>
                     </ccv:Response>
                 </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5cbf74d9-a1e2-4233-921d-8b298842ee7d</cbc:ID>
+                    <cbc:Description>Issuer</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>HODOR</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
             </ccv:RequirementGroup>
         </ccv:RequirementGroup>
     </ccv:Criterion>
+
 </espd:ESPDResponse>

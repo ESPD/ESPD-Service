@@ -30,11 +30,13 @@ services to their users.
 * [Testing](http://espd.github.io/ESPD-Service/docs/html/testing.html)
 * [Data model quick overview](http://espd.github.io/ESPD-Service/docs/html/dataModel.html)
 * [Data model full documentation](https://espd.github.io/ESPD-EDM/)
+* [XML changes](http://espd.github.io/ESPD-Service/docs/html/xmlChanges.html)
 * [Release notes](http://espd.github.io/ESPD-Service/docs/html/releaseNotes.html)
 * [Full documentation](http://espd.github.io/ESPD-Service/docs/html/espd.html)
 
 ### Older versions
 
+* [2016.11](https://github.com/espd/ESPD-Service/blob/2016.11/espd-docs/src/main/asciidoc/espd.adoc)
 * [2016.10](https://github.com/espd/ESPD-Service/blob/2016.10/espd-docs/src/main/asciidoc/espd.adoc)
 * [2016.08](https://github.com/espd/ESPD-Service/blob/2016.08/espd-docs/src/main/asciidoc/espd.adoc)
 * [2016.07](https://github.com/espd/ESPD-Service/blob/2016.07/espd-docs/src/main/asciidoc/espd.adoc)

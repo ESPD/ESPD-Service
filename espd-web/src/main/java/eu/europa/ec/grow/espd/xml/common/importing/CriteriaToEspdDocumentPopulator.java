@@ -26,7 +26,7 @@ package eu.europa.ec.grow.espd.xml.common.importing;
 
 import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
-import eu.europa.ec.grow.espd.domain.enums.criteria.CriteriaList;
+import eu.europa.ec.grow.espd.domain.infrastructure.CriterionDefinitions;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.extern.slf4j.Slf4j;
@@ -47,14 +47,23 @@ import java.util.List;
 @Slf4j
 public class CriteriaToEspdDocumentPopulator {
 
-    private final EspdResponseCriterionFactory criterionFactory = new EspdResponseCriterionFactory();
+	private final EspdResponseCriterionFactory criterionFactory;
+
+	public CriteriaToEspdDocumentPopulator() {
+		this(new EspdResponseCriterionFactory());
+	}
+
+	public CriteriaToEspdDocumentPopulator(EspdResponseCriterionFactory criterionFactory) {
+		this.criterionFactory = criterionFactory;
+	}
 
     /**
      * Update criteria information on the given ESPD document.
-     * <p></p>
+     * <p>
      * <b>
      * Please be aware that this method mutates the ESPD document!
      * </b>
+     * </p>
      *
      * @param espdDocument The given ESPD document to be updated with criteria information
      * @param ublCriteria  UBL criteria from which we read the information
@@ -72,7 +81,7 @@ public class CriteriaToEspdDocumentPopulator {
     }
 
     private void setCriterionValueOnEspdModel(EspdDocument espdDocument, CriterionType ublCriterion) {
-        Optional<CcvCriterion> ccvCriterion = CriteriaList.findById(ublCriterion.getID().getValue());
+        Optional<CcvCriterion> ccvCriterion = CriterionDefinitions.findCriterionById(ublCriterion.getID().getValue());
         if (!ccvCriterion.isPresent()) {
             return;
         }

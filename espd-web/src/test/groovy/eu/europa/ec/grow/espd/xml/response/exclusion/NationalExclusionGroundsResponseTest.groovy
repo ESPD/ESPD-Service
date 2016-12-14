@@ -24,10 +24,11 @@
 
 package eu.europa.ec.grow.espd.xml.response.exclusion
 
-import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
+import eu.europa.ec.grow.espd.domain.SelfCleaning
+import eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractExclusionCriteriaFixture
 /**
  * Created by ratoico on 12/9/15 at 1:28 PM.
@@ -72,9 +73,14 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def g1_1 = g1.RequirementGroup[0]
         g1_1.ID.text() == "73f0fe4c-4ed9-4343-8096-d898cf200146"
         g1_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
-        g1_1.RequirementGroup.size() == 0
+        g1_1.RequirementGroup.size() == 1
         g1_1.Requirement.size() == 1
         checkRequirement(g1_1.Requirement[0], "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
+
+        then: "check the self-cleaning sub group"
+        def g1_1_1 = g1_1.RequirementGroup[0]
+        g1_1_1.@pi.text() == ""
+        checkSelfCleaningRequirementGroup(g1_1_1)
 
         then: "check second sub group"
         def g2 = response.Criterion[idx].RequirementGroup[1]
@@ -111,6 +117,40 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def req = subGroup.Requirement[0]
         checkRequirement(req, "e098da8e-4717-4500-965f-f882d5b4e1ad", "Please describe them", "DESCRIPTION")
         req.Response[0].Description.text() == "bogus description."
+    }
+
+    def "check the 'Have you taken measures to demonstrate your reliability (\"Self-Cleaning\")' requirement response"() {
+        given:
+        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true,
+                selfCleaning: new SelfCleaning(answer: false)))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+
+        then:
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Indicator.text() == "false"
+    }
+
+    def "check the 'Self cleaning description' requirement response"() {
+        given:
+        def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true,
+                selfCleaning: new SelfCleaning(description: "Hodor_24 is clean")))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
+
+        then:
+        def subGroup = response.Criterion[idx].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0].RequirementGroup[0]
+
+        def req = subGroup.Requirement[0]
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "Hodor_24 is clean"
     }
 
     def "check the 'Is this information available electronically' requirement response"() {

@@ -86,9 +86,10 @@ class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
         g2_1.ID.text() == "8e7e890c-d117-44c8-aa48-cc236d26b475"
         g2_1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
         g2_1.RequirementGroup.size() == 0
-        g2_1.Requirement.size() == 2
+        g2_1.Requirement.size() == 3
         checkRequirement(g2_1.Requirement[0], "ee1ee1cd-3791-4855-8b8b-28d4f4c5c007", "URL", "EVIDENCE_URL")
         checkRequirement(g2_1.Requirement[1], "1e55ff14-c643-4abc-91d7-2f4dfcdf2409", "Code", "CODE")
+        checkRequirement(g2_1.Requirement[2], "d8e1e818-d67b-4bb9-9aeb-4c10943a8342", "Issuer", "DESCRIPTION")
     }
 
 }

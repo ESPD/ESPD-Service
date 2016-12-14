@@ -25,21 +25,25 @@
 package eu.europa.ec.grow.espd.controller;
 
 import com.google.common.base.Optional;
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
 import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
+import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import eu.europa.ec.grow.espd.ted.TedRequest;
 import eu.europa.ec.grow.espd.ted.TedResponse;
 import eu.europa.ec.grow.espd.ted.TedService;
 import eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer;
 import eu.europa.ec.grow.espd.tenderned.UnescapeHtml4;
 import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
+import eu.europa.ec.grow.espd.tenderned.exception.TedNoticeException;
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.output.CountingOutputStream;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -63,7 +67,6 @@ import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @SessionAttributes(value = { "espd" })
@@ -112,31 +115,12 @@ class EspdController {
 		}
 	}
 
-	@RequestMapping(value = "/filter", params = "action", method = POST)
-	public String whoAreYouScreen(
+	@PostMapping(value = "/filter", params = "action=ca_create_espd_request")
+	public String createNewRequestAsCA(
+			@RequestParam("agent") String agent,
 			@RequestParam("authority.country") Country country,
-			@RequestParam String action,
-			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
-			Model model,
-			BindingResult result) throws IOException {
-		if ("ca_create_espd_request".equals(action)) {
-			return createNewRequestAsCA(country, document);
-		} else if ("ca_reuse_espd_request".equals(action)) {
-			return reuseRequestAsCA(attachments.get(0), model, result);
-		} else if ("ca_review_espd_response".equals(action)) {
-			return reviewResponseAsCA(attachments.get(0), model, result);
-		} else if ("eo_import_espd".equals(action)) {
-			return importEspdAsEo(country, attachments.get(0), model, result);
-		} else if ("eo_merge_espds".equals(action)) {
-			return mergeTwoEspds(attachments, model, result);
-		} else if ("eo_create_response".equals(action)) {
-			return createNewResponseAsEO(country, document);
-		}
-		return "filter";
-	}
-
-	private String createNewRequestAsCA(Country country, EspdDocument document) {
+			@ModelAttribute("espd") EspdDocument document) throws IOException {
+		document.setExtendCe("ce".equals(agent));
 		document.getAuthority().setCountry(country);
 		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
@@ -167,12 +151,19 @@ class EspdController {
 		}
 	}
 
-	private String reuseRequestAsCA(MultipartFile attachment, Model model,
+	@PostMapping(value = "/filter", params = "action=ca_reuse_espd_request")
+	public String reuseRequestAsCA(
+			@RequestParam("agent") String agent,
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
 			BindingResult result) throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
 			if (espd.isPresent()) {
-				model.addAttribute("espd", espd.get());
+				EspdDocument espdGot = espd.get();
+				espdGot.setExtendCe("ce".equals(agent));
+				model.addAttribute("espd", espdGot);
 				return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
 			}
 		}
@@ -181,12 +172,19 @@ class EspdController {
 		return "filter";
 	}
 
-	private String reviewResponseAsCA(MultipartFile attachment, Model model,
+	@PostMapping(value = "/filter", params = "action=ca_review_espd_response")
+	public String reviewResponseAsCA(
+			@RequestParam("agent") String agent,
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
 			BindingResult result) throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
 			if (espd.isPresent()) {
-				model.addAttribute("espd", espd.get());
+				EspdDocument espdGot = espd.get();
+				espdGot.setExtendCe("ce".equals(agent));
+				model.addAttribute("espd", espdGot);
 				return redirectToPage(PRINT_PAGE);
 			}
 		}
@@ -195,9 +193,14 @@ class EspdController {
 		return "filter";
 	}
 
-	private String importEspdAsEo(Country country, MultipartFile attachment, Model model, BindingResult result)
-			throws IOException {
-		try (InputStream is = attachment.getInputStream()) {
+	@PostMapping(value = "/filter", params = "action=eo_import_espd")
+	public String importEspdAsEo(
+			@RequestParam("authority.country") Country country,
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
+		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.importAmbiguousEspdFile(is);
 
 			// how can wrappedEspd be null???
@@ -214,6 +217,9 @@ class EspdController {
 				model.addAttribute("espd", espd);
 				return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 			}
+		} catch (TedNoticeException e) {
+			result.rejectValue("attachments", "error_ted_notice_not_supported");	
+			return "filter";
 		}
 
 		result.rejectValue("attachments", "espd_upload_error");
@@ -224,8 +230,12 @@ class EspdController {
 		return isBlank(espdDocument.getOjsNumber()) && isNotBlank(espdDocument.getTedReceptionId());
 	}
 
-	private String mergeTwoEspds(List<MultipartFile> attachments, Model model, BindingResult result)
-			throws IOException {
+	@PostMapping(value = "/filter", params = "action=eo_merge_espds")
+	public String mergeTwoEspds(
+			@RequestPart List<MultipartFile> attachments,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
 		try (InputStream reqIs = attachments.get(1).getInputStream();
 				InputStream respIs = attachments.get(2).getInputStream()) {
 			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.mergeEspdRequestAndResponse(reqIs, respIs);
@@ -239,7 +249,12 @@ class EspdController {
 		return "filter";
 	}
 
-	private String createNewResponseAsEO(Country country, EspdDocument document) {
+	@PostMapping(value = "/filter", params = "action=eo_create_response")
+	public String createNewResponseAsEO(
+			@RequestParam("authority.country") Country country,
+			@ModelAttribute("espd") EspdDocument document,
+			Model model,
+			BindingResult result) throws IOException {
 		if (document.getEconomicOperator() == null) {
 			document.setEconomicOperator(new EconomicOperatorImpl());
 		}
@@ -249,7 +264,7 @@ class EspdController {
 		return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 	}
 
-	@RequestMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
+	@GetMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
 	public String view(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -258,7 +273,7 @@ class EspdController {
 		return flow + "_" + agent + "_" + step;
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}", method = POST, params = "prev")
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}", params = "prev")
 	public String previous(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -270,7 +285,7 @@ class EspdController {
 				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/" + prev);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", method = POST, params = "print")
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", params = "print")
 	public String print(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -282,36 +297,109 @@ class EspdController {
 				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "add")
-	public String addRepresentative(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@RequestParam Integer add,
-			@ModelAttribute("espd") EspdDocument espd,
-			BindingResult bindingResult) {
+	@PostMapping(value = "/{flow:request|response}/eo/procedure", params = "add")
+	public String addRepresentative(@PathVariable String flow, @RequestParam Integer add,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		espd.getEconomicOperator().getRepresentatives().add(add, new EconomicOperatorRepresentative());
-		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + add);
+		return redirectToPage(flow + "/eo/procedure#representative" + add);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure}", method = POST, params = "remove")
-	public String removeRepresentative(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@RequestParam Integer remove,
-			@ModelAttribute("espd") EspdDocument espd,
-			BindingResult bindingResult) {
-		espd.getEconomicOperator().getRepresentatives().remove(remove.intValue());
-		if (espd.getEconomicOperator().getRepresentatives().size() == 0) {
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_financialRatio")
+	public String addFinancialRatio(@PathVariable String flow, @RequestParam("add_financialRatio") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getFinancialRatio(),
+				addIndex, "#financialRatio", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_workContractsPerformanceOfWorks")
+	public String addWorkContractsPerformanceOfWorks(@PathVariable String flow,
+			@RequestParam("add_workContractsPerformanceOfWorks") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getWorkContractsPerformanceOfWorks(),
+				addIndex, "#workContractsPerformanceOfWorks", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_supplyContractsPerformanceDeliveries")
+	public String addSupplyContractsPerformanceDeliveries(@PathVariable String flow,
+			@RequestParam("add_supplyContractsPerformanceDeliveries") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getSupplyContractsPerformanceDeliveries(),
+				addIndex, "#supplyContractsPerformanceDeliveries", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_serviceContractsPerformanceServices")
+	public String addServiceContractsPerformanceServices(@PathVariable String flow,
+			@RequestParam("add_serviceContractsPerformanceServices") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getServiceContractsPerformanceServices(),
+				addIndex, "#serviceContractsPerformanceServices", flow);
+	}
+
+	private String addMultipleReference(UnboundedRequirementGroup espdCriterion, Integer referencePosition,
+			String referenceHash, String flow) {
+		espdCriterion.getUnboundedGroups().add(referencePosition, new DynamicRequirementGroup());
+		return redirectToPage(flow + "/eo/selection" + referenceHash + referencePosition);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/procedure", params = "remove")
+	public String removeRepresentative(@PathVariable String flow, @RequestParam Integer remove,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		if (CollectionUtils.isNotEmpty(espd.getEconomicOperator().getRepresentatives())) {
+
+			espd.getEconomicOperator().getRepresentatives().remove(remove.intValue());
+		}
+		if (CollectionUtils.isEmpty(espd.getEconomicOperator().getRepresentatives())) {
 			espd.getEconomicOperator().getRepresentatives().add(new EconomicOperatorRepresentative());
 		}
 		remove = Math.min(espd.getEconomicOperator().getRepresentatives().size() - 1, remove);
-		return redirectToPage(flow + "/" + agent + "/" + step + "#representative" + remove);
+		return redirectToPage(flow + "/eo/procedure#representative" + remove);
 	}
 
-	@RequestMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",
-			method = POST, params = "next")
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_financialRatio")
+	public String removeFinancialRatio(@PathVariable String flow,
+			@RequestParam("remove_financialRatio") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getFinancialRatio(), removeIndex, "#financialRatio", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_workContractsPerformanceOfWorks")
+	public String removeWorkContractsPerformanceOfWorks(@PathVariable String flow,
+			@RequestParam("remove_workContractsPerformanceOfWorks") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getWorkContractsPerformanceOfWorks(),
+				removeIndex, "#workContractsPerformanceOfWorks", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_supplyContractsPerformanceDeliveries")
+	public String removeSupplyContractsPerformanceDeliveries(@PathVariable String flow,
+			@RequestParam("remove_supplyContractsPerformanceDeliveries") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getSupplyContractsPerformanceDeliveries(),
+				removeIndex, "#supplyContractsPerformanceDeliveries", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_serviceContractsPerformanceServices")
+	public String removeServiceContractsPerformanceServices(@PathVariable String flow,
+			@RequestParam("remove_serviceContractsPerformanceServices") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getServiceContractsPerformanceServices(),
+				removeIndex, "#serviceContractsPerformanceServices", flow);
+	}
+
+	private String removeMultipleReference(UnboundedRequirementGroup espdCriterion, Integer referencePosition,
+			String referenceHash, String flow) {
+		if (CollectionUtils.isNotEmpty(espdCriterion.getUnboundedGroups())) {
+			espdCriterion.getUnboundedGroups().remove(referencePosition.intValue());
+		}
+		if (CollectionUtils.isEmpty(espdCriterion.getUnboundedGroups())) {
+			espdCriterion.getUnboundedGroups().add(new DynamicRequirementGroup());
+		}
+		referencePosition = Math.min(espdCriterion.getUnboundedGroups().size() - 1, referencePosition);
+		return redirectToPage(flow + "/eo/selection" + referenceHash + referencePosition);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",
+			params = "next")
 	public String next(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -385,18 +473,18 @@ class EspdController {
 
 	private void downloadEspdFile(@PathVariable String agent, @ModelAttribute("espd") EspdDocument espd,
 			HttpServletResponse response) throws IOException {
-		try (CountingOutputStream out = new CountingOutputStream(response.getOutputStream())) {
-			response.setContentType(APPLICATION_XML_VALUE);
-			if ("eo".equals(agent)) {
-				response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-response.xml\"");
-				exchangeMarshaller.generateEspdResponse(espd, out);
-			} else {
-				response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-request.xml\"");
-				exchangeMarshaller.generateEspdRequest(espd, out);
-			}
-			response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(out.getByteCount()));
-			out.flush();
+		response.setContentType(APPLICATION_XML_VALUE);
+		ByteArrayOutputStream out;
+		if ("eo".equals(agent)) {
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-response.xml\"");
+			out = exchangeMarshaller.generateEspdResponse(espd);
+		} else {
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-request.xml\"");
+			out = exchangeMarshaller.generateEspdRequest(espd);
 		}
+		response.setContentLength(out.size());
+		response.getOutputStream().write(out.toByteArray());
+		response.getOutputStream().flush();
 	}
 
 	@InitBinder
@@ -404,6 +492,9 @@ class EspdController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
 		binder.registerCustomEditor(Date.class, editor);
+		// additional binder for supporting empty values containing years in dynamic unbounded requirement groups
+		CustomNumberEditor numberEditor = new CustomNumberEditor(Integer.class, true);
+		binder.registerCustomEditor(Integer.class, numberEditor);
 	}
 
 	/**

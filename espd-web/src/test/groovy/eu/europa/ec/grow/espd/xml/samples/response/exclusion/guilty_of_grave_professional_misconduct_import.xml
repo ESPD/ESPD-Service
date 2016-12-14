@@ -47,9 +47,7 @@
                     <ccv:Requirement responseDataType="INDICATOR">
                         <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
                         <cbc:Description>Have you taken measures to demonstrate your reliability ("Self-Cleaning")?</cbc:Description>
-                        <ccv:Response>
-                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
-                        </ccv:Response>
+                        <ccv:Response/>
                     </ccv:Requirement>
                     <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
                         <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>

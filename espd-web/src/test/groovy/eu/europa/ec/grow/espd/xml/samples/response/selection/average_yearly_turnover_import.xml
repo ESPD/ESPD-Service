@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<espd:ESPDResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns092:ver3.0</cbc:CustomizationID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">a496fdf2-f9cd-42bd-8742-07a37759f184</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW">2016.4</cbc:VersionID>
+    <cbc:IssueDate>2016-08-23</cbc:IssueDate>
+    <cbc:IssueTime>09:30:54</cbc:IssueTime>
+    <cbc:ContractFolderID schemeAgencyID="TeD"/>
+    <cac:ProcurementProjectLot>
+        <cbc:ID schemeAgencyID="EU-COM-GROW">0</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b16cb9fc-6cb7-4585-9302-9533b415cf48</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY</cbc:TypeCode>
+        <cbc:Name>Average yearly turnover</cbc:Name>
+        <cbc:Description>Its average yearly turnover for the number of years required in the relevant notice, the procurement documents or the ESPD is as follows:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevel" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(3)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e1886054-ada4-473c-9afc-2fde82c24cf4</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b98ffd05-6572-4b07-a521-693a1754ed46</cbc:ID>
+                <cbc:Description>Number of years</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="NUMBER">3</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="AMOUNT">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">217637ba-6bdb-4c73-a38f-27fe0e71d9be</cbc:ID>
+                <cbc:Description>Average turnover</cbc:Description>
+                <ccv:Response>
+                    <cbc:Amount currencyID="RON">111.154</cbc:Amount>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+                                <cbc:ID schemeAgencyID="EU-COM-GROW">416727b5-5296-4eba-9466-85fb7bea3ad4</cbc:ID>
+                                <cac:Attachment>
+                                    <cac:ExternalReference>
+                                        <cbc:URI>www.hodor.com</cbc:URI>
+                                    </cac:ExternalReference>
+                                </cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>AVERAGE_YEARLY_TURNOVER</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5cbf74d9-a1e2-4233-921d-8b298842ee7d</cbc:ID>
+                    <cbc:Description>Issuer</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>HODOR</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+</espd:ESPDResponse>

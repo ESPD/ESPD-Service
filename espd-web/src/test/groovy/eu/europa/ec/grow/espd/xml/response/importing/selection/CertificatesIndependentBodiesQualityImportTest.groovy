@@ -49,13 +49,14 @@ class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImpo
         espd.certificateIndependentBodiesAboutQa.availableElectronically.answer == true
         espd.certificateIndependentBodiesAboutQa.availableElectronically.url == "www.hodor.com"
         espd.certificateIndependentBodiesAboutQa.availableElectronically.code == "TECHNICAL_QUALITY"
+        espd.certificateIndependentBodiesAboutQa.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true,
                 answer: true, description: "Another description",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

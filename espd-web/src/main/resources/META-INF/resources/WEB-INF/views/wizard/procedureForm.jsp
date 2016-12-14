@@ -7,7 +7,7 @@
 
 <%--
 	Attributes of procedureForm.jsp
-	
+
 	show_part_II - Boolean value to display or hide Part II (Information about EO)
 --%>
 
@@ -237,7 +237,6 @@
                             <form:radiobutton path="eoRegistered.answer" value="false" id="eo_registered_answer_no"
                                               data-target-show="#reg-official-no" data-target-hide="#reg-official-yes"/>${span18n["no"]}
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <form:checkbox path="eoRegistered.booleanValue2" id="eo_registered_na"/>${span18n['not_applicable']}
                         </div>
                     </div>
                 </div>
@@ -362,11 +361,11 @@
                 </h4>
                 <div class="btn-group pull-right hidden-print">
                     <button id="addRepresentative" type="submit" class="btn btn-default btn-sm" name="add"
-                            value="${vs.index + 1}">
+                            value="${vs.index + 1}" data-toggle="tooltip" title="Add">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
                     <button id="removeRepresentative" type="submit" class="btn btn-default btn-sm " name="remove"
-                            value="${vs.index}">
+                            value="${vs.index}" data-toggle="tooltip" title="Delete">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </div>

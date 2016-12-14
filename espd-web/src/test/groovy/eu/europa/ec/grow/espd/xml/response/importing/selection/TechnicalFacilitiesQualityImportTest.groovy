@@ -53,13 +53,14 @@ class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
         espd.technicalFacilitiesMeasures.availableElectronically.answer == true
         espd.technicalFacilitiesMeasures.availableElectronically.url == "www.hodor.com"
         espd.technicalFacilitiesMeasures.availableElectronically.code == "TECHNICAL_QUALITY"
+        espd.technicalFacilitiesMeasures.availableElectronically.issuer == "HODOR"
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true, answer: true,
                 description: "Another description",
-                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY")))
+                availableElectronically: new AvailableElectronically(answer: true, url: "www.hodor.com", code: "TECHNICAL_QUALITY", issuer: "HODOR")))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

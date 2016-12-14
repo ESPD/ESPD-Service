@@ -64,7 +64,7 @@ abstract class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture 
 
         def g1 = infoElectronicallyRequirementGroup.RequirementGroup[0]
         assert g1.ID.text() == "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b"
-        assert g1.Requirement.size() == 2
+        assert g1.Requirement.size() == 3
         assert g1.RequirementGroup.size() == 0
         assert g1.@pi.text() == "GROUP_FULFILLED.ON_TRUE"
 
@@ -77,6 +77,11 @@ abstract class AbstractExclusionCriteriaFixture extends AbstractCriteriaFixture 
         checkRequirement(r2, "1f1cd18e-3e01-4ca2-af4c-e2981924ba8d", "Code", "CODE")
         assert r2.ID.@schemeID.text() == "CriterionRelatedIDs"
         assert r2.ID.@schemeVersionID.text() == "1.0"
+
+        def r3 = g1.Requirement[2]
+        checkRequirement(r3, "c3ccfa31-0c5e-4e3a-a3fd-db9fb83d78d4", "Issuer", "DESCRIPTION")
+        assert r3.ID.@schemeID.text() == "CriterionRelatedIDs"
+        assert r3.ID.@schemeVersionID.text() == "1.0"
     }
 
 }

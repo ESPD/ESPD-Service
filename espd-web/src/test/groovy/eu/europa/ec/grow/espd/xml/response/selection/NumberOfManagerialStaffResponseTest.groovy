@@ -24,11 +24,13 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
-import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -58,21 +60,23 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        response.Criterion[idx].RequirementGroup.size() == 4
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then:
         checkYearNumberGroup1(response.Criterion[idx].RequirementGroup[0])
-        checkYearNumberGroup2(response.Criterion[idx].RequirementGroup[1])
-        checkYearNumberGroup3(response.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[3])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                year1: 2016, year2: 2015, year3: 2014))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": 2016),
+                        new DynamicRequirementGroup("year": 2015),
+                        new DynamicRequirementGroup("year": 2014)
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -103,7 +107,11 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
     def "check the 'Number' requirements response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                number1: 11, number2: 22, number3: 33))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("number": 11),
+                        new DynamicRequirementGroup("number": 22),
+                        new DynamicRequirementGroup("number": 33)
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -141,7 +149,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -157,7 +165,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_24.com")
@@ -173,7 +181,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_24"

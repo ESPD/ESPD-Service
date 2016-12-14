@@ -45,7 +45,7 @@ class EconomicOperatorRegisteredImportTest extends AbstractXmlFileImport {
         espd.eoRegistered.exists == true
         espd.eoRegistered.answer == false
         espd.eoRegistered.booleanValue1 == true
-        espd.eoRegistered.booleanValue2 == true
+        espd.eoRegistered.booleanValue2 == null // not applicable is not recognized anymore
         espd.eoRegistered.booleanValue3 == true
         espd.eoRegistered.description1 == "descr 1"
         espd.eoRegistered.description2 == "descr 2"
