@@ -39,6 +39,10 @@ public class EconomicOperatorImpl extends PartyImpl {
 
     private List<EconomicOperatorRepresentative> representatives;
     
+    public void setRepresentatives(List<EconomicOperatorRepresentative> representatives) {
+    	this.representatives = representatives;
+    }
+    
     public void copyProperties(CacParty fromParty) {
         setName(fromParty.getName());
         setWebsite(fromParty.getWebsite());

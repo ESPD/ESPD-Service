@@ -24,10 +24,13 @@
 
 package eu.europa.ec.grow.espd.xml.response.exporting;
 
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
 import eu.europa.ec.grow.espd.domain.EspdCriterion;
 import eu.europa.ec.grow.espd.domain.enums.criteria.ExpectedResponseType;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
+import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.xml.common.exporting.CommonUblFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblRequirementFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblRequirementTypeTemplate;
@@ -36,10 +39,18 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Re
 import lombok.extern.slf4j.Slf4j;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ratoico on 12/22/15 at 4:07 PM.
@@ -47,123 +58,171 @@ import java.util.Date;
 @Slf4j
 class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 
-    @Override
-    protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion) {
-        RequirementType requirementType = new RequirementType();
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("dd-MM-yyyy");
 
-        IDType idType = CommonUblFactory.buildIdType();
-        idType.setValue(ccvRequirement.getId());
-        idType.setSchemeID("CriterionRelatedIDs");
-        idType.setSchemeVersionID("1.0");
-        requirementType.setID(idType);
+	@Override
+	protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
+			CcvRequirementGroup group, int unboundedGroupIndex) {
+		RequirementType requirementType = new RequirementType();
 
-        requirementType.setDescription(UblRequirementFactory.buildDescriptionType(ccvRequirement.getDescription()));
+		IDType idType = CommonUblFactory.buildIdType();
+		idType.setValue(ccvRequirement.getId());
+		idType.setSchemeID("CriterionRelatedIDs");
+		idType.setSchemeVersionID("1.0");
+		requirementType.setID(idType);
 
-        requirementType.setResponseDataType(ccvRequirement.getResponseType().getCode());
+		requirementType.setDescription(UblRequirementFactory.buildDescriptionType(ccvRequirement.getDescription()));
 
-        requirementType.getResponse().add(buildResponse(ccvRequirement, espdCriterion));
+		requirementType.setResponseDataType(ccvRequirement.getResponseType().getCode());
 
-        return requirementType;
-    }
+		requirementType.getResponse().add(buildResponse(ccvRequirement, espdCriterion, group, unboundedGroupIndex));
 
-    private ResponseType buildResponse(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion) {
-        ResponseType responseType = new ResponseType();
+		return requirementType;
+	}
 
-        addRequirementValueOnResponse(ccvRequirement, espdCriterion, responseType);
+	private ResponseType buildResponse(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
+			CcvRequirementGroup group, int groupIndex) {
+		ResponseType responseType = new ResponseType();
 
-        return responseType;
-    }
+		addRequirementValueOnResponse(ccvRequirement, espdCriterion, responseType, group, groupIndex);
 
-    private void addRequirementValueOnResponse(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
-            ResponseType responseType) {
-        if (espdCriterion == null) {
-            return;
-        }
+		return responseType;
+	}
 
-        ExpectedResponseType type = (ExpectedResponseType) ccvRequirement.getResponseType();
-        switch (type) {
-        case INDICATOR:
-            Boolean answer = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            if (answer != null) {
-                responseType.setIndicator(UblRequirementFactory.buildIndicatorType(answer));
-            }
-            break;
-        case DATE:
-            Date date = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setDate(UblRequirementFactory.buildDateType(date));
-            break;
-        case DESCRIPTION:
-            String description = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setDescription(UblRequirementFactory.buildDescriptionType(description));
-            break;
-        case EVIDENCE_URL:
-            String url = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.getEvidence().add(UblRequirementFactory.buildEvidenceType(url));
-            break;
-        case QUANTITY:
-            BigDecimal quantity = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setQuantity(UblRequirementFactory.buildQuantityType(quantity));
-            break;
-        case QUANTITY_YEAR:
-            Integer year = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setQuantity(UblRequirementFactory.buildYearType(year));
-            break;
-        case QUANTITY_INTEGER:
-            Integer value = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setQuantity(UblRequirementFactory.buildQuantityIntegerType(value));
-            break;
-        case AMOUNT:
-            BigDecimal amount = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            String currency = readRequirementSecondValue(ccvRequirement, espdCriterion);
-            responseType.setAmount(UblRequirementFactory.buildAmountType(amount, currency));
-            break;
-        case CODE_COUNTRY:
-            Country country = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setCode(UblRequirementFactory.buildCountryType(country));
-            break;
-        case PERCENTAGE:
-            BigDecimal percentage = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setPercent(UblRequirementFactory.buildPercentType(percentage));
-            break;
-        case PERIOD:
-            String period = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setPeriod(UblRequirementFactory.buildPeriodType(period));
-            break;
-        case CODE:
-            String code = readRequirementFirstValue(ccvRequirement, espdCriterion);
-            responseType.setCode(UblRequirementFactory.buildCodeType(code));
-            break;
-        default:
-            throw new IllegalArgumentException(String.format(
-                    "Could not save the requirement '%s' with id '%s' and expected response type '%s' on the ESPD Response.",
-                    ccvRequirement, ccvRequirement.getId(), type));
-        }
+	private void addRequirementValueOnResponse(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
+			ResponseType responseType, CcvRequirementGroup group, int groupIndex) {
+		if (espdCriterion == null) {
+			return;
+		}
 
-    }
+		ExpectedResponseType type = (ExpectedResponseType) ccvRequirement.getResponseType();
+		// values from the Maps of the unbounded groups are somehow(how?) converted to Strings
+		Object value = readRequirementFirstValue(ccvRequirement, espdCriterion, group, groupIndex);
+		switch (type) {
+		case INDICATOR:
+			if (value != null) {
+				responseType.setIndicator(UblRequirementFactory.buildIndicatorType((Boolean) value));
+			}
+			break;
+		case DATE:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseDateFromString((String) value);
+			}
+			responseType.setDate(UblRequirementFactory.buildDateType((Date) value));
+			break;
+		case DESCRIPTION:
+			responseType.setDescription(UblRequirementFactory.buildDescriptionType((String) value));
+			break;
+		case EVIDENCE_URL:
+			responseType.getEvidence().add(UblRequirementFactory.buildEvidenceType((String) value));
+			break;
+		case QUANTITY:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildQuantityType((BigDecimal) value));
+			break;
+		case QUANTITY_YEAR:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseIntegerFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildYearType((Integer) value));
+			break;
+		case QUANTITY_INTEGER:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseIntegerFromString((String) value);
+			}
+			responseType.setQuantity(UblRequirementFactory.buildQuantityIntegerType((Integer) value));
+			break;
+		case AMOUNT:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
+			String currency = readRequirementSecondValue(ccvRequirement, espdCriterion, group, groupIndex);
+			responseType.setAmount(UblRequirementFactory.buildAmountType((BigDecimal) value, currency));
+			break;
+		case CODE_COUNTRY:
+			responseType.setCode(UblRequirementFactory.buildCountryType((Country) value));
+			break;
+		case PERCENTAGE:
+			if (group.isUnbounded() && value instanceof String) {
+				value = parseBigDecimalFromString((String) value);
+			}
+			responseType.setPercent(UblRequirementFactory.buildPercentType((BigDecimal) value));
+			break;
+		case PERIOD:
+			responseType.setPeriod(UblRequirementFactory.buildPeriodType((String) value));
+			break;
+		case CODE:
+			responseType.setCode(UblRequirementFactory.buildCodeType((String) value));
+			break;
+		default:
+			throw new IllegalArgumentException(String.format(
+					"Could not save the requirement '%s' with id '%s' and expected response type '%s' on the ESPD Response.",
+					ccvRequirement, ccvRequirement.getId(), type));
+		}
+	}
 
-    private <T> T readRequirementFirstValue(CcvCriterionRequirement requirement, EspdCriterion espdCriterion) {
-        // most requirements are mapped to only one ESPD field
-        return readRequirementValueAtPosition(requirement, espdCriterion, 0);
-    }
+	private BigDecimal parseBigDecimalFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance();
+		nf.setParseBigDecimal(true);
+		return (BigDecimal) nf.parse(value, new ParsePosition(0));
+	}
 
-    private <T> T readRequirementSecondValue(CcvCriterionRequirement requirement, EspdCriterion espdCriterion) {
-        // this method is needed by requirements of type AMOUNT which are mapped to two fields (amount and currency)
-        return readRequirementValueAtPosition(requirement, espdCriterion, 1);
-    }
+	private Integer parseIntegerFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		return Integer.valueOf(value);
+	}
 
-    @SuppressWarnings("unchecked")
-    private <T> T readRequirementValueAtPosition(CcvCriterionRequirement requirement, EspdCriterion espdCriterion,
-            int position) {
-        if (requirement.getEspdCriterionFields().get(position) == null) {
-            // there is one criterion which is not mapped to any field (3a6fefd4-f458-4d43-97fb-0725fce5dce2) financial ratio
-            return null;
-        }
-        try {
-            // all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
-            return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            log.error(e.getMessage(), e);
-            return null;
-        }
-    }
+	private Date parseDateFromString(String value) {
+		if (StringUtils.isBlank(value)) {
+			return null;
+		}
+		return DATE_TIME_FORMATTER.parseLocalDate(value).toDate();
+	}
+
+	private <T> T readRequirementFirstValue(CcvCriterionRequirement requirement, EspdCriterion espdCriterion,
+			CcvRequirementGroup group, int groupIndex) {
+		// most requirements are mapped to only one ESPD field
+		return readRequirementValueAtPosition(requirement, espdCriterion, 0, group, groupIndex);
+	}
+
+	private <T> T readRequirementSecondValue(CcvCriterionRequirement requirement, EspdCriterion espdCriterion,
+			CcvRequirementGroup group, int groupIndex) {
+		// this method is needed by requirements of type AMOUNT which are mapped to two fields (amount and currency)
+		return readRequirementValueAtPosition(requirement, espdCriterion, 1, group, groupIndex);
+	}
+
+	@SuppressWarnings("unchecked")
+	private <T> T readRequirementValueAtPosition(CcvCriterionRequirement requirement, EspdCriterion espdCriterion,
+			int position, CcvRequirementGroup group, int groupIndex) {
+		if (requirement.getEspdCriterionFields().get(position) == null) {
+			// there is one criterion which is not mapped to any field (3a6fefd4-f458-4d43-97fb-0725fce5dce2) financial ratio
+			return null;
+		}
+
+		try {
+			if (group.isUnbounded()) {
+				List<DynamicRequirementGroup> unboundedGroups = ((UnboundedRequirementGroup) espdCriterion)
+						.getUnboundedGroups();
+				if (CollectionUtils.isEmpty(unboundedGroups)) {
+					return null;
+				}
+				return (T) PropertyUtils
+						.getProperty(unboundedGroups.get(groupIndex),
+								requirement.getEspdCriterionFields().get(position));
+			}
+
+			// all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
+			return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+			log.error(e.getMessage(), e);
+			return null;
+		}
+	}
 }

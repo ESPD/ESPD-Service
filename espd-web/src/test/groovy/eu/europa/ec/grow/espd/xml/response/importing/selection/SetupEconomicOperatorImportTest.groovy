@@ -41,13 +41,13 @@ class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
 
         then: "selection criteria with no answer have a default value of true"
         espd.setupEconomicOperator.answer == true
-        espd.setupEconomicOperator.year1 == 2016
+        espd.setupEconomicOperator.year == 2016
     }
 
     def "all fields needed to generate a XML sample"() {
         given:
         def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true, answer: true,
-                year1: 2016))
+                year: 2016))
 //                saveEspdAsXmlResponse(espd, "/home/ratoico/Downloads/espd-response.xml")
 
         expect:

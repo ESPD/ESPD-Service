@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
@@ -58,21 +59,22 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         checkLegislationReference(response, idx, "58(4)")
 
         then: "check all the sub groups"
-        response.Criterion[idx].RequirementGroup.size() == 4
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then:
         checkYearNumberGroup1(response.Criterion[idx].RequirementGroup[0])
-        checkYearNumberGroup2(response.Criterion[idx].RequirementGroup[1])
-        checkYearNumberGroup3(response.Criterion[idx].RequirementGroup[2])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[3])
+        checkInfoAvailableElectronicallyRequirementGroup(response.Criterion[idx].RequirementGroup[1])
     }
 
     def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true,
-                year1: 2016, year2: 2015, year3: 2014))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": 2016),
+                        new DynamicRequirementGroup("year": 2015),
+                        new DynamicRequirementGroup("year": 2014)]))
 
         when:
         def response = parseResponseXml(espd)
@@ -103,7 +105,10 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Number' requirements response"() {
         given:
         def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true,
-                number1: 11, number2: 22, number3: 33))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("number": 11),
+                        new DynamicRequirementGroup("number": 22),
+                        new DynamicRequirementGroup("number": 33)]))
 
         when:
         def response = parseResponseXml(espd)
@@ -141,7 +146,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3]
+        def subGroup = response.Criterion[idx].RequirementGroup[1]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -157,7 +162,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = subGroup.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_25.com")
@@ -173,10 +178,26 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
-        def subGroup = response.Criterion[idx].RequirementGroup[3].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = subGroup.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_25"
+    }
+
+    def "check the 'Info electronically issuer' requirement response"() {
+        given:
+        def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true,
+                availableElectronically: new AvailableElectronically(answer: true, issuer: "HODOR_25")))
+
+        when:
+        def response = parseResponseXml(espd)
+        def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
+
+        then:
+        def subGroup = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
+        def req = subGroup.Requirement[2]
+        req.Response.size() == 1
+        req.Response[0].Description.text() == "HODOR_25"
     }
 
 }

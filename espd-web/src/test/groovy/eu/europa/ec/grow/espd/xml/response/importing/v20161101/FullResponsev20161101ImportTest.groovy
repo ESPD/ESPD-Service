@@ -22,7 +22,7 @@
  *
  */
 
-package eu.europa.ec.grow.espd.xml.response.importing.v20160402
+package eu.europa.ec.grow.espd.xml.response.importing.v20161101
 
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.enums.other.Country
@@ -34,18 +34,16 @@ import org.joda.time.LocalTime
 import spock.lang.Shared
 
 /**
- * Backwards compatibility with version 20160402 test.
- *
- * Created by ratoico on 5/30/16.
+ * Created by ratoico on 12/6/16.
  */
-class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
+class FullResponsev20161101ImportTest extends AbstractXmlFileImport {
 
     @Shared
     static EspdDocument espd
 
     void setupSpec() {
         // init objects run before the first feature method
-        espd = parseXmlResponseFile("v20160402/espd-response-20160402-full.xml")
+        espd = parseXmlResponseFile("v20161101/espd-response-20161101-full.xml")
     }
 
     void cleanupSpec() {
@@ -61,7 +59,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.economicOperator.street == "Roma avenue 16"
         espd.economicOperator.postalCode == "00199"
         espd.economicOperator.city == "Roma"
-        espd.economicOperator.country == Country.IT
+        espd.economicOperator.country == Country.BH
         espd.economicOperator.contactName == "Giacommo Dino"
         espd.economicOperator.contactPhone == "0039456456"
         espd.economicOperator.contactEmail == "liban@mailinator.com"
@@ -109,6 +107,11 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:12345-2016:TEXT:EN:HTML"
     }
 
+    def "should import consortium name"() {
+        expect:
+        espd.consortiumName == "Hodor consortium"
+    }
+
     def "01. should import all fields of 'Participation in a criminal organisation'"() {
         expect:
         espd.criminalConvictions.exists == true
@@ -139,7 +142,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
 
         and: "self cleaning"
         espd.corruption.selfCleaning.answer == true
-        espd.corruption.selfCleaning.description == "Get yer godforsaken bonnie lass out of me teeth!"
+        espd.corruption.selfCleaning.description == "Get yer godforsaken bonnie lass out of me teeth!!"
 
         and: "info electronically"
         espd.corruption.availableElectronically.answer == true
@@ -452,12 +455,6 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.purelyNationalGrounds.availableElectronically.code == "Purely national exclusion grounds code"
     }
 
-    def "01. should import all fields of 'Satisfies all'"() {
-        expect:
-        espd.selectionSatisfiesAll.exists == true
-        espd.selectionSatisfiesAll.answer == false
-    }
-
     def "02. should import all fields of 'Enrolment in a relevant professional register'"() {
         expect:
         espd.enrolmentProfessionalRegister.exists == true
@@ -538,7 +535,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         unboundedGroups[3].get("currency") == "CHF"
 
         and:
-        unboundedGroups[4].get("year") == 2016
+        unboundedGroups[4].get("year") == 2011
         unboundedGroups[4].get("amount") == 5000000.0
         unboundedGroups[4].get("currency") == "PLN"
 
@@ -649,7 +646,6 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         unboundedGroups[2].get("description") == "TEST_3"
         unboundedGroups[2].get("ratio") == 3.0
 
-        // The following ids for used in version 2016.04: 4564d79e-5db6-4a31-93ee-ac1f0019bdcb, bc43685e-8473-40e3-b174-3233aead6207
         and:
         unboundedGroups[3].get("description") == "TEST_4"
         unboundedGroups[3].get("ratio") == 4.0
@@ -759,7 +755,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         unboundedGroups[1].get("description") == "TEST B"
         unboundedGroups[1].get("amount") == 300000.0
         unboundedGroups[1].get("currency") == "RON"
-        unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2016-02-05").toDate()
+        unboundedGroups[1].get("startDate") ==LocalDateAdapter.unmarshal("2016-02-05").toDate()
         unboundedGroups[1].get("recipients") == "rec 2"
 
         and:
@@ -793,6 +789,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         expect:
         espd.serviceContractsPerformanceServices.exists == true
         espd.serviceContractsPerformanceServices.answer == true
+
         def unboundedGroups = espd.serviceContractsPerformanceServices.unboundedGroups
 
         and:
@@ -932,11 +929,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.environmentalManagementFeatures.answer == true
 
         and:
-        // version 2016.04 was using this id '96defecc-7d32-4957-82e9-aad5f3c5b736' for the requirement group containing the 'description' field
-        // this id is in use on 'number of managerial staff' and 'annual average manpower' criteria so we cannot import the old field anymore
-        // the old value is commented below just for history reasons
-        // espd.environmentalManagementFeatures.description == "Scallywaggin', weighin' anchor' an' broadsidin' — that be how ye sail."
-        espd.environmentalManagementFeatures.description == null
+        espd.environmentalManagementFeatures.description == "Scallywaggin', weighin' anchor' an' broadsidin' — that be how ye sail."
 
         and: "info electronically"
         espd.environmentalManagementFeatures.availableElectronically.answer == true
@@ -989,7 +982,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         unboundedGroups[1].get("number") == 654
 
         and:
-        unboundedGroups[2].get("year") == 2010
+        unboundedGroups[2].get("year") == 2013
         unboundedGroups[2].get("number") == 987
 
         and: "info electronically"
@@ -1068,7 +1061,7 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         expect:
         espd.certificateIndependentBodiesAboutEnvironmental.exists == true
         espd.certificateIndependentBodiesAboutEnvironmental.answer == false
-        espd.certificateIndependentBodiesAboutEnvironmental.description == "I be cuttin' off her ol' poop deck an' feedin' it to me heartie."
+        espd.certificateIndependentBodiesAboutEnvironmental.description == "I be cuttin' off her ol' poop deck an' feedin' it to me heartie!"
 
         and: "info electronically"
         espd.certificateIndependentBodiesAboutEnvironmental.availableElectronically.answer == true
@@ -1133,5 +1126,12 @@ class FullResponsev20160402ImportTest extends AbstractXmlFileImport {
         espd.meetsObjective.availableElectronically.url == "http://www.agrismundus.eu/"
         espd.meetsObjective.availableElectronically.code == "reduction code"
     }
+
+    def "should import the concluding statements"() {
+        expect:
+        espd.documentDate == LocalDateAdapter.unmarshal("2016-05-30").toDate()
+        espd.location == "Mines of Moria"
+    }
+
 
 }

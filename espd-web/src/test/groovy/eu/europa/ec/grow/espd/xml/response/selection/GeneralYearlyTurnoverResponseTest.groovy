@@ -24,6 +24,7 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
@@ -58,26 +59,28 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         checkLegislationReference(response, idx, "58(3)")
 
         then: "check all the sub groups"
-        response.Criterion[idx].RequirementGroup.size() == 6
+        response.Criterion[idx].RequirementGroup.size() == 2
 
         then: "G1"
         def crit = response.Criterion[idx]
 
         then: "check year amount currency subgroups"
         checkYearAmountCurrencyGroup1(crit.RequirementGroup[0])
-        checkYearAmountCurrencyGroup2(crit.RequirementGroup[1])
-        checkYearAmountCurrencyGroup3(crit.RequirementGroup[2])
-        checkYearAmountCurrencyGroup4(crit.RequirementGroup[3])
-        checkYearAmountCurrencyGroup5(crit.RequirementGroup[4])
 
         then: "info available electronically sub group"
-        checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[5])
+        checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[1])
     }
 
     def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                year1: 2016, year2: 2015, year3: 2014, year4: 2013, year5: 2012))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": 2016),
+                        new DynamicRequirementGroup("year": 2015),
+                        new DynamicRequirementGroup("year": 2014),
+                        new DynamicRequirementGroup("year": 2013),
+                        new DynamicRequirementGroup("year": 2012)
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -123,7 +126,13 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check empty 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                year1: null, year2: null, year3: null))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("year": null),
+                        new DynamicRequirementGroup("year": null),
+                        new DynamicRequirementGroup("year": null),
+                        new DynamicRequirementGroup("year": null),
+                        new DynamicRequirementGroup("year": null)
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -164,8 +173,13 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check the 'Amount' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: 11.11, amount2: 22.22, amount3: 33.33, amount4: 44.44, amount5: 55.55,
-                currency1: "EUR", currency2: "RON", currency3: "USD", currency4: "CHF", currency5: "ALD"))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("amount": 11.11, "currency": "EUR"),
+                        new DynamicRequirementGroup("amount": 22.22, "currency": "RON"),
+                        new DynamicRequirementGroup("amount": 33.33, "currency": "USD"),
+                        new DynamicRequirementGroup("amount": 44.44, "currency": "CHF"),
+                        new DynamicRequirementGroup("amount": 55.55, "currency": "ALD"),
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -211,8 +225,13 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
     def "check empty 'Amount' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                amount1: null, amount2: null, amount3: null,
-                currency1: "EUR", currency2: "RON", currency3: "USD", currency4: "CHF", currency5: "ALB"))
+                unboundedGroups: [
+                        new DynamicRequirementGroup("amount": null, "currency": "EUR"),
+                        new DynamicRequirementGroup("amount": null, "currency": "RON"),
+                        new DynamicRequirementGroup("amount": null, "currency": "USD"),
+                        new DynamicRequirementGroup("amount": null, "currency": "CHF"),
+                        new DynamicRequirementGroup("amount": null, "currency": "ALD"),
+                ]))
 
         when:
         def response = parseResponseXml(espd)
@@ -260,7 +279,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
-        def g6 = response.Criterion[idx].RequirementGroup[5]
+        def g6 = response.Criterion[idx].RequirementGroup[1]
         def req = g6.Requirement[0]
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
@@ -276,7 +295,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
-        def g6_1 = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
+        def g6_1 = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = g6_1.Requirement[0]
         req.Response.size() == 1
         checkEvidence(req.Response[0].Evidence, "http://hodor_06.com")
@@ -292,7 +311,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
-        def g6_1 = response.Criterion[idx].RequirementGroup[5].RequirementGroup[0]
+        def g6_1 = response.Criterion[idx].RequirementGroup[1].RequirementGroup[0]
         def req = g6_1.Requirement[1]
         req.Response.size() == 1
         req.Response[0].Code.text() == "HODOR_06"

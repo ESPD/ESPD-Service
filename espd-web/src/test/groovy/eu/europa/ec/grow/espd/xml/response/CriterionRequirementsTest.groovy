@@ -137,7 +137,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
     def "an Year empty requirement should have empty response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                year1: null))
+                unboundedGroups: [new DynamicRequirementGroup("year": null)]))
 
         when:
         def request = parseResponseXml(espd)
@@ -153,7 +153,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
     def "a Number empty requirement should have empty response"() {
         given:
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true,
-                number1: null))
+                unboundedGroups: [new DynamicRequirementGroup("number": null)]))
 
         when:
         def request = parseResponseXml(espd)
@@ -169,14 +169,14 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
     def "a Quantity empty requirement should have empty response"() {
         given:
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true,
-                ratio1: null))
+                unboundedGroups: [new DynamicRequirementGroup("ratio": null)]))
 
         when:
         def request = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.FINANCIAL_RATIO)
 
         then:
-        def subGroup1 = request.Criterion[idx].RequirementGroup[0].RequirementGroup[0]
+        def subGroup1 = request.Criterion[idx].RequirementGroup[0]
         def req1 = subGroup1.Requirement[1]
         req1.Response.size() == 1
         req1.Response[0].Quantity.size() == 0

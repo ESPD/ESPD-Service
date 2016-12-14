@@ -8,114 +8,105 @@
     <cbc:IssueDate>2016-01-13</cbc:IssueDate>
     <cbc:IssueTime>15:40:36</cbc:IssueTime>
     <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
-    <cac:ContractingParty/>
     <cac:ProcurementProjectLot>
         <cbc:ID>0</cbc:ID>
     </cac:ProcurementProjectLot>
     <ccv:Criterion>
         <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46</cbc:ID>
-        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">SELECTION.ECONOMIC_FINANCIAL_STANDING</cbc:TypeCode>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO</cbc:TypeCode>
         <cbc:Name>Financial ratio</cbc:Name>
         <cbc:Description>Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:</cbc:Description>
         <ccv:LegislationReference>
             <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
             <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
-            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevel" listAgencyID="EU-COM-GROW" listVersionID="1.0.2">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
             <ccv-cbc:Article>58(3)</ccv-cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
         </ccv:LegislationReference>
         <ccv:RequirementGroup>
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cf00f7bb-c2cf-4565-91bb-221d78d8dd2f</cbc:ID>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
             <ccv:Requirement responseDataType="DESCRIPTION">
-                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3a6fefd4-f458-4d43-97fb-0725fce5dce2</cbc:ID>
-                <cbc:Description>Please provide the requested data below</cbc:Description>
-                <ccv:Response/>
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description1</cbc:Description>
+                </ccv:Response>
             </ccv:Requirement>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
-                    <cbc:Description>Description</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>description1</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="QUANTITY">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
-                    <cbc:Description>Ratio</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Quantity>11.1</cbc:Quantity>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ce5a61e7-0b0d-4c8b-ac55-2a457743022a</cbc:ID>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">927def36-1fa3-4018-8b45-7ee2c5b1e0af</cbc:ID>
-                    <cbc:Description>Description</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>description2</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="QUANTITY">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">295d82b7-5ee6-4977-8aea-bac4acf6ecdf</cbc:ID>
-                    <cbc:Description>Ratio</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Quantity>22.2</cbc:Quantity>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3d0734f0-8f9b-4218-a245-c535e3773bc5</cbc:ID>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</cbc:ID>
-                    <cbc:Description>Description</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>description3</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="QUANTITY">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">2b792afb-87ba-47b5-a80c-aee76a6f2cc8</cbc:ID>
-                    <cbc:Description>Ratio</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Quantity>33.3</cbc:Quantity>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">87fda668-c758-4c54-af0a-0210e6ded32d</cbc:ID>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b1640c24-b405-443e-bf5e-d7771f66aab6</cbc:ID>
-                    <cbc:Description>Description</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>description4</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="QUANTITY">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">22dc4bef-182d-4b81-bddc-cc30b218f9bb</cbc:ID>
-                    <cbc:Description>Ratio</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Quantity>44.4</cbc:Quantity>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
-            <ccv:RequirementGroup>
-                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">637f9db3-ee53-48f7-8ee7-aefa58260730</cbc:ID>
-                <ccv:Requirement responseDataType="DESCRIPTION">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">587129bc-a5e1-43be-94ac-6e5366d30c67</cbc:ID>
-                    <cbc:Description>Description</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Description>description5</cbc:Description>
-                    </ccv:Response>
-                </ccv:Requirement>
-                <ccv:Requirement responseDataType="QUANTITY">
-                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">990eef0a-14c6-41af-8bf2-b8311332d152</cbc:ID>
-                    <cbc:Description>Ratio</cbc:Description>
-                    <ccv:Response>
-                        <cbc:Quantity>55.5</cbc:Quantity>
-                    </ccv:Response>
-                </ccv:Requirement>
-            </ccv:RequirementGroup>
+            <ccv:Requirement responseDataType="QUANTITY">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                <cbc:Description>Ratio</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity>11.1</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description2</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                <cbc:Description>Ratio</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity>22.2</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description3</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                <cbc:Description>Ratio</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity>33.3</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description4</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                <cbc:Description>Ratio</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity>44.4</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                <cbc:Description>Description</cbc:Description>
+                <ccv:Response>
+                    <cbc:Description>description5</cbc:Description>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                <cbc:Description>Ratio</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity>55.5</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
         </ccv:RequirementGroup>
         <ccv:RequirementGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
@@ -134,7 +125,7 @@
                     <ccv:Response>
                         <cev:Evidence>
                             <cev:EvidenceDocumentReference>
-                                <cbc:ID>bbbc299e-dbe6-408f-b137-18c9b919a673</cbc:ID>
+                                <cbc:ID schemeAgencyID="EU-COM-GROW">0404f018-b67a-4274-8b15-1672772c73a0</cbc:ID>
                                 <cac:Attachment>
                                     <cac:ExternalReference>
                                         <cbc:URI>www.hodor.com</cbc:URI>

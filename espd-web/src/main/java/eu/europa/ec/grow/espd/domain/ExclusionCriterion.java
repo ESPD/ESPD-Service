@@ -31,8 +31,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public abstract class ExclusionCriterion extends EspdCriterion {
 
-    private AvailableElectronically availableElectronically;
-    private SelfCleaning selfCleaning;
+    private SelfCleaning selfCleaning = new SelfCleaning();
+
     private String description;
 
     public final String getSelfCleaningDescription() {
@@ -42,34 +42,21 @@ public abstract class ExclusionCriterion extends EspdCriterion {
         return null;
     }
 
-    public final boolean getInfoElectronicallyAnswer() {
-        return availableElectronically != null && Boolean.TRUE.equals(availableElectronically.getAnswer());
-    }
-
-    public final String getInfoElectronicallyUrl() {
-        if (availableElectronically != null) {
-            return availableElectronically.getUrl();
-        }
-        return null;
-    }
-
-    public final String getInfoElectronicallyCode() {
-        if (availableElectronically != null) {
-            return availableElectronically.getCode();
-        }
-        return null;
-    }
-
-	public final String getInfoElectronicallyIssuer() {
-		if (availableElectronically != null) {
-			return availableElectronically.getIssuer();
+	public final void setSelfCleaningDescription(String description) {
+		if (selfCleaning != null) {
+			selfCleaning.setDescription(description);
 		}
-		return null;
 	}
 
     public final boolean getSelfCleaningAnswer() {
         return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getAnswer());
     }
+
+	public final void setSelfCleaningAnswer(boolean answer) {
+		if (selfCleaning != null) {
+			selfCleaning.setAnswer(answer);
+		}
+	}
 
     @Override
     public Boolean getAnswer() {

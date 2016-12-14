@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.xml.request.exporting;
 
 import eu.europa.ec.grow.espd.domain.EspdCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterionRequirement;
+import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import eu.europa.ec.grow.espd.xml.common.exporting.CommonUblFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblRequirementTypeTemplate;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
@@ -39,22 +40,23 @@ import org.springframework.stereotype.Component;
 @Component
 class UblRequestRequirementTransformer extends UblRequirementTypeTemplate {
 
-    @Override
-    protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion) {
-        RequirementType requirementType = new RequirementType();
+	@Override
+	protected RequirementType buildRequirementType(CcvCriterionRequirement ccvRequirement, EspdCriterion espdCriterion,
+			CcvRequirementGroup group, int unboundedGroupIndex) {
+		RequirementType requirementType = new RequirementType();
 
-        IDType idType = CommonUblFactory.buildIdType();
-        idType.setValue(ccvRequirement.getId());
-        idType.setSchemeID("CriterionRelatedIDs");
-        idType.setSchemeVersionID("1.0");
-        requirementType.setID(idType);
+		IDType idType = CommonUblFactory.buildIdType();
+		idType.setValue(ccvRequirement.getId());
+		idType.setSchemeID("CriterionRelatedIDs");
+		idType.setSchemeVersionID("1.0");
+		requirementType.setID(idType);
 
-        DescriptionType descriptionType = new DescriptionType();
-        descriptionType.setValue(ccvRequirement.getDescription());
-        requirementType.setDescription(descriptionType);
+		DescriptionType descriptionType = new DescriptionType();
+		descriptionType.setValue(ccvRequirement.getDescription());
+		requirementType.setDescription(descriptionType);
 
-        requirementType.setResponseDataType(ccvRequirement.getResponseType().getCode());
+		requirementType.setResponseDataType(ccvRequirement.getResponseType().getCode());
 
-        return requirementType;
-    }
+		return requirementType;
+	}
 }
