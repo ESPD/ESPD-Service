@@ -43,6 +43,235 @@ public final class CriteriaTemplates {
 
     }
 
+    /* EXCLUSION CE */
+    public static final Map[] criminalListCE = new Map[] {
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "criminalConvictions").
+                    put("title_code", "crit_eu_title_grounds_criminal_conv").
+                    put("description_code", "crit_eu_text_grounds_criminal_conv").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "corruption").
+                    put("title_code", "crit_eu_title_corruption").
+                    put("description_code", "crit_eu_text_corruption").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.CORRUPTION).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "fraud").
+                    put("title_code", "crit_eu_title_fraud").
+                    put("description_code", "crit_eu_text_fraud").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.FRAUD).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "terroristOffences").
+                    put("title_code", "crit_eu_title_terrorist").
+                    put("description_code", "crit_eu_text_terrorist").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.TERRORIST_OFFENCES).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "moneyLaundering").
+                    put("title_code", "crit_eu_title_money_laundering").
+                    put("description_code", "crit_eu_text_money_laundering").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.MONEY_LAUNDERING).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "childLabour").
+                    put("title_code", "crit_eu_title_child_labour").
+                    put("description_code", "crit_eu_text_child_labour").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.CHILD_LABOUR).build()
+    };
+
+    public static final Map[] taxesListCE = new Map[] {
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "paymentTaxes").
+                    put("title_code", "crit_eu_title_payment_taxes").
+                    put("description_code", "crit_eu_text_payment_taxes").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.PAYMENT_OF_TAXES).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "paymentSocialSecurity").
+                    put("title_code", "crit_eu_title_payment_social_security").
+                    put("description_code", "crit_eu_text_payment_social_security").
+                    put("is_always_checked", "false").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY).build()
+    };
+
+    public static final Map[] insolvencyListCE = new Map[] {
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "breachingObligationsEnvironmental").
+                    put("title_code", "crit_eu_title_breaching_obligations_environmental").
+                    put("description_code", "crit_eu_text_breaching_obligations_environmental").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "breachingObligationsSocial").
+                    put("title_code", "crit_eu_title_breaching_obligations_social").
+                    put("description_code", "crit_eu_text_breaching_obligations_social").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "breachingObligationsLabour").
+                    put("title_code", "crit_eu_title_breaching_obligations_labour").
+                    put("description_code", "crit_eu_text_breaching_obligations_labour").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "bankruptcy").
+                    put("title_code", "crit_eu_title_bankrupt").
+                    put("description_code", "crit_eu_text_bankrupt").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.BANKRUPTCY).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "insolvency").
+                    put("title_code", "crit_eu_title_insolvency").
+                    put("description_code", "crit_eu_text_insolvency").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.INSOLVENCY).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "arrangementWithCreditors").
+                    put("title_code", "crit_eu_title_arrangement_creditors").
+                    put("description_code", "crit_eu_text_arrangement_creditors").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "analogousSituation").
+                    put("title_code", "crit_eu_title_national_bankruptcy").
+                    put("description_code", "crit_eu_text_national_bankruptcy").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.ANALOGOUS_SITUATION).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "assetsAdministeredByLiquidator").
+                    put("title_code", "crit_eu_title_liquidator").
+                    put("description_code", "crit_eu_text_liquidator").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "businessActivitiesSuspended").
+                    put("title_code", "crit_eu_title_suspended_business").
+                    put("description_code", "crit_eu_text_suspended_business").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "guiltyGrave").
+                    put("title_code", "crit_eu_title_guilty_misconduct").
+                    put("description_code", "crit_eu_text_guilty_misconduct").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "agreementsWithOtherEO").
+                    put("title_code", "crit_eu_title_agreement_economic").
+                    put("description_code", "crit_eu_text_agreement_economic").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "conflictInterest").
+                    put("title_code", "crit_eu_title_conflict_interest").
+                    put("description_code", "crit_eu_text_conflict_interest").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "involvementPreparationProcurement").
+                    put("title_code", "crit_eu_title_involvement").
+                    put("description_code", "crit_eu_text_involvement").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "earlyTermination").
+                    put("title_code", "crit_eu_title_early_termination").
+                    put("description_code", "crit_eu_text_early_termination").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.EARLY_TERMINATION).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "checkTemplate").
+                    put("field", "guiltyMisinterpretation").
+                    put("title_code", "crit_eu_title_guilty_misinterpretation").
+                    put("description_code", "crit_eu_text_guilty_misinterpretation").
+                    put("is_always_checked", "false").
+                    put("default_value", "true").
+                    put("is_disabled", "true").
+                    put("criterion", ExclusionCriterion.GUILTY_OF_MISINTERPRETATION).build()
+    };
+
     /* EXCLUSION CA */
     public static final Map[] criminalListCA = new Map[] {
             ImmutableMap.<String, Object>builder().
@@ -1043,6 +1272,32 @@ public final class CriteriaTemplates {
                     put("title_code", "crit_top_title_insolvency_conflicts").
                     put("subtitle_code", "crit_eu_main_breaching_obligations").
                     put("criteriaList", insolvencyListCA).build(),
+    };
+
+    /**
+     * TOP LEVEL EXCLUSION CE
+     */
+    public static final Map[] exclusionCE = new Map[] {
+            ImmutableMap.<String, Object>builder().
+                    put("template", "euCriteriaListTemplate").
+                    put("id", "ca-criminal-convictions-section").
+                    put("title_code", "crit_top_title_grounds_criminal_conv").
+                    put("subtitle_code", "crit_eu_main_title_grounds_criminal_conv").
+                    put("criteriaList", criminalListCE).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "euCriteriaListTemplate").
+                    put("id", "ca-payment-of-taxes-section").
+                    put("title_code", "crit_top_title_grounds_payment_taxes").
+                    put("subtitle_code", "crit_eu_main_title_payment_taxes").
+                    put("criteriaList", taxesListCE).build(),
+
+            ImmutableMap.<String, Object>builder().
+                    put("template", "euCriteriaListTemplate").
+                    put("id", "ca-insolvency-section").
+                    put("title_code", "crit_top_title_insolvency_conflicts").
+                    put("subtitle_code", "crit_eu_main_breaching_obligations").
+                    put("criteriaList", insolvencyListCE).build(),
     };
 
     /**

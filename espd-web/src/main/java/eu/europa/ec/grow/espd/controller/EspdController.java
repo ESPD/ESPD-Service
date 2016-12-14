@@ -116,8 +116,10 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=ca_create_espd_request")
 	public String createNewRequestAsCA(
+			@RequestParam("agent") String agent,
 			@RequestParam("authority.country") Country country,
 			@ModelAttribute("espd") EspdDocument document) throws IOException {
+		document.setExtendCe("ce".equals(agent));
 		document.getAuthority().setCountry(country);
 		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
@@ -150,6 +152,7 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=ca_reuse_espd_request")
 	public String reuseRequestAsCA(
+			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
 			@ModelAttribute("espd") EspdDocument document,
 			Model model,
@@ -157,7 +160,9 @@ class EspdController {
 		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
 			if (espd.isPresent()) {
-				model.addAttribute("espd", espd.get());
+				EspdDocument espdGot = espd.get();
+				espdGot.setExtendCe("ce".equals(agent));
+				model.addAttribute("espd", espdGot);
 				return redirectToPage(REQUEST_CA_PROCEDURE_PAGE);
 			}
 		}
@@ -168,6 +173,7 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=ca_review_espd_response")
 	public String reviewResponseAsCA(
+			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
 			@ModelAttribute("espd") EspdDocument document,
 			Model model,
@@ -175,7 +181,9 @@ class EspdController {
 		try (InputStream is = attachments.get(0).getInputStream()) {
 			Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
 			if (espd.isPresent()) {
-				model.addAttribute("espd", espd.get());
+				EspdDocument espdGot = espd.get();
+				espdGot.setExtendCe("ce".equals(agent));
+				model.addAttribute("espd", espdGot);
 				return redirectToPage(PRINT_PAGE);
 			}
 		}

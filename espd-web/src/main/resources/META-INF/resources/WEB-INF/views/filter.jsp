@@ -113,6 +113,10 @@ $(function() {
 				<span data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip" title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>
 			</h3>
 			<div class="radio" >
+				<label><input id="whoareyou_ce" name="agent" value="ce" class="radiotab" type="radio" href="#tab_ca"/>${span18n['filter_i_am_ce']}</label>
+				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ce_ref_buyer'/>"></span>
+			</div>
+			<div class="radio" >
 				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca"/>${span18n['filter_i_am_ca']}</label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
