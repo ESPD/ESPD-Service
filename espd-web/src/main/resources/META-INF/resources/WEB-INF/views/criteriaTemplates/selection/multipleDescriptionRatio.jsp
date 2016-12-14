@@ -12,7 +12,7 @@
 	    <div class="col-md-4">
 			<label class="control-label col-md-3 small">${span18n['crit_ratio']}</label>
 	        <div class="col-md-9">
-	            <form:input type="text" path="${field}.unboundedGroups[${vs.index}]['ratio']" number="true" cssClass="form-control"/>
+	            <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["ratio"]' number="true" cssClass="form-control"/>
 	        </div>
     	</div>
 	    <div class="col-md-7">

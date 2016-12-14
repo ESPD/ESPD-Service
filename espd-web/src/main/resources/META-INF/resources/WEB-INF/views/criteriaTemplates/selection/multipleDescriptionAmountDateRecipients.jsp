@@ -21,7 +21,7 @@
             <label class="control-label small">${span18n['crit_amount']}</label>
         </div>
 		<div class="col-xs-6">
-			<form:input type="text" path="${field}.unboundedGroups[${vs.index}]['amount']" number="true" cssClass="form-control small" />
+			<form:input type="text" path='${field}.unboundedGroups[${vs.index}]["amount"]' number="true" cssClass="form-control small" />
 		</div>
 		<div class="col-xs-3">
 	        <tiles:insertDefinition name="currencies">
