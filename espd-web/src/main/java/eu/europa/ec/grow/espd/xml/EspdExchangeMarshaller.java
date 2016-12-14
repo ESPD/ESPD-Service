@@ -26,6 +26,7 @@ package eu.europa.ec.grow.espd.xml;
 
 import com.google.common.base.Optional;
 import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.tenderned.exception.TedNoticeException;
 import eu.europa.ec.grow.espd.xml.request.exporting.UblRequestTypeTransformer;
 import eu.europa.ec.grow.espd.xml.request.importing.UblRequestImporter;
 import eu.europa.ec.grow.espd.xml.response.exporting.UblResponseTypeTransformer;
@@ -192,8 +193,9 @@ public class EspdExchangeMarshaller {
 	 * wrapped in an {@link Optional} or an empty {@link Optional} if the import was unsuccessful.
 	 *
 	 * @throws IOException
+	 * @throws TedNoticeException if file contains Ted Notice XML
 	 */
-	public Optional<EspdDocument> importAmbiguousEspdFile(InputStream is) throws IOException {
+	public Optional<EspdDocument> importAmbiguousEspdFile(InputStream is) throws IOException, TedNoticeException {
 		// peek at the first bytes in the file to see if it is a ESPD Request or Response
 		try (BufferedInputStream bis = new BufferedInputStream(is)) {
 			int peekReadLimit = 80;
@@ -211,6 +213,9 @@ public class EspdExchangeMarshaller {
 				return importEspdResponse(bis);
 			} else if (firstBytes.contains("ESPDRequest")) {
 				return importEspdRequest(bis);
+			}
+			else if(firstBytes.contains("ContractNotice") || firstBytes.contains("TED_EXPORT")) {
+				throw new TedNoticeException();
 			}
 		}
 		return Optional.absent();

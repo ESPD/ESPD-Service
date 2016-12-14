@@ -6,6 +6,7 @@ package eu.europa.ec.grow.espd.tenderned.exception;/*
  * @author Desiree Hof
  * @since 11-07-2016
  */
+@SuppressWarnings("serial")
 public class PdfRenderingException extends Exception {
 
     /**

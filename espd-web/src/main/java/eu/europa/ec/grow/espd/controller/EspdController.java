@@ -37,6 +37,7 @@ import eu.europa.ec.grow.espd.ted.TedService;
 import eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer;
 import eu.europa.ec.grow.espd.tenderned.UnescapeHtml4;
 import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
+import eu.europa.ec.grow.espd.tenderned.exception.TedNoticeException;
 import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
@@ -216,6 +217,9 @@ class EspdController {
 				model.addAttribute("espd", espd);
 				return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 			}
+		} catch (TedNoticeException e) {
+			result.rejectValue("attachments", "error_ted_notice_not_supported");	
+			return "filter";
 		}
 
 		result.rejectValue("attachments", "espd_upload_error");
