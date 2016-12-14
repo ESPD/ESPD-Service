@@ -13,7 +13,7 @@
             <label class="control-label small">${span18n['crit_description']}</label>
         </div>
 		<div class="col-xs-9">
-			<form:textarea path="${field}.unboundedGroups[${vs.index}]['description']" cssClass="form-control" />
+			<form:textarea path='${field}.unboundedGroups[${vs.index}]["description"]' cssClass="form-control" />
 		</div>
     </div>
 	<div class="form-group form-group-sm">
@@ -25,7 +25,7 @@
 		</div>
 		<div class="col-xs-3">
 	        <tiles:insertDefinition name="currencies">
-	            <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${vs.index}]['currency']"/>
+	            <tiles:putAttribute name="currencyField" value='${field}.unboundedGroups[${vs.index}]["currency"]'/>
 	            <tiles:putAttribute name="style" value="border-radius: 0;"/>
 	        </tiles:insertDefinition>
 		</div>
@@ -35,13 +35,13 @@
             <label class="control-label small">${span18n['crit_start_date']}</label>
         </div>
 		<div class="col-xs-3">
-			<form:input type="text" path="${field}.unboundedGroups[${vs.index}]['startDate']" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+			<form:input type="text" path='${field}.unboundedGroups[${vs.index}]["startDate"]' cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
 		</div>
         <div class="col-xs-3">
             <label class="control-label small">${span18n['crit_end_date']}</label>
         </div>
         <div class="col-xs-3">
-            <form:input type="text" path="${field}.unboundedGroups[${vs.index}]['endDate']" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+            <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["endDate"]' cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
         </div>
     </div>
 	<div class="form-group">
@@ -49,7 +49,7 @@
             <label class="control-label small">${span18n['crit_recipients']}</label>
         </div>
 		<div class="col-xs-9">
-			<form:textarea path="${field}.unboundedGroups[${vs.index}]['recipients']" cssClass="form-control small"/>
+			<form:textarea path='${field}.unboundedGroups[${vs.index}]["recipients"]' cssClass="form-control small"/>
 		</div>
 	</div>
 

@@ -22,7 +22,7 @@
 			</div>
 			<div class="col-xs-4">
 	            <tiles:insertDefinition name="currencies">
-	                <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${loop.index}]['currency']"/>
+	                <tiles:putAttribute name="currencyField" value='${field}.unboundedGroups[${loop.index}]["currency"]'/>
 	            </tiles:insertDefinition>
 		    </div>
 	    </div>

@@ -18,7 +18,7 @@
 	    <div class="col-md-7">
 	        <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
 	        <div class="col-md-9">
-	            <form:textarea rows="1" path="${field}.unboundedGroups[${vs.index}]['description']" cssClass="form-control"/>
+	            <form:textarea rows="1" path='${field}.unboundedGroups[${vs.index}]["description"]' cssClass="form-control"/>
 	        </div>
 	    </div>
 	    <div class="col-md-1">
