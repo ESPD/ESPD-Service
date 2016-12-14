@@ -1,5 +1,35 @@
 == Release notes
 
+=== 2016.12 (19th of December 2016)
+
+This release contains mostly changes related to the XML structure of criteria.
+For a comprehensive history of all the XML changes, please visit this link:
+http://espd.github.io/ESPD-Service/docs/html/xmlChanges.html.
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/15[Able to add multiple references in selection criteria]
+* https://github.com/ESPD/ESPD-Service/issues/33[ERRORS in current ESPD: average yearly turnover and average and specific average turnover]
+* https://github.com/ESPD/ESPD-Service/issues/91[Part III C: Conflict of interest due to its participation in the procurement procedure]
+* https://github.com/ESPD/ESPD-Service/issues/86[Part III D: Purely national exlclusion grounds are allowing for self-cleaning]
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/9[Allow for references "start date" and "end date"]
+* https://github.com/ESPD/ESPD-Service/issues/88[Contracting entities should be able to deselect exclusion grounds]
+* https://github.com/ESPD/ESPD-Service/issues/124[When importing a TED notice, Error message should be different]
+* https://github.com/ESPD/ESPD-Service/issues/14[Set up of economic operator has only 5 years... should be (much) more]
+* https://github.com/ESPD/ESPD-Service/issues/37[Part II: CA needs to select two "criteria"]
+* https://github.com/ESPD/ESPD-Service/issues/127[Default values for criteria with requirements of type 'Indicator']
+* https://github.com/ESPD/ESPD-Service/issues/71[Correct the structure of yearly turnover selection criteria]
+* https://github.com/ESPD/ESPD-Service/issues/92[Fields missing for "Information is available electronically"]
+
+==== Translation
+
+* https://github.com/ESPD/ESPD-Service/issues/117[EN text about "guilty of misinterpretation" is wrong]
+
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/5?closed=1[ESPD Milestone 2016.12].
+
 === 2016.11.02 (8th of December 2016)
 
 ==== Bug
@@ -34,6 +64,8 @@ the printing functionality in version 2016.11
 * https://github.com/ESPD/ESPD-Service/issues/85[Part II A: Official list, name is missing]
 * https://github.com/ESPD/ESPD-Service/issues/81[Part I: Identity of procurer not correct translated in HU]
 * https://github.com/ESPD/ESPD-Service/issues/117[EN text about "guilty of misinterpretation" is wrong]
+
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/6?closed=1[ESPD Milestone 2016.11].
 
 === 2016.10.02 (28th of November 2016)
 
