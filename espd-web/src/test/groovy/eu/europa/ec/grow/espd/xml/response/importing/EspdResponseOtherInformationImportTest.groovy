@@ -84,7 +84,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdMinimal.economicOperator.contactName == null
         espdMinimal.economicOperator.contactPhone == null
         espdMinimal.economicOperator.contactEmail == null
-        espdMinimal.economicOperator.isSmallSizedEnterprise == null
+        espdMinimal.economicOperator.isSmallSizedEnterprise == false // has a default value
         espdMinimal.lotConcerned == null
     }
 

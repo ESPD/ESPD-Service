@@ -24,18 +24,18 @@
 
 package eu.europa.ec.grow.espd.domain;
 
-import java.util.List;
-
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.ubl.CacParty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class EconomicOperatorImpl extends PartyImpl {
 	
-	private Boolean isSmallSizedEnterprise; //Is the economic operator a Micro, a Small or a Medium-Sized Enterprise ?
+	private Boolean isSmallSizedEnterprise = Boolean.FALSE; //Is the economic operator a Micro, a Small or a Medium-Sized Enterprise ?
 
     private List<EconomicOperatorRepresentative> representatives;
     
