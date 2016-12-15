@@ -206,4 +206,30 @@ class CriterionDefaultValuesTest extends Specification {
         result == false
     }
 
+    def "Is economic operator a SME should have a default answer of NO"() {
+        given:
+        def espd = new EspdDocument(economicOperator: new EconomicOperatorImpl())
+
+        when:
+        def result = espd.economicOperator
+
+        then:
+        result.isSmallSizedEnterprise == false
+    }
+
+    def "Exclusion criteria related to taxes and contributions should have default values of NO"() {
+        given:
+        def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(), paymentSocialSecurity: new TaxesCriterion())
+
+        expect:
+        espd.paymentTaxes.breachEstablishedOtherThanJudicialDecision == false
+        espd.paymentTaxes.decisionFinalAndBinding == false
+        espd.paymentTaxes.eoFulfilledObligations == false
+
+        and:
+        espd.paymentSocialSecurity.breachEstablishedOtherThanJudicialDecision == false
+        espd.paymentSocialSecurity.decisionFinalAndBinding == false
+        espd.paymentSocialSecurity.eoFulfilledObligations == false
+    }
+
 }

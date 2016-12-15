@@ -41,19 +41,19 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def idx = 0
 
         when:
-        def result = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
 
         then: "there are no mandatory exclusion criteria anymore"
-        result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length
+        response.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length
 
         then: "all selection criteria must be present since there were none selected"
         for (SelectionCriterion criterion : SelectionCriterion.values()) {
-            checkCriterionId(result, idx++, criterion.getUuid())
+            checkCriterionId(response, idx++, criterion.getUuid())
         }
 
         then: "all award criteria must be present"
         for (OtherCriterion criterion : OtherCriterion.values()) {
-            checkCriterionId(result, idx++, criterion.getUuid())
+            checkCriterionId(response, idx++, criterion.getUuid())
         }
     }
 
@@ -62,11 +62,11 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "974c8196-9d1c-419c-9ca9-45bb9f5fd59a", "Your answer?", "INDICATOR")
@@ -79,11 +79,11 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "15335c12-ad77-4728-b5ad-3c06a60d65a4", "Your answer?", "INDICATOR")
@@ -96,15 +96,16 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def response = parseResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
-        def subGroup = request.Criterion[idx].RequirementGroup[0]
+        def subGroup = response.Criterion[idx].RequirementGroup[0]
 
         def req = subGroup.Requirement[0]
         checkRequirement(req, "7f18c64e-ae09-4646-9400-f3666d50af51", "Your answer", "INDICATOR")
         req.Response.size() == 1
         req.Response[0].Indicator.text() == "false"
     }
+
 }
