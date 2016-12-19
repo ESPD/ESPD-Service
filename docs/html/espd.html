@@ -594,8 +594,20 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#java-packages">Java packages</a></li>
 </ul>
 </li>
+<li><a href="#xml-changes">XML changes</a>
+<ul class="sectlevel2">
+<li><a href="#version-2016-12">Version 2016.12</a></li>
+<li><a href="#version-2016-08">Version 2016.08</a></li>
+<li><a href="#version-2016-07">Version 2016.07</a></li>
+<li><a href="#version-2016-06-1">Version 2016.06.1</a></li>
+<li><a href="#version-2016-06">Version 2016.06</a></li>
+<li><a href="#version-2016-05">Version 2016.05</a></li>
+<li><a href="#version-2016-04-01">Version 2016.04.01</a></li>
+</ul>
+</li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2016-12-19th-of-december-2016">2016.12 (19th of December 2016)</a></li>
 <li><a href="#2016-11-02-8th-of-december-2016">2016.11.02 (8th of December 2016)</a></li>
 <li><a href="#2016-11-01-2nd-of-december-2016">2016.11.01 (2nd of December 2016)</a></li>
 <li><a href="#2016-11-30th-of-november-2016">2016.11 (30th of November 2016)</a></li>
@@ -627,7 +639,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2016.11.02, 08-12-2016</p>
+<p>v2016.12, 19-12-2016</p>
 </div>
 </div>
 </div>
@@ -2526,12 +2538,1255 @@ in your POM file:</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="xml-changes"><a class="anchor" href="#xml-changes"></a>XML changes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="version-2016-12"><a class="anchor" href="#version-2016-12"></a>Version 2016.12</h3>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/15">Able to add multiple references in selection criteria</a></p>
+</div>
+<div class="paragraph">
+<p>The possibility of adding an unlimited number of criterion references for certain criteria introduces a new way of
+defining them. Each requirement group that can be repeated as many times as desired (called henceforth <code>unbounded
+requirement group</code>) will be defined only once in the criterion definition and its definition will be cloned as many
+times as necessary. This means that the requirement group definition will appear only once in the <code>ESPD Request</code> while
+on the <code>ESPD Response</code> it can be present multiple times.</p>
+</div>
+<div class="paragraph">
+<p>The new definition of the selection criteria from part C (<code>For works contracts: performance of works of the specified
+type</code>, <code>For supply contracts: performance of deliveries of the specified type</code>, <code>For service contracts: performance of
+services of the specified type</code> will contain only two groups, as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">96f00020-0a25-402e-b850-2378e83b5695</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">unbounded</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Description</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42ec8116-31a7-4118-8612-5b04f5c8bde7</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3641b897-f9f0-4d90-909a-b6d4c4b1d645</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE
+      },
+      {
+        </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>a92536ab-<span class="integer">6783</span>-<span class="integer">40</span>bb-a037-<span class="integer">5</span>d31f421fd85<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>description<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>Recipients<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>responseType<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>DESCRIPTION<span class="string"><span class="delimiter">&quot;</span><span class="content">
+      }
+    ]
+  },
+  {
+    </span><span class="delimiter">&quot;</span></span>name<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>G2<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+    </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="float">9026e403</span>-<span class="integer">3</span>eb6-<span class="integer">4705</span>-a9e9-e21a1efc867d<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+    </span><span class="delimiter">&quot;</span></span>requirements<span class="string"><span class="delimiter">&quot;</span><span class="content">: [
+      {
+        </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="integer">9</span>dae5670-cb75-<span class="integer">4</span>c97-<span class="integer">901</span>b-<span class="integer">96</span>ddac5a633a<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>description<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>Is <span class="local-variable">this</span> information available electronically?<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>responseType<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>INDICATOR<span class="string"><span class="delimiter">&quot;</span><span class="content">
+      }
+    ],
+    </span><span class="delimiter">&quot;</span></span>subgroups<span class="string"><span class="delimiter">&quot;</span><span class="content">: [
+      {
+        </span><span class="delimiter">&quot;</span></span>name<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>G2<span class="float">.1</span><span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="integer">0</span>a166f0a-<span class="integer">0</span>c5f-<span class="integer">42</span>b0-<span class="float">81e9</span>-<span class="float">0f</span>c9fa598a48<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>fulfillmentIndicator<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="predefined-constant">true</span><span class="string"><span class="delimiter">&quot;</span><span class="content">,
+        </span><span class="delimiter">&quot;</span></span>requirements<span class="string"><span class="delimiter">&quot;</span><span class="content">: [
+          {
+            </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="octal">03</span>bb1954-<span class="integer">13</span>ae-<span class="integer">47</span>d8-<span class="integer">8</span>ef8-b7fe0f22d700<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>description<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>URL<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>responseType<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>EVIDENCE_URL<span class="string"><span class="delimiter">&quot;</span><span class="content">
+          },
+          {
+            </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>e2d863a0-<span class="integer">60</span>cb-<span class="float">4e58</span>-<span class="integer">8</span>c14-<span class="integer">4</span>c1595af48b7<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>description<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>Code<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>responseType<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>CODE<span class="string"><span class="delimiter">&quot;</span><span class="content">
+          },
+          {
+            </span><span class="delimiter">&quot;</span></span>id<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span><span class="integer">5</span>cbf74d9-a1e2-<span class="integer">4233</span>-<span class="integer">921</span>d-<span class="integer">8</span>b298842ee7d<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>description<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>Issuer<span class="string"><span class="delimiter">&quot;</span><span class="content">,
+            </span><span class="delimiter">&quot;</span></span>responseType<span class="string"><span class="delimiter">&quot;</span><span class="content">: </span><span class="delimiter">&quot;</span></span>DESCRIPTION<span class="string"><span class="delimiter">&quot;</span><span class="content">
+          }
+        ]
+      }
+    ]
+  }
+}</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please notice that we don&#8217;t have 5 groups with the same structure but different ids anymore, but only one, <code>G1</code>, and
+this group has a new property, <code>unbounded</code> set to <code>true</code>. This property will not be saved in the XML files but is used
+internally by the <code>ESPD application</code> to handle this scenario.</p>
+</div>
+<div class="paragraph">
+<p>In order to support the <code>ESPD Responses</code> generated by versions prior to <code>2016.12</code> we need to define some mappings so
+that the old requirement group and requirement ids point only to one primary group or requirement. Whenever we encounter
+one of the ids from <code>idsToBeReplaced</code> we will use the entity referenced by the <code>replacementId</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">requirementGroupMappings</span><span class="delimiter">&quot;</span></span>: [
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">96f00020-0a25-402e-b850-2378e83b5695</span><span class="delimiter">&quot;</span></span>, <span class="comment">// use only this requirement group from now on</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [ <span class="comment">// whenever we see these requirement groups we will use the new one above</span>
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">c48572f9-47bf-423a-9885-2c78ae9ca718</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">2c7a3581-2954-4142-8c1b-5c52d7c7e9b7</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">d67a6126-dd6d-4ed2-bda7-214a19e13a63</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">159fc086-cf34-48a4-a41b-afed62661383</span><span class="delimiter">&quot;</span></span>
+    ]
+  }
+],
+<span class="key"><span class="delimiter">&quot;</span><span class="content">requirementMappings</span><span class="delimiter">&quot;</span></span>: [
+  { <span class="comment">// mapping for 'Description'</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</span><span class="delimiter">&quot;</span></span>, <span class="comment">// use only this requirement from now on</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [ <span class="comment">// whenever we see these requirements we will use the new one above</span>
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">927def36-1fa3-4018-8b45-7ee2c5b1e0af</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">b1640c24-b405-443e-bf5e-d7771f66aab6</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">587129bc-a5e1-43be-94ac-6e5366d30c67</span><span class="delimiter">&quot;</span></span>
+    ]
+  },
+  { <span class="comment">// mapping for 'Amount'</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">4acd0a02-c267-4d05-b456-c0565c2ffd46</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">28fb4b41-5178-4b79-ba24-d9a62fa4a658</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">9f278e42-aa1d-4b2e-97cd-832248aa5393</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</span><span class="delimiter">&quot;</span></span>
+    ]
+  },
+  { <span class="comment">// mapping for 'Start date'</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42ec8116-31a7-4118-8612-5b04f5c8bde7</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">8d0e5e16-85ed-4730-a784-d4db8f439c0c</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">c953e635-580b-4d7c-a30c-2edbde3b8fdf</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">9b263b45-fc63-4b01-a3dc-cb9c95dda449</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">056cba1d-986b-4164-92b6-26a1cbdf0690</span><span class="delimiter">&quot;</span></span>
+    ]
+  },
+  { <span class="comment">// mapping for 'End date'</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3641b897-f9f0-4d90-909a-b6d4c4b1d645</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">4c842551-fb07-4a13-91e6-5653820f7e80</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">822934ff-da94-40d2-a799-f29ba7bba2b0</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">7a95ddbd-05e8-4af4-973f-1b8d05f71e0f</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">dd71df86-3ad5-42dd-add5-9bd51dc88f05</span><span class="delimiter">&quot;</span></span>
+     ]
+   },
+   { <span class="comment">// mapping for 'Recipients'</span>
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">replacementId</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">a92536ab-6783-40bb-a037-5d31f421fd85</span><span class="delimiter">&quot;</span></span>,
+     <span class="key"><span class="delimiter">&quot;</span><span class="content">idsToBeReplaced</span><span class="delimiter">&quot;</span></span>: [
+       <span class="string"><span class="delimiter">&quot;</span><span class="content">c8babafa-b6fa-4e14-8749-d913d8f1d33b</span><span class="delimiter">&quot;</span></span>,
+       <span class="string"><span class="delimiter">&quot;</span><span class="content">5157e1ff-d272-4382-98a9-6953f5a15300</span><span class="delimiter">&quot;</span></span>,
+       <span class="string"><span class="delimiter">&quot;</span><span class="content">a84ea948-cf03-47b5-b4cf-a35f49910d10</span><span class="delimiter">&quot;</span></span>,
+       <span class="string"><span class="delimiter">&quot;</span><span class="content">38a4802f-0b93-4e78-ad4e-2a057e1aa578</span><span class="delimiter">&quot;</span></span>
+     ]
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/37">Part II: CA needs to select two "criteria"</a></p>
+</div>
+<div class="paragraph">
+<p>This update will affect the Economic Operator criterion <code>EO registered</code> with id <code>9b19e869-6c89-4cc4-bd6c-ac9ca8602165</code>.
+The requirement <code>Not applicable</code> with id <code>67fd1dde-2a0a-486e-9469-79c78796fc22</code> will be removed from the parent
+criterion and will not be displayed and understood anymore by the ESPD service.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/92">Fields missing for "Information is available electronically"</a></p>
+</div>
+<div class="paragraph">
+<p>All the <code>Information is available electronically</code> requirement groups will contain one extra requirement, called <code>Issuer</code>.
+Please keep in mind that this modification will affect a lot of criteria.</p>
+</div>
+<div class="paragraph">
+<p>For the exclusion criteria, the requirement will have this definition:</p>
+</div>
+<div class="listingblock">
+<div class="title">exclusionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c3ccfa31-0c5e-4e3a-a3fd-db9fb83d78d4</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Issuer</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And for the selection criteria, the requirement will include the following definition:</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5cbf74d9-a1e2-4233-921d-8b298842ee7d</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Issuer</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The economic operator (other) criteria will contain the requirement below:</p>
+</div>
+<div class="listingblock">
+<div class="title">otherCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">d8e1e818-d67b-4bb9-9aeb-4c10943a8342</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Issuer</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/91">Part III C: Conflict of interest due to its participation in the procurement procedure</a></p>
+</div>
+<div class="paragraph">
+<p>A requirement for <code>Description</code> has to be added to the <code>Conflict of interest due to its participation in the procurement
+procedure</code> exclusion criterion, inside a requirement group G1.1.</p>
+</div>
+<div class="listingblock">
+<div class="title">exclusionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">subgroups</span><span class="delimiter">&quot;</span></span>: [
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1.1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">73f0fe4c-4ed9-4343-8096-d898cf200146</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">fulfillmentIndicator</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">e098da8e-4717-4500-965f-f882d5b4e1ad</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Please describe them</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>,
+      }
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/86">Part III D: Purely national exlclusion grounds are allowing for self-cleaning</a></p>
+</div>
+<div class="paragraph">
+<p>We need to add the <code>self-cleaning</code> subgroup to the section D exclusion criterion <code>Purely national grounds</code>.</p>
+</div>
+<div class="paragraph">
+<p>Consequently, the G1.1 criterion group will contain the following subgroup structure:</p>
+</div>
+<div class="listingblock">
+<div class="title">exclusionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1.1.1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5f9f09f7-f701-432c-9fdc-c22c124a74c9</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">20c5361b-7599-4ee6-b030-7f8323174d1e</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Have you taken measures to demonstrate your reliability (</span><span class="char">\&quot;</span><span class="content">Self-Cleaning</span><span class="char">\&quot;</span><span class="content">)?</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span>
+    }
+  ],
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">subgroups</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1.1.1.1</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">74e6c7b4-757b-4b40-ada6-fad6a997c310</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">fulfillmentIndicator</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+        {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">7b07904f-e080-401a-a3a1-9a3efeeda54b</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Please describe them</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/71">Correct the structure of yearly turnover selection criteria</a></p>
+</div>
+<div class="paragraph">
+<p>The structure of the <code>General yearly turnover</code> and <code>Specific yearly turnover</code> selection criteria has been simplified.
+They don&#8217;t need the following requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Your answer?</code> with id <code>15335c12-ad77-4728-b5ad-3c06a60d65a4</code></p>
+</li>
+<li>
+<p><code>Please provide the requested data below</code> with id <code>3a6fefd4-f458-4d43-97fb-0725fce5dce2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Subsequently, the G1 group <code>e1886054-ada4-473c-9afc-2fde82c24cf4</code> and its internal structure have disappeared.</p>
+</div>
+<div class="paragraph">
+<p>The new structure looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5aacceb3-280e-42f1-b2da-3d8ac7877fe9</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_YEAR</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      }
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">99c9d014-d0e1-473d-b6d4-a8549f2b19fa</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">49a57870-7fb8-451f-a7af-fa0e7f8b97e7</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_YEAR</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4acd0a02-c267-4d05-b456-c0565c2ffd46</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      }
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G3</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9f0e291f-05c9-4cb6-bc50-4c2d3b2049b2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9d0cf1cb-27bc-4747-8579-47dce4d8d490</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_YEAR</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">28fb4b41-5178-4b79-ba24-d9a62fa4a658</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      }
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G4</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">67b8d7fa-a0aa-43d6-a30b-e15b95326df2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">17a7353d-a7a4-43ee-9cc8-b9db83eeafb3</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_YEAR</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9f278e42-aa1d-4b2e-97cd-832248aa5393</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      }
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G5</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c8c09a0c-b7a7-4271-bb6a-80f1c0e988f7</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">34825634-5151-4e31-af1b-7eafadcf15be</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Year</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_YEAR</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cc1a0b1e-dbfd-4313-a4fb-2e543b05549b</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+      }
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G6</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9026e403-3eb6-4705-a9e9-e21a1efc867d</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9dae5670-cb75-4c97-901b-96ddac5a633a</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Is this information available electronically?</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span>
+      }
+    ],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">subgroups</span><span class="delimiter">&quot;</span></span>: [
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G2.1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">fulfillmentIndicator</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+          {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">URL</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">EVIDENCE_URL</span><span class="delimiter">&quot;</span></span>
+          },
+          {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">e2d863a0-60cb-4e58-8c14-4c1595af48b7</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Code</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CODE</span><span class="delimiter">&quot;</span></span>
+          }
+        ]
+      }
+    ]
+  }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/33">ERRORS in current ESPD: average yearly turnover and average and specific average turnover</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Average yearly turnover</code> and <code>Specific average turnover</code> criteria should match the paper version.
+Therefore, the structure of their G1 group with id <code>e1886054-ada4-473c-9afc-2fde82c24cf4</code> changes completely.
+They will contain only two requirements on the first group, <code>Number of years</code> and <code>Average turnover</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">e1886054-ada4-473c-9afc-2fde82c24cf4</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">b98ffd05-6572-4b07-a521-693a1754ed46</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Number of years</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">QUANTITY_INTEGER</span><span class="delimiter">&quot;</span></span>
+    },
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">217637ba-6bdb-4c73-a38f-27fe0e71d9be</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Average turnover</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/9">Allow for references "start date" and "end date"</a></p>
+</div>
+<div class="paragraph">
+<p>The following criteria will need to contain two date requirements instead of one: <code>Start date</code> and <code>End date</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>For works contracts: performance of works of the specified type</code>;</p>
+</li>
+<li>
+<p><code>For supply contracts: performance of deliveries of the specified type</code>;</p>
+</li>
+<li>
+<p><code>For service contracts: performance of services of the specified type</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please keep in mind that the other requirements will remain, only the <code>Date</code> requirement will be split into two new ones.</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">96f00020-0a25-402e-b850-2378e83b5695</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      ...,
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42ec8116-31a7-4118-8612-5b04f5c8bde7</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3641b897-f9f0-4d90-909a-b6d4c4b1d645</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      ...
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c48572f9-47bf-423a-9885-2c78ae9ca718</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      ...,
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">8d0e5e16-85ed-4730-a784-d4db8f439c0c</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4c842551-fb07-4a13-91e6-5653820f7e80</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      ...
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G3</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">2c7a3581-2954-4142-8c1b-5c52d7c7e9b7</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      ...,
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c953e635-580b-4d7c-a30c-2edbde3b8fdf</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">822934ff-da94-40d2-a799-f29ba7bba2b0</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      ...
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G4</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">d67a6126-dd6d-4ed2-bda7-214a19e13a63</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      ...,
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">9b263b45-fc63-4b01-a3dc-cb9c95dda449</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">7a95ddbd-05e8-4af4-973f-1b8d05f71e0f</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      ...
+    ]
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G5</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">159fc086-cf34-48a4-a41b-afed62661383</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+      ...,
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">056cba1d-986b-4164-92b6-26a1cbdf0690</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dd71df86-3ad5-42dd-add5-9bd51dc88f05</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>
+      },
+      ...
+    ]
+  }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-08"><a class="anchor" href="#version-2016-08"></a>Version 2016.08</h3>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/32">KvK number is filled in for the VAT number after reloading the xml</a></p>
+</div>
+<div class="paragraph">
+<p><code>Part II - Information concerning the economic operator</code>, <code>section A - Information about the economic operator</code>
+contains the <code>VAT number if applicable</code> and <code>If no VAT number is applicable, please indicate another national
+identification number, if required and applicable</code> fields.
+In order to be able to distinguish between the <code>VAT Number</code> and <code>National Number</code> in the XML we are now using the
+<code>schemeID</code> attribute of the <code>cac:EconomicOperatorParty.cac:Party.cac:PartyIdentification</code> element. The two possible
+values which should be used are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>VAT_Number</p>
+</li>
+<li>
+<p>National_Number</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;espd-cac:EconomicOperatorParty&gt;</span>
+  <span class="tag">&lt;espd-cbc:SMEIndicator&gt;</span>false<span class="tag">&lt;/espd-cbc:SMEIndicator&gt;</span>
+  <span class="tag">&lt;espd-cac:RepresentativeNaturalPerson&gt;</span>
+    <span class="tag">&lt;cac:PowerOfAttorney&gt;</span>
+      <span class="tag">&lt;cac:AgentParty&gt;</span>
+        <span class="tag">&lt;cac:Person&gt;</span>
+          <span class="tag">&lt;cac:Contact</span><span class="tag">/&gt;</span>
+          <span class="tag">&lt;cac:ResidenceAddress</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/cac:Person&gt;</span>
+      <span class="tag">&lt;/cac:AgentParty&gt;</span>
+    <span class="tag">&lt;/cac:PowerOfAttorney&gt;</span>
+  <span class="tag">&lt;/espd-cac:RepresentativeNaturalPerson&gt;</span>
+  <span class="tag">&lt;cac:Party&gt;</span>
+    <span class="tag">&lt;cac:PartyIdentification&gt;</span>
+      <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">National_Number</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>123456<span class="tag">&lt;/cbc:ID&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;/cac:PartyIdentification&gt;</span>
+    <span class="tag">&lt;cac:PartyIdentification&gt;</span>
+      <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VAT_Number</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>BE0999999999<span class="tag">&lt;/cbc:ID&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;/cac:PartyIdentification&gt;</span>
+    <span class="tag">&lt;cac:PartyName&gt;</span>
+      <span class="tag">&lt;cbc:Name&gt;</span>Dell<span class="tag">&lt;/cbc:Name&gt;</span>
+    <span class="tag">&lt;/cac:PartyName&gt;</span>
+    <span class="tag">&lt;cac:PostalAddress&gt;</span>
+      <span class="tag">&lt;cac:Country&gt;</span>
+        <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AT<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
+      <span class="tag">&lt;/cac:Country&gt;</span>
+    <span class="tag">&lt;/cac:PostalAddress&gt;</span>
+    <span class="tag">&lt;cac:Contact</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/cac:Party&gt;</span>
+<span class="tag">&lt;/espd-cac:EconomicOperatorParty&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The national number</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The VAT number</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/34">Duplicate ids of requirement groups</a></p>
+</div>
+<div class="paragraph">
+<p>The id of the <code>G1.1</code> group belonging to the <code>Part III - Exclusion grounds</code>, <code>section A - Grounds relating to
+criminal convictions</code> has been changed to <code>f5276600-a2b6-4ff6-a90e-b31fe19dae41</code> due to a conflict with the
+<code>G2.1(URL/Code)</code> group of the <code>Information available electronically</code> parent group.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_TRUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f5276600-a2b6-4ff6-a90e-b31fe19dae41<span class="tag">&lt;/cbc:ID&gt;</span>
+  <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ecf40999-7b64-4e10-b960-7f8ff8674cf6<span class="tag">&lt;/cbc:ID&gt;</span>
+    <span class="tag">&lt;cbc:Description&gt;</span>Date of conviction<span class="tag">&lt;/cbc:Description&gt;</span>
+    <span class="tag">&lt;ccv:Response&gt;</span>
+      <span class="tag">&lt;cbc:Date&gt;</span>2015-12-09<span class="tag">&lt;/cbc:Date&gt;</span>
+    <span class="tag">&lt;/ccv:Response&gt;</span>
+  <span class="tag">&lt;/ccv:Requirement&gt;</span>
+  ...
+<span class="tag">&lt;/ccv:RequirementGroup&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-07"><a class="anchor" href="#version-2016-07"></a>Version 2016.07</h3>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/4">Consortium name</a></p>
+</div>
+<div class="paragraph">
+<p>A new field called <code>Consortium name</code> was added in <code>Part II - Information concerning the economic operator</code>,
+<code>Section C - Information about reliance on the capacities of other entities</code>.</p>
+</div>
+<div class="paragraph">
+<p>The information is saved inside the <code>&lt;espd-cbc:EconomicOperatorGroupName/&gt;</code> element on an <code>ESPD Response</code>.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;espd:ESPDResponse&gt;</span>
+   <span class="tag">&lt;cbc:UBLVersionID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OASIS-UBL-TC</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.1<span class="tag">&lt;/cbc:UBLVersionID&gt;</span>
+   <span class="tag">&lt;cbc:CustomizationID</span> <span class="attribute-name">schemeName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CustomizationID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BII</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>urn:www.cenbii.eu:transaction:biitrns092:ver3.0<span class="tag">&lt;/cbc:CustomizationID&gt;</span>
+   <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ISO/IEC 9834-8:2008 - 4UUID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DG GROW (European Commission)</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3679123f-de23-4703-8161-cf6c8d9b8ad9<span class="tag">&lt;/cbc:ID&gt;</span>
+   <span class="tag">&lt;cbc:CopyIndicator&gt;</span>false<span class="tag">&lt;/cbc:CopyIndicator&gt;</span>
+   <span class="tag">&lt;cbc:VersionID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2016.08.01<span class="tag">&lt;/cbc:VersionID&gt;</span>
+   <span class="tag">&lt;cbc:IssueDate&gt;</span>2016-05-30<span class="tag">&lt;/cbc:IssueDate&gt;</span>
+   <span class="tag">&lt;cbc:IssueTime&gt;</span>00:00:00<span class="tag">&lt;/cbc:IssueTime&gt;</span>
+   <span class="tag">&lt;cbc:ContractFolderID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">TeD</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>SMART 2015/0065<span class="tag">&lt;/cbc:ContractFolderID&gt;</span>
+   <span class="tag">&lt;espd-cbc:EconomicOperatorGroupName&gt;</span>Hodor consortium<span class="tag">&lt;/espd-cbc:EconomicOperatorGroupName&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   ...
+<span class="tag">&lt;/espd:ESPDResponse&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the consortium is saved here</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/13">Fix some XML validation issues</a></p>
+</div>
+<div class="paragraph">
+<p>These are some changes affecting only the <code>ESPD</code> application which fixed some correctness issues regarding the XMLs
+generated by the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update country codes for version 1.0.2 of the data model, the new values are below.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">EspdRequestMarshallingTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">check address information</span><span class="delimiter">&quot;</span></span>
+result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listAgencyID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span>
+result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listName.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span>
+result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update criterion and jurisdiction codes for version 1.0.2 of the data model, the new values are below.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">AbstractCriteriaFixture.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">assert</span> request.Criterion[idx].TypeCode.@listVersionID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span>
+<span class="keyword">assert</span> ref.JurisdictionLevelCode.@listVersionID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update <code>Study and research facilities</code> and <code>Educational and professional qualifications</code> criterion type codes
+to match version 1.0.2 of the data model, the new values are below.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">EducationalProfessionalQualificationsRequestTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">checkCriterionTypeCode(request, idx,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.PROFESSIONAL_QUALIFICATIONS</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">StudyResearchFacilitiesRequestTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">checkCriterionTypeCode(request, idx,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-06-1"><a class="anchor" href="#version-2016-06-1"></a>Version 2016.06.1</h3>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-100">Selection criteria requirements duplicate ids</a></p>
+</div>
+<div class="paragraph">
+<p>The id of the <code>Please specify</code> requirement belonging to the <code>G1</code> group of the <code>Subcontracting proportion</code> criterion was
+changed due to a conflict with other existing ids. The new id is <code>15778db8-0d84-42ba-931b-774c1b3d3f9f</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">SubcontractingProportionResponseTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">main sub group</span><span class="delimiter">&quot;</span></span>
+<span class="keyword">def</span> g1 = response.Criterion[idx].RequirementGroup[<span class="integer">0</span>]
+g1.ID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">575f7550-8a2d-4bad-b9d8-be07ab570076</span><span class="delimiter">&quot;</span></span>
+g1.@pi.text() == <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+g1.RequirementGroup.size() == <span class="integer">0</span>
+g1.Requirement.size() == <span class="integer">1</span>
+checkRequirement(g1.Requirement[<span class="integer">0</span>], <span class="string"><span class="delimiter">&quot;</span><span class="content">15778db8-0d84-42ba-931b-774c1b3d3f9f</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Please specify</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-104">We are missing fields for Part VI</a></p>
+</div>
+<div class="paragraph">
+<p>On <code>Part VI - Concluding statements</code> we added two new fields, <code>Date</code> and <code>Place</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;espd:ESPDResponse&gt;</span>
+  ...
+  <span class="tag">&lt;cbc:IssueDate&gt;</span>2015-11-25<span class="tag">&lt;/cbc:IssueDate&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;cbc:IssueTime&gt;</span>13:19:20<span class="tag">&lt;/cbc:IssueTime&gt;</span>
+  ...
+  <span class="tag">&lt;cac:Signature&gt;</span>
+    <span class="tag">&lt;cbc:ID&gt;</span>a47fe139-f2b1-4886-9c01-70033ad82fcb<span class="tag">&lt;/cbc:ID&gt;</span>
+    <span class="tag">&lt;cac:SignatoryParty&gt;</span>
+      <span class="tag">&lt;cac:PhysicalLocation&gt;</span>
+        <span class="tag">&lt;cbc:Name&gt;</span>Eastwatch by the Sea<span class="tag">&lt;/cbc:Name&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="tag">&lt;/cac:PhysicalLocation&gt;</span>
+    <span class="tag">&lt;/cac:SignatoryParty&gt;</span>
+  <span class="tag">&lt;/cac:Signature&gt;</span>
+  ...
+<span class="tag">&lt;/espd:ESPDResponse&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>Date</code> information is saved here</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>Place</code> information is saved inside the <code>Signature</code> element</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-108">VCD issues (continued from version 2016.06)</a></p>
+</div>
+<div class="paragraph">
+<p>The list of countries used by the ESPD application can be found here:
+  <a href="https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/java/eu/europa/ec/grow/espd/domain/enums/other/Country.java" class="bare">https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/java/eu/europa/ec/grow/espd/domain/enums/other/Country.java</a></p>
+</div>
+<div class="paragraph">
+<p>The list of currencies used by the ESPD application can be found here:
+  <a href="https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/java/eu/europa/ec/grow/espd/domain/enums/other/Currency.java" class="bare">https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/java/eu/europa/ec/grow/espd/domain/enums/other/Currency.java</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-06"><a class="anchor" href="#version-2016-06"></a>Version 2016.06</h3>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-92">Issues of interoperability with VCD</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Name</code> and <code>Description</code> of the <code>Other criteria</code> have been swapped.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">EconomicOperatorParticipatingProcurementProcedureResponseTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> response = parseResponseXml(espd)
+<span class="keyword">def</span> idx = getEoCriterionIndex(AwardCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionID element</span><span class="delimiter">&quot;</span></span>
+checkCriterionId(response, idx, <span class="string"><span class="delimiter">&quot;</span><span class="content">ee51100f-8e3e-40c9-8f8b-57d5a15be1f2</span><span class="delimiter">&quot;</span></span>)
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionTypeCode element</span><span class="delimiter">&quot;</span></span>
+checkCriterionTypeCode(response, idx, <span class="string"><span class="delimiter">&quot;</span><span class="content">DATA_ON_ECONOMIC_OPERATOR</span><span class="delimiter">&quot;</span></span>)
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionName element</span><span class="delimiter">&quot;</span></span>
+response.Criterion[idx].Name.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">EO participating in procurement procedure</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionDescription element</span><span class="delimiter">&quot;</span></span>
+response.Criterion[idx].Description.text() ==
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the economic operator participating in the procurement procedure together with others?</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">check all the sub groups</span><span class="delimiter">&quot;</span></span>
+response.Criterion[idx].RequirementGroup.size() == <span class="integer">1</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name (which used to be empty) is present now and goes here</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The old name is now stored in the <code>Description</code> element</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">EconomicOperatorRegisteredResponseTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionID element</span><span class="delimiter">&quot;</span></span>
+  checkCriterionId(response, idx, <span class="string"><span class="delimiter">&quot;</span><span class="content">9b19e869-6c89-4cc4-bd6c-ac9ca8602165</span><span class="delimiter">&quot;</span></span>)
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionTypeCode element</span><span class="delimiter">&quot;</span></span>
+  checkCriterionTypeCode(response, idx, <span class="string"><span class="delimiter">&quot;</span><span class="content">DATA_ON_ECONOMIC_OPERATOR</span><span class="delimiter">&quot;</span></span>)
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionName element</span><span class="delimiter">&quot;</span></span>
+  response.Criterion[idx].Name.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">EO registered</span><span class="delimiter">&quot;</span></span>
+
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">first sub group requirements</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">def</span> r1_0 = response.Criterion[idx].RequirementGroup[<span class="integer">0</span>].Requirement[<span class="integer">0</span>]
+  checkRequirement(r1_0, <span class="string"><span class="delimiter">&quot;</span><span class="content">67fd1dde-2a0a-486e-9469-79c78796fc22</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Not applicable</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span>)
+
+  <span class="keyword">def</span> r1_1 = response.Criterion[idx].RequirementGroup[<span class="integer">0</span>].Requirement[<span class="integer">1</span>]
+  checkRequirement(r1_1, <span class="string"><span class="delimiter">&quot;</span><span class="content">7f18c64e-ae09-4646-9400-f3666d50af51</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Restructure the requirement groups according to the VCD proposed solution</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>All the criteria were restructured into new requirement groups and the <code>&lt;ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE"&gt;</code>
+logic has been introduced. More information about the criteria and requirement groups instantiation can be found here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://espd.github.io/ESPD-EDM/#criterion" class="bare">https://espd.github.io/ESPD-EDM/#criterion</a></p>
+</li>
+<li>
+<p><a href="https://espd.github.io/ESPD-EDM/#requirement-group" class="bare">https://espd.github.io/ESPD-EDM/#requirement-group</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The results of all the changes performed on this issue are reflected in the criterion configuration files below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/exclusionCriteria.json" class="bare">https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/exclusionCriteria.json</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/selectionCriteria.json" class="bare">https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/selectionCriteria.json</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/otherCriteria.json" class="bare">https://github.com/ESPD/ESPD-Service/blob/master/espd-web/src/main/resources/criteria/otherCriteria.json</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-05"><a class="anchor" href="#version-2016-05"></a>Version 2016.05</h3>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-93">Part 1 - title and short description are not exported</a></p>
+</div>
+<div class="paragraph">
+<p>In case <code>Part I - Information concerning the procurement procedure and the contracting authority or contracting entity</code>,
+section <code>Information about publication</code> is missing the <code>Notice number in the OJS</code> field, when we want to save the
+<code>ESPD Request/Response</code> we need to provide an <code>ID</code> to the parent <code>AdditionalDocumentReference</code> element because the <code>ID</code>
+is mandatory. We will use the value <strong>0000/S 000-000000</strong> to represent the lack of the notice number in the OJS.</p>
+</div>
+<div class="paragraph">
+<p>The generation of the TED information inside the <code>ESPD Request</code> in this case should look like the test below.</p>
+</div>
+<div class="listingblock">
+<div class="title">EspdRequestMarshallingTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">should contain AdditionalDocumentReference with default ID if the TED OJS number is missing</span><span class="delimiter">&quot;</span></span>() {
+  <span class="key">given</span>:
+  <span class="keyword">def</span> espd = <span class="keyword">new</span> EspdDocument(<span class="key">ojsNumber</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">     </span><span class="delimiter">&quot;</span></span>, <span class="key">tedReceptionId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">     </span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key">procedureTitle</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">procedureShortDesc</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Service category No 11: Management consulting services [6] and related services.</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">tedUrl</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML</span><span class="delimiter">&quot;</span></span>)
+
+  <span class="key">when</span>:
+  <span class="keyword">def</span> result = parseRequestXml(espd)
+
+  <span class="key">then</span>:
+  result.AdditionalDocumentReference.size() == <span class="integer">1</span>
+
+  <span class="key">then</span>:
+  result.AdditionalDocumentReference[<span class="integer">0</span>].ID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">0000/S 000-000000</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].ID.@schemeID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">COM-GROW-TEMPORARY-ID</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].ID.@schemeAgencyID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].ID.@schemeAgencyName.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">DG GROW (European Commission)</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].ID.@schemeVersionID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.1</span><span class="delimiter">&quot;</span></span>
+
+  <span class="key">then</span>:
+  result.AdditionalDocumentReference[<span class="integer">0</span>].DocumentTypeCode.@listAgencyID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].DocumentTypeCode.@listID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">ReferencesTypeCodes</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].DocumentTypeCode.@listVersionID.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].DocumentTypeCode.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">TED_CN</span><span class="delimiter">&quot;</span></span>
+
+  <span class="key">then</span>:
+  result.AdditionalDocumentReference[<span class="integer">0</span>].Attachment.ExternalReference.FileName.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].Attachment.ExternalReference.Description[<span class="integer">0</span>].text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">Service category No 11: Management consulting services [6] and related services.</span><span class="delimiter">&quot;</span></span>
+  result.AdditionalDocumentReference[<span class="integer">0</span>].Attachment.ExternalReference.URI.text() == <span class="string"><span class="delimiter">&quot;</span><span class="content">http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The notice number in the OJS is missing (empty in this case)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This value should be saved in the <code>ESPD Request</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>schemeID</code> should be <code>COM-GROW-TEMPORARY-ID</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The test below imports an <code>ESPD Request</code> with such a temporary notice number and checks that the information
+is ignored in this case.</p>
+</div>
+<div class="listingblock">
+<div class="title">request_temporary_ojs_number_import.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;/espd-req:ESPDRequest&gt;</span>
+  ...
+  <span class="tag">&lt;cbc:ContractFolderID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">TeD</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>SMART 2016/0069<span class="tag">&lt;/cbc:ContractFolderID&gt;</span>
+  ...
+  <span class="comment">&lt;!-- For procurement projects above the threshold it is compulsory to specify the following data, by means of an AdditionalDocumentReference element, about the Contract Notice published in TeD: the OJEU S number[], date[], page[], Notice number in OJS: YYYY/S [][][]-[][][][][][], Title and Description of the Procurement Project --&gt;</span>
+  <span class="tag">&lt;cac:AdditionalDocumentReference&gt;</span>
+    <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">COM-GROW-TEMPORARY-ID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="attribute-name">schemeAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DG GROW (European Commission)</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0000/S 000-000000<span class="tag">&lt;/cbc:ID&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;cbc:DocumentTypeCode</span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ReferencesTypeCodes</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>TED_CN<span class="tag">&lt;/cbc:DocumentTypeCode&gt;</span>
+    <span class="tag">&lt;cac:Attachment&gt;</span>
+      <span class="tag">&lt;cac:ExternalReference&gt;</span>
+        <span class="tag">&lt;cbc:URI&gt;</span>http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML<span class="tag">&lt;/cbc:URI&gt;</span>
+        <span class="comment">&lt;!-- Title of the Contract Notice --&gt;</span>
+        <span class="tag">&lt;cbc:FileName&gt;</span>Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015<span class="tag">&lt;/cbc:FileName&gt;</span>
+        <span class="comment">&lt;!-- Short description of the Procurement Project --&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>Service category No 11: Management consulting services [6] and related services.<span class="tag">&lt;/cbc:Description&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>16-000136-001<span class="tag">&lt;/cbc:Description&gt;</span>
+      <span class="tag">&lt;/cac:ExternalReference&gt;</span>
+    <span class="tag">&lt;/cac:Attachment&gt;</span>
+  <span class="tag">&lt;/cac:AdditionalDocumentReference&gt;</span>
+...
+<span class="tag">&lt;/espd-req:ESPDRequest&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The code used in this special case</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The value used to represent a missing notice number</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">EspdRequestOtherInformationImportTest.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">we should not load the ojs number if it is marked as a temporary one</span><span class="delimiter">&quot;</span></span>() {
+  <span class="key">given</span>:
+  <span class="keyword">def</span> espdXml = importXmlRequestFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">request_temporary_ojs_number_import.xml</span><span class="delimiter">&quot;</span></span>)
+  EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdXml)).get()
+
+  <span class="key">expect</span>:
+  espd.fileRefByCA == <span class="string"><span class="delimiter">&quot;</span><span class="content">SMART 2016/0069</span><span class="delimiter">&quot;</span></span>
+  espd.ojsNumber == <span class="predefined-constant">null</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  espd.procedureTitle == <span class="string"><span class="delimiter">&quot;</span><span class="content">Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015</span><span class="delimiter">&quot;</span></span>
+  espd.procedureShortDesc == <span class="string"><span class="delimiter">&quot;</span><span class="content">Service category No 11: Management consulting services [6] and related services.</span><span class="delimiter">&quot;</span></span>
+  espd.tedUrl == <span class="string"><span class="delimiter">&quot;</span><span class="content">http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML</span><span class="delimiter">&quot;</span></span>
+  espd.tedReceptionId == <span class="string"><span class="delimiter">&quot;</span><span class="content">16-000136-001</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The notice number in the OJS should be ignored in this case</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-2016-04-01"><a class="anchor" href="#version-2016-04-01"></a>Version 2016.04.01</h3>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-88">Modification of exclusion ground conflict of interest</a></p>
+</div>
+<div class="paragraph">
+<p>The exclusion criterion <code>Conflict of interest due to its participation in the procurement procedure</code> needs only the
+<code>Yes/No</code> requirement and not the rest.</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;ccv:Criterion&gt;</span>
+  <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>b1b5ac18-f393-4280-9659-1367943c1a2e<span class="tag">&lt;/cbc:ID&gt;</span>
+  <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+  <span class="tag">&lt;cbc:Name&gt;</span>Conflict of interest due to its participation in the procurement procedure<span class="tag">&lt;/cbc:Name&gt;</span>
+  ...
+  <span class="tag">&lt;ccv:RequirementGroup&gt;</span>
+    <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>30450436-f559-4dfa-98ba-f0842ed9d2a0<span class="tag">&lt;/cbc:ID&gt;</span>
+    <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>974c8196-9d1c-419c-9ca9-45bb9f5fd59a<span class="tag">&lt;/cbc:ID&gt;</span>
+      <span class="tag">&lt;cbc:Description&gt;</span>Your answer?<span class="tag">&lt;/cbc:Description&gt;</span>
+      <span class="tag">&lt;ccv:Response&gt;</span>
+        <span class="tag">&lt;ccv-cbc:Indicator&gt;</span>false<span class="tag">&lt;/ccv-cbc:Indicator&gt;</span>
+      <span class="tag">&lt;/ccv:Response&gt;</span>
+    <span class="tag">&lt;/ccv:Requirement&gt;</span>
+  <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+<span class="tag">&lt;/ccv:Criterion&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-78">Modification of exclusion criterion 'Guilty of misinterpretation'</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Guilty of misinterpretation</code> exclusion criterion only needs the <code>Yes/No</code> requirement.</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;ccv:Criterion&gt;</span>
+  <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>696a75b2-6107-428f-8b74-82affb67e184<span class="tag">&lt;/cbc:ID&gt;</span>
+  <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+  <span class="tag">&lt;cbc:Name&gt;</span>Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure<span class="tag">&lt;/cbc:Name&gt;</span>
+  ...
+  <span class="tag">&lt;ccv:RequirementGroup&gt;</span>
+    <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>30450436-f559-4dfa-98ba-f0842ed9d2a0<span class="tag">&lt;/cbc:ID&gt;</span>
+    <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>974c8196-9d1c-419c-9ca9-45bb9f5fd59a<span class="tag">&lt;/cbc:ID&gt;</span>
+      <span class="tag">&lt;cbc:Description&gt;</span>Your answer?<span class="tag">&lt;/cbc:Description&gt;</span>
+      <span class="tag">&lt;ccv:Response&gt;</span>
+        <span class="tag">&lt;ccv-cbc:Indicator&gt;</span>false<span class="tag">&lt;/ccv-cbc:Indicator&gt;</span>
+      <span class="tag">&lt;/ccv:Response&gt;</span>
+    <span class="tag">&lt;/ccv:Requirement&gt;</span>
+  <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+<span class="tag">&lt;/ccv:Criterion&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://webgate.ec.europa.eu/CITnet/jira/browse/ESPD-84">Textfield into Yes/No</a></p>
+</div>
+<div class="paragraph">
+<p>For the economic operator criterion <code>EO registered</code> found in <code>Part II - Information concerning the economic operator</code>,
+section <code>A - Information about the economic operator</code>, the requirement with id <code>0e71abd3-198e-49c5-8128-5708617bb191</code>
+is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type of requirement.</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-request.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">...
+<span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_FALSE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>59e6f3ef-15cd-4e21-82ac-ea497ccd44e2<span class="tag">&lt;/cbc:ID&gt;</span>
+  <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0e71abd3-198e-49c5-8128-5708617bb191<span class="tag">&lt;/cbc:ID&gt;</span>
+    <span class="tag">&lt;cbc:Description&gt;</span>e) Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?<span class="tag">&lt;/cbc:Description&gt;</span>
+    <span class="tag">&lt;ccv:Response</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/ccv:Requirement&gt;</span>
+  ...
+<span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="2016-11-02-8th-of-december-2016"><a class="anchor" href="#2016-11-02-8th-of-december-2016"></a>2016.11.02 (8th of December 2016)</h3>
+<h3 id="2016-12-19th-of-december-2016"><a class="anchor" href="#2016-12-19th-of-december-2016"></a>2016.12 (19th of December 2016)</h3>
+<div class="paragraph">
+<p>This release contains mostly changes related to the XML structure of criteria.
+For a comprehensive history of all the XML changes, please visit this link:
+<a href="http://espd.github.io/ESPD-Service/docs/html/xmlChanges.html" class="bare">http://espd.github.io/ESPD-Service/docs/html/xmlChanges.html</a>.</p>
+</div>
 <div class="sect3">
 <h4 id="bug"><a class="anchor" href="#bug"></a>Bug</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/15">Able to add multiple references in selection criteria</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/33">ERRORS in current ESPD: average yearly turnover and average and specific average turnover</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/91">Part III C: Conflict of interest due to its participation in the procurement procedure</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/86">Part III D: Purely national exlclusion grounds are allowing for self-cleaning</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/9">Allow for references "start date" and "end date"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/88">Contracting entities should be able to deselect exclusion grounds</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/124">When importing a TED notice, Error message should be different</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/14">Set up of economic operator has only 5 years&#8230;&#8203; should be (much) more</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/37">Part II: CA needs to select two "criteria"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/127">Default values for criteria with requirements of type 'Indicator'</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/71">Correct the structure of yearly turnover selection criteria</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/92">Fields missing for "Information is available electronically"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="translation"><a class="anchor" href="#translation"></a>Translation</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/117">EN text about "guilty of misinterpretation" is wrong</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The full list of issues can be seen at <a href="https://github.com/ESPD/ESPD-Service/milestone/5?closed=1">ESPD Milestone 2016.12</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2016-11-02-8th-of-december-2016"><a class="anchor" href="#2016-11-02-8th-of-december-2016"></a>2016.11.02 (8th of December 2016)</h3>
+<div class="sect3">
+<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2544,7 +3799,7 @@ in your POM file:</p>
 <div class="sect2">
 <h3 id="2016-11-01-2nd-of-december-2016"><a class="anchor" href="#2016-11-01-2nd-of-december-2016"></a>2016.11.01 (2nd of December 2016)</h3>
 <div class="sect3">
-<h4 id="bug-2"><a class="anchor" href="#bug-2"></a>Bug</h4>
+<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2558,7 +3813,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-11-30th-of-november-2016"><a class="anchor" href="#2016-11-30th-of-november-2016"></a>2016.11 (30th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2574,7 +3829,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="bug-3"><a class="anchor" href="#bug-3"></a>Bug</h4>
+<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2584,7 +3839,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="translation"><a class="anchor" href="#translation"></a>Translation</h4>
+<h4 id="translation-2"><a class="anchor" href="#translation-2"></a>Translation</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2607,12 +3862,15 @@ the printing functionality in version 2016.11</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The full list of issues can be seen at <a href="https://github.com/ESPD/ESPD-Service/milestone/6?closed=1">ESPD Milestone 2016.11</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="2016-10-02-28th-of-november-2016"><a class="anchor" href="#2016-10-02-28th-of-november-2016"></a>2016.10.02 (28th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
+<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2625,7 +3883,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-01-11th-of-november-2016"><a class="anchor" href="#2016-10-01-11th-of-november-2016"></a>2016.10.01 (11th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
+<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2638,7 +3896,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-8th-of-november-2016"><a class="anchor" href="#2016-10-8th-of-november-2016"></a>2016.10 (8th of November 2016)</h3>
 <div class="sect3">
-<h4 id="bug-4"><a class="anchor" href="#bug-4"></a>Bug</h4>
+<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2669,7 +3927,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
+<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2695,7 +3953,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="translation-2"><a class="anchor" href="#translation-2"></a>Translation</h4>
+<h4 id="translation-3"><a class="anchor" href="#translation-3"></a>Translation</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2711,7 +3969,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-08-01-19th-of-september-2016"><a class="anchor" href="#2016-08-01-19th-of-september-2016"></a>2016.08.01 (19th of September 2016)</h3>
 <div class="sect3">
-<h4 id="bug-5"><a class="anchor" href="#bug-5"></a>Bug</h4>
+<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2724,7 +3982,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-08-31st-of-august-2016"><a class="anchor" href="#2016-08-31st-of-august-2016"></a>2016.08 (31st of August 2016)</h3>
 <div class="sect3">
-<h4 id="bug-6"><a class="anchor" href="#bug-6"></a>Bug</h4>
+<h4 id="bug-7"><a class="anchor" href="#bug-7"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2756,7 +4014,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
+<h4 id="enhancement-6"><a class="anchor" href="#enhancement-6"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2775,7 +4033,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-07-29th-of-july-2016"><a class="anchor" href="#2016-07-29th-of-july-2016"></a>2016.07 (29th of July 2016)</h3>
 <div class="sect3">
-<h4 id="bug-7"><a class="anchor" href="#bug-7"></a>Bug</h4>
+<h4 id="bug-8"><a class="anchor" href="#bug-8"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2835,7 +4093,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-06-01-30th-of-june-2016"><a class="anchor" href="#2016-06-01-30th-of-june-2016"></a>2016.06.01 (30th of June 2016)</h3>
 <div class="sect3">
-<h4 id="bug-8"><a class="anchor" href="#bug-8"></a>Bug</h4>
+<h4 id="bug-9"><a class="anchor" href="#bug-9"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2942,7 +4200,7 @@ the printing functionality in version 2016.11</p>
 <p>The main purpose of this release was to make public the open source version of the ESPD application on Github.</p>
 </div>
 <div class="sect3">
-<h4 id="bug-9"><a class="anchor" href="#bug-9"></a>Bug</h4>
+<h4 id="bug-10"><a class="anchor" href="#bug-10"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2968,7 +4226,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-04-02-2nd-of-may-2016"><a class="anchor" href="#2016-04-02-2nd-of-may-2016"></a>2016.04.02 (2nd of May 2016)</h3>
 <div class="sect3">
-<h4 id="bug-10"><a class="anchor" href="#bug-10"></a>Bug</h4>
+<h4 id="bug-11"><a class="anchor" href="#bug-11"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2981,7 +4239,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-04-01-25th-of-april-2016"><a class="anchor" href="#2016-04-01-25th-of-april-2016"></a>2016.04.01 (25th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-11"><a class="anchor" href="#bug-11"></a>Bug</h4>
+<h4 id="bug-12"><a class="anchor" href="#bug-12"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3035,7 +4293,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-04-15th-of-april-2016"><a class="anchor" href="#2016-04-15th-of-april-2016"></a>2016.04 (15th of April 2016)</h3>
 <div class="sect3">
-<h4 id="bug-12"><a class="anchor" href="#bug-12"></a>Bug</h4>
+<h4 id="bug-13"><a class="anchor" href="#bug-13"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3096,7 +4354,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="bug-13"><a class="anchor" href="#bug-13"></a>Bug</h4>
+<h4 id="bug-14"><a class="anchor" href="#bug-14"></a>Bug</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3170,7 +4428,7 @@ the printing functionality in version 2016.11</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-09 09:00:42 CET
+Last updated 2016-12-19 14:36:48 CET
 </div>
 </div>
 </body>
