@@ -3,6 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
+<c:set var="currentYear" value='<%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>'/>
+
 <tiles:importAttribute name="field"/>
 <tiles:importAttribute name="has_please_describe_them"/>
 <tiles:importAttribute name="lastYearsAmount"/>
@@ -11,6 +14,7 @@
 <tiles:importAttribute name="has_single_amount"/>
 <tiles:importAttribute name="has_specify_year"/>
 <tiles:importAttribute name="has_number_of_years"/>
+
 <c:if test="${has_please_describe_them}">
     <div class="col-md-12" id="${field}-form">
         <div class="form-group">
@@ -58,10 +62,7 @@
         <label class="control-label col-md-3 small" data-i18n="crit_please_specify"><s:message
                 code='crit_please_specify'/></label>
         <div class="col-md-9">
-            <form:select path="${field}.year" cssClass="form-control">
-                <form:option value="${null}" label="---"/>
-                <form:options items="${lastYearsAmount}"/>
-            </form:select>
+            <form:input type="text" path='${field}.numberOfYears' digits="true" min="1900" max="${currentYear}" cssClass="form-control"></form:input>
         </div>
     </div>
 </c:if>
@@ -70,8 +71,7 @@
         <div class="col-md-4">
             <label class="control-label col-xs-3 small">${span18n['crit_number_of_years']}</label>
             <div class="col-xs-9" style="margin-bottom: 5px;">
-                <form:input type="text" path="${field}.numberOfYears" digits="true" max="100"
-                            cssClass="form-control"></form:input>
+                <form:input type="text" path="${field}.numberOfYears" digits="true" max="100" cssClass="form-control"></form:input>
             </div>
         </div>
         <div class="col-md-8">
