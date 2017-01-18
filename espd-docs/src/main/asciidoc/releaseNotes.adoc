@@ -1,11 +1,13 @@
 == Release notes
 
-=== 2016.12.01 (17th of January 2017)
+=== 2016.12.01 (18th of January 2017)
 
 ==== Bug
 
 * https://github.com/ESPD/ESPD-Service/issues/15[Able to add multiple references in selection criteria]
 * https://github.com/ESPD/ESPD-Service/issues/14[Set up of economic operator has only 5 years... should be (much) more]
+* https://github.com/ESPD/ESPD-Service/issues/134[Different order for filter page]
+* https://github.com/ESPD/ESPD-Service/issues/51[Part III: Section B: "Payment of taxes" and "Payment of social security"]
 
 === 2016.12 (19th of December 2016)
 
