@@ -32,15 +32,16 @@
 
 <div class="form-group">
     <table style="width:100%">
+    
 
-        <c:forEach begin="1" end="5" varStatus="loop">
+        <c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="loop">
 
             <tr style="border: 1px solid slategrey;">
                 <td>
                     <label class="control-label col-md-3 small">${span18n['crit_description']}</label>
                 </td>
                 <td>
-                    <form:textarea path="${field}.unboundedGroups[${loop.index - 1}]['description']" cssClass="form-control small"
+                    <form:textarea path="${field}.unboundedGroups[${loop.index}]['description']" cssClass="form-control small"
                                    cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -49,12 +50,12 @@
                     <label class="control-label col-md-3 small">${span18n['crit_amount']}</label>
                 </td>
                 <td>
-                    <form:textarea rows="1" path="${field}.unboundedGroups[${loop.index - 1}]['amount']" number="true"
+                    <form:textarea rows="1" path="${field}.unboundedGroups[${loop.index}]['amount']" number="true"
                                    cssClass="form-control small"
                                    cssStyle="border-radius: 0;padding-left: 2px; padding-right: 0;"/>
 
                     <tiles:insertDefinition name="currencies">
-                        <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${loop.index - 1}]['currency']"/>
+                        <tiles:putAttribute name="currencyField" value="${field}.unboundedGroups[${loop.index}]['currency']"/>
                         <tiles:putAttribute name="style" value="border-radius: 0;"/>
                     </tiles:insertDefinition>
                 </td>
@@ -64,7 +65,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_start_date']}</label>
                 </td>
                 <td>
-                    <form:input type="text" path="${field}.unboundedGroups[${loop.index - 1}]['startDate']" cssClass="form-control datepicker"
+                    <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['startDate']" cssClass="form-control datepicker"
                                 cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -73,7 +74,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_end_date']}</label>
                 </td>
                 <td>
-                    <form:input type="text" path="${field}.unboundedGroups[${loop.index - 1}]['endDate']" cssClass="form-control datepicker"
+                    <form:input type="text" path="${field}.unboundedGroups[${loop.index}]['endDate']" cssClass="form-control datepicker"
                                 cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
@@ -82,7 +83,7 @@
                     <label class="control-label col-md-3 small">${span18n['crit_recipients']}</label>
                 </td>
                 <td>
-                    <form:textarea path="${field}.unboundedGroups[${loop.index - 1}]['recipients']" cssClass="form-control small"
+                    <form:textarea path="${field}.unboundedGroups[${loop.index}]['recipients']" cssClass="form-control small"
                                    cssStyle="border-radius: 0;"/>
                 </td>
             </tr>
