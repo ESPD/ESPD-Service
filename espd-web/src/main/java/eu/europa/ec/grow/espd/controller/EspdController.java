@@ -101,9 +101,15 @@ class EspdController {
 		return WELCOME_PAGE;
 	}
 
-	@RequestMapping("/{page:filter|contact}")
-	public String getPage(@PathVariable String page) {
-		return page;
+	@GetMapping("/contact")
+	public String viewContactPage() {
+		return "contact";
+	}
+
+	@GetMapping("/filter")
+	public String viewFilterPage(@ModelAttribute("espdPrefill") EspdPrefillParameters prefillParameters) {
+
+		return "filter";
 	}
 
 	@RequestMapping(value = "/welcome")
@@ -218,7 +224,7 @@ class EspdController {
 				return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 			}
 		} catch (TedNoticeException e) {
-			result.rejectValue("attachments", "error_ted_notice_not_supported");	
+			result.rejectValue("attachments", "error_ted_notice_not_supported");
 			return "filter";
 		}
 

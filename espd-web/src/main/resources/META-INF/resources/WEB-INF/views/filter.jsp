@@ -65,7 +65,7 @@ $(function() {
 
 <s:eval var="espdEnvironment" scope="page" expression="@espdConfiguration.espdEnvironment" />
 
-<form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espd" data-toggle="validator" enctype="multipart/form-data">
+<form:form id="espdform" role="form" class="form-horizontal" action="filter" method="post" commandName="espdPrefill" data-toggle="validator" enctype="multipart/form-data">
 	<div class="panel-default">
         <tiles:insertDefinition name="progress">
 			<tiles:putAttribute name="agent" value="unknown"/>
@@ -112,24 +112,24 @@ $(function() {
 				<span data-i18n="filter_who_are_you"><s:message code='filter_who_are_you'/></span>
 				<span data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip" title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>
 			</h3>
-			<div class="radio" >
-				<label><input id="whoareyou_ca" name="agent" value="ca" class="radiotab" type="radio" href="#tab_ca"/>${span18n['filter_i_am_ca']}</label>
+			<div class="radio">
+				<label><form:radiobutton path="agent" id="whoareyou_ca" name="agent" value="ca" class="radiotab" href="#tab_ca"/>${span18n['filter_i_am_ca']}</label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
 			</div>
-			<div class="radio" >
-				<label><input id="whoareyou_ce" name="agent" value="ce" class="radiotab" type="radio" href="#tab_ca"/>${span18n['filter_i_am_ce']}</label>
+			<div class="radio">
+				<label><form:radiobutton path="agent" id="whoareyou_ce" name="agent" value="ce" class="radiotab" href="#tab_ca"/>${span18n['filter_i_am_ce']}</label>
 				<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip" title="<s:message code='tooltip_ce_ref_buyer'/>"></span>
 			</div>
 			<div class="radio">
-				<label><input id="whoareyou_eo" name="agent" value="eo" class="radiotab" type="radio" href="#tab_eo"/>${span18n['filter_i_am_eop']}</label>
+				<label><form:radiobutton path="agent" id="whoareyou_eo" name="agent" value="eo" class="radiotab" href="#tab_eo"/>${span18n['filter_i_am_eop']}</label>
 				<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip" title="${i18n['tooltip_eo_ref_suppl']}"></span>
 			</div>
-			<div class="tab-content" >
+			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">
 					<h3>${span18n['filter_what_you_do']}</h3>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_create_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"/>${span18n['filter_create_espd']}</label>
+                            <label><form:radiobutton path="action" name="action" value="ca_create_espd_request" class="radiotab radioCa" data-target="#tab-country-selection"/>${span18n['filter_create_espd']}</label>
                             <span data-i18n="tooltip_ca_can_create_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_create_espd']}"></span>
                         </div>
                         <div class="col-md-5">
@@ -138,18 +138,17 @@ $(function() {
                         <div class="col-md-4" style="padding-left: 0px;padding-right: 5px">
                             <span data-i18n="tooltip_ted_reception_id" data-toggle="tooltip" title="${i18n['tooltip_ted_reception_id']}"></span>
                         </div>
-                        <%--<div class="col-md-offset-3">&nbsp;</div>--%>
                     </div>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_reuse_espd_request" class="radiotab radioCa" type="radio" data-target="#tab-single-upload"/>${span18n['filter_reuse_espd']}</label>
+                            <label><form:radiobutton path="action" name="action" value="ca_reuse_espd_request" class="radiotab radioCa" data-target="#tab-single-upload"/>${span18n['filter_reuse_espd']}</label>
                             <span data-i18n="tooltip_ca_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_ca_can_import_espd']}"></span>
                         </div>
                         <div class="col-md-offset-9"></div>
                     </div>
                     <div class="row">
                         <div class="radio col-md-3">
-                            <label><input name="action" value="ca_review_espd_response" class="radiotab radioCa" type="radio" data-target="#tab-single-upload"/>${span18n['filter_review_espd']}</label>
+                            <label><form:radiobutton path="action" name="action" value="ca_review_espd_response" class="radiotab radioCa" data-target="#tab-single-upload"/>${span18n['filter_review_espd']}</label>
                             <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="${i18n['tooltip_review_espd']}"></span>
                         </div>
                         <div class="col-md-offset-9">&nbsp;</div>
@@ -159,17 +158,17 @@ $(function() {
 					<h3 data-i18n="filter_what_you_do"><s:message code='filter_what_you_do'/></h3>
 					<div class="radio">
 						<span class="k-button fa fa-upload hoverable"></span>
-						<label><input name="action" value="eo_import_espd" class="radiotab radioCa" type="radio" data-target="#tab-single-upload"/>${span18n['filter_import_espd']}</label>
+						<label><form:radiobutton path="action" name="action" value="eo_import_espd" class="radiotab radioCa" data-target="#tab-single-upload"/>${span18n['filter_import_espd']}</label>
 						<span data-i18n="tooltip_filter_eo_can_import_espd" data-toggle="tooltip" title="${i18n['tooltip_filter_eo_can_import_espd']}"></span>
 					</div>
                     <div class="radio">
                         <span class="k-button fa fa-upload hoverable"></span>
-                        <label><input name="action" value="eo_merge_espds" class="radiotab radioCa" type="radio" data-target="#tab-multiple-upload"/>${span18n['filter_merge_espds']}</label>
+                        <label><form:radiobutton path="action" name="action" value="eo_merge_espds" class="radiotab radioCa" data-target="#tab-multiple-upload"/>${span18n['filter_merge_espds']}</label>
                         <span data-i18n="tooltip_filter_eo_merge_espds" data-toggle="tooltip" title="${i18n['tooltip_filter_eo_merge_espds']}"></span>
                     </div>
                     <div class="radio">
                         <span class="k-button fa fa-upload hoverable"></span>
-                        <label><input name="action" value="eo_create_response" class="radiotab radioCa" type="radio" data-target="#tab-country-selection"/>${span18n['filter_create_response']}</label>
+                        <label><form:radiobutton path="action" name="action" value="eo_create_response" class="radiotab radioCa" data-target="#tab-country-selection"/>${span18n['filter_create_response']}</label>
                         <span data-i18n="tooltip_filter_create_response" data-toggle="tooltip" title="${i18n['tooltip_filter_create_response']}"></span>
                     </div>
 				</div>

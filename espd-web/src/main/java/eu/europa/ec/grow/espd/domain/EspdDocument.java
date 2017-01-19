@@ -155,6 +155,8 @@ public class EspdDocument {
 		return null;
 	}
 
+	private String agent;
+
 	public final boolean atLeastOneSelectionCriterionWasSelected() {
 		boolean atLeastOnePresent = false;
 		for (SelectionCriterion ccvCriterion :
