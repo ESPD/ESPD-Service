@@ -69,8 +69,8 @@
     <definition name="request_eo_selection" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
     <definition name="request_ca_finish" extends="request_ca"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="request_eo_finish" extends="request_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
-    <definition name="request_ca_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
-    <definition name="request_eo_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="request_ca_overview" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="request_eo_overview" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
     
     <definition name="response_ca_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
     <definition name="response_eo_procedure" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/procedure.jsp" /></definition>
@@ -80,8 +80,8 @@
     <definition name="response_eo_selection" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/selectionEO.jsp" /></definition>
     <definition name="response_ca_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
     <definition name="response_eo_finish" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/wizard/finish.jsp" /></definition>
-    <definition name="response_ca_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
-    <definition name="response_eo_print" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="response_ca_overview" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
+    <definition name="response_eo_overview" extends="response_eo"><put-attribute name="body" value="/WEB-INF/views/print.jsp" /></definition>
     
 	<definition name="viewChangeRole" template="/WEB-INF/views/wizard/viewChangeRole.jsp"><!-- page, agent --></definition>
 
@@ -252,7 +252,7 @@
         <put-attribute name="nextCode" value="next"/>
         <put-attribute name="prev" value=""/>
         <put-attribute name="next" value=""/>
-        <put-attribute name="print" value="false"/>
+        <put-attribute name="overview" value="false"/>
     </definition>
 
     <!-- ~ common-->
