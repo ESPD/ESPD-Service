@@ -47,7 +47,7 @@
 				$("input:radio[data-target-hide]").change(dataHide);
 				sortDropdowns();
 
-				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${espd.authority.country.iso2Code}")
+				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${agent == 'eo' ? espd.economicOperator.country.iso2Code : espd.authority.country.iso2Code}")
 				$('.ecertis-link-header').click(ecertisHandler);
 			});
 		</script>
