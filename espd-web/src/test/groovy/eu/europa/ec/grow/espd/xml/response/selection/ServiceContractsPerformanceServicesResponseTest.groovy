@@ -43,7 +43,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
         def espd = new EspdDocument(serviceContractsPerformanceServices: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                                   new DynamicRequirementGroup("description": "desc5"), new DynamicRequirementGroup("description": "desc6")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "First description"
@@ -123,7 +123,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                                   new DynamicRequirementGroup("amount": 55.55, "currency": "YEN")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "First amount"
@@ -171,7 +171,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                                   new DynamicRequirementGroup("startDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "First date"
@@ -196,7 +196,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                                   new DynamicRequirementGroup("endDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "First date"
@@ -219,7 +219,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                                   new DynamicRequirementGroup("recipients": "rec2")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then: "First recipients"
@@ -241,7 +241,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:
@@ -258,7 +258,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_15.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:
@@ -275,7 +275,7 @@ class ServiceContractsPerformanceServicesResponseTest extends AbstractSelectionC
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_15")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_PERFORMANCE_OF_SERVICES)
 
         then:

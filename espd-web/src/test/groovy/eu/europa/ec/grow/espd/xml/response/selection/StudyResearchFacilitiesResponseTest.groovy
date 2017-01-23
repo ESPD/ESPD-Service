@@ -39,7 +39,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
@@ -96,7 +96,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
@@ -113,7 +113,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_19.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:
@@ -130,7 +130,7 @@ class StudyResearchFacilitiesResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_19")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then:

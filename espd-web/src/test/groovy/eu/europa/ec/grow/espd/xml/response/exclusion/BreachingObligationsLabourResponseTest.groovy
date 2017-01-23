@@ -39,7 +39,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
         def espd = new EspdDocument(breachingObligationsLabour: new LawCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"
@@ -86,7 +86,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
         def espd = new EspdDocument(breachingObligationsLabour: new LawCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
@@ -102,7 +102,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
@@ -119,7 +119,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:
@@ -136,7 +136,7 @@ class BreachingObligationsLabourResponseTest extends AbstractExclusionCriteriaFi
                 selfCleaning: new SelfCleaning(description: "Hodor_11 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then:

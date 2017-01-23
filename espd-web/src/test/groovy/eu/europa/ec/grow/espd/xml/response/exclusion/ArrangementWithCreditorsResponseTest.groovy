@@ -39,7 +39,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"
@@ -91,7 +91,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -107,7 +107,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -124,7 +124,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
                 reason: "Reason here."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -141,7 +141,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -158,7 +158,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_14.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -175,7 +175,7 @@ class ArrangementWithCreditorsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_14")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:

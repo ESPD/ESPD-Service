@@ -38,7 +38,7 @@ class NationalExclusionGroundsRequestTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"

@@ -42,7 +42,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 description: "    "))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then:
@@ -58,7 +58,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false, url: null, code: "   ")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
         def subGroup = request.Criterion[idx].RequirementGroup[1]
 
@@ -81,7 +81,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, periodLength: "  "))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -96,7 +96,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, dateOfConviction: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -111,7 +111,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, country: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
@@ -125,7 +125,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(paymentSocialSecurity: new TaxesCriterion(exists: true, amount: null, currency: null))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_SOCIAL_SECURITY)
 
         then:
@@ -140,7 +140,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 unboundedGroups: [new DynamicRequirementGroup("year": null)]))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then:
@@ -156,7 +156,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 unboundedGroups: [new DynamicRequirementGroup("number": null)]))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
@@ -172,7 +172,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 unboundedGroups: [new DynamicRequirementGroup("ratio": null)]))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion.FINANCIAL_RATIO)
 
         then:
@@ -188,7 +188,7 @@ class CriterionRequirementsTest extends AbstractCriteriaFixture {
                 doubleValue1: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:

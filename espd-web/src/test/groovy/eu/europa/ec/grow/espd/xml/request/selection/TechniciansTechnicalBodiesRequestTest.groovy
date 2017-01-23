@@ -38,7 +38,7 @@ class TechniciansTechnicalBodiesRequestTest extends AbstractSelectionCriteriaFix
         def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseRequestXml(espd)
+        def response = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"

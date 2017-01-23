@@ -40,7 +40,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"
@@ -80,7 +80,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
@@ -98,7 +98,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
@@ -115,7 +115,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_02.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
@@ -132,7 +132,7 @@ class EnrolmentProfessionalRegisterResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_02")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:

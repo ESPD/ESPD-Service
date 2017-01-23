@@ -36,11 +36,8 @@ import org.apache.commons.io.IOUtils
 class OtherEconomicRequirementsImportTest extends AbstractXmlFileImport {
 
     def "12. should import all fields of 'Other economic or financial requirements'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/other_economic_requirements_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/other_economic_requirements_import.xml")
 
         then:
         espd.otherEconomicFinancialRequirements.exists == true

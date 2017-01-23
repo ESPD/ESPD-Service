@@ -38,7 +38,7 @@ class BreachingObligationsSocialRequestTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(breachingObligationsSocial: new LawCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_SOCIAL)
 
         then: "CriterionID element"

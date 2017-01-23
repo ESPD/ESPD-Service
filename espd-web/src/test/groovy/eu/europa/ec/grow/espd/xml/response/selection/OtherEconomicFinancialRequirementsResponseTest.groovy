@@ -39,7 +39,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
         def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then: "CriterionID element"
@@ -81,7 +81,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
                 description: "other economic or financial description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then:
@@ -98,7 +98,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then:
@@ -115,7 +115,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_12.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then:
@@ -132,7 +132,7 @@ class OtherEconomicFinancialRequirementsResponseTest extends AbstractSelectionCr
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_12")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then:

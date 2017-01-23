@@ -43,7 +43,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "005eb9ed-1347-4ca3-bb29-9bc0db64e1ab")
@@ -82,7 +82,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -100,7 +100,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -117,7 +117,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, reason: "Reason_01 here"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -134,7 +134,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_01 was convicted"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -151,7 +151,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
         def espd = new EspdDocument(criminalConvictions: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -169,7 +169,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -186,7 +186,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
                 selfCleaning: new SelfCleaning(description: "Hodor_01 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -203,7 +203,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -220,7 +220,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_01.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -237,7 +237,7 @@ class ParticipationInCriminalOrganisationResponseTest extends AbstractExclusionC
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_01")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:

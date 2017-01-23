@@ -38,7 +38,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
         def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
@@ -81,7 +81,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
         def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:
@@ -97,7 +97,7 @@ class DirectInvolvementPreparationProcurementResponseTest extends AbstractExclus
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:

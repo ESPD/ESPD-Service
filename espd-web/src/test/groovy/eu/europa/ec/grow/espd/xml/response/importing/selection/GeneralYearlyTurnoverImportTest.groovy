@@ -29,19 +29,14 @@ import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/8/16 at 2:44 PM.
  */
 class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
 
     def "06. should import all fields of 'General yearly turnover'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/general_yearly_turnover_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/general_yearly_turnover_import.xml")
         def unboundedGroups = espd.generalYearlyTurnover.unboundedGroups
 
         then:
@@ -84,11 +79,8 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
     }
 
     def "a selection criterion with no answer will be treated as FALSE"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/selection_criterion_no_answer_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/selection_criterion_no_answer_import.xml")
 
         then:
         espd.generalYearlyTurnover.exists == true

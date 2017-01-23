@@ -37,7 +37,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should make sure that we use the correct XML namespaces"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then:
         result.lookupNamespace('espd-req') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
@@ -53,7 +53,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain UBLVersionID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then:
         result.UBLVersionID.text() == "2.1"
@@ -62,7 +62,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain CustomizationID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then:
         result.CustomizationID.text() == "urn:www.cenbii.eu:transaction:biitrns070:ver3.0"
@@ -73,7 +73,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain ID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then: "id is an UUID"
         result.ID.text().length() == 36
@@ -87,7 +87,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain CopyIndicator element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then:
         result.CopyIndicator.size() == 1
@@ -96,7 +96,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain VersionID element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then:
         result.VersionID.text() == "2016.4"
@@ -105,7 +105,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain IssueDate element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}"
@@ -113,7 +113,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain IssueTime element information"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then: "issue time must match the time format HH:mm:ss"
         result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}"
@@ -124,7 +124,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then:
         result.ContractFolderID.text() == "HODOR refd by CA"
@@ -141,7 +141,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         )
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then:
         result.AdditionalDocumentReference[0].ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
@@ -171,7 +171,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
                 tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then:
         result.AdditionalDocumentReference.size() == 1
@@ -202,7 +202,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         )
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then:
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "-"
@@ -218,7 +218,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(authority: authority)
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
@@ -244,7 +244,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
@@ -258,7 +258,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(lotConcerned: "hodor lot")
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
@@ -269,7 +269,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
     def "should contain mandatory Criterion elements information when none of them is selected from ESPD"() {
         when:
-        def result = parseRequestXml()
+        def result = generateRequestXml()
 
         then: "mandatory exclusion plus all selection plus the award criteria (eo criteria)"
         result.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length

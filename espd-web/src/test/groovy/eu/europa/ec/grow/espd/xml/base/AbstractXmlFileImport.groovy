@@ -32,17 +32,20 @@ import org.apache.commons.io.IOUtils
  */
 abstract class AbstractXmlFileImport extends AbstractEspdXmlMarshalling {
 
-    protected String importXmlRequestFile(String fileName) {
-        return new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/request/${fileName}").getText('UTF-8')
+    protected EspdDocument parseXmlRequestFile(String filePath) {
+        def espdRequestXml = new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/request/${filePath}").getText('UTF-8')
+        return xmlImporter.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
     }
 
-    protected String importXmlResponseFile(String fileName) {
-        return new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/response/${fileName}").getText('UTF-8')
+    protected EspdDocument parseXmlResponseFile(String filePath) {
+        def espdResponseXml = new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/response/${filePath}").getText('UTF-8')
+        return xmlImporter.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
     }
 
-    protected EspdDocument parseXmlResponseFile(String fileName) {
-        def espdResponseXml = importXmlResponseFile(fileName)
-        return marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+    protected EspdDocument parseXmlMergeFile(String requestFilePath, String responseFilePath) {
+        def espdRequestXml = new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/request/${requestFilePath}").getText('UTF-8')
+        def espdResponseXml = new File("./src/test/groovy/eu/europa/ec/grow/espd/xml/samples/response/${responseFilePath}").getText('UTF-8')
+        return xmlImporter.mergeEspdRequestAndResponse(IOUtils.toInputStream(espdRequestXml), IOUtils.toInputStream(espdResponseXml)).get()
     }
 
 }

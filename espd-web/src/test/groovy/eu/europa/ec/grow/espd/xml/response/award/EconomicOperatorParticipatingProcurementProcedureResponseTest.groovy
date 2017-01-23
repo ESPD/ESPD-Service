@@ -39,7 +39,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
@@ -83,7 +83,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
@@ -98,7 +98,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, description1: "descr 1"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
@@ -114,7 +114,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, description2: "descr 2"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:
@@ -131,7 +131,7 @@ class EconomicOperatorParticipatingProcurementProcedureResponseTest extends Abst
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, description3: "descr 3"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then:

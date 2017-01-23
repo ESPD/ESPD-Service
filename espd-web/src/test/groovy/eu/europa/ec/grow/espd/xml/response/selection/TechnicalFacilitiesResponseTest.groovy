@@ -39,7 +39,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
@@ -96,7 +96,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
@@ -113,7 +113,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_18.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:
@@ -130,7 +130,7 @@ class TechnicalFacilitiesResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_18")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then:

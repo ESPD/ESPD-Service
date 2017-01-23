@@ -38,7 +38,7 @@ class AssetsAdministeredByLiquidatorRequestTest extends AbstractExclusionCriteri
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"

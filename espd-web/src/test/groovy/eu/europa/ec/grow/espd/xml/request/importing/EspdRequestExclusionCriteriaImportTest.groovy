@@ -25,18 +25,14 @@
 package eu.europa.ec.grow.espd.xml.request.importing
 
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 11/25/15.
  */
 class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
 
     def "all exclusion criteria should be selected"() {
-        given:
-        def espdRequestXml = importXmlRequestFile("all_exclusion_criteria_selected.xml")
-
         when:
-        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
+        def espd = parseXmlRequestFile("all_exclusion_criteria_selected.xml")
 
         then: "should have all criminal convictions and their default answers should be false"
         espd.criminalConvictions.exists == true
@@ -98,11 +94,8 @@ class EspdRequestExclusionCriteriaImportTest extends AbstractXmlFileImport {
     }
 
     def "no exclusion criteria should appear as selected"() {
-        given:
-        def espdRequestXml = importXmlRequestFile("no_exclusion_criteria_selected.xml")
-
         when:
-        def espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
+        def espd = parseXmlRequestFile("no_exclusion_criteria_selected.xml")
 
         then: "criminal convictions"
         espd.criminalConvictions == null

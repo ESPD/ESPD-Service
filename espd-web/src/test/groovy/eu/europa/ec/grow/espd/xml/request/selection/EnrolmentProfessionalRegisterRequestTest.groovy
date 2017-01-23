@@ -38,7 +38,7 @@ class EnrolmentProfessionalRegisterRequestTest extends AbstractSelectionCriteria
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then: "CriterionID element"

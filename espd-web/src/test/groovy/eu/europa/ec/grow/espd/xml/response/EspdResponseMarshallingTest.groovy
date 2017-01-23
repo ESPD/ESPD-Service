@@ -39,7 +39,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should make sure that we use the correct XML namespaces"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then:
         result.lookupNamespace('espd-req') == 'urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1'
@@ -55,7 +55,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain UBLVersionID element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then:
         result.UBLVersionID.text() == "2.1"
@@ -64,7 +64,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain CustomizationID element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then:
         result.CustomizationID.text() == "urn:www.cenbii.eu:transaction:biitrns092:ver3.0"
@@ -75,7 +75,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain ID element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then: "id is an UUID"
         result.ID.text().length() == 36
@@ -89,7 +89,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain CopyIndicator element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then:
         result.CopyIndicator.size() == 1
@@ -98,7 +98,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain VersionID element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then:
         result.VersionID.text() == "2016.4"
@@ -107,7 +107,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain IssueDate element information with default document date"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.IssueDate.text() ==~ "\\d{4}-\\d{2}-\\d{2}"
@@ -119,7 +119,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(documentDate: documentDate)
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.IssueDate.text() == LocalDateAdapter.marshal(new LocalDate(documentDate))
@@ -130,7 +130,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(location: "Eastwatch by the Sea")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then: "issue date must match the date format YYYY-MM-dd"
         result.Signature[0].text().length() == 56
@@ -139,7 +139,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain IssueTime element information"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then: "issue time must match the time format HH:mm:ss"
         result.IssueTime.text() ==~ "\\d{2}:\\d{2}:\\d{2}"
@@ -154,7 +154,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(authority: authority)
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then: "all values should be trimmed"
         result.ContractingParty.Party.PartyName.Name.text() == "Hodor authority"
@@ -187,7 +187,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(economicOperator: economicOperator)
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then: "all values should be trimmed"
         result.EconomicOperatorParty.Party.PartyName.Name.text() == "ACME Corp."
@@ -235,7 +235,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(economicOperator: economicOperator)
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.EconomicOperatorParty.RepresentativeNaturalPerson.size() == 2
@@ -269,7 +269,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
     def "should contain ProcurementProjectLot element information when there are no lots"() {
         when:
-        def result = parseResponseXml()
+        def result = generateResponseXml()
 
         then: "In a Procurement Project with no Lots one ProcurementProjectLot element, and only one, MUST be included in the XML instance"
         result.ProcurementProjectLot.size() == 1
@@ -283,7 +283,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(lotConcerned: "hodor lot")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.ProcurementProjectLot.size() == 1
@@ -300,7 +300,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.AdditionalDocumentReference[0].ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
@@ -329,7 +329,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 tedUrl: "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.AdditionalDocumentReference.size() == 1
@@ -358,7 +358,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.ContractFolderID.text() == "HODOR refd by CA"
@@ -372,7 +372,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.AdditionalDocumentReference[0].ID.text() == "4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"
@@ -406,7 +406,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 issueDate: now, description: "ESPDRequest SMART 2015/0065", url: "http://europa.ec.eu/espd/request/4a1a633c-25fa-4c4d-abd8-89c623f9e9ec"))
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.AdditionalDocumentReference.size() == 1
@@ -421,7 +421,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
                 issueDate: null))
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.AdditionalDocumentReference[0].IssueDate.size() == 0
@@ -433,7 +433,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def espd = new EspdDocument(consortiumName: "Lannister Inc.")
 
         when:
-        def result = parseResponseXml(espd)
+        def result = generateResponseXml(espd)
 
         then:
         result.EconomicOperatorGroupName.text() == "Lannister Inc."

@@ -23,21 +23,18 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/12/16 at 5:24 PM.
  */
 class AllowanceOfChecksImportTest extends AbstractXmlFileImport {
 
     def "22. should import all fields of 'Allowance of checks'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/allowance_of_checks_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/allowance_of_checks_import.xml")
 
         then:
         espd.allowanceOfChecks.exists == true
