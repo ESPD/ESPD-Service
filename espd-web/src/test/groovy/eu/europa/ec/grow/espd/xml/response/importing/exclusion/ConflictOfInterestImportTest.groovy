@@ -27,18 +27,14 @@ package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 import eu.europa.ec.grow.espd.domain.ConflictInterestCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/8/16 at 10:49 AM.
  */
 class ConflictOfInterestImportTest extends AbstractXmlFileImport {
 
     def "20. should import all fields of 'Conflict of interest due to its participation in the procurement procedure'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/conflict_of_interest_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/conflict_of_interest_import.xml")
 
         then:
         espd.conflictInterest.exists == true

@@ -39,7 +39,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"
@@ -81,7 +81,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 amount: 11.11, currency: "EUR"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
@@ -99,7 +99,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 amount: null, currency: "EUR"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
@@ -115,7 +115,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
@@ -132,7 +132,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_11.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:
@@ -149,7 +149,7 @@ class ProfessionalRiskIndemnityResponseTest extends AbstractSelectionCriteriaFix
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_11")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then:

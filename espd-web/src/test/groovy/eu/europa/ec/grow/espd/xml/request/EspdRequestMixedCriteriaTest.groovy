@@ -99,7 +99,7 @@ class EspdRequestMixedCriteriaTest extends AbstractCriteriaFixture {
         )
 
         when:
-        def result = parseRequestXml(espd)
+        def result = generateRequestXml(espd)
 
         then: "all exclusion and selection criteria (minus satisfies all), plus all economic operator criteria"
         result.Criterion.size() == ExclusionCriterion.values().length + SelectionCriterion.values().length - 1 + OtherCriterion.values().length

@@ -44,7 +44,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "297d2323-3ede-424e-94bc-a91561e6f320")
@@ -81,7 +81,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -99,7 +99,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -116,7 +116,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, reason: "Reason_03 here"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -133,7 +133,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_03 was convicted"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -150,7 +150,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(fraud: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -168,7 +168,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -185,7 +185,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_03 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -202,7 +202,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -219,7 +219,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_03.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:
@@ -236,7 +236,7 @@ class FraudResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_03")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.FRAUD)
 
         then:

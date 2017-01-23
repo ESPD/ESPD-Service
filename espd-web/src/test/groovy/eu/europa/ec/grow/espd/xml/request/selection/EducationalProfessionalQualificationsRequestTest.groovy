@@ -38,7 +38,7 @@ class EducationalProfessionalQualificationsRequestTest extends AbstractSelection
         def espd = new EspdDocument(educationalProfessionalQualifications: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then: "CriterionID element"

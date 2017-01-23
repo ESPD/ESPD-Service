@@ -44,7 +44,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then: "CriterionID element"
@@ -83,7 +83,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -101,7 +101,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -118,7 +118,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, reason: "Reason_05 here"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -135,7 +135,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_05 was convicted"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -152,7 +152,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(moneyLaundering: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -170,7 +170,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -187,7 +187,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_05 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -204,7 +204,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -221,7 +221,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_05.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:
@@ -238,7 +238,7 @@ class MoneyLaunderingResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.MONEY_LAUNDERING)
 
         then:

@@ -38,7 +38,7 @@ class BusinessActivitiesSuspendedRequestTest extends AbstractExclusionCriteriaFi
         def espd = new EspdDocument(businessActivitiesSuspended: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.BUSINESS_ACTIVITIES_SUSPENDED)
 
         then: "CriterionID element"

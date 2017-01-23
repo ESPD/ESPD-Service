@@ -40,7 +40,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(averageYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then: "CriterionID element"
@@ -81,7 +81,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 numberOfYears: 666))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def g1 = response.Criterion[idx].RequirementGroup[0]
 
@@ -98,7 +98,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 averageTurnover: 11.11, averageTurnoverCurrency: "EUR"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def g1 = response.Criterion[idx].RequirementGroup[0]
 
@@ -115,7 +115,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 unboundedGroups: [new DynamicRequirementGroup("amount": null, "currency": null)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def g1 = response.Criterion[idx].RequirementGroup[0]
 
@@ -131,7 +131,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then:
@@ -148,7 +148,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_07.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then:
@@ -165,7 +165,7 @@ class AverageYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_07")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_YEARLY_TURNOVER)
 
         then:

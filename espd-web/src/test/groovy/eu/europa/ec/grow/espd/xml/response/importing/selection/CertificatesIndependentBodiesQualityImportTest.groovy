@@ -23,22 +23,19 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.QualityAssuranceCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/13/16 at 11:12 AM.
  */
 class CertificatesIndependentBodiesQualityImportTest extends AbstractXmlFileImport {
 
     def "31. should import all fields of 'Certificates by independent bodies about quality assurance standards'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/certificates_independent_bodies_quality_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/certificates_independent_bodies_quality_import.xml")
 
         then:
         espd.certificateIndependentBodiesAboutQa.exists == true

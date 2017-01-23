@@ -38,7 +38,7 @@ class EnrolmentTradeRegisterRequestTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(enrolmentTradeRegister: new SuitabilityCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"

@@ -40,7 +40,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def idx = getResponseCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "CriterionID element"
         checkCriterionId(response, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")
@@ -70,7 +70,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         then:
@@ -87,7 +87,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(selectionSatisfiesAll: new SatisfiesAllCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         then:
@@ -107,7 +107,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
                 workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         then:
@@ -126,7 +126,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
                 workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
         response.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + OtherCriterion.values().length
@@ -147,7 +147,7 @@ class AllCriteriaSatisfiedResponseTest extends AbstractSelectionCriteriaFixture 
                 workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
         response.Criterion.size() == getMandatoryExclusionCriteriaSize() + 4 + OtherCriterion.values().length

@@ -38,7 +38,7 @@ class EconomicOperatorReliesCapacitiesRequestTest extends AbstractCriteriaFixtur
         def espd = new EspdDocument(eoReliesCapacities: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"

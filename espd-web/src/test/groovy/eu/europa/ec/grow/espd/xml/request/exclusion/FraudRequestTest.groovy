@@ -39,7 +39,7 @@ class FraudRequestTest extends AbstractExclusionCriteriaFixture {
         def idx = getRequestCriterionIndex(ExclusionCriterion.FRAUD)
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "297d2323-3ede-424e-94bc-a91561e6f320")

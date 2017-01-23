@@ -38,7 +38,7 @@ class ServiceContractsMembershipRequestTest extends AbstractSelectionCriteriaFix
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true))
 
         when:
-        def response = parseRequestXml(espd)
+        def response = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"

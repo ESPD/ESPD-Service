@@ -38,7 +38,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"
@@ -83,7 +83,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then:
@@ -99,7 +99,7 @@ class ConflictOfInterestParticipationProcurementProcedureResponseTest extends Ab
                 description: "conflict description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then:

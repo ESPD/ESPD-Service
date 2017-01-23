@@ -39,7 +39,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then: "CriterionID element"
@@ -91,7 +91,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:
@@ -107,7 +107,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:
@@ -124,7 +124,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
                 reason: "Reason here."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:
@@ -141,7 +141,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:
@@ -158,7 +158,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_15.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:
@@ -175,7 +175,7 @@ class AnalogousSituationResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_15")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then:

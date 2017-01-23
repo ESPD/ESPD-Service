@@ -37,7 +37,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
         def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"
@@ -73,7 +73,7 @@ class SubcontractingProportionResponseTest extends AbstractSelectionCriteriaFixt
                 specify: "specify here"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then:

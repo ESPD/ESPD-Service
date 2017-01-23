@@ -38,7 +38,7 @@ class TerroristOffencesRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(terroristOffences: new CriminalConvictionsCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.TERRORIST_OFFENCES)
 
         then: "CriterionID element"

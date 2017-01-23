@@ -39,7 +39,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(supplyChainManagement: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
@@ -96,7 +96,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
@@ -112,7 +112,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_20.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:
@@ -128,7 +128,7 @@ class SupplyChainManagementResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_20")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then:

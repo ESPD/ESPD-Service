@@ -28,18 +28,14 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.SuitabilityCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 2/29/16 at 4:46 PM.
  */
 class ServiceContractsAuthorisationImportTest extends AbstractXmlFileImport {
 
     def "04. should import all fields of 'For service contracts: authorisation of particular organisation needed'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/service_contracts_authorisation_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/service_contracts_authorisation_import.xml")
 
         then:
         espd.serviceContractsAuthorisation.exists == true

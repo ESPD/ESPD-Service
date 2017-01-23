@@ -38,7 +38,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         def espd = new EspdDocument(eoReliesCapacities: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_RELIES_CAPACITIES)
 
         then: "CriterionID element"
@@ -70,7 +70,7 @@ class EconomicOperatorReliesCapacitiesResponseTest extends AbstractCriteriaFixtu
         def espd = new EspdDocument(eoReliesCapacities: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_RELIES_CAPACITIES)
 
         then:

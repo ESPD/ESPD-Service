@@ -23,23 +23,20 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing.selection
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/13/16 at 10:15 AM.
  */
 class NumberOfManagerialStaffImportTest extends AbstractXmlFileImport {
 
     def "24. should import all fields of 'Number of managerial staff'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/number_of_managerial_staff_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/number_of_managerial_staff_import.xml")
         def unboundedGroups = espd.numberManagerialStaff.unboundedGroups
 
         then:

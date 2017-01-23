@@ -38,7 +38,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(subcontractingThirdParties: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then: "CriterionID element"
@@ -78,7 +78,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(subcontractingThirdParties: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then:
@@ -93,7 +93,7 @@ class SucontractingThirdPartiesResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(subcontractingThirdParties: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, description1: "descr 1"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then:

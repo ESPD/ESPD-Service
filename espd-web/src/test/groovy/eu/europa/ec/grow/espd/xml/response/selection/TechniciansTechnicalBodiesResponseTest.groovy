@@ -39,7 +39,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(techniciansTechnicalBodies: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
                 description: "technicians description"))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
@@ -96,7 +96,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
@@ -113,7 +113,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_16.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:
@@ -130,7 +130,7 @@ class TechniciansTechnicalBodiesResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_16")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then:

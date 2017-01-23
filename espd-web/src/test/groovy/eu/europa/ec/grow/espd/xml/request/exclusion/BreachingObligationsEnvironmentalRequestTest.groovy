@@ -39,7 +39,7 @@ class BreachingObligationsEnvironmentalRequestTest extends AbstractExclusionCrit
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"

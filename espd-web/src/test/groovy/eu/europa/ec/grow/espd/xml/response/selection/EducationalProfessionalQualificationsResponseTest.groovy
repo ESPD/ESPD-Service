@@ -39,7 +39,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
         def espd = new EspdDocument(educationalProfessionalQualifications: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
@@ -96,7 +96,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
@@ -113,7 +113,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_22.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
@@ -130,7 +130,7 @@ class EducationalProfessionalQualificationsResponseTest extends AbstractSelectio
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_22")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.EDUCATIONAL_AND_PROFESSIONAL_QUALIFICATIONS)
 
         then:
