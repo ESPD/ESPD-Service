@@ -49,8 +49,16 @@
 
 				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${agent == 'eo' ? espd.economicOperator.country.iso2Code : espd.authority.country.iso2Code}")
 				$('.ecertis-link-header').click(ecertisHandler);
+			
+				$("#espd-popup").delay(3600000).show(0);
 			});
 		</script>
+		<div id="espd-popup" class="espd-popup" style="display: none;">
+			<div class="espd-popup-content">
+				<p>${span18n['expire_reminder_message']}<br><br>
+				<a href='javascript:$("#espd-popup").hide()'  data-i18n="cancel">${i18n['cancel']}</a>
+			</div>
+		</div>
     </head>
     <body>
     	<div id="espd-content">
