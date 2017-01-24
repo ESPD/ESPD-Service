@@ -25,10 +25,7 @@
 package eu.europa.ec.grow.espd.controller;
 
 import com.google.common.base.Optional;
-import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
-import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
-import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
-import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import eu.europa.ec.grow.espd.ted.TedRequest;
@@ -107,7 +104,7 @@ class EspdController {
 	}
 
 	@GetMapping("/filter")
-	public String viewFilterPage(@ModelAttribute("espdPrefill") EspdPrefillParameters prefillParameters) {
+	public String viewFilterPage(@ModelAttribute("espdFilterParams") EspdFilterParameters filterParameters) {
 
 		return "filter";
 	}
@@ -124,9 +121,12 @@ class EspdController {
 	@PostMapping(value = "/filter", params = "action=ca_create_espd_request")
 	public String createNewRequestAsCA(
 			@RequestParam("agent") String agent,
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@ModelAttribute("espd") EspdDocument document) throws IOException {
 		document.setExtendCe("ce".equals(agent));
+		if (document.getAuthority() == null) {
+			document.setAuthority(new PartyImpl());
+		}
 		document.getAuthority().setCountry(country);
 		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
@@ -161,7 +161,7 @@ class EspdController {
 	public String reuseRequestAsCA(
 			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdFilterParameters filterParameters,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
@@ -182,7 +182,7 @@ class EspdController {
 	public String reviewResponseAsCA(
 			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdFilterParameters filterParameters,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
@@ -201,9 +201,9 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=eo_import_espd")
 	public String importEspdAsEo(
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdFilterParameters filterParameters,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
@@ -239,7 +239,7 @@ class EspdController {
 	@PostMapping(value = "/filter", params = "action=eo_merge_espds")
 	public String mergeTwoEspds(
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdFilterParameters filterParameters,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream reqIs = attachments.get(1).getInputStream();
@@ -257,7 +257,7 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=eo_create_response")
 	public String createNewResponseAsEO(
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@ModelAttribute("espd") EspdDocument document,
 			Model model,
 			BindingResult result) throws IOException {

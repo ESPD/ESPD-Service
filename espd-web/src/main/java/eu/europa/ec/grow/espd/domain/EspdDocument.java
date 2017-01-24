@@ -30,9 +30,7 @@ import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.Data;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
@@ -146,16 +144,6 @@ public class EspdDocument {
 	private QualityAssuranceCriterion certificateIndependentBodiesAboutEnvironmental;
 
 	private List<CriterionType> ublCriteria;
-
-	//trick to use List of MultipartFile as @RequestParam
-	public void setAttachments(List<MultipartFile> attachments) throws IOException {
-	}
-
-	public List<MultipartFile> getAttachments() {
-		return null;
-	}
-
-	private String agent;
 
 	public final boolean atLeastOneSelectionCriterionWasSelected() {
 		boolean atLeastOnePresent = false;

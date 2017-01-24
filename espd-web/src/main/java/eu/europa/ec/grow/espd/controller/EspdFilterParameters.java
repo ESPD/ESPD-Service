@@ -34,10 +34,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Form backing object for the Filter page.
+ *
  * Created by ratoico on 1/19/17.
  */
 @Data
-class EspdPrefillParameters {
+class EspdFilterParameters {
 
 	private String agent;
 
