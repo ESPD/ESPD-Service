@@ -27,12 +27,25 @@ package eu.europa.ec.grow.espd.controller;
 import eu.europa.ec.grow.espd.domain.PartyImpl;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
+ * Class used to initialize an ESPD document with certain parameters. It also allows one to specify the selected
+ * values for the '/filter' page.
+ *
  * Created by ratoico on 1/24/17.
  */
 @Data
-class EspdProcedureParameters extends PartyImpl {
+class EspdInitializationParameters extends PartyImpl {
+
+	private String agent;
+
+	private String action;
+
+	private String tedReceptionId;
 
 	private String officialName;
 
@@ -43,4 +56,12 @@ class EspdProcedureParameters extends PartyImpl {
 	private String description;
 
 	private String fileRefByCA;
+
+	//trick to use List of MultipartFile as @RequestParam
+	public void setAttachments(List<MultipartFile> attachments) throws IOException {
+	}
+
+	public List<MultipartFile> getAttachments() {
+		return null;
+	}
 }

@@ -272,7 +272,7 @@
                     </div>
                     <div class="radio">
                         <span class="k-button fa fa-upload hoverable"></span>
-                        <label><form:radiobutton path="action" name="action" value="eo_create_response"
+                        <label><form:radiobutton path="action" name="action" value="eo_create_espd_response"
                                                  class="radiotab radioCa"
                                                  data-target="#tab-country-selection"/>${span18n['filter_create_response']}</label>
                         <span data-i18n="tooltip_filter_create_response" data-toggle="tooltip"
