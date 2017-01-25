@@ -24,34 +24,23 @@
 
 package eu.europa.ec.grow.espd.controller;
 
+import eu.europa.ec.grow.espd.domain.PartyImpl;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
- * Form backing object for the Filter page.
- *
- * Created by ratoico on 1/19/17.
+ * Created by ratoico on 1/24/17.
  */
 @Data
-class EspdFilterParameters {
+class EspdProcedureParameters extends PartyImpl {
 
-	private String agent;
+	private String officialName;
 
-	private String action;
+	private Country procurerCountry;
 
-	private Country country;
+	private String title;
 
-	private String tedReceptionId;
+	private String description;
 
-	//trick to use List of MultipartFile as @RequestParam
-	public void setAttachments(List<MultipartFile> attachments) throws IOException {
-	}
-
-	public List<MultipartFile> getAttachments() {
-		return null;
-	}
+	private String fileRefByCA;
 }

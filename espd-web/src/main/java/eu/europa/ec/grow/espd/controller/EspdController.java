@@ -270,7 +270,39 @@ class EspdController {
 		return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 	}
 
-	@GetMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
+	@GetMapping("/request/ca/procedure")
+	public String procedureAuthority(
+			EspdProcedureParameters procedureParameters,
+			@ModelAttribute("espd") EspdDocument espd) {
+		copyProcurementInformation(procedureParameters, espd);
+		return "request_ca_procedure";
+	}
+
+	@GetMapping("/response/eo/procedure")
+	public String procedureEconomicOperator(
+			EspdProcedureParameters procedureParameters,
+			@ModelAttribute("espd") EspdDocument espd) {
+		copyProcurementInformation(procedureParameters, espd);
+		if (espd.getEconomicOperator() == null) {
+			espd.setEconomicOperator(new EconomicOperatorImpl());
+		}
+		espd.getEconomicOperator().copyProperties(procedureParameters);
+		return "response_eo_procedure";
+	}
+
+	private void copyProcurementInformation(EspdProcedureParameters procedureParameters,
+			@ModelAttribute("espd") EspdDocument espd) {
+		espd.setProcedureTitle(procedureParameters.getTitle());
+		espd.setProcedureShortDesc(procedureParameters.getDescription());
+		espd.setFileRefByCA(procedureParameters.getFileRefByCA());
+		if (espd.getAuthority() == null) {
+			espd.setAuthority(new PartyImpl());
+		}
+		espd.getAuthority().setName(procedureParameters.getOfficialName());
+		espd.getAuthority().setCountry(procedureParameters.getProcurerCountry());
+	}
+
+	@GetMapping("/{flow:request|response}/{agent:ca|eo}/{step:exclusion|selection|finish|print}")
 	public String view(
 			@PathVariable String flow,
 			@PathVariable String agent,

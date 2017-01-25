@@ -783,3 +783,47 @@ Additional parameters that need to be passed, depending on the use case, are:
 * `next` with a value of `procedure`
 * `tedReceptionId`
 * `attachments` in case you need to upload ESPD XML files
+
+These parameters are defined in the `EspdFilterParameters` class.
+
+==== Procedure Page
+
+We also support adding parameters to the `/procedure` page when issuing an HTTP GET request.
+
+When the `agent` is a contracting authority or contracting entity, the following parameters are supported for
+filling in the fields belonging to `Part I - Information about the procurement procedure section`.
+
+* `officialName`
+* `procurerCountry` - must be a two letter country code in uppercase
+* `title`
+* `description`
+* `fileRefByCA`
+
+
+[source,bash]
+.Procedure page request example.sh
+----
+HTTP GET @ espd/request/ca/procedure?title=ESPD&description=application&procurerCountry=RO
+----
+
+When the agent is economic operator, the parameters below can additionally be configured:
+
+* `name`
+* `vatNumber`
+* `anotherNationalId`
+* `website`
+* `street`
+* `postalCode`
+* `city`
+* `country` - must be a two letter country code in uppercase
+* `contactName`
+* `contactEmail`
+* `contactPhone`
+
+[source,bash]
+.Procedure page request example.sh
+----
+HTTP GET @ espd/response/eo/procedure?country=RO&city=Drobeta&procurerCountry=IT
+----
+
+These parameters are defined in the `EspdProcedureParameters` class.
