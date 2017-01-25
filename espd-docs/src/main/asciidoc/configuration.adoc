@@ -738,3 +738,92 @@ relative to the application context root.
   </configuration>
 </plugin>
 ----
+
+=== Web Page Parameters
+
+Certain HTTP parameters can be passed to the web pages of the {espd} application to prefill specific fields.
+
+==== Filter Page
+
+The following parameters can be specified for the `/filter` page by issuing an HTTP GET request:
+
+* `lang` is used to specify the language to be used by the application. It consists of a two letter code from
+the supported languages of the application. Example:
+* `agent` is used to choose between a `contracting authority`, `contracting entity` and `economic operator. The only
+accepted values are:
+
+** `ca`
+** `ce`
+** `eo`
+
+* `action` defines what the user would like to do. The accepted values are:
+
+** `ca_create_espd_request` for selecting the `Create a new ESPD` option as a contracting authority or contracting entity
+** `ca_reuse_espd_request` for selecting the `Reuse an existing ESPD` option as a contracting authority or contracting entity
+** `ca_review_espd_response` for selecting the `Review ESPD` option as a contracting authority or contracting entity
+** `eo_import_espd` for selecting the `Import ESPD` option as an economic operator
+** `eo_merge_espds` for selecting the `Merge two ESPDs` option as an economic operator
+** `eo_create_response` for selecting the `Create response` option as an economic operator
+
+* `country` for selecting the desired country of the authority or economic operator. It must be the two letter
+code of the country in uppercase.
+
+Example of such a request:
+[source,bash]
+.filter request.sh
+----
+HTTP GET @ /espd/filter?lang=ro&agent=eo&action=eo_create_response&authority.country=RO
+----
+
+To go directly to the `procedure` page, you can perform an HTTP POST request on the `/filter` page with a
+`multipart/form-data` content type.
+
+Additional parameters that need to be passed, depending on the use case, are:
+
+* `next` with a value of `procedure`
+* `tedReceptionId`
+* `attachments` in case you need to upload ESPD XML files
+
+These parameters are defined in the `EspdFilterParameters` class.
+
+==== Procedure Page
+
+We also support adding parameters to the `/procedure` page when issuing an HTTP GET request.
+
+When the `agent` is a contracting authority or contracting entity, the following parameters are supported for
+filling in the fields belonging to `Part I - Information about the procurement procedure section`.
+
+* `officialName`
+* `procurerCountry` - must be a two letter country code in uppercase
+* `title`
+* `description`
+* `fileRefByCA`
+
+
+[source,bash]
+.Procedure page request example.sh
+----
+HTTP GET @ espd/request/ca/procedure?title=ESPD&description=application&procurerCountry=RO
+----
+
+When the agent is economic operator, the parameters below can additionally be configured:
+
+* `name`
+* `vatNumber`
+* `anotherNationalId`
+* `website`
+* `street`
+* `postalCode`
+* `city`
+* `country` - must be a two letter country code in uppercase
+* `contactName`
+* `contactEmail`
+* `contactPhone`
+
+[source,bash]
+.Procedure page request example.sh
+----
+HTTP GET @ espd/response/eo/procedure?country=RO&city=Drobeta&procurerCountry=IT
+----
+
+These parameters are defined in the `EspdProcedureParameters` class.
