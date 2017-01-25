@@ -39,7 +39,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"
@@ -86,7 +86,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true, answer: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
@@ -102,7 +102,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
@@ -119,7 +119,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:
@@ -136,7 +136,7 @@ class EarlyTerminationResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_17 is clean")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then:

@@ -38,7 +38,7 @@ class ProfessionalRiskIndemnityRequestTest extends AbstractSelectionCriteriaFixt
         def espd = new EspdDocument(professionalRiskInsurance: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.PROFESSIONAL_RISK_INSURANCE)
 
         then: "CriterionID element"

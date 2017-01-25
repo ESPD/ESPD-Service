@@ -28,19 +28,14 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/13/16 at 10:57 AM.
  */
 class SupplyContractsCertificateQualityImportTest extends AbstractXmlFileImport {
 
     def "30. should import all fields of 'For supply contracts: certificates by quality control institutes'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/supply_contracts_certificates_quality_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/supply_contracts_certificates_quality_import.xml")
 
         then:
         espd.supplyContractsCertificatesQc.exists == true

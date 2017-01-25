@@ -38,7 +38,7 @@ class EnvironmentalManagementMeasuresRequestTest extends AbstractSelectionCriter
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"

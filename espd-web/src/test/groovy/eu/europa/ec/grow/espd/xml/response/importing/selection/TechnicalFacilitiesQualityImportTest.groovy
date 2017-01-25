@@ -28,19 +28,14 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/8/16 at 1:49 PM.
  */
 class TechnicalFacilitiesQualityImportTest extends AbstractXmlFileImport {
 
     def "19. should import all fields of 'Technical facilities and measures for ensuring quality'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/technical_facilities_quality_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/technical_facilities_quality_import.xml")
 
         then:
         espd.technicalFacilitiesMeasures.exists == true

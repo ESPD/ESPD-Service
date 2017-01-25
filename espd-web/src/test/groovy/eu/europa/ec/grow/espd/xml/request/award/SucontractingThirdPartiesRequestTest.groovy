@@ -38,7 +38,7 @@ class SucontractingThirdPartiesRequestTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(subcontractingThirdParties: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.SUBCONTRACTING_THIRD_PARTIES)
 
         then: "CriterionID element"

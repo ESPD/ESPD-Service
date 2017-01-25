@@ -38,7 +38,7 @@ class EconomicOperatorRegisteredRequestTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(eoRegistered: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_REGISTERED)
 
         then: "CriterionID element"

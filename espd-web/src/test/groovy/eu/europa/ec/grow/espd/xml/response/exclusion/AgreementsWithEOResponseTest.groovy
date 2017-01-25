@@ -39,7 +39,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then: "CriterionID element"
@@ -86,7 +86,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then:
@@ -102,7 +102,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then:
@@ -119,7 +119,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then:
@@ -136,7 +136,7 @@ class AgreementsWithEOResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_19 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then:

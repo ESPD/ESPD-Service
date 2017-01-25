@@ -38,7 +38,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then: "CriterionID element"
@@ -86,7 +86,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
@@ -104,7 +104,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
                 description: "explain description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
@@ -123,7 +123,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
@@ -139,7 +139,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_32.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:
@@ -155,7 +155,7 @@ class CertificatesIndependentBodiesQAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_32")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then:

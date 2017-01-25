@@ -63,7 +63,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
                 purelyNationalGrounds: null)
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = 0
 
         then: "we should see the mandatory exclusion criteria (all of them minus 'purely national') plus all the selection criteria (since none of them are selected) plus the eo criteria"
@@ -102,7 +102,7 @@ class EspdRequestExclusionCriteriaMarshallingTest extends AbstractExclusionCrite
                 purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = 0
 
         then: "we should see all exclusion criteria ('purely national' is selected) plus all the selection criteria (since none of them are selected) plus the only award criterion"

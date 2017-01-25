@@ -39,7 +39,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"
@@ -84,7 +84,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true, answer: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
@@ -101,7 +101,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true, answer: true, description: "hodor"))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
@@ -119,7 +119,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
@@ -136,7 +136,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_04.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
@@ -153,7 +153,7 @@ class ServiceContractsAuthorisationResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_04")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:

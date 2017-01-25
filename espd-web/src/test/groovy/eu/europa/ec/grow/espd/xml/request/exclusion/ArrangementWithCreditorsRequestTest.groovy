@@ -38,7 +38,7 @@ class ArrangementWithCreditorsRequestTest extends AbstractExclusionCriteriaFixtu
         def espd = new EspdDocument(arrangementWithCreditors: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.ARRANGEMENT_WITH_CREDITORS)
 
         then: "CriterionID element"

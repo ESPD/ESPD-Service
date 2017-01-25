@@ -35,11 +35,8 @@ import org.apache.commons.io.IOUtils
 class ProcurementReservedImportTest extends AbstractXmlFileImport {
 
     def "01. should import all fields of 'Procurement reserved'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("award/procurement_reserved_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("award/procurement_reserved_import.xml")
 
         then:
         espd.procurementReserved.exists == true

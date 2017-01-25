@@ -40,7 +40,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then: "CriterionID element"
@@ -83,7 +83,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def crit = response.Criterion[idx]
 
@@ -135,7 +135,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def crit = response.Criterion[idx]
 
@@ -182,7 +182,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def crit = response.Criterion[idx]
 
@@ -234,7 +234,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def crit = response.Criterion[idx]
 
@@ -275,7 +275,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then:
@@ -292,7 +292,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_08.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then:
@@ -309,7 +309,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_08")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then:
@@ -326,7 +326,7 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: true, issuer: "HODOR_08")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
 
         then:

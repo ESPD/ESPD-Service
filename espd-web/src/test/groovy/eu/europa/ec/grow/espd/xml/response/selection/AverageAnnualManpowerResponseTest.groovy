@@ -40,7 +40,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "CriterionID element"
@@ -77,7 +77,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                         new DynamicRequirementGroup("year": 2014)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "First year"
@@ -111,7 +111,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                         new DynamicRequirementGroup("number": 33)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "First number"
@@ -142,7 +142,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
@@ -158,7 +158,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_25.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
@@ -174,7 +174,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_25")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:
@@ -190,7 +190,7 @@ class AverageAnnualManpowerResponseTest extends AbstractSelectionCriteriaFixture
                 availableElectronically: new AvailableElectronically(answer: true, issuer: "HODOR_25")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then:

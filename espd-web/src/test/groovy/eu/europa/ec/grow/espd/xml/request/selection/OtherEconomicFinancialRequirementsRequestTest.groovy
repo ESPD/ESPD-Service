@@ -38,7 +38,7 @@ class OtherEconomicFinancialRequirementsRequestTest extends AbstractSelectionCri
         def espd = new EspdDocument(otherEconomicFinancialRequirements: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.OTHER_ECONOMIC_OR_FINANCIAL_REQUIREMENTS)
 
         then: "CriterionID element"

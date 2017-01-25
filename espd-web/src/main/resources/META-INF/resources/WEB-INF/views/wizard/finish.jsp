@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
@@ -29,21 +29,19 @@
   --%>
 <tiles:importAttribute name="agent"/>
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
-	<div class="panel-default">
+    <div class="panel-default">
         <tiles:insertDefinition name="progress">
-        	<tiles:putAttribute name="agent" value="${agent}"/>
-       		<tiles:putAttribute name="flow" value="${flow}"/>
-			<tiles:putAttribute name="finish" value="true"/>
+            <tiles:putAttribute name="agent" value="${agent}"/>
+            <tiles:putAttribute name="flow" value="${flow}"/>
+            <tiles:putAttribute name="finish" value="true"/>
         </tiles:insertDefinition>
-        
+
         <%@ include file="/WEB-INF/views/wizard/finishForm.jsp" %>
-        
-		
-	
-		<div class="panel panel-espd">
-			<div class="panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
-				 <h4 class="panel-title">${span18n['createcafinish_export']}</h4>
-			</div>
+
+        <div class="panel panel-espd">
+            <div class="panel-heading" data-toggle="collapse" data-target="#finish-statements-section">
+                <h4 class="panel-title">${span18n['createcafinish_export']}</h4>
+            </div>
             <div id="finish-statements-section" class="collapse in">
                 <div class="espd-panel-body panel-body">
                     <span data-i18n="createcafinish_export_content">
@@ -51,15 +49,14 @@
                     </span>
                 </div>
             </div>
-		</div>
-		
-	</div>
-		
-        <tiles:insertDefinition name="footerButtons">
-            <tiles:putAttribute name="nextCode" value="export"/>
-            <tiles:putAttribute name="prev" value="selection"/>
-            <tiles:putAttribute name="next" value="generate"/>
-            <tiles:putAttribute name="print" value="${true}"/>
-        </tiles:insertDefinition>
+        </div>
+    </div>
+
+    <tiles:insertDefinition name="footerButtons">
+        <tiles:putAttribute name="nextCode" value="export"/>
+        <tiles:putAttribute name="prev" value="selection"/>
+        <tiles:putAttribute name="next" value="overview"/>
+        <tiles:putAttribute name="overview" value="${true}"/>
+    </tiles:insertDefinition>
 
 </form:form>

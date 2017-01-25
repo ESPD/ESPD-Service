@@ -43,7 +43,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
         def espd = new EspdDocument(workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "CriterionID element"
@@ -78,7 +78,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("description": "desc3"), new DynamicRequirementGroup("description": "desc4")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
@@ -104,7 +104,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("description": "desc5"), new DynamicRequirementGroup("description": "desc6")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
@@ -157,7 +157,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("amount": 55.55, "currency": "YEN")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First amount"
@@ -205,7 +205,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("startDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First date"
@@ -230,7 +230,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("endDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First date"
@@ -253,7 +253,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                                   new DynamicRequirementGroup("recipients": "rec2")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then: "First recipients"
@@ -275,7 +275,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
@@ -292,7 +292,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_13.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:
@@ -309,7 +309,7 @@ class WorkContractsPerformanceWorksResponseTest extends AbstractSelectionCriteri
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_13")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.WORK_CONTRACTS_PERFORMANCE_OF_WORKS)
 
         then:

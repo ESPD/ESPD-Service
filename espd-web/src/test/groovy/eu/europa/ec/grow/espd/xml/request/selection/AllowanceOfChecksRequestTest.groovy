@@ -38,7 +38,7 @@ class AllowanceOfChecksRequestTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
 
         then: "CriterionID element"

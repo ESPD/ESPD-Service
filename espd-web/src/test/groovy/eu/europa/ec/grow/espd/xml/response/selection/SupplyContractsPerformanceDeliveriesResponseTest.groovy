@@ -43,7 +43,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
         def espd = new EspdDocument(supplyContractsPerformanceDeliveries: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "CriterionID element"
@@ -78,7 +78,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("description": "desc3"), new DynamicRequirementGroup("description": "desc4")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
@@ -104,7 +104,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("description": "desc5"), new DynamicRequirementGroup("description": "desc6")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
@@ -157,7 +157,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("amount": 55.55, "currency": "YEN")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First amount"
@@ -205,7 +205,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("startDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First date"
@@ -230,7 +230,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("endDate": date2)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First date"
@@ -253,7 +253,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                                   new DynamicRequirementGroup("recipients": "rec2")]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then: "First recipients"
@@ -276,7 +276,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
@@ -293,7 +293,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_14.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:
@@ -310,7 +310,7 @@ class SupplyContractsPerformanceDeliveriesResponseTest extends AbstractSelection
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_14")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_PERFORMANCE_OF_DELIVERIES)
 
         then:

@@ -38,7 +38,7 @@ class SupplyChainManagementRequestTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(supplyChainManagement: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CHAIN_MANAGEMENT)
 
         then: "CriterionID element"

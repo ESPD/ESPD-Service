@@ -39,7 +39,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then: "CriterionID element"
@@ -91,7 +91,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
         def espd = new EspdDocument(assetsAdministeredByLiquidator: new BankruptcyCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
@@ -107,7 +107,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
@@ -124,7 +124,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
                 reason: "Reason here."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
@@ -141,7 +141,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
@@ -158,7 +158,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_16.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:
@@ -175,7 +175,7 @@ class AssetsAdministeredByLiquidatorResponseTest extends AbstractExclusionCriter
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_16")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.ASSETS_ADMINISTERED_BY_LIQUIDATOR)
 
         then:

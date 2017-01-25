@@ -38,7 +38,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"
@@ -97,7 +97,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
@@ -112,7 +112,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, description1: "descr 1"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
@@ -129,7 +129,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
@@ -145,7 +145,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_07.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:
@@ -161,7 +161,7 @@ class MeetsObjectiveResponseTest extends AbstractCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:

@@ -38,7 +38,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then: "CriterionID element"
@@ -86,7 +86,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
         def espd = new EspdDocument(certificateIndependentBodiesAboutEnvironmental: new QualityAssuranceCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
@@ -104,7 +104,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 description: "explain description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
@@ -123,7 +123,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
@@ -140,7 +140,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_33.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:
@@ -156,7 +156,7 @@ class CertificatesIndependentBodiesEnvironmentalResponseTest extends AbstractSel
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_33")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_ENVIRONMENTAL)
 
         then:

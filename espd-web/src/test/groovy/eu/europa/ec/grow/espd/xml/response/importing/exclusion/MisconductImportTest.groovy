@@ -28,18 +28,14 @@ import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/8/16 at 9:40 AM.
  */
 class MisconductImportTest extends AbstractXmlFileImport {
 
     def "18. should import all fields of 'Guilty of grave professional misconduct'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/guilty_of_grave_professional_misconduct_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/guilty_of_grave_professional_misconduct_import.xml")
 
         then:
         espd.guiltyGrave.exists == true

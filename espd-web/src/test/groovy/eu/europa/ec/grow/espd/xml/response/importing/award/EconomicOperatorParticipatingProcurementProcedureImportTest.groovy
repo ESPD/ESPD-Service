@@ -24,22 +24,17 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.award
 
-import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/20/16 at 3:34 PM.
  */
 class EconomicOperatorParticipatingProcurementProcedureImportTest extends AbstractXmlFileImport {
 
     def "03. should import all fields of 'Economic operator participating procurement procedure'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("award/eo_participating_procurement_procedure_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("award/eo_participating_procurement_procedure_import.xml")
 
         then:
         espd.eoParticipatingProcurementProcedure.exists == true
