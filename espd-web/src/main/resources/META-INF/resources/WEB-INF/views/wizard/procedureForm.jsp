@@ -486,15 +486,6 @@
                 </div>
                 <div id="separate_espd_div"
                      class="col-md-12 alert  ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}">
-                    <div class="col-md-12 form-group">
-                        <label class="control-label col-md-6">
-                                ${span18n['createeo_eo_consortium_name']}
-                        </label>
-                        <div class="col-md-6">
-                            <form:textarea path="consortiumName"
-                                           cssStyle="resize: none" rows="1" cssClass="form-control"/>
-                        </div>
-                    </div>
                         ${span18n['createeo_separate_espd_sections_a_b']}
                 </div>
             </div>
