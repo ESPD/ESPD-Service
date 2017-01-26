@@ -27,8 +27,7 @@ package eu.europa.ec.grow.espd.domain.enums.other;
 import eu.europa.ec.grow.espd.domain.ubl.CacCountry;
 import lombok.Getter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 
@@ -297,10 +296,12 @@ public enum Country implements CacCountry {
     
     private final Currency currency;
 
-	private static final Map<String, Country> BY_ISO2_CODE = new HashMap<>(values().length);
+	public static final List<Country> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+
+	private static final Map<String, Country> BY_ISO2_CODE = new HashMap<>(VALUES.size());
 
 	static {
-		for (Country c : values()) {
+		for (Country c : VALUES) {
 			BY_ISO2_CODE.put(c.getIso2Code().toLowerCase(), c);
 		}
 	}

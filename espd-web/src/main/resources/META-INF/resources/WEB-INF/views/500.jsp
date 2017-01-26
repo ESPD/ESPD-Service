@@ -69,9 +69,9 @@
 <body>
 <div class="container panel" style="padding:0; border-color: #396ea2 !important;">
     <div id="header">
-        <img id="banner-flag" class="hidden-print" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo"/>
-        <img id="banner-flag" class="visible-print" style="width: 114px; height: 80px;" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo"/>
-        <span id="banner-title-text" class="hidden-print">${span18n["app_title"]}</span>
+        <img id="banner-flag-hidden" class="hidden-print" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo"/>
+        <img id="banner-flag-visible" class="visible-print" style="width: 114px; height: 80px;" src="${pageContext.request.contextPath}/static/img/logo.png" alt="European Commission logo"/>
+        <span id="banner-title-text-hidden" class="hidden-print">${span18n["app_title"]}</span>
         <span id="banner-title-text" style="font-size: 160%" class="visible-print">${span18n["app_title"]}</span>
         <span id="banner-image-title-fill"></span>
         <span id="banner-sub-title-text" class="hidden-print" data-i18n="app_subtitle"><s:message code="app_subtitle"/></span>
@@ -82,7 +82,7 @@
                 <li><a target="_blank" href="${pageContext.request.contextPath}/contact">${span18n["contact"]}</a></li>
                 <li>
                     <label for="language"></label><select id="language">
-                    <c:forEach var="lang" items="<%=Language.values()%>">
+                    <c:forEach var="lang" items="<%=Language.VALUES%>">
                         <option value="${lang.code}" ${(lang.code eq pageContext.response.locale)?"selected":""}>${lang.sourceLanguage}</option>
                     </c:forEach>
                 </select>

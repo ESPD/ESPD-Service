@@ -44,7 +44,7 @@
 
     <fmt:formatNumber var="colLen" value="6" maxFractionDigits="0"/>
     <div class="col-lg-3 col-sm-6">
-        <c:forEach var="lang" items="<%=Language.values()%>" varStatus="i">
+        <c:forEach var="lang" items="<%=Language.VALUES%>" varStatus="i">
             ${((i.index % colLen) == 0 && !i.first && !i.last) ? "</div><div class='col-lg-3 col-sm-6 langBoxBorder'>" : ""}
             <div class="splashLangDiv">
                 <a href="${pageContext.request.contextPath}/filter?lang=${lang.code}" class="splashLangBox">${lang.code}</a>
