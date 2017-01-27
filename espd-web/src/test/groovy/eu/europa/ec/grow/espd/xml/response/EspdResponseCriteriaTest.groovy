@@ -41,7 +41,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def idx = 0
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
 
         then: "there are no mandatory exclusion criteria anymore"
         response.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length
@@ -62,7 +62,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then:
@@ -79,7 +79,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(enrolmentProfessionalRegister: new SuitabilityCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_PROFESSIONAL_REGISTER)
 
         then:
@@ -96,7 +96,7 @@ class EspdResponseCriteriaTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then:

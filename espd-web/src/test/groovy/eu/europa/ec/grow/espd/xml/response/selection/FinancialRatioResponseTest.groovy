@@ -40,7 +40,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "CriterionID element"
@@ -82,7 +82,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "Description 1"
@@ -127,7 +127,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
                         new DynamicRequirementGroup("ratio": 55.5)]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "Ratio 1"
@@ -167,7 +167,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:
@@ -184,7 +184,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_10.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:
@@ -201,7 +201,7 @@ class FinancialRatioResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_10")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then:

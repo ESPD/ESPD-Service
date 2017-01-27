@@ -38,7 +38,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"
@@ -80,7 +80,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
@@ -96,7 +96,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
                 doubleValue1: 33.11))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:
@@ -114,7 +114,7 @@ class ProcurementReservedResponseTest extends AbstractCriteriaFixture {
                 description1: "Here are some additional details"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then:

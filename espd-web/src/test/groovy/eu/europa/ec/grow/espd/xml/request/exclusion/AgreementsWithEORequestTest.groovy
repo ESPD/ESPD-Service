@@ -37,7 +37,7 @@ class AgreementsWithEORequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(agreementsWithOtherEO: new MisconductDistortionCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO)
 
         then: "CriterionID element"

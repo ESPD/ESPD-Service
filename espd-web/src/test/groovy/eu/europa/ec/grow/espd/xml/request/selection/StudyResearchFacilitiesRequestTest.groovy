@@ -38,7 +38,7 @@ class StudyResearchFacilitiesRequestTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(studyResearchFacilities: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.STUDY_AND_RESEARCH_FACILITIES)
 
         then: "CriterionID element"

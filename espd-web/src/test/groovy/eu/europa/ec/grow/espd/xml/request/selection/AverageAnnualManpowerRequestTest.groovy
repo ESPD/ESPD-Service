@@ -38,7 +38,7 @@ class AverageAnnualManpowerRequestTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(averageAnnualManpower: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.AVERAGE_ANNUAL_MANPOWER)
 
         then: "CriterionID element"

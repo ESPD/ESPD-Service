@@ -7,6 +7,6 @@
         <location>/WEB-INF/views/500.jsp</location>
     </error-page>
     <session-config>
-    	<session-timeout>120</session-timeout>
+    	<session-timeout>240</session-timeout>
     </session-config>
 </web-app>

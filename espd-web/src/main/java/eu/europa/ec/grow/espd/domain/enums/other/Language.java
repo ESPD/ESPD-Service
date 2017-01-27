@@ -26,6 +26,10 @@ package eu.europa.ec.grow.espd.domain.enums.other;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by vigi on 11/16/15:11:12 AM.
  */
@@ -129,7 +133,7 @@ public enum Language {
      */
     NORWEGIAN( "Norsk", "Norwegian", "no");
 
-    private int order;
+	public static final List<Language> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
 
     private String sourceLanguage;
 
@@ -153,7 +157,7 @@ public enum Language {
      *
      */
     public static Language getByLanguageCode(final String code) {
-        for (Language lang : values()) {
+        for (Language lang : VALUES) {
             if (lang.getCode().equalsIgnoreCase(code)) {
                 return lang;
             }

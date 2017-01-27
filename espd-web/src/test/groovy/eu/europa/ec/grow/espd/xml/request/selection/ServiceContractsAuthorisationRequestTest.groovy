@@ -38,7 +38,7 @@ class ServiceContractsAuthorisationRequestTest extends AbstractSelectionCriteria
         def espd = new EspdDocument(serviceContractsAuthorisation: new SuitabilityCriterion(exists: true))
 
         when:
-        def response = parseRequestXml(espd)
+        def response = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then: "CriterionID element"

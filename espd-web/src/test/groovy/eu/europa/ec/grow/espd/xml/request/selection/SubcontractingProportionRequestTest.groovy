@@ -38,7 +38,7 @@ class SubcontractingProportionRequestTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(subcontractingProportion: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SUBCONTRACTING_PROPORTION)
 
         then: "CriterionID element"

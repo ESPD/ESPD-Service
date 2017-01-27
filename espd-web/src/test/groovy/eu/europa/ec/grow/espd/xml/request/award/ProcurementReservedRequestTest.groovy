@@ -38,7 +38,7 @@ class ProcurementReservedRequestTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(procurementReserved: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.PROCUREMENT_RESERVED)
 
         then: "CriterionID element"

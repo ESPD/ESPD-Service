@@ -36,11 +36,8 @@ import org.apache.commons.io.IOUtils
 class BreachingOfObligationsLabourImportTest extends AbstractXmlFileImport {
 
     def "11. should import all fields of 'Breaching of obligations in the fields of labour law'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/breaching_of_obligations_labour_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/breaching_of_obligations_labour_import.xml")
 
         then:
         espd.breachingObligationsLabour.exists == true

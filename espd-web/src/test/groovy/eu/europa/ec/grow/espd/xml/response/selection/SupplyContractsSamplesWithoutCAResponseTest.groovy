@@ -39,7 +39,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then: "CriterionID element"
@@ -77,7 +77,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithoutCa: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
@@ -94,7 +94,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
@@ -110,7 +110,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_29.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:
@@ -126,7 +126,7 @@ class SupplyContractsSamplesWithoutCAResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_29")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITHOUT_CA)
 
         then:

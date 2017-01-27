@@ -738,3 +738,63 @@ relative to the application context root.
   </configuration>
 </plugin>
 ----
+
+=== Web Page Initialization Parameters
+
+Certain HTTP parameters can be passed to the `/initialization` URL of the {espd} application to
+initialize specific fields. When issuing such a request, the application redirects the client to the `/filter` page.
+
+* `lang` is used to specify the language to be used by the application. It consists of a two letter code from
+the supported languages of the application. Example:
+* `agent` is used to choose between a `contracting authority`, `contracting entity` and `economic operator`. The only
+accepted values are:
+
+** `ca` for contracting authority
+** `ce` for contracting entity
+** `eo` for economic operator
+
+* `action` defines what the user would like to do. The accepted values are:
+
+** `ca_create_espd_request` for selecting the `Create a new ESPD` option as a contracting authority or contracting entity
+** `ca_reuse_espd_request` for selecting the `Reuse an existing ESPD` option as a contracting authority or contracting entity
+** `ca_review_espd_response` for selecting the `Review ESPD` option as a contracting authority or contracting entity
+** `eo_import_espd` for selecting the `Import ESPD` option as an economic operator
+** `eo_merge_espds` for selecting the `Merge two ESPDs` option as an economic operator
+** `eo_create_espd_response` for selecting the `Create response` option as an economic operator
+
+* `country` for selecting the desired country of the authority or economic operator. It must be the two letter
+code of the country in uppercase.
+
+When the `agent` is a contracting authority or contracting entity, the following parameters are supported for
+filling in the fields belonging to `Part I - Information about the procurement procedure section`.
+
+* `officialName`
+* `procurerCountry` - must be a two letter country code in uppercase
+* `title`
+* `description`
+* `fileRefByCA`
+* `tedReceptionId` specifies the received notice number
+
+When the agent is economic operator, the parameters below can additionally be configured to initialize
+`Part II Information concerning the economic operator - Section A`:
+
+* `name`
+* `vatNumber`
+* `anotherNationalId`
+* `website`
+* `street`
+* `postalCode`
+* `city`
+* `country` - must be a two letter country code in uppercase
+* `contactName`
+* `contactEmail`
+* `contactPhone`
+
+[source,bash]
+.Initialization page request example.sh
+----
+HTTP POST @ espd/initialization?country=RO&city=Drobeta&agent=eo&action=eo_create_espd_response&procurerCountry=FR&lang=ro
+----
+
+All the parameters described above are defined in the `EspdInitializationParameters` class.
+It is recommended to use HTTP POST requests but HTTP GET requests are also supported.

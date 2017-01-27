@@ -40,7 +40,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then: "CriterionID element"
@@ -92,7 +92,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(purelyNationalGrounds: new PurelyNationalGrounds(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
@@ -108,7 +108,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
@@ -125,7 +125,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -142,7 +142,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 selfCleaning: new SelfCleaning(description: "Hodor_24 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.PARTICIPATION_CRIMINAL_ORGANISATION)
 
         then:
@@ -159,7 +159,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
@@ -176,7 +176,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_21.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:
@@ -193,7 +193,7 @@ class NationalExclusionGroundsResponseTest extends AbstractExclusionCriteriaFixt
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_21")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS)
 
         then:

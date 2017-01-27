@@ -27,7 +27,8 @@ package eu.europa.ec.grow.espd.xml.base
 import eu.europa.ec.grow.espd.config.JaxbConfiguration
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.util.EspdConfiguration
-import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller
+import eu.europa.ec.grow.espd.xml.EspdXmlExporter
+import eu.europa.ec.grow.espd.xml.EspdXmlImporter
 import eu.europa.ec.grow.espd.xml.common.exporting.UblContractingPartyTypeTransformer
 import eu.europa.ec.grow.espd.xml.common.exporting.UblEconomicOperatorPartyTypeTransformer
 import eu.europa.ec.grow.espd.xml.common.importing.CriteriaToEspdDocumentPopulator
@@ -54,11 +55,14 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
 
     static {
         // init the marshaller only once because it's expensive to create
-        initEspdMarshaller(jaxb2Marshaller)
+        initEspdMarshallers(jaxb2Marshaller)
     }
 
     @Shared
-    protected static EspdExchangeMarshaller marshaller
+    protected static EspdXmlExporter xmlExporter
+
+    @Shared
+    protected static EspdXmlImporter xmlImporter
 
     protected StringWriter xmlOutput
 
@@ -66,7 +70,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         // init objects run before the first feature method
     }
 
-    private static void initEspdMarshaller(Jaxb2Marshaller jaxb2Marshaller) {
+    private static void initEspdMarshallers(Jaxb2Marshaller jaxb2Marshaller) {
         def ublContractingPartyTypeTransformer = new UblContractingPartyTypeTransformer()
         def economicOperatorPartyTypeTransformer = new UblEconomicOperatorPartyTypeTransformer()
         def espdConfig = new EspdConfiguration(null)
@@ -79,8 +83,8 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         def ublResponseImporter = new UblResponseImporter(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
         def ublResponseTypeTransformer = new UblResponseTypeTransformer(ublContractingPartyTypeTransformer, economicOperatorPartyTypeTransformer, new UblResponseCriteriaTransformer(), espdConfig)
         def requestResponseMerger = new UblRequestResponseMerger(partyImplTransformer, economicOperatorImplTransformer, criteriaToEspdDocumentPopulator)
-        marshaller = new EspdExchangeMarshaller(jaxb2Marshaller, ublRequestTypeTransformer, ublRequestImporter,
-                ublResponseImporter, ublResponseTypeTransformer, requestResponseMerger)
+        xmlExporter = new EspdXmlExporter(jaxb2Marshaller, ublRequestTypeTransformer, ublResponseTypeTransformer)
+        xmlImporter = new EspdXmlImporter(jaxb2Marshaller, ublRequestImporter, ublResponseImporter, requestResponseMerger)
     }
 
     void cleanupSpec() {
@@ -95,21 +99,21 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         xmlOutput = null
     }
 
-    protected GPathResult parseRequestXml() {
-        parseRequestXml(new EspdDocument())
+    protected GPathResult generateRequestXml() {
+        generateRequestXml(new EspdDocument())
     }
 
-    protected GPathResult parseRequestXml(EspdDocument espdDocument) {
-        marshaller.generateEspdRequest(espdDocument, xmlOutput)
+    protected GPathResult generateRequestXml(EspdDocument espdDocument) {
+        xmlExporter.generateEspdRequest(espdDocument, xmlOutput)
         new XmlSlurper().parseText(xmlOutput.toString())
     }
 
-    protected GPathResult parseResponseXml() {
-        parseResponseXml(new EspdDocument())
+    protected GPathResult generateResponseXml() {
+        generateResponseXml(new EspdDocument())
     }
 
-    protected GPathResult parseResponseXml(EspdDocument espdDocument) {
-        marshaller.generateEspdResponse(espdDocument, xmlOutput)
+    protected GPathResult generateResponseXml(EspdDocument espdDocument) {
+        xmlExporter.generateEspdResponse(espdDocument, xmlOutput)
         new XmlSlurper().parseText(xmlOutput.toString())
     }
 
@@ -118,7 +122,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
     }
 
     protected void saveEspdAsXmlResponse(EspdDocument espd, String filePath) {
-        parseResponseXml(espd)
+        generateResponseXml(espd)
         def file = new File(filePath)
         file.text = xmlOutput
         println("--------------- created ESPD Response at ${file.absolutePath}")

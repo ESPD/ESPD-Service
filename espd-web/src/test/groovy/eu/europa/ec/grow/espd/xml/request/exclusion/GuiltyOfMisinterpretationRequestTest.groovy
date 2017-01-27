@@ -38,7 +38,7 @@ class GuiltyOfMisinterpretationRequestTest extends AbstractExclusionCriteriaFixt
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then: "CriterionID element"

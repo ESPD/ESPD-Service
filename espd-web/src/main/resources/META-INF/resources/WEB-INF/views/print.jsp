@@ -472,7 +472,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                 </div>
             </div>
 		</div>
-
     </c:set>
     ${htmlToPrint}
     <input type="hidden"
@@ -481,7 +480,7 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
-            <tiles:putAttribute name="next" value="savePrintHtml"/>
+            <tiles:putAttribute name="next" value="download"/>
         </tiles:insertDefinition>
 	</div>
 </form:form>

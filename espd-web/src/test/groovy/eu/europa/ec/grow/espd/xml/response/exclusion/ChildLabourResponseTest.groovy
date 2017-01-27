@@ -43,7 +43,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then: "CriterionID element"
@@ -82,7 +82,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -100,7 +100,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, dateOfConviction: now))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -117,7 +117,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, reason: "Reason_06 here"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -134,7 +134,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, convicted: "Hodor_06 was convicted"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -151,7 +151,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true, periodLength: "7 years"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -169,7 +169,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -186,7 +186,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
                 selfCleaning: new SelfCleaning(description: "Hodor_06 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -203,7 +203,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -220,7 +220,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_06.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:
@@ -237,7 +237,7 @@ class ChildLabourResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_06")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then:

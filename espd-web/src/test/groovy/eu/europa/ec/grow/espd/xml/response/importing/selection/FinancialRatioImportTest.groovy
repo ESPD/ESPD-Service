@@ -35,11 +35,8 @@ import org.apache.commons.io.IOUtils
 class FinancialRatioImportTest extends AbstractXmlFileImport {
 
     def "11. should import all fields of 'Financial ratio'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/financial_ratio_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/financial_ratio_import.xml")
         def unboundedGroups = espd.financialRatio.unboundedGroups
 
         then:

@@ -39,7 +39,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then: "CriterionID element"
@@ -84,7 +84,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
@@ -101,7 +101,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
         def espd = new EspdDocument(serviceContractsMembership: new SuitabilityCriterion(exists: true, answer: true, description: "hodor 2"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_AUTHORISATION)
 
         then:
@@ -119,7 +119,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
@@ -136,7 +136,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_05.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:
@@ -153,7 +153,7 @@ class ServiceContractsMembershipResponseTest extends AbstractSelectionCriteriaFi
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_05")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SERVICE_CONTRACTS_MEMBERSHIP)
 
         then:

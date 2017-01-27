@@ -44,7 +44,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
         def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
 
         then: "all mandatory exclusion criteria (minus 'purely national') plus 'satisifes all' plus the eo criteria"
         request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 1 + OtherCriterion.values().length
@@ -77,7 +77,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
                 workContractsPerformanceOfWorks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
 
         then: "only selected selection criteria are present plus mandatory exclusion plus the award criterion"
         request.Criterion.size() == getMandatoryExclusionCriteriaSize() + 3 + OtherCriterion.values().length
@@ -128,7 +128,7 @@ class EspdRequestSelectionCriteriaMarshallingTest extends AbstractSelectionCrite
                 certificateIndependentBodiesAboutEnvironmental: null)
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
 
         then: "all mandatory exclusion plus all selection plus the only award criterion"
         request.Criterion.size() == getMandatoryExclusionCriteriaSize() + SelectionCriterion.values().length + OtherCriterion.values().length

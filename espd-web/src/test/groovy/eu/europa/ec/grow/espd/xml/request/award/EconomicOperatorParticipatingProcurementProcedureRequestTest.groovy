@@ -38,7 +38,7 @@ class EconomicOperatorParticipatingProcurementProcedureRequestTest extends Abstr
         def espd = new EspdDocument(eoParticipatingProcurementProcedure: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.EO_PARTICIPATING_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"

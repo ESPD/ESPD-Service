@@ -35,7 +35,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then: "CriterionID element"
@@ -87,7 +87,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(bankruptcy: new BankruptcyCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
@@ -103,7 +103,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
@@ -120,7 +120,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 reason: "Reason here."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
@@ -137,7 +137,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
@@ -154,7 +154,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_12.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:
@@ -171,7 +171,7 @@ class BankruptcyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_12")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.BANKRUPTCY)
 
         then:

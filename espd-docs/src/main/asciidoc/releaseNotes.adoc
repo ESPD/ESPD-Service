@@ -1,5 +1,30 @@
 == Release notes
 
+=== 2017.01 (31st of January 2017)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/143[Remove the field 'Consortium name' from the user interface]
+* https://github.com/ESPD/ESPD-Service/issues/132[Incorrect URL in D: Purely national exclusion grounds]
+* https://github.com/ESPD/ESPD-Service/issues/131[Incorrect URL in eCertis integration for criteria]
+* https://github.com/ESPD/ESPD-Service/issues/126[Evidence country]
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/140[Pop-up window for session expiration]
+* https://github.com/ESPD/ESPD-Service/issues/141[The extension of the session duration to 4 hours]
+* https://github.com/ESPD/ESPD-Service/issues/122[Review the generation of XML files and print workflow]
+* https://github.com/ESPD/ESPD-Service/issues/121[Prefill certain parameters for ESPD pages]
+* https://github.com/ESPD/ESPD-Service/issues/120[Configuration parameters for breadcrumb and footer]
+* https://github.com/ESPD/ESPD-Service/issues/119[Configuration parameter for skipping the language page]
+
+==== Translation
+
+* https://github.com/ESPD/ESPD-Service/issues/51[Part III: Section B: "Payment of taxes" and “Payment of social security”]
+* https://github.com/ESPD/ESPD-Service/issues/87[Part III D: Purely national exclusion grounds wording should be changed]
+
+The full list of issues can be seen at https://github.com/ESPD/ESPD-Service/milestone/12?closed=1[ESPD Milestone 2017.01].
+
 === 2016.12.01 (18th of January 2017)
 
 ==== Bug

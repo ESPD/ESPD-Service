@@ -38,7 +38,7 @@ class DirectInvolvementPreparationProcurementRequestTest extends AbstractExclusi
         def espd = new EspdDocument(involvementPreparationProcurement: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.DIRECT_INVOLVEMENT_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"

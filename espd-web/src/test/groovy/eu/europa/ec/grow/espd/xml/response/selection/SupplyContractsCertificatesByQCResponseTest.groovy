@@ -39,7 +39,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then: "CriterionID element"
@@ -85,7 +85,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(supplyContractsCertificatesQc: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
@@ -103,7 +103,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
@@ -119,7 +119,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
@@ -135,7 +135,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_31.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:
@@ -151,7 +151,7 @@ class SupplyContractsCertificatesByQCResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_31")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_CERTIFICATES_QC)
 
         then:

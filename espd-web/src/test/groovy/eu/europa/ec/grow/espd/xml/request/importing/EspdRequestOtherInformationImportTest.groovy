@@ -24,25 +24,18 @@
 
 package eu.europa.ec.grow.espd.xml.request.importing
 
-import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 import spock.lang.Shared
-
 /**
  * Created by ratoico on 1/18/16 at 2:56 PM.
  */
 class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
-
-    @Shared
-    static def espdRequestFullXml
-    @Shared
-    static def espdRequestMinimalXml
 
     @Shared
     static EspdDocument espdFull
@@ -51,15 +44,11 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
 
     void setupSpec() {
         // init objects run before the first feature method
-        espdRequestFullXml = importXmlRequestFile("request_other_information_full_import.xml")
-        espdRequestMinimalXml = importXmlRequestFile("request_other_information_minimal_import.xml")
-        espdFull = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestFullXml)).get()
-        espdMinimal = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestMinimalXml)).get()
+        espdFull = parseXmlRequestFile("request_other_information_full_import.xml")
+        espdMinimal = parseXmlRequestFile("request_other_information_minimal_import.xml")
     }
 
     void cleanupSpec() {
-        espdRequestFullXml = null
-        espdRequestMinimalXml = null
         espdFull = null
         espdMinimal = null
     }
@@ -106,8 +95,7 @@ class EspdRequestOtherInformationImportTest extends AbstractXmlFileImport {
 
     def "we should not load the ojs number if it is marked as a temporary one"() {
         given:
-        def espdXml = importXmlRequestFile("request_temporary_ojs_number_import.xml")
-        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdXml)).get()
+        EspdDocument espd = parseXmlRequestFile("request_temporary_ojs_number_import.xml")
 
         expect:
         espd.fileRefByCA == "SMART 2016/0069"
