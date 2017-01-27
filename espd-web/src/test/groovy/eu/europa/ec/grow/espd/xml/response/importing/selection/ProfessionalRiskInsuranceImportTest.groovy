@@ -28,19 +28,14 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/8/16 at 3:25 PM.
  */
 class ProfessionalRiskInsuranceImportTest extends AbstractXmlFileImport {
 
     def "12. should import all fields of 'Professional risk indemnity insurance'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/professional_risk_insurance_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/professional_risk_insurance_import.xml")
 
         then:
         espd.professionalRiskInsurance.exists == true

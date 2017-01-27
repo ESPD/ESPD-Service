@@ -43,7 +43,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def espd = new EspdDocument(criminalConvictions: participation, corruption: corruption)
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
 
         then:
         request.Criterion.size() == 2 + SelectionCriterion.values().length + OtherCriterion.values().length
@@ -72,7 +72,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def espd = new EspdDocument(criminalConvictions: participation, corruption: corruption)
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
 
         then: "check self cleaning description requirement in participation criterion"
         def idx1 = 0
@@ -95,7 +95,7 @@ class MixedExclusionCriteriaResponseTest extends AbstractExclusionCriteriaFixtur
         def espd = new EspdDocument(criminalConvictions: participation, corruption: corruption)
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
 
         then: "check self cleaning description requirement in participation criterion"
         def idx1 = 0

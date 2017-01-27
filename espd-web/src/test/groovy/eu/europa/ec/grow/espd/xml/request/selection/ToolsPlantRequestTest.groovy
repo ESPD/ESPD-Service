@@ -38,7 +38,7 @@ class ToolsPlantRequestTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(toolsPlantTechnicalEquipment: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then: "CriterionID element"

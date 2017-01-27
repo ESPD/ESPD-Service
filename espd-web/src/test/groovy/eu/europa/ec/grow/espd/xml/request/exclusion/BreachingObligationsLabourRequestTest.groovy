@@ -38,7 +38,7 @@ class BreachingObligationsLabourRequestTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(breachingObligationsLabour: new LawCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_LABOUR)
 
         then: "CriterionID element"

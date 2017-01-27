@@ -9,7 +9,7 @@
 	request.setAttribute("span18n", inst.span());
 %>
 		
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
 <tiles:importAttribute name="agent"/>
 <tiles:importAttribute name="flow"/>
@@ -47,10 +47,19 @@
 				$("input:radio[data-target-hide]").change(dataHide);
 				sortDropdowns();
 
-				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${espd.authority.country.iso2Code}")
+				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${agent == 'eo' ? espd.economicOperator.country.iso2Code : espd.authority.country.iso2Code}")
 				$('.ecertis-link-header').click(ecertisHandler);
+			
+				$("#espd-popup").delay(3600000).show(0);
+				$("#espd-popup-close").click(function(){$("#espd-popup").hide()})
 			});
 		</script>
+		<div id="espd-popup" class="espd-popup" style="display: none;">
+			<div class="espd-popup-content">
+				<p>${span18n['expire_reminder_message']}<br><br>
+				<a id="espd-popup-close" data-i18n="cancel">${i18n['cancel']}</a>
+			</div>
+		</div>
     </head>
     <body>
     	<div id="espd-content">
@@ -66,9 +75,12 @@
 		            </tiles:insertAttribute>
 		        </div>
 			</div>
-	        <div id="footer">
-	            <tiles:insertAttribute name="footer"/>
-	        </div>
+            <s:eval var="showFooter" scope="page" expression="@espdConfiguration.showFooter" />
+            <c:if test="${showFooter}">
+                <div id="footer">
+                    <tiles:insertAttribute name="footer"/>
+                </div>
+            </c:if>
 	        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
         </div>
 

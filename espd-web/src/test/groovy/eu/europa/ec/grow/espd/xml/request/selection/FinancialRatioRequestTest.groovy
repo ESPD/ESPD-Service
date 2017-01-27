@@ -38,7 +38,7 @@ class FinancialRatioRequestTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(financialRatio: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.FINANCIAL_RATIO)
 
         then: "CriterionID element"

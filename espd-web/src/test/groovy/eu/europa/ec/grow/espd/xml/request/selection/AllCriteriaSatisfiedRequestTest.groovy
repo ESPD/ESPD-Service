@@ -39,7 +39,7 @@ class AllCriteriaSatisfiedRequestTest extends AbstractSelectionCriteriaFixture {
         def idx = getRequestCriterionIndex(SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED)
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
 
         then: "CriterionID element"
         checkCriterionId(request, idx, "7e7db838-eeac-46d9-ab39-42927486f22d")

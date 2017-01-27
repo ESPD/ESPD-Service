@@ -38,7 +38,7 @@ class WorkContractsTechniciansRequestTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(workContractsTechnicians: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseRequestXml(espd)
+        def response = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.WORK_CONTRACTS_TECHNICIANS_OR_TECHNICAL_BODIES)
 
         then: "CriterionID element"

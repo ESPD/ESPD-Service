@@ -324,30 +324,30 @@ a.progress-link:hover { text-decoration: underline !important; }
     text-decoration: underline;
 }
 
-/* breadcrum */
+/* breadcrumb */
 
-.breadcrumElement {
+.breadcrumbElement {
     color: white !important;
     text-decoration: none !important;
 }
 
-.breadcrumElement a:visited {
+.breadcrumbElement a:visited {
     text-decoration: none !important;
     color: white !important;
 }
 
-.breadcrumElement a:hover {
+.breadcrumbElement a:hover {
     text-decoration: none !important;
     color: white !important;
     border-bottom: 1px solid #FFFFFF !important;
 }
 
-.breadcrumElement a:focus {
+.breadcrumbElement a:focus {
     text-decoration: none !important;
     color: white !important;
 }
 
-.breadcrumElement a:hover, a:active {
+.breadcrumbElement a:hover, a:active {
     text-decoration: none !important;
     color: white !important;
 }
@@ -466,4 +466,24 @@ a.splashLangBox {
    white-space: -pre-wrap;     /* Opera <7 */   
    white-space: -o-pre-wrap;   /* Opera 7 */    
    word-wrap: break-word;      /* IE */
+}
+
+/* define popup 1hour reminder style*/
+
+.espd-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 1000;
+}
+.espd-popup .espd-popup-content{
+    margin:40px auto 0px auto;
+    width:300px;
+    padding:10px;
+    background-color: white;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
 }

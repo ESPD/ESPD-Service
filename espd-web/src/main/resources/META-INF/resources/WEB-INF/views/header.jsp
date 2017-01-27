@@ -58,7 +58,7 @@
             <li><a target="_blank" href="${pageContext.request.contextPath}/about">${span18n["about"]}</a></li>
             <li>
                 <label for="language"></label><select id="language">
-                <c:forEach var="lang" items="<%=Language.values()%>">
+                <c:forEach var="lang" items="<%=Language.VALUES%>">
                     <option value="${lang.code}" ${(lang.code eq pageContext.response.locale)?"selected":""}>${lang.sourceLanguage}</option>
                 </c:forEach>
             </select>

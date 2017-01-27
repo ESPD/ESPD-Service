@@ -28,18 +28,14 @@ import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.MisconductDistortionCriterion
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/18/16 at 10:41 AM.
  */
 class AgreementsWithEOImportTest extends AbstractXmlFileImport {
 
     def "19. should import all fields of 'Conflict of interest due to its participation in the procurement procedure'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/agreements_with_eo_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/agreements_with_eo_import.xml")
 
         then:
         espd.agreementsWithOtherEO.exists == true
@@ -57,11 +53,8 @@ class AgreementsWithEOImportTest extends AbstractXmlFileImport {
     }
 
     def "an exclusion criterion with no answer will have a value of FALSE"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/exclusion_criterion_no_answer_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/exclusion_criterion_no_answer_import.xml")
 
         then:
         espd.agreementsWithOtherEO.exists == true

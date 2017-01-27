@@ -136,7 +136,7 @@ function EcertisHandler(url, country) {
 	
 								//Currently display only first LegislationReference from array, in future could be more
 								item.find("#description").html(val.LegislationReference[0].Title.value);
-								item.find("#url").text(val.LegislationReference[0].Article.value).attr("href",data.LegislationReference[0].URI);
+								item.find("#url").text(val.LegislationReference[0].Article.value).attr("href", val.LegislationReference[0].URI);
 	
 								var hasEvidences = false;
 								$.each( $(val.RequirementGroup), function( key, val ) {

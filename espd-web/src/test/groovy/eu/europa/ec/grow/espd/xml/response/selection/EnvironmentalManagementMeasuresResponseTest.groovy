@@ -39,7 +39,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
         def espd = new EspdDocument(environmentalManagementFeatures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
@@ -96,7 +96,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
@@ -113,7 +113,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_24.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:
@@ -130,7 +130,7 @@ class EnvironmentalManagementMeasuresResponseTest extends AbstractSelectionCrite
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_24")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENVIRONMENTAL_MANAGEMENT_FEATURES)
 
         then:

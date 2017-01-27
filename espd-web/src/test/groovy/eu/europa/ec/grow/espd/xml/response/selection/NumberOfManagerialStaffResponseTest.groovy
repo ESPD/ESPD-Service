@@ -41,7 +41,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First year"
@@ -114,7 +114,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
                 ]))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "First number"
@@ -145,7 +145,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
@@ -161,7 +161,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_24.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:
@@ -177,7 +177,7 @@ class NumberOfManagerialStaffResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_24")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then:

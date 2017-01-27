@@ -39,7 +39,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(enrolmentTradeRegister: new SuitabilityCriterion(exists: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(enrolmentTradeRegister: new SuitabilityCriterion(exists: true, answer: true))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
@@ -98,7 +98,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
@@ -115,7 +115,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_03.com")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:
@@ -132,7 +132,7 @@ class EnrolmentTradeRegisterResponseTest extends AbstractSelectionCriteriaFixtur
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_03")))
 
         when:
-        def request = parseResponseXml(espd)
+        def request = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ENROLMENT_TRADE_REGISTER)
 
         then:

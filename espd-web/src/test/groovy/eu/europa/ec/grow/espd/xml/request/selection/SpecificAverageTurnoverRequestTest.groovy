@@ -38,7 +38,7 @@ class SpecificAverageTurnoverRequestTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"

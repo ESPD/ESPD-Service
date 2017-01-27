@@ -38,7 +38,7 @@ class TechnicalFacilitiesRequestTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(technicalFacilitiesMeasures: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.TECHNICAL_FACILITIES_AND_MEASURES)
 
         then: "CriterionID element"

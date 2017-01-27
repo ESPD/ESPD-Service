@@ -24,25 +24,20 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
 
-import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.TaxesCriterion
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
-
 /**
  * Created by ratoico on 1/7/16 at 3:54 PM.
  */
 class PaymentOfTaxesImportTest extends AbstractXmlFileImport {
 
     def "07. should import all fields of 'Payment of taxes'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/payment_of_taxes_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/payment_of_taxes_import.xml")
 
         then:
         espd.paymentTaxes.exists == true

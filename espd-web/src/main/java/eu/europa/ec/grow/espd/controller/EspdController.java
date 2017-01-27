@@ -25,27 +25,23 @@
 package eu.europa.ec.grow.espd.controller;
 
 import com.google.common.base.Optional;
-import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup;
-import eu.europa.ec.grow.espd.domain.EconomicOperatorImpl;
-import eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative;
-import eu.europa.ec.grow.espd.domain.EspdDocument;
+import eu.europa.ec.grow.espd.domain.*;
 import eu.europa.ec.grow.espd.domain.enums.other.Country;
 import eu.europa.ec.grow.espd.domain.intf.UnboundedRequirementGroup;
 import eu.europa.ec.grow.espd.ted.TedRequest;
 import eu.europa.ec.grow.espd.ted.TedResponse;
 import eu.europa.ec.grow.espd.ted.TedService;
-import eu.europa.ec.grow.espd.tenderned.HtmlToPdfTransformer;
 import eu.europa.ec.grow.espd.tenderned.UnescapeHtml4;
 import eu.europa.ec.grow.espd.tenderned.exception.PdfRenderingException;
 import eu.europa.ec.grow.espd.tenderned.exception.TedNoticeException;
-import eu.europa.ec.grow.espd.xml.EspdExchangeMarshaller;
+import eu.europa.ec.grow.espd.util.EspdExporter;
+import eu.europa.ec.grow.espd.xml.EspdXmlImporter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -76,19 +72,18 @@ class EspdController {
 	private static final String WELCOME_PAGE = "welcome";
 	private static final String REQUEST_CA_PROCEDURE_PAGE = "request/ca/procedure";
 	private static final String RESPONSE_EO_PROCEDURE_PAGE = "response/eo/procedure";
-	private static final String PRINT_PAGE = "response/eo/print";
+	private static final String OVERVIEW_PAGE = "response/eo/overview";
 	private static final String SESSION_EXPIRED_PAGE = "sessionExpired";
 
-	private final EspdExchangeMarshaller exchangeMarshaller;
+	private final EspdXmlImporter xmlImporter;
+	private final EspdExporter espdExporter;
 	private final TedService tedService;
-	private final HtmlToPdfTransformer pdfTransformer;
 
 	@Autowired
-	EspdController(EspdExchangeMarshaller exchangeMarshaller, TedService tedService,
-			HtmlToPdfTransformer pdfTransformer) {
-		this.exchangeMarshaller = exchangeMarshaller;
+	EspdController(EspdXmlImporter xmlImporter, EspdExporter espdExporter, TedService tedService) {
+		this.xmlImporter = xmlImporter;
+		this.espdExporter = espdExporter;
 		this.tedService = tedService;
-		this.pdfTransformer = pdfTransformer;
 	}
 
 	@ModelAttribute("espd")
@@ -101,9 +96,14 @@ class EspdController {
 		return WELCOME_PAGE;
 	}
 
-	@RequestMapping("/{page:filter|contact}")
-	public String getPage(@PathVariable String page) {
-		return page;
+	@GetMapping("/contact")
+	public String viewContactPage() {
+		return "contact";
+	}
+
+	@GetMapping("/filter")
+	public String viewFilterPage(@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams) {
+		return "filter";
 	}
 
 	@RequestMapping(value = "/welcome")
@@ -118,9 +118,12 @@ class EspdController {
 	@PostMapping(value = "/filter", params = "action=ca_create_espd_request")
 	public String createNewRequestAsCA(
 			@RequestParam("agent") String agent,
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@ModelAttribute("espd") EspdDocument document) throws IOException {
 		document.setExtendCe("ce".equals(agent));
+		if (document.getAuthority() == null) {
+			document.setAuthority(new PartyImpl());
+		}
 		document.getAuthority().setCountry(country);
 		document.selectCAExclusionCriteriaEU();
 		copyTedInformation(document);
@@ -155,11 +158,11 @@ class EspdController {
 	public String reuseRequestAsCA(
 			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
-			Optional<EspdDocument> espd = exchangeMarshaller.importEspdRequest(is);
+			Optional<EspdDocument> espd = xmlImporter.importEspdRequest(is);
 			if (espd.isPresent()) {
 				EspdDocument espdGot = espd.get();
 				espdGot.setExtendCe("ce".equals(agent));
@@ -176,16 +179,16 @@ class EspdController {
 	public String reviewResponseAsCA(
 			@RequestParam("agent") String agent,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
-			Optional<EspdDocument> espd = exchangeMarshaller.importEspdResponse(is);
+			Optional<EspdDocument> espd = xmlImporter.importEspdResponse(is);
 			if (espd.isPresent()) {
 				EspdDocument espdGot = espd.get();
 				espdGot.setExtendCe("ce".equals(agent));
 				model.addAttribute("espd", espdGot);
-				return redirectToPage(PRINT_PAGE);
+				return redirectToPage(OVERVIEW_PAGE);
 			}
 		}
 
@@ -195,13 +198,13 @@ class EspdController {
 
 	@PostMapping(value = "/filter", params = "action=eo_import_espd")
 	public String importEspdAsEo(
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream is = attachments.get(0).getInputStream()) {
-			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.importAmbiguousEspdFile(is);
+			Optional<EspdDocument> wrappedEspd = xmlImporter.importAmbiguousEspdFile(is);
 
 			// how can wrappedEspd be null???
 			if (wrappedEspd != null && wrappedEspd.isPresent()) {
@@ -218,7 +221,7 @@ class EspdController {
 				return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 			}
 		} catch (TedNoticeException e) {
-			result.rejectValue("attachments", "error_ted_notice_not_supported");	
+			result.rejectValue("attachments", "error_ted_notice_not_supported");
 			return "filter";
 		}
 
@@ -233,12 +236,12 @@ class EspdController {
 	@PostMapping(value = "/filter", params = "action=eo_merge_espds")
 	public String mergeTwoEspds(
 			@RequestPart List<MultipartFile> attachments,
-			@ModelAttribute("espd") EspdDocument document,
+			@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams,
 			Model model,
 			BindingResult result) throws IOException {
 		try (InputStream reqIs = attachments.get(1).getInputStream();
 				InputStream respIs = attachments.get(2).getInputStream()) {
-			Optional<EspdDocument> wrappedEspd = exchangeMarshaller.mergeEspdRequestAndResponse(reqIs, respIs);
+			Optional<EspdDocument> wrappedEspd = xmlImporter.mergeEspdRequestAndResponse(reqIs, respIs);
 			if (wrappedEspd.isPresent()) {
 				model.addAttribute("espd", wrappedEspd.get());
 				return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
@@ -249,9 +252,9 @@ class EspdController {
 		return "filter";
 	}
 
-	@PostMapping(value = "/filter", params = "action=eo_create_response")
+	@PostMapping(value = "/filter", params = "action=eo_create_espd_response")
 	public String createNewResponseAsEO(
-			@RequestParam("authority.country") Country country,
+			@RequestParam("country") Country country,
 			@ModelAttribute("espd") EspdDocument document,
 			Model model,
 			BindingResult result) throws IOException {
@@ -264,7 +267,7 @@ class EspdController {
 		return redirectToPage(RESPONSE_EO_PROCEDURE_PAGE);
 	}
 
-	@GetMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}")
+	@GetMapping("/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|overview}")
 	public String view(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -273,7 +276,7 @@ class EspdController {
 		return flow + "_" + agent + "_" + step;
 	}
 
-	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|print}", params = "prev")
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|overview}", params = "prev")
 	public String previous(
 			@PathVariable String flow,
 			@PathVariable String agent,
@@ -285,16 +288,169 @@ class EspdController {
 				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/" + prev);
 	}
 
-	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}", params = "print")
-	public String print(
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish}",
+			params = "next")
+	public String next(
 			@PathVariable String flow,
 			@PathVariable String agent,
 			@PathVariable String step,
-			@RequestParam String print,
+			@RequestParam String next,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletRequest request,
+			HttpServletResponse response,
+			BindingResult bindingResult,
+			SessionStatus status,
+			Model model) throws PdfRenderingException, IOException {
+
+		if (bindingResult.hasErrors()) {
+			return flow + "_" + agent + "_" + step;
+		}
+
+		return redirectToPage(flow + "/" + agent + "/" + next);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:finish}", params = "overview")
+	public String overview(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
 			@ModelAttribute("espd") EspdDocument espd,
 			BindingResult bindingResult) {
 		return bindingResult.hasErrors() ?
-				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/print");
+				flow + "_" + agent + "_" + step : redirectToPage(flow + "/" + agent + "/overview");
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:overview}", params = "download=xml")
+	public String downloadXmlFile(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletResponse response) throws IOException {
+		response.setContentType(APPLICATION_XML_VALUE);
+		ByteArrayOutputStream out = espdExporter.exportAsXml(espd, agent);
+		serveFileForDownload(out, agent, "xml", response);
+
+		return null;
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:overview}", params = "download=pdf")
+	public String downloadPdf(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletResponse response,
+			BindingResult bindingResult,
+			Model model) throws PdfRenderingException, IOException {
+
+		if (bindingResult.hasErrors()) {
+			return flow + "_" + agent + "_" + step;
+		}
+
+		espd.setHtml(addHtmlHeader(espd.getHtml()));
+
+		ByteArrayOutputStream pdfOutput = espdExporter.exportAsPdf(espd, agent);
+
+		serveFileForDownload(pdfOutput, agent, "pdf", response);
+
+		return null;
+	}
+
+	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:overview}", params = "download=zip")
+	public String downloadZip(
+			@PathVariable String flow,
+			@PathVariable String agent,
+			@PathVariable String step,
+			@ModelAttribute("espd") EspdDocument espd,
+			HttpServletResponse response,
+			BindingResult bindingResult,
+			Model model) throws PdfRenderingException, IOException {
+
+		if (bindingResult.hasErrors()) {
+			return flow + "_" + agent + "_" + step;
+		}
+
+		espd.setHtml(addHtmlHeader(espd.getHtml()));
+
+		ByteArrayOutputStream zipOutputStream = espdExporter.exportAsZip(espd, agent);
+
+		serveFileForDownload(zipOutputStream, agent, "zip", response);
+
+		return null;
+	}
+
+	private void serveFileForDownload(ByteArrayOutputStream fileStream, String agent, String fileType,
+			HttpServletResponse response) throws IOException {
+		String fileName = "ca".equalsIgnoreCase(agent) ? "espd-request." + fileType : "espd-response." + fileType;
+		response.setContentType("application/" + fileType);
+		response.setContentLength(fileStream.size());
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", fileName));
+
+		// Send content to Browser
+		response.getOutputStream().write(fileStream.toByteArray());
+		response.getOutputStream().flush();
+	}
+
+	/**
+	 * This method is for adding headers to the html code that's being saved on
+	 * the print.jsp page to make the html valid for creating a PDF file.
+	 *
+	 * @param html The HTML code of the ESPD to be printed
+	 *
+	 * @return The HTML surrounded by the proper tags
+	 */
+	private String addHtmlHeader(String html) {
+		String newHtml = UnescapeHtml4.unescapeHtml4(html);
+		return "<html><head/><body>" + newHtml + "</div></body></html>";
+	}
+
+	@RequestMapping("/initialization")
+	public String initializeEspd(@ModelAttribute("espdFilterParams") EspdInitializationParameters initParams,
+			Model model) {
+		EspdDocument espd = new EspdDocument();
+		copyProcurementInformation(initParams, espd);
+		if (espd.getEconomicOperator() == null) {
+			espd.setEconomicOperator(new EconomicOperatorImpl());
+		}
+		espd.getEconomicOperator().copyProperties(initParams);
+		model.addAttribute("espd", espd);
+		return "filter";
+	}
+
+	private void copyProcurementInformation(EspdInitializationParameters initParams, EspdDocument espd) {
+		espd.setProcedureTitle(initParams.getTitle());
+		espd.setProcedureShortDesc(initParams.getDescription());
+		espd.setFileRefByCA(initParams.getFileRefByCA());
+		if (espd.getAuthority() == null) {
+			espd.setAuthority(new PartyImpl());
+		}
+		espd.getAuthority().setName(initParams.getOfficialName());
+		espd.getAuthority().setCountry(initParams.getProcurerCountry());
+	}
+
+	private static String redirectToPage(String pageName) {
+		return "redirect:/" + pageName;
+	}
+
+	@InitBinder
+	private void dateBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+		binder.registerCustomEditor(Date.class, editor);
+		// additional binder for supporting empty values containing years in dynamic unbounded requirement groups
+		CustomNumberEditor numberEditor = new CustomNumberEditor(Integer.class, true);
+		binder.registerCustomEditor(Integer.class, numberEditor);
+	}
+
+	/**
+	 * If we have a value 'null' as a path variable we can assume the session was expired.
+	 *
+	 * @return The name of the expired page
+	 */
+	@RequestMapping("**/null/**")
+	public String getPage() {
+		return SESSION_EXPIRED_PAGE;
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/procedure", params = "add")
@@ -396,114 +552,5 @@ class EspdController {
 		}
 		referencePosition = Math.min(espdCriterion.getUnboundedGroups().size() - 1, referencePosition);
 		return redirectToPage(flow + "/eo/selection" + referenceHash + referencePosition);
-	}
-
-	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:procedure|exclusion|selection|finish|generate}",
-			params = "next")
-	public String next(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@RequestParam String next,
-			@ModelAttribute("espd") EspdDocument espd,
-			HttpServletRequest request,
-			HttpServletResponse response,
-			BindingResult bindingResult,
-			SessionStatus status,
-			Model model) throws PdfRenderingException, IOException {
-
-		if (bindingResult.hasErrors()) {
-			return flow + "_" + agent + "_" + step;
-		}
-
-		if (!"generate".equals(next)) {
-			return redirectToPage(flow + "/" + agent + "/" + next);
-		}
-
-		downloadEspdFile(agent, espd, response);
-
-		return null;
-	}
-
-	@PostMapping(value = "/{flow:request|response}/{agent:ca|eo}/{step:print}", params = "next=savePrintHtml")
-	public String printPDF(
-			@PathVariable String flow,
-			@PathVariable String agent,
-			@PathVariable String step,
-			@ModelAttribute("espd") EspdDocument espd,
-			HttpServletResponse response,
-			BindingResult bindingResult,
-			Model model) throws PdfRenderingException, IOException {
-
-		if (bindingResult.hasErrors()) {
-			return flow + "_" + agent + "_" + step;
-		}
-
-		espd.setHtml(addHtmlHeader(espd.getHtml()));
-
-		ByteArrayOutputStream pdfOutput = pdfTransformer.convertToPDF(espd.getHtml(), agent);
-
-		String pdfFileName = "ca".equals(agent) ? "espd-request.pdf" : "espd-response.pdf";
-		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-		response.setContentLength(pdfOutput.size());
-		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, format("attachment; filename=\"%s\"", pdfFileName));
-
-		// Send content to Browser
-		response.getOutputStream().write(pdfOutput.toByteArray());
-		response.getOutputStream().flush();
-		return null;
-	}
-
-	/**
-	 * This method is for adding headers to the html code that's being saved on
-	 * the print.jsp page to make the html valid for creating a PDF file.
-	 *
-	 * @param html The HTML code of the ESPD to be printed
-	 *
-	 * @return The HTML surrounded by the proper tags
-	 */
-	private String addHtmlHeader(String html) {
-		String newHtml = UnescapeHtml4.unescapeHtml4(html);
-		return "<html><head/><body>" + newHtml + "</div></body></html>";
-	}
-
-	private static String redirectToPage(String pageName) {
-		return "redirect:/" + pageName;
-	}
-
-	private void downloadEspdFile(@PathVariable String agent, @ModelAttribute("espd") EspdDocument espd,
-			HttpServletResponse response) throws IOException {
-		response.setContentType(APPLICATION_XML_VALUE);
-		ByteArrayOutputStream out;
-		if ("eo".equals(agent)) {
-			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-response.xml\"");
-			out = exchangeMarshaller.generateEspdResponse(espd);
-		} else {
-			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"espd-request.xml\"");
-			out = exchangeMarshaller.generateEspdRequest(espd);
-		}
-		response.setContentLength(out.size());
-		response.getOutputStream().write(out.toByteArray());
-		response.getOutputStream().flush();
-	}
-
-	@InitBinder
-	private void dateBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-		binder.registerCustomEditor(Date.class, editor);
-		// additional binder for supporting empty values containing years in dynamic unbounded requirement groups
-		CustomNumberEditor numberEditor = new CustomNumberEditor(Integer.class, true);
-		binder.registerCustomEditor(Integer.class, numberEditor);
-	}
-
-	/**
-	 * If we have a value 'null' as a path variable we can assume the session was expired.
-	 *
-	 * @return The name of the expired page
-	 */
-	@RequestMapping("**/null/**")
-	public String getPage() {
-		return SESSION_EXPIRED_PAGE;
 	}
 }

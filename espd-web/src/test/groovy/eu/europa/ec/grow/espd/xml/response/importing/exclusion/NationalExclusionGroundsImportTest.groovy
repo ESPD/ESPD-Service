@@ -23,23 +23,20 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing.exclusion
+
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.PurelyNationalGrounds
 import eu.europa.ec.grow.espd.domain.SelfCleaning
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/8/16 at 10:59 AM.
  */
 class NationalExclusionGroundsImportTest extends AbstractXmlFileImport {
 
     def "21. should import all fields of 'Purely national exclusion grounds'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("exclusion/purely_national_grounds_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("exclusion/purely_national_grounds_import.xml")
 
         then:
         espd.purelyNationalGrounds.exists == true

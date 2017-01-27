@@ -38,7 +38,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then: "CriterionID element"
@@ -74,7 +74,7 @@ class GuiltyOfMisinterpretationResponseTest extends AbstractExclusionCriteriaFix
         def espd = new EspdDocument(guiltyMisinterpretation: new ConflictInterestCriterion(exists: true, answer: null))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.GUILTY_OF_MISINTERPRETATION)
 
         then:

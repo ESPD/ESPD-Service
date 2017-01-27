@@ -23,16 +23,15 @@
  */
 
 package eu.europa.ec.grow.espd.xml.response.importing
-import eu.europa.ec.grow.espd.domain.enums.other.Country
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 import spock.lang.Shared
-
 /**
  * Created by ratoico on 1/19/16 at 10:20 AM.
  */
@@ -160,8 +159,7 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
 
     def "we should not load the ojs number if it is marked as a temporary one in the scheme id attribute of the id"() {
         given:
-        def espdXml = importXmlResponseFile("response_temporary_ojs_number_import.xml")
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdXml)).get()
+        EspdDocument espd = parseXmlResponseFile("response_temporary_ojs_number_import.xml")
 
         expect:
         espd.fileRefByCA == "SMART 2015/0065"

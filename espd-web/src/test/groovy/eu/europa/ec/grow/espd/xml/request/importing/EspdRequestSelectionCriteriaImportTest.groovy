@@ -23,20 +23,17 @@
  */
 
 package eu.europa.ec.grow.espd.xml.request.importing
+
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 1/6/16 at 3:15 PM.
  */
 class EspdRequestSelectionCriteriaImportTest extends AbstractXmlFileImport {
 
     def "all exclusion criteria should be selected"() {
-        given:
-        def espdRequestXml = importXmlRequestFile("all_selection_criteria_selected.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
+        EspdDocument espd = parseXmlRequestFile("all_selection_criteria_selected.xml")
 
         then: "all criteria satisfied has no default answer value"
         espd.selectionSatisfiesAll == null
@@ -111,11 +108,8 @@ class EspdRequestSelectionCriteriaImportTest extends AbstractXmlFileImport {
     }
 
     def "no exclusion criteria should appear as selected"() {
-        given:
-        def espdRequestXml = importXmlRequestFile("no_selection_criteria_selected.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdRequest(IOUtils.toInputStream(espdRequestXml)).get()
+        EspdDocument espd = parseXmlRequestFile("no_selection_criteria_selected.xml")
 
         then: "all criteria satisfied"
         espd.selectionSatisfiesAll == null

@@ -38,7 +38,7 @@ class GuiltyProfessionalMisconductRequestTest extends AbstractExclusionCriteriaF
         def espd = new EspdDocument(guiltyGrave: new MisconductDistortionCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT)
 
         then: "CriterionID element"
