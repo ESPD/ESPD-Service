@@ -75,9 +75,12 @@
 		            </tiles:insertAttribute>
 		        </div>
 			</div>
-	        <div id="footer">
-	            <tiles:insertAttribute name="footer"/>
-	        </div>
+            <s:eval var="showFooter" scope="page" expression="@espdConfiguration.showFooter" />
+            <c:if test="${showFooter}">
+                <div id="footer">
+                    <tiles:insertAttribute name="footer"/>
+                </div>
+            </c:if>
 	        <link rel="stylesheet" type="text/css" href="<s:url value="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>">
         </div>
 

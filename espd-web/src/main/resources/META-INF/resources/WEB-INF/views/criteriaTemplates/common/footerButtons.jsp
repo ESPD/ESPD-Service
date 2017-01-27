@@ -35,10 +35,6 @@
 
 <c:set var="prevUrl" value="${fn:startsWith(prev,'/')}"/>
 <c:set var="nextUrl" value="${fn:startsWith(next,'/')}"/>
-<%--<c:set var="buttonsClass" value="col-md-offset-3 col-md-6"/>--%>
-<%--<c:if test="${next == 'download'}">--%>
-<%--    <c:set var="buttonsClass" value="col-md-12"/>--%>
-<%--</c:if>--%>
 <div class="hidden-print">
     <div class="${next == 'download' ? 'col-md-12' : 'col-md-offset-3 col-md-6'} hidden-print">
         <div class="btn-group btn-group-justified" role="group">

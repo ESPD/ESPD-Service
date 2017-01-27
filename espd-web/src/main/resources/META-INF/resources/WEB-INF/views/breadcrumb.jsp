@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%--
   ~
@@ -26,9 +26,24 @@
   ~
   --%>
 <div id="breadbar" class="hidden-print">
-	<ul class="breadcrumbs">
-		<li><a target="_blank" href="http://ec.europa.eu/index_en.htm" data-i18n="ec" class="breadcrumElement"><s:message code="ec"/></a></li>
-		<li><a target="_blank" class="breadcrumElement">Tools</a></li>
-		<li><a href="#" data-i18n="espd" class="breadcrumElement"><s:message code="espd"/></a></li>
-	</ul>
+    <s:eval var="breadcrumbAsMap" scope="page" expression="@espdConfiguration.breadcrumbAsMap"/>
+    <c:if test="${not empty breadcrumbAsMap}">
+        <ul class="breadcrumbs">
+            <c:forEach var="entry" items="${breadcrumbAsMap}" varStatus="status">
+                <li>
+                    <c:choose>
+                        <c:when test="${not status.last}">
+                            <a target="_blank" href="${entry.key}" data-i18n="${entry.value}"
+                               class="breadcrumbElement"><s:message
+                                    code="${entry.value}" text="${entry.value}"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${entry.key}" data-i18n="${entry.value}" class="breadcrumbElement"><s:message
+                                    code="${entry.value}" text="${entry.value}"/></a>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+            </c:forEach>
+        </ul>
+    </c:if>
 </div>
