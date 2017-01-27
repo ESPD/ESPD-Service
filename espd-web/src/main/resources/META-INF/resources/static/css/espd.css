@@ -324,30 +324,30 @@ a.progress-link:hover { text-decoration: underline !important; }
     text-decoration: underline;
 }
 
-/* breadcrum */
+/* breadcrumb */
 
-.breadcrumElement {
+.breadcrumbElement {
     color: white !important;
     text-decoration: none !important;
 }
 
-.breadcrumElement a:visited {
+.breadcrumbElement a:visited {
     text-decoration: none !important;
     color: white !important;
 }
 
-.breadcrumElement a:hover {
+.breadcrumbElement a:hover {
     text-decoration: none !important;
     color: white !important;
     border-bottom: 1px solid #FFFFFF !important;
 }
 
-.breadcrumElement a:focus {
+.breadcrumbElement a:focus {
     text-decoration: none !important;
     color: white !important;
 }
 
-.breadcrumElement a:hover, a:active {
+.breadcrumbElement a:hover, a:active {
     text-decoration: none !important;
     color: white !important;
 }

@@ -31,9 +31,6 @@
     $(function () {
         var country = $("select[name='authority.country']");
 
-//        $('input.radiotab').click(function () {
-//            $(this).tab('show');
-//        });
         $('#whoareyou_ca').click(function () {
             $('#tab_ca').show();
             $('#tab_eo').hide();

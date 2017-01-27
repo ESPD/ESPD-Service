@@ -32,6 +32,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Map;
 
 /**
  * Created by vigi on 10/21/15:2:28 PM.
@@ -39,7 +40,6 @@ import java.util.Arrays;
 @Data
 @Component
 public class EspdConfiguration {
-
 
     @Value("${info.build.version:N/A}")
     private String buildVersion;
@@ -62,12 +62,18 @@ public class EspdConfiguration {
     @Value("${espd.environment:false}")
     private boolean espdEnvironment;
 
+    @Value("${espd.page.showFooter:true}")
+    private boolean showFooter;
+
+	@Value("#{PropertySplitter.mapWithSeparators('${espd.page.breadcrumb:}', ',', '->')}")
+	private Map<String, String> breadcrumbAsMap;
+
 	@Value("${apache.fop.xml.configuration.location:classpath:grow/fop/fop-config.xml}")
 	private String fopXmlConfigurationLocation;
 
 	@Value("${apache.fop.defaultBaseUri:.}")
 	private String fopDefaultBaseUri;
-    
+
     private final Environment environment;
 
 	@Autowired

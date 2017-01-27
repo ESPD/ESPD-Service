@@ -1,4 +1,5 @@
-<%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Language" %><%--
+<%@ page import="eu.europa.ec.grow.espd.domain.enums.other.Language" %>
+<%--
   ~
   ~ Copyright 2016 EUROPEAN COMMISSION
   ~
@@ -25,35 +26,13 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%
     eu.europa.ec.grow.espd.util.I18NFunc inst = new eu.europa.ec.grow.espd.util.I18NFunc(pageContext);
     request.setAttribute("i18n", inst.message());
     request.setAttribute("div18n", inst.div());
     request.setAttribute("span18n", inst.span());
 %>
-<%--
-  ~
-  ~ Copyright 2016 EUROPEAN COMMISSION
-  ~
-  ~ Licensed under the EUPL, Version 1.1 or – as soon they
-  ~ will be approved by the European Commission - subsequent
-  ~ versions of the EUPL (the "Licence");
-  ~
-  ~ You may not use this work except in compliance with the Licence.
-  ~
-  ~ You may obtain a copy of the Licence at:
-  ~
-  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
-  ~
-  ~ Unless required by applicable law or agreed to in
-  ~ writing, software distributed under the Licence is
-  ~ distributed on an "AS IS" basis,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-  ~ express or implied.
-  ~ See the Licence for the specific language governing
-  ~ permissions and limitations under the Licence.
-  ~
-  --%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -90,13 +69,7 @@
             </ul>
         </div>
     </div>
-    <div id="breadbar" class="hidden-print">
-        <ul class="breadcrumbs">
-            <li><a target="_blank" href="http://ec.europa.eu/index_en.htm" data-i18n="ec" class="breadcrumElement"><s:message code="ec"/></a></li>
-            <li><a target="_blank" href="http://ec.europa.eu/growth/index_en.htm" data-i18n="grow" class="breadcrumElement"><s:message code="grow"/></a></li>
-            <li><a href="#" data-i18n="espd" class="breadcrumElement"><s:message code="espd"/></a></li>
-        </ul>
-    </div>
+    <tiles:insertAttribute name="breadcrumb"/>
     <div id="body" class="container espd-container">
         <div class="row-fluid">
             <div class="span9">
@@ -125,16 +98,6 @@
 <s:eval var="piwikServer" scope="page" expression='@espdConfiguration.piwikServer'/>
 <s:eval var="piwikId" scope="page" expression='@espdConfiguration.piwikId'/>
 <c:if test="${piwikEnabled == true}">
-	<%-- old sync piwik load
-    <script type="text/javascript">
-        var piwik = Piwik.getTracker("${piwikServer}", ${piwikId});
-        piwik.enableLinkTracking(true);
-        piwik.trackPageView();
-    </script>
-    <noscript><p><img src="${piwikServer}?idsite=${piwikId}" style="border:0;" alt="" /></p></noscript>
-     --%>
-    
-    <%-- postponed piwik load --%>
 	<script defer src="//europa.eu/webtools/load.js" type="text/javascript"></script>
 	<script type="application/json"> { "utility": "piwik", "siteID": 401, "sitePath": ["ec.europa.eu\/tools\/espd"] } </script>
 </c:if>
