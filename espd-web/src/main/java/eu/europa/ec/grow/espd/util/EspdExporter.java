@@ -77,16 +77,17 @@ public class EspdExporter {
 				ByteArrayOutputStream xmlOutput = exportAsXml(espdDocument, agent);
 				InputStream readMeStream = resourceLoader.getResource("classpath:zipInstructions.txt")
 				                                         .getInputStream()) {
-			return zip(xmlOutput, pdfOutput, readMeStream);
+			return zip(xmlOutput, pdfOutput, readMeStream, agent);
 		}
 	}
 
 	private ByteArrayOutputStream zip(ByteArrayOutputStream xmlOut, ByteArrayOutputStream pdfOut,
-			InputStream readmeStream) {
+			InputStream readmeStream, String agent) {
+		String fileName = "ca".equalsIgnoreCase(agent) ? "espd-request" : "espd-response";
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ZipOutputStream zipStream = new ZipOutputStream(baos)) {
-			addOutputStreamToZipFile(xmlOut, "espd.xml", zipStream);
-			addOutputStreamToZipFile(pdfOut, "espd.pdf", zipStream);
+			addOutputStreamToZipFile(xmlOut, fileName + ".xml", zipStream);
+			addOutputStreamToZipFile(pdfOut, fileName + ".pdf", zipStream);
 			addInputStreamToZipFile(readmeStream, "README.txt", zipStream);
 			return baos;
 		} catch (IOException e) {
