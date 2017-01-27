@@ -38,7 +38,7 @@ class SupplyContractsSamplesWithCARequestTest extends AbstractSelectionCriteriaF
         def espd = new EspdDocument(supplyContractsSamplesDescriptionsWithCa: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SUPPLY_CONTRACTS_SAMPLES_DESCRIPTIONS_WITH_CA)
 
         then: "CriterionID element"

@@ -37,7 +37,7 @@ class CertificatesIndependentBodiesQARequestTest extends AbstractSelectionCriter
         def espd = new EspdDocument(certificateIndependentBodiesAboutQa: new QualityAssuranceCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.CERTIFICATE_INDEPENDENT_BODIES_ABOUT_QA)
 
         then: "CriterionID element"

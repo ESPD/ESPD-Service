@@ -38,7 +38,7 @@ class AnalogousSituationRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(analogousSituation: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.ANALOGOUS_SITUATION)
 
         then: "CriterionID element"

@@ -38,7 +38,7 @@ class NumberOfManagerialStaffRequestTest extends AbstractSelectionCriteriaFixtur
         def espd = new EspdDocument(numberManagerialStaff: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.NUMBER_OF_MANAGERIAL_STAFF)
 
         then: "CriterionID element"

@@ -39,7 +39,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then: "CriterionID element"
@@ -88,7 +88,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:
@@ -104,7 +104,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:
@@ -121,7 +121,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
                 reason: "Reason here."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:
@@ -138,7 +138,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:
@@ -155,7 +155,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_11.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:
@@ -172,7 +172,7 @@ class InsolvencyResponseTest extends AbstractExclusionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_11")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then:

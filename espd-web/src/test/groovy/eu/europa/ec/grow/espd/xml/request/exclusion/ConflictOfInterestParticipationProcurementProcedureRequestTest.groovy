@@ -38,7 +38,7 @@ class ConflictOfInterestParticipationProcurementProcedureRequestTest extends Abs
         def espd = new EspdDocument(conflictInterest: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.CONFLICT_OF_INTEREST_EO_PROCUREMENT_PROCEDURE)
 
         then: "CriterionID element"

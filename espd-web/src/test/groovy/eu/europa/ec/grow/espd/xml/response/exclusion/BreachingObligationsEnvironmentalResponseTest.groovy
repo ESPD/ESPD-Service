@@ -40,7 +40,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then: "CriterionID element"
@@ -83,7 +83,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
         def espd = new EspdDocument(breachingObligationsEnvironmental: new LawCriterion(exists: true, answer: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
@@ -99,7 +99,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 description: "bogus description."))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
@@ -116,7 +116,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 selfCleaning: new SelfCleaning(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:
@@ -133,7 +133,7 @@ class BreachingObligationsEnvironmentalResponseTest extends AbstractExclusionCri
                 selfCleaning: new SelfCleaning(description: "Hodor_09 is clean")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(ExclusionCriterion.BREACHING_OF_OBLIGATIONS_ENVIRONMENTAL)
 
         then:

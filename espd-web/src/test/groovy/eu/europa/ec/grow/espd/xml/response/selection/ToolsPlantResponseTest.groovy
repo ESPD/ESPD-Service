@@ -39,7 +39,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(toolsPlantTechnicalEquipment: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then: "CriterionID element"
@@ -79,7 +79,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
                 description: "technical description"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
@@ -96,7 +96,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
@@ -112,7 +112,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_26.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:
@@ -128,7 +128,7 @@ class ToolsPlantResponseTest extends AbstractSelectionCriteriaFixture {
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_26")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.TOOLS_PLANT_TECHNICAL_EQUIPMENT)
 
         then:

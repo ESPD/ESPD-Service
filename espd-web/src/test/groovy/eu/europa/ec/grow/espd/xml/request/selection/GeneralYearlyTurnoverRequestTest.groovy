@@ -38,7 +38,7 @@ class GeneralYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 
         then: "CriterionID element"

@@ -29,11 +29,9 @@ import eu.europa.ec.grow.espd.domain.enums.other.Country
 import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.LocalTimeAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 import spock.lang.Shared
-
 /**
  * Created by ratoico on 3/8/16 at 4:11 PM.
  */
@@ -44,9 +42,7 @@ class EspdRequestResponseMergeTest extends AbstractXmlFileImport {
 
     void setupSpec() {
         // init objects run before the first feature method
-        def espdRequestXml = importXmlRequestFile("../response/merging/request_to_merge.xml")
-        def espdResponseXml = importXmlResponseFile("merging/response_to_merge.xml")
-        espd = marshaller.mergeEspdRequestAndResponse(IOUtils.toInputStream(espdRequestXml), IOUtils.toInputStream(espdResponseXml)).get()
+        espd = parseXmlMergeFile("../response/merging/request_to_merge.xml", "merging/response_to_merge.xml")
     }
 
     void cleanupSpec() {

@@ -38,7 +38,7 @@ class EarlyTerminationRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(earlyTermination: new ConflictInterestCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.EARLY_TERMINATION)
 
         then: "CriterionID element"

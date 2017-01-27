@@ -28,18 +28,14 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 8/23/16.
  */
 class AverageYearlyTurnoverImportTest extends AbstractXmlFileImport {
 
     def "06. should import all fields of 'Average yearly turnover'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/average_yearly_turnover_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/average_yearly_turnover_import.xml")
 
         then:
         espd.averageYearlyTurnover.exists == true

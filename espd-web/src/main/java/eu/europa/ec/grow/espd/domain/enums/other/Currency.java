@@ -25,6 +25,10 @@ package eu.europa.ec.grow.espd.domain.enums.other;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by ratoico on 1/14/16 at 4:31 PM.
  */
@@ -212,6 +216,8 @@ public enum Currency {
 	ZAR("South African Rand"),
 	ZMK("Kwacha"),
 	ZWD("Zimbabwe Dollar");
+
+	public static final List<Currency> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
 
 	private final String description;
 

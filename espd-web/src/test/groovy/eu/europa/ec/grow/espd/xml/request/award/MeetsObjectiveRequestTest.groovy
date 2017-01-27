@@ -37,7 +37,7 @@ class MeetsObjectiveRequestTest extends AbstractCriteriaFixture {
         def espd = new EspdDocument(meetsObjective: new eu.europa.ec.grow.espd.domain.OtherCriterion(exists: false))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getEoCriterionIndex(OtherCriterion.MEETS_OBJECTIVE)
 
         then: "CriterionID element"

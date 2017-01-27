@@ -39,7 +39,7 @@ class PaymentOfTaxesRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(paymentTaxes: new TaxesCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.PAYMENT_OF_TAXES)
 
         then: "CriterionID element"

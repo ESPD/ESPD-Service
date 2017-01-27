@@ -38,7 +38,7 @@ class SetupEconomicOperatorRequestTest extends AbstractSelectionCriteriaFixture 
         def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "CriterionID element"

@@ -38,7 +38,7 @@ class InsolvencyRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(insolvency: new BankruptcyCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.INSOLVENCY)
 
         then: "CriterionID element"

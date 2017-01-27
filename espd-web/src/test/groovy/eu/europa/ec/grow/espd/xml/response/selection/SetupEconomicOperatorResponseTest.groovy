@@ -37,7 +37,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
         def espd = new EspdDocument(setupEconomicOperator: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "CriterionID element"
@@ -73,7 +73,7 @@ class SetupEconomicOperatorResponseTest extends AbstractSelectionCriteriaFixture
                 year: 2016))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SETUP_ECONOMIC_OPERATOR)
 
         then: "Specify year"

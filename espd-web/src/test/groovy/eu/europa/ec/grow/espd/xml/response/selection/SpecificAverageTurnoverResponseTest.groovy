@@ -39,7 +39,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
         def espd = new EspdDocument(specificAverageTurnover: new EconomicFinancialStandingCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then: "CriterionID element"
@@ -80,7 +80,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 answer: true, numberOfYears: 32))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
@@ -96,7 +96,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 averageTurnover: 11.1123, averageTurnoverCurrency: "RON"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def g1 = response.Criterion[idx].RequirementGroup[0]
 
@@ -113,7 +113,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 averageTurnover: null, averageTurnoverCurrency: "ALB"))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
         def g1 = response.Criterion[idx].RequirementGroup[0]
 
@@ -129,7 +129,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: false)))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
@@ -145,7 +145,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, url: "http://hodor_09.com")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:
@@ -161,7 +161,7 @@ class SpecificAverageTurnoverResponseTest extends AbstractSelectionCriteriaFixtu
                 availableElectronically: new AvailableElectronically(answer: true, code: "HODOR_09")))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_AVERAGE_TURNOVER)
 
         then:

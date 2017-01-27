@@ -38,7 +38,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
 
         then: "CriterionID element"
@@ -73,7 +73,7 @@ class AllowanceOfChecksResponseTest extends AbstractSelectionCriteriaFixture {
         def espd = new EspdDocument(allowanceOfChecks: new TechnicalProfessionalCriterion(exists: true, answer: false))
 
         when:
-        def response = parseResponseXml(espd)
+        def response = generateResponseXml(espd)
         def idx = getResponseCriterionIndex(SelectionCriterion.ALLOWANCE_OF_CHECKS)
 
         then:

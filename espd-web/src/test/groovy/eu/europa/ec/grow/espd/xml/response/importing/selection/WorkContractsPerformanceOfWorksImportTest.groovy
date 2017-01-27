@@ -38,11 +38,8 @@ import org.apache.commons.io.IOUtils
 class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
 
     def "14. should import all fields of 'For works contracts: performance of works of the specified type' with unbounded requirement groups"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/work_contracts_performance_of_works_import.xml")
         def unboundedGroups = espd.workContractsPerformanceOfWorks.unboundedGroups
 
         then:
@@ -110,11 +107,8 @@ class WorkContractsPerformanceOfWorksImportTest extends AbstractXmlFileImport {
     }
 
     def "14. should import all fields of 'For works contracts: performance of works of the specified type' with old requirement ids before the unbounded groups feature"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("selection/work_contracts_performance_of_works_import_old_req_ids.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("selection/work_contracts_performance_of_works_import_old_req_ids.xml")
         def unboundedGroups = espd.workContractsPerformanceOfWorks.unboundedGroups
 
         then:

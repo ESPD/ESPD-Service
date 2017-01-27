@@ -38,7 +38,7 @@ class ChildLabourRequestTest extends AbstractExclusionCriteriaFixture {
         def espd = new EspdDocument(childLabour: new CriminalConvictionsCriterion(exists: true))
 
         when:
-        def request = parseRequestXml(espd)
+        def request = generateRequestXml(espd)
         def idx = getRequestCriterionIndex(ExclusionCriterion.CHILD_LABOUR)
 
         then: "CriterionID element"

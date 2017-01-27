@@ -24,21 +24,17 @@
 
 package eu.europa.ec.grow.espd.xml.response.importing.award
 
-import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
+import eu.europa.ec.grow.espd.domain.OtherCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
-import org.apache.commons.io.IOUtils
 /**
  * Created by ratoico on 2/29/16 at 1:47 PM.
  */
 class SucontractingThirdPartiesImportTest extends AbstractXmlFileImport {
 
     def "06. should import all fields of 'Subcontracting Third Parties'"() {
-        given:
-        def espdResponseXml = importXmlResponseFile("award/subcontracting_third_parties.xml")
-
         when:
-        EspdDocument espd = marshaller.importEspdResponse(IOUtils.toInputStream(espdResponseXml)).get()
+        EspdDocument espd = parseXmlResponseFile("award/subcontracting_third_parties.xml")
 
         then:
         espd.subcontractingThirdParties.exists == true
