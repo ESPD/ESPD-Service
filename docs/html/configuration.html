@@ -557,6 +557,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
 <li><a href="#pdf-printing">PDF printing</a></li>
+<li><a href="#web-page-initialization-parameters">Web Page Initialization Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -1386,12 +1387,150 @@ relative to the application context root.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="web-page-initialization-parameters"><a class="anchor" href="#web-page-initialization-parameters"></a>Web Page Initialization Parameters</h3>
+<div class="paragraph">
+<p>Certain HTTP parameters can be passed to the <code>/initialization</code> URL of the <a href="https://ec.europa.eu/espd">ESPD</a> application to
+initialize specific fields. When issuing such a request, the application redirects the client to the <code>/filter</code> page.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lang</code> is used to specify the language to be used by the application. It consists of a two letter code from
+the supported languages of the application. Example:</p>
+</li>
+<li>
+<p><code>agent</code> is used to choose between a <code>contracting authority</code>, <code>contracting entity</code> and <code>economic operator</code>. The only
+accepted values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ca</code> for contracting authority</p>
+</li>
+<li>
+<p><code>ce</code> for contracting entity</p>
+</li>
+<li>
+<p><code>eo</code> for economic operator</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>action</code> defines what the user would like to do. The accepted values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ca_create_espd_request</code> for selecting the <code>Create a new ESPD</code> option as a contracting authority or contracting entity</p>
+</li>
+<li>
+<p><code>ca_reuse_espd_request</code> for selecting the <code>Reuse an existing ESPD</code> option as a contracting authority or contracting entity</p>
+</li>
+<li>
+<p><code>ca_review_espd_response</code> for selecting the <code>Review ESPD</code> option as a contracting authority or contracting entity</p>
+</li>
+<li>
+<p><code>eo_import_espd</code> for selecting the <code>Import ESPD</code> option as an economic operator</p>
+</li>
+<li>
+<p><code>eo_merge_espds</code> for selecting the <code>Merge two ESPDs</code> option as an economic operator</p>
+</li>
+<li>
+<p><code>eo_create_espd_response</code> for selecting the <code>Create response</code> option as an economic operator</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>country</code> for selecting the desired country of the authority or economic operator. It must be the two letter
+code of the country in uppercase.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the <code>agent</code> is a contracting authority or contracting entity, the following parameters are supported for
+filling in the fields belonging to <code>Part I - Information about the procurement procedure section</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>officialName</code></p>
+</li>
+<li>
+<p><code>procurerCountry</code> - must be a two letter country code in uppercase</p>
+</li>
+<li>
+<p><code>title</code></p>
+</li>
+<li>
+<p><code>description</code></p>
+</li>
+<li>
+<p><code>fileRefByCA</code></p>
+</li>
+<li>
+<p><code>tedReceptionId</code> specifies the received notice number</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the agent is economic operator, the parameters below can additionally be configured to initialize
+<code>Part II Information concerning the economic operator - Section A</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code></p>
+</li>
+<li>
+<p><code>vatNumber</code></p>
+</li>
+<li>
+<p><code>anotherNationalId</code></p>
+</li>
+<li>
+<p><code>website</code></p>
+</li>
+<li>
+<p><code>street</code></p>
+</li>
+<li>
+<p><code>postalCode</code></p>
+</li>
+<li>
+<p><code>city</code></p>
+</li>
+<li>
+<p><code>country</code> - must be a two letter country code in uppercase</p>
+</li>
+<li>
+<p><code>contactName</code></p>
+</li>
+<li>
+<p><code>contactEmail</code></p>
+</li>
+<li>
+<p><code>contactPhone</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Initialization page request example.sh</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">HTTP POST @ espd/initialization?country=RO&amp;city=Drobeta&amp;agent=eo&amp;action=eo_create_espd_response&amp;procurerCountry=FR&amp;lang=ro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All the parameters described above are defined in the <code>EspdInitializationParameters</code> class.
+It is recommended to use HTTP POST requests but HTTP GET requests are also supported.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-18 08:33:15 +01:00
+Last updated 2017-01-27 15:52:31 CET
 </div>
 </div>
 </body>
