@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2017.01.01 (1st of February 2017)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/145[Set up of economic operator, not saving]
+
 === 2017.01 (31st of January 2017)
 
 ==== Bug
