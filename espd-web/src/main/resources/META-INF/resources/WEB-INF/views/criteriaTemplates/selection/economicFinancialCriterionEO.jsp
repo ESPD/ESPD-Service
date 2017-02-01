@@ -62,7 +62,7 @@
         <label class="control-label col-md-3 small" data-i18n="crit_please_specify"><s:message
                 code='crit_please_specify'/></label>
         <div class="col-md-9">
-            <form:input type="text" path='${field}.numberOfYears' digits="true" min="1900" max="${currentYear}" cssClass="form-control"></form:input>
+            <form:input type="text" path='${field}.year' digits="true" min="1900" max="${currentYear}" cssClass="form-control"></form:input>
         </div>
     </div>
 </c:if>
