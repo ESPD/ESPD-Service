@@ -1,3 +1,5 @@
+[EN]
+
 This is a short documentation of the ESPD files that you find in this ZIP folder.
 
 espd.XML: The XML file is a file that our ESPD service or other compatible ESPD services can understand.
@@ -9,3 +11,19 @@ format with the procurement documents (from authority to companies) or as part o
 
 If you have questions about the files please do not hesitate to get in contact with us through
 the following email address: grow-espd@ec.europa.eu.
+
+[FR]
+
+Voici quelques brèves informations sur les fichiers DUME contenus dans le dossier Zip.
+
+espd.XML: Le fichier XML est un fichier que notre service DUME ou d’autres services compatibles DUME peuvent comprendre.
+L’avantage d’utiliser l’eDUME avec un fichier XML est que les acheteurs et les sociétés pourront le réutiliser plus tard
+pour d’autres procédures. Il convient de l’envoyer avec les documents de marché (du pouvoir adjudicateur pour les sociétés)
+ou en tant que partie de l’offre (de la société au pouvoir adjudicateur).
+
+espd.PDF: Le fichier PDF est un fichier de l’eDUME lisible par l’homme. Nous suggérons que ce fichier aussi soit utilisé
+parallèlement au format XML avec les documents de marché (du pouvoir adjudicateur pour les sociétés) ou en tant que partie
+de l’offre (de la société au pouvoir adjudicateur) en tant que document de référence.
+
+Si vous avez des questions sur ces fichiers, n’hésitez pas à prendre contact avec nous en utilisant
+l’adresse électronique suivante: grow-espd@ec.europa.eu
