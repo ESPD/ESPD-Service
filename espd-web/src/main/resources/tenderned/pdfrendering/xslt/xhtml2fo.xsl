@@ -143,8 +143,9 @@ specified on (page-footer)fo:static-content's only child fo:block
     <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
   </xsl:attribute-set>
   <xsl:attribute-set name="p">
-    <xsl:attribute name="space-before">1em</xsl:attribute>
-    <xsl:attribute name="space-after">1em</xsl:attribute>
+      <!-- These styles have an effect on how certain <p> elements are rendered in the PDF (guilty of misinterpretation) so tread carefully. -->
+    <xsl:attribute name="space-before">0em</xsl:attribute>
+    <xsl:attribute name="space-after">0em</xsl:attribute>
     <!--
 e.g.,
 <xsl:attribute name="text-indent">1em</xsl:attribute>
