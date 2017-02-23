@@ -78,7 +78,7 @@ public class EspdExporter {
 		try (
 				ByteArrayOutputStream pdfOutput = pdfExporter.convertToPDF(espdDocument.getHtml(), agent);
 				ByteArrayOutputStream xmlOutput = exportAsXml(espdDocument, agent);
-				InputStream readMeStream = IOUtils.toInputStream(ms.getMessage("zip_instructions", null, locale).replace("[sn]", "\r\n"));
+				InputStream readMeStream = IOUtils.toInputStream(ms.getMessage("zip_instructions", null, locale));
 		) {
 			return zip(xmlOutput, pdfOutput, readMeStream, agent);
 		}
