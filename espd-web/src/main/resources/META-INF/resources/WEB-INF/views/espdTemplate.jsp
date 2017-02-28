@@ -57,7 +57,7 @@
 		<div id="espd-popup" class="espd-popup" style="display: none;">
 			<div class="espd-popup-content">
 				<p>${span18n['expire_reminder_message']}<br><br>
-				<a id="espd-popup-close" data-i18n="cancel">${i18n['cancel']}</a>
+				<a id="espd-popup-close" data-i18n="ok" style="cursor:pointer">${i18n['ok']}</a>
 			</div>
 		</div>
     </head>

@@ -1,5 +1,21 @@
 == Release notes
 
+=== 2017.02 (1st of March 2017)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/147[An ESPD in PDF format contains unreadable text]
+* https://github.com/ESPD/ESPD-Service/issues/142[Incorrect exclusion criterion referenced]
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/146["OK" instead of "Cancel" in the save message that appears after 1 hour]
+
+==== Translation
+
+* https://github.com/ESPD/ESPD-Service/issues/150[Update remaining translations from the December 2016 version of the application]
+
+
 === 2017.01.01 (1st of February 2017)
 
 ==== Bug

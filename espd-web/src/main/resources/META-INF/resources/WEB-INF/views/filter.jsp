@@ -198,7 +198,7 @@
             <div class="radio">
                 <label><form:radiobutton path="agent" id="whoareyou_ce" name="agent" value="ce" class="radiotab"
                                          href="#tab_ca"/>${span18n['filter_i_am_ce']}</label>
-                <span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip"
+                <span data-i18n="tooltip_ce_ref_buyer" data-toggle="tooltip"
                       title="<s:message code='tooltip_ce_ref_buyer'/>"></span>
             </div>
             <div class="radio">

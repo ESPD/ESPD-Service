@@ -31,12 +31,14 @@ import eu.europa.ec.grow.espd.tenderned.exception.ZipException;
 import eu.europa.ec.grow.espd.xml.EspdXmlExporter;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -50,13 +52,13 @@ public class EspdExporter {
 
 	private final HtmlToPdfTransformer pdfExporter;
 
-	private final ResourceLoader resourceLoader;
-
+    private final MessageSource ms;
+    
 	@Autowired
-	EspdExporter(EspdXmlExporter xmlExporter, HtmlToPdfTransformer pdfExporter, ResourceLoader resourceLoader) {
+	EspdExporter(EspdXmlExporter xmlExporter, HtmlToPdfTransformer pdfExporter, MessageSource ms) {
 		this.xmlExporter = xmlExporter;
 		this.pdfExporter = pdfExporter;
-		this.resourceLoader = resourceLoader;
+		this.ms = ms;
 	}
 
 	public ByteArrayOutputStream exportAsXml(EspdDocument espdDocument, String agent) {
@@ -71,12 +73,13 @@ public class EspdExporter {
 		return pdfExporter.convertToPDF(espdDocument.getHtml(), agent);
 	}
 
-	public ByteArrayOutputStream exportAsZip(EspdDocument espdDocument, String agent)
+	public ByteArrayOutputStream exportAsZip(EspdDocument espdDocument, String agent, Locale locale)
 			throws PdfRenderingException, IOException {
-		try (ByteArrayOutputStream pdfOutput = pdfExporter.convertToPDF(espdDocument.getHtml(), agent);
+		try (
+				ByteArrayOutputStream pdfOutput = pdfExporter.convertToPDF(espdDocument.getHtml(), agent);
 				ByteArrayOutputStream xmlOutput = exportAsXml(espdDocument, agent);
-				InputStream readMeStream = resourceLoader.getResource("classpath:zipInstructions.txt")
-				                                         .getInputStream()) {
+				InputStream readMeStream = IOUtils.toInputStream(ms.getMessage("zip_instructions", null, locale));
+		) {
 			return zip(xmlOutput, pdfOutput, readMeStream, agent);
 		}
 	}

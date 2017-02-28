@@ -653,7 +653,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_agreement_economic").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    put("criterion", ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT).build(),
+                    put("criterion", ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").
@@ -662,7 +662,7 @@ public final class CriteriaTemplates {
                     put("description_code", "crit_eu_text_guilty_misconduct").
                     put("checkExistanse", "true").
                     put("availableElectronically", "false").
-                    put("criterion", ExclusionCriterion.AGREEMENTS_WITH_OTHER_EO).build(),
+                    put("criterion", ExclusionCriterion.GUILTY_OF_PROFESSIONAL_MISCONDUCT).build(),
 
             ImmutableMap.<String, Object>builder().
                     put("template", "exclusionFormTemplate").

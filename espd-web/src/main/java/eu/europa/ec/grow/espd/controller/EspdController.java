@@ -41,6 +41,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,6 +59,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -365,7 +367,7 @@ class EspdController {
 			@ModelAttribute("espd") EspdDocument espd,
 			HttpServletResponse response,
 			BindingResult bindingResult,
-			Model model) throws PdfRenderingException, IOException {
+			Model model, Locale locale) throws PdfRenderingException, IOException {
 
 		if (bindingResult.hasErrors()) {
 			return flow + "_" + agent + "_" + step;
@@ -373,7 +375,7 @@ class EspdController {
 
 		espd.setHtml(addHtmlHeader(espd.getHtml()));
 
-		ByteArrayOutputStream zipOutputStream = espdExporter.exportAsZip(espd, agent);
+		ByteArrayOutputStream zipOutputStream = espdExporter.exportAsZip(espd, agent, locale);
 
 		serveFileForDownload(zipOutputStream, agent, "zip", response);
 

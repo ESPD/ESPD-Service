@@ -72,7 +72,9 @@
             <c:if test="${next == 'download'}">
                 <div class="btn-group dropup" role="group" aria-label="Download">
                     <button type="submit" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" name="download" value="xml">Download as
+                            aria-haspopup="true" aria-expanded="false" name="download" value="xml">
+                            <span data-i18n="download_as"><s:message code="download_as" text="Download as"/></span>
+                                    
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">

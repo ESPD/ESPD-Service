@@ -473,10 +473,13 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
             </div>
 		</div>
     </c:set>
+    
     ${htmlToPrint}
+    
     <input type="hidden"
            name="html"
            value="${fn:escapeXml(htmlToPrint)}" />
+           
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="nextCode" value="export"/>
             <tiles:putAttribute name="prev" value="finish"/>
