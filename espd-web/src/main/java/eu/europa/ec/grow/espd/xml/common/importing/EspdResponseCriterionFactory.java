@@ -182,11 +182,7 @@ class EspdResponseCriterionFactory {
 			} else {
 				addNormalRequirementValueToEspdCriterion(requirementById.get(), espdCriterion, requirementValue);
 			}
-		} else {
-			log.warn("Requirement with id '{}' could not be found or does not have a response.",
-					requirementType.getID().getValue());
 		}
-
 	}
 
 	private void addRequirementValueToUnboundedGroup(CcvCriterionRequirement ccvRequirement,
