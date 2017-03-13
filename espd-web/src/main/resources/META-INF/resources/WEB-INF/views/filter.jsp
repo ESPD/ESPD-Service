@@ -163,11 +163,7 @@
                 </ul>
             </div>
         </c:if>
-        
-		<div class="alert alert-danger">
-			<strong>Info:</strong> On the 13 March from 7am to 9am the ESPD service will not be available due to maintenance. Sorry for the inconvenience.
-		</div>
-        
+
         <div class="alert alert-espd-info">
             <ul class="fa-ul">
                 <li>
