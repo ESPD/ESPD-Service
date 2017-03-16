@@ -47,7 +47,7 @@ public EspdDocument newDocument() {
 
 === Internationalization (i18n)
 
-Any web application with users all around the world, internationalization (i18n) is very important for better user interaction.
+A Web application with a worldwide user base needs to be easily adapted to support several human languages without impacting its design, through internationalization techniques (i18n).
 ESPD i18n is implemented through the use of Spring `interceptors`, `locale resolvers` and `resource bundles` for different locales.
 
 `LocaleChangeInterceptor` and `LocaleResolver` are configured in the `WebConfiguration` class.
@@ -70,7 +70,7 @@ Translated messages could be retrieved with the given code by the Jsp tag `sprin
 <s:message code="${cty.i18nCode}"/><%-- code from variable --%>
 ----
 
-The only part worth mentioning is the use of custom classes providing more efficient use of the `MessageSource` bean in JSP.
+It is worth noting the use of custom classes providing more efficient use of the `MessageSource` bean in JSP.
 The class `I18NFunc` provides HTML code generating methods to use in JSPs for translated fields.
 
 [source,java]
@@ -124,7 +124,7 @@ Different combinations of custom i18n code generators provide translation labels
 
 === Dynamic web page translation
 
-The {espd} web content is translated to another language automatically without page refresh. The dynamic translation is
+The {espd} Web content is translated to another language automatically without page refresh. The dynamic translation is
 implemented in Javascript with {jquery} and the translation routine is found in the `init.js` file. The Javascript client
 makes an HTTP call to the `/translate` mapping defined inside the `MessageSourceController` class to fetch the required
 message labels and afterwards updates the DOM elements containing the `data-i18n` attribute.

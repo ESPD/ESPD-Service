@@ -1,5 +1,5 @@
 :homepage: https://ec.europa.eu/espd[ESPD]
-:maven: https://maven.apache.org[Maven 3]
+:maven: https://maven.apache.org[Maven 3+]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
 
 == System requirements

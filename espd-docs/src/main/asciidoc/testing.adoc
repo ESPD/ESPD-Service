@@ -1,5 +1,5 @@
 :espd: https://ec.europa.eu/espd[ESPD]
-:maven: https://maven.apache.org[Maven 3]
+:maven: https://maven.apache.org[Maven]
 :intellij: https://www.jetbrains.com/idea[IntelliJ]
 :eclipse: https://eclipse.org/downloads[Eclipse]
 :spock: http://spockframework.github.io/spock/docs/1.0/index.html[Spock Framework]
@@ -201,9 +201,4 @@ has been removed for clarity):
   </ccv:RequirementGroup>
 </ccv:Criterion>
 ----
-
-
-
-
-
 
