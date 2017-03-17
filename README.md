@@ -1,4 +1,4 @@
-# ESPD
+# ESPD Service
 ---
 
 [![Java Version](https://img.shields.io/badge/Java%20Development%20Kit-7%2B-blue.svg?style=flat)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
@@ -14,15 +14,9 @@ In addition, it will become part of the [Connecting European Facility (CEF)](htt
 The CEF will help the Member States to implement an [ESPD service](https://ec.europa.eu/growth/tools-databases/espd) in their own country and provide additional 
 services to their users.
 
-## System requirements
-
-* Java Development Kit 7
-* Maven 3
-* (Optional) Tomcat or other Servlet 3 container
-
 ## Documentation
 
-* [Requirements](http://espd.github.io/ESPD-Service/docs/html/requirements.html)
+* [System Requirements](http://espd.github.io/ESPD-Service/docs/html/requirements.html)
 * [Installation](http://espd.github.io/ESPD-Service/docs/html/installation.html)
 * [Overview](http://espd.github.io/ESPD-Service/docs/html/overview.html)
 * [Configuration](http://espd.github.io/ESPD-Service/docs/html/configuration.html)

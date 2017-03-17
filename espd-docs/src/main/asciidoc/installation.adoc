@@ -2,14 +2,14 @@
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
 :appVersion: 2016.12.01
-:maven: https://maven.apache.org[Maven 3]
-:tomcat: https://tomcat.apache.org[Tomcat 7+]
+:maven: https://maven.apache.org[Maven]
+:tomcat: https://tomcat.apache.org[Tomcat]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
 :spring: https://projects.spring.io/spring-framework/[Spring]
 :springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
 :logback: http://logback.qos.ch/[Logback]
 :slf4j: http://www.slf4j.org/[SLF4J]
-:lombok: https://projectlombok.org/features/index.html[Lombok]
+:lombok: https://projectlombok.org/[Lombok]
 :wro4j: https://github.com/wro4j/wro4j[WRO4J]
 :intellij: https://www.jetbrains.com/idea[IntelliJ]
 :eclipse: https://eclipse.org/downloads[Eclipse]
@@ -24,6 +24,7 @@
 :piwik: http://piwik.org/[Piwik]
 :jquery: https://jquery.com/[jQuery]
 :rest: https://en.wikipedia.org/wiki/Representational_state_transfer[REST]
+:ted: http://ted.europa.eu[TED]
 
 == Installation
 
@@ -35,18 +36,18 @@ are used to either propose changes to someone else's project or to use someone e
 your own idea.
 . Create a local clone of your fork
 .. On GitHub, navigate to your fork of the {espdGitRepo}.
-.. Under your repository name, click the `Copy to clipboard` button to clone the URL for the repository.
-.. Run the `git clone https://github.com/YOUR-USERNAME/espd` command on your computer. Now, you have a local copy of
+.. Under your repository name, click the `Copy to clipboard` button to copy the URL for the repository.
+.. Run the `git clone &#60;URL&#62;` command on your computer, after pasting the URL you copied in the previous step. Now, you have a local copy of
 your fork of the {espdGitRepo}.
 . Configure Git to sync your fork with the original {espdGitRepo}. When you fork a project in order to propose
 changes to the original repository, you can configure Git to pull changes from the original, or _upstream_, repository
 into the local clone of your fork.
 .. On GitHub, navigate to the {espdGitRepo} repository.
-.. Under your repository name, click the `Copy to clipboard` button to clone the URL for the repository.
+.. Under the repository name, click the `Copy to clipboard` button to copy the URL for the repository.
 .. Change directories to the location of the fork you cloned in the previous step.
-.. Execute `git remote -v` to see the current configured remote repository for your fork.
-.. Type `git remote add upstream https://github.com/ESPD/espd.git` by pasting the URL you copied in Step 2.
-.. To verify the new upstream repository you've specified for your fork, type `git remote -v` again. You should see
+.. Execute `git remote -v` to see the current configured remote repositories for your fork.
+.. Type `git remote add upstream &#60;URL&#62;` by pasting the URL you copied in Step b.
+.. To verify the new upstream repository you've specified for your fork, execute `git remote -v` again. You should see
 the URL for your fork as `origin`, and the URL for the original repository as `upstream`.
 
 [source,bash]
@@ -58,7 +59,7 @@ upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
 upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
 ----
 
-Now, you can keep your fork synced with the `upstream` repository with a few Git commands. For more information,
+Now you can keep your fork synced with the `upstream` repository with a few Git commands. For more information,
 please see the https://help.github.com/articles/syncing-a-fork/[Syncing a fork] page.
 
 [NOTE]
@@ -70,9 +71,13 @@ see the article https://help.github.com/articles/dealing-with-line-endings[Deali
 `git config --global core.autocrlf true` on Windows or `git config --global core.autocrlf input` on Linux and OS X.
 
 [NOTE]
-Each major application version will have a dedicated branch so you can checkout the code for a particular version.
+Each major application version will have a dedicated branch so you can checkout the code for a particular version. The name convention adopted for release branches is YYYY.MM.
+The master branch contains the version currently deployed in production.
+The develop branch contains the code for the next version of ESPD.
+The gh-pages branch is reserved for documentation.
+If you want to be isolated from changes you should branch from master or from a specific release branch.
 
-=== Running and deploying the ESPD application
+=== Building and running the ESPD application
 
 This section goes into detail about how you can build and run the {homepage} application.
 
@@ -80,39 +85,15 @@ This section goes into detail about how you can build and run the {homepage} app
 
 The {homepage} uses {maven} as the primary build system and is structured as a multi-module Maven project.
 
-After getting access to the source code and copying it on your computer, you can now build the project with {maven}.
+After getting access to the source code and cloning it on your computer, you can now build the project with {maven}.
 
 . Change directories to the location of the cloned Git repository on your machine.
-. Perform a `mvn clean package` and now the project dependencies should be downloaded and the `exchange-model`,
-`espd-web` and `espd-docs` modules should be built.
+. Perform a `mvn clean package` and the project dependencies should be downloaded and the `espd-web` and `espd-docs` modules should be built.
 
-==== Running from an IDE
+==== Running the application
 
-You can run the {homepage} application from your IDE by importing the project as a multi-module Maven project first.
-You also need to install the Lombok plugin for your particular IDE.
-
-[NOTE]
-Before running the application you need to generate the {jaxb} classes by invoking a `mvn clean package` command
-and then add the `src/main/generated` folder on the application classpath of the `exchange-model` Maven module.
-
-==== Run with an embedded Tomcat container
-
-The easiest way to start the application is with an embedded Tomcat 8 (default) container by invoking the `main` method
-from the `eu.europa.ec.grow.espd.config.EspdApplication` class in the same way as you would start a normal Java non-web
-application.
-
-==== Run as an exploded WAR file on a Servlet container
-
-The application can be deployed as an exploded WAR file on different Servlet 3 containers. For example, you can
-check the following links on how to deploy it on a Tomcat container:
-
-* https://www.jetbrains.com/help/idea/2016.1/configuring-web-application-deployment.html?origin=old_help[IntelliJ IDEA]
-
-* https://www.mulesoft.com/tcat/tomcat-eclipse[Eclipse Tomcat]
-
-==== Deploying with the embedded Tomcat container
-
-The fastest way to deploy the application is by using an embedded Tomcat container.
+The easiest way to run the application is with an embedded container (default is Tomcat) by invoking the `main` method
+from the `eu.europa.ec.grow.espd.config.EspdApplication` class in the same way as you would start a normal Java application.
 
 . Perform a `mvn clean package` from the root folder of the project:
 .. The build should generate a WAR file at `${baseDir}/espd-web/target/espd-web.war`
@@ -135,7 +116,7 @@ but please note that the ones specified at start-up have higher precedence than 
 files.
 
 [NOTE]
-It is recommended to set up the context path of the application when running in the embedded mode.
+It is recommended to set up the context path of the application when running in the embedded mode. This can be done in the application.properties file located in the espd-web project resources folder.
 [source,properties]
 .application.properties
 ----
@@ -143,11 +124,20 @@ It is recommended to set up the context path of the application when running in 
 server.context-path=/espd
 ----
 
-==== Deploying on an external Servlet container
+==== Deploying the web application on a servlet container
 
-If you want to deploy the application on an external Servlet container, you need to package it as a WAR for the
+The application can be deployed as a WAR file on a Servlet 3 compliant container such as Tomcat. For this, you need to package it as a WAR for the
 `non-embedded` Maven profile and provide some startup parameters on your server.
 
 . Perform a `mvn clean package -Pnon-embedded` from the root folder of the project:
 .. The build should generate a WAR file at `${baseDir}/espd-web/target/espd-web.war`
 . The other steps are similar to the embedded server deployment mode
+
+==== Using an IDE
+
+You can also run the {homepage} application from your favourite IDE by importing the project as a multi-module Maven project first.
+[NOTE]
+You will need to install the {lombok} plugin for your particular IDE. Lombok is a library designed to reduce Java boilerplate code through the use of annotations.
+[NOTE]
+If you have problems importing the project in {eclipse} try running the {maven} command `mvn eclipse:eclipse` before the import.
+If after the import the Problems view display errors of type `Plugin execution not covered by lifecycle configutation` right-click on the error and set Eclipse to ignore the execution of the plugin.

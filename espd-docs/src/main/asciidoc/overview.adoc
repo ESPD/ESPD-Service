@@ -1,6 +1,6 @@
 :espd: https://ec.europa.eu/espd[ESPD]
-:maven: https://maven.apache.org[Maven 3]
-:tomcat: https://tomcat.apache.org[Tomcat 7+]
+:maven: https://maven.apache.org[Maven]
+:tomcat: https://tomcat.apache.org[Tomcat]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
 :spring: https://projects.spring.io/spring-framework/[Spring]
 :springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
@@ -22,18 +22,19 @@
 :jquery: https://jquery.com/[jQuery]
 :rest: https://en.wikipedia.org/wiki/Representational_state_transfer[REST]
 :espd-edm: https://espd.github.io/ESPD-EDM[ESPD Exchange Data Model]
+:ted: http://ted.europa.eu[TED]
 
 == Overview
 
 The {espd} application is composed of two {maven} modules:
 
 * *espd-docs* contains the documentation of the application
-* *espd-web* holds the deployable web part of the application
+* *espd-web* contains the source code to generate the deployable web archive (WAR) of the application
 
 The Java library `eu.europa.ec.grow.espd.exchange-model` contains the {jaxb} classes of the {espd-edm}.
 
-The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
-server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.
+The ESPD web application is quite simple in nature and can be deployed as an executable JAR file (with an embedded Tomcat
+server) or as a standard WAR file on a compliant Servlet 3 container like Tomcat, Jetty, Weblogic, Wildfly etc.
 
 The main responsibilities of the application are handled as follows:
 
@@ -41,7 +42,7 @@ The main responsibilities of the application are handled as follows:
 * Configuration of the application via {springBoot}
 * Logging with the {slf4j} API and {logback} as implementation
 * The view part uses {springMvc}, JSP files, {tiles}, Javascript, {jquery} and {bootstrap}
-* The XML model uses {jaxb} to marshal/unmarshal the ESPD generated XML files
+* The data model uses {jaxb} to convert Java objects to XML and vice versa
 * REST calls to external services are handled with the https://spring.io/guides/gs/consuming-rest/[Spring Rest Template] client
 * Monitoring and analytics via {javaMelody} and {piwik}
 * Optimization of static resources with https://spring.io/blog/2014/07/24/spring-framework-4-1-handling-static-web-resources[Spring asset pipeline] and {wro4j}
@@ -60,7 +61,7 @@ subdivided into the following important packages:
 
 ==== Config package
 
-The `config` package contains the Java classes which are supposed to provide the configuration for the global project
+The `config` package contains the Java classes which provide the configuration for the global project
 `EspdApplication`, {springMvc} web configuration `WebConfiguration`, the {jaxb} configuration etc. You will
 notice that these classes are annotated with `@Configuration` and they generally define {spring} beans that can be
 injected in other {spring} managed classes of the application.
@@ -68,7 +69,7 @@ injected in other {spring} managed classes of the application.
 ==== Controller package
 
 The `controller` package consists of the {springMvc} controllers which are responsible for processing user requests,
-building an appropriate model and passing it to the view for rendering or which can act as {rest} controllers.
+building an appropriate model and passing it to the view for rendering. Some controllers are {rest} controllers.
 
 The most important one is `EspdController` and its responsibilities include dealing with the generation of the {espd}
 requests and responses, uploading files, printing and error handling. The main flow of the application is handled by
@@ -80,7 +81,7 @@ by the client-side i18n engine.
 
 ==== Domain package
 
-The `domain` package contains the pieces involved in the representation of an ESPD request or response in the model
+The `domain` package contains the elements involved in the representation of an ESPD request or response in the model
 (the `M` part of the MVC architectural pattern) of the web application. An ESPD request/response is represented
 internally as an `EspdDocument` which in turn contains fields for all the possible criteria, authority and economic
 operator information or procurement procedure data.
@@ -94,6 +95,9 @@ criterion enumerations.
 
 The `ted` package is responsible for the interaction with the TED {rest} service which provides the procurement
 procedure information for an {espd} request or response.
+
+[NOTE]
+{TED} is the electronic version of the EU Official Journal dedicated to public procurement.
 
 ==== Util package
 
@@ -120,7 +124,7 @@ are defined in the JSP and {tiles} files.
 
 === Web overview
 
-The web packages can be found in the standard Maven location, i.e. `src/main/webapp`. The `static` folder contains the
+The web static resources can be found in the standard Maven location, i.e. `src/main/webapp`. The `static` folder contains the
 CSS and Javascript files referenced by the web application. The JSP files are located in the `WEB-INF/views` folder where
 they are subsequently grouped in sub-folders. The `src/main/resources` folder contains the configuration files relating
 to internationalization, logging, web resource optimizations and general application properties.
