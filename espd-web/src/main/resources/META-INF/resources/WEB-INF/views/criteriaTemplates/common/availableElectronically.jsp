@@ -7,7 +7,9 @@
 <hr/>
 <div class="col-md-12">
     <div class="form-group form-group-sm">
-        ${span18n["crit_information_available_electronically"]}
+        <span style="font-size: 13px;" data-i18n="crit_information_available_electronically">
+        	${i18n["crit_information_available_electronically"]}
+        </span>
         <form:radiobutton path="${field}.availableElectronically.answer" value="true"
                           data-target-show="${'#'}${field}-electronically"/>${span18n["yes"]}
         <form:radiobutton path="${field}.availableElectronically.answer" value="false"
