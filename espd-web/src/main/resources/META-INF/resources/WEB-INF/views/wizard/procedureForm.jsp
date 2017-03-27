@@ -228,6 +228,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_eo_approved_cert']}</label>
@@ -276,6 +279,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div id="reg-official-no" class="${espd['eoRegistered'].answer ? 'collapse' : ''}"><%-- [IF NO] --%>
                     <div class="col-md-12 alert alert-espd-info-dotted">
                         <span data-i18n="createeo_add_complete_missing">${i18n['createeo_add_complete_missing']}</span>
@@ -298,6 +302,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
@@ -340,6 +347,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_lots_concerned']}</label>
