@@ -33,6 +33,8 @@
 
 <tiles:importAttribute name="flow"/>
 
+<c:set var="usealpha" value="${espd.selectionSatisfiesAll.exists}"/>
+
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
 	<tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="ca"/>
@@ -50,15 +52,25 @@
                 <span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
             </h2>
         </div>
-        <div class="alert alert-espd-info">
-            <ul class="fa-ul">
-                <li>
-                    <i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+        <div class="alert alert-espd-info-dotted">
+           
+
                     <span data-i18n="createcasel_alert"><s:message code='createcasel_alert'/></span>
-                </li>
-            </ul>
+  
+					<label class="control-label">${span18n['question_to_use_alpha']}</label>
+					<c:if test="${usealpha}">
+						<input name="usealpha" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" type="radio" value="true" checked="checked">${span18n['yes']}
+						<input name="usealpha"  data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" type="radio" value="false">${span18n['no']}
+					</c:if>
+					<c:if test="${!usealpha}">
+						<input name="usealpha" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" type="radio" value="true">${span18n['yes']}
+						<input name="usealpha"  data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" type="radio" value="false" checked="checked">${span18n['no']}
+					</c:if>
+            
+         
         </div>
-        <div class="panel panel-espd">
+
+        <div id="alpha-criterion" class="panel panel-espd" style="${usealpha?'':'display:none'}">
             <div class="panel-heading" data-toggle="collapse" data-target="#ca-satisfies-all-section">
 				<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
             </div>
@@ -75,13 +87,13 @@
 	             </div>
             </div>
         </div>
-        <div class="tab-pane active" id="ca-selection-criteria">
         
+        <div class="tab-pane active" id="ca-selection-criteria" style="${usealpha?'display:none':''}">
 			<tiles:insertDefinition name="topLevelCriteriaTemplate">
 				<tiles:putAttribute name="topLevelCriteriaList" value="${selectionCA}"/>
 			</tiles:insertDefinition>
-
         </div>
+        
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="prev" value="exclusion"/>
             <tiles:putAttribute name="next" value="finish"/>
