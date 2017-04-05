@@ -42,12 +42,7 @@
 <div class="checkbox criteria-row-check">
 	<div class="form-group" style="margin-bottom: 0px;">
 		<div class="col-md-12">
-		    <label for="empty-${field}">
-				<%-- 
-				empty-... "for" prevents checkbox value switch after click on label showing ecertis values
-				Exclusion criteria except 'Purely national grounds' must always be checked
-				We cannot make checkboxes disabled otherwise their value will not be submitted so we prevent the changing of their value by always returning false on the click event
-				--%>
+		    <label>
 		        <c:if test="${is_always_checked}">
 		            <form:checkbox path="${field}.exists" checked="checked" onclick="return false"/>
 		        </c:if>

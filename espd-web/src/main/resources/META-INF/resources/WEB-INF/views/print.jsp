@@ -338,72 +338,66 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
             </ul>
         </div>
         
-        <c:if test="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}">
+	<c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
+    
+        
+        <c:if test="${usealpha}">
 	        <div class="panel panel-espd">
 	            <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
 	            	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
 	            </div>
 	            <div id="eo-satisfies-all-section" class="collapse in">
 	                <div class="espd-panel-body panel-body">
-						<strong>${span18n['crit_selection_eo_declares_that']}</strong>
-	                </div>
-	                <div class="row criteria-row-form">
-	                    <div class="col-md-5 criteria-row-check-left">
-	                        <div class="form-group">
-	                            <div class="col-md-12">
-	                                <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-7 criteria-row-check-right">
-	                        <div class="col-md-12">
-	                            <div class="form-group">
-								 	${span18n["crit_your_answer"]}
-									<form:radiobutton path="selectionSatisfiesAll.answer" value="true" data-target-hide="${'#'}eo-satisfies-all-form"/>${span18n["yes"]}
-									<form:radiobutton path="selectionSatisfiesAll.answer" value="false" data-target-show="${'#'}eo-satisfies-all-form"/>${span18n["no"]}
-	                            </div>
-	                        </div>
+                        ${span18n['crit_selection_ca_declares_that']}
+                        <div class="checkbox">
+	                        <label>
+	                            <form:checkbox path="selectionSatisfiesAll.exists" class="checktoggle" value="true"/>
+	                            ${span18n['crit_selection_satisfies_all_criteria']}
+	                        </label>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
        </c:if>
        
-        <div id="eo-satisfies-all-form" class="${espd['selectionSatisfiesAll'].answer ? 'collapse' : ''}">
-        
-			<tiles:insertDefinition name="euCriteriaListTemplate">
-				<tiles:putAttribute name="id" value="eo-suitability-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_suitability_article"/>
-				<tiles:putAttribute name="disableTooltips" value="true"/>
-				<tiles:putAttribute name="criteriaList" value="${suitabilityListEO}"/>
-			</tiles:insertDefinition>
-
-			<tiles:insertDefinition name="euCriteriaListTemplate">
-				<tiles:putAttribute name="id" value="eo-economic-financial-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_economic_article"/>
-				<tiles:putAttribute name="disableTooltips" value="true"/>
-				<tiles:putAttribute name="criteriaList" value="${economicListEO}"/>
-			</tiles:insertDefinition>
-			
-			<tiles:insertDefinition name="euCriteriaListTemplate">
-				<tiles:putAttribute name="id" value="eo-technical-professional-section"/>
-				<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
-				<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>
-				<tiles:putAttribute name="disableTooltips" value="true"/>
-				<tiles:putAttribute name="criteriaList" value="${technicalListEO}"/>
-			</tiles:insertDefinition>
-
-            <tiles:insertDefinition name="euCriteriaListTemplate">
-                <tiles:putAttribute name="id" value="eo-quality-assurance-section"/>
-                <tiles:putAttribute name="title_code" value="createcasel_quality_assurance"/>
-                <tiles:putAttribute name="subtitle_code" value="crit_selection_quality_assurance_article"/>
-                <tiles:putAttribute name="disableTooltips" value="true"/>
-                <tiles:putAttribute name="criteriaList" value="${qualityAssuranceListEO}"/>
-            </tiles:insertDefinition>
-        
-		</div>
+		<c:if test="${!usealpha}">
+			<div id="eo-satisfies-all-form">
+	        
+				<tiles:insertDefinition name="euCriteriaListTemplate">
+					<tiles:putAttribute name="id" value="eo-suitability-section"/>
+					<tiles:putAttribute name="title_code" value="createcasel_suitability"/>
+					<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_suitability_article"/>
+					<tiles:putAttribute name="disableTooltips" value="true"/>
+					<tiles:putAttribute name="criteriaList" value="${suitabilityListEO}"/>
+				</tiles:insertDefinition>
+	
+				<tiles:insertDefinition name="euCriteriaListTemplate">
+					<tiles:putAttribute name="id" value="eo-economic-financial-section"/>
+					<tiles:putAttribute name="title_code" value="createcasel_economic_and_financial_standing"/>
+					<tiles:putAttribute name="subtitle_code" value="crit_selection_eo_economic_article"/>
+					<tiles:putAttribute name="disableTooltips" value="true"/>
+					<tiles:putAttribute name="criteriaList" value="${economicListEO}"/>
+				</tiles:insertDefinition>
+				
+				<tiles:insertDefinition name="euCriteriaListTemplate">
+					<tiles:putAttribute name="id" value="eo-technical-professional-section"/>
+					<tiles:putAttribute name="title_code" value="createcasel_technical_professional_ability"/>
+					<tiles:putAttribute name="subtitle_code" value="crit_selection_technical_professional_ability_article"/>
+					<tiles:putAttribute name="disableTooltips" value="true"/>
+					<tiles:putAttribute name="criteriaList" value="${technicalListEO}"/>
+				</tiles:insertDefinition>
+	
+	            <tiles:insertDefinition name="euCriteriaListTemplate">
+	                <tiles:putAttribute name="id" value="eo-quality-assurance-section"/>
+	                <tiles:putAttribute name="title_code" value="createcasel_quality_assurance"/>
+	                <tiles:putAttribute name="subtitle_code" value="crit_selection_quality_assurance_article"/>
+	                <tiles:putAttribute name="disableTooltips" value="true"/>
+	                <tiles:putAttribute name="criteriaList" value="${qualityAssuranceListEO}"/>
+	            </tiles:insertDefinition>
+	        
+			</div>
+		</c:if>
+		
     </div>
 
 	<%-- FINISH --%>
