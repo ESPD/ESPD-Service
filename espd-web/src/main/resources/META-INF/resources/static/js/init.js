@@ -34,15 +34,21 @@ function validator(validators, name, text) {
     validators[name] = jQuery.validator.format("<span data-i18n=\"validator_" + name + "\">" + text + "</span>");
 }
 
-function dataShow() {
-    $($(this).attr("data-target-show")).show();
-}
-
-function dataHide() {
-    $($(this).attr("data-target-hide")).hide();
-}
-
 var defaultValidators = {};
+
+function dataShow() {
+	var elems = $(this).attr("data-target-show").split(";")
+	for (i in elems) {
+		$(elems[i]).fadeIn();
+	}
+}
+						
+function dataHide() {
+	var elems = $(this).attr("data-target-hide").split(";")
+	for (i in elems) {
+		$(elems[i]).hide();
+	}
+}
 
 function language(code) {
     var flags = [];
@@ -88,7 +94,7 @@ function language(code) {
             }
             jQuery.extend(jQuery.validator.messages, validators);
             sortDropdowns();
-            $('.ecertis-link-header:not(.collapsed)').click();//collapse ecertis links
+            $('.ecertis-link:not(.collapsed)').click();//collapse ecertis links
         }
     });
 }
@@ -110,7 +116,7 @@ function sortDropdowns() {
 function EcertisHandler(url, country) {
 	return function() {
 	   	var uuid = $(this).attr("data-uuid");
-	   	if($(this).hasClass( "collapsed" ) && uuid != "") {
+	   	if(uuid != "") {
 	
 	   		var content = $(this).attr("data-target");
 	    	$(content).find("#content, #issued, #ecertis404").hide();
@@ -122,7 +128,7 @@ function EcertisHandler(url, country) {
 									
 					if(data && data.DomainID == "eproc" && data.hasOwnProperty("SubCriterion")) {
 						content = $(content).children("#content").show();
-						$(content).find("#language").html(data.Name.languageID.toUpperCase());
+						//$(content).find("#language").html(data.Name.languageID.toUpperCase());
 										
 						var T = $(content).find("#template").hide();
 						$(T).siblings("#subcriterion").remove();
@@ -135,8 +141,9 @@ function EcertisHandler(url, country) {
 								item.children("#subname").html(val.Name.value);
 	
 								//Currently display only first LegislationReference from array, in future could be more
-								item.find("#description").html(val.LegislationReference[0].Title.value);
+								item.find("#title").html(val.LegislationReference[0].Title.value);
 								item.find("#url").text(val.LegislationReference[0].Article.value).attr("href", val.LegislationReference[0].URI);
+								item.find("#description").html(val.Description.value);
 	
 								var hasEvidences = false;
 								$.each( $(val.RequirementGroup), function( key, val ) {

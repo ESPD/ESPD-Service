@@ -1,9 +1,10 @@
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
-:appVersion: 2016.12.01
-:maven: https://maven.apache.org[Maven 3]
-:tomcat: https://tomcat.apache.org[Tomcat 7+]
+:edm: https://github.com/ESPD/ESPD-EDM[ESPD-EDM]
+:appVersion: 2017.03
+:maven: https://maven.apache.org[Maven]
+:tomcat: https://tomcat.apache.org[Tomcat]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
 :spring: https://projects.spring.io/spring-framework/[Spring]
 :springMvc: http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html[Spring MVC]
@@ -28,7 +29,7 @@
 
 == Configuration
 
-This section will describe the basic configuration for the most important responsibilities of the application.
+This section will describe the basic configuration for the most important components of the application.
 
 === Configuration files
 
@@ -68,7 +69,7 @@ with the following features:
 
 For more information about the {springBoot} project, you can check the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle[official documentation].
 
-The `eu.europa.ec.grow.espd.config` package contains the {spring} configuration files. The main class of the application
+The `eu.europa.ec.grow.espd.config` package contains the {spring} configuration classes. The main class of the application
 is `EspdApplication` which makes use of the `@SpringBootApplication` annotation in order to enable the {springBoot}
 auto configuration. The package also contains the web, {JAXB} and web resources configuration files.
 
@@ -342,10 +343,9 @@ applying minimization where necessary and creating a `all.js` and a `all.css` fi
 
 === Lombok
 
-To reduce some of the `boilerplate` inherent to the Java language, the project uses the {lombok} library to try to
-reduce some of the annoyances of the language by using Java annotations.
+To reduce some of the `boilerplate` code inherent to the Java language, the project uses the {lombok} library which leverages Java annotations.
 
-The library is usable in {eclipse} by double clicking the `lombok.jar` and in {intellij} by installing the https://plugins.jetbrains.com/plugin/6317[Lombok plugin].
+The library can be used in {eclipse} by double clicking the `lombok.jar` and in {intellij} by installing the https://plugins.jetbrains.com/plugin/6317[Lombok plugin].
 
 If you do not like the basic idea behind {lombok} you can https://projectlombok.org/features/delombok.html[delombok] the source code and
 go back to standard Java source code.
@@ -514,9 +514,9 @@ definitions for the exclusion, selection and other criteria used by the static v
 ----
 
 
-=== JAXB
+=== ESPD Exchange Data Model
 
-The `eu.europa.ec.grow.espd.exchange-model` Java library contains the XML schemas used to generate the {jaxb} annotated Java classes.
+The {edm} is a separate project containing the XML schemas used to generate the {jaxb} annotated Java classes.
 
 [source,xml]
 .pom.xml
@@ -524,14 +524,13 @@ The `eu.europa.ec.grow.espd.exchange-model` Java library contains the XML schema
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model</artifactId>
-  <version>1.0.2</version>
+  <version>${espd-exchange-model.version}</version>
 </dependency>
 ----
 
 The marshalling and unmarshalling of the XML files produced by the application is handled by a http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb[Spring Jaxb2Marshaller].
 
-The {jaxb} configuration declares the packages to be scanned for potential {jaxb} annotated classes which are located in the
-`exchange-model` Maven module.
+The {jaxb} configuration declares the packages to be scanned for potential {jaxb} annotated classes.
 
 [source,java]
 .JaxbConfiguration.java

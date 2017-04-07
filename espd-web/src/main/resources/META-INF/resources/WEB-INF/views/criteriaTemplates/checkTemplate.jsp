@@ -40,67 +40,26 @@
 </c:if>
 
 <div class="checkbox criteria-row-check">
-    <label for="empty-${field}"><%-- empty-... "for" prevents checkbox value switch after click on label showing ecertis values --%>
-        <!-- Exclusion criteria except 'Purely national grounds' must always be checked -->
-        <!-- We cannot make checkboxes disabled otherwise their value will not be submitted so we prevent the changing of their value by always returning false on the click event -->
-        <c:if test="${is_always_checked}">
-            <form:checkbox path="${field}.exists" checked="checked" onclick="return false"/>
-        </c:if>
-        <c:if test="${!is_always_checked}">
-            <c:choose>
-                <c:when test="${default_value}">
-                    <form:checkbox path="${field}.exists"/>
-                </c:when>
-                <c:otherwise>
-                    <form:checkbox path="${field}.exists"/>
-                </c:otherwise>
-            </c:choose>
-        </c:if>
+	<div class="form-group" style="margin-bottom: 0px;">
+		<div class="col-md-12">
+		    <label>
+		        <c:if test="${is_always_checked}">
+		            <form:checkbox path="${field}.exists" checked="checked" onclick="return false"/>
+		        </c:if>
+		        <c:if test="${!is_always_checked}">
+					<form:checkbox path="${field}.exists"/>
+		        </c:if>
+				<b>${span18n[title_code]}</b>
+			</label>
+		    <c:if test="${not empty description_code}">
+		        <br>
+		        <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
+		    </c:if>
+    	</div>
 		<c:if test="${hasCriterion == true}">
-			<span style="font-weight: bold;" class="ecertis-link-header collapsed" data-uuid="${criterion.uuid}" data-i18n="${title_code}" data-toggle="collapse" data-target="${'#'}${field}-ecertis">
-				<s:message code='${title_code}'/> 
-			</span>
-
-			<div id="${field}-ecertis" class="alert alert-espd-info  collapse">
-				<h4 id="loading">${span18n["ecertis_loading"]}</h4>
-				<h5 id="ecertis404">${span18n["ecertis_404"]}</h5>
-				<div id="content">
-					<h5>${span18n["ecertis_language"]}: <span id="language"><!-- dynamic Language --></span></h5>
-					<ol type="I" id="list">
-						<li id="template">
-							<span id="subname"><!-- dynamic subcriteria name --></span>
-							(
-							<span id="description"></span> <a id="url" target="_blank"><!-- dynamic URL --></a>
-							)
-							<ol id="evidencesFound">
-								<li id="evidence">
-									<dl>
-										<dt>
-											<a id="name" target="_blank"><!-- dynamic evidence link --></a>
-										</dt>
-										<dd id="issued">
-											${span18n["ecertis_issued"]}: <span id="issuerNames"><!-- dynamic issuer names --></span>
-										</dd>
-									</dl>
-								</li>
-							</ol>
-							<h5  id="evidencesNotFound">${span18n["ecertis_no_evidences"]}</h5>
-						</li>
-					</ol>
-				</div>
+			<div class="col-md-12">
+				<%@include file="/WEB-INF/views/criteriaTemplates/ecertisinfo.jsp" %>
 			</div>
 		</c:if>
-		<c:if test="${hasCriterion != true}">
-			<span style="font-weight: bold;" data-i18n="${title_code}">
-				<s:message code='${title_code}'/>
-			</span>
-		</c:if>
-	</label>
-    <c:if test="${not empty description_code}">
-        <br>
-        <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
-    </c:if>
+	</div>
 </div>
-
-
-

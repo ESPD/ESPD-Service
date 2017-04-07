@@ -33,6 +33,7 @@
 
 		<script>
 			var pageLanguage = "${pageContext.response.locale}".toLowerCase();
+
 			$(function () {
 				validator(defaultValidators, "required", "${i18n['validator_required']}");
 				validator(defaultValidators, "number", "${i18n['validator_number']}");
@@ -45,10 +46,12 @@
 				$("span[data-toggle='tooltip']").tooltip({placement: "top", html: true, trigger: "hover"}).addClass("fa").addClass("fa-info-circle");
 				$("input:radio[data-target-show]").change(dataShow);
 				$("input:radio[data-target-hide]").change(dataHide);
+				$("[data-target-show]").click(dataShow);
+				$("[data-target-hide]").click(dataHide);
 				sortDropdowns();
 
 				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${agent == 'eo' ? espd.economicOperator.country.iso2Code : espd.authority.country.iso2Code}")
-				$('.ecertis-link-header').click(ecertisHandler);
+				$('.ecertis-link').click(ecertisHandler);
 			
 				$("#espd-popup").delay(3600000).show(0);
 				$("#espd-popup-close").click(function(){$("#espd-popup").hide()})
@@ -60,6 +63,7 @@
 				<a id="espd-popup-close" data-i18n="ok" style="cursor:pointer">${i18n['ok']}</a>
 			</div>
 		</div>
+		
     </head>
     <body>
     	<div id="espd-content">

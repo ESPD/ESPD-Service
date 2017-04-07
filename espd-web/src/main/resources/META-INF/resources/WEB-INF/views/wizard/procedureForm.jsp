@@ -23,15 +23,6 @@
     });
 </script>
 
-<div class="errorContainer alert alert-danger" style="display: none">
-    <ul class="fa-ul">
-        <li>
-            <i class="info-label fa fa-exclamation-triangle fa-lg fa-li"></i>
-            ${div18n['correct_errors']}
-            <div class="errorLabelContainer"></div>
-        </li>
-    </ul>
-</div>
 <div>
     <h2>${span18n['createca_header']}</h2>
 </div>
@@ -228,6 +219,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_eo_approved_cert']}</label>
@@ -241,7 +235,16 @@
                     </div>
                 </div>
                 <div id="reg-official-yes" class="${espd['eoRegistered'].answer ? '' : 'collapse'}"><%-- [IF YES] --%>
-                    <div class="col-md-12 alert alert-espd-info-dotted">${span18n['createeo_answer_following_parts']}</div>
+
+	                <div class="col-md-12 alert alert-espd-info-dotted">
+						<ul class="fa-ul">
+							<li>
+								<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+					            ${span18n['createeo_answer_following_parts']}
+							</li>
+						</ul>
+	                </div>
+                    
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label col-md-6">${span18n['createeo_provide_regnumber']}</label>
@@ -276,10 +279,16 @@
                         </div>
                     </div>
                 </div>
+                
                 <div id="reg-official-no" class="${espd['eoRegistered'].answer ? 'collapse' : ''}"><%-- [IF NO] --%>
-                    <div class="col-md-12 alert alert-espd-info-dotted">
-                        <span data-i18n="createeo_add_complete_missing">${i18n['createeo_add_complete_missing']}</span>
-                    </div>
+	                <div class="col-md-12 alert alert-espd-info-dotted">
+						<ul class="fa-ul">
+							<li>
+								<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+					            ${span18n['createeo_add_complete_missing']}
+							</li>
+						</ul>
+	                </div>
                     <div class="col-md-12 ">
                         <div class="form-group">
                             <label class="control-label col-md-6"> ${span18n['createeo_eo_has_cert_soc']}</label>
@@ -298,6 +307,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_is_eo_proc_together']}</label>
@@ -311,7 +323,14 @@
                 </div>
                 <div id="group-form"
                      class="${espd['eoParticipatingProcurementProcedure'].answer ? '' : 'collapse'}"><%-- [IF YES] --%>
-                    <div class="col-md-12 alert alert-espd-info-dotted">${span18n['createeo_ensure_others_espd']}</div>
+	                <div class="col-md-12 alert alert-espd-info-dotted">
+						<ul class="fa-ul">
+							<li>
+								<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+					            ${span18n['createeo_ensure_others_espd']}
+							</li>
+						</ul>
+	                </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label col-md-6"> ${span18n['createeo_eo_group_role']}</label>
@@ -340,6 +359,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr class="col-md-12">
+                
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_lots_concerned']}</label>
@@ -373,9 +395,14 @@
             <div id="createeo_info_respresent_div${vs.index}" class="collapse in">
                 <div class="panel-body">
                     <c:if test="${vs.index == 0}"><%-- display this alert only for first representative --%>
-                        <div class="col-md-12 alert alert-espd-info-dotted">
-                                ${span18n['createeo_person_empowered']}
-                        </div>
+		                <div class="col-md-12 alert alert-espd-info-dotted">
+							<ul class="fa-ul">
+								<li>
+									<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+						            ${span18n['createeo_person_empowered']}
+								</li>
+							</ul>
+		                </div>
                     </c:if>
                     <div class="col-md-12">
                         <div class="col-md-6">
@@ -484,9 +511,13 @@
                                           data-target-hide="#separate_espd_div"/>${span18n["no"]}
                     </div>
                 </div>
-                <div id="separate_espd_div"
-                     class="col-md-12 alert  ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}">
-                        ${span18n['createeo_separate_espd_sections_a_b']}
+                <div id="separate_espd_div" class="col-md-12 alert  ${espd['eoReliesCapacities'].answer ? '' : 'collapse'}">
+							<ul class="fa-ul">
+								<li>
+									<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+						            ${span18n['createeo_separate_espd_sections_a_b']}
+								</li>
+							</ul>
                 </div>
             </div>
         </div>
@@ -498,7 +529,12 @@
         <div id="createeo_subcontractors" class="collapse in">
             <div class="panel-body">
                 <div class="col-md-12 alert alert-espd-info-dotted">
-                        ${span18n['createeo_information_subcontractors_header']}
+							<ul class="fa-ul">
+								<li>
+									<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+						            ${span18n['createeo_information_subcontractors_header']}
+								</li>
+							</ul>
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="control-label col-md-6">
@@ -522,7 +558,12 @@
                     </div>
                 </div>
                 <div class="col-md-12 alert alert-espd-info-dotted">
-                        ${span18n['createeo_information_subcontractors_footer']}
+					<ul class="fa-ul">
+						<li>
+							<i class="info-label fa fa-info-circle fa-lg fa-li"></i>
+							${span18n['createeo_information_subcontractors_footer']}
+						</li>
+					</ul>
                 </div>
             </div>
         </div>

@@ -244,8 +244,7 @@
                             <label><form:radiobutton path="action" name="action" value="ca_review_espd_response"
                                                      class="radiotab radioCa"
                                                      data-target="#tab-single-upload"/>${span18n['filter_review_espd']}</label>
-                            <span data-i18n="tooltip_review_espd" data-toggle="tooltip"
-                                  title="${i18n['tooltip_review_espd']}"></span>
+                            <span data-i18n="tooltip_review_espd" data-toggle="tooltip" title="${i18n['tooltip_review_espd']}"></span>
                         </div>
                         <div class="col-md-offset-9">&nbsp;</div>
                     </div>

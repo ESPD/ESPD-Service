@@ -75,21 +75,14 @@ h2 {
     color: #074A8B !important;
     border-color: #336699 !important;
 }
- 
-.ecertis-link-header:after {
-    content: "\e114";
-    font-family: "Glyphicons Halflings", serif;
-	font-size: xx-small;
-}
 
-.ecertis-link-header.collapsed:after {
-    content: "\e080";
-    font-family: "Glyphicons Halflings", serif;
-	font-size: xx-small;
-}
-
-.ecertis-link-header:hover {
+.ecertis-link:hover {
     text-decoration: underline;
+    cursor: pointer;
+}
+.ecertis-link-hide:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 option:disabled {
