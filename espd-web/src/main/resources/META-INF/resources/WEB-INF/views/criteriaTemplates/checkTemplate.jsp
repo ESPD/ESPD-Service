@@ -52,7 +52,6 @@
 				<b>${span18n[title_code]}</b>
 			</label>
 		    <c:if test="${not empty description_code}">
-		        <br>
 		        <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
 		    </c:if>
     	</div>
