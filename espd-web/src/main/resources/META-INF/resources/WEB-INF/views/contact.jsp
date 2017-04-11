@@ -32,7 +32,7 @@
 			${span18n["contact_info"]}
 		</div>
 		
-		<br>
+		<p></p>
 
 		<div style="color:black">
 			${span18n["report_appliction_issue"]}

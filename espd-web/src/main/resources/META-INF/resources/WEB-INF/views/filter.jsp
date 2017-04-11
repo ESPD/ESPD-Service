@@ -174,9 +174,9 @@
                         <a href='http://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd/index_en.htm'>
                                 ${span18n['click_here']}
                         </a>
-                        <br>
+                        <p></p>
                             ${span18n['faq_text_answers']}
-                        <a href='http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/${pageContext.response.locale}/renditions/native'>
+                       	<a href='http://ec.europa.eu/DocsRoom/documents/16002/attachments/1/translations/${pageContext.response.locale}/renditions/native'>
                                 ${span18n['faq_leaflet']}
                         </a>
                     </div>

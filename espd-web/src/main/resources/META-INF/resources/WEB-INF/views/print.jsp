@@ -41,7 +41,9 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 
 <script>
     $(function () {
-    
+		$('.ecertis-link').remove(); 
+		$('.ecertis-info').remove(); 
+		
         $("#ojsNumber").inputmask("9999/S 999-9999999");
         <c:if test="${agent == 'ca'}">
             // CA only needs to see the labels but not the values
@@ -84,7 +86,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		$('#espdform').find('textarea').each(function() {
 			$(this).replaceWith($("<span />").addClass("wordwrap").text(this.value));
 		});
-
+		
+		
 
     });
 </script>
@@ -282,6 +285,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
+
+    <c:set var="printingjsp" scope="request" value="${true}"/>
     <c:set var="htmlToPrint" scope="request">
 
     <!-- Hidden header element which appears only in the PDF rendition -->
@@ -462,7 +467,6 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['signature']}</label>
                     </div>
-                    <br/><br/><br/>
                 </div>
             </div>
 		</div>
