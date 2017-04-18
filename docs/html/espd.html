@@ -548,7 +548,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#installation">Installation</a>
 <ul class="sectlevel2">
 <li><a href="#configure-the-git-repository">Configure the Git repository</a></li>
-<li><a href="#running-and-deploying-the-espd-application">Running and deploying the ESPD application</a></li>
+<li><a href="#building-and-running-the-espd-application">Building and running the ESPD application</a></li>
 </ul>
 </li>
 <li><a href="#overview">Overview</a>
@@ -568,7 +568,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#logging">Logging</a></li>
 <li><a href="#monitoring-and-analytics">Monitoring and analytics</a></li>
 <li><a href="#criteria-definitions">Criteria definitions</a></li>
-<li><a href="#jaxb">JAXB</a></li>
+<li><a href="#espd-exchange-data-model">ESPD Exchange Data Model</a></li>
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
 <li><a href="#pdf-printing">PDF printing</a></li>
@@ -608,6 +608,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2017-03-7th-of-april-2017">2017.03 (7th of April 2017)</a></li>
 <li><a href="#2017-02-01-3rd-of-march-2017">2017.02.01 (3rd of March 2017)</a></li>
 <li><a href="#2017-02-1st-of-march-2017">2017.02 (1st of March 2017)</a></li>
 <li><a href="#2017-01-01-1st-of-february-2017">2017.01.01 (1st of February 2017)</a></li>
@@ -645,7 +646,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2017.02.01, 03-03-2017</p>
+<p>v2017.03, 07-04-2017</p>
 </div>
 </div>
 </div>
@@ -693,7 +694,7 @@ prior to proceeding with the installation of the project.</p>
 <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit 7+</a></p>
 </li>
 <li>
-<p><a href="https://maven.apache.org">Maven 3</a></p>
+<p><a href="https://maven.apache.org">Maven 3+</a></p>
 </li>
 <li>
 <p><a href="https://git-scm.com/downloads">Git</a></p>
@@ -729,10 +730,10 @@ your own idea.</p>
 <p>On GitHub, navigate to your fork of the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a>.</p>
 </li>
 <li>
-<p>Under your repository name, click the <code>Copy to clipboard</code> button to clone the URL for the repository.</p>
+<p>Under your repository name, click the <code>Copy to clipboard</code> button to copy the URL for the repository.</p>
 </li>
 <li>
-<p>Run the <code>git clone <a href="https://github.com/YOUR-USERNAME/espd" class="bare">https://github.com/YOUR-USERNAME/espd</a></code> command on your computer. Now, you have a local copy of
+<p>Run the <code>git clone &#60;URL&#62;</code> command on your computer, after pasting the URL you copied in the previous step. Now, you have a local copy of
 your fork of the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a>.</p>
 </li>
 </ol>
@@ -748,19 +749,19 @@ into the local clone of your fork.</p>
 <p>On GitHub, navigate to the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a> repository.</p>
 </li>
 <li>
-<p>Under your repository name, click the <code>Copy to clipboard</code> button to clone the URL for the repository.</p>
+<p>Under the repository name, click the <code>Copy to clipboard</code> button to copy the URL for the repository.</p>
 </li>
 <li>
 <p>Change directories to the location of the fork you cloned in the previous step.</p>
 </li>
 <li>
-<p>Execute <code>git remote -v</code> to see the current configured remote repository for your fork.</p>
+<p>Execute <code>git remote -v</code> to see the current configured remote repositories for your fork.</p>
 </li>
 <li>
-<p>Type <code>git remote add upstream <a href="https://github.com/ESPD/espd.git" class="bare">https://github.com/ESPD/espd.git</a></code> by pasting the URL you copied in Step 2.</p>
+<p>Type <code>git remote add upstream &#60;URL&#62;</code> by pasting the URL you copied in Step b.</p>
 </li>
 <li>
-<p>To verify the new upstream repository you&#8217;ve specified for your fork, type <code>git remote -v</code> again. You should see
+<p>To verify the new upstream repository you&#8217;ve specified for your fork, execute <code>git remote -v</code> again. You should see
 the URL for your fork as <code>origin</code>, and the URL for the original repository as <code>upstream</code>.</p>
 </li>
 </ol>
@@ -778,7 +779,7 @@ upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)</code
 </div>
 </div>
 <div class="paragraph">
-<p>Now, you can keep your fork synced with the <code>upstream</code> repository with a few Git commands. For more information,
+<p>Now you can keep your fork synced with the <code>upstream</code> repository with a few Git commands. For more information,
 please see the <a href="https://help.github.com/articles/syncing-a-fork/">Syncing a fork</a> page.</p>
 </div>
 <div class="admonitionblock note">
@@ -805,24 +806,28 @@ see the article <a href="https://help.github.com/articles/dealing-with-line-endi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each major application version will have a dedicated branch so you can checkout the code for a particular version.
+Each major application version will have a dedicated branch so you can checkout the code for a particular version. The name convention adopted for release branches is YYYY.MM.
+The master branch contains the version currently deployed in production.
+The develop branch contains the code for the next version of ESPD.
+The gh-pages branch is reserved for documentation.
+If you want to be isolated from changes you should branch from master or from a specific release branch.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="running-and-deploying-the-espd-application"><a class="anchor" href="#running-and-deploying-the-espd-application"></a>Running and deploying the ESPD application</h3>
+<h3 id="building-and-running-the-espd-application"><a class="anchor" href="#building-and-running-the-espd-application"></a>Building and running the ESPD application</h3>
 <div class="paragraph">
 <p>This section goes into detail about how you can build and run the <a href="https://ec.europa.eu/espd">ESPD</a> application.</p>
 </div>
 <div class="sect3">
 <h4 id="building-the-application"><a class="anchor" href="#building-the-application"></a>Building the application</h4>
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/espd">ESPD</a> uses <a href="https://maven.apache.org">Maven 3</a> as the primary build system and is structured as a multi-module Maven project.</p>
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> uses <a href="https://maven.apache.org">Maven</a> as the primary build system and is structured as a multi-module Maven project.</p>
 </div>
 <div class="paragraph">
-<p>After getting access to the source code and copying it on your computer, you can now build the project with <a href="https://maven.apache.org">Maven 3</a>.</p>
+<p>After getting access to the source code and cloning it on your computer, you can now build the project with <a href="https://maven.apache.org">Maven</a>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -830,61 +835,16 @@ Each major application version will have a dedicated branch so you can checkout 
 <p>Change directories to the location of the cloned Git repository on your machine.</p>
 </li>
 <li>
-<p>Perform a <code>mvn clean package</code> and now the project dependencies should be downloaded and the <code>exchange-model</code>,
-<code>espd-web</code> and <code>espd-docs</code> modules should be built.</p>
+<p>Perform a <code>mvn clean package</code> and the project dependencies should be downloaded and the <code>espd-web</code> and <code>espd-docs</code> modules should be built.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="running-from-an-ide"><a class="anchor" href="#running-from-an-ide"></a>Running from an IDE</h4>
+<h4 id="running-the-application"><a class="anchor" href="#running-the-application"></a>Running the application</h4>
 <div class="paragraph">
-<p>You can run the <a href="https://ec.europa.eu/espd">ESPD</a> application from your IDE by importing the project as a multi-module Maven project first.
-You also need to install the Lombok plugin for your particular IDE.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Before running the application you need to generate the <a href="https://jaxb.java.net">JAXB</a> classes by invoking a <code>mvn clean package</code> command
-and then add the <code>src/main/generated</code> folder on the application classpath of the <code>exchange-model</code> Maven module.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="run-with-an-embedded-tomcat-container"><a class="anchor" href="#run-with-an-embedded-tomcat-container"></a>Run with an embedded Tomcat container</h4>
-<div class="paragraph">
-<p>The easiest way to start the application is with an embedded Tomcat 8 (default) container by invoking the <code>main</code> method
-from the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java non-web
-application.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="run-as-an-exploded-war-file-on-a-servlet-container"><a class="anchor" href="#run-as-an-exploded-war-file-on-a-servlet-container"></a>Run as an exploded WAR file on a Servlet container</h4>
-<div class="paragraph">
-<p>The application can be deployed as an exploded WAR file on different Servlet 3 containers. For example, you can
-check the following links on how to deploy it on a Tomcat container:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.jetbrains.com/help/idea/2016.1/configuring-web-application-deployment.html?origin=old_help">IntelliJ IDEA</a></p>
-</li>
-<li>
-<p><a href="https://www.mulesoft.com/tcat/tomcat-eclipse">Eclipse Tomcat</a></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deploying-with-the-embedded-tomcat-container"><a class="anchor" href="#deploying-with-the-embedded-tomcat-container"></a>Deploying with the embedded Tomcat container</h4>
-<div class="paragraph">
-<p>The fastest way to deploy the application is by using an embedded Tomcat container.</p>
+<p>The easiest way to run the application is with an embedded container (default is Tomcat) by invoking the <code>main</code> method
+from the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java application.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -938,7 +898,7 @@ files.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is recommended to set up the context path of the application when running in the embedded mode.
+It is recommended to set up the context path of the application when running in the embedded mode. This can be done in the application.properties file located in the espd-web project resources folder.
 </td>
 </tr>
 </table>
@@ -952,9 +912,9 @@ server.context-path=/espd</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deploying-on-an-external-servlet-container"><a class="anchor" href="#deploying-on-an-external-servlet-container"></a>Deploying on an external Servlet container</h4>
+<h4 id="deploying-the-web-application-on-a-servlet-container"><a class="anchor" href="#deploying-the-web-application-on-a-servlet-container"></a>Deploying the web application on a servlet container</h4>
 <div class="paragraph">
-<p>If you want to deploy the application on an external Servlet container, you need to package it as a WAR for the
+<p>The application can be deployed as a WAR file on a Servlet 3 compliant container such as Tomcat. For this, you need to package it as a WAR for the
 <code>non-embedded</code> Maven profile and provide some startup parameters on your server.</p>
 </div>
 <div class="olist arabic">
@@ -975,6 +935,37 @@ server.context-path=/espd</code></pre>
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="using-an-ide"><a class="anchor" href="#using-an-ide"></a>Using an IDE</h4>
+<div class="paragraph">
+<p>You can also run the <a href="https://ec.europa.eu/espd">ESPD</a> application from your favourite IDE by importing the project as a multi-module Maven project first.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will need to install the <a href="https://projectlombok.org/">Lombok</a> plugin for your particular IDE. Lombok is a library designed to reduce Java boilerplate code through the use of annotations.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have problems importing the project in <a href="https://eclipse.org/downloads">Eclipse</a> try running the <a href="https://maven.apache.org">Maven</a> command <code>mvn eclipse:eclipse</code> before the import.
+If after the import the Problems view display errors of type <code>Plugin execution not covered by lifecycle configutation</code> right-click on the error and set Eclipse to ignore the execution of the plugin.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -982,7 +973,7 @@ server.context-path=/espd</code></pre>
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/espd">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven 3</a> modules:</p>
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven</a> modules:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -990,7 +981,7 @@ server.context-path=/espd</code></pre>
 <p><strong>espd-docs</strong> contains the documentation of the application</p>
 </li>
 <li>
-<p><strong>espd-web</strong> holds the deployable web part of the application</p>
+<p><strong>espd-web</strong> contains the source code to generate the deployable web archive (WAR) of the application</p>
 </li>
 </ul>
 </div>
@@ -998,8 +989,8 @@ server.context-path=/espd</code></pre>
 <p>The Java library <code>eu.europa.ec.grow.espd.exchange-model</code> contains the <a href="https://jaxb.java.net">JAXB</a> classes of the <a href="https://espd.github.io/ESPD-EDM">ESPD Exchange Data Model</a>.</p>
 </div>
 <div class="paragraph">
-<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
-server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
+<p>The ESPD web application is quite simple in nature and can be deployed as an executable JAR file (with an embedded Tomcat
+server) or as a standard WAR file on a compliant Servlet 3 container like Tomcat, Jetty, Weblogic, Wildfly etc.</p>
 </div>
 <div class="paragraph">
 <p>The main responsibilities of the application are handled as follows:</p>
@@ -1019,7 +1010,7 @@ server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or
 <p>The view part uses <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a>, JSP files, <a href="https://tiles.apache.org/">Apache Tiles</a>, Javascript, <a href="https://jquery.com/">jQuery</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a></p>
 </li>
 <li>
-<p>The XML model uses <a href="https://jaxb.java.net">JAXB</a> to marshal/unmarshal the ESPD generated XML files</p>
+<p>The data model uses <a href="https://jaxb.java.net">JAXB</a> to convert Java objects to XML and vice versa</p>
 </li>
 <li>
 <p>REST calls to external services are handled with the <a href="https://spring.io/guides/gs/consuming-rest/">Spring Rest Template</a> client</p>
@@ -1063,7 +1054,7 @@ subdivided into the following important packages:</p>
 <div class="sect3">
 <h4 id="config-package"><a class="anchor" href="#config-package"></a>Config package</h4>
 <div class="paragraph">
-<p>The <code>config</code> package contains the Java classes which are supposed to provide the configuration for the global project
+<p>The <code>config</code> package contains the Java classes which provide the configuration for the global project
 <code>EspdApplication</code>, <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a> web configuration <code>WebConfiguration</code>, the <a href="https://jaxb.java.net">JAXB</a> configuration etc. You will
 notice that these classes are annotated with <code>@Configuration</code> and they generally define <a href="https://projects.spring.io/spring-framework/">Spring</a> beans that can be
 injected in other <a href="https://projects.spring.io/spring-framework/">Spring</a> managed classes of the application.</p>
@@ -1073,7 +1064,7 @@ injected in other <a href="https://projects.spring.io/spring-framework/">Spring<
 <h4 id="controller-package"><a class="anchor" href="#controller-package"></a>Controller package</h4>
 <div class="paragraph">
 <p>The <code>controller</code> package consists of the <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a> controllers which are responsible for processing user requests,
-building an appropriate model and passing it to the view for rendering or which can act as <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> controllers.</p>
+building an appropriate model and passing it to the view for rendering. Some controllers are <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> controllers.</p>
 </div>
 <div class="paragraph">
 <p>The most important one is <code>EspdController</code> and its responsibilities include dealing with the generation of the <a href="https://ec.europa.eu/espd">ESPD</a>
@@ -1089,7 +1080,7 @@ by the client-side i18n engine.</p>
 <div class="sect3">
 <h4 id="domain-package"><a class="anchor" href="#domain-package"></a>Domain package</h4>
 <div class="paragraph">
-<p>The <code>domain</code> package contains the pieces involved in the representation of an ESPD request or response in the model
+<p>The <code>domain</code> package contains the elements involved in the representation of an ESPD request or response in the model
 (the <code>M</code> part of the MVC architectural pattern) of the web application. An ESPD request/response is represented
 internally as an <code>EspdDocument</code> which in turn contains fields for all the possible criteria, authority and economic
 operator information or procurement procedure data.</p>
@@ -1106,6 +1097,18 @@ criterion enumerations.</p>
 <div class="paragraph">
 <p>The <code>ted</code> package is responsible for the interaction with the TED <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> service which provides the procurement
 procedure information for an <a href="https://ec.europa.eu/espd">ESPD</a> request or response.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://ted.europa.eu">TED</a> is the electronic version of the EU Official Journal dedicated to public procurement.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1142,7 +1145,7 @@ are defined in the JSP and <a href="https://tiles.apache.org/">Apache Tiles</a> 
 <div class="sect2">
 <h3 id="web-overview"><a class="anchor" href="#web-overview"></a>Web overview</h3>
 <div class="paragraph">
-<p>The web packages can be found in the standard Maven location, i.e. <code>src/main/webapp</code>. The <code>static</code> folder contains the
+<p>The web static resources can be found in the standard Maven location, i.e. <code>src/main/webapp</code>. The <code>static</code> folder contains the
 CSS and Javascript files referenced by the web application. The JSP files are located in the <code>WEB-INF/views</code> folder where
 they are subsequently grouped in sub-folders. The <code>src/main/resources</code> folder contains the configuration files relating
 to internationalization, logging, web resource optimizations and general application properties.</p>
@@ -1154,13 +1157,13 @@ to internationalization, logging, web resource optimizations and general applica
 <h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section will describe the basic configuration for the most important responsibilities of the application.</p>
+<p>This section will describe the basic configuration for the most important components of the application.</p>
 </div>
 <div class="sect2">
 <h3 id="configuration-files"><a class="anchor" href="#configuration-files"></a>Configuration files</h3>
 <div class="paragraph">
 <p>Most of the configuration properties of the web application are specified in <code>properties</code> files which can be found
-inside the <code>src/main/resources</code> folder of the <code>espd-web</code> <a href="https://maven.apache.org">Maven 3</a> module. There are different files for each profile
+inside the <code>src/main/resources</code> folder of the <code>espd-web</code> <a href="https://maven.apache.org">Maven</a> module. There are different files for each profile
 under which the application can be started, for example the <code>application-prod.properties</code> file will be used for the
 <code>prod</code> profile which must be specified as a startup parameter as <code>-Dspring.profiles.active=prod</code>. If no profile is
 specified, then a <code>default</code> one will be used by <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> and the corresponding configuration file would be just
@@ -1214,7 +1217,7 @@ with the following features:</p>
 <p>For more information about the <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> project, you can check the <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle">official documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>eu.europa.ec.grow.espd.config</code> package contains the <a href="https://projects.spring.io/spring-framework/">Spring</a> configuration files. The main class of the application
+<p>The <code>eu.europa.ec.grow.espd.config</code> package contains the <a href="https://projects.spring.io/spring-framework/">Spring</a> configuration classes. The main class of the application
 is <code>EspdApplication</code> which makes use of the <code>@SpringBootApplication</code> annotation in order to enable the <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>
 auto configuration. The package also contains the web, <a href="https://jaxb.java.net">JAXB</a> and web resources configuration files.</p>
 </div>
@@ -1471,7 +1474,7 @@ wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImpor
 <div class="sect4">
 <h5 id="build-time-solution-with-maven"><a class="anchor" href="#build-time-solution-with-maven"></a>Build-time solution with Maven</h5>
 <div class="paragraph">
-<p>The build-time solution uses a <a href="https://maven.apache.org">Maven 3</a> plugin and needs two <a href="https://github.com/wro4j/wro4j">WRO4J</a> configuration files placed under the
+<p>The build-time solution uses a <a href="https://maven.apache.org">Maven</a> plugin and needs two <a href="https://github.com/wro4j/wro4j">WRO4J</a> configuration files placed under the
 <code>src/main/resources</code> folder.</p>
 </div>
 <div class="listingblock">
@@ -1535,11 +1538,10 @@ applying minimization where necessary and creating a <code>all.js</code> and a <
 <div class="sect2">
 <h3 id="lombok"><a class="anchor" href="#lombok"></a>Lombok</h3>
 <div class="paragraph">
-<p>To reduce some of the <code>boilerplate</code> inherent to the Java language, the project uses the <a href="https://projectlombok.org/features/index.html">Lombok</a> library to try to
-reduce some of the annoyances of the language by using Java annotations.</p>
+<p>To reduce some of the <code>boilerplate</code> code inherent to the Java language, the project uses the <a href="https://projectlombok.org/features/index.html">Lombok</a> library which leverages Java annotations.</p>
 </div>
 <div class="paragraph">
-<p>The library is usable in <a href="https://eclipse.org/downloads">Eclipse</a> by double clicking the <code>lombok.jar</code> and in <a href="https://www.jetbrains.com/idea">IntelliJ</a> by installing the <a href="https://plugins.jetbrains.com/plugin/6317">Lombok plugin</a>.</p>
+<p>The library can be used in <a href="https://eclipse.org/downloads">Eclipse</a> by double clicking the <code>lombok.jar</code> and in <a href="https://www.jetbrains.com/idea">IntelliJ</a> by installing the <a href="https://plugins.jetbrains.com/plugin/6317">Lombok plugin</a>.</p>
 </div>
 <div class="paragraph">
 <p>If you do not like the basic idea behind <a href="https://projectlombok.org/features/index.html">Lombok</a> you can <a href="https://projectlombok.org/features/delombok.html">delombok</a> the source code and
@@ -1726,9 +1728,9 @@ definitions for the exclusion, selection and other criteria used by the static v
 </div>
 </div>
 <div class="sect2">
-<h3 id="jaxb"><a class="anchor" href="#jaxb"></a>JAXB</h3>
+<h3 id="espd-exchange-data-model"><a class="anchor" href="#espd-exchange-data-model"></a>ESPD Exchange Data Model</h3>
 <div class="paragraph">
-<p>The <code>eu.europa.ec.grow.espd.exchange-model</code> Java library contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
+<p>The <a href="https://github.com/ESPD/ESPD-EDM">ESPD-EDM</a> is a separate project containing the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
 </div>
 <div class="listingblock">
 <div class="title">pom.xml</div>
@@ -1736,7 +1738,7 @@ definitions for the exclusion, selection and other criteria used by the static v
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>eu.europa.ec.grow.espd<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>exchange-model<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>1.0.2<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${espd-exchange-model.version}<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1744,8 +1746,7 @@ definitions for the exclusion, selection and other criteria used by the static v
 <p>The marshalling and unmarshalling of the XML files produced by the application is handled by a <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb">Spring Jaxb2Marshaller</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://jaxb.java.net">JAXB</a> configuration declares the packages to be scanned for potential <a href="https://jaxb.java.net">JAXB</a> annotated classes which are located in the
-<code>exchange-model</code> Maven module.</p>
+<p>The <a href="https://jaxb.java.net">JAXB</a> configuration declares the packages to be scanned for potential <a href="https://jaxb.java.net">JAXB</a> annotated classes.</p>
 </div>
 <div class="listingblock">
 <div class="title">JaxbConfiguration.java</div>
@@ -2161,7 +2162,7 @@ reset on each page access to the <code>/welcome</code> page.</p>
 <div class="sect2">
 <h3 id="internationalization-i18n-2"><a class="anchor" href="#internationalization-i18n-2"></a>Internationalization (i18n)</h3>
 <div class="paragraph">
-<p>Any web application with users all around the world, internationalization (i18n) is very important for better user interaction.
+<p>A Web application with a worldwide user base needs to be easily adapted to support several human languages without impacting its design, through internationalization techniques (i18n).
 ESPD i18n is implemented through the use of Spring <code>interceptors</code>, <code>locale resolvers</code> and <code>resource bundles</code> for different locales.</p>
 </div>
 <div class="paragraph">
@@ -2189,7 +2190,7 @@ spring.messages.basename=i18n/messages</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The only part worth mentioning is the use of custom classes providing more efficient use of the <code>MessageSource</code> bean in JSP.
+<p>It is worth noting the use of custom classes providing more efficient use of the <code>MessageSource</code> bean in JSP.
 The class <code>I18NFunc</code> provides HTML code generating methods to use in JSPs for translated fields.</p>
 </div>
 <div class="listingblock">
@@ -2249,7 +2250,7 @@ ${span18n['createca_procurer_name']}</code></pre>
 <div class="sect2">
 <h3 id="dynamic-web-page-translation"><a class="anchor" href="#dynamic-web-page-translation"></a>Dynamic web page translation</h3>
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/espd">ESPD</a> web content is translated to another language automatically without page refresh. The dynamic translation is
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> Web content is translated to another language automatically without page refresh. The dynamic translation is
 implemented in Javascript with <a href="https://jquery.com/">jQuery</a> and the translation routine is found in the <code>init.js</code> file. The Javascript client
 makes an HTTP call to the <code>/translate</code> mapping defined inside the <code>MessageSourceController</code> class to fetch the required
 message labels and afterwards updates the DOM elements containing the <code>data-i18n</code> attribute.</p>
@@ -2271,7 +2272,7 @@ requirement or other domain entity of the application.</p>
 and highly expressive specification language.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://maven.apache.org">Maven 3</a> configuration for running the tests at build time is defined in the <code>espd-web/pom.xml</code> file. It uses the
+<p>The <a href="https://maven.apache.org">Maven</a> configuration for running the tests at build time is defined in the <code>espd-web/pom.xml</code> file. It uses the
 <code>gmavenplus-plugin</code> to compile the <a href="http://www.groovy-lang.org/">Groovy</a> test files and the <code>maven-surefire-plugin</code> to specify the file naming pattern
 of the tests that are supposed to be run.</p>
 </div>
@@ -3857,6 +3858,28 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="2017-03-7th-of-april-2017"><a class="anchor" href="#2017-03-7th-of-april-2017"></a>2017.03 (7th of April 2017)</h3>
+<div class="sect3">
+<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/103">Print View - Part IV section a.</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/109">Information electronically available with added text</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/152">Beautify how information from eCertis is presented</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/153">Beautify Part II</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="2017-02-01-3rd-of-march-2017"><a class="anchor" href="#2017-02-01-3rd-of-march-2017"></a>2017.02.01 (3rd of March 2017)</h3>
 <div class="paragraph">
 <p>The duration of the user session stored on the server has been reduced back to 2 hours.</p>
@@ -3878,7 +3901,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3933,7 +3956,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
+<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4023,7 +4046,7 @@ For a comprehensive history of all the XML changes, please visit this link:
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
+<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4097,7 +4120,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-11-30th-of-november-2016"><a class="anchor" href="#2016-11-30th-of-november-2016"></a>2016.11 (30th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
+<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4154,7 +4177,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-02-28th-of-november-2016"><a class="anchor" href="#2016-10-02-28th-of-november-2016"></a>2016.10.02 (28th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
+<h4 id="enhancement-6"><a class="anchor" href="#enhancement-6"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4167,7 +4190,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-01-11th-of-november-2016"><a class="anchor" href="#2016-10-01-11th-of-november-2016"></a>2016.10.01 (11th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-6"><a class="anchor" href="#enhancement-6"></a>Enhancement</h4>
+<h4 id="enhancement-7"><a class="anchor" href="#enhancement-7"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4211,7 +4234,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-7"><a class="anchor" href="#enhancement-7"></a>Enhancement</h4>
+<h4 id="enhancement-8"><a class="anchor" href="#enhancement-8"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4298,7 +4321,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-8"><a class="anchor" href="#enhancement-8"></a>Enhancement</h4>
+<h4 id="enhancement-9"><a class="anchor" href="#enhancement-9"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4712,7 +4735,7 @@ the printing functionality in version 2016.11</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-03 13:43:31 +01:00
+Last updated 2017-04-07 13:30:11 +02:00
 </div>
 </div>
 </body>

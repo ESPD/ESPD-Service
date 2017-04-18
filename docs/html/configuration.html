@@ -553,7 +553,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#logging">Logging</a></li>
 <li><a href="#monitoring-and-analytics">Monitoring and analytics</a></li>
 <li><a href="#criteria-definitions">Criteria definitions</a></li>
-<li><a href="#jaxb">JAXB</a></li>
+<li><a href="#espd-exchange-data-model">ESPD Exchange Data Model</a></li>
 <li><a href="#rest-template">REST template</a></li>
 <li><a href="#ted-rest-service">TED REST service</a></li>
 <li><a href="#pdf-printing">PDF printing</a></li>
@@ -568,13 +568,13 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section will describe the basic configuration for the most important responsibilities of the application.</p>
+<p>This section will describe the basic configuration for the most important components of the application.</p>
 </div>
 <div class="sect2">
 <h3 id="configuration-files"><a class="anchor" href="#configuration-files"></a>Configuration files</h3>
 <div class="paragraph">
 <p>Most of the configuration properties of the web application are specified in <code>properties</code> files which can be found
-inside the <code>src/main/resources</code> folder of the <code>espd-web</code> <a href="https://maven.apache.org">Maven 3</a> module. There are different files for each profile
+inside the <code>src/main/resources</code> folder of the <code>espd-web</code> <a href="https://maven.apache.org">Maven</a> module. There are different files for each profile
 under which the application can be started, for example the <code>application-prod.properties</code> file will be used for the
 <code>prod</code> profile which must be specified as a startup parameter as <code>-Dspring.profiles.active=prod</code>. If no profile is
 specified, then a <code>default</code> one will be used by <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> and the corresponding configuration file would be just
@@ -628,7 +628,7 @@ with the following features:</p>
 <p>For more information about the <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> project, you can check the <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle">official documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>eu.europa.ec.grow.espd.config</code> package contains the <a href="https://projects.spring.io/spring-framework/">Spring</a> configuration files. The main class of the application
+<p>The <code>eu.europa.ec.grow.espd.config</code> package contains the <a href="https://projects.spring.io/spring-framework/">Spring</a> configuration classes. The main class of the application
 is <code>EspdApplication</code> which makes use of the <code>@SpringBootApplication</code> annotation in order to enable the <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>
 auto configuration. The package also contains the web, <a href="https://jaxb.java.net">JAXB</a> and web resources configuration files.</p>
 </div>
@@ -885,7 +885,7 @@ wro4j.managerFactory.preProcessors=fallbackCssDataUri, cssUrlRewriting, cssImpor
 <div class="sect4">
 <h5 id="build-time-solution-with-maven"><a class="anchor" href="#build-time-solution-with-maven"></a>Build-time solution with Maven</h5>
 <div class="paragraph">
-<p>The build-time solution uses a <a href="https://maven.apache.org">Maven 3</a> plugin and needs two <a href="https://github.com/wro4j/wro4j">WRO4J</a> configuration files placed under the
+<p>The build-time solution uses a <a href="https://maven.apache.org">Maven</a> plugin and needs two <a href="https://github.com/wro4j/wro4j">WRO4J</a> configuration files placed under the
 <code>src/main/resources</code> folder.</p>
 </div>
 <div class="listingblock">
@@ -949,11 +949,10 @@ applying minimization where necessary and creating a <code>all.js</code> and a <
 <div class="sect2">
 <h3 id="lombok"><a class="anchor" href="#lombok"></a>Lombok</h3>
 <div class="paragraph">
-<p>To reduce some of the <code>boilerplate</code> inherent to the Java language, the project uses the <a href="https://projectlombok.org/features/index.html">Lombok</a> library to try to
-reduce some of the annoyances of the language by using Java annotations.</p>
+<p>To reduce some of the <code>boilerplate</code> code inherent to the Java language, the project uses the <a href="https://projectlombok.org/features/index.html">Lombok</a> library which leverages Java annotations.</p>
 </div>
 <div class="paragraph">
-<p>The library is usable in <a href="https://eclipse.org/downloads">Eclipse</a> by double clicking the <code>lombok.jar</code> and in <a href="https://www.jetbrains.com/idea">IntelliJ</a> by installing the <a href="https://plugins.jetbrains.com/plugin/6317">Lombok plugin</a>.</p>
+<p>The library can be used in <a href="https://eclipse.org/downloads">Eclipse</a> by double clicking the <code>lombok.jar</code> and in <a href="https://www.jetbrains.com/idea">IntelliJ</a> by installing the <a href="https://plugins.jetbrains.com/plugin/6317">Lombok plugin</a>.</p>
 </div>
 <div class="paragraph">
 <p>If you do not like the basic idea behind <a href="https://projectlombok.org/features/index.html">Lombok</a> you can <a href="https://projectlombok.org/features/delombok.html">delombok</a> the source code and
@@ -1140,9 +1139,9 @@ definitions for the exclusion, selection and other criteria used by the static v
 </div>
 </div>
 <div class="sect2">
-<h3 id="jaxb"><a class="anchor" href="#jaxb"></a>JAXB</h3>
+<h3 id="espd-exchange-data-model"><a class="anchor" href="#espd-exchange-data-model"></a>ESPD Exchange Data Model</h3>
 <div class="paragraph">
-<p>The <code>eu.europa.ec.grow.espd.exchange-model</code> Java library contains the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
+<p>The <a href="https://github.com/ESPD/ESPD-EDM">ESPD-EDM</a> is a separate project containing the XML schemas used to generate the <a href="https://jaxb.java.net">JAXB</a> annotated Java classes.</p>
 </div>
 <div class="listingblock">
 <div class="title">pom.xml</div>
@@ -1150,7 +1149,7 @@ definitions for the exclusion, selection and other criteria used by the static v
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>eu.europa.ec.grow.espd<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>exchange-model<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>1.0.2<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${espd-exchange-model.version}<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1158,8 +1157,7 @@ definitions for the exclusion, selection and other criteria used by the static v
 <p>The marshalling and unmarshalling of the XML files produced by the application is handled by a <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#oxm-jaxb">Spring Jaxb2Marshaller</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://jaxb.java.net">JAXB</a> configuration declares the packages to be scanned for potential <a href="https://jaxb.java.net">JAXB</a> annotated classes which are located in the
-<code>exchange-model</code> Maven module.</p>
+<p>The <a href="https://jaxb.java.net">JAXB</a> configuration declares the packages to be scanned for potential <a href="https://jaxb.java.net">JAXB</a> annotated classes.</p>
 </div>
 <div class="listingblock">
 <div class="title">JaxbConfiguration.java</div>
@@ -1530,7 +1528,7 @@ It is recommended to use HTTP POST requests but HTTP GET requests are also suppo
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-16 16:38:51 +01:00
+Last updated 2017-04-07 13:30:11 +02:00
 </div>
 </div>
 </body>

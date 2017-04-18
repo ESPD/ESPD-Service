@@ -556,7 +556,7 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/espd">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven 3</a> modules:</p>
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> application is composed of two <a href="https://maven.apache.org">Maven</a> modules:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -564,7 +564,7 @@ table.CodeRay td.code>pre{padding:0}
 <p><strong>espd-docs</strong> contains the documentation of the application</p>
 </li>
 <li>
-<p><strong>espd-web</strong> holds the deployable web part of the application</p>
+<p><strong>espd-web</strong> contains the source code to generate the deployable web archive (WAR) of the application</p>
 </li>
 </ul>
 </div>
@@ -572,8 +572,8 @@ table.CodeRay td.code>pre{padding:0}
 <p>The Java library <code>eu.europa.ec.grow.espd.exchange-model</code> contains the <a href="https://jaxb.java.net">JAXB</a> classes of the <a href="https://espd.github.io/ESPD-EDM">ESPD Exchange Data Model</a>.</p>
 </div>
 <div class="paragraph">
-<p>The ESPD web application is quite simple in nature and can be deployed as an executable WAR file (with an embedded Tomcat
-server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or an application server like Weblogic.</p>
+<p>The ESPD web application is quite simple in nature and can be deployed as an executable JAR file (with an embedded Tomcat
+server) or as a standard WAR file on a compliant Servlet 3 container like Tomcat, Jetty, Weblogic, Wildfly etc.</p>
 </div>
 <div class="paragraph">
 <p>The main responsibilities of the application are handled as follows:</p>
@@ -593,7 +593,7 @@ server) or as a normal WAR file on a Servlet 3 container like Tomcat or Jetty or
 <p>The view part uses <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a>, JSP files, <a href="https://tiles.apache.org/">Apache Tiles</a>, Javascript, <a href="https://jquery.com/">jQuery</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a></p>
 </li>
 <li>
-<p>The XML model uses <a href="https://jaxb.java.net">JAXB</a> to marshal/unmarshal the ESPD generated XML files</p>
+<p>The data model uses <a href="https://jaxb.java.net">JAXB</a> to convert Java objects to XML and vice versa</p>
 </li>
 <li>
 <p>REST calls to external services are handled with the <a href="https://spring.io/guides/gs/consuming-rest/">Spring Rest Template</a> client</p>
@@ -637,7 +637,7 @@ subdivided into the following important packages:</p>
 <div class="sect3">
 <h4 id="config-package"><a class="anchor" href="#config-package"></a>Config package</h4>
 <div class="paragraph">
-<p>The <code>config</code> package contains the Java classes which are supposed to provide the configuration for the global project
+<p>The <code>config</code> package contains the Java classes which provide the configuration for the global project
 <code>EspdApplication</code>, <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a> web configuration <code>WebConfiguration</code>, the <a href="https://jaxb.java.net">JAXB</a> configuration etc. You will
 notice that these classes are annotated with <code>@Configuration</code> and they generally define <a href="https://projects.spring.io/spring-framework/">Spring</a> beans that can be
 injected in other <a href="https://projects.spring.io/spring-framework/">Spring</a> managed classes of the application.</p>
@@ -647,7 +647,7 @@ injected in other <a href="https://projects.spring.io/spring-framework/">Spring<
 <h4 id="controller-package"><a class="anchor" href="#controller-package"></a>Controller package</h4>
 <div class="paragraph">
 <p>The <code>controller</code> package consists of the <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring MVC</a> controllers which are responsible for processing user requests,
-building an appropriate model and passing it to the view for rendering or which can act as <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> controllers.</p>
+building an appropriate model and passing it to the view for rendering. Some controllers are <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> controllers.</p>
 </div>
 <div class="paragraph">
 <p>The most important one is <code>EspdController</code> and its responsibilities include dealing with the generation of the <a href="https://ec.europa.eu/espd">ESPD</a>
@@ -663,7 +663,7 @@ by the client-side i18n engine.</p>
 <div class="sect3">
 <h4 id="domain-package"><a class="anchor" href="#domain-package"></a>Domain package</h4>
 <div class="paragraph">
-<p>The <code>domain</code> package contains the pieces involved in the representation of an ESPD request or response in the model
+<p>The <code>domain</code> package contains the elements involved in the representation of an ESPD request or response in the model
 (the <code>M</code> part of the MVC architectural pattern) of the web application. An ESPD request/response is represented
 internally as an <code>EspdDocument</code> which in turn contains fields for all the possible criteria, authority and economic
 operator information or procurement procedure data.</p>
@@ -680,6 +680,18 @@ criterion enumerations.</p>
 <div class="paragraph">
 <p>The <code>ted</code> package is responsible for the interaction with the TED <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> service which provides the procurement
 procedure information for an <a href="https://ec.europa.eu/espd">ESPD</a> request or response.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://ted.europa.eu">TED</a> is the electronic version of the EU Official Journal dedicated to public procurement.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -716,7 +728,7 @@ are defined in the JSP and <a href="https://tiles.apache.org/">Apache Tiles</a> 
 <div class="sect2">
 <h3 id="web-overview"><a class="anchor" href="#web-overview"></a>Web overview</h3>
 <div class="paragraph">
-<p>The web packages can be found in the standard Maven location, i.e. <code>src/main/webapp</code>. The <code>static</code> folder contains the
+<p>The web static resources can be found in the standard Maven location, i.e. <code>src/main/webapp</code>. The <code>static</code> folder contains the
 CSS and Javascript files referenced by the web application. The JSP files are located in the <code>WEB-INF/views</code> folder where
 they are subsequently grouped in sub-folders. The <code>src/main/resources</code> folder contains the configuration files relating
 to internationalization, logging, web resource optimizations and general application properties.</p>
@@ -727,7 +739,7 @@ to internationalization, logging, web resource optimizations and general applica
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-16 16:38:51 +01:00
+Last updated 2017-03-23 16:28:34 +01:00
 </div>
 </div>
 </body>

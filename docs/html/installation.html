@@ -545,7 +545,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#installation">Installation</a>
 <ul class="sectlevel2">
 <li><a href="#configure-the-git-repository">Configure the Git repository</a></li>
-<li><a href="#running-and-deploying-the-espd-application">Running and deploying the ESPD application</a></li>
+<li><a href="#building-and-running-the-espd-application">Building and running the ESPD application</a></li>
 </ul>
 </li>
 </ul>
@@ -573,10 +573,10 @@ your own idea.</p>
 <p>On GitHub, navigate to your fork of the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a>.</p>
 </li>
 <li>
-<p>Under your repository name, click the <code>Copy to clipboard</code> button to clone the URL for the repository.</p>
+<p>Under your repository name, click the <code>Copy to clipboard</code> button to copy the URL for the repository.</p>
 </li>
 <li>
-<p>Run the <code>git clone <a href="https://github.com/YOUR-USERNAME/espd" class="bare">https://github.com/YOUR-USERNAME/espd</a></code> command on your computer. Now, you have a local copy of
+<p>Run the <code>git clone &#60;URL&#62;</code> command on your computer, after pasting the URL you copied in the previous step. Now, you have a local copy of
 your fork of the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a>.</p>
 </li>
 </ol>
@@ -592,19 +592,19 @@ into the local clone of your fork.</p>
 <p>On GitHub, navigate to the <a href="https://github.com/ESPD/espd.git">ESPD Git repository</a> repository.</p>
 </li>
 <li>
-<p>Under your repository name, click the <code>Copy to clipboard</code> button to clone the URL for the repository.</p>
+<p>Under the repository name, click the <code>Copy to clipboard</code> button to copy the URL for the repository.</p>
 </li>
 <li>
 <p>Change directories to the location of the fork you cloned in the previous step.</p>
 </li>
 <li>
-<p>Execute <code>git remote -v</code> to see the current configured remote repository for your fork.</p>
+<p>Execute <code>git remote -v</code> to see the current configured remote repositories for your fork.</p>
 </li>
 <li>
-<p>Type <code>git remote add upstream <a href="https://github.com/ESPD/espd.git" class="bare">https://github.com/ESPD/espd.git</a></code> by pasting the URL you copied in Step 2.</p>
+<p>Type <code>git remote add upstream &#60;URL&#62;</code> by pasting the URL you copied in Step b.</p>
 </li>
 <li>
-<p>To verify the new upstream repository you&#8217;ve specified for your fork, type <code>git remote -v</code> again. You should see
+<p>To verify the new upstream repository you&#8217;ve specified for your fork, execute <code>git remote -v</code> again. You should see
 the URL for your fork as <code>origin</code>, and the URL for the original repository as <code>upstream</code>.</p>
 </li>
 </ol>
@@ -622,7 +622,7 @@ upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)</code
 </div>
 </div>
 <div class="paragraph">
-<p>Now, you can keep your fork synced with the <code>upstream</code> repository with a few Git commands. For more information,
+<p>Now you can keep your fork synced with the <code>upstream</code> repository with a few Git commands. For more information,
 please see the <a href="https://help.github.com/articles/syncing-a-fork/">Syncing a fork</a> page.</p>
 </div>
 <div class="admonitionblock note">
@@ -649,24 +649,28 @@ see the article <a href="https://help.github.com/articles/dealing-with-line-endi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each major application version will have a dedicated branch so you can checkout the code for a particular version.
+Each major application version will have a dedicated branch so you can checkout the code for a particular version. The name convention adopted for release branches is YYYY.MM.
+The master branch contains the version currently deployed in production.
+The develop branch contains the code for the next version of ESPD.
+The gh-pages branch is reserved for documentation.
+If you want to be isolated from changes you should branch from master or from a specific release branch.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="running-and-deploying-the-espd-application"><a class="anchor" href="#running-and-deploying-the-espd-application"></a>Running and deploying the ESPD application</h3>
+<h3 id="building-and-running-the-espd-application"><a class="anchor" href="#building-and-running-the-espd-application"></a>Building and running the ESPD application</h3>
 <div class="paragraph">
 <p>This section goes into detail about how you can build and run the <a href="https://ec.europa.eu/espd">ESPD</a> application.</p>
 </div>
 <div class="sect3">
 <h4 id="building-the-application"><a class="anchor" href="#building-the-application"></a>Building the application</h4>
 <div class="paragraph">
-<p>The <a href="https://ec.europa.eu/espd">ESPD</a> uses <a href="https://maven.apache.org">Maven 3</a> as the primary build system and is structured as a multi-module Maven project.</p>
+<p>The <a href="https://ec.europa.eu/espd">ESPD</a> uses <a href="https://maven.apache.org">Maven</a> as the primary build system and is structured as a multi-module Maven project.</p>
 </div>
 <div class="paragraph">
-<p>After getting access to the source code and copying it on your computer, you can now build the project with <a href="https://maven.apache.org">Maven 3</a>.</p>
+<p>After getting access to the source code and cloning it on your computer, you can now build the project with <a href="https://maven.apache.org">Maven</a>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -674,61 +678,16 @@ Each major application version will have a dedicated branch so you can checkout 
 <p>Change directories to the location of the cloned Git repository on your machine.</p>
 </li>
 <li>
-<p>Perform a <code>mvn clean package</code> and now the project dependencies should be downloaded and the <code>exchange-model</code>,
-<code>espd-web</code> and <code>espd-docs</code> modules should be built.</p>
+<p>Perform a <code>mvn clean package</code> and the project dependencies should be downloaded and the <code>espd-web</code> and <code>espd-docs</code> modules should be built.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="running-from-an-ide"><a class="anchor" href="#running-from-an-ide"></a>Running from an IDE</h4>
+<h4 id="running-the-application"><a class="anchor" href="#running-the-application"></a>Running the application</h4>
 <div class="paragraph">
-<p>You can run the <a href="https://ec.europa.eu/espd">ESPD</a> application from your IDE by importing the project as a multi-module Maven project first.
-You also need to install the Lombok plugin for your particular IDE.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Before running the application you need to generate the <a href="https://jaxb.java.net">JAXB</a> classes by invoking a <code>mvn clean package</code> command
-and then add the <code>src/main/generated</code> folder on the application classpath of the <code>exchange-model</code> Maven module.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="run-with-an-embedded-tomcat-container"><a class="anchor" href="#run-with-an-embedded-tomcat-container"></a>Run with an embedded Tomcat container</h4>
-<div class="paragraph">
-<p>The easiest way to start the application is with an embedded Tomcat 8 (default) container by invoking the <code>main</code> method
-from the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java non-web
-application.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="run-as-an-exploded-war-file-on-a-servlet-container"><a class="anchor" href="#run-as-an-exploded-war-file-on-a-servlet-container"></a>Run as an exploded WAR file on a Servlet container</h4>
-<div class="paragraph">
-<p>The application can be deployed as an exploded WAR file on different Servlet 3 containers. For example, you can
-check the following links on how to deploy it on a Tomcat container:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.jetbrains.com/help/idea/2016.1/configuring-web-application-deployment.html?origin=old_help">IntelliJ IDEA</a></p>
-</li>
-<li>
-<p><a href="https://www.mulesoft.com/tcat/tomcat-eclipse">Eclipse Tomcat</a></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deploying-with-the-embedded-tomcat-container"><a class="anchor" href="#deploying-with-the-embedded-tomcat-container"></a>Deploying with the embedded Tomcat container</h4>
-<div class="paragraph">
-<p>The fastest way to deploy the application is by using an embedded Tomcat container.</p>
+<p>The easiest way to run the application is with an embedded container (default is Tomcat) by invoking the <code>main</code> method
+from the <code>eu.europa.ec.grow.espd.config.EspdApplication</code> class in the same way as you would start a normal Java application.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -782,7 +741,7 @@ files.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is recommended to set up the context path of the application when running in the embedded mode.
+It is recommended to set up the context path of the application when running in the embedded mode. This can be done in the application.properties file located in the espd-web project resources folder.
 </td>
 </tr>
 </table>
@@ -796,9 +755,9 @@ server.context-path=/espd</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deploying-on-an-external-servlet-container"><a class="anchor" href="#deploying-on-an-external-servlet-container"></a>Deploying on an external Servlet container</h4>
+<h4 id="deploying-the-web-application-on-a-servlet-container"><a class="anchor" href="#deploying-the-web-application-on-a-servlet-container"></a>Deploying the web application on a servlet container</h4>
 <div class="paragraph">
-<p>If you want to deploy the application on an external Servlet container, you need to package it as a WAR for the
+<p>The application can be deployed as a WAR file on a Servlet 3 compliant container such as Tomcat. For this, you need to package it as a WAR for the
 <code>non-embedded</code> Maven profile and provide some startup parameters on your server.</p>
 </div>
 <div class="olist arabic">
@@ -819,13 +778,44 @@ server.context-path=/espd</code></pre>
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="using-an-ide"><a class="anchor" href="#using-an-ide"></a>Using an IDE</h4>
+<div class="paragraph">
+<p>You can also run the <a href="https://ec.europa.eu/espd">ESPD</a> application from your favourite IDE by importing the project as a multi-module Maven project first.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will need to install the <a href="https://projectlombok.org/">Lombok</a> plugin for your particular IDE. Lombok is a library designed to reduce Java boilerplate code through the use of annotations.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have problems importing the project in <a href="https://eclipse.org/downloads">Eclipse</a> try running the <a href="https://maven.apache.org">Maven</a> command <code>mvn eclipse:eclipse</code> before the import.
+If after the import the Problems view display errors of type <code>Plugin execution not covered by lifecycle configutation</code> right-click on the error and set Eclipse to ignore the execution of the plugin.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-16 16:38:50 +01:00
+Last updated 2017-04-07 13:30:11 +02:00
 </div>
 </div>
 </body>
