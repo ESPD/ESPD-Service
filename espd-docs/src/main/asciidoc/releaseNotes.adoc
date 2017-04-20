@@ -1,5 +1,9 @@
 == Release notes
 
+=== 2017.03.01 (11th of April 2017)
+
+This release contains a bugfix related to printing issues introduced in version `2017.03`.
+
 === 2017.03 (7th of April 2017)
 
 ==== Enhancement
