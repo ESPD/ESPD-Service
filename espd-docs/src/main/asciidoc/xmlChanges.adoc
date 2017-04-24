@@ -13,9 +13,50 @@ https://github.com/ESPD/ESPD-Service/issues/89[Part I: Addition of a national re
 
 https://github.com/ESPD/ESPD-Service/issues/148[Part IV: Turnover fields should have fiscal years]
 
-
 https://github.com/ESPD/ESPD-Service/issues/154[Semantic error in ESPD XML Schema for postcode (zipcode)]
 
+For both the EO and the representatives of the EO a postcode can be specified. In case of the EO, this information is represented by the XML element espd-cac:ContractingParty.Party.PostalAddress.Postbox, in case of the EO representative the element espd-cac:EconomicOperatorParty.Party.Person.ResidenceAddress.Postbox is used.
+
+As usage of the Postbox element in semantically wrong in both cases (i.e. a postbox number refers to a post office box registered for postal delivery by a postal service provider). The element […].PostalZone will be used instead.
+
+Example:
+
+[source,xml]
+.espd-response.xml
+----
+<espd:ESPDResponse>
+    .....
+    <espd-cac:EconomicOperatorParty>
+        <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
+        <espd-cac:RepresentativeNaturalPerson>
+            <cac:PowerOfAttorney>
+                <cac:AgentParty>
+                    <cac:Person>
+                        <cac:Contact/>
+                        <cac:ResidenceAddress/>
+                    </cac:Person>
+                </cac:AgentParty>
+            </cac:PowerOfAttorney>
+        </espd-cac:RepresentativeNaturalPerson>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name></cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:PostalZone>1050</cbc:PostalZone><!--1-->
+                <cac:Country>
+                    <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">GR</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact/>
+        </cac:Party>
+    </espd-cac:EconomicOperatorParty>
+   ...
+</espd:ESPDResponse>
+
+----
+
+<1> XML element Postbox has been replaced by PostalZone
 
 
 === Version 2016.12
