@@ -10,7 +10,7 @@ https://github.com/ESPD/ESPD-Service/issues/75[Part III:exclusion grounds: Add m
 
 https://github.com/ESPD/ESPD-Service/issues/89[Part I: Addition of a national reference number]
 
-In Part I (Information About Publication section) we need to provide the possibility to add a national reference 
+In Part I (Information About Publication section) we need to provide the possibility to add a national reference
 number to help economic operators in a country to identify it on a national portal.
 
 To fulfill this requirement we need to add a new XML element as in the following example:
@@ -20,7 +20,7 @@ To fulfill this requirement we need to add a new XML element as in the following
 ----
 <cac:AdditionalDocumentReference>
       <cbc:ID schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">The national number here</cbc:ID>
-      <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">NATIONAL_NUMBER</cbc:DocumentTypeCode>      
+      <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">NATIONAL_NUMBER</cbc:DocumentTypeCode>
       <cac:Attachment>
          <cac:ExternalReference>
             <cbc:Description>-</cbc:Description>
@@ -34,10 +34,10 @@ https://github.com/ESPD/ESPD-Service/issues/148[Part IV: Turnover fields should 
 In Part IV (Selection Criteria) Section B (Economic and Financial Standing), currently the economic operator can only specify a Year for
  the following requirements:
 
-<1> General Yearly Turnover and 
-<2> Specific Yearly Turnover 
+<1> General Yearly Turnover and
+<2> Specific Yearly Turnover
 
-This change is about allowing the EO to specify instead the fiscal year by selecting a Start Date and an End Date. In the new definition 
+This change is about allowing the EO to specify instead the fiscal year by selecting a Start Date and an End Date. In the new definition
 the QUANTITY_YEAR field will be replaced by a START_DATE and END_DATE fields as follows:
 
 [source,javascript]
@@ -81,6 +81,48 @@ the QUANTITY_YEAR field will be replaced by a START_DATE and END_DATE fields as 
 
 https://github.com/ESPD/ESPD-Service/issues/154[Semantic error in ESPD XML Schema for postcode (zipcode)]
 
+For both the EO and the representatives of the EO a postcode can be specified. In case of the EO, this information is represented by the XML element espd-cac:ContractingParty.Party.PostalAddress.Postbox, in case of the EO representative the element espd-cac:EconomicOperatorParty.Party.Person.ResidenceAddress.Postbox is used.
+
+As usage of the Postbox element in semantically wrong in both cases (i.e. a postbox number refers to a post office box registered for postal delivery by a postal service provider). The element […].PostalZone will be used instead.
+
+Example:
+
+[source,xml]
+.espd-response.xml
+----
+<espd:ESPDResponse>
+    .....
+    <espd-cac:EconomicOperatorParty>
+        <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
+        <espd-cac:RepresentativeNaturalPerson>
+            <cac:PowerOfAttorney>
+                <cac:AgentParty>
+                    <cac:Person>
+                        <cac:Contact/>
+                        <cac:ResidenceAddress/>
+                    </cac:Person>
+                </cac:AgentParty>
+            </cac:PowerOfAttorney>
+        </espd-cac:RepresentativeNaturalPerson>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name></cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:PostalZone>1050</cbc:PostalZone><!--1-->
+                <cac:Country>
+                    <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">GR</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact/>
+        </cac:Party>
+    </espd-cac:EconomicOperatorParty>
+   ...
+</espd:ESPDResponse>
+
+----
+
+<1> XML element Postbox has been replaced by PostalZone
 
 
 === Version 2016.12
