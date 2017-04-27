@@ -124,6 +124,28 @@ Example:
 
 <1> XML element Postbox has been replaced by PostalZone
 
+https://github.com/ESPD/ESPD-Service/issues/159[Correct XML schema version]
+
+For The ESPD XML Schema version in element cbc:VersionID, until now deployment date is used. It will be changed to correct ESPD XML Schema version.
+
+Example:
+
+[source,xml]
+.espd-response.xml
+----
+<espd:ESPDResponse>
+    .....
+   <cbc:CopyIndicator>false</cbc:CopyIndicator>
+   <cbc:VersionID schemeAgencyID="EU-COM-GROW">1.0.2</cbc:VersionID> <!--1-->
+   <cbc:IssueDate>2016-05-30</cbc:IssueDate>
+   <cbc:IssueTime>00:00:00</cbc:IssueTime>
+   <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
+   .....
+</espd:ESPDResponse>
+----
+
+<1> XML element VersionID contains the correct ESPD XML Schema version.
+
 
 === Version 2016.12
 
