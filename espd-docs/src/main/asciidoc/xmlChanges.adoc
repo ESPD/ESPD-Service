@@ -4,6 +4,45 @@
 
 https://github.com/ESPD/ESPD-Service/issues/67[Part V should not be shown in an open procedure]
 
+Part V should not be shown in an open procedure #67
+
+In case `Part I: Information concerning the procurement procedure and the contracting authority or contracting entity`,
+section `Information about the procurement procedure` receives an additional member called `Type of procedure`.
+
+List of values and its impact on Part V specified below:
+* Not specified (because it may not be selected)
+* Open procedure
+* Restricted procedure (Part V will be shown)
+* Competitive procedure with negotiation (Part V will be shown)
+* Competitive dialogue (Part V will be shown)
+* Innovation partnership (Part V will be shown)
+
+Code list for these values are taken from version 1.0.2 and specified below:
+
+
+This additional field is using cac:TenderingProcess.cbc:ProcedureCode element, with possible values:
+
+[format="csv",options="header"]
+|================================================
+Title,Value
+Not specified,null
+Open procedure,1
+Restricted procedure,2
+Competitive procedure with negotiation,10
+Competitive dialogue,C
+Innovation partnership,11
+|================================================
+
+Example:
+
+[source,xml]
+.espd-request.xml .espd-response.xml
+----
+<cac:TenderingProcess>
+	   <cbc:ProcedureCode listID="ProcedureType" listAgencyName="OJEU" listVersionID="1.0">C</cbc:ProcedureCode>
+</cac:TenderingProcess>
+----
+
 
 https://github.com/ESPD/ESPD-Service/issues/75[Part III:exclusion grounds: Add multiple persons]
 
