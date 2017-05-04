@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2017.03.02 (5th of May 2017)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/161[Error in CA view of ESPD-response, part IV a]
+
 === 2017.03.01 (11th of April 2017)
 
 This release contains a bugfix related to printing issues introduced in version `2017.03`.
