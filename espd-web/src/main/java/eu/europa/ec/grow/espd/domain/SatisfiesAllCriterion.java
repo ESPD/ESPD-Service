@@ -45,4 +45,5 @@ public class SatisfiesAllCriterion extends SelectionCriterion {
         // the satisfies all criterion has special behaviour so the default value should be null
         return this.answer;
     }
+
 }

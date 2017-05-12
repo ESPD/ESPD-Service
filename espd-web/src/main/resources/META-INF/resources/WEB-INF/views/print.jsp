@@ -352,21 +352,29 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	            	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
 	            </div>
 	            <div id="eo-satisfies-all-section" class="collapse in">
-	                <div class="espd-panel-body panel-body">
-                        ${span18n['crit_selection_ca_declares_that']}
-                        <div class="checkbox">
-	                        <label>
-	                        	<c:if test="${espd.selectionSatisfiesAll.exists}">
-									<input type="checkbox" class="checktoggle" checked="checked"/>
-	                        	</c:if>
-	                        	<c:if test="${!espd.selectionSatisfiesAll.exists}">
-									<input type="checkbox" class="checktoggle"/>
-	                        	</c:if>
-	                        	
-	                            ${span18n['crit_selection_satisfies_all_criteria']}
-	                        </label>
+                    <div class="espd-panel-body panel-body">
+                        <strong>${span18n['crit_selection_eo_declares_that']}</strong>
+                        <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_declares_that_tooltip']}"></span>
+
+	                    <div class="row criteria-row-form">
+	                        <div class="col-md-5 criteria-row-check-left">
+	                            <div class="form-group">
+	                                <div class="col-md-12">
+	                                    <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="col-md-7 criteria-row-check-right">
+	                            <div class="col-md-12">
+	                                <div class="form-group">
+	                                    ${span18n["crit_your_answer"]}
+	                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="true"/>${span18n["yes"]}
+	                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="false"/>${span18n["no"]}
+	                                </div>
+	                            </div>
+	                        </div>
 	                    </div>
-	                </div>
+                    </div>
 	            </div>
 	        </div>
        </c:if>
