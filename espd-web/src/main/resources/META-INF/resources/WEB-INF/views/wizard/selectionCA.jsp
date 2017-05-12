@@ -52,9 +52,8 @@
                 <span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
             </h2>
         </div>
-        <div class="alert alert-espd-info-dotted"
+        <div class="alert alert-espd-info-dotted">
                     ${span18n['createcasel_alert']}
-  
 					<label class="control-label">${span18n['question_to_use_alpha']}</label>
 					<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" value="false"/>${span18n['yes']}
 					<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" value="true"/>${span18n['no']}
@@ -78,7 +77,7 @@
             </div>
         </div>
         
-        <div class="tab-pane active" id="ca-selection-criteria" style="${usealpha?'display:none':''}">
+        <div id="ca-selection-criteria" class="tab-pane active" style="${usealpha?'display:none':''}">
 			<tiles:insertDefinition name="topLevelCriteriaTemplate">
 				<tiles:putAttribute name="topLevelCriteriaList" value="${selectionCA}"/>
 			</tiles:insertDefinition>

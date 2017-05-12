@@ -40,7 +40,17 @@
 
 <%request.setAttribute("selectionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.selectionEO);%>
 
-<c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
+
+
+<%-- Alpha criterion selected --%>
+<c:set var="use_alpha" value="${espd.selectionSatisfiesAll.exists}"/>
+
+<%-- Alpha criterion not selected but other selection criteria exists --%>
+<c:set var="use_atod" value="${espd.atLeastOneSelectionCriterionWasSelected && !espd.selectionSatisfiesAll.exists }"/>
+
+<%-- Both options when no selection and no alpha selecter OR all selection and alpha selected or not selected --%>
+<c:set var="use_both" value="${(!espd.atLeastOneSelectionCriterionWasSelected && espd.selectionSatisfiesAll.exists == false) || espd.allSelectionCriterionWasSelectedExceptAlpha}"/>
+
 
 <tiles:importAttribute name="flow"/>
 
@@ -133,8 +143,20 @@
         	}
         %>
         
-        <c:if test="${usealpha}">
-            <div class="panel panel-espd">
+        <c:if test="${use_both}">
+			<div class="alert alert-espd-info-dotted">
+				${span18n['createcasel_alert']}
+				<label class="control-label">${span18n['question_to_use_alpha']}</label>
+				<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#eo-selection-criteria" data-target-hide="#alpha-criterion" value="false"/>${span18n['yes']}
+				<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#alpha-criterion" data-target-hide="#eo-selection-criteria" value="true"/>${span18n['no']}
+			</div>
+        </c:if>
+        
+        
+
+		<c:if test="${use_both || use_alpha}">
+		
+            <div id="alpha-criterion"  class="panel panel-espd" style="${use_both?(espd.selectionSatisfiesAll.exists ? '' : 'display:none'):''}">
                 <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
                     <h4 class="panel-title">${span18n['all_selection_switch']}</h4>
                 </div>
@@ -166,17 +188,33 @@
             </div>
         </c:if>
         
-		<c:if test="${!usealpha}">
-	        <div id="eo-satisfies-all-form">
+		<c:if test="${use_both || use_atod}">
+	        <div id="eo-selection-criteria" style="${use_both?(espd.selectionSatisfiesAll.exists ? 'display:none' : ''):''}">
 				<tiles:insertDefinition name="topLevelCriteriaTemplate">
 					<tiles:putAttribute name="topLevelCriteriaList" value="${selectionEO}"/>
 				</tiles:insertDefinition>
 			</div>
         </c:if>
         
+                    <div class="alert alert-espd-info-dotted">
+	<h1>DEBUGGY:</h1>
+	selectionSatisfiesAll.exists : ${espd.selectionSatisfiesAll.exists} <br>
+	atLeastOneSelectionCriterionWasSelected : ${espd.atLeastOneSelectionCriterionWasSelected} <br>
+	allSelectionCriterionWasSelectedExceptAlpha : ${espd.allSelectionCriterionWasSelectedExceptAlpha} <br><br>
+	use_alpha : ${use_alpha} <br>
+	use_atod : ${use_atod} <br>
+	use_both : ${use_both} <br>
+</div>
+        
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="prev" value="exclusion"/>
             <tiles:putAttribute name="next" value="finish"/>
         </tiles:insertDefinition>
+        
+
     </div>
+    
+
 </form:form>
+
+
