@@ -129,9 +129,11 @@ final class UblPartyTypeTransformer implements Function<CacParty, PartyType> {
             return;
         }
 
-        PostboxType postboxType = new PostboxType();
-        postboxType.setValue(trimToEmpty(party.getPostalCode()));
-        addressType.setPostbox(postboxType);
+        PostalZoneType postalZoneType = new PostalZoneType();
+        postalZoneType.setValue(trimToEmpty(party.getPostalCode()));
+        addressType.setPostalZone(postalZoneType);
+
+
     }
 
     private void addContactInformation(CacParty party, PartyType partyType) {
