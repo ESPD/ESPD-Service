@@ -197,10 +197,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_if_proc_reserved']}</label>
                         <div class="col-md-6">
-                            <form:radiobutton path="procurementReserved.answer" value="true"
-                                              data-target-show="#disworkers-form"/>${span18n["yes"]}
-                            <form:radiobutton path="procurementReserved.answer" value="false"
-                                              data-target-hide="#disworkers-form"/>${span18n["no"]}
+                            <form:radiobutton path="procurementReserved.answer" value="true" data-target-show="#disworkers-form"/>${span18n["yes"]}
+                            <form:radiobutton path="procurementReserved.answer" value="false" data-target-hide="#disworkers-form"/>${span18n["no"]}
                         </div>
                     </div>
                 </div>
@@ -211,7 +209,7 @@
                             <form:textarea rows="1" cssClass="form-control" path="procurementReserved.doubleValue1"
                                            number="true"/>
                         </div>
-                    </div>
+                    </div>s
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_disworkers_details']}</label>
                         <div class="col-md-6">

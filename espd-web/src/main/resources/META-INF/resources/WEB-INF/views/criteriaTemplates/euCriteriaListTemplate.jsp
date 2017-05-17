@@ -36,12 +36,12 @@
 <tiles:importAttribute name="disableTooltips"/>
 <tiles:importAttribute name="criteriaList"/>
 
-<c:set var="atLeastOneCriterionExists" value="false"/>
+<c:set var="atLeastOneCriterionExists" value="${false}"/>
 <c:forEach var="criterion" items="${criteriaList}">
-    <c:set var="atLeastOneCriterionExists" value="${atLeastOneCriterionExists || espd[criterion.field].exists}"/>
+    <c:set var="atLeastOneCriterionExists" value="${atLeastOneCriterionExists || (espd[criterion.field].exists == true)}"/>
 </c:forEach>
-<c:if test="${agent eq 'ca'}">
-    <c:set var="atLeastOneCriterionExists" value="true"/>
+<c:if test="${(agent eq 'ca') && printingjsp != true}">
+    <c:set var="atLeastOneCriterionExists" value="${true}"/>
 </c:if>
 <c:if test="${atLeastOneCriterionExists}">
     <div class="panel panel-espd">

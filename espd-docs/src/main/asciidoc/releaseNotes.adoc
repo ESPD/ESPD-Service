@@ -1,5 +1,13 @@
 == Release notes
 
+=== 2017.03.03 (17th of May 2017)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/160[EO can only 'alpha' criterion when CA selects 'alpha']
+* https://github.com/ESPD/ESPD-Service/issues/169[shows the YES if selecting NO in part IV Selection Criteria]
+
+
 === 2017.03.02 (5th of May 2017)
 
 ==== Bug

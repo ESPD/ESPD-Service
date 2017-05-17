@@ -31,16 +31,6 @@
 
 <%request.setAttribute("selectionCA", eu.europa.ec.grow.espd.xml.CriteriaTemplates.selectionCA);%>
 
-<script>
-    $(function () {
-		$("input[name='usealpha']").change(function(){
-			if(this.value == false || this.value == "false") {
-				$('#usealpha-checkbox').attr('checked', false);
-			}
-		});
-    });
-</script>
-
 <tiles:importAttribute name="flow"/>
 
 <c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
@@ -62,18 +52,11 @@
                 <span data-i18n="createcasel_header"><s:message code="createcasel_header"/></span>
             </h2>
         </div>
-        <div class="alert alert-espd-info-dotted"
+        <div class="alert alert-espd-info-dotted">
                     ${span18n['createcasel_alert']}
-  
 					<label class="control-label">${span18n['question_to_use_alpha']}</label>
-					<c:if test="${usealpha}">
-						<input name="usealpha" data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" type="radio" value="false">${span18n['yes']}
-						<input name="usealpha" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" type="radio" value="true" checked="checked">${span18n['no']}
-					</c:if>
-					<c:if test="${!usealpha}">
-						<input name="usealpha" data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" type="radio" value="false" checked="checked">${span18n['yes']}
-						<input name="usealpha" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" type="radio" value="true">${span18n['no']}
-					</c:if>
+					<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#ca-selection-criteria" data-target-hide="#alpha-criterion" value="false"/>${span18n['yes']}
+					<form:radiobutton name="usealpha" path="selectionSatisfiesAll.exists" data-target-show="#alpha-criterion" data-target-hide="#ca-selection-criteria" value="true"/>${span18n['no']}
         </div>
 
         <div id="alpha-criterion" class="panel panel-espd" style="${usealpha?'':'display:none'}">
@@ -86,7 +69,7 @@
                         <span data-i18n="crit_selection_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_declares_that_tooltip']}"></span>
 	                    <div class="checkbox">
 	                        <label>
-	                            <form:checkbox id="usealpha-checkbox" path="selectionSatisfiesAll.exists" class="checktoggle" value="true"/>
+	                            <input type="checkbox" checked="checked" disabled readonly/>
 	                            ${span18n['crit_selection_satisfies_all_criteria']}
 	                        </label>
 	                    </div>
@@ -94,7 +77,7 @@
             </div>
         </div>
         
-        <div class="tab-pane active" id="ca-selection-criteria" style="${usealpha?'display:none':''}">
+        <div id="ca-selection-criteria" class="tab-pane active" style="${usealpha?'display:none':''}">
 			<tiles:insertDefinition name="topLevelCriteriaTemplate">
 				<tiles:putAttribute name="topLevelCriteriaList" value="${selectionCA}"/>
 			</tiles:insertDefinition>

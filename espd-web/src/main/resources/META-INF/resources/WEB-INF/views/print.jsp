@@ -307,28 +307,26 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		<tiles:insertDefinition name="topLevelCriteriaTemplate">
 			<tiles:putAttribute name="topLevelCriteriaList" value="${exclusionEO}"/>
 		</tiles:insertDefinition>
-
-        <div class="panel panel-espd">
-            <div class="panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
-                <h4 class="panel-title">${span18n['crit_top_title_purely_national']}</h4>
-            </div>
-            <div id="ca-insolvency-section" class="collapse in">
-                <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_breaching_obligations" style="font-weight: bold;">
-                        <s:message code='crit_eu_main_purely_national'/>
-                    </span>
-                    <c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
-                        <tiles:insertDefinition name="exclusionFormTemplate">
-                            <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
-                            <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
-                            <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
-                            <tiles:putAttribute name="selfCleaning" value="false"/>
-	              	    	<tiles:putAttribute name="hasCriterion" value="false"/>
-                        </tiles:insertDefinition>
-                    </c:if>
-                </div>
-            </div>
-        </div>
+		
+ 		<c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
+	        <div class="panel panel-espd">
+	            <div class="panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
+	                <h4 class="panel-title">${span18n['crit_top_title_purely_national']}</h4>
+	            </div>
+	            <div id="ca-insolvency-section" class="collapse in">
+	                <div class="espd-panel-body panel-body">
+	                    <b>${span18n['crit_eu_main_purely_national']}</b>
+	                    <tiles:insertDefinition name="exclusionFormTemplate">
+	                        <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
+	                        <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
+	                        <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
+	                        <tiles:putAttribute name="selfCleaning" value="false"/>
+		                	<tiles:putAttribute name="hasCriterion" value="false"/>
+	                    </tiles:insertDefinition>
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
     </div>
 
 	<%-- SELECTION --%>
@@ -352,21 +350,29 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 	            	<h4 class="panel-title">${span18n['all_selection_switch']}</h4>
 	            </div>
 	            <div id="eo-satisfies-all-section" class="collapse in">
-	                <div class="espd-panel-body panel-body">
-                        ${span18n['crit_selection_ca_declares_that']}
-                        <div class="checkbox">
-	                        <label>
-	                        	<c:if test="${espd.selectionSatisfiesAll.exists}">
-									<input type="checkbox" class="checktoggle" checked="checked"/>
-	                        	</c:if>
-	                        	<c:if test="${!espd.selectionSatisfiesAll.exists}">
-									<input type="checkbox" class="checktoggle"/>
-	                        	</c:if>
-	                        	
-	                            ${span18n['crit_selection_satisfies_all_criteria']}
-	                        </label>
+                    <div class="espd-panel-body panel-body">
+                        <strong>${span18n['crit_selection_eo_declares_that']}</strong>
+                        <span data-i18n="crit_selection_eo_declares_that_tooltip" data-toggle="tooltip" title="${i18n['crit_selection_eo_declares_that_tooltip']}"></span>
+
+	                    <div class="row criteria-row-form">
+	                        <div class="col-md-5 criteria-row-check-left">
+	                            <div class="form-group">
+	                                <div class="col-md-12">
+	                                    <strong>${span18n['crit_selection_eo_satisfies_all_criteria']}</strong>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="col-md-7 criteria-row-check-right">
+	                            <div class="col-md-12">
+	                                <div class="form-group">
+	                                    ${span18n["crit_your_answer"]}
+	                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="true"/>${span18n["yes"]}
+	                                    <form:radiobutton path="selectionSatisfiesAll.answer" value="false"/>${span18n["no"]}
+	                                </div>
+	                            </div>
+	                        </div>
 	                    </div>
-	                </div>
+                    </div>
 	            </div>
 	        </div>
        </c:if>
