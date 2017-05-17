@@ -92,6 +92,7 @@
 		<% 
         	EspdDocument espd = (EspdDocument)request.getAttribute("espd");
         	if (espd != null) { 
+        		
             	{// Add at least one Financial Ratio to be sure user will see it in form
 	        		if (espd.getFinancialRatio() == null) {
 	        			espd.setFinancialRatio(new EconomicFinancialStandingCriterion());
@@ -101,6 +102,27 @@
 	        			espd.getFinancialRatio().getUnboundedGroups().add(new DynamicRequirementGroup());
 		        	}
             	}
+            	
+            	{// Add at least one General Yearly Turnover to be sure user will see it in form
+	        		if (espd.getGeneralYearlyTurnover() == null) {
+	        			espd.setGeneralYearlyTurnover(new EconomicFinancialStandingCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getGeneralYearlyTurnover().getUnboundedGroups())) {
+	        			espd.getGeneralYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+            	}
+            	
+            	{// Add at least one Specific Yearly Turnover to be sure user will see it in form
+	        		if (espd.getSpecificYearlyTurnover() == null) {
+	        			espd.setSpecificYearlyTurnover(new EconomicFinancialStandingCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getSpecificYearlyTurnover().getUnboundedGroups())) {
+	        			espd.getSpecificYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+            	}
+            	            	
             	{// Add at least one workContractsPerformanceOfWorks to be sure user will see it in form
 	        		if (espd.getWorkContractsPerformanceOfWorks() == null) {
 	        			espd.setWorkContractsPerformanceOfWorks(new TechnicalProfessionalCriterion());

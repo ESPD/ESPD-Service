@@ -30,6 +30,10 @@ import eu.europa.ec.grow.espd.domain.AvailableElectronically
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+
+import org.joda.time.LocalDate
+import org.joda.time.LocalTime
+
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -64,13 +68,15 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         then: "G1"
         def crit = response.Criterion[idx]
 
-        then: "check year amount currency subgroups"
+        then: "check start date and date amount currency subgroups"
         checkYearAmountCurrencyGroup1(crit.RequirementGroup[0])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[1])
     }
-
+	
+	// TODO re-implement this test after 2017.05 xml changes
+	/*
     def "check the 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
@@ -122,7 +128,9 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         req5.Response[0].Quantity.text() == "2012"
         req5.Response[0].Quantity.@unitCode.text() == "YEAR"
     }
+*/
 
+	/*
     def "check empty 'Year' requirements response"() {
         given:
         def espd = new EspdDocument(generalYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
@@ -169,6 +177,7 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
         req5.Response.size() == 1
         req5.Response[0].Quantity.size() == 0
     }
+*/
 
     def "check the 'Amount' requirements response"() {
         given:
@@ -188,35 +197,35 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 
         then: "First amount"
         def g1_1 = crit.RequirementGroup[0]
-        def req1 = g1_1.Requirement[1]
+		def req1 = g1_1.Requirement[2]
         req1.Response.size() == 1
         req1.Response.Amount.text() == "11.11"
         req1.Response.Amount.@currencyID.text() == "EUR"
 
         then: "Second amount"
         def g1_2 = crit.RequirementGroup[1]
-        def req2 = g1_2.Requirement[1]
+		def req2 = g1_2.Requirement[2]
         req2.Response.size() == 1
         req2.Response.Amount.text() == "22.22"
         req2.Response.Amount.@currencyID.text() == "RON"
 
         then: "Third amount"
         def g1_3 = crit.RequirementGroup[2]
-        def req3 = g1_3.Requirement[1]
+		def req3 = g1_3.Requirement[2]
         req3.Response.size() == 1
         req3.Response.Amount.text() == "33.33"
         req3.Response.Amount.@currencyID == "USD"
 
         then: "Fourth amount"
         def g1_4 = crit.RequirementGroup[3]
-        def req4 = g1_4.Requirement[1]
+		def req4 = g1_4.Requirement[2]
         req4.Response.size() == 1
         req4.Response.Amount.text() == "44.44"
         req4.Response.Amount.@currencyID == "CHF"
 
         then: "Fifth amount"
         def g1_5 = crit.RequirementGroup[4]
-        def req5 = g1_5.Requirement[1]
+		def req5 = g1_5.Requirement[2]
         req5.Response.size() == 1
         req5.Response.Amount.text() == "55.55"
         req5.Response.Amount.@currencyID == "ALD"

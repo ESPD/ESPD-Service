@@ -469,6 +469,20 @@ class EspdController {
 				addIndex, "#financialRatio", flow);
 	}
 
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_generalYearlyTurnover")
+	public String addGeneralYearlyTurnover(@PathVariable String flow, @RequestParam("add_generalYearlyTurnover") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getGeneralYearlyTurnover(),
+				addIndex, "#generalYearlyTurnover", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_specificYearlyTurnover")
+	public String addSpecificYearlyTurnover(@PathVariable String flow, @RequestParam("add_specificYearlyTurnover") Integer addIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getSpecificYearlyTurnover(),
+				addIndex, "#specificYearlyTurnover", flow);
+	}
+	
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_workContractsPerformanceOfWorks")
 	public String addWorkContractsPerformanceOfWorks(@PathVariable String flow,
 			@RequestParam("add_workContractsPerformanceOfWorks") Integer addIndex,
@@ -520,6 +534,20 @@ class EspdController {
 		return removeMultipleReference(espd.getFinancialRatio(), removeIndex, "#financialRatio", flow);
 	}
 
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_generalYearlyTurnover")
+	public String removeGeneralYearlyTurnover(@PathVariable String flow,
+			@RequestParam("remove_generalYearlyTurnover") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getGeneralYearlyTurnover(), removeIndex, "#generalYearlyTurnover", flow);
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_specificYearlyTurnover")
+	public String removeSpecificYearlyTurnover(@PathVariable String flow,
+			@RequestParam("remove_specificYearlyTurnover") Integer removeIndex,
+			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getSpecificYearlyTurnover(), removeIndex, "#specificYearlyTurnover", flow);
+	}
+	
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_workContractsPerformanceOfWorks")
 	public String removeWorkContractsPerformanceOfWorks(@PathVariable String flow,
 			@RequestParam("remove_workContractsPerformanceOfWorks") Integer removeIndex,

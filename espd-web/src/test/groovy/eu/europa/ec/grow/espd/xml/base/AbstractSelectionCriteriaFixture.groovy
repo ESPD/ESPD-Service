@@ -64,11 +64,11 @@ abstract class AbstractSelectionCriteriaFixture extends AbstractCriteriaFixture 
 
     protected static void checkYearAmountCurrencyGroup1(def yearAmountCurrencyGroup) {
         assert yearAmountCurrencyGroup.ID.text() == "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16"
-        assert yearAmountCurrencyGroup.Requirement.size() == 2
+        assert yearAmountCurrencyGroup.Requirement.size() == 3
         assert yearAmountCurrencyGroup.@pi.text() == ""
-
-        checkRequirement(yearAmountCurrencyGroup.Requirement[0], "5aacceb3-280e-42f1-b2da-3d8ac7877fe9", "Year", "QUANTITY_YEAR")
-        checkRequirement(yearAmountCurrencyGroup.Requirement[1], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
+		checkRequirement(yearAmountCurrencyGroup.Requirement[0], "42ec8116-31a7-4118-8612-5b04f5c8bde7", "Start Date", "DATE")
+		checkRequirement(yearAmountCurrencyGroup.Requirement[1], "3641b897-f9f0-4d90-909a-b6d4c4b1d645", "End Date", "DATE")
+        checkRequirement(yearAmountCurrencyGroup.Requirement[2], "42db0eaa-d2dd-48cb-83ac-38d73cab9b50", "Amount", "AMOUNT")
     }
 
     protected static void checkDescriptionRatioGroup1(def descriptionRatioGroup) {

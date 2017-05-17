@@ -30,6 +30,7 @@ import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +45,8 @@ public class EconomicFinancialStandingCriterion extends SelectionCriterion imple
 	private String averageTurnoverCurrency;
 	private BigDecimal amount;
 	private String currency;
+	private Date startDate;
+	private Date endDate;
 	private Integer year;
 
 	private List<DynamicRequirementGroup> unboundedGroups = new ArrayList<>(5);

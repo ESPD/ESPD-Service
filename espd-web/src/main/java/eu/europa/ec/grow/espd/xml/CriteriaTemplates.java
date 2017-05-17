@@ -989,6 +989,8 @@ public final class CriteriaTemplates {
                     put("field", "generalYearlyTurnover").
                     put("title_code", "crit_selection_economic_general_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_general_yearly_turnover_description").
+                    put("has_multiple_year_amount", "false").
+                    put("has_multiple_amount_date", "true").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
                     put("criterion", SelectionCriterion.GENERAL_YEARLY_TURNOVER).build(),
 
@@ -1006,6 +1008,8 @@ public final class CriteriaTemplates {
                     put("field", "specificYearlyTurnover").
                     put("title_code", "crit_selection_economic_specific_yearly_turnover_main").
                     put("description_code", "crit_selection_economic_specific_yearly_turnover_description").
+                    put("has_multiple_year_amount", "false").
+                    put("has_multiple_amount_date", "true").
                     put("lastYearsAmount", LAST_YEARS_AMOUNT).
                     put("criterion", SelectionCriterion.SPECIFIC_YEARLY_TURNOVER).build(),
 

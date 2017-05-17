@@ -62,7 +62,7 @@ class SpecificYearlyTurnoverRequestTest extends AbstractSelectionCriteriaFixture
         then: "G1"
         def crit = request.Criterion[idx]
 
-        then: "check year amount currency subgroups"
+        then: "check start date end date amount currency subgroups"
         checkYearAmountCurrencyGroup1(crit.RequirementGroup[0])
 
         then: "info available electronically sub group"
