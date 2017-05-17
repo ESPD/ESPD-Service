@@ -74,7 +74,7 @@ abstract class AbstractEspdXmlMarshalling extends Specification {
         def ublContractingPartyTypeTransformer = new UblContractingPartyTypeTransformer()
         def economicOperatorPartyTypeTransformer = new UblEconomicOperatorPartyTypeTransformer()
         def espdConfig = new EspdConfiguration(null)
-        espdConfig.buildVersion = "2016.4"
+        espdConfig.exchangeModelVersion = "1.0.2"
         def ublRequestTypeTransformer = new UblRequestTypeTransformer(ublContractingPartyTypeTransformer, new UblRequestCriteriaTransformer(), espdConfig)
         def partyImplTransformer = new PartyImplTransformer()
         def criteriaToEspdDocumentPopulator = new CriteriaToEspdDocumentPopulator()
