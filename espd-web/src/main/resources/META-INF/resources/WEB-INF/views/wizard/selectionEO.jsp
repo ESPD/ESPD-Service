@@ -196,16 +196,6 @@
 			</div>
         </c:if>
         
-                    <div class="alert alert-espd-info-dotted">
-	<h1>DEBUGGY:</h1>
-	selectionSatisfiesAll.exists : ${espd.selectionSatisfiesAll.exists} <br>
-	atLeastOneSelectionCriterionWasSelected : ${espd.atLeastOneSelectionCriterionWasSelected} <br>
-	allSelectionCriterionWasSelectedExceptAlpha : ${espd.allSelectionCriterionWasSelectedExceptAlpha} <br><br>
-	use_alpha : ${use_alpha} <br>
-	use_atod : ${use_atod} <br>
-	use_both : ${use_both} <br>
-</div>
-        
         <tiles:insertDefinition name="footerButtons">
             <tiles:putAttribute name="prev" value="exclusion"/>
             <tiles:putAttribute name="next" value="finish"/>

@@ -307,28 +307,26 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		<tiles:insertDefinition name="topLevelCriteriaTemplate">
 			<tiles:putAttribute name="topLevelCriteriaList" value="${exclusionEO}"/>
 		</tiles:insertDefinition>
-
-        <div class="panel panel-espd">
-            <div class="panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
-                <h4 class="panel-title">${span18n['crit_top_title_purely_national']}</h4>
-            </div>
-            <div id="ca-insolvency-section" class="collapse in">
-                <div class="espd-panel-body panel-body">
-                    <span data-i18n="crit_eu_main_breaching_obligations" style="font-weight: bold;">
-                        <s:message code='crit_eu_main_purely_national'/>
-                    </span>
-                    <c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
-                        <tiles:insertDefinition name="exclusionFormTemplate">
-                            <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
-                            <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
-                            <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
-                            <tiles:putAttribute name="selfCleaning" value="false"/>
-	              	    	<tiles:putAttribute name="hasCriterion" value="false"/>
-                        </tiles:insertDefinition>
-                    </c:if>
-                </div>
-            </div>
-        </div>
+		
+ 		<c:if test="${espd.purelyNationalGrounds != null && espd.purelyNationalGrounds.exists}">
+	        <div class="panel panel-espd">
+	            <div class="panel-heading" data-toggle="collapse" data-target="#ca-insolvency-section">
+	                <h4 class="panel-title">${span18n['crit_top_title_purely_national']}</h4>
+	            </div>
+	            <div id="ca-insolvency-section" class="collapse in">
+	                <div class="espd-panel-body panel-body">
+	                    <b>${span18n['crit_eu_main_purely_national']}</b>
+	                    <tiles:insertDefinition name="exclusionFormTemplate">
+	                        <tiles:putAttribute name="field" value="purelyNationalGrounds"/>
+	                        <tiles:putAttribute name="title_code" value="crit_eu_title_purely_national"/>
+	                        <tiles:putAttribute name="description_code" value="crit_eu_text_purely_national"/>
+	                        <tiles:putAttribute name="selfCleaning" value="false"/>
+		                	<tiles:putAttribute name="hasCriterion" value="false"/>
+	                    </tiles:insertDefinition>
+	                </div>
+	            </div>
+	        </div>
+        </c:if>
     </div>
 
 	<%-- SELECTION --%>
