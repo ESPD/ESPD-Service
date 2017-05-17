@@ -92,7 +92,7 @@ public class UblRequestTypeTransformer {
     }
 
     private void addVersionIdInformation(ESPDRequestType espdRequestType) {
-        espdRequestType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getBuildVersion()));
+        espdRequestType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getExchangeModelVersion()));
     }
 
     private void addIssueDateAndTimeInformation(ESPDRequestType espdRequestType) {
