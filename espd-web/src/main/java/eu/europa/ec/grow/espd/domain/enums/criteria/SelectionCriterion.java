@@ -122,5 +122,4 @@ public enum SelectionCriterion implements CcvCriterion {
     public CcvCriterionType getCriterionType() {
         return this.criterionType;
     }
-
 }
