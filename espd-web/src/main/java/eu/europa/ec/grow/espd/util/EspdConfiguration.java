@@ -44,7 +44,7 @@ public class EspdConfiguration {
     @Value("${info.build.version:N/A}")
     private String buildVersion;
 
-    @Value("${espd.exchange-model.version:N/A}")
+    @Value("${espd.exchange-model.version:1.0.2}")
     private String exchangeModelVersion;
 
     @Value("${last.build.date:N/A}")
