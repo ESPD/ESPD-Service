@@ -170,7 +170,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"
@@ -204,7 +204,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.EconomicOperatorParty.Party.PostalAddress.CityName.text() == "Edinborough"
         result.EconomicOperatorParty.Party.PostalAddress.StreetName.text() == "Vitruvio"
-        result.EconomicOperatorParty.Party.PostalAddress.PostalZone.text() == "28006"
+        result.EconomicOperatorParty.Party.PostalAddress.Postbox.text() == "28006"
 
         then: "check contact information"
         result.EconomicOperatorParty.Party.Contact.Name.text() == "Hodor contact person"
@@ -250,7 +250,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.Country.IdentificationCode.text() == "ES"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.CityName.text() == "Madrid"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.StreetName.text() == "Vitruvio"
-        result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.PostalZone.text() == "28006"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.Postbox.text() == "28006"
 
         then: "check contact information"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.Contact.ElectronicMail.text() == "emilio.garcia3torres@acme.com"

@@ -149,17 +149,11 @@ public class PartyImplTransformer {
 	}
 
 	private void addPostbox(AddressType addressType, PartyImpl party) {
-
-		//For backwards computability, we read both PostBox and PostalZone - preferring PostalZone when it is not null
-
-		if (addressType.getPostbox() != null) {
-			party.setPostalCode(trimToNull(addressType.getPostbox().getValue()));
+		if (addressType.getPostbox() == null) {
+			return;
 		}
 
-		if (addressType.getPostalZone() != null) {
-			party.setPostalCode(trimToNull(addressType.getPostalZone().getValue()));
-		}
-
+		party.setPostalCode(trimToNull(addressType.getPostbox().getValue()));
 	}
 
 	private void addCity(AddressType addressType, PartyImpl party) {

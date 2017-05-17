@@ -194,10 +194,9 @@ public class UblEconomicOperatorPartyTypeTransformer
 			return;
 		}
 
-		PostalZoneType postalZoneType = new PostalZoneType();
-		postalZoneType.setValue(trimToEmpty(representative.getPostalCode()));
-		addressType.setPostalZone(postalZoneType);
-
+		PostboxType postboxType = new PostboxType();
+		postboxType.setValue(trimToEmpty(representative.getPostalCode()));
+		addressType.setPostbox(postboxType);
 	}
 
 	private ContactType buildContact(EconomicOperatorRepresentative representative) {

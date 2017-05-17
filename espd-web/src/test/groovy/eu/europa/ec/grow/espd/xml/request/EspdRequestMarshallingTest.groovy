@@ -234,7 +234,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"
