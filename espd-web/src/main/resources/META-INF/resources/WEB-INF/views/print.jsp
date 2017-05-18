@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%--
   ~
@@ -41,7 +42,9 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 
 <script>
     $(function () {
-    
+		$('.ecertis-link').remove(); 
+		$('.ecertis-info').remove(); 
+		
         $("#ojsNumber").inputmask("9999/S 999-9999999");
         <c:if test="${agent == 'ca'}">
             // CA only needs to see the labels but not the values
@@ -84,7 +87,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 		$('#espdform').find('textarea').each(function() {
 			$(this).replaceWith($("<span />").addClass("wordwrap").text(this.value));
 		});
-
+		
+		
 
     });
 </script>
@@ -282,6 +286,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
 </div>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd">
+
+    <c:set var="printingjsp" scope="request" value="${true}"/>
     <c:set var="htmlToPrint" scope="request">
 
     <!-- Hidden header element which appears only in the PDF rendition -->
@@ -338,9 +344,8 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
             </ul>
         </div>
         
-	<c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
-    
-        
+		<c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
+
         <c:if test="${usealpha}">
 	        <div class="panel panel-espd">
 	            <div class="panel-heading" data-toggle="collapse" data-target="#eo-satisfies-all-section">
@@ -351,7 +356,13 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                         ${span18n['crit_selection_ca_declares_that']}
                         <div class="checkbox">
 	                        <label>
-	                            <form:checkbox path="selectionSatisfiesAll.exists" class="checktoggle" value="true"/>
+	                        	<c:if test="${espd.selectionSatisfiesAll.exists}">
+									<input type="checkbox" class="checktoggle" checked="checked"/>
+	                        	</c:if>
+	                        	<c:if test="${!espd.selectionSatisfiesAll.exists}">
+									<input type="checkbox" class="checktoggle"/>
+	                        	</c:if>
+	                        	
 	                            ${span18n['crit_selection_satisfies_all_criteria']}
 	                        </label>
 	                    </div>
@@ -450,19 +461,19 @@ request.setAttribute("qualityAssuranceListEO", CriteriaTemplates.qualityAssuranc
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['crit_date']}</label>
                         <div class="col-md-4">
-                           <form:input type="text" path="documentDate" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+                        	<fmt:formatDate var="documentDateFormatted" value="${espd.documentDate}" pattern="yyyy-MM-dd"/>
+                        	<input type="text" cssClass="form-control datepicker" cssStyle="border-radius: 0;" value="${documentDateFormatted}"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['place']}</label>
                         <div class="col-md-4">
-                            <form:textarea rows="1" path="location" cssClass="form-control"/>
+                            <textarea rows="1" cssClass="form-control">${espd.location}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['signature']}</label>
                     </div>
-                    <br/><br/><br/>
                 </div>
             </div>
 		</div>

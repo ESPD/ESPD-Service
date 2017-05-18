@@ -59,7 +59,7 @@
 		</script>
 		<div id="espd-popup" class="espd-popup" style="display: none;">
 			<div class="espd-popup-content">
-				<p>${span18n['expire_reminder_message']}<br><br>
+				<p>${span18n['expire_reminder_message']}</p>
 				<a id="espd-popup-close" data-i18n="ok" style="cursor:pointer">${i18n['ok']}</a>
 			</div>
 		</div>

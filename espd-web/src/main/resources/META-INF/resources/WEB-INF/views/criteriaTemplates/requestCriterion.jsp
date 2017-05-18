@@ -55,7 +55,7 @@
         </c:if>
     </label>
     <c:if test="${not empty description_code}">
-        <br>
+        <p></p>
         <span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
     </c:if>
 </div>

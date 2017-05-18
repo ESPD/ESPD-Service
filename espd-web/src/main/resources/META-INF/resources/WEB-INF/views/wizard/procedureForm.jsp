@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 
-                <hr class="col-md-12">
+                <div class="col-md-12"><hr></hr></div>
                 
                 <div class="col-md-12">
                     <div class="form-group">
@@ -308,7 +308,7 @@
                     </div>
                 </div>
                 
-                <hr class="col-md-12">
+                <div class="col-md-12"><hr></hr></div>
                 
                 <div class="col-md-12">
                     <div class="form-group">
@@ -360,7 +360,7 @@
                     </div>
                 </div>
                 
-                <hr class="col-md-12">
+                <div class="col-md-12"><hr></hr></div>
                 
                 <div class="col-md-12">
                     <div class="form-group">

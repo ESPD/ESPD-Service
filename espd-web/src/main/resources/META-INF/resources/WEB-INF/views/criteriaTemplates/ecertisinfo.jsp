@@ -4,13 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
+<c:if test="${printingjsp != true}">
+
 <div class="small">
 	<span id="${field}-ecertis-show" class="ecertis-link" data-uuid="${criterion.uuid}" data-i18n="${more_information}" data-target="${'#'}${field}-ecertis" data-target-hide="${'#'}${field}-ecertis-show" data-target-show="${'#'}${field}-ecertis-hide;${'#'}${field}-ecertis">
 		${i18n['more_information']} <i class="fa fa-angle-double-right" aria-hidden="true"></i>
 	</span>
 	
-	<div id="${field}-ecertis" class="alert collapse" style="padding: 0px; margin: 0px;">
-		<br>
+	<div id="${field}-ecertis" class="alert collapse ecertis-info" style="padding: 0px; margin: 0px; border: 0">
+		<p></p>
 		<h4 id="loading">${span18n["ecertis_loading"]}</h4>
 		<span id="ecertis404">
 			<span style="font-weight: bold;">
@@ -19,7 +21,7 @@
 					arguments="${i18n['country_'.concat(agent == 'eo' ? espd.economicOperator.country : espd.authority.country)]}"
 					htmlEscape="false"/>
 			</span>
-			<br>
+			<p></p>
 			${span18n["ecertis_404"]}
 		</span>
 		<div id="content">
@@ -59,3 +61,5 @@
 		<i class="fa fa-angle-double-left" aria-hidden="true"></i> ${i18n['less_information']}
 	</span>
 </div>
+
+</c:if>
