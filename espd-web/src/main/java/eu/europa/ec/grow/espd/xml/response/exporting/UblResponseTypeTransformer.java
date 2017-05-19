@@ -105,7 +105,7 @@ public class UblResponseTypeTransformer {
     }
 
     private void addVersionIdInformation(ESPDResponseType responseType) {
-        responseType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getBuildVersion()));
+        responseType.setVersionID(CommonUblFactory.buildVersionIDType(espdConfiguration.getExchangeModelVersion()));
     }
 
     private void addIssueDateAndTimeInformation(EspdDocument espdDocument, ESPDResponseType responseType) {

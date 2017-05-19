@@ -99,7 +99,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = generateRequestXml()
 
         then:
-        result.VersionID.text() == "2016.4"
+        result.VersionID.text() == "1.0.2"
         result.VersionID.@schemeAgencyID.text() == "EU-COM-GROW"
     }
 
