@@ -30,6 +30,11 @@ import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter;
+
+import org.joda.time.LocalDate
+import org.joda.time.LocalTime
+
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -64,111 +69,115 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
         then: "G1"
         def crit = response.Criterion[idx]
 
-        then: "check year amount currency subgroups"
+        then: "check start date end date amount currency subgroups"
         checkYearAmountCurrencyGroup1(crit.RequirementGroup[0])
 
         then: "info available electronically sub group"
         checkInfoAvailableElectronicallyRequirementGroup(crit.RequirementGroup[1])
     }
+		
+	
+	def "check the 'Start Date' requirements response"() {
+		
+		given:
+		def date = new Date()
+		def espd = new EspdDocument(specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
+		unboundedGroups: [
+			new DynamicRequirementGroup("startDate": date),
+			new DynamicRequirementGroup("startDate": date.plus(1)),
+			new DynamicRequirementGroup("startDate": date.plus(2)),
+			new DynamicRequirementGroup("startDate": date.plus(3)),
+			new DynamicRequirementGroup("startDate": date.plus(4))
+		]))
 
-    def "check the 'Year' requirements response"() {
-        given:
-        def espd = new EspdDocument(specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                unboundedGroups: [
-                        new DynamicRequirementGroup("year": 2016),
-                        new DynamicRequirementGroup("year": 2015),
-                        new DynamicRequirementGroup("year": 2014),
-                        new DynamicRequirementGroup("year": 2013),
-                        new DynamicRequirementGroup("year": 2012)
-                ]))
+		when:
+		def response = generateResponseXml(espd)
+		def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
+		def crit = response.Criterion[idx]
 
-        when:
-        def response = generateResponseXml(espd)
-        def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
-        def crit = response.Criterion[idx]
+		then: "First year"
+		def g1_1 = crit.RequirementGroup[0]
+		def req1 = g1_1.Requirement[0]
+		req1.Response.size() == 1
+		req1.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.time))
+		
+		then: "Second year"
+		def g1_2 = crit.RequirementGroup[1]
+		def req2 = g1_2.Requirement[0]
+		req2.Response.size() == 1
+		req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(1).time))
 
-        then: "First year"
-        def g1_1 = crit.RequirementGroup[0]
-        def req1 = g1_1.Requirement[0]
-        req1.Response.size() == 1
-        req1.Response[0].Quantity.text() == "2016"
-        req1.Response[0].Quantity.@unitCode.text() == "YEAR"
+		then: "Third year"
+		def g1_3 = crit.RequirementGroup[2]
+		def req3 = g1_3.Requirement[0]
+		req3.Response.size() == 1
+		req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(2).time))
 
-        then: "Second year"
-        def g1_2 = crit.RequirementGroup[1]
-        def req2 = g1_2.Requirement[0]
-        req2.Response.size() == 1
-        req2.Response[0].Quantity.text() == "2015"
-        req2.Response[0].Quantity.@unitCode.text() == "YEAR"
+		then: "Fourth year"
+		def g1_4 = crit.RequirementGroup[3]
+		def req4 = g1_4.Requirement[0]
+		req4.Response.size() == 1
+		req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(3).time))
 
-        then: "Third year"
-        def g1_3 = crit.RequirementGroup[2]
-        def req3 = g1_3.Requirement[0]
-        req3.Response.size() == 1
-        req3.Response[0].Quantity.text() == "2014"
-        req3.Response[0].Quantity.@unitCode.text() == "YEAR"
+		then: "Fifth year"
+		def g1_5 = crit.RequirementGroup[4]
+		def req5 = g1_5.Requirement[0]
+		req5.Response.size() == 1
+		req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(4).time))
+		
+	}
 
-        then: "Fourth year"
-        def g1_4 = crit.RequirementGroup[3]
-        def req4 = g1_4.Requirement[0]
-        req4.Response.size() == 1
-        req4.Response[0].Quantity.text() == "2013"
-        req4.Response[0].Quantity.@unitCode.text() == "YEAR"
 
-        then: "Fifth year"
-        def g1_5 = crit.RequirementGroup[4]
-        def req5 = g1_5.Requirement[0]
-        req5.Response.size() == 1
-        req5.Response[0].Quantity.text() == "2012"
-        req5.Response[0].Quantity.@unitCode.text() == "YEAR"
-    }
+	def "check the 'End Date' requirements response"() {
 
-    def "check empty 'Year' requirements response"() {
-        given:
-        def espd = new EspdDocument(specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
-                unboundedGroups: [
-                        new DynamicRequirementGroup("year": null),
-                        new DynamicRequirementGroup("year": null),
-                        new DynamicRequirementGroup("year": null),
-                        new DynamicRequirementGroup("year": null),
-                        new DynamicRequirementGroup("year": null)
-                ]))
+		given:
+		def date = new Date()
+		def espd = new EspdDocument(specificYearlyTurnover: new EconomicFinancialStandingCriterion(exists: true,
+		unboundedGroups: [
+			new DynamicRequirementGroup("endDate": date),
+			new DynamicRequirementGroup("endDate": date.plus(1)),
+			new DynamicRequirementGroup("endDate": date.plus(2)),
+			new DynamicRequirementGroup("endDate": date.plus(3)),
+			new DynamicRequirementGroup("endDate": date.plus(4))
+		]))
 
-        when:
-        def response = generateResponseXml(espd)
-        def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
-        def crit = response.Criterion[idx]
+		when:
+		def response = generateResponseXml(espd)
+		def idx = getResponseCriterionIndex(SelectionCriterion.SPECIFIC_YEARLY_TURNOVER)
+		def crit = response.Criterion[idx]
 
-        then: "First year"
-        def g1_1 = crit.RequirementGroup[0]
-        def req1 = g1_1.Requirement[0]
-        req1.Response.size() == 1
-        req1.Response[0].Quantity.size() == 0
+		then: "First year"
+		def g1_1 = crit.RequirementGroup[0]
+		def req1 = g1_1.Requirement[1]
+		req1.Response.size() == 1
+		req1.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.time))
+		
+		then: "Second year"
+		def g1_2 = crit.RequirementGroup[1]
+		def req2 = g1_2.Requirement[1]
+		req2.Response.size() == 1
+		req2.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(1).time))
 
-        then: "Second year"
-        def g1_2 = crit.RequirementGroup[1]
-        def req2 = g1_2.Requirement[0]
-        req2.Response.size() == 1
-        req2.Response[0].Quantity.size() == 0
+		then: "Third year"
+		def g1_3 = crit.RequirementGroup[2]
+		def req3 = g1_3.Requirement[1]
+		req3.Response.size() == 1
+		req3.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(2).time))
 
-        then: "Third year"
-        def g1_3 = crit.RequirementGroup[2]
-        def req3 = g1_3.Requirement[0]
-        req3.Response.size() == 1
-        req3.Response[0].Quantity.size() == 0
+		then: "Fourth year"
+		def g1_4 = crit.RequirementGroup[3]
+		def req4 = g1_4.Requirement[1]
+		req4.Response.size() == 1
+		req4.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(3).time))
 
-        then: "Fourth year"
-        def g1_4 = crit.RequirementGroup[3]
-        def req4 = g1_4.Requirement[0]
-        req4.Response.size() == 1
-        req4.Response[0].Quantity.size() == 0
-
-        then: "Fifth year"
-        def g1_5 = crit.RequirementGroup[4]
-        def req5 = g1_5.Requirement[0]
-        req5.Response.size() == 1
-        req5.Response[0].Quantity.size() == 0
-    }
+		then: "Fifth year"
+		def g1_5 = crit.RequirementGroup[4]
+		def req5 = g1_5.Requirement[1]
+		req5.Response.size() == 1
+		req5.Response[0].Date.text() == LocalDateAdapter.marshal(new LocalDate(date.plus(4).time))
+		
+	}
+		
 
     def "check the 'Amount' requirements response"() {
         given:
@@ -188,35 +197,35 @@ class SpecificYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixtur
 
         then: "First amount"
         def g1_1 = crit.RequirementGroup[0]
-        def req1 = g1_1.Requirement[1]
+		def req1 = g1_1.Requirement[2]
         req1.Response.size() == 1
         req1.Response.Amount.text() == "11.11"
         req1.Response.Amount.@currencyID.text() == "EUR"
 
         then: "Second amount"
         def g1_2 = crit.RequirementGroup[1]
-        def req2 = g1_2.Requirement[1]
+		def req2 = g1_2.Requirement[2]
         req2.Response.size() == 1
         req2.Response.Amount.text() == "22.22"
         req2.Response.Amount.@currencyID.text() == "RON"
 
         then: "Third amount"
         def g1_3 = crit.RequirementGroup[2]
-        def req3 = g1_3.Requirement[1]
+		def req3 = g1_3.Requirement[2]
         req3.Response.size() == 1
         req3.Response.Amount.text() == "33.33"
         req3.Response.Amount.@currencyID == "USD"
 
         then: "Fourth amount"
         def g1_4 = crit.RequirementGroup[3]
-        def req4 = g1_4.Requirement[1]
+		def req4 = g1_4.Requirement[2]
         req4.Response.size() == 1
         req4.Response.Amount.text() == "44.44"
         req4.Response.Amount.@currencyID == "CHF"
 
         then: "Fifth amount"
         def g1_5 = crit.RequirementGroup[4]
-        def req5 = g1_5.Requirement[1]
+		def req5 = g1_5.Requirement[2]
         req5.Response.size() == 1
         req5.Response.Amount.text() == "55.55"
         req5.Response.Amount.@currencyID == "ALD"

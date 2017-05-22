@@ -42,6 +42,7 @@ class SetupEconomicOperatorImportTest extends AbstractXmlFileImport {
         then: "selection criteria with no answer have a default value of true"
         espd.setupEconomicOperator.answer == true
         espd.setupEconomicOperator.year == 2016
+		
     }
 
     def "all fields needed to generate a XML sample"() {

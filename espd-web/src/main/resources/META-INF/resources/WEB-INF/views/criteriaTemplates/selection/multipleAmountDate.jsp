@@ -7,15 +7,9 @@
 <tiles:importAttribute name="field"/>
 
 <c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="vs" >
+	
 	<a name="${field}${vs.index}"></a>
-    <div class="form-group">
-        <div class="col-xs-3">
-            <label class="control-label small">${span18n['crit_description']}</label>
-        </div>
-		<div class="col-xs-9">
-			<form:textarea path='${field}.unboundedGroups[${vs.index}]["description"]' cssClass="form-control" />
-		</div>
-    </div>
+	
 	<div class="form-group form-group-sm">
         <div class="col-xs-3">
             <label class="control-label small">${span18n['crit_amount']}</label>
@@ -30,6 +24,7 @@
 	        </tiles:insertDefinition>
 		</div>
     </div>
+    
 	<div class="form-group form-group-sm">
         <div class="col-xs-3">
             <label class="control-label small">${span18n['crit_start_date']}</label>
@@ -44,14 +39,6 @@
             <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["endDate"]' cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
         </div>
     </div>
-	<div class="form-group">
-        <div class="col-xs-3">
-            <label class="control-label small">${span18n['crit_recipients']}</label>
-        </div>
-		<div class="col-xs-9">
-			<form:textarea path='${field}.unboundedGroups[${vs.index}]["recipients"]' cssClass="form-control small"/>
-		</div>
-	</div>
 
 	<c:if test="${agent == 'eo'}">
 		<div class="form-group">
