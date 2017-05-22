@@ -23,22 +23,28 @@
                                cssClass="form-control"/>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="btn-group pull-right hidden-print">
-                <button id="remove_${field}" type="submit" class="btn btn-default btn-sm " name="remove_${field}"
-                        value="${vs.index}" data-toggle="tooltip" title="Delete">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </div>
-            <c:if test="${vs.last}">
-                <div class="btn-group pull-right hidden-print">
-                    <button id="add_${field}" type="submit" class="btn btn-default btn-sm" name="add_${field}"
-                            value="${vs.index + 1}" data-toggle="tooltip" title="Add">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </c:if>
-        </div>
-    </div>
+
+		<c:if test="${agent == 'eo'}">
+			<div class="col-md-2">
+				<div class="btn-group pull-right hidden-print">
+					<button id="remove_${field}" type="submit"
+						class="btn btn-default btn-sm " name="remove_${field}"
+						value="${vs.index}" data-toggle="tooltip" title="Delete">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</button>
+				</div>
+				<c:if test="${vs.last}">
+					<div class="btn-group pull-right hidden-print">
+						<button id="add_${field}" type="submit"
+							class="btn btn-default btn-sm" name="add_${field}"
+							value="${vs.index + 1}" data-toggle="tooltip" title="Add">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+					</div>
+				</c:if>
+			</div>
+		</c:if>
+
+	</div>
 </c:forEach>
 <hr/>
