@@ -72,5 +72,5 @@
 		</div>
 	</c:if>
 
-	<hr>
+	<hr/>
 </c:forEach>
