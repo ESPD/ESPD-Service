@@ -198,6 +198,27 @@ public final class CommonUblFactory {
         return documentReferenceType;
     }
 
+    
+    
+    // NGOJ National Government Official Journal
+    public static DocumentReferenceType buildProcurementNationalType(EspdDocument espdDocument) {
+        
+    	DocumentReferenceType documentReferenceType = new DocumentReferenceType();
+    	
+        if (isBlank(espdDocument.getNgojNumber())) {
+            documentReferenceType.setID(buildTemporaryDocumentIdType(MarshallingConstants.TEMPORARY_NGOJ_NUMBER));
+        } else {
+            documentReferenceType.setID(buildDocumentIdType(espdDocument.getNgojNumber()));
+        }
+
+        // A reference to a National Government Official Journal
+        documentReferenceType.setDocumentTypeCode(buildDocumentTypeCode(DocumentTypeCode.NGOJ));
+        
+        return documentReferenceType;
+    }
+
+    
+    
     /**
      * Build a reference to the original {@link ESPDRequestType} document that was used to generate a
      * {@link ESPDResponseType}.

@@ -332,7 +332,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = generateResponseXml(espd)
 
         then:
-        result.AdditionalDocumentReference.size() == 1
+        result.AdditionalDocumentReference.size() == 2
 
         then:
         result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"
@@ -409,7 +409,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = generateResponseXml(espd)
 
         then:
-        result.AdditionalDocumentReference.size() == 1
+        result.AdditionalDocumentReference.size() == 2
 
         then: "the other additional document reference is the TED_CN"
         result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"

@@ -116,8 +116,13 @@ public class UblRequestTypeTransformer {
     }
 
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
-        espdRequestType.getAdditionalDocumentReference()
+
+    	// TED_CN
+    	espdRequestType.getAdditionalDocumentReference()
                 .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+    	// NGOJ
+    	espdRequestType.getAdditionalDocumentReference()
+        	.add(CommonUblFactory.buildProcurementNationalType(espdDocument));
     }
 
     private void addCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {

@@ -142,8 +142,15 @@ public class UblResponseTypeTransformer {
             responseType.getAdditionalDocumentReference()
                     .add(CommonUblFactory.buildEspdRequestReferenceType(espdDocument.getRequestMetadata()));
         }
+
+        // TED_CN
         responseType.getAdditionalDocumentReference()
                 .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+
+        // NGOJ
+        responseType.getAdditionalDocumentReference()
+                .add(CommonUblFactory.buildProcurementNationalType(espdDocument));
+
     }
 
     private void addCriteria(EspdDocument espdDocument, ESPDResponseType responseType) {
