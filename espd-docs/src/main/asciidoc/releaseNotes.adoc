@@ -1,5 +1,13 @@
 == Release notes
 
+=== 2017.03.04 (20th of June 2017)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/177[Update the TED URL]
+* https://github.com/ESPD/ESPD-Service/issues/178[Configure TED URL to be optional]
+
+
 === 2017.03.03 (17th of May 2017)
 
 ==== Enhancement
