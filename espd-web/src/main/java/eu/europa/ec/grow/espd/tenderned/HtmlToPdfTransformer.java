@@ -50,56 +50,67 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Slf4j
 public class HtmlToPdfTransformer {
 
-	private static final String XSL_CA = "xhtml2fo_tenderned_ca.xsl";
-	private static final String XSL_EO = "xhtml2fo_tenderned_eo.xsl";
+    private static final String XSL_CA = "xhtml2fo_tenderned_ca.xsl";
+    private static final String XSL_EO = "xhtml2fo_tenderned_eo.xsl";
 
-	private final FopFactory fopFactory;
-	private final TransformerFactory transformerFactory;
-	private final XsltURIResolver xsltURIResolver;
+    private final FopFactory fopFactory;
+    private final TransformerFactory transformerFactory;
+    private final XsltURIResolver xsltURIResolver;
 
-	@Autowired
-	HtmlToPdfTransformer(FopFactory fopFactory, TransformerFactory transformerFactory, XsltURIResolver uriResolver) {
-		this.fopFactory = fopFactory;
-		this.transformerFactory = transformerFactory;
-		this.xsltURIResolver = uriResolver;
-	}
+    @Autowired
+    HtmlToPdfTransformer(FopFactory fopFactory, TransformerFactory transformerFactory, XsltURIResolver uriResolver) {
+        this.fopFactory = fopFactory;
+        this.transformerFactory = transformerFactory;
+        this.xsltURIResolver = uriResolver;
+    }
 
-	/**
-	 * Method that will convert the given HTML code of a page to PDF.
-	 *
-	 * @param html  is a String of html content
-	 * @param agent is a String, can be 'ca' or 'eo'
-	 *
-	 * @throws PdfRenderingException In case an exception occurred
-	 */
-	public ByteArrayOutputStream convertToPDF(String html, String agent) throws PdfRenderingException {
-		String xsltLocation = "ca".equalsIgnoreCase(agent) ? XSL_CA : XSL_EO;
+    /**
+     * Method that will convert the given HTML code of a page to PDF.
+     *
+     * @param html  is a String of html content
+     * @param agent is a String, can be 'ca' or 'eo'
+     *
+     * @throws PdfRenderingException In case an exception occurred
+     */
+    public ByteArrayOutputStream convertToPDF(String html, String agent) throws PdfRenderingException {
+        String xsltLocation = "ca".equalsIgnoreCase(agent) ? XSL_CA : XSL_EO;
 
-		try {
-			// Setup a buffer to obtain the content length (empirical initial size)
-			ByteArrayOutputStream out = new ByteArrayOutputStream(html.length() / 6);
+        try {
+            // Setup a buffer to obtain the content length (empirical initial size)
+            ByteArrayOutputStream out = new ByteArrayOutputStream(html.length() / 6);
 
-			// Setup FOP
-			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
+            // Setup FOP
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
 
-			// Setup Transformer
-			Source xsltSource = xsltURIResolver.resolve(xsltLocation, null);
-			Transformer transformer = transformerFactory.newTransformer(xsltSource);
+            // Setup Transformer
+            Source xsltSource = xsltURIResolver.resolve(xsltLocation, null);
+            Transformer transformer = transformerFactory.newTransformer(xsltSource);
 
-			// Make sure the XSL transformation's result is piped through to FOP
-			Result res = new SAXResult(fop.getDefaultHandler());
+            // Make sure the XSL transformation's result is piped through to FOP
+            Result res = new SAXResult(fop.getDefaultHandler());
 
-			// Setup input
-			InputStream htmlInputStream = IOUtils.toInputStream(html, UTF_8.name());
-			StreamSource source = new StreamSource(htmlInputStream);
+            // Setup input
+            String input = sanitizeText(html);
+            InputStream htmlInputStream = IOUtils.toInputStream(input,
+                    UTF_8.name());
+            StreamSource source = new StreamSource(htmlInputStream);
 
-			// Start the transformation and rendering process
-			transformer.transform(source, res);
+            // Start the transformation and rendering process
+            transformer.transform(source, res);
 
-			return out;
-		} catch (TransformerException | FOPException | IOException e) {
-			throw new PdfRenderingException("Something went wrong while generating the PDF file.", e);
-		}
-	}
+            return out;
+        } catch (TransformerException | FOPException | IOException e) {
+            throw new PdfRenderingException("Something went wrong while generating the PDF file.", e);
+        }
+    }
+
+    private String sanitizeText(String html) {
+        // XML has five special characters with special treatment by the XML parser
+        // <, >, ", ', & which should be escaped.
+        // Fortunately, the single and double quotes don't affect the outcome and '&' can be easily escaped.
+        // Unfortunately, we need to see what to do with '<' and '>' because they are also part of the HTML elements.
+        // Maybe we will need to use something like Jsoup.
+        return html.replaceAll("&", "&amp;");
+    }
 
 }
