@@ -90,9 +90,7 @@ public class HtmlToPdfTransformer {
             Result res = new SAXResult(fop.getDefaultHandler());
 
             // Setup input
-            String input = sanitizeText(html);
-            InputStream htmlInputStream = IOUtils.toInputStream(input,
-                    UTF_8.name());
+            InputStream htmlInputStream = IOUtils.toInputStream(html, UTF_8.name());
             StreamSource source = new StreamSource(htmlInputStream);
 
             // Start the transformation and rendering process
@@ -102,15 +100,6 @@ public class HtmlToPdfTransformer {
         } catch (TransformerException | FOPException | IOException e) {
             throw new PdfRenderingException("Something went wrong while generating the PDF file.", e);
         }
-    }
-
-    private String sanitizeText(String html) {
-        // XML has five special characters with special treatment by the XML parser
-        // <, >, ", ', & which should be escaped.
-        // Fortunately, the single and double quotes don't affect the outcome and '&' can be easily escaped.
-        // Unfortunately, we need to see what to do with '<' and '>' because they are also part of the HTML elements.
-        // Maybe we will need to use something like Jsoup.
-        return html.replaceAll("&", "&amp;");
     }
 
 }
