@@ -137,7 +137,7 @@ public class CriminalConvictionsCriterion extends ExclusionCriterion implements 
 		if(CollectionUtils.isEmpty(unboundedGroups)) {
 			unboundedGroups.add(new DynamicRequirementGroup());
 		}
-		unboundedGroups.get(0).setAnswer(answer);
+		unboundedGroups.get(0).setSubIndicatorAnswer(answer);
 	}
 	@Override
 	public void setSelfCleaning(SelfCleaning value) {
@@ -148,7 +148,7 @@ public class CriminalConvictionsCriterion extends ExclusionCriterion implements 
 			if(CollectionUtils.isEmpty(unboundedGroups)) {
 				unboundedGroups.add(new DynamicRequirementGroup());
 			}
-			unboundedGroups.get(0).setAnswer(value.getAnswer());
+			unboundedGroups.get(0).setSubIndicatorAnswer(value.getAnswer());
 			unboundedGroups.get(0).put("selfCleaningDescription", value.getDescription());
 		}
 	}
@@ -158,7 +158,7 @@ public class CriminalConvictionsCriterion extends ExclusionCriterion implements 
 			return null;
 		}
 		SelfCleaning sc = new SelfCleaning();
-		sc.setAnswer(unboundedGroups.get(0).getAnswer());
+		sc.setAnswer(unboundedGroups.get(0).getSubIndicatorAnswer());
 		if(unboundedGroups.get(0).get("selfCleaningDescription") != null) {
 			sc.setDescription((String)unboundedGroups.get(0).get("selfCleaningDescription"));
 		}

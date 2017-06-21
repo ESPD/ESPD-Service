@@ -215,7 +215,7 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 				
 				{// Workaround for subgroup indicator //////////////////
 					if("selfCleaningAnswer".equals(requirement.getEspdCriterionFields().get(position))) {
-						return (T) unboundedGroups.get(groupIndex).getAnswer();
+						return (T) unboundedGroups.get(groupIndex).getSubIndicatorAnswer();
 					}
 				}///////////////////////////////////////////////////////
 				

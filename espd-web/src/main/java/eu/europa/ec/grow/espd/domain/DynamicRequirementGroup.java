@@ -44,7 +44,7 @@ public class DynamicRequirementGroup implements Map<String, Object> {
 	 * Value for INDICATOR in subgroups
 	 */
 	@Getter @Setter
-    private Boolean answer;
+    private Boolean subIndicatorAnswer;
 
 	private final Map<String, Object> values;
 
@@ -78,11 +78,18 @@ public class DynamicRequirementGroup implements Map<String, Object> {
 
 	@Override
 	public Object get(Object key) {
+		if("subIndicatorAnswer".equals(key)) {
+			return subIndicatorAnswer;
+		}
 		return values.get(key);
 	}
 
 	@Override
 	public Object put(String key, Object value) {
+		if("subIndicatorAnswer".equals(key)) {
+			subIndicatorAnswer = (Boolean) value;
+			return value;
+		}
 		return values.put(key, value);
 	}
 

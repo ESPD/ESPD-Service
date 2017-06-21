@@ -43,11 +43,11 @@
 
 	<div class="form-group">
 		${span18n["crit_taken_self_cleaning_measures"]}
-		<form:radiobutton path='${field}.unboundedGroups[${vs.index}].answer' value="true" data-target-show="${'#'}${field}-self-cleaning-${vs.index}"/>${span18n["yes"]}
-		<form:radiobutton path='${field}.unboundedGroups[${vs.index}].answer' value="false" data-target-hide="${'#'}${field}-self-cleaning-${vs.index}"/>${span18n["no"]}
+		<form:radiobutton path='${field}.unboundedGroups[${vs.index}].subIndicatorAnswer' value="true" data-target-show="${'#'}${field}-self-cleaning-${vs.index}"/>${span18n["yes"]}
+		<form:radiobutton path='${field}.unboundedGroups[${vs.index}].subIndicatorAnswer' value="false" data-target-hide="${'#'}${field}-self-cleaning-${vs.index}"/>${span18n["no"]}
 	</div>
-	
-	<div id="${field}-self-cleaning-${vs.index}" class="tab-pane ${espd[field].unboundedGroups[vs.index].answer ? '' : 'collapse'}">
+
+	<div id="${field}-self-cleaning-${vs.index}" class="tab-pane ${espd[field].unboundedGroups[vs.index].subIndicatorAnswer ? '' : 'collapse'}">
 		<div class="form-group">
 			<label class="control-label col-md-3 small">
 				${span18n["crit_please_describe_them"]}

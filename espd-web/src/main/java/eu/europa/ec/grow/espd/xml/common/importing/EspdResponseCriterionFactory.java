@@ -37,6 +37,7 @@ import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.Re
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.RequirementType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -179,7 +180,37 @@ class EspdResponseCriterionFactory {
 			                                         .parseValue(requirementType.getResponse().get(0));
 			if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
 				addRequirementValueToUnboundedGroup(requirementById.get(), dynamicGroup, requirementValue);
-			} else {
+			} 
+
+			else if("20c5361b-7599-4ee6-b030-7f8323174d1e".equals(requirementType.getID().getValue()) && // Self Cleaning answer
+					espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) { 
+				// Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
+				// Currently there is no mechanism to import unbounded subgroups so this is workaround
+				// for this particular case
+				List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
+				
+				// Add empty group to Self Cleaning answer to keep compartibility with old tests 
+				if(CollectionUtils.isEmpty(groups)) {
+					((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
+				}
+				
+				addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1), requirementValue);
+			}
+			else if("7b07904f-e080-401a-a3a1-9a3efeeda54b".equals(requirementType.getID().getValue()) && // Self Cleaning description
+					espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) { 
+				// Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
+				// Currently there is no mechanism to import unbounded subgroups so this is workaround
+				// for this particular case
+				List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
+
+				// Add empty group to Self Cleaning description to keep compartibility with old tests 
+				if(CollectionUtils.isEmpty(groups)) {
+					((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
+				}
+				
+				addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1), requirementValue);
+			}
+			else {
 				addNormalRequirementValueToEspdCriterion(requirementById.get(), espdCriterion, requirementValue);
 			}
 		}
@@ -192,7 +223,14 @@ class EspdResponseCriterionFactory {
 			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), ((Amount) value).getAmount());
 			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
 		} else {
-			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), value);
+			if("selfCleaningAnswer".equals(ccvRequirement.getEspdCriterionFields().get(0))) {
+				// selfCleaningAnswer is INDICATOR for subgroup
+				// currently there is no generic mechanism for subgroups indicators
+				dynamicGroup.setSubIndicatorAnswer((Boolean)value);
+			}
+			else {
+				dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), value);
+			}
 		}
 	}
 
