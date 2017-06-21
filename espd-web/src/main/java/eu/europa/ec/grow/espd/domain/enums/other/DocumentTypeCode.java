@@ -30,10 +30,10 @@ package eu.europa.ec.grow.espd.domain.enums.other;
 public enum DocumentTypeCode {
 
     TED_CN,
+    NGOJ,
     ESPD_REQUEST,
     EVIDENCE,
     GLOBAL_EVIDENCE
     ;
-
 
 }

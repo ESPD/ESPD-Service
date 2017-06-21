@@ -199,6 +199,27 @@ public final class CommonUblFactory {
     }
 
     /**
+     * Builds an element containing the NGOJ National Government Official Journal
+     *
+     * @param espdDocument The ESPD model containing the national number information
+     *
+     * @return an AdditionalDocumentReference containing the NGOJ or null if there's no national number
+     */
+    public static DocumentReferenceType buildProcurementNationalType(EspdDocument espdDocument) {
+        if (isBlank(espdDocument.getNgojNumber())) {
+            return null;
+        }
+
+        DocumentReferenceType documentReferenceType = new DocumentReferenceType();
+        documentReferenceType.setID(buildDocumentIdType(espdDocument.getNgojNumber(), null));
+
+        // A reference to a National Government Official Journal
+        documentReferenceType.setDocumentTypeCode(buildDocumentTypeCode(DocumentTypeCode.NGOJ));
+
+        return documentReferenceType;
+    }
+
+    /**
      * Build a reference to the original {@link ESPDRequestType} document that was used to generate a
      * {@link ESPDResponseType}.
      *
@@ -309,7 +330,7 @@ public final class CommonUblFactory {
         CountryType countryType = new CountryType();
         IdentificationCodeType identificationCodeType = new IdentificationCodeType();
         identificationCodeType.setValue(country.getIso2Code());
-	    identificationCodeType.setListID("CountryCodeIdentifier");
+        identificationCodeType.setListID("CountryCodeIdentifier");
         identificationCodeType.setListAgencyID("EU-COM-GROW");
         identificationCodeType.setListName("CountryCodeIdentifier");
         identificationCodeType.setListVersionID("1.0.2");
@@ -317,14 +338,14 @@ public final class CommonUblFactory {
         return countryType;
     }
 
-	/**
-	 * Build an {@link IDType} with the mandatory SchemeAgencyID attribute.
-	 *
-	 * @return A new instance of this element
-	 */
-	public static IDType buildIdType() {
-		IDType idType = new IDType();
-		idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
-		return idType;
-	}
+    /**
+     * Build an {@link IDType} with the mandatory SchemeAgencyID attribute.
+     *
+     * @return A new instance of this element
+     */
+    public static IDType buildIdType() {
+        IDType idType = new IDType();
+        idType.setSchemeAgencyID(Agency.EU_COM_GROW.getIdentifier());
+        return idType;
+    }
 }

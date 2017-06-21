@@ -31,10 +31,7 @@ import eu.europa.ec.grow.espd.xml.common.exporting.UblContractingPartyTypeTransf
 import eu.europa.ec.grow.espd.xml.common.exporting.UblEconomicOperatorPartyTypeTransformer;
 import grow.names.specification.ubl.schema.xsd.espd_commonaggregatecomponents_1.EconomicOperatorPartyType;
 import grow.names.specification.ubl.schema.xsd.espdresponse_1.ESPDResponseType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.LocationType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.PartyType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SignatureType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.*;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.NameType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,8 +78,8 @@ public class UblResponseTypeTransformer {
         addProcurementProjectLots(espdDocument, responseType);
         addAdditionalDocumentReference(espdDocument, responseType);
         addCriteria(espdDocument, responseType);
-	    addSignatureInformation(espdDocument, responseType);
-	    addConsortiumName(espdDocument, responseType);
+        addSignatureInformation(espdDocument, responseType);
+        addConsortiumName(espdDocument, responseType);
 
         return responseType;
     }
@@ -140,48 +137,57 @@ public class UblResponseTypeTransformer {
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDResponseType responseType) {
         if (espdDocument.getRequestMetadata() != null) {
             responseType.getAdditionalDocumentReference()
-                    .add(CommonUblFactory.buildEspdRequestReferenceType(espdDocument.getRequestMetadata()));
+                        .add(CommonUblFactory.buildEspdRequestReferenceType(espdDocument.getRequestMetadata()));
         }
+
+        // TED_CN
         responseType.getAdditionalDocumentReference()
-                .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+                    .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+
+        // NGOJ
+        DocumentReferenceType nationalNumberReference = CommonUblFactory.buildProcurementNationalType(espdDocument);
+        if (nationalNumberReference != null) {
+            responseType.getAdditionalDocumentReference().add(nationalNumberReference);
+        }
+
     }
 
     private void addCriteria(EspdDocument espdDocument, ESPDResponseType responseType) {
         responseType.getCriterion().addAll(criteriaTransformer.apply(espdDocument));
     }
 
-	private void addSignatureInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
-		if (isBlank(espdDocument.getLocation())) {
-			return;
-		}
+    private void addSignatureInformation(EspdDocument espdDocument, ESPDResponseType responseType) {
+        if (isBlank(espdDocument.getLocation())) {
+            return;
+        }
 
-		NameType nameType = new NameType();
-		nameType.setValue(espdDocument.getLocation());
+        NameType nameType = new NameType();
+        nameType.setValue(espdDocument.getLocation());
 
-		LocationType locationType = new LocationType();
-		locationType.setName(nameType);
+        LocationType locationType = new LocationType();
+        locationType.setName(nameType);
 
-		PartyType signatoryParty = new PartyType();
-		signatoryParty.setPhysicalLocation(locationType);
+        PartyType signatoryParty = new PartyType();
+        signatoryParty.setPhysicalLocation(locationType);
 
-		SignatureType signatureType = new SignatureType();
-		signatureType.setSignatoryParty(signatoryParty);
+        SignatureType signatureType = new SignatureType();
+        signatureType.setSignatoryParty(signatoryParty);
 
-		IDType idType = CommonUblFactory.buildIdType();
-		idType.setValue(UUID.randomUUID().toString());
-		signatureType.setID(idType);
+        IDType idType = CommonUblFactory.buildIdType();
+        idType.setValue(UUID.randomUUID().toString());
+        signatureType.setID(idType);
 
-		responseType.getSignature().add(signatureType);
-	}
+        responseType.getSignature().add(signatureType);
+    }
 
-	private void addConsortiumName(EspdDocument espdDocument, ESPDResponseType responseType) {
-		if (isBlank(espdDocument.getConsortiumName())) {
-			return;
-		}
+    private void addConsortiumName(EspdDocument espdDocument, ESPDResponseType responseType) {
+        if (isBlank(espdDocument.getConsortiumName())) {
+            return;
+        }
 
-		NameType nameType = new NameType();
-		nameType.setValue(espdDocument.getConsortiumName());
-		responseType.setEconomicOperatorGroupName(nameType);
-	}
+        NameType nameType = new NameType();
+        nameType.setValue(espdDocument.getConsortiumName());
+        responseType.setEconomicOperatorGroupName(nameType);
+    }
 
 }

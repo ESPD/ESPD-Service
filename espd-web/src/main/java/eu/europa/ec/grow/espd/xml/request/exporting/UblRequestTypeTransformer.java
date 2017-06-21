@@ -30,6 +30,7 @@ import eu.europa.ec.grow.espd.xml.common.exporting.CommonUblFactory;
 import eu.europa.ec.grow.espd.xml.common.exporting.UblContractingPartyTypeTransformer;
 import grow.names.specification.ubl.schema.xsd.espdrequest_1.ESPDRequestType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.ContractingPartyType;
+import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DocumentReferenceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -112,12 +113,19 @@ public class UblRequestTypeTransformer {
 
     private void addProcurementProjectLots(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
         espdRequestType.getProcurementProjectLot()
-                .add(CommonUblFactory.buildProcurementProjectLot(espdDocument.getLotConcerned()));
+                       .add(CommonUblFactory.buildProcurementProjectLot(espdDocument.getLotConcerned()));
     }
 
     private void addAdditionalDocumentReference(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
+
+        // TED_CN
         espdRequestType.getAdditionalDocumentReference()
-                .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+                       .add(CommonUblFactory.buildProcurementProcedureType(espdDocument));
+        // NGOJ
+        DocumentReferenceType nationalNumberReference = CommonUblFactory.buildProcurementNationalType(espdDocument);
+        if (nationalNumberReference != null) {
+            espdRequestType.getAdditionalDocumentReference().add(nationalNumberReference);
+        }
     }
 
     private void addCriteria(EspdDocument espdDocument, ESPDRequestType espdRequestType) {
