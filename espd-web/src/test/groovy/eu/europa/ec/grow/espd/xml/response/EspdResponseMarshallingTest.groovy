@@ -303,33 +303,26 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
 
 		then:
 		result.AdditionalDocumentReference[1].ID.text() == "1234567890"
-		result.AdditionalDocumentReference[1].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+		result.AdditionalDocumentReference[1].ID.@schemeID.text() == ""
 		result.AdditionalDocumentReference[1].ID.@schemeAgencyID.text() == "EU-COM-GROW"
 		result.AdditionalDocumentReference[1].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
 		result.AdditionalDocumentReference[1].ID.@schemeVersionID.text() == "1.1"
 	}
 	
-	def "should contain NGOJ AdditionalDocumentReference with default ID if the NGOJ number is missing"() {
-		given:
-		def espd = new EspdDocument(ngojNumber: "     ")
+    def "should not contain NGOJ AdditionalDocumentReference if the NGOJ number is missing"() {
+        given:
+        def espd = new EspdDocument(ngojNumber: "     ")
 
-		when:
-		def result = generateResponseXml(espd)
+        when:
+        def response = generateResponseXml(espd)
+        def ngojElements = response.AdditionalDocumentReference.findAll { it -> "NGOJ" == it.DocumentTypeCode.text()}
 
-		then:
-		result.AdditionalDocumentReference.size() == 2
+        then: "we always have the procurement procedure"
+        response.AdditionalDocumentReference.size() == 1
 
-		then:
-		result.AdditionalDocumentReference[1].ID.text() == "0"
-		result.AdditionalDocumentReference[1].ID.@schemeID.text() == "COM-GROW-TEMPORARY-ID"
-		result.AdditionalDocumentReference[1].ID.@schemeAgencyID.text() == "EU-COM-GROW"
-		result.AdditionalDocumentReference[1].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
-		result.AdditionalDocumentReference[1].ID.@schemeVersionID.text() == "1.1"
-
-	}
-
-	
-	
+        then: "there are no additional document references for the national number"
+        ngojElements.size() == 0
+    }
 	
     def "should contain AdditionalDocumentReference element with TED information"() {
         given:
@@ -371,7 +364,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = generateResponseXml(espd)
 
         then:
-        result.AdditionalDocumentReference.size() == 2
+        result.AdditionalDocumentReference.size() == 1
 
         then:
         result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"
@@ -392,11 +385,6 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
-	
-	
-	
-	
-	
     def "should contain ContractFolderID element information"() {
         given:
         def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")
@@ -453,7 +441,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         def result = generateResponseXml(espd)
 
         then:
-        result.AdditionalDocumentReference.size() == 2
+        result.AdditionalDocumentReference.size() == 1
 
         then: "the other additional document reference is the TED_CN"
         result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"
