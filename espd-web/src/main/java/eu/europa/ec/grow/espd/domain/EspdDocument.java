@@ -48,6 +48,7 @@ public class EspdDocument {
 	private EconomicOperatorImpl economicOperator;
 
 	private String ojsNumber;
+	private String procedureType;
 	private String procedureTitle;
 	private String procedureShortDesc;
 	private String lotConcerned;
