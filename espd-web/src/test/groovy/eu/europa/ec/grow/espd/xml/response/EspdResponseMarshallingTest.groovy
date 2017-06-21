@@ -292,6 +292,45 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "hodor lot"
     }
 
+	
+	
+	def "should contain NGOJ AdditionalDocumentReference element information"() {
+		given:
+		def espd = new EspdDocument(ngojNumber: "1234567890")
+
+		when:
+		def result = generateResponseXml(espd)
+
+		then:
+		result.AdditionalDocumentReference[1].ID.text() == "1234567890"
+		result.AdditionalDocumentReference[1].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+		result.AdditionalDocumentReference[1].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+		result.AdditionalDocumentReference[1].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+		result.AdditionalDocumentReference[1].ID.@schemeVersionID.text() == "1.1"
+	}
+	
+	def "should contain NGOJ AdditionalDocumentReference with default ID if the NGOJ number is missing"() {
+		given:
+		def espd = new EspdDocument(ngojNumber: "     ")
+
+		when:
+		def result = generateResponseXml(espd)
+
+		then:
+		result.AdditionalDocumentReference.size() == 2
+
+		then:
+		result.AdditionalDocumentReference[1].ID.text() == "0"
+		result.AdditionalDocumentReference[1].ID.@schemeID.text() == "COM-GROW-TEMPORARY-ID"
+		result.AdditionalDocumentReference[1].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+		result.AdditionalDocumentReference[1].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+		result.AdditionalDocumentReference[1].ID.@schemeVersionID.text() == "1.1"
+
+	}
+
+	
+	
+	
     def "should contain AdditionalDocumentReference element with TED information"() {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
@@ -353,6 +392,11 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
+	
+	
+	
+	
+	
     def "should contain ContractFolderID element information"() {
         given:
         def espd = new EspdDocument(fileRefByCA: "HODOR refd by CA")

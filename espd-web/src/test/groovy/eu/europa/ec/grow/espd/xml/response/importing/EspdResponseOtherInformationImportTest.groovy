@@ -156,6 +156,13 @@ class EspdResponseOtherInformationImportTest extends AbstractXmlFileImport {
         espdFull.procedureShortDesc == "Service category No 11: Management consulting services [6] and related services."
         espdFull.tedUrl == "http://ted.europa.eu/udl?uri=TED:NOTICE:373035-2015:TEXT:EN:HTML"
     }
+	
+	def "should load ngoj number"() {
+		given:
+		EspdDocument espd = parseXmlResponseFile("response_other_information_ngoj_import.xml")
+		expect:
+		espd.ngojNumber == "1234567890"
+	}
 
     def "we should not load the ojs number if it is marked as a temporary one in the scheme id attribute of the id"() {
         given:
