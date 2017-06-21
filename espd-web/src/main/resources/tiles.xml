@@ -155,6 +155,7 @@
     </definition>
 
     <definition name="criminalFormTemplate" extends="exclusionFormTemplate">
+    	<put-attribute name="selfCleaning" value="false"/>
     	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/criminalForm.jsp"/>
     </definition>
 
