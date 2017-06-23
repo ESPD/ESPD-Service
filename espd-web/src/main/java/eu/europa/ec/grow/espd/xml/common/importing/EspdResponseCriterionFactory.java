@@ -80,293 +80,292 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 @Slf4j
 class EspdResponseCriterionFactory {
 
-	private final Map<String, CriterionBuilder> criterionBuilders = new HashMap<>();
+    private final Map<String, CriterionBuilder> criterionBuilders = new HashMap<>();
 
-	EspdResponseCriterionFactory() {
-		registerCriterionBuilders();
-	}
+    EspdResponseCriterionFactory() {
+        registerCriterionBuilders();
+    }
 
-	private void registerCriterionBuilders() {
-		criterionBuilders.put(CRIMINAL_CONVICTIONS.getEspdType(), new CriminalConvictionsCriterionBuilder());
-		criterionBuilders.put(PAYMENT_OF_TAXES.getEspdType(), new TaxesCriterionBuilder());
-		criterionBuilders.put(PAYMENT_OF_SOCIAL_SECURITY.getEspdType(), new TaxesCriterionBuilder());
-		criterionBuilders.put(ENVIRONMENTAL_LAW.getEspdType(), new LawCriterionBuilder());
-		criterionBuilders.put(SOCIAL_LAW.getEspdType(), new LawCriterionBuilder());
-		criterionBuilders.put(LABOUR_LAW.getEspdType(), new LawCriterionBuilder());
-		criterionBuilders.put(BANKRUPTCY_INSOLVENCY.getEspdType(), new BankruptcyCriterionBuilder());
-		criterionBuilders.put(MISCONDUCT.getEspdType(), new MisconductDistortionCriterionBuilder());
-		criterionBuilders.put(DISTORTING_MARKET.getEspdType(), new MisconductDistortionCriterionBuilder());
-		criterionBuilders.put(CONFLICT_OF_INTEREST.getEspdType(), new ConflictInterestCriterionBuilder());
-		criterionBuilders.put(OTHER.getEspdType(), new PurelyNationalGroundsBuilder());
-		criterionBuilders.put(ALL_CRITERIA_SATISFIED.getEspdType(), new SatisfiesAllCriterionBuilder());
-		criterionBuilders.put(SUITABILITY.getEspdType(), new SuitabilityCriterionBuilder());
-		criterionBuilders
-				.put(ECONOMIC_FINANCIAL_STANDING.getEspdType(), new EconomicFinancialStandingCriterionBuilder());
-		criterionBuilders
-				.put(TECHNICAL_PROFESSIONAL_ABILITY.getEspdType(), new TechnicalProfessionalCriterionBuilder());
-		criterionBuilders.put(QUALITY_ASSURANCE.getEspdType(), new QualityAssuranceCriterionBuilder());
-		criterionBuilders.put(DATA_ON_ECONOMIC_OPERATOR.getEspdType(), new OtherCriterionBuilder());
-		criterionBuilders.put(REDUCTION_OF_CANDIDATES.getEspdType(), new OtherCriterionBuilder());
-	}
+    private void registerCriterionBuilders() {
+        criterionBuilders.put(CRIMINAL_CONVICTIONS.getEspdType(), new CriminalConvictionsCriterionBuilder());
+        criterionBuilders.put(PAYMENT_OF_TAXES.getEspdType(), new TaxesCriterionBuilder());
+        criterionBuilders.put(PAYMENT_OF_SOCIAL_SECURITY.getEspdType(), new TaxesCriterionBuilder());
+        criterionBuilders.put(ENVIRONMENTAL_LAW.getEspdType(), new LawCriterionBuilder());
+        criterionBuilders.put(SOCIAL_LAW.getEspdType(), new LawCriterionBuilder());
+        criterionBuilders.put(LABOUR_LAW.getEspdType(), new LawCriterionBuilder());
+        criterionBuilders.put(BANKRUPTCY_INSOLVENCY.getEspdType(), new BankruptcyCriterionBuilder());
+        criterionBuilders.put(MISCONDUCT.getEspdType(), new MisconductDistortionCriterionBuilder());
+        criterionBuilders.put(DISTORTING_MARKET.getEspdType(), new MisconductDistortionCriterionBuilder());
+        criterionBuilders.put(CONFLICT_OF_INTEREST.getEspdType(), new ConflictInterestCriterionBuilder());
+        criterionBuilders.put(OTHER.getEspdType(), new PurelyNationalGroundsBuilder());
+        criterionBuilders.put(ALL_CRITERIA_SATISFIED.getEspdType(), new SatisfiesAllCriterionBuilder());
+        criterionBuilders.put(SUITABILITY.getEspdType(), new SuitabilityCriterionBuilder());
+        criterionBuilders
+                .put(ECONOMIC_FINANCIAL_STANDING.getEspdType(), new EconomicFinancialStandingCriterionBuilder());
+        criterionBuilders
+                .put(TECHNICAL_PROFESSIONAL_ABILITY.getEspdType(), new TechnicalProfessionalCriterionBuilder());
+        criterionBuilders.put(QUALITY_ASSURANCE.getEspdType(), new QualityAssuranceCriterionBuilder());
+        criterionBuilders.put(DATA_ON_ECONOMIC_OPERATOR.getEspdType(), new OtherCriterionBuilder());
+        criterionBuilders.put(REDUCTION_OF_CANDIDATES.getEspdType(), new OtherCriterionBuilder());
+    }
 
-	/**
-	 * Create a ESPD {@link EspdCriterion} instance containing the appropriate information provided as UBL criteria.
-	 *
-	 * @return A freshly built {@link EspdCriterion} containing the data coming from the XML
-	 *
-	 * @throws IllegalArgumentException If the criterion type is not recognized
-	 */
-	EspdCriterion buildEspdCriterion(CcvCriterion ccvCriterion, CriterionType ublCriterion) {
-		CriterionBuilder criterionBuilder = criterionBuilders.get(ccvCriterion.getCriterionType().getEspdType());
-		checkArgument(criterionBuilder != null,
-				"Could not build criterion '%s' with id '%s' having type code '%s'.",
-				ccvCriterion.getName(), ccvCriterion.getUuid(), ccvCriterion.getCriterionType());
+    /**
+     * Create a ESPD {@link EspdCriterion} instance containing the appropriate information provided as UBL criteria.
+     *
+     * @return A freshly built {@link EspdCriterion} containing the data coming from the XML
+     *
+     * @throws IllegalArgumentException If the criterion type is not recognized
+     */
+    EspdCriterion buildEspdCriterion(CcvCriterion ccvCriterion, CriterionType ublCriterion) {
+        CriterionBuilder criterionBuilder = criterionBuilders.get(ccvCriterion.getCriterionType().getEspdType());
+        checkArgument(criterionBuilder != null,
+                "Could not build criterion '%s' with id '%s' having type code '%s'.",
+                ccvCriterion.getName(), ccvCriterion.getUuid(), ccvCriterion.getCriterionType());
 
-		if (ublCriterion == null) {
-			return criterionBuilder.buildWithExists(false);
-		}
+        if (ublCriterion == null) {
+            return criterionBuilder.buildWithExists(false);
+        }
 
-		EspdCriterion criterion = criterionBuilder.buildWithExists(true);
+        EspdCriterion criterion = criterionBuilder.buildWithExists(true);
 
-		setCriterionValues(ublCriterion, criterion);
+        setCriterionValues(ublCriterion, criterion);
 
-		return criterion;
-	}
+        return criterion;
+    }
 
-	private void setCriterionValues(CriterionType criterionType, EspdCriterion espdCriterion) {
-		setCriterionValuesForRequirementGroups(espdCriterion, criterionType.getRequirementGroup());
-	}
+    private void setCriterionValues(CriterionType criterionType, EspdCriterion espdCriterion) {
+        setCriterionValuesForRequirementGroups(espdCriterion, criterionType.getRequirementGroup());
+    }
 
-	private void setCriterionValuesForRequirementGroups(EspdCriterion espdCriterion,
-			List<RequirementGroupType> groups) {
-		if (isEmpty(groups)) {
-			return;
-		}
-		for (RequirementGroupType groupType : groups) {
-			setCriterionValuesForRequirementGroup(espdCriterion, groupType);
-		}
-	}
+    private void setCriterionValuesForRequirementGroups(EspdCriterion espdCriterion,
+            List<RequirementGroupType> groups) {
+        if (isEmpty(groups)) {
+            return;
+        }
+        for (RequirementGroupType groupType : groups) {
+            setCriterionValuesForRequirementGroup(espdCriterion, groupType);
+        }
+    }
 
-	private void setCriterionValuesForRequirementGroup(EspdCriterion espdCriterion, RequirementGroupType groupType) {
-		Optional<CcvRequirementGroup> ccvGroup = CriterionDefinitions
-				.findRequirementGroupById(groupType.getID().getValue());
-		DynamicRequirementGroup dynamicGroup = null;
-		if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
-			dynamicGroup = new DynamicRequirementGroup();
-			((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(dynamicGroup);
-		}
+    private void setCriterionValuesForRequirementGroup(EspdCriterion espdCriterion, RequirementGroupType groupType) {
+        Optional<CcvRequirementGroup> ccvGroup = CriterionDefinitions
+                .findRequirementGroupById(groupType.getID().getValue());
+        DynamicRequirementGroup dynamicGroup = null;
+        if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
+            dynamicGroup = new DynamicRequirementGroup();
+            ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(dynamicGroup);
+        }
 
-		setCriterionValuesForRequirementGroups(espdCriterion, groupType.getRequirementGroup());
-		setCriterionValueForRequirements(espdCriterion, groupType.getRequirement(), ccvGroup, dynamicGroup);
-	}
+        setCriterionValuesForRequirementGroups(espdCriterion, groupType.getRequirementGroup());
+        setCriterionValueForRequirements(espdCriterion, groupType.getRequirement(), ccvGroup, dynamicGroup);
+    }
 
-	private void setCriterionValueForRequirements(EspdCriterion espdCriterion, List<RequirementType> requirementTypes,
-			Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
-		if (isEmpty(requirementTypes)) {
-			return;
-		}
-		for (RequirementType requirementType : requirementTypes) {
-			setCriterionValueForRequirement(espdCriterion, requirementType, ccvGroup, dynamicGroup);
-		}
-	}
+    private void setCriterionValueForRequirements(EspdCriterion espdCriterion, List<RequirementType> requirementTypes,
+            Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
+        if (isEmpty(requirementTypes)) {
+            return;
+        }
+        for (RequirementType requirementType : requirementTypes) {
+            setCriterionValueForRequirement(espdCriterion, requirementType, ccvGroup, dynamicGroup);
+        }
+    }
 
-	private void setCriterionValueForRequirement(EspdCriterion espdCriterion, RequirementType requirementType,
-			Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
-		Optional<CcvCriterionRequirement> requirementById = CriterionDefinitions
-				.findRequirementById(requirementType.getID().getValue());
+    private void setCriterionValueForRequirement(EspdCriterion espdCriterion, RequirementType requirementType,
+            Optional<CcvRequirementGroup> ccvGroup, DynamicRequirementGroup dynamicGroup) {
+        Optional<CcvCriterionRequirement> requirementById = CriterionDefinitions
+                .findRequirementById(requirementType.getID().getValue());
 
-		if (requirementById.isPresent() && isNotEmpty(requirementType.getResponse())) {
-			Object requirementValue = requirementById.get().getResponseType()
-			                                         .parseValue(requirementType.getResponse().get(0));
-			if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
-				addRequirementValueToUnboundedGroup(requirementById.get(), dynamicGroup, requirementValue);
-			} 
+        if (requirementById.isPresent() && isNotEmpty(requirementType.getResponse())) {
+            Object requirementValue = requirementById.get().getResponseType()
+                                                     .parseValue(requirementType.getResponse().get(0));
+            if (ccvGroup.isPresent() && ccvGroup.get().isUnbounded()) {
+                addRequirementValueToUnboundedGroup(requirementById.get(), dynamicGroup, requirementValue);
+            } else if ("20c5361b-7599-4ee6-b030-7f8323174d1e".equals(requirementType.getID().getValue()) &&
+                    // Self Cleaning answer
+                    espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) {
+                // Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
+                // Currently there is no mechanism to import unbounded subgroups so this is workaround
+                // for this particular case
+                List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
 
-			else if("20c5361b-7599-4ee6-b030-7f8323174d1e".equals(requirementType.getID().getValue()) && // Self Cleaning answer
-					espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) { 
-				// Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
-				// Currently there is no mechanism to import unbounded subgroups so this is workaround
-				// for this particular case
-				List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
-				
-				// Add empty group to Self Cleaning answer to keep compartibility with old tests 
-				if(CollectionUtils.isEmpty(groups)) {
-					((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
-				}
-				
-				addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1), requirementValue);
-			}
-			else if("7b07904f-e080-401a-a3a1-9a3efeeda54b".equals(requirementType.getID().getValue()) && // Self Cleaning description
-					espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) { 
-				// Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
-				// Currently there is no mechanism to import unbounded subgroups so this is workaround
-				// for this particular case
-				List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
+                // Add empty group to Self Cleaning answer to keep compartibility with old tests
+                if (CollectionUtils.isEmpty(groups)) {
+                    ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
+                }
 
-				// Add empty group to Self Cleaning description to keep compartibility with old tests 
-				if(CollectionUtils.isEmpty(groups)) {
-					((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
-				}
-				
-				addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1), requirementValue);
-			}
-			else {
-				addNormalRequirementValueToEspdCriterion(requirementById.get(), espdCriterion, requirementValue);
-			}
-		}
-	}
+                addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1),
+                        requirementValue);
+            } else if ("7b07904f-e080-401a-a3a1-9a3efeeda54b".equals(requirementType.getID().getValue()) &&
+                    // Self Cleaning description
+                    espdCriterion instanceof eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion) {
+                // Criminal Convictions -> Self Cleaning is bounded subgroup of the unbounded group
+                // Currently there is no mechanism to import unbounded subgroups so this is workaround
+                // for this particular case
+                List<DynamicRequirementGroup> groups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
 
-	private void addRequirementValueToUnboundedGroup(CcvCriterionRequirement ccvRequirement,
-			DynamicRequirementGroup dynamicGroup, Object value) {
-		if (value instanceof Amount) {
-			// values which represent amounts are special and need to be stored in two fields
-			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), ((Amount) value).getAmount());
-			dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
-		} else {
-			if("selfCleaningAnswer".equals(ccvRequirement.getEspdCriterionFields().get(0))) {
-				// selfCleaningAnswer is INDICATOR for subgroup
-				// currently there is no generic mechanism for subgroups indicators
-				dynamicGroup.setSubIndicatorAnswer((Boolean)value);
-			}
-			else {
-				dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), value);
-			}
-		}
-	}
+                // Add empty group to Self Cleaning description to keep compartibility with old tests
+                if (CollectionUtils.isEmpty(groups)) {
+                    ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups().add(new DynamicRequirementGroup());
+                }
 
-	private void addNormalRequirementValueToEspdCriterion(CcvCriterionRequirement ccvCriterionRequirement,
-			EspdCriterion espdCriterion, Object value) {
-		String espdFieldName = ccvCriterionRequirement.getEspdCriterionFields().get(0);
-		if (isBlank(espdFieldName)) {
-			return;
-		}
+                addRequirementValueToUnboundedGroup(requirementById.get(), groups.get(groups.size() - 1),
+                        requirementValue);
+            } else {
+                addNormalRequirementValueToEspdCriterion(requirementById.get(), espdCriterion, requirementValue);
+            }
+        }
+    }
 
-		// values which represent amounts are special and need to be stored in two fields
-		try {
-			if (value instanceof Amount) {
-				PropertyUtils.setProperty(espdCriterion, espdFieldName, ((Amount) value).getAmount());
-				PropertyUtils.setProperty(espdCriterion, ccvCriterionRequirement.getEspdCriterionFields().get(1),
-						((Amount) value).getCurrency());
-			} else {
-				PropertyUtils.setProperty(espdCriterion, espdFieldName, value);
-			}
-		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-			log.error("Could not set value '{}' on field '{}' of requirement '{}' with id '{}'.", value, espdFieldName,
-					ccvCriterionRequirement.getDescription(), ccvCriterionRequirement.getId());
-		}
-	}
+    private void addRequirementValueToUnboundedGroup(CcvCriterionRequirement ccvRequirement,
+            DynamicRequirementGroup dynamicGroup, Object value) {
+        if (value instanceof Amount) {
+            // values which represent amounts are special and need to be stored in two fields
+            dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), ((Amount) value).getAmount());
+            dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(1), ((Amount) value).getCurrency());
+        } else {
+            if ("selfCleaningAnswer".equals(ccvRequirement.getEspdCriterionFields().get(0))) {
+                // selfCleaningAnswer is INDICATOR for subgroup
+                // currently there is no generic mechanism for subgroups indicators
+                dynamicGroup.setSubIndicatorAnswer((Boolean) value);
+            } else {
+                dynamicGroup.put(ccvRequirement.getEspdCriterionFields().get(0), value);
+            }
+        }
+    }
 
-	private interface CriterionBuilder<T extends EspdCriterion> {
+    private void addNormalRequirementValueToEspdCriterion(CcvCriterionRequirement ccvCriterionRequirement,
+            EspdCriterion espdCriterion, Object value) {
+        String espdFieldName = ccvCriterionRequirement.getEspdCriterionFields().get(0);
+        if (isBlank(espdFieldName)) {
+            return;
+        }
 
-		T buildWithExists(boolean exists);
+        // values which represent amounts are special and need to be stored in two fields
+        try {
+            if (value instanceof Amount) {
+                PropertyUtils.setProperty(espdCriterion, espdFieldName, ((Amount) value).getAmount());
+                PropertyUtils.setProperty(espdCriterion, ccvCriterionRequirement.getEspdCriterionFields().get(1),
+                        ((Amount) value).getCurrency());
+            } else {
+                PropertyUtils.setProperty(espdCriterion, espdFieldName, value);
+            }
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            log.error("Could not set value '{}' on field '{}' of requirement '{}' with id '{}'.", value, espdFieldName,
+                    ccvCriterionRequirement.getDescription(), ccvCriterionRequirement.getId());
+        }
+    }
 
-	}
+    private interface CriterionBuilder<T extends EspdCriterion> {
 
-	private static class CriminalConvictionsCriterionBuilder implements CriterionBuilder<CriminalConvictionsCriterion> {
+        T buildWithExists(boolean exists);
 
-		@Override
-		public CriminalConvictionsCriterion buildWithExists(boolean exists) {
-			return CriminalConvictionsCriterion.buildWithExists(exists);
-		}
-	}
+    }
 
-	private static class TaxesCriterionBuilder implements CriterionBuilder<TaxesCriterion> {
+    private static class CriminalConvictionsCriterionBuilder implements CriterionBuilder<CriminalConvictionsCriterion> {
 
-		@Override
-		public TaxesCriterion buildWithExists(boolean exists) {
-			return TaxesCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public CriminalConvictionsCriterion buildWithExists(boolean exists) {
+            return CriminalConvictionsCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class LawCriterionBuilder implements CriterionBuilder<LawCriterion> {
+    private static class TaxesCriterionBuilder implements CriterionBuilder<TaxesCriterion> {
 
-		@Override
-		public LawCriterion buildWithExists(boolean exists) {
-			return LawCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public TaxesCriterion buildWithExists(boolean exists) {
+            return TaxesCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class BankruptcyCriterionBuilder implements CriterionBuilder<BankruptcyCriterion> {
+    private static class LawCriterionBuilder implements CriterionBuilder<LawCriterion> {
 
-		@Override
-		public BankruptcyCriterion buildWithExists(boolean exists) {
-			return BankruptcyCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public LawCriterion buildWithExists(boolean exists) {
+            return LawCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class MisconductDistortionCriterionBuilder
-			implements CriterionBuilder<MisconductDistortionCriterion> {
+    private static class BankruptcyCriterionBuilder implements CriterionBuilder<BankruptcyCriterion> {
 
-		@Override
-		public MisconductDistortionCriterion buildWithExists(boolean exists) {
-			return MisconductDistortionCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public BankruptcyCriterion buildWithExists(boolean exists) {
+            return BankruptcyCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class ConflictInterestCriterionBuilder implements CriterionBuilder<ConflictInterestCriterion> {
+    private static class MisconductDistortionCriterionBuilder
+            implements CriterionBuilder<MisconductDistortionCriterion> {
 
-		@Override
-		public ConflictInterestCriterion buildWithExists(boolean exists) {
-			return ConflictInterestCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public MisconductDistortionCriterion buildWithExists(boolean exists) {
+            return MisconductDistortionCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class PurelyNationalGroundsBuilder implements CriterionBuilder<PurelyNationalGrounds> {
+    private static class ConflictInterestCriterionBuilder implements CriterionBuilder<ConflictInterestCriterion> {
 
-		@Override
-		public PurelyNationalGrounds buildWithExists(boolean exists) {
-			return PurelyNationalGrounds.buildWithExists(exists);
-		}
-	}
+        @Override
+        public ConflictInterestCriterion buildWithExists(boolean exists) {
+            return ConflictInterestCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class SatisfiesAllCriterionBuilder implements CriterionBuilder<SatisfiesAllCriterion> {
+    private static class PurelyNationalGroundsBuilder implements CriterionBuilder<PurelyNationalGrounds> {
 
-		@Override
-		public SatisfiesAllCriterion buildWithExists(boolean exists) {
-			return SatisfiesAllCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public PurelyNationalGrounds buildWithExists(boolean exists) {
+            return PurelyNationalGrounds.buildWithExists(exists);
+        }
+    }
 
-	private static class SuitabilityCriterionBuilder implements CriterionBuilder<SuitabilityCriterion> {
+    private static class SatisfiesAllCriterionBuilder implements CriterionBuilder<SatisfiesAllCriterion> {
 
-		@Override
-		public SuitabilityCriterion buildWithExists(boolean exists) {
-			return SuitabilityCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public SatisfiesAllCriterion buildWithExists(boolean exists) {
+            return SatisfiesAllCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class EconomicFinancialStandingCriterionBuilder
-			implements CriterionBuilder<EconomicFinancialStandingCriterion> {
+    private static class SuitabilityCriterionBuilder implements CriterionBuilder<SuitabilityCriterion> {
 
-		@Override
-		public EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
-			return EconomicFinancialStandingCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public SuitabilityCriterion buildWithExists(boolean exists) {
+            return SuitabilityCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class TechnicalProfessionalCriterionBuilder
-			implements CriterionBuilder<TechnicalProfessionalCriterion> {
+    private static class EconomicFinancialStandingCriterionBuilder
+            implements CriterionBuilder<EconomicFinancialStandingCriterion> {
 
-		@Override
-		public TechnicalProfessionalCriterion buildWithExists(boolean exists) {
-			return TechnicalProfessionalCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public EconomicFinancialStandingCriterion buildWithExists(boolean exists) {
+            return EconomicFinancialStandingCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class QualityAssuranceCriterionBuilder implements CriterionBuilder<QualityAssuranceCriterion> {
+    private static class TechnicalProfessionalCriterionBuilder
+            implements CriterionBuilder<TechnicalProfessionalCriterion> {
 
-		@Override
-		public QualityAssuranceCriterion buildWithExists(boolean exists) {
-			return QualityAssuranceCriterion.buildWithExists(exists);
-		}
-	}
+        @Override
+        public TechnicalProfessionalCriterion buildWithExists(boolean exists) {
+            return TechnicalProfessionalCriterion.buildWithExists(exists);
+        }
+    }
 
-	private static class OtherCriterionBuilder implements CriterionBuilder<OtherCriterion> {
+    private static class QualityAssuranceCriterionBuilder implements CriterionBuilder<QualityAssuranceCriterion> {
 
-		@Override
-		public OtherCriterion buildWithExists(boolean exists) {
-			return OtherCriterion.build();
-		}
-	}
+        @Override
+        public QualityAssuranceCriterion buildWithExists(boolean exists) {
+            return QualityAssuranceCriterion.buildWithExists(exists);
+        }
+    }
+
+    private static class OtherCriterionBuilder implements CriterionBuilder<OtherCriterion> {
+
+        @Override
+        public OtherCriterion buildWithExists(boolean exists) {
+            return OtherCriterion.build();
+        }
+    }
 
 }
