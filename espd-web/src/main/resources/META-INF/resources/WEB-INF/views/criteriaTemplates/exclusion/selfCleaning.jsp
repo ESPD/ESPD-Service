@@ -8,10 +8,10 @@
 
 <div class="form-group">
 	${span18n["crit_taken_self_cleaning_measures"]}
-	<form:radiobutton path="${field}.selfCleaning.answer" value="true" data-target-show="${'#'}${field}-reliability"/>${span18n["yes"]}
-	<form:radiobutton path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-reliability"/>${span18n["no"]}
+	<form:radiobutton path="${field}.selfCleaning.answer" value="true" data-target-show="${'#'}${field}-self-cleaning"/>${span18n["yes"]}
+	<form:radiobutton path="${field}.selfCleaning.answer" value="false" data-target-hide="${'#'}${field}-self-cleaning"/>${span18n["no"]}
 </div>
-<div id="${field}-reliability" class="tab-pane ${espd[field].selfCleaning.answer ? '' : 'collapse'}">
+<div id="${field}-self-cleaning" class="tab-pane ${espd[field].selfCleaning.answer ? '' : 'collapse'}">
 	<div class="form-group">
 		<label class="control-label col-md-3 small">
 			${span18n["crit_please_describe_them"]}
