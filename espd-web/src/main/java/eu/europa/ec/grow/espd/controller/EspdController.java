@@ -42,7 +42,6 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,7 +59,6 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -279,17 +277,17 @@ class EspdController {
 	}
 	
 	private void setDefaultDatesForTurnoverFields(EspdDocument document) {
-				
+
 		int numberOfYears = 5;
-		
+
 		List<DynamicRequirementGroup> ug = new ArrayList<>(numberOfYears);
-		
-		for (int year=1; year<=numberOfYears; year++) {
+
+		for (int year = 1; year <= numberOfYears; year++) {
 			ug.add(getTurnoverDynamicRequirementGroupForYear(year));
 		}
-		
+
 		document.getGeneralYearlyTurnover().setUnboundedGroups(ug);
-		document.getSpecificYearlyTurnover().setUnboundedGroups(ug);		
+		document.getSpecificYearlyTurnover().setUnboundedGroups(ug);
 	}
 		
 	private DynamicRequirementGroup getTurnoverDynamicRequirementGroupForYear(int year) {
@@ -298,14 +296,9 @@ class EspdController {
 				
 		Date startDate = new DateTime().minusYears(year).dayOfYear().withMinimumValue().withTimeAtStartOfDay().toDate();
 		Date endDate = new DateTime().minusYears(year).dayOfYear().withMaximumValue().withTime(23, 59, 59, 999).toDate();
-
-		drg.put("averageTurnover", BigDecimal.ZERO);
-		drg.put("averageTurnoverCurrency", "");
-		drg.put("amount", BigDecimal.ZERO);
-		drg.put("currency", "EUR");
+		
 		drg.put("startDate", startDate);
 		drg.put("endDate", endDate);
-		drg.put("numberOfYears", 3);
 		
 		return drg;
 	}
@@ -510,22 +503,6 @@ class EspdController {
 		return addMultipleReference(espd.getFinancialRatio(),
 				addIndex, "#financialRatio", flow, "selection");
 	}
-
-	/*
-	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_generalYearlyTurnover")
-	public String addGeneralYearlyTurnover(@PathVariable String flow, @RequestParam("add_generalYearlyTurnover") Integer addIndex,
-			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
-		return addMultipleReference(espd.getGeneralYearlyTurnover(),
-				addIndex, "#generalYearlyTurnover", flow);
-	}
-
-	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_specificYearlyTurnover")
-	public String addSpecificYearlyTurnover(@PathVariable String flow, @RequestParam("add_specificYearlyTurnover") Integer addIndex,
-			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
-		return addMultipleReference(espd.getSpecificYearlyTurnover(),
-				addIndex, "#specificYearlyTurnover", flow);
-	}
-	*/
 	
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_workContractsPerformanceOfWorks")
 	public String addWorkContractsPerformanceOfWorks(@PathVariable String flow,
