@@ -29,6 +29,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Container class for storing the values of requirement groups in a dynamic way, preventing a possible proliferation
  * of classes and fields. This class is mostly useful for modeling the unbounded requirement groups.
@@ -36,6 +39,12 @@ import java.util.Set;
  * Created by ratoico on 11/25/16.
  */
 public class DynamicRequirementGroup implements Map<String, Object> {
+	
+	/**
+	 * Value for INDICATOR in subgroups
+	 */
+	@Getter @Setter
+    private Boolean subIndicatorAnswer;
 
 	private final Map<String, Object> values;
 
@@ -69,11 +78,18 @@ public class DynamicRequirementGroup implements Map<String, Object> {
 
 	@Override
 	public Object get(Object key) {
+		if("subIndicatorAnswer".equals(key)) {
+			return subIndicatorAnswer;
+		}
 		return values.get(key);
 	}
 
 	@Override
 	public Object put(String key, Object value) {
+		if("subIndicatorAnswer".equals(key)) {
+			subIndicatorAnswer = (Boolean) value;
+			return value;
+		}
 		return values.put(key, value);
 	}
 

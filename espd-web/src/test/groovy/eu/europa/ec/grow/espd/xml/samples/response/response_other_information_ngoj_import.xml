@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<espd:ESPDResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-res="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrns070:ver3.0</cbc:CustomizationID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">ce72f076-8767-4e72-95db-9b7c0848e386</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW">1</cbc:VersionID>
+    <cbc:IssueDate>2015-11-25</cbc:IssueDate>
+    <cbc:IssueTime>13:19:20</cbc:IssueTime>
+    <cbc:ContractFolderID schemeAgencyID="TeD">SMART 2015/0065</cbc:ContractFolderID>
+    <cac:ContractingParty>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name>hodor</cbc:Name>
+            </cac:PartyName>
+        </cac:Party>
+    </cac:ContractingParty>
+    <espd-cac:EconomicOperatorParty/>
+    <cac:ProcurementProjectLot>
+        <cbc:ID>0</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">BOGUS_CODE</cbc:TypeCode>
+        <cbc:Name>BOGUS_NAME</cbc:Name>
+        <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">BOGUS_ID</cbc:ID>
+                <cbc:Description>BOGUS_DESCRIPTION</cbc:Description>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+    
+    <cac:AdditionalDocumentReference>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">1234567890</cbc:ID>
+        <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">NGOJ</cbc:DocumentTypeCode>
+    </cac:AdditionalDocumentReference>
+    
+</espd:ESPDResponse>

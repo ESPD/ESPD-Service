@@ -1,3 +1,8 @@
+<%@page import="eu.europa.ec.grow.espd.domain.DynamicRequirementGroup"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.springframework.util.CollectionUtils"%>
+<%@page import="eu.europa.ec.grow.espd.domain.CriminalConvictionsCriterion"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EspdDocument"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,6 +37,8 @@
 <%request.setAttribute("exclusionEO", eu.europa.ec.grow.espd.xml.CriteriaTemplates.exclusionEO);%>
 <%request.setAttribute("nationalExclusionGrounds", eu.europa.ec.grow.espd.domain.enums.criteria.ExclusionCriterion.NATIONAL_EXCLUSION_GROUNDS);%>
 
+
+
 <tiles:importAttribute name="flow"/>
 
 <script>
@@ -46,6 +53,67 @@
 </script>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator">
+
+
+		<% 
+			EspdDocument espd = (EspdDocument)request.getAttribute("espd");
+	    	if (espd != null) { 
+	        	{// Add at least one Criminal Convictions to be sure user will see it in form
+	        		if (espd.getCriminalConvictions() == null) {
+	        			espd.setCriminalConvictions(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getCriminalConvictions().getUnboundedGroups())) {
+	        			espd.getCriminalConvictions().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getCriminalConvictions().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	        	{// Add at least one Corruption to be sure user will see it in form
+	        		if (espd.getCorruption() == null) {
+	        			espd.setCorruption(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getCorruption().getUnboundedGroups())) {
+	        			espd.getCorruption().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getCorruption().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	        	{// Add at least one Fraud to be sure user will see it in form
+	        		if (espd.getFraud() == null) {
+	        			espd.setFraud(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getFraud().getUnboundedGroups())) {
+	        			espd.getFraud().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getFraud().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	        	{// Add at least one TerroristOffences to be sure user will see it in form
+	        		if (espd.getTerroristOffences() == null) {
+	        			espd.setTerroristOffences(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getTerroristOffences().getUnboundedGroups())) {
+	        			espd.getTerroristOffences().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getTerroristOffences().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	        	{// Add at least one MoneyLaundering to be sure user will see it in form
+	        		if (espd.getMoneyLaundering() == null) {
+	        			espd.setMoneyLaundering(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getMoneyLaundering().getUnboundedGroups())) {
+	        			espd.getMoneyLaundering().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getMoneyLaundering().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	        	{// Add at least one ChildLabour to be sure user will see it in form
+	        		if (espd.getChildLabour() == null) {
+	        			espd.setChildLabour(new CriminalConvictionsCriterion());
+	        		}
+		        	if (CollectionUtils.isEmpty(espd.getChildLabour().getUnboundedGroups())) {
+	        			espd.getChildLabour().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getChildLabour().getUnboundedGroups().add(new DynamicRequirementGroup());
+		        	}
+	        	}
+	    	}
+        %>
 
     <tiles:insertDefinition name="viewChangeRole">
         <tiles:putAttribute name="agent" value="eo"/>

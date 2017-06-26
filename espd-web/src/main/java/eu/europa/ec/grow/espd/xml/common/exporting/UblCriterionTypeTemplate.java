@@ -168,7 +168,7 @@ public abstract class UblCriterionTypeTemplate {
 				}
 			} else {
 				// just fill in the information for a normal requirement group
-				groupTypes.add(buildGroupType(group, espdCriterion, 0));
+				groupTypes.add(buildGroupType(group, espdCriterion, -1));
 			}
 		}
 		criterionType.getRequirementGroup().addAll(groupTypes);
@@ -217,9 +217,29 @@ public abstract class UblCriterionTypeTemplate {
 
 		List<RequirementGroupType> subGroups = new ArrayList<>(parentGroup.getRequirementGroup().size() + 1);
 		for (CcvRequirementGroup ccvSubGroup : ccvGroup.getSubgroups()) {
-			subGroups.add(buildGroupType(ccvSubGroup, espdCriterion, groupIndex));
+			if (ccvSubGroup.isUnbounded() && espdCriterion instanceof UnboundedRequirementGroup) {
+				List<DynamicRequirementGroup> unboundedGroups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
+				if (isEmpty(unboundedGroups)) {
+					// if the user did not add values we still need to hold at least the structure of the primary group
+					subGroups.add(buildGroupType(ccvSubGroup, espdCriterion, 0));
+				} else {
+					// we just clone the unbounded groups as needed and fill them with the information coming from the users
+					for (int subGroupIndex = 0; subGroupIndex < unboundedGroups.size(); subGroupIndex++) {
+						subGroups.add(buildGroupType(ccvSubGroup, espdCriterion, subGroupIndex));
+					}
+				}
+			}
+			else {
+				subGroups.add(buildGroupType(ccvSubGroup, espdCriterion, groupIndex));
+			}
+			
 		}
 		parentGroup.getRequirementGroup().addAll(subGroups);
+		
+		
+		
+		
+		
 	}
 
 	/**

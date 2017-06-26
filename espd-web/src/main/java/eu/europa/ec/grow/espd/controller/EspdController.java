@@ -508,7 +508,7 @@ class EspdController {
 	public String addFinancialRatio(@PathVariable String flow, @RequestParam("add_financialRatio") Integer addIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return addMultipleReference(espd.getFinancialRatio(),
-				addIndex, "#financialRatio", flow);
+				addIndex, "#financialRatio", flow, "selection");
 	}
 
 	/*
@@ -532,7 +532,7 @@ class EspdController {
 			@RequestParam("add_workContractsPerformanceOfWorks") Integer addIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return addMultipleReference(espd.getWorkContractsPerformanceOfWorks(),
-				addIndex, "#workContractsPerformanceOfWorks", flow);
+				addIndex, "#workContractsPerformanceOfWorks", flow, "selection");
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_supplyContractsPerformanceDeliveries")
@@ -540,7 +540,7 @@ class EspdController {
 			@RequestParam("add_supplyContractsPerformanceDeliveries") Integer addIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return addMultipleReference(espd.getSupplyContractsPerformanceDeliveries(),
-				addIndex, "#supplyContractsPerformanceDeliveries", flow);
+				addIndex, "#supplyContractsPerformanceDeliveries", flow, "selection");
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "add_serviceContractsPerformanceServices")
@@ -548,13 +548,44 @@ class EspdController {
 			@RequestParam("add_serviceContractsPerformanceServices") Integer addIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return addMultipleReference(espd.getServiceContractsPerformanceServices(),
-				addIndex, "#serviceContractsPerformanceServices", flow);
+				addIndex, "#serviceContractsPerformanceServices", flow, "selection");
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_criminalConvictions")
+	public String addCriminalConvictions(@PathVariable String flow,
+			@RequestParam("add_criminalConvictions") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getCriminalConvictions(), addIndex, "#criminalConvictions", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_corruption")
+	public String addCorruption(@PathVariable String flow,
+			@RequestParam("add_corruption") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getCorruption(), addIndex, "#corruption", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_fraud")
+	public String addFraud(@PathVariable String flow,
+			@RequestParam("add_fraud") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getFraud(), addIndex, "#fraud", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_terroristOffences")
+	public String addTerroristOffences(@PathVariable String flow,
+			@RequestParam("add_terroristOffences") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getTerroristOffences(), addIndex, "#terroristOffences", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_moneyLaundering")
+	public String addMoneyLaundering(@PathVariable String flow,
+			@RequestParam("add_moneyLaundering") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getMoneyLaundering(), addIndex, "#moneyLaundering", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "add_childLabour")
+	public String addchildLabour(@PathVariable String flow,
+			@RequestParam("add_childLabour") Integer addIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return addMultipleReference(espd.getChildLabour(), addIndex, "#childLabour", flow, "exclusion");
 	}
 
 	private String addMultipleReference(UnboundedRequirementGroup espdCriterion, Integer referencePosition,
-			String referenceHash, String flow) {
+			String referenceHash, String flow, String referencePage) {
 		espdCriterion.getUnboundedGroups().add(referencePosition, new DynamicRequirementGroup());
-		return redirectToPage(flow + "/eo/selection" + referenceHash + referencePosition);
+		return redirectToPage(flow + "/eo/" + referencePage + referenceHash + referencePosition);
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/procedure", params = "remove")
@@ -575,7 +606,7 @@ class EspdController {
 	public String removeFinancialRatio(@PathVariable String flow,
 			@RequestParam("remove_financialRatio") Integer removeIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
-		return removeMultipleReference(espd.getFinancialRatio(), removeIndex, "#financialRatio", flow);
+		return removeMultipleReference(espd.getFinancialRatio(), removeIndex, "#financialRatio", flow, "selection");
 	}
 	
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_workContractsPerformanceOfWorks")
@@ -583,7 +614,7 @@ class EspdController {
 			@RequestParam("remove_workContractsPerformanceOfWorks") Integer removeIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return removeMultipleReference(espd.getWorkContractsPerformanceOfWorks(),
-				removeIndex, "#workContractsPerformanceOfWorks", flow);
+				removeIndex, "#workContractsPerformanceOfWorks", flow, "selection");
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_supplyContractsPerformanceDeliveries")
@@ -591,7 +622,7 @@ class EspdController {
 			@RequestParam("remove_supplyContractsPerformanceDeliveries") Integer removeIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return removeMultipleReference(espd.getSupplyContractsPerformanceDeliveries(),
-				removeIndex, "#supplyContractsPerformanceDeliveries", flow);
+				removeIndex, "#supplyContractsPerformanceDeliveries", flow, "selection");
 	}
 
 	@PostMapping(value = "/{flow:request|response}/eo/selection", params = "remove_serviceContractsPerformanceServices")
@@ -599,11 +630,36 @@ class EspdController {
 			@RequestParam("remove_serviceContractsPerformanceServices") Integer removeIndex,
 			@ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
 		return removeMultipleReference(espd.getServiceContractsPerformanceServices(),
-				removeIndex, "#serviceContractsPerformanceServices", flow);
+				removeIndex, "#serviceContractsPerformanceServices", flow, "selection");
+	}
+
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_criminalConvictions")
+	public String removeCriminalConvictions(@PathVariable String flow, @RequestParam("remove_criminalConvictions") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getCriminalConvictions(), removeIndex, "#criminalConvictions", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_corruption")
+	public String removeCorruption(@PathVariable String flow, @RequestParam("remove_corruption") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getCorruption(), removeIndex, "#corruption", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_fraud")
+	public String removeFraud(@PathVariable String flow, @RequestParam("remove_fraud") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getFraud(), removeIndex, "#fraud", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_terroristOffences")
+	public String removeTerroristOffences(@PathVariable String flow, @RequestParam("remove_terroristOffences") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getTerroristOffences(), removeIndex, "#terroristOffences", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_moneyLaundering")
+	public String removeMoneyLaundering(@PathVariable String flow, @RequestParam("remove_moneyLaundering") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getMoneyLaundering(), removeIndex, "#moneyLaundering", flow, "exclusion");
+	}
+	@PostMapping(value = "/{flow:request|response}/eo/exclusion", params = "remove_childLabour")
+	public String removeChildLabour(@PathVariable String flow, @RequestParam("remove_childLabour") Integer removeIndex, @ModelAttribute("espd") EspdDocument espd, BindingResult bindingResult) {
+		return removeMultipleReference(espd.getChildLabour(), removeIndex, "#childLabour", flow, "exclusion");
 	}
 
 	private String removeMultipleReference(UnboundedRequirementGroup espdCriterion, Integer referencePosition,
-			String referenceHash, String flow) {
+			String referenceHash, String flow, String referencePage) {
 		if (CollectionUtils.isNotEmpty(espdCriterion.getUnboundedGroups())) {
 			espdCriterion.getUnboundedGroups().remove(referencePosition.intValue());
 		}
@@ -611,6 +667,6 @@ class EspdController {
 			espdCriterion.getUnboundedGroups().add(new DynamicRequirementGroup());
 		}
 		referencePosition = Math.min(espdCriterion.getUnboundedGroups().size() - 1, referencePosition);
-		return redirectToPage(flow + "/eo/selection" + referenceHash + referencePosition);
+		return redirectToPage(flow + "/eo/" + referencePage + referenceHash + referencePosition);
 	}
 }
