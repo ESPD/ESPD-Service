@@ -40,6 +40,8 @@
         </div>
     </div>
 
+
+	<%-- no more buttons
 	<c:if test="${agent == 'eo'}">
 		<div class="form-group">
 			<div class="btn-group pull-right hidden-print">
@@ -58,6 +60,7 @@
 			</div>
 		</div>
 	</c:if>
+	--%>
 
 	<hr/>
 </c:forEach>
