@@ -13,6 +13,29 @@ This release was focused on XML changes.
 * https://github.com/ESPD/ESPD-Service/issues/67[Part V should not be shown in an open procedure]
 * https://github.com/ESPD/ESPD-Service/issues/154[Semantic error in ESPD XML Schema for postcode (zipcode)]
 
+
+=== 2017.03.04 (20th of June 2017)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/177[Update the TED URL]
+* https://github.com/ESPD/ESPD-Service/issues/178[Configure TED URL to be optional]
+
+
+=== 2017.03.03 (17th of May 2017)
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/160[EO can only 'alpha' criterion when CA selects 'alpha']
+* https://github.com/ESPD/ESPD-Service/issues/169[shows the YES if selecting NO in part IV Selection Criteria]
+
+
+=== 2017.03.02 (5th of May 2017)
+
+==== Bug
+
+* https://github.com/ESPD/ESPD-Service/issues/161[Error in CA view of ESPD-response, part IV a]
+
 === 2017.03.01 (11th of April 2017)
 
 This release contains a bugfix related to printing issues introduced in version `2017.03`.

@@ -42,7 +42,7 @@ public class TedService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${ted.api.base.url}")
+    @Value("${ted.api.base.url:}")
     private String tedUrl;
 
     @Value("${ted.api.user}")
@@ -57,6 +57,10 @@ public class TedService {
     }
 
     public TedResponse getContractNoticeInformation(TedRequest tedRequest) {
+        if (StringUtils.isBlank(tedUrl)) {
+            return new TedResponse();
+        }
+
         String receptionId = StringUtils.trimToEmpty(tedRequest.getReceptionId());
         if (StringUtils.isBlank(receptionId)) {
             return new TedResponse();

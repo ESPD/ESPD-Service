@@ -75,7 +75,7 @@ public abstract class UblCriteriaTemplate {
 	private List<CriterionType> addSelectionCriteria(EspdDocument espdDocument) {
 
 		List<CriterionType> criterionTypes = new ArrayList<>(SelectionCriterion.values().length + 1);
-		if (!espdDocument.atLeastOneSelectionCriterionWasSelected()) {
+		if (!espdDocument.getAtLeastOneSelectionCriterionWasSelected()) {
 			// Option 3:
 			// CA selects no selection criteria -> EO sees all selection criteria (including "All selection criteria")
 			for (SelectionCriterion criterion : SelectionCriterion.values()) {

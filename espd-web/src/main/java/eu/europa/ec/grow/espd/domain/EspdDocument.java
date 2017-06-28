@@ -146,14 +146,26 @@ public class EspdDocument {
 
 	private List<CriterionType> ublCriteria;
 
-	public final boolean atLeastOneSelectionCriterionWasSelected() {
-		boolean atLeastOnePresent = false;
-		for (SelectionCriterion ccvCriterion :
-				SelectionCriterion.values()) {
+	public final boolean getAtLeastOneSelectionCriterionWasSelected() {
+		for (SelectionCriterion ccvCriterion : SelectionCriterion.values()) {
 			EspdCriterion espdCriterion = readCriterionFromEspd(ccvCriterion);
-			atLeastOnePresent = atLeastOnePresent | (espdCriterion != null && espdCriterion.getExists());
+			if(espdCriterion != null && espdCriterion.getExists()) {
+				return true;
+			}
 		}
-		return atLeastOnePresent;
+		return false;
+	}
+
+	public final boolean getAllSelectionCriterionWasSelectedExceptAlpha() {
+		for (SelectionCriterion ccvCriterion : SelectionCriterion.values()) {
+			if(!SelectionCriterion.ALL_SELECTION_CRITERIA_SATISFIED.getUuid().equals(ccvCriterion.getUuid())) {
+				EspdCriterion espdCriterion = readCriterionFromEspd(ccvCriterion);
+				if(espdCriterion == null || !espdCriterion.getExists()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	/**
