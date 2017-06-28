@@ -105,7 +105,23 @@
     <div class="panel-heading" data-toggle="collapse" data-target="#ppdiv">
         <h4 class="panel-title">${span18n['createca_info_procurement_proc']}</h4>
     </div>
+
     <div id="ppdiv" class="panel-body collapse in">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-md-4">${span18n['type_of_procedure']}</label>
+                <div class="col-md-8">
+                    <form:select path="procedureType" cssClass="form-control">
+					    <form:option value="" label="${i18n['type_of_procedure_none']}" data-i18n="type_of_procedure_none"/>
+					    <form:option value="1" label="${i18n['type_of_procedure_open']}" data-i18n="type_of_procedure_open"/>
+					    <form:option value="2" label="${i18n['type_of_procedure_resticted']}" data-i18n="type_of_procedure_resticted"/>
+					    <form:option value="10" label="${i18n['type_of_procedure_negotiation']}" data-i18n="type_of_procedure_negotiation"/>
+					    <form:option value="C" label="${i18n['type_of_procedure_dialogue']}" data-i18n="type_of_procedure_dialogue"/>
+					    <form:option value="11" label="${i18n['type_of_procedure_partnership']}" data-i18n="type_of_procedure_partnership"/>
+					</form:select>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_procurer_name']}</label>
@@ -118,8 +134,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_title_or_short_desc']}</label>
                 <div class="col-md-8">
-                    <form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20"
-                                   cssClass="form-control"/>
+                    <form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control"/>
                 </div>
             </div>
         </div>
@@ -219,7 +234,7 @@
                             <form:textarea rows="1" cssClass="form-control" path="procurementReserved.doubleValue1"
                                            number="true"/>
                         </div>
-                    </div>s
+                    </div>
                     <div class="form-group">
                         <label class="control-label col-md-6">${span18n['createeo_disworkers_details']}</label>
                         <div class="col-md-6">
