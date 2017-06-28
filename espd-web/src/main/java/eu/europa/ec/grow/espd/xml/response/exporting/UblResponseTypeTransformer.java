@@ -35,11 +35,8 @@ import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.Cont
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.LocationType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.PartyType;
 import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SignatureType;
-import oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.TenderingProcessType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.IDType;
 import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.NameType;
-import oasis.names.specification.ubl.schema.xsd.commonbasiccomponents_2.ProcedureCodeType;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -87,15 +84,6 @@ public class UblResponseTypeTransformer {
 	    addSignatureInformation(espdDocument, responseType);
 	    addConsortiumName(espdDocument, responseType);
 
-	    ProcedureCodeType pct = new ProcedureCodeType();
-	    pct.setListAgencyID("OJEU");
-	    pct.setListVersionID("1.0");
-	    pct.setValue(espdDocument.getProcedureType());
-	    
-	    TenderingProcessType tp = new TenderingProcessType();
-	    tp.setProcedureCode(pct);
-	    
-	   
         return responseType;
     }
 
