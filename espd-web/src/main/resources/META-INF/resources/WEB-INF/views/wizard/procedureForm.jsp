@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </c:if>
+            
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_ojs_label']}</label>
                 <div class="col-md-8">
@@ -50,10 +51,19 @@
                                 placeholder="[ ][ ][ ][ ]/S [ ][ ][ ]–[ ][ ][ ][ ][ ][ ]"/>
                 </div>
             </div>
+            
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_ojs_url']}</label>
                 <div class="col-md-8">
                     <a href="${espd.tedUrl}" target="_blank" class="btn btn-link" id="tedUrlLink">${espd.tedUrl}</a>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-md-4">${span18n['createca_ngoj_label']}</label>
+                <div class="col-md-8">
+                    <form:input cssClass="form-control" path="ngojNumber" id="ngojNumber"
+                                placeholder="${i18n['ngoj_placeholder']}"/>
                 </div>
             </div>
             ${span18n['createca_official_journal_alert']}

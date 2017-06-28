@@ -410,11 +410,19 @@
           "unbounded": "true",
           "requirements": [
             {
-              "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Start Date",
+              "responseType": "DATE",
               "espdCriterionFields": [
-                "year"
+                "startDate"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate"
               ]
             },
             {
@@ -591,11 +599,19 @@
           "unbounded": "true",
           "requirements": [
             {
-              "id": "5aacceb3-280e-42f1-b2da-3d8ac7877fe9",
-              "description": "Year",
-              "responseType": "QUANTITY_YEAR",
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Start Date",
+              "responseType": "DATE",
               "espdCriterionFields": [
-                "year"
+                "startDate"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate"
               ]
             },
             {

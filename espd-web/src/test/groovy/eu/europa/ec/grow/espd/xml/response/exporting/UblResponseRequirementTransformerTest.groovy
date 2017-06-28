@@ -58,7 +58,7 @@ class UblResponseRequirementTransformerTest extends Specification {
         ccvRequirement.getResponseType() >> ExpectedResponseType.DESCRIPTION
         ccvRequirement.getEspdCriterionFields() >> ["description"]
         group.isUnbounded() >> false
-        def result = transformer.buildRequirementType(ccvRequirement, espdCriterion, group, 0)
+        def result = transformer.buildRequirementType(ccvRequirement, espdCriterion, group, -1)
 
         then:
         result.ID.value == "51391308-0bf6-423c-95e2-d5a54aa31fb8"

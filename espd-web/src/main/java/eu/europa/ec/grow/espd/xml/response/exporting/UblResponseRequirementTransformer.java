@@ -207,17 +207,22 @@ class UblResponseRequirementTransformer extends UblRequirementTypeTemplate {
 		}
 
 		try {
-			if (group.isUnbounded()) {
-				List<DynamicRequirementGroup> unboundedGroups = ((UnboundedRequirementGroup) espdCriterion)
-						.getUnboundedGroups();
+			if (group.isUnbounded() || groupIndex >= 0) {
+				List<DynamicRequirementGroup> unboundedGroups = ((UnboundedRequirementGroup) espdCriterion).getUnboundedGroups();
 				if (CollectionUtils.isEmpty(unboundedGroups)) {
 					return null;
 				}
+				
+				{// Workaround for subgroup indicator //////////////////
+					if("selfCleaningAnswer".equals(requirement.getEspdCriterionFields().get(position))) {
+						return (T) unboundedGroups.get(groupIndex).getSubIndicatorAnswer();
+					}
+				}///////////////////////////////////////////////////////
+				
 				return (T) PropertyUtils
 						.getProperty(unboundedGroups.get(groupIndex),
 								requirement.getEspdCriterionFields().get(position));
 			}
-
 			// all requirements except the ones representing an AMOUNT are mapped to a single ESPD field
 			return (T) PropertyUtils.getProperty(espdCriterion, requirement.getEspdCriterionFields().get(position));
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {

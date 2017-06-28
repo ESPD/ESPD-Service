@@ -108,6 +108,7 @@ public abstract class UblRequestResponseImporter {
 		addProjectLotInformation(requestType, responseType, espdDocument);
 		addRequestInformation(requestType, responseType, espdDocument);
 		addTedInformation(requestType, responseType, espdDocument);
+		addNgojInformation(requestType, responseType, espdDocument);
 	}
 
 	private void addProjectLotInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument) {
@@ -169,7 +170,7 @@ public abstract class UblRequestResponseImporter {
 		return new LocalDateTime(localDate.getYear(), localDate.getMonthOfYear(),
 				localDate.getDayOfMonth(), 0, 0, 0).toDate();
 	}
-
+	
 	private void addTedInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument) {
 		ContractFolderIDType contractFolder = provideContractFolder(requestType, responseType);
 		if (contractFolder != null) {
@@ -193,6 +194,27 @@ public abstract class UblRequestResponseImporter {
 
 	}
 
+	// National Government Official Journal Number
+	private void addNgojInformation(ESPDRequestType requestType, ESPDResponseType responseType, EspdDocument espdDocument) {
+		
+		ContractFolderIDType contractFolder = provideContractFolder(requestType, responseType);
+		
+		if (contractFolder != null) {
+			espdDocument.setFileRefByCA(contractFolder.getValue());
+		}
+
+		List<DocumentReferenceType> documentReferences = provideTedDocumentReferences(requestType, responseType);
+		List<DocumentReferenceType> ngojNumbers = UblDocumentReferences.filterByTypeCode(documentReferences, DocumentTypeCode.NGOJ);
+		
+		if (isNotEmpty(ngojNumbers)) {
+			DocumentReferenceType drt = ngojNumbers.get(0);
+			espdDocument.setNgojNumber(UblDocumentReferences.readIdValue(drt));			
+		} else {
+			log.warn("No NGOJ information found for response '{}'.", getResponseId(responseType));
+		}
+
+	}
+	
 	protected String getResponseId(ESPDResponseType input) {
 		if (input == null || input.getID() == null) {
 			return "";

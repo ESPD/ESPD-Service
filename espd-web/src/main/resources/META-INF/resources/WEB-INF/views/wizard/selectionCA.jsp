@@ -1,3 +1,12 @@
+<%@page import="eu.europa.ec.grow.espd.domain.TechnicalProfessionalCriterion"%>
+<%@page import="eu.europa.ec.grow.espd.domain.DynamicRequirementGroup"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EspdDocument"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EconomicOperatorImpl"%>
+<%@page import="eu.europa.ec.grow.espd.domain.EconomicOperatorRepresentative"%>
+<%@page import="org.springframework.util.CollectionUtils"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,6 +43,77 @@
 <tiles:importAttribute name="flow"/>
 
 <c:set var="usealpha" value="${espd.selectionSatisfiesAll != null && espd.selectionSatisfiesAll.exists}"/>
+
+<%
+	// needed to display at least one unbound element
+	EspdDocument espd = (EspdDocument) request.getAttribute("espd");
+	if (espd != null) {
+
+		{// Add at least one Financial Ratio to be sure user will see it in form
+			if (espd.getFinancialRatio() == null) {
+				espd.setFinancialRatio(new EconomicFinancialStandingCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getFinancialRatio().getUnboundedGroups())) {
+				espd.getFinancialRatio().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getFinancialRatio().getUnboundedGroups().add(new DynamicRequirementGroup());
+			}
+		}
+
+		{// Add at least one General Yearly Turnover to be sure user will see it in form
+			if (espd.getGeneralYearlyTurnover() == null) {
+				espd.setGeneralYearlyTurnover(new EconomicFinancialStandingCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getGeneralYearlyTurnover().getUnboundedGroups())) {
+				espd.getGeneralYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+			}
+		}
+
+		{// Add at least one Specific Yearly Turnover to be sure user will see it in form
+			if (espd.getSpecificYearlyTurnover() == null) {
+				espd.setSpecificYearlyTurnover(new EconomicFinancialStandingCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getSpecificYearlyTurnover().getUnboundedGroups())) {
+				espd.getSpecificYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+			}
+		}
+
+		{// Add at least one workContractsPerformanceOfWorks to be sure user will see it in form
+			if (espd.getWorkContractsPerformanceOfWorks() == null) {
+				espd.setWorkContractsPerformanceOfWorks(new TechnicalProfessionalCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups())) {
+				espd.getWorkContractsPerformanceOfWorks()
+						.setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getWorkContractsPerformanceOfWorks().getUnboundedGroups()
+						.add(new DynamicRequirementGroup());
+			}
+		}
+		{// Add at least one supplyContractsPerformanceDeliveries to be sure user will see it in form
+			if (espd.getSupplyContractsPerformanceDeliveries() == null) {
+				espd.setSupplyContractsPerformanceDeliveries(new TechnicalProfessionalCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups())) {
+				espd.getSupplyContractsPerformanceDeliveries()
+						.setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getSupplyContractsPerformanceDeliveries().getUnboundedGroups()
+						.add(new DynamicRequirementGroup());
+			}
+		}
+		{// Add at least one serviceContractsPerformanceServices to be sure user will see it in form
+			if (espd.getServiceContractsPerformanceServices() == null) {
+				espd.setServiceContractsPerformanceServices(new TechnicalProfessionalCriterion());
+			}
+			if (CollectionUtils.isEmpty(espd.getServiceContractsPerformanceServices().getUnboundedGroups())) {
+				espd.getServiceContractsPerformanceServices()
+						.setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+				espd.getServiceContractsPerformanceServices().getUnboundedGroups()
+						.add(new DynamicRequirementGroup());
+			}
+		}
+	}
+%>
 
 <form:form id="espdform" role="form" class="form-horizontal" method="post" commandName="espd" data-toggle="validator" autocomplete="off">
 	<tiles:insertDefinition name="viewChangeRole">

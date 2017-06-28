@@ -155,6 +155,7 @@
     </definition>
 
     <definition name="criminalFormTemplate" extends="exclusionFormTemplate">
+    	<put-attribute name="selfCleaning" value="false"/>
     	<put-attribute name="exclusionForm" value="/WEB-INF/views/criteriaTemplates/exclusion/criminalForm.jsp"/>
     </definition>
 
@@ -189,7 +190,8 @@
         <put-attribute name="has_multiple_description_ratio" value="false"/>
         <put-attribute name="has_single_amount" value="false"/>
         <put-attribute name="has_specify_year" value="false"/>
-        <put-attribute name="has_multiple_year_amount" value="true"/>
+        <put-attribute name="has_multiple_year_amount" value="false"/>
+        <put-attribute name="has_multiple_amount_date" value="false"/>
         <put-attribute name="has_number_of_years" value="false"/>
     </definition>
 
@@ -209,6 +211,7 @@
     <definition name="multipleYearNumber" template="/WEB-INF/views/criteriaTemplates/selection/multipleYearNumber.jsp"><!-- field, lastYears --></definition>
     <definition name="multipleDescriptionRatio" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionRatio.jsp"><!-- field --></definition>
     <definition name="multipleDescriptionAmountDateRecipients" template="/WEB-INF/views/criteriaTemplates/selection/multipleDescriptionAmountDateRecipients.jsp"><!-- field --></definition>
+    <definition name="multipleAmountDate" template="/WEB-INF/views/criteriaTemplates/selection/multipleAmountDate.jsp"><!-- field --></definition>
 
     <!-- ~ selection -->
     

@@ -35,24 +35,24 @@ public abstract class ExclusionCriterion extends EspdCriterion {
 
     private String description;
 
-    public final String getSelfCleaningDescription() {
+    public String getSelfCleaningDescription() {
         if (selfCleaning != null) {
             return selfCleaning.getDescription();
         }
         return null;
     }
 
-	public final void setSelfCleaningDescription(String description) {
+	public void setSelfCleaningDescription(String description) {
 		if (selfCleaning != null) {
 			selfCleaning.setDescription(description);
 		}
 	}
 
-    public final boolean getSelfCleaningAnswer() {
+    public boolean getSelfCleaningAnswer() {
         return selfCleaning != null && Boolean.TRUE.equals(selfCleaning.getAnswer());
     }
 
-	public final void setSelfCleaningAnswer(boolean answer) {
+	public void setSelfCleaningAnswer(boolean answer) {
 		if (selfCleaning != null) {
 			selfCleaning.setAnswer(answer);
 		}

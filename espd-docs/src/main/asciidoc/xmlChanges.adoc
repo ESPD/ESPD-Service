@@ -1,5 +1,332 @@
 == XML changes
 
+=== Version 2017.05
+
+https://github.com/ESPD/ESPD-Service/issues/67[Part V should not be shown in an open procedure]
+
+Part V should not be shown in an open procedure #67
+
+In case `Part I: Information concerning the procurement procedure and the contracting authority or contracting entity`,
+section `Information about the procurement procedure` receives an additional member called `Type of procedure`.
+
+List of values and its impact on Part V specified below:
+* Not specified (because it may not be selected)
+* Open procedure
+* Restricted procedure (Part V will be shown)
+* Competitive procedure with negotiation (Part V will be shown)
+* Competitive dialogue (Part V will be shown)
+* Innovation partnership (Part V will be shown)
+
+Code list for these values are taken from version 1.0.2 and specified below:
+
+
+This additional field is using cac:TenderingProcess.cbc:ProcedureCode element, with possible values:
+
+[format="csv",options="header"]
+|================================================
+Title,Value
+Not specified,null
+Open procedure,1
+Restricted procedure,2
+Competitive procedure with negotiation,10
+Competitive dialogue,C
+Innovation partnership,11
+|================================================
+
+Example:
+
+[source,xml]
+.espd-request.xml .espd-response.xml
+----
+<cac:TenderingProcess>
+	   <cbc:ProcedureCode listID="ProcedureType" listAgencyName="OJEU" listVersionID="1.0">C</cbc:ProcedureCode>
+</cac:TenderingProcess>
+----
+
+
+https://github.com/ESPD/ESPD-Service/issues/75[Part III:exclusion grounds: Add multiple persons]
+
+In case "Part III: Exclusion Grounds", section "A: Grounds relating to criminal convictions", 
+applying for all grounds regarding criminal convictions, 
+there is no option to add (conviction) information for multiple representatives, in case of a conviction.
+
+Requirement subgroups with id "f5276600-a2b6-4ff6-a90e-b31fe19dae41" became "unbounded" using 
+functionality implemented for unbounded groups
+https://github.com/ESPD/ESPD-Service/issues/15[Able to add multiple references in selection criteria].
+
+[source,javascript]
+.exclusionCriteria.json
+----
+"subgroups": [
+            {
+              "name": "G1.1",
+              "id": "f5276600-a2b6-4ff6-a90e-b31fe19dae41",
+              "fulfillmentIndicator": "true",
+              "unbounded": "true"
+            }
+            ]
+----
+
+This change provides possibility to implement multiple fields group:
+- Date of conviction
+- Reason
+- Who has been convicted 
+- Length of the period of exclusion
+- Have you taken measures to demonstrate your reliability ("Self-Cleaning")
+- Description
+
+[source,xml]
+.espd-responce.xml
+----
+<ccv:RequirementGroup>
+     <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c637c0c-7703-4389-ba52-02997a055bd7</cbc:ID>
+     <ccv:Requirement responseDataType="INDICATOR">
+        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID>
+        <cbc:Description>Your answer?</cbc:Description>
+        <ccv:Response>
+           <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+        </ccv:Response>
+     </ccv:Requirement>
+     <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f5276600-a2b6-4ff6-a90e-b31fe19dae41</cbc:ID>
+        <ccv:Requirement responseDataType="DATE">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
+           <cbc:Description>Date of conviction</cbc:Description>
+           <ccv:Response>
+              <cbc:Date>2017-05-04</cbc:Date>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="DESCRIPTION">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
+           <cbc:Description>Reason</cbc:Description>
+           <ccv:Response>
+              <cbc:Description>ert</cbc:Description>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="DESCRIPTION">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c5012430-14da-454c-9d01-34cedc6a7ded</cbc:ID>
+           <cbc:Description>Who has been convicted</cbc:Description>
+           <ccv:Response>
+              <cbc:Description>rt</cbc:Description>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="PERIOD">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
+           <cbc:Description>Length of the period of exclusion</cbc:Description>
+           <ccv:Response>
+              <cac:Period>
+                 <cbc:Description>ert</cbc:Description>
+              </cac:Period>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:RequirementGroup>
+           <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+           <ccv:Requirement responseDataType="INDICATOR">
+              <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
+              <cbc:Description>Have you taken measures to demonstrate your reliability (&quot;Self-Cleaning&quot;)?</cbc:Description>
+              <ccv:Response>
+                 <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
+              </ccv:Response>
+           </ccv:Requirement>
+           <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+              <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+              <ccv:Requirement responseDataType="DESCRIPTION">
+                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
+                 <cbc:Description>Please describe them</cbc:Description>
+                 <ccv:Response/>
+              </ccv:Requirement>
+           </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+     </ccv:RequirementGroup>
+     <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f5276600-a2b6-4ff6-a90e-b31fe19dae41</cbc:ID>
+        <ccv:Requirement responseDataType="DATE">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
+           <cbc:Description>Date of conviction</cbc:Description>
+           <ccv:Response>
+              <cbc:Date>2017-05-04</cbc:Date>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="DESCRIPTION">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
+           <cbc:Description>Reason</cbc:Description>
+           <ccv:Response>
+              <cbc:Description>ert</cbc:Description>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="DESCRIPTION">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c5012430-14da-454c-9d01-34cedc6a7ded</cbc:ID>
+           <cbc:Description>Who has been convicted</cbc:Description>
+           <ccv:Response>
+              <cbc:Description>rt</cbc:Description>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:Requirement responseDataType="PERIOD">
+           <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
+           <cbc:Description>Length of the period of exclusion</cbc:Description>
+           <ccv:Response>
+              <cac:Period>
+                 <cbc:Description>ert</cbc:Description>
+              </cac:Period>
+           </ccv:Response>
+        </ccv:Requirement>
+        <ccv:RequirementGroup>
+           <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+           <ccv:Requirement responseDataType="INDICATOR">
+              <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
+              <cbc:Description>Have you taken measures to demonstrate your reliability (&quot;Self-Cleaning&quot;)?</cbc:Description>
+              <ccv:Response>
+                 <ccv-cbc:Indicator>false</ccv-cbc:Indicator>
+              </ccv:Response>
+           </ccv:Requirement>
+           <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+              <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+              <ccv:Requirement responseDataType="DESCRIPTION">
+                 <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
+                 <cbc:Description>Please describe them</cbc:Description>
+                 <ccv:Response/>
+              </ccv:Requirement>
+           </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+     </ccv:RequirementGroup>
+</ccv:RequirementGroup>
+----
+
+https://github.com/ESPD/ESPD-Service/issues/89[Part I: Addition of a national reference number]
+
+In Part I (Information About Publication section) we need to provide the possibility to add a national reference
+number to help economic operators in a country to identify it on a national portal.
+
+To fulfill this requirement we need to add a new XML element as in the following example:
+
+[source,xml]
+.espd-request.xml
+----
+<cac:AdditionalDocumentReference>
+      <cbc:ID schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">The national number here</cbc:ID>
+      <cbc:DocumentTypeCode listID="ReferencesTypeCodes" listAgencyID="EU-COM-GROW" listVersionID="1.0">NATIONAL_NUMBER</cbc:DocumentTypeCode>
+      <cac:Attachment>
+         <cac:ExternalReference>
+            <cbc:Description>-</cbc:Description>
+         </cac:ExternalReference>
+      </cac:Attachment>
+</cac:AdditionalDocumentReference>
+----
+
+https://github.com/ESPD/ESPD-Service/issues/148[Part IV: Turnover fields should have fiscal years]
+
+In Part IV (Selection Criteria) Section B (Economic and Financial Standing), currently the economic operator can only specify a Year for
+ the following requirements:
+
+<1> General Yearly Turnover and
+<2> Specific Yearly Turnover
+
+This change is about allowing the EO to specify instead the fiscal year by selecting a Start Date and an End Date. In the new definition
+the QUANTITY_YEAR field will be replaced by a START_DATE and END_DATE fields as follows:
+
+[source,javascript]
+.selectionCriteria.js
+----
+      "groups": [
+        {
+          "name": "G1",
+          "id": "c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16",
+          "unbounded": "true",
+          "requirements": [
+            {
+              "id": "42ec8116-31a7-4118-8612-5b04f5c8bde7",
+              "description": "Start Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "startDate"
+              ]
+            },
+            {
+              "id": "3641b897-f9f0-4d90-909a-b6d4c4b1d645",
+              "description": "End Date",
+              "responseType": "DATE",
+              "espdCriterionFields": [
+                "endDate"
+              ]
+            },
+            {
+              "id": "42db0eaa-d2dd-48cb-83ac-38d73cab9b50",
+              "description": "Amount",
+              "responseType": "AMOUNT",
+              "espdCriterionFields": [
+                "amount",
+                "currency"
+              ]
+            }
+          ]
+        },
+----
+
+
+https://github.com/ESPD/ESPD-Service/issues/154[Semantic error in ESPD XML Schema for postcode (zipcode)]
+
+For both the EO and the representatives of the EO a postcode can be specified. In case of the EO, this information is represented by the XML element espd-cac:ContractingParty.Party.PostalAddress.Postbox, in case of the EO representative the element espd-cac:EconomicOperatorParty.Party.Person.ResidenceAddress.Postbox is used.
+
+As usage of the Postbox element in semantically wrong in both cases (i.e. a postbox number refers to a post office box registered for postal delivery by a postal service provider). The element […].PostalZone will be used instead.
+
+Example:
+
+[source,xml]
+.espd-response.xml
+----
+<espd:ESPDResponse>
+    .....
+    <espd-cac:EconomicOperatorParty>
+        <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
+        <espd-cac:RepresentativeNaturalPerson>
+            <cac:PowerOfAttorney>
+                <cac:AgentParty>
+                    <cac:Person>
+                        <cac:Contact/>
+                        <cac:ResidenceAddress/>
+                    </cac:Person>
+                </cac:AgentParty>
+            </cac:PowerOfAttorney>
+        </espd-cac:RepresentativeNaturalPerson>
+        <cac:Party>
+            <cac:PartyName>
+                <cbc:Name></cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:PostalZone>1050</cbc:PostalZone><!--1-->
+                <cac:Country>
+                    <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">GR</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact/>
+        </cac:Party>
+    </espd-cac:EconomicOperatorParty>
+   ...
+</espd:ESPDResponse>
+
+----
+
+<1> XML element Postbox has been replaced by PostalZone
+
+https://github.com/ESPD/ESPD-Service/issues/159[Correct XML schema version]
+
+The xml element cbc:VersionID until now contains ESPD Service version. This will be modified so that xml element cbc:VersionID will contain ESPD Data Exchange Model version.
+
+Example:
+
+[source,xml]
+.espd-response.xml
+----
+<espd:ESPDResponse>
+    .....
+   <cbc:VersionID schemeAgencyID="EU-COM-GROW">1.0.2</cbc:VersionID> <!--1-->
+   .....
+</espd:ESPDResponse>
+----
+
+<1> XML element cbc:VersionID contains the ESPD Data Exchange Model version.
+
+
 === Version 2016.12
 
 https://github.com/ESPD/ESPD-Service/issues/15[Able to add multiple references in selection criteria]

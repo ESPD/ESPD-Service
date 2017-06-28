@@ -29,6 +29,8 @@ import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
 import eu.europa.ec.grow.espd.xml.base.AbstractXmlFileImport
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter
+
 /**
  * Created by ratoico on 1/8/16 at 2:44 PM.
  */
@@ -38,38 +40,43 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         when:
         EspdDocument espd = parseXmlResponseFile("selection/general_yearly_turnover_import.xml")
         def unboundedGroups = espd.generalYearlyTurnover.unboundedGroups
-
+		
         then:
         unboundedGroups.size() == 5
 
         then:
         espd.generalYearlyTurnover.exists == true
         espd.generalYearlyTurnover.answer == true
+				
+		then:
+		unboundedGroups[0].get("startDate") == LocalDateAdapter.unmarshal("2015-05-01").toDate()
+		unboundedGroups[0].get("endDate") == LocalDateAdapter.unmarshal("2016-04-30").toDate()
+		unboundedGroups[0].get("amount") == 111.1
+		unboundedGroups[0].get("currency") == "RON"
 
-        then:
-        unboundedGroups[0].get("year") == 2016
-        unboundedGroups[0].get("amount") == 111.1
-        unboundedGroups[0].get("currency") == "RON"
+		then:
+		unboundedGroups[1].get("startDate") == LocalDateAdapter.unmarshal("2014-05-01").toDate()
+		unboundedGroups[1].get("endDate") == LocalDateAdapter.unmarshal("2015-04-30").toDate()
+		unboundedGroups[1].get("amount") == 222.2
+		unboundedGroups[1].get("currency") == "EUR"
+		
+		then:
+		unboundedGroups[2].get("startDate") == LocalDateAdapter.unmarshal("2013-05-01").toDate()
+		unboundedGroups[2].get("endDate") == LocalDateAdapter.unmarshal("2014-04-30").toDate()
+		unboundedGroups[2].get("amount") == 333.3
+		unboundedGroups[2].get("currency") == "USD"
 
-        then:
-        unboundedGroups[1].get("year") == 2015
-        unboundedGroups[1].get("amount") == 222.2
-        unboundedGroups[1].get("currency") == "EUR"
+		then:
+		unboundedGroups[3].get("startDate") == LocalDateAdapter.unmarshal("2012-05-01").toDate()
+		unboundedGroups[3].get("endDate") == LocalDateAdapter.unmarshal("2013-04-30").toDate()
+		unboundedGroups[3].get("amount") == 444.4
+		unboundedGroups[3].get("currency") == "CHF"
 
-        then:
-        unboundedGroups[2].get("year") == 2014
-        unboundedGroups[2].get("amount") == 333.3
-        unboundedGroups[2].get("currency") == "USD"
-
-        then:
-        unboundedGroups[3].get("year") == 2013
-        unboundedGroups[3].get("amount") == 444.4
-        unboundedGroups[3].get("currency") == "CHF"
-
-        then:
-        unboundedGroups[4].get("year") == 2012
-        unboundedGroups[4].get("amount") == 555.5
-        unboundedGroups[4].get("currency") == "YEN"
+		then:
+		unboundedGroups[4].get("startDate") == LocalDateAdapter.unmarshal("2011-05-01").toDate()
+		unboundedGroups[4].get("endDate") == LocalDateAdapter.unmarshal("2012-04-30").toDate()
+		unboundedGroups[4].get("amount") == 555.5
+		unboundedGroups[4].get("currency") == "YEN"
 
         then: "info electronically"
         espd.generalYearlyTurnover.availableElectronically.answer == true
@@ -78,6 +85,7 @@ class GeneralYearlyTurnoverImportTest extends AbstractXmlFileImport {
         espd.generalYearlyTurnover.availableElectronically.issuer == "HODOR"
     }
 
+	
     def "a selection criterion with no answer will be treated as FALSE"() {
         when:
         EspdDocument espd = parseXmlResponseFile("selection/selection_criterion_no_answer_import.xml")

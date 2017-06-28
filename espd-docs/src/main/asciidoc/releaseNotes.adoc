@@ -1,5 +1,19 @@
 == Release notes
 
+=== 2017.06 (30th of June)
+
+This release was focused on XML changes.
+
+==== Enhancement
+
+* https://github.com/ESPD/ESPD-Service/issues/159[Correct XML schema version]
+* https://github.com/ESPD/ESPD-Service/issues/148[Part IV: Turnover fields should have fiscal years]
+* https://github.com/ESPD/ESPD-Service/issues/89[Part I: Addition of a national reference number]
+* https://github.com/ESPD/ESPD-Service/issues/75[Part III:exclusion grounds: Add multiple persons]
+* https://github.com/ESPD/ESPD-Service/issues/67[Part V should not be shown in an open procedure]
+* https://github.com/ESPD/ESPD-Service/issues/154[Semantic error in ESPD XML Schema for postcode (zipcode)]
+
+
 === 2017.03.04 (20th of June 2017)
 
 ==== Enhancement

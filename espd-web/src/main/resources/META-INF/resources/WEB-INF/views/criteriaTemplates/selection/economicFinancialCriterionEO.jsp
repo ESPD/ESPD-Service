@@ -11,6 +11,7 @@
 <tiles:importAttribute name="lastYearsAmount"/>
 <tiles:importAttribute name="has_multiple_description_ratio"/>
 <tiles:importAttribute name="has_multiple_year_amount"/>
+<tiles:importAttribute name="has_multiple_amount_date"/>
 <tiles:importAttribute name="has_single_amount"/>
 <tiles:importAttribute name="has_specify_year"/>
 <tiles:importAttribute name="has_number_of_years"/>
@@ -35,6 +36,11 @@
     <tiles:insertDefinition name="multipleYearAmount">
         <tiles:putAttribute name="field" value="${field}"/>
         <tiles:putAttribute name="lastYears" value="${lastYearsAmount}"/>
+    </tiles:insertDefinition>
+</c:if>
+<c:if test="${has_multiple_amount_date}">
+    <tiles:insertDefinition name="multipleAmountDate">
+        <tiles:putAttribute name="field" value="${field}"/>
     </tiles:insertDefinition>
 </c:if>
 <c:if test="${has_multiple_description_ratio}">
