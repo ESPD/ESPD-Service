@@ -11,7 +11,7 @@
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
 			</h2>
 		</div>
-		<c:if test="${agent == 'eo'}"><%-- Part V is visible only for EO --%>
+		<c:if test="${agent == 'eo' && (espd.procedureType == '2' || espd.procedureType == '10' || espd.procedureType == 'C' || espd.procedureType == '11')}"><%-- Part V is visible only for EO --%>
             <div class="panel panel-espd">
                 <div class="panel-heading" data-toggle="collapse" data-target="#finish-reduction-of-numbers-section">
 	 				<h4 class="panel-title">

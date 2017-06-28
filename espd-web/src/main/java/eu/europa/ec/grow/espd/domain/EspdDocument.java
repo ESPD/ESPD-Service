@@ -49,7 +49,7 @@ public class EspdDocument {
 
 	private String ojsNumber;
 	private String ngojNumber;
-	private String procedureTitle;
+	private String procedureType;	private String procedureTitle;
 	private String procedureShortDesc;
 	private String lotConcerned;
 	private String fileRefByCA;

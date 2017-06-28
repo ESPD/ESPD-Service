@@ -20,7 +20,7 @@ List of values and its impact on Part V specified below:
 Code list for these values are taken from version 1.0.2 and specified below:
 
 
-This additional field is using cac:TenderingProcess.cbc:ProcedureCode element, with possible values:
+Values of Procedure Type:
 
 [format="csv",options="header"]
 |================================================
@@ -33,16 +33,7 @@ Competitive dialogue,C
 Innovation partnership,11
 |================================================
 
-Example:
-
-[source,xml]
-.espd-request.xml .espd-response.xml
-----
-<cac:TenderingProcess>
-	   <cbc:ProcedureCode listID="ProcedureType" listAgencyName="OJEU" listVersionID="1.0">C</cbc:ProcedureCode>
-</cac:TenderingProcess>
-----
-
+Procedure Type is not stored in XML.
 
 https://github.com/ESPD/ESPD-Service/issues/75[Part III:exclusion grounds: Add multiple persons]
 
