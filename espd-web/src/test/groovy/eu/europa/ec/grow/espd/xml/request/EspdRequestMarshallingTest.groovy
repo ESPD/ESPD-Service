@@ -131,37 +131,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ContractFolderID.@schemeAgencyID.text() == "TeD"
     }
 
-	def "should contain NGOJ AdditionalDocumentReference element information"() {
-		given:
-		def espd = new EspdDocument(ngojNumber: "1234567890")
-
-		when:
-		def result = generateRequestXml(espd).AdditionalDocumentReference.findAll { it -> "NGOJ" == it.DocumentTypeCode.text()}
-
-		then:
-		result.ID.text() == "1234567890"
-		result.ID.@schemeID == ""
-		result.ID.@schemeAgencyID.text() == "EU-COM-GROW"
-		result.ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
-		result.ID.@schemeVersionID.text() == "1.1"
-	}
-	
-	def "should not contain NGOJ AdditionalDocumentReference if the NGOJ number is missing"() {
-		given:
-		def espd = new EspdDocument(ngojNumber: "     ")
-
-		when:
-		def request = generateRequestXml(espd)
-        def ngojElements = request.AdditionalDocumentReference.findAll { it -> "NGOJ" == it.DocumentTypeCode.text()}
-
-		then: "we always have the procurement procedure"
-		request.AdditionalDocumentReference.size() == 1
-
-        then: "there are no additional document references for the national number"
-        ngojElements.size() == 0
-	}
-		
-    def "should contain AdditionalDocumentReference element information for procurement procedure"() {
+    def "should contain AdditionalDocumentReference element information"() {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
                 procedureTitle: "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015",
@@ -174,27 +144,23 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         def result = generateRequestXml(espd)
 
         then:
-        result.AdditionalDocumentReference.size() == 1
-        def ojsDocRef = result.AdditionalDocumentReference[0]
+        result.AdditionalDocumentReference[0].ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
 
         then:
-        ojsDocRef.ID.text() == "S206|2015-10-23|PN33|2015/S 206-373035"
-        ojsDocRef.ID.@schemeID.text() == "ISO/IEC 9834-8:2008 - 4UUID"
-        ojsDocRef.ID.@schemeAgencyID.text() == "EU-COM-GROW"
-        ojsDocRef.ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
-        ojsDocRef.ID.@schemeVersionID.text() == "1.1"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TED_CN"
 
         then:
-        ojsDocRef.DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        ojsDocRef.DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
-        ojsDocRef.DocumentTypeCode.@listVersionID.text() == "1.0"
-        ojsDocRef.DocumentTypeCode.text() == "TED_CN"
-
-        then:
-        ojsDocRef.Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
-        ojsDocRef.Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
-        ojsDocRef.Attachment.ExternalReference.Description[1].text() == "16-000136-001"
-        ojsDocRef.Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[1].text() == "16-000136-001"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
     def "should contain AdditionalDocumentReference with default ID if the TED OJS number is missing"() {
@@ -209,25 +175,24 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
 
         then:
         result.AdditionalDocumentReference.size() == 1
-        def ojsDocRef = result.AdditionalDocumentReference[0]
 
         then:
-        ojsDocRef.ID.text() == "0000/S 000-000000"
-        ojsDocRef.ID.@schemeID.text() == "COM-GROW-TEMPORARY-ID"
-        ojsDocRef.ID.@schemeAgencyID.text() == "EU-COM-GROW"
-        ojsDocRef.ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
-        ojsDocRef.ID.@schemeVersionID.text() == "1.1"
+        result.AdditionalDocumentReference[0].ID.text() == "0000/S 000-000000"
+        result.AdditionalDocumentReference[0].ID.@schemeID.text() == "COM-GROW-TEMPORARY-ID"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
+        result.AdditionalDocumentReference[0].ID.@schemeVersionID.text() == "1.1"
 
         then:
-        ojsDocRef.DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
-        ojsDocRef.DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
-        ojsDocRef.DocumentTypeCode.@listVersionID.text() == "1.0"
-        ojsDocRef.DocumentTypeCode.text() == "TED_CN"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listAgencyID.text() == "EU-COM-GROW"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listID.text() == "ReferencesTypeCodes"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.@listVersionID.text() == "1.0"
+        result.AdditionalDocumentReference[0].DocumentTypeCode.text() == "TED_CN"
 
         then:
-        ojsDocRef.Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
-        ojsDocRef.Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
-        ojsDocRef.Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.FileName.text() == "Belgium-Brussels: SMART 2015/0065 — Benchmarking deployment of eHealth among general practitioners 2015"
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.Description[0].text() == "Service category No 11: Management consulting services [6] and related services."
+        result.AdditionalDocumentReference[0].Attachment.ExternalReference.URI.text() == "http://ted.europa.eu/udl?uri=TED:NOTICE:002226-2016:TEXT:ES:HTML"
     }
 
     def "AdditionalDocumentReference element should contain a default description so that we can read tedReceptionId as a second description"() {
@@ -269,7 +234,7 @@ class EspdRequestMarshallingTest extends AbstractCriteriaFixture {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"

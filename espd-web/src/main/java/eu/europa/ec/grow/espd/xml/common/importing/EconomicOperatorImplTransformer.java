@@ -150,9 +150,17 @@ public class EconomicOperatorImplTransformer {
             return;
         }
 
+        //For backwards computability, we read both PostBox and PostalZone - preferring PostalZone when it is not null
+
         if (residenceAddress.getPostbox() != null) {
             representative.setPostalCode(trimToEmpty(residenceAddress.getPostbox().getValue()));
         }
+
+        if (residenceAddress.getPostalZone() != null) {
+            representative.setPostalCode(trimToEmpty(residenceAddress.getPostalZone().getValue()));
+        }
+
+
         if (residenceAddress.getStreetName() != null) {
             representative.setStreet(trimToEmpty(residenceAddress.getStreetName().getValue()));
         }

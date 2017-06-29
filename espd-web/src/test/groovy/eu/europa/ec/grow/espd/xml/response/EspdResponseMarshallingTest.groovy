@@ -170,7 +170,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ContractingParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.ContractingParty.Party.PostalAddress.CityName.text() == "Hodor city"
         result.ContractingParty.Party.PostalAddress.StreetName.text() == "Hodor street"
-        result.ContractingParty.Party.PostalAddress.Postbox.text() == "Hodor postcode"
+        result.ContractingParty.Party.PostalAddress.PostalZone.text() == "Hodor postcode"
 
         then: "check contact information"
         result.ContractingParty.Party.Contact.Name.text() == "Hodor contact person"
@@ -204,7 +204,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.EconomicOperatorParty.Party.PostalAddress.Country.IdentificationCode.@listVersionID.text() == "1.0.2"
         result.EconomicOperatorParty.Party.PostalAddress.CityName.text() == "Edinborough"
         result.EconomicOperatorParty.Party.PostalAddress.StreetName.text() == "Vitruvio"
-        result.EconomicOperatorParty.Party.PostalAddress.Postbox.text() == "28006"
+        result.EconomicOperatorParty.Party.PostalAddress.PostalZone.text() == "28006"
 
         then: "check contact information"
         result.EconomicOperatorParty.Party.Contact.Name.text() == "Hodor contact person"
@@ -250,7 +250,7 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.Country.IdentificationCode.text() == "ES"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.CityName.text() == "Madrid"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.StreetName.text() == "Vitruvio"
-        result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.Postbox.text() == "28006"
+        result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.ResidenceAddress.PostalZone.text() == "28006"
 
         then: "check contact information"
         result.EconomicOperatorParty.RepresentativeNaturalPerson[0].PowerOfAttorney.AgentParty.Person.Contact.ElectronicMail.text() == "emilio.garcia3torres@acme.com"
@@ -292,38 +292,6 @@ class EspdResponseMarshallingTest extends AbstractEspdXmlMarshalling {
         result.ProcurementProjectLot.ID.text() == "hodor lot"
     }
 
-	
-	
-	def "should contain NGOJ AdditionalDocumentReference element information"() {
-		given:
-		def espd = new EspdDocument(ngojNumber: "1234567890")
-
-		when:
-		def result = generateResponseXml(espd)
-
-		then:
-		result.AdditionalDocumentReference[1].ID.text() == "1234567890"
-		result.AdditionalDocumentReference[1].ID.@schemeID.text() == ""
-		result.AdditionalDocumentReference[1].ID.@schemeAgencyID.text() == "EU-COM-GROW"
-		result.AdditionalDocumentReference[1].ID.@schemeAgencyName.text() == "DG GROW (European Commission)"
-		result.AdditionalDocumentReference[1].ID.@schemeVersionID.text() == "1.1"
-	}
-	
-    def "should not contain NGOJ AdditionalDocumentReference if the NGOJ number is missing"() {
-        given:
-        def espd = new EspdDocument(ngojNumber: "     ")
-
-        when:
-        def response = generateResponseXml(espd)
-        def ngojElements = response.AdditionalDocumentReference.findAll { it -> "NGOJ" == it.DocumentTypeCode.text()}
-
-        then: "we always have the procurement procedure"
-        response.AdditionalDocumentReference.size() == 1
-
-        then: "there are no additional document references for the national number"
-        ngojElements.size() == 0
-    }
-	
     def "should contain AdditionalDocumentReference element with TED information"() {
         given:
         def espd = new EspdDocument(ojsNumber: "S206|2015-10-23|PN33|2015/S 206-373035",
