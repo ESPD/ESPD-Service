@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2017.06 (30th of June)
+=== 2017.06 (3rd of July)
 
 This release was focused on XML changes.
 
