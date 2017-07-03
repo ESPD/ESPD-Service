@@ -597,6 +597,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#xml-changes">XML changes</a>
 <ul class="sectlevel2">
+<li><a href="#version-2017-05">Version 2017.05</a></li>
 <li><a href="#version-2016-12">Version 2016.12</a></li>
 <li><a href="#version-2016-08">Version 2016.08</a></li>
 <li><a href="#version-2016-07">Version 2016.07</a></li>
@@ -608,6 +609,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">Release notes</a>
 <ul class="sectlevel2">
+<li><a href="#2017-06-3rd-of-july">2017.06 (3rd of July)</a></li>
 <li><a href="#2017-03-04-20th-of-june-2017">2017.03.04 (20th of June 2017)</a></li>
 <li><a href="#2017-03-03-17th-of-may-2017">2017.03.03 (17th of May 2017)</a></li>
 <li><a href="#2017-03-02-5th-of-may-2017">2017.03.02 (5th of May 2017)</a></li>
@@ -650,7 +652,7 @@ table.CodeRay td.code>pre{padding:0}
 Virgiliu Ratoi</p>
 </div>
 <div class="paragraph">
-<p>v2017.03.04, 20-06-2017</p>
+<p>v2017.06, 03-07-2017</p>
 </div>
 </div>
 </div>
@@ -2690,6 +2692,393 @@ in your POM file:</p>
 <h2 id="xml-changes"><a class="anchor" href="#xml-changes"></a>XML changes</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="version-2017-05"><a class="anchor" href="#version-2017-05"></a>Version 2017.05</h3>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/67">Part V should not be shown in an open procedure</a></p>
+</div>
+<div class="paragraph">
+<p>Part V should not be shown in an open procedure #67</p>
+</div>
+<div class="paragraph">
+<p>In case <code>Part I: Information concerning the procurement procedure and the contracting authority or contracting entity</code>,
+section <code>Information about the procurement procedure</code> receives an additional member called <code>Type of procedure</code>.</p>
+</div>
+<div class="paragraph">
+<p>List of values and its impact on Part V specified below:
+* Not specified (because it may not be selected)
+* Open procedure
+* Restricted procedure (Part V will be shown)
+* Competitive procedure with negotiation (Part V will be shown)
+* Competitive dialogue (Part V will be shown)
+* Innovation partnership (Part V will be shown)</p>
+</div>
+<div class="paragraph">
+<p>Code list for these values are taken from version 1.0.2 and specified below:</p>
+</div>
+<div class="paragraph">
+<p>Values of Procedure Type:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Title</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not specified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open procedure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restricted procedure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Competitive procedure with negotiation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Competitive dialogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Innovation partnership</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Procedure Type is not stored in XML.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/75">Part III:exclusion grounds: Add multiple persons</a></p>
+</div>
+<div class="paragraph">
+<p>In case "Part III: Exclusion Grounds", section "A: Grounds relating to criminal convictions",
+applying for all grounds regarding criminal convictions,
+there is no option to add (conviction) information for multiple representatives, in case of a conviction.</p>
+</div>
+<div class="paragraph">
+<p>Requirement subgroups with id "f5276600-a2b6-4ff6-a90e-b31fe19dae41" became "unbounded" using
+functionality implemented for unbounded groups
+<a href="https://github.com/ESPD/ESPD-Service/issues/15">Able to add multiple references in selection criteria</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">exclusionCriteria.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">subgroups</span><span class="delimiter">&quot;</span></span>: [
+            {
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1.1</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">f5276600-a2b6-4ff6-a90e-b31fe19dae41</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">fulfillmentIndicator</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">unbounded</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
+            }
+            ]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This change provides possibility to implement multiple fields group:
+- Date of conviction
+- Reason
+- Who has been convicted
+- Length of the period of exclusion
+- Have you taken measures to demonstrate your reliability ("Self-Cleaning")
+- Description</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-responce.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;ccv:RequirementGroup&gt;</span>
+     <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7c637c0c-7703-4389-ba52-02997a055bd7<span class="tag">&lt;/cbc:ID&gt;</span>
+     <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>974c8196-9d1c-419c-9ca9-45bb9f5fd59a<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>Your answer?<span class="tag">&lt;/cbc:Description&gt;</span>
+        <span class="tag">&lt;ccv:Response&gt;</span>
+           <span class="tag">&lt;ccv-cbc:Indicator&gt;</span>true<span class="tag">&lt;/ccv-cbc:Indicator&gt;</span>
+        <span class="tag">&lt;/ccv:Response&gt;</span>
+     <span class="tag">&lt;/ccv:Requirement&gt;</span>
+     <span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_TRUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f5276600-a2b6-4ff6-a90e-b31fe19dae41<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ecf40999-7b64-4e10-b960-7f8ff8674cf6<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Date of conviction<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Date&gt;</span>2017-05-04<span class="tag">&lt;/cbc:Date&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7d35fb7c-da5b-4830-b598-4f347a04dceb<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Reason<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>ert<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>c5012430-14da-454c-9d01-34cedc6a7ded<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Who has been convicted<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>rt<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PERIOD</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Length of the period of exclusion<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cac:Period&gt;</span>
+                 <span class="tag">&lt;cbc:Description&gt;</span>ert<span class="tag">&lt;/cbc:Description&gt;</span>
+              <span class="tag">&lt;/cac:Period&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:RequirementGroup&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5f9f09f7-f701-432c-9fdc-c22c124a74c9<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>20c5361b-7599-4ee6-b030-7f8323174d1e<span class="tag">&lt;/cbc:ID&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>Have you taken measures to demonstrate your reliability (<span class="entity">&amp;quot;</span>Self-Cleaning<span class="entity">&amp;quot;</span>)?<span class="tag">&lt;/cbc:Description&gt;</span>
+              <span class="tag">&lt;ccv:Response&gt;</span>
+                 <span class="tag">&lt;ccv-cbc:Indicator&gt;</span>false<span class="tag">&lt;/ccv-cbc:Indicator&gt;</span>
+              <span class="tag">&lt;/ccv:Response&gt;</span>
+           <span class="tag">&lt;/ccv:Requirement&gt;</span>
+           <span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_TRUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>74e6c7b4-757b-4b40-ada6-fad6a997c310<span class="tag">&lt;/cbc:ID&gt;</span>
+              <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                 <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7b07904f-e080-401a-a3a1-9a3efeeda54b<span class="tag">&lt;/cbc:ID&gt;</span>
+                 <span class="tag">&lt;cbc:Description&gt;</span>Please describe them<span class="tag">&lt;/cbc:Description&gt;</span>
+                 <span class="tag">&lt;ccv:Response</span><span class="tag">/&gt;</span>
+              <span class="tag">&lt;/ccv:Requirement&gt;</span>
+           <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+        <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+     <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+     <span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_TRUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f5276600-a2b6-4ff6-a90e-b31fe19dae41<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ecf40999-7b64-4e10-b960-7f8ff8674cf6<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Date of conviction<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Date&gt;</span>2017-05-04<span class="tag">&lt;/cbc:Date&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7d35fb7c-da5b-4830-b598-4f347a04dceb<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Reason<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>ert<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>c5012430-14da-454c-9d01-34cedc6a7ded<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Who has been convicted<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>rt<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PERIOD</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;cbc:Description&gt;</span>Length of the period of exclusion<span class="tag">&lt;/cbc:Description&gt;</span>
+           <span class="tag">&lt;ccv:Response&gt;</span>
+              <span class="tag">&lt;cac:Period&gt;</span>
+                 <span class="tag">&lt;cbc:Description&gt;</span>ert<span class="tag">&lt;/cbc:Description&gt;</span>
+              <span class="tag">&lt;/cac:Period&gt;</span>
+           <span class="tag">&lt;/ccv:Response&gt;</span>
+        <span class="tag">&lt;/ccv:Requirement&gt;</span>
+        <span class="tag">&lt;ccv:RequirementGroup&gt;</span>
+           <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5f9f09f7-f701-432c-9fdc-c22c124a74c9<span class="tag">&lt;/cbc:ID&gt;</span>
+           <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INDICATOR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>20c5361b-7599-4ee6-b030-7f8323174d1e<span class="tag">&lt;/cbc:ID&gt;</span>
+              <span class="tag">&lt;cbc:Description&gt;</span>Have you taken measures to demonstrate your reliability (<span class="entity">&amp;quot;</span>Self-Cleaning<span class="entity">&amp;quot;</span>)?<span class="tag">&lt;/cbc:Description&gt;</span>
+              <span class="tag">&lt;ccv:Response&gt;</span>
+                 <span class="tag">&lt;ccv-cbc:Indicator&gt;</span>false<span class="tag">&lt;/ccv-cbc:Indicator&gt;</span>
+              <span class="tag">&lt;/ccv:Response&gt;</span>
+           <span class="tag">&lt;/ccv:Requirement&gt;</span>
+           <span class="tag">&lt;ccv:RequirementGroup</span> <span class="attribute-name">pi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">GROUP_FULFILLED.ON_TRUE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+              <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>74e6c7b4-757b-4b40-ada6-fad6a997c310<span class="tag">&lt;/cbc:ID&gt;</span>
+              <span class="tag">&lt;ccv:Requirement</span> <span class="attribute-name">responseDataType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DESCRIPTION</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                 <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionRelatedIDs</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7b07904f-e080-401a-a3a1-9a3efeeda54b<span class="tag">&lt;/cbc:ID&gt;</span>
+                 <span class="tag">&lt;cbc:Description&gt;</span>Please describe them<span class="tag">&lt;/cbc:Description&gt;</span>
+                 <span class="tag">&lt;ccv:Response</span><span class="tag">/&gt;</span>
+              <span class="tag">&lt;/ccv:Requirement&gt;</span>
+           <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+        <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+     <span class="tag">&lt;/ccv:RequirementGroup&gt;</span>
+<span class="tag">&lt;/ccv:RequirementGroup&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/89">Part I: Addition of a national reference number</a></p>
+</div>
+<div class="paragraph">
+<p>In Part I (Information About Publication section) we need to provide the possibility to add a national reference
+number to help economic operators in a country to identify it on a national portal.</p>
+</div>
+<div class="paragraph">
+<p>To fulfill this requirement we need to add a new XML element as in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-request.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;cac:AdditionalDocumentReference&gt;</span>
+      <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DG GROW (European Commission)</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>The national number here<span class="tag">&lt;/cbc:ID&gt;</span>
+      <span class="tag">&lt;cbc:DocumentTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ReferencesTypeCodes</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NATIONAL_NUMBER<span class="tag">&lt;/cbc:DocumentTypeCode&gt;</span>
+      <span class="tag">&lt;cac:Attachment&gt;</span>
+         <span class="tag">&lt;cac:ExternalReference&gt;</span>
+            <span class="tag">&lt;cbc:Description&gt;</span>-<span class="tag">&lt;/cbc:Description&gt;</span>
+         <span class="tag">&lt;/cac:ExternalReference&gt;</span>
+      <span class="tag">&lt;/cac:Attachment&gt;</span>
+<span class="tag">&lt;/cac:AdditionalDocumentReference&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/148">Part IV: Turnover fields should have fiscal years</a></p>
+</div>
+<div class="paragraph">
+<p>In Part IV (Selection Criteria) Section B (Economic and Financial Standing), currently the economic operator can only specify a Year for
+ the following requirements:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>General Yearly Turnover and</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Specific Yearly Turnover</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This change is about allowing the EO to specify instead the fiscal year by selecting a Start Date and an End Date. In the new definition
+the QUANTITY_YEAR field will be replaced by a START_DATE and END_DATE fields as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">selectionCriteria.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">      <span class="string"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
+        {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">G1</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">unbounded</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">requirements</span><span class="delimiter">&quot;</span></span>: [
+            {
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42ec8116-31a7-4118-8612-5b04f5c8bde7</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Start Date</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">espdCriterionFields</span><span class="delimiter">&quot;</span></span>: [
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">startDate</span><span class="delimiter">&quot;</span></span>
+              ]
+            },
+            {
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3641b897-f9f0-4d90-909a-b6d4c4b1d645</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">End Date</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DATE</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">espdCriterionFields</span><span class="delimiter">&quot;</span></span>: [
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">endDate</span><span class="delimiter">&quot;</span></span>
+              ]
+            },
+            {
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Amount</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">responseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">AMOUNT</span><span class="delimiter">&quot;</span></span>,
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">espdCriterionFields</span><span class="delimiter">&quot;</span></span>: [
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">amount</span><span class="delimiter">&quot;</span></span>,
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">currency</span><span class="delimiter">&quot;</span></span>
+              ]
+            }
+          ]
+        },</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/154">Semantic error in ESPD XML Schema for postcode (zipcode)</a></p>
+</div>
+<div class="paragraph">
+<p>For both the EO and the representatives of the EO a postcode can be specified. In case of the EO, this information is represented by the XML element espd-cac:ContractingParty.Party.PostalAddress.Postbox, in case of the EO representative the element espd-cac:EconomicOperatorParty.Party.Person.ResidenceAddress.Postbox is used.</p>
+</div>
+<div class="paragraph">
+<p>As usage of the Postbox element in semantically wrong in both cases (i.e. a postbox number refers to a post office box registered for postal delivery by a postal service provider). The element […].PostalZone will be used instead.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;espd:ESPDResponse&gt;</span>
+    .....
+    <span class="tag">&lt;espd-cac:EconomicOperatorParty&gt;</span>
+        <span class="tag">&lt;espd-cbc:SMEIndicator&gt;</span>false<span class="tag">&lt;/espd-cbc:SMEIndicator&gt;</span>
+        <span class="tag">&lt;espd-cac:RepresentativeNaturalPerson&gt;</span>
+            <span class="tag">&lt;cac:PowerOfAttorney&gt;</span>
+                <span class="tag">&lt;cac:AgentParty&gt;</span>
+                    <span class="tag">&lt;cac:Person&gt;</span>
+                        <span class="tag">&lt;cac:Contact</span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;cac:ResidenceAddress</span><span class="tag">/&gt;</span>
+                    <span class="tag">&lt;/cac:Person&gt;</span>
+                <span class="tag">&lt;/cac:AgentParty&gt;</span>
+            <span class="tag">&lt;/cac:PowerOfAttorney&gt;</span>
+        <span class="tag">&lt;/espd-cac:RepresentativeNaturalPerson&gt;</span>
+        <span class="tag">&lt;cac:Party&gt;</span>
+            <span class="tag">&lt;cac:PartyName&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span><span class="tag">&lt;/cbc:Name&gt;</span>
+            <span class="tag">&lt;/cac:PartyName&gt;</span>
+            <span class="tag">&lt;cac:PostalAddress&gt;</span>
+                <span class="tag">&lt;cbc:PostalZone&gt;</span>1050<span class="tag">&lt;/cbc:PostalZone&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+                <span class="tag">&lt;cac:Country&gt;</span>
+                    <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>GR<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
+                <span class="tag">&lt;/cac:Country&gt;</span>
+            <span class="tag">&lt;/cac:PostalAddress&gt;</span>
+            <span class="tag">&lt;cac:Contact</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/cac:Party&gt;</span>
+    <span class="tag">&lt;/espd-cac:EconomicOperatorParty&gt;</span>
+   ...
+<span class="tag">&lt;/espd:ESPDResponse&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>XML element Postbox has been replaced by PostalZone</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/159">Correct XML schema version</a></p>
+</div>
+<div class="paragraph">
+<p>The xml element cbc:VersionID until now contains ESPD Service version. This will be modified so that xml element cbc:VersionID will contain ESPD Data Exchange Model version.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">espd-response.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;espd:ESPDResponse&gt;</span>
+    .....
+   <span class="tag">&lt;cbc:VersionID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1.0.2<span class="tag">&lt;/cbc:VersionID&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   .....
+<span class="tag">&lt;/espd:ESPDResponse&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>XML element cbc:VersionID contains the ESPD Data Exchange Model version.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="version-2016-12"><a class="anchor" href="#version-2016-12"></a>Version 2016.12</h3>
 <div class="paragraph">
 <p><a href="https://github.com/ESPD/ESPD-Service/issues/15">Able to add multiple references in selection criteria</a></p>
@@ -3862,9 +4251,40 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>Release notes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="2017-03-04-20th-of-june-2017"><a class="anchor" href="#2017-03-04-20th-of-june-2017"></a>2017.03.04 (20th of June 2017)</h3>
+<h3 id="2017-06-3rd-of-july"><a class="anchor" href="#2017-06-3rd-of-july"></a>2017.06 (3rd of July)</h3>
+<div class="paragraph">
+<p>This release was focused on XML changes.</p>
+</div>
 <div class="sect3">
 <h4 id="enhancement"><a class="anchor" href="#enhancement"></a>Enhancement</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/159">Correct XML schema version</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/148">Part IV: Turnover fields should have fiscal years</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/89">Part I: Addition of a national reference number</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/75">Part III:exclusion grounds: Add multiple persons</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/67">Part V should not be shown in an open procedure</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ESPD/ESPD-Service/issues/154">Semantic error in ESPD XML Schema for postcode (zipcode)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2017-03-04-20th-of-june-2017"><a class="anchor" href="#2017-03-04-20th-of-june-2017"></a>2017.03.04 (20th of June 2017)</h3>
+<div class="sect3">
+<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3880,7 +4300,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 <div class="sect2">
 <h3 id="2017-03-03-17th-of-may-2017"><a class="anchor" href="#2017-03-03-17th-of-may-2017"></a>2017.03.03 (17th of May 2017)</h3>
 <div class="sect3">
-<h4 id="enhancement-2"><a class="anchor" href="#enhancement-2"></a>Enhancement</h4>
+<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3915,7 +4335,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 <div class="sect2">
 <h3 id="2017-03-7th-of-april-2017"><a class="anchor" href="#2017-03-7th-of-april-2017"></a>2017.03 (7th of April 2017)</h3>
 <div class="sect3">
-<h4 id="enhancement-3"><a class="anchor" href="#enhancement-3"></a>Enhancement</h4>
+<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3956,7 +4376,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-4"><a class="anchor" href="#enhancement-4"></a>Enhancement</h4>
+<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4011,7 +4431,7 @@ is transformed from a <code>DESCRIPTION</code> to an <code>INDICATOR</code> type
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-5"><a class="anchor" href="#enhancement-5"></a>Enhancement</h4>
+<h4 id="enhancement-6"><a class="anchor" href="#enhancement-6"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4101,7 +4521,7 @@ For a comprehensive history of all the XML changes, please visit this link:
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-6"><a class="anchor" href="#enhancement-6"></a>Enhancement</h4>
+<h4 id="enhancement-7"><a class="anchor" href="#enhancement-7"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4175,7 +4595,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-11-30th-of-november-2016"><a class="anchor" href="#2016-11-30th-of-november-2016"></a>2016.11 (30th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-7"><a class="anchor" href="#enhancement-7"></a>Enhancement</h4>
+<h4 id="enhancement-8"><a class="anchor" href="#enhancement-8"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4232,7 +4652,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-02-28th-of-november-2016"><a class="anchor" href="#2016-10-02-28th-of-november-2016"></a>2016.10.02 (28th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-8"><a class="anchor" href="#enhancement-8"></a>Enhancement</h4>
+<h4 id="enhancement-9"><a class="anchor" href="#enhancement-9"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4245,7 +4665,7 @@ the printing functionality in version 2016.11</p>
 <div class="sect2">
 <h3 id="2016-10-01-11th-of-november-2016"><a class="anchor" href="#2016-10-01-11th-of-november-2016"></a>2016.10.01 (11th of November 2016)</h3>
 <div class="sect3">
-<h4 id="enhancement-9"><a class="anchor" href="#enhancement-9"></a>Enhancement</h4>
+<h4 id="enhancement-10"><a class="anchor" href="#enhancement-10"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4289,7 +4709,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-10"><a class="anchor" href="#enhancement-10"></a>Enhancement</h4>
+<h4 id="enhancement-11"><a class="anchor" href="#enhancement-11"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4376,7 +4796,7 @@ the printing functionality in version 2016.11</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enhancement-11"><a class="anchor" href="#enhancement-11"></a>Enhancement</h4>
+<h4 id="enhancement-12"><a class="anchor" href="#enhancement-12"></a>Enhancement</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -4790,7 +5210,7 @@ the printing functionality in version 2016.11</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-20 16:59:23 +02:00
+Last updated 2017-07-03 09:08:22 +02:00
 </div>
 </div>
 </body>
