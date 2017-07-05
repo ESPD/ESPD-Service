@@ -1,6 +1,12 @@
 == Release notes
 
-=== 2017.06 (3rd of July)
+=== 2017.06.01 (6th of July 2017)
+
+Hotfix provided for interface issue
+
+* https://github.com/ESPD/ESPD-Service/issues/67[Part V should not be shown in an open procedure]
+
+=== 2017.06 (3rd of July 2017)
 
 This release was focused on XML changes.
 
