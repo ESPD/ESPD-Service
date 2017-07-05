@@ -36,6 +36,7 @@
             <tiles:putAttribute name="finish" value="true"/>
         </tiles:insertDefinition>
 
+		<c:set var="finish_agent" value="${agent}" scope="request"/><%-- overrides agent for finish --%>
         <%@ include file="/WEB-INF/views/wizard/finishForm.jsp" %>
 
         <div class="panel panel-espd">

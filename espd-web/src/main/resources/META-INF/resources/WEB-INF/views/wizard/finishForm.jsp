@@ -5,13 +5,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
+<%--parameter finish_agent overrides agent --%>
 
 		<div>
 			<h2>
 				<span data-i18n="createcafinish_header"><s:message code="createcafinish_header"/></span>
 			</h2>
 		</div>
-		<c:if test="${agent == 'eo' && (espd.procedureType == '2' || espd.procedureType == '10' || espd.procedureType == 'C' || espd.procedureType == '11')}"><%-- Part V is visible only for EO --%>
+		<c:if test="${finish_agent == 'eo' && espd.procedureType != '1'}"><%-- Part V is visible only for EO and if not Open Procedure--%>
             <div class="panel panel-espd">
                 <div class="panel-heading" data-toggle="collapse" data-target="#finish-reduction-of-numbers-section">
 	 				<h4 class="panel-title">
@@ -56,11 +57,15 @@
 	                    </span>
                     </p>
                 </div>
-                <c:if test="${agent == 'eo'}">
+                <c:if test="${finish_agent == 'eo'}">
                     <div class="form-group">
                         <label class="control-label col-md-2 small">${span18n['crit_date']}</label>
                         <div class="col-md-4">
                             <form:input type="text" path="documentDate" cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
+							<%--
+                        	<fmt:formatDate var="documentDateFormatted" value="${espd.documentDate}" pattern="yyyy-MM-dd"/>
+                        	<input type="text" cssClass="form-control datepicker" cssStyle="border-radius: 0;" value="${documentDateFormatted}"/>
+							--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -73,7 +78,7 @@
                         <label class="control-label col-md-2 small">${span18n['signature']}</label>
                     </div>
                 </c:if>
-                <br/><br/><br/>
+
             </div>
 		</div>
 		
