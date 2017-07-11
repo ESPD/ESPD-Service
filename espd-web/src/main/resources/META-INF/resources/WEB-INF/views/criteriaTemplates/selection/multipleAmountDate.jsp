@@ -5,11 +5,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <tiles:importAttribute name="field"/>
-
-<c:forEach var="group" items="${espd[field].unboundedGroups}" varStatus="vs" >
-	
+<!-- we have 5 and only 5 requirement groups for yearly turnovers -->
+<c:forEach var="group" begin="0" end="4" varStatus="vs" >
 	<a name="${field}${vs.index}"></a>
-	
 	<div class="form-group form-group-sm">
         <div class="col-xs-3">
             <label class="control-label small">${span18n['crit_amount']}</label>
@@ -24,7 +22,6 @@
 	        </tiles:insertDefinition>
 		</div>
     </div>
-    
 	<div class="form-group form-group-sm">
         <div class="col-xs-3">
             <label class="control-label small">${span18n['crit_start_date']}</label>
@@ -39,6 +36,5 @@
             <form:input type="text" path='${field}.unboundedGroups[${vs.index}]["endDate"]' cssClass="form-control datepicker" cssStyle="border-radius: 0;"/>
         </div>
     </div>
-
 	<hr/>
 </c:forEach>
