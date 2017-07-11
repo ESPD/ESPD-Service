@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2017.06.02 (13th of July 2017)
+
+Hotfix for issue with yearly turnovers
+
+* https://github.com/ESPD/ESPD-Service/issues/183[ESPD Request does not correctly export yearly turnovers]
+
 === 2017.06.01 (6th of July 2017)
 
 Hotfix provided for interface issue
