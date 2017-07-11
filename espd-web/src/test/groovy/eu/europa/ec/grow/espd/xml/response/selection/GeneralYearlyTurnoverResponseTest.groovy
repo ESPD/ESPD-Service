@@ -24,17 +24,14 @@
 
 package eu.europa.ec.grow.espd.xml.response.selection
 
-import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
-import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
 import eu.europa.ec.grow.espd.domain.AvailableElectronically
+import eu.europa.ec.grow.espd.domain.DynamicRequirementGroup
 import eu.europa.ec.grow.espd.domain.EconomicFinancialStandingCriterion
 import eu.europa.ec.grow.espd.domain.EspdDocument
-import eu.europa.ec.grow.espd.xml.LocalDateAdapter;
+import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion
+import eu.europa.ec.grow.espd.xml.LocalDateAdapter
 import eu.europa.ec.grow.espd.xml.base.AbstractSelectionCriteriaFixture
-
 import org.joda.time.LocalDate
-import org.joda.time.LocalTime
-
 /**
  * Created by ratoico on 12/9/15 at 1:48 PM.
  */
@@ -195,6 +192,9 @@ class GeneralYearlyTurnoverResponseTest extends AbstractSelectionCriteriaFixture
 		def response = generateResponseXml(espd)
 		def idx = getResponseCriterionIndex(SelectionCriterion.GENERAL_YEARLY_TURNOVER)
 		def crit = response.Criterion[idx]
+
+        then: "5 amount requirement groups and info available electronically group"
+        crit.RequirementGroup.size() == 6
 
 		then: "First amount"
 		def g1_1 = crit.RequirementGroup[0]
