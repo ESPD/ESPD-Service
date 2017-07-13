@@ -115,22 +115,30 @@
 		        	}
             	}
             	
-            	{// Add at least one General Yearly Turnover to be sure user will see it in form
+            	{// Add 5 General Yearly Turnover to be sure user will see them in the form
 	        		if (espd.getGeneralYearlyTurnover() == null) {
 	        			espd.setGeneralYearlyTurnover(new EconomicFinancialStandingCriterion());
 	        		}
 		        	if (CollectionUtils.isEmpty(espd.getGeneralYearlyTurnover().getUnboundedGroups())) {
-	        			espd.getGeneralYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getGeneralYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>(5));
+	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
 	        			espd.getGeneralYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
 		        	}
             	}
             	
-            	{// Add at least one Specific Yearly Turnover to be sure user will see it in form
+            	{// Add 5 Specific Yearly Turnover to be sure user will see them in the form
 	        		if (espd.getSpecificYearlyTurnover() == null) {
 	        			espd.setSpecificYearlyTurnover(new EconomicFinancialStandingCriterion());
 	        		}
 		        	if (CollectionUtils.isEmpty(espd.getSpecificYearlyTurnover().getUnboundedGroups())) {
-	        			espd.getSpecificYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>());
+	        			espd.getSpecificYearlyTurnover().setUnboundedGroups(new ArrayList<DynamicRequirementGroup>(5));
+	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
+	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
 	        			espd.getSpecificYearlyTurnover().getUnboundedGroups().add(new DynamicRequirementGroup());
 		        	}
             	}
