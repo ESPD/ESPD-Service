@@ -131,7 +131,11 @@ public enum Language {
     /**
      * Norwegian
      */
-    NORWEGIAN( "Norsk", "Norwegian", "no");
+    NORWEGIAN( "Norsk", "Norwegian", "no"),
+    /**
+     * Icelandic
+     */
+    ICELANDIC( "Íslenska", "Icelandic", "is");
 
 	public static final List<Language> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
 
