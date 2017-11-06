@@ -2,7 +2,7 @@
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
 :edm: https://github.com/ESPD/ESPD-EDM[ESPD-EDM]
-:appVersion: 2017.06.01
+:appVersion: 2017.06.03
 :maven: https://maven.apache.org[Maven]
 :tomcat: https://tomcat.apache.org[Tomcat]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
