@@ -1,5 +1,12 @@
 == Release notes
 
+=== 2017.06.03 (6th of November 2017)
+
+Hotfix provided for translation issues
+
+* https://github.com/ESPD/ESPD-Service/issues/180[updated translations for createcafinish_concl_statements_text]
+* https://github.com/ESPD/ESPD-Service/issues/181[Icelandic translations]
+
 === 2017.06.02 (13th of July 2017)
 
 Hotfix for issue with yearly turnovers
