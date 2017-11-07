@@ -40,7 +40,10 @@
 	<js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js</js>
         <js minimize="false">/static/jquery-plugins/inputmask/min/jquery.inputmask.bundle.min.js</js>
         <js minimize="true">/static/js/init.js</js>
+	<js minimize="false">/static/piwik.js</js>
+<!--
         <js minimize="false">https://webanalytics.ec.europa.eu/piwik.js</js>
+-->
     </group>
 
     <group name="debug">
@@ -60,6 +63,9 @@
 	<js minimize="false">/static/bootstrap-plugins/bootstrap-toggle-master/js/bootstrap-toggle.js</js>
         <js minimize="false">/static/jquery-plugins/inputmask/jquery.inputmask.bundle.js</js>
         <js minimize="true">/static/js/init.js</js>
+	<js minimize="false">/static/piwik.js</js>
+<!--
         <js minimize="false">https://webanalytics.ec.europa.eu/piwik.js</js>
+-->
     </group>
 </groups>  
