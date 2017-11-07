@@ -53,10 +53,10 @@ public class EspdConfiguration {
     @Value("${piwik.enabled:false}")
     private boolean piwikEnabled;
 
-    @Value("${piwik.id:2}")
+    @Value("${piwik.id:401}")
     private Integer piwikId;
 
-    @Value("${piwik.server:https://webgate.ec.europa.eu/pwar/piwik.php}")
+    @Value("${piwik.server:https://webanalytics.ec.europa.eu/piwik.php}")
     private String piwikServer;
 
     @Value("${ecertis.criterion.url:https://www.development.ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd/[uuid]/?countryFilter=[country]&lang=[lang]}")
