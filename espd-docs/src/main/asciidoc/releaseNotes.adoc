@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2017.11 (30th of November 2017)
+
+Hotfix provided for translation issues
+
+* https://github.com/ESPD/ESPD-Service/issues/196[Updated Norwegian translation file]
+
 === 2017.06.03 (6th of November 2017)
 
 Hotfix provided for translation issues
