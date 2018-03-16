@@ -70,7 +70,8 @@ public class TedService {
         try {
             HttpEntity<String> request = new HttpEntity<>(createHeaders(tedUser, tedPassword));
             ResponseEntity<TedResponse> response = restTemplate
-                    .exchange(tedUrl + "/" + receptionId, HttpMethod.GET, request, TedResponse.class);
+                    .exchange(String.format("%s/%s/noticeInformation", tedUrl, receptionId),
+                            HttpMethod.GET, request, TedResponse.class);
             log.info("Got response from TED: '{}'.", response);
             return response.getBody();
         } catch (Exception e) {
