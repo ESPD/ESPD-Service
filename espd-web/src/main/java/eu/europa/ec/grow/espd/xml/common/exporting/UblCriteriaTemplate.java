@@ -33,6 +33,7 @@ import eu.europa.ec.grow.espd.domain.enums.criteria.SelectionCriterion;
 import eu.europa.ec.grow.espd.domain.ubl.CcvCriterion;
 import isa.names.specification.ubl.schema.xsd.ccv_commonaggregatecomponents_1.CriterionType;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +56,7 @@ public abstract class UblCriteriaTemplate {
 	 */
 	public List<CriterionType> apply(EspdDocument espdDocument) {
 		List<CriterionType> criterionTypes = new ArrayList<>(
-				ExclusionCriterion.values().length + SelectionCriterion.values().length + 1);
+				ExclusionCriterion.ALL_VALUES.size() + SelectionCriterion.ALL_VALUES.size() + 1);
 		// THE ORDER OF CRITERIA IS VERY IMPORTANT AND IT SHOULD BE COVERED BY THE TESTS!!!
 		criterionTypes.addAll(addExclusionCriteria(espdDocument));
 		criterionTypes.addAll(addSelectionCriteria(espdDocument));
@@ -64,21 +65,25 @@ public abstract class UblCriteriaTemplate {
 	}
 
 	private List<CriterionType> addExclusionCriteria(EspdDocument espdDocument) {
-		List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.values().length + 1);
+		List<CriterionType> criterionTypes = new ArrayList<>(ExclusionCriterion.ALL_VALUES.size() + 1);
 		// All exclusion criteria except 'Purely national grounds' must be present no matter the existence
-		for (ExclusionCriterion criterion : ExclusionCriterion.values()) {
+		for (ExclusionCriterion criterion : ExclusionCriterion.ALL_VALUES) {
 			addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
 		}
+        if (CollectionUtils.isEmpty(criterionTypes)) {
+		    log.warn("ESPD document with TED URL '{}' does not contain any exclusion criteria.",
+                    espdDocument.getTedUrl());
+        }
 		return criterionTypes;
 	}
 
 	private List<CriterionType> addSelectionCriteria(EspdDocument espdDocument) {
 
-		List<CriterionType> criterionTypes = new ArrayList<>(SelectionCriterion.values().length + 1);
+		List<CriterionType> criterionTypes = new ArrayList<>(SelectionCriterion.ALL_VALUES.size() + 1);
 		if (!espdDocument.getAtLeastOneSelectionCriterionWasSelected()) {
 			// Option 3:
 			// CA selects no selection criteria -> EO sees all selection criteria (including "All selection criteria")
-			for (SelectionCriterion criterion : SelectionCriterion.values()) {
+			for (SelectionCriterion criterion : SelectionCriterion.ALL_VALUES) {
 				addAlwaysUblCriterion(criterion, espdDocument, criterionTypes);
 			}
 		} else if (satisfiesAllCriterionPresent(espdDocument.getSelectionSatisfiesAll())) {
@@ -88,18 +93,22 @@ public abstract class UblCriteriaTemplate {
 		} else {
 			// Option 2:
 			// CA select individual selection criteria -> EO sees only the selected ones (and even not the "All selection criteria")
-			for (SelectionCriterion criterion : SelectionCriterion.values()) {
+			for (SelectionCriterion criterion : SelectionCriterion.ALL_VALUES) {
 				// this will also cover the case when 'Satisfies all' exists with the answer 'No'
 				addSelectedUblCriterion(criterion, espdDocument, criterionTypes);
 			}
 		}
+        if (CollectionUtils.isEmpty(criterionTypes)) {
+            log.warn("ESPD document with TED URL '{}' does not contain any selection criteria.",
+                    espdDocument.getTedUrl());
+        }
 		return criterionTypes;
 	}
 
 	private List<CriterionType> addAwardCriteria(EspdDocument espdDocument) {
-		List<CriterionType> criterionTypes = new ArrayList<>(OtherCriterion.values().length + 1);
+		List<CriterionType> criterionTypes = new ArrayList<>(OtherCriterion.ALL_VALUES.size() + 1);
 		// All exclusion criteria except 'Purely national grounds' must be present no matter the existence
-		for (OtherCriterion criterion : OtherCriterion.values()) {
+		for (OtherCriterion criterion : OtherCriterion.ALL_VALUES) {
 			addAlwaysUblCriterion(criterion, espdDocument, criterionTypes);
 		}
 		return criterionTypes;
