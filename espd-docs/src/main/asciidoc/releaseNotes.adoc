@@ -1,5 +1,10 @@
 == Release notes
 
+=== 2017.11.01 (21st of March 2018)
+
+* Update TED API URL
+* Criteria enum values small improvements
+
 === 2017.11 (30th of November 2017)
 
 Hotfix provided for translation issues
