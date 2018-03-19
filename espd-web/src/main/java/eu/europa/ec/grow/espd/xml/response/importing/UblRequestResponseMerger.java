@@ -113,7 +113,7 @@ public class UblRequestResponseMerger extends UblRequestResponseImporter {
 		}
 
 		// economic operator criteria are not part of the request but we will get them from the response
-		for (OtherCriterion awardCrit : OtherCriterion.values()) {
+		for (OtherCriterion awardCrit : OtherCriterion.ALL_VALUES) {
 			for (CriterionType respCrit : responseType.getCriterion()) {
 				if (awardCrit.getUuid().equals(respCrit.getID().getValue())) {
 					toKeep.add(respCrit);
