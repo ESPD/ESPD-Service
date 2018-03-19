@@ -32,7 +32,11 @@ import eu.europa.ec.grow.espd.domain.ubl.CcvLegislation;
 import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import lombok.Getter;
 
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
+
+import static java.util.Collections.unmodifiableSet;
 
 /**
  * Created by vigi on 11/17/15:2:34 PM.
@@ -79,6 +83,8 @@ public enum ExclusionCriterion implements CcvCriterion {
     private final List<? extends CcvRequirementGroup> groups;
 
     private final String espdDocumentField;
+
+    public static final Set<ExclusionCriterion> ALL_VALUES = unmodifiableSet(EnumSet.allOf(ExclusionCriterion.class));
 
     ExclusionCriterion(String uuid) {
         CcvCriterion criterion = CriterionDefinitions.findCriterionById(uuid).get();

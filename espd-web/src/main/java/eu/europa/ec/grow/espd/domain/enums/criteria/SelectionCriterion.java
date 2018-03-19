@@ -33,7 +33,12 @@ import eu.europa.ec.grow.espd.domain.ubl.CcvLegislation;
 import eu.europa.ec.grow.espd.domain.ubl.CcvRequirementGroup;
 import lombok.Getter;
 
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
+
+import static java.util.Collections.unmodifiableSet;
 
 /**
  * Created by vigi on 11/17/15:3:11 PM.
@@ -89,6 +94,8 @@ public enum SelectionCriterion implements CcvCriterion {
     private final List<? extends CcvRequirementGroup> groups;
 
     private final String espdDocumentField;
+
+    public static Set<SelectionCriterion> ALL_VALUES = unmodifiableSet(EnumSet.allOf(SelectionCriterion.class));
 
     SelectionCriterion(String uuid) {
         CcvCriterion criterion = CriterionDefinitions.findCriterionById(uuid).get();
