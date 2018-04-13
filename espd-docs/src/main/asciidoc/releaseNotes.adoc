@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2017.11.01 (21st of March 2018)
+=== 2017.11.01 (16th of April 2018)
 
 * Update TED API URL
 * Criteria enum values small improvements
