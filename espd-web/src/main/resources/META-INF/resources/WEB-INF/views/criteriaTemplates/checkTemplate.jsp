@@ -42,15 +42,18 @@
 <div class="checkbox criteria-row-check">
 	<div class="form-group" style="margin-bottom: 0px;">
 		<div class="col-md-12">
-			<label class="checkbox-inline">
-				<c:if test="${is_always_checked}">
-					<form:checkbox path="${field}.exists" checked="checked" disabled="true"/>
-				</c:if>
-				<c:if test="${!is_always_checked}">
+			<c:if test="${is_always_checked}">
+				<label class="checkbox-inline" style="padding-left:0px">
+					<form:hidden path="${field}.exists" value="true"/>
+					<b>${span18n[title_code]}</b>
+				</label>
+			</c:if>
+			<c:if test="${!is_always_checked}">
+				<label class="checkbox-inline">
 					<form:checkbox path="${field}.exists"/>
-				</c:if>
-				<b>${span18n[title_code]}</b>
-			</label>
+					<b>${span18n[title_code]}</b>
+				</label>
+			</c:if>
 		    <c:if test="${not empty description_code}">
 		    	<p>
 		        	<span class="small" data-i18n="${description_code}"><s:message code='${description_code}'/></span>
