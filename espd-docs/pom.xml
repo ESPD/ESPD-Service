@@ -29,7 +29,7 @@
     <parent>
         <artifactId>espd</artifactId>
         <groupId>eu.europa.ec.grow.espd</groupId>
-        <version>2017.11.02</version>
+        <version>2018.04</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
