@@ -1,6 +1,6 @@
 == Release notes
 
-=== 2017.11.02 (4th of April 2018)
+=== 2018.04 (4th of April 2018)
 
 * Hide default check boxes on exclusion criteria page
 
