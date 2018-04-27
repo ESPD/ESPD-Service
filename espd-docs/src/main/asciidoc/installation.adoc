@@ -1,7 +1,7 @@
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
-:appVersion: 2017.06.03
+:appVersion: 2017.11.02
 :maven: https://maven.apache.org[Maven]
 :tomcat: https://tomcat.apache.org[Tomcat]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]

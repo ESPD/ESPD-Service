@@ -1,5 +1,9 @@
 == Release notes
 
+=== 2017.11.02 (4th of April 2018)
+
+* Hide default check boxes on exclusion criteria page
+
 === 2017.11.01 (16th of April 2018)
 
 * Update TED API URL
