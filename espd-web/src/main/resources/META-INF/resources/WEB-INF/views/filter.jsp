@@ -28,34 +28,6 @@
   ~
   --%>
 
-<style>
-.div-table {
-	display: table;
-	width: auto;
-}
-
-.div-table-row {
-	display: table-row;
-	width: auto;
-	clear: both;
-}
-
-.div-table-col1 {
-	float: left; /* fix for  buggy browsers */
-	display: table-column;
-	width: 300px;
-	background-color: #fff;
-}
-
-.div-table-col2 {
-	float: left; /* fix for  buggy browsers */
-	display: table-column;
-	width: 500px;
-	background-color: #ffe0b3;
-	padding: 10px;
-	border: 1px solid #000;
-}
-</style>
 
 <script>
     $(function () {
@@ -223,45 +195,43 @@
 					data-i18n="tooltip_espd_used_both_ca_eo" data-toggle="tooltip"
 					title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>
 			</h3>
-				<div class="div-table">
-					<div class="div-table-row">
-						<div class="div-table-col1">
-							<div class="radio">
-								<label><form:radiobutton path="agent" id="whoareyou_ca"
-										name="agent" value="ca" class="radiotab" href="#tab_ca" />${span18n['filter_i_am_ca']}</label>
-								<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip"
-									title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
-							</div>
-							<div class="radio">
-								<label><form:radiobutton path="agent" id="whoareyou_ce"
-										name="agent" value="ce" class="radiotab" href="#tab_ca" />${span18n['filter_i_am_ce']}</label>
-								<span data-i18n="tooltip_ce_ref_buyer" data-toggle="tooltip"
-									title="<s:message code='tooltip_ce_ref_buyer'/>"></span>
-							</div>
-							<div class="radio">
-								<label><form:radiobutton path="agent" id="whoareyou_eo"
-										name="agent" value="eo" class="radiotab" href="#tab_eo" />${span18n['filter_i_am_eop']}</label>
-								<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip"
-									title="${i18n['tooltip_eo_ref_suppl']}"></span>
-							</div>
-						</div>
-						<div class="div-table-col2">
-							<p>
-								<strong>The Commission established this tool to support
-									the uptake of the ESPD in the EU Member States. By now, ESPD
-									services are available around the EU. A non-exhaustive list of
-									those ESPD services can be found <a
-									href="https://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd_en">here</a>.
-									This list will be regularly updated. The obligation to use the
-									ESPD remains into force and can be met by using the national
-									ESPD services. The Commission’s ESPD service was set up to
-									support the introduction of the Member States. It will be
-									phased out in April 2019.
-								</strong>
-							</p>
-						</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="radio">
+						<label><form:radiobutton path="agent" id="whoareyou_ca"
+								name="agent" value="ca" class="radiotab" href="#tab_ca" />${span18n['filter_i_am_ca']}</label>
+						<span data-i18n="tooltip_ca_ref_buyer" data-toggle="tooltip"
+							title="<s:message code='tooltip_ca_ref_buyer'/>"></span>
+					</div>
+					<div class="radio">
+						<label><form:radiobutton path="agent" id="whoareyou_ce"
+								name="agent" value="ce" class="radiotab" href="#tab_ca" />${span18n['filter_i_am_ce']}</label>
+						<span data-i18n="tooltip_ce_ref_buyer" data-toggle="tooltip"
+							title="<s:message code='tooltip_ce_ref_buyer'/>"></span>
+					</div>
+					<div class="radio">
+						<label><form:radiobutton path="agent" id="whoareyou_eo"
+								name="agent" value="eo" class="radiotab" href="#tab_eo" />${span18n['filter_i_am_eop']}</label>
+						<span data-i18n="tooltip_eo_ref_suppl" data-toggle="tooltip"
+							title="${i18n['tooltip_eo_ref_suppl']}"></span>
 					</div>
 				</div>
+				<div class="col-sm-4" style="background-color: #ffe0b3;">
+					<p>
+						<strong>The Commission established this tool to support
+							the uptake of the ESPD in the EU Member States. By now, ESPD
+							services are available around the EU. A non-exhaustive list of
+							those ESPD services can be found <a
+							href="https://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd_en">here</a>.
+							This list will be regularly updated. The obligation to use the
+							ESPD remains into force and can be met by using the national ESPD
+							services. The Commission’s ESPD service was set up to support the
+							introduction of the Member States. It will be phased out in April
+							2019.
+						</strong>
+					</p>
+				</div>
+			</div>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">
 					<h3>${span18n['filter_what_you_do']}</h3>
