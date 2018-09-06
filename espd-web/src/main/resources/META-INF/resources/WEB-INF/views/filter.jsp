@@ -216,6 +216,8 @@
 							title="${i18n['tooltip_eo_ref_suppl']}"></span>
 					</div>
 				</div>
+				<%--phase out text to be added in the October release --%>
+				<%---------------------------------------------------------------------------------------------
 				<div class="col-sm-4" style="background-color: #ffe0b3;">
 					<p>
 						<strong>The Commission established this tool to support
@@ -231,6 +233,7 @@
 						</strong>
 					</p>
 				</div>
+				----------------------------------------------------------------------------------------------------%>
 			</div>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">
