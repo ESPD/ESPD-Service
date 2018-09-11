@@ -30,26 +30,20 @@
 <tiles:importAttribute name="agent"/>
 <tiles:importAttribute name="showLink"/>
 
-<div class="row">
+<script type="text/javascript">
+    var timeleft = 60;
+    var downloadTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+    },60000);
+</script>
+
+<div class="row" >
     <strong class="col-md-4 col-md-offset-8">
-        <c:if test="${agent == 'eo'}">
-        	<span data-i18n="role_eo"><s:message code="role_eo"/></span>
-        </c:if>
-        <c:if test="${agent == 'ca'}">
-        	<span data-i18n="role_ca"><s:message code="role_ca"/></span>
-        </c:if>
-        
-        <c:if test="${showLink != 'false'}">
-	        <a href="${pageContext.request.contextPath}/${page}">
-		        <c:if test="${agent == 'eo'}">
-		        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>
-		        </c:if>
-		        <c:if test="${agent == 'ca'}">
-		        	<span data-i18n="view_eo"><s:message code="view_eo"/></span>
-		        </c:if>
-	        </a>
-        </c:if>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;You have </span>
+        <span id="countdowntimer">60 </span>
+        <span>minutes before session expires</span>
 	</strong>
 </div>
-
-

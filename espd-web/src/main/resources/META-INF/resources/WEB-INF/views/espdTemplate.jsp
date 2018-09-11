@@ -68,7 +68,7 @@
 				var ecertisHandler = EcertisHandler("${ecertisCriterionURL}", "${agent == 'eo' ? espd.economicOperator.country.iso2Code : espd.authority.country.iso2Code}")
 				$('.ecertis-link').click(ecertisHandler);
 			
-				$("#espd-popup").delay(1800000).show(0);
+				$("#espd-popup").delay(1200000).show(0);
 				$("#espd-popup-close").click(function(){$("#espd-popup").hide()})
 			});
 		</script>

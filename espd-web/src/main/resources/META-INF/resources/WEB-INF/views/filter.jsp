@@ -216,24 +216,6 @@
 							title="${i18n['tooltip_eo_ref_suppl']}"></span>
 					</div>
 				</div>
-				<%--phase out text to be added in the October release --%>
-				<%---------------------------------------------------------------------------------------------
-				<div class="col-sm-4" style="background-color: #ffe0b3;">
-					<p>
-						<strong>The Commission established this tool to support
-							the uptake of the ESPD in the EU Member States. By now, ESPD
-							services are available around the EU. A non-exhaustive list of
-							those ESPD services can be found <a
-							href="https://ec.europa.eu/growth/single-market/public-procurement/e-procurement/espd_en">here</a>.
-							This list will be regularly updated. The obligation to use the
-							ESPD remains into force and can be met by using the national ESPD
-							services. The Commission’s ESPD service was set up to support the
-							introduction of the Member States. It will be phased out in April
-							2019.
-						</strong>
-					</p>
-				</div>
-				----------------------------------------------------------------------------------------------------%>
 			</div>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">
