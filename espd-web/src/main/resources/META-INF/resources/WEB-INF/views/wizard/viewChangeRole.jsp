@@ -31,19 +31,48 @@
 <tiles:importAttribute name="showLink"/>
 
 <script type="text/javascript">
-    var timeleft = 60;
-    var downloadTimer = setInterval(function(){
-    timeleft--;
-    document.getElementById("countdowntimer").textContent = timeleft;
-    if(timeleft <= 0)
-        clearInterval(downloadTimer);
-    },60000);
+	function stopTimer(x) {
+		clearInterval(x);
+		document.getElementById("countdowntimer").innerHTML = "00:00 EXPIRED!";
+	}
+
+	function startTimer(duration, display) {
+		
+		var start = Date.now(), diff, minutes, seconds;
+
+		function timer() {
+			// get the number of seconds that have elapsed since 
+			// startTimer() was called
+			diff = duration - (((Date.now() - start) / 1000) | 0);
+
+			// truncates the float
+			minutes = (diff / 60) | 0;
+			seconds = (diff % 60) | 0;
+
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			display.textContent = minutes + ":" + seconds;
+
+			if (diff <= 0) {
+				stopTimer(x);
+			}
+		};
+		// we do not want to wait a full second before the timer starts
+		timer();
+		var x = setInterval(timer, 1000);
+	}
+
+	window.onload = function() {
+		var sixtyMinutes = 60 * 60, 
+		display = document.querySelector('#countdowntimer');
+		startTimer(sixtyMinutes, display);
+	};
 </script>
 
-<div class="row" >
-    <strong class="col-md-4 col-md-offset-8">
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;You have </span>
-        <span id="countdowntimer">60 </span>
-        <span>minutes before session expires</span>
+<div class="row">
+    <strong class="col-md-8 col-md-offset-6">
+        <span class="countdown">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you do not take any action, your session will expire in </span>
+        <span class="countdown" id="countdowntimer">60:00 </span>
 	</strong>
 </div>
