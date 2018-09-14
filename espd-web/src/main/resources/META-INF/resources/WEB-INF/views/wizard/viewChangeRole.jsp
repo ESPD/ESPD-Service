@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	function stopTimer(x) {
 		clearInterval(x);
-		document.getElementById("countdowntimer").innerHTML = "00:00 EXPIRED!";
+		document.getElementById("countdowntimer").innerHTML = "00:00";
 	}
 
 	function startTimer(duration, display) {
