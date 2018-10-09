@@ -30,26 +30,49 @@
 <tiles:importAttribute name="agent"/>
 <tiles:importAttribute name="showLink"/>
 
+<script type="text/javascript">
+	function stopTimer(x) {
+		clearInterval(x);
+		document.getElementById("countdowntimer").innerHTML = "00:00";
+	}
+
+	function startTimer(duration, display) {
+		
+		var start = Date.now(), diff, minutes, seconds;
+
+		function timer() {
+			// get the number of seconds that have elapsed since 
+			// startTimer() was called
+			diff = duration - (((Date.now() - start) / 1000) | 0);
+
+			// truncates the float
+			minutes = (diff / 60) | 0;
+			seconds = (diff % 60) | 0;
+
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			display.textContent = minutes + ":" + seconds;
+
+			if (diff <= 0) {
+				stopTimer(x);
+			}
+		};
+		// we do not want to wait a full second before the timer starts
+		timer();
+		var x = setInterval(timer, 1000);
+	}
+
+	window.onload = function() {
+		var sixtyMinutes = 60 * 60, 
+		display = document.querySelector('#countdowntimer');
+		startTimer(sixtyMinutes, display);
+	};
+</script>
+
 <div class="row">
-    <strong class="col-md-4 col-md-offset-8">
-        <c:if test="${agent == 'eo'}">
-        	<span data-i18n="role_eo"><s:message code="role_eo"/></span>
-        </c:if>
-        <c:if test="${agent == 'ca'}">
-        	<span data-i18n="role_ca"><s:message code="role_ca"/></span>
-        </c:if>
-        
-        <c:if test="${showLink != 'false'}">
-	        <a href="${pageContext.request.contextPath}/${page}">
-		        <c:if test="${agent == 'eo'}">
-		        	<span data-i18n="view_ca"><s:message code="view_ca"/></span>
-		        </c:if>
-		        <c:if test="${agent == 'ca'}">
-		        	<span data-i18n="view_eo"><s:message code="view_eo"/></span>
-		        </c:if>
-	        </a>
-        </c:if>
+    <strong class="col-md-8 col-md-offset-6">
+        <span class="countdown">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you do not take any action, your session will expire in </span>
+        <span class="countdown" id="countdowntimer">60:00 </span>
 	</strong>
 </div>
-
-
