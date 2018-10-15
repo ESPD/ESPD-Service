@@ -1,5 +1,13 @@
 == Release notes
 
+=== 2018.10 (15th of October 2018)
+
+* https://github.com/ESPD/ESPD-Service/issues/213[Missing translations]
+* https://github.com/ESPD/ESPD-Service/issues/206[Part VI changing the value of createcafinish_concl_statements_text]
+* Reduced session timeout
+* Added session countdown timer
+* Fixed eCertis link bug
+
 === 2018.04 (4th of April 2018)
 
 * Hide default check boxes on exclusion criteria page

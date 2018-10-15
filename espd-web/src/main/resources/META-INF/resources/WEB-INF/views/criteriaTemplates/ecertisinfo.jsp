@@ -7,7 +7,7 @@
 <c:if test="${printingjsp != true}">
 
 <div class="small">
-	<span id="${field}-ecertis-show" class="ecertis-link" data-uuid="${criterion.uuid}" data-i18n="${more_information}" data-target="${'#'}${field}-ecertis" data-target-hide="${'#'}${field}-ecertis-show" data-target-show="${'#'}${field}-ecertis-hide;${'#'}${field}-ecertis">
+	<span id="${field}-ecertis-show" class="ecertis-link" data-uuid="${criterion.uuid}" data-i18n="more_information" data-target="${'#'}${field}-ecertis" data-target-hide="${'#'}${field}-ecertis-show" data-target-show="${'#'}${field}-ecertis-hide;${'#'}${field}-ecertis">
 		${i18n['more_information']} <i class="fa fa-angle-double-right" aria-hidden="true"></i>
 	</span>
 	
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	
-	<span id="${field}-ecertis-hide" style="display:none" class="ecertis-link" data-i18n="${less_information}" data-target-show="${'#'}${field}-ecertis-show" data-target-hide="${'#'}${field}-ecertis;${'#'}${field}-ecertis-hide">
+	<span id="${field}-ecertis-hide" style="display:none" class="ecertis-link" data-i18n="less_information" data-target-show="${'#'}${field}-ecertis-show" data-target-hide="${'#'}${field}-ecertis;${'#'}${field}-ecertis-hide">
 		<i class="fa fa-angle-double-left" aria-hidden="true"></i> ${i18n['less_information']}
 	</span>
 </div>

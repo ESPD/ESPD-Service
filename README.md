@@ -30,6 +30,7 @@ services to their users.
 
 ### Older versions
 
+* [2018.04](https://github.com/espd/ESPD-Service/blob/2018.04/espd-docs/src/main/asciidoc/espd.adoc)
 * [2017.11](https://github.com/espd/ESPD-Service/blob/2017.11/espd-docs/src/main/asciidoc/espd.adoc)
 * [2017.06](https://github.com/espd/ESPD-Service/blob/2017.06/espd-docs/src/main/asciidoc/espd.adoc)
 * [2017.03](https://github.com/espd/ESPD-Service/blob/2017.03/espd-docs/src/main/asciidoc/espd.adoc)
