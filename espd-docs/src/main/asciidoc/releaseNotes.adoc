@@ -2,8 +2,8 @@
 
 === 2018.10 (15th of October 2018)
 
-* Added missing translations to all languages
-* Updated text in Part VI concluding statements
+* https://github.com/ESPD/ESPD-Service/issues/213[Missing translations]
+* https://github.com/ESPD/ESPD-Service/issues/206[Part VI changing the value of createcafinish_concl_statements_text]
 * Reduced session timeout
 * Added session countdown timer
 * Fixed eCertis link bug
