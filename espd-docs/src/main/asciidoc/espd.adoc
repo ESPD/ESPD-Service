@@ -1,14 +1,14 @@
 = European Single Procurement Document (ESPD)
 
-Alexey Lukashov +
+Roberto Vormittag +
 Virgiliu Ratoi
 
-v2018.04, 28-04-2018
+v2018.10, 15-10-2018
 
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
 :espd: https://ec.europa.eu/espd[ESPD]
-:appVersion: 2018.04
+:appVersion: 2018.10
 :maven: https://maven.apache.org[Maven 3]
 :tomcat: https://tomcat.apache.org[Tomcat 7+]
 :springBoot: http://projects.spring.io/spring-boot/[Spring Boot]
