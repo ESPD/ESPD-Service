@@ -1,5 +1,11 @@
 == Release notes
 
+=== 2018.11 (26th of November 2018)
+
+* https://github.com/ESPD/ESPD-Service/issues/204
+* https://github.com/ESPD/ESPD-Service/issues/215
+* Added phase-out message to home page
+
 === 2018.10 (15th of October 2018)
 
 * https://github.com/ESPD/ESPD-Service/issues/213[Missing translations]
