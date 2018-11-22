@@ -3,7 +3,7 @@
 Roberto Vormittag +
 Virgiliu Ratoi
 
-v2018.10, 15-10-2018
+v2018.11, 26-11-2018
 
 :sourcedir: ../java/eu/europa/ec/grow/espd
 :homepage: https://ec.europa.eu/espd[ESPD]
