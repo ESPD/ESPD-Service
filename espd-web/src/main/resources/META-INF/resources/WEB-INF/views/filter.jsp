@@ -217,22 +217,9 @@
 							title="${i18n['tooltip_eo_ref_suppl']}"></span>
 					</div>
 				</div>
-
 				<div class="col-sm-9 col-md-9">
 					<div class="alert alert-danger">${span18n["phase_out_text"]}</div>
-				</div>
-				
-				<!-- 
-				<div class="col-sm-9 col-md-9" style="background-color: #ffe0b3;">
-					<div id="filter_text">&nbsp;</div>
-					<ul class="fa-ul">
-						<li><i class="info-label fa fa-info-circle fa-lg fa-li"></i>
-							<div id="filter_text">${span18n["phase_out_text"]}</div>
-						</li>
-					</ul>
-				</div>
-				-->
-				
+				</div>				
 			</div>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">
