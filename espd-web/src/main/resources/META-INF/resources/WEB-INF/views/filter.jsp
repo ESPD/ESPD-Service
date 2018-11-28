@@ -186,6 +186,7 @@
 					</div></li>
 			</ul>
 		</div>
+				
 		<form:errors path="attachments"
 			cssClass="errorContainer alert alert-danger" />
 		<div>
@@ -196,7 +197,7 @@
 					title="${i18n['tooltip_espd_used_both_ca_eo']}"></span>
 			</h3>
 			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-3">
 					<div class="radio">
 						<label><form:radiobutton path="agent" id="whoareyou_ca"
 								name="agent" value="ca" class="radiotab" href="#tab_ca" />${span18n['filter_i_am_ca']}</label>
@@ -216,8 +217,13 @@
 							title="${i18n['tooltip_eo_ref_suppl']}"></span>
 					</div>
 				</div>
+
+				<div class="col-sm-9 col-md-9">
+					<div class="alert alert-danger">${span18n["phase_out_text"]}</div>
+				</div>
 				
-				<div class="col-sm-4" style="background-color: #ffe0b3;">
+				<!-- 
+				<div class="col-sm-9 col-md-9" style="background-color: #ffe0b3;">
 					<div id="filter_text">&nbsp;</div>
 					<ul class="fa-ul">
 						<li><i class="info-label fa fa-info-circle fa-lg fa-li"></i>
@@ -225,6 +231,7 @@
 						</li>
 					</ul>
 				</div>
+				-->
 				
 			</div>
 			<div class="tab-content">
