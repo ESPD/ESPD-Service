@@ -218,8 +218,15 @@
 					</div>
 				</div>
 				<div class="col-sm-9 col-md-9">
-					<div class="alert alert-danger">${span18n["phase_out_text"]}</div>
-				</div>				
+					<div style="background-color: #ffe0b3; padding-right: 20px;">&nbsp;
+						<ul class="fa-ul">
+							<li><i class="alert-label fa fa-info-circle fa-lg fa-li">&nbsp;</i>
+								<div>${span18n["phase_out_text"]}</div>
+							</li>
+						</ul>
+						&nbsp;
+					</div>
+				</div>		
 			</div>
 			<div class="tab-content">
 				<div class="tab-pane" id="tab_ca">

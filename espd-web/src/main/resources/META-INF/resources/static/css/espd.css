@@ -187,6 +187,18 @@ textarea.error {
     top: 0;
 }
 
+.alert-label {
+    font-size: 2.3em;
+    color: red;
+    margin-left: 0.15em;
+    top: 0;
+}
+
+.alert-link {
+	font-weight:bold;
+	color: red;
+}
+
 /* custom style for tooltips */
 
 div.tooltip-inner {
