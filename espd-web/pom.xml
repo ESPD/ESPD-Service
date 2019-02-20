@@ -183,7 +183,7 @@
                                     </includes>
                                 </bannedDependencies>
                                 <requireMavenVersion>
-                                    <version>[3.0.3,3.5.0]</version>
+                                    <version>[3.0.3,3.5.2]</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
