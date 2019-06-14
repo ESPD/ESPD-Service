@@ -134,7 +134,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">${span18n['createca_title_or_short_desc']}</label>
                 <div class="col-md-8">
-                    <form:textarea path="procedureShortDesc" cssStyle="resize: none" rows="4" cols="20" cssClass="form-control"/>
+                    <form:textarea path="procedureShortDesc" cssStyle="resize: auto" rows="4" cols="20" cssClass="form-control"/>
                 </div>
             </div>
         </div>
@@ -507,7 +507,7 @@
                                 <label class="control-label col-md-2">${span18n['createeo_detinfo_of_represent']}</label>
                                 <div class="col-md-10">
                                     <form:textarea path="economicOperator.representatives[${vs.index}].additionalInfo"
-                                                   cssStyle="resize: none" rows="4" cols="20"
+                                                   cssStyle="resize: auto" rows="4" cols="20"
                                                    cssClass="form-control"/>
                                 </div>
                             </div>
